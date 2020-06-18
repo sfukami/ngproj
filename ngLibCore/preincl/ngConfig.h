@@ -27,10 +27,8 @@
 
 	//! アサーション、アボートでブレークポイントを自動設定
 	#define NG_CONFIG_ENABLE_AUTO_BREAK_POINT
-
 #else
 	// for Release
-
 #endif	// NG_DEBUG
 
 #endif	// __NG_CORE_CONFIG_H__

@@ -37,7 +37,7 @@
 */
 #ifndef nullptr
 	#if ( _MSC_VER <= 1500 )	// Visual Studio 2008以前
-#define nullptr		( NULL )
+		#define nullptr		( NULL )
 	#endif
 #endif
 

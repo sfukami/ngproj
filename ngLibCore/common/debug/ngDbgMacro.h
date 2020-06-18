@@ -12,9 +12,10 @@
 #include <assert.h>
 #include <tchar.h>
 #include "ngDebug.h"
+#include "../std/ngStdMacro.h"
 #include "../std/ngStdIO.h"
+#include "../std/msgbox/ngMsgBoxMacro.h"
 #include "ngLibCore/debug/ngStackTrace.h"
-#include "ngLibCore/common/std/msgbox/ngMsgBoxMacro.h"
 /*
 #include "ngLibCore/common/std/console/ngConsoleMacro.h"
 */
@@ -217,7 +218,7 @@
 /*!
 * @brief					ブレークポイントの自動設定
 */
-#ifdef NG_CONF_ENABLE_AUTO_BREAK_POINT
+#ifdef NG_CONFIG_ENABLE_AUTO_BREAK_POINT
 	#define NG_AUTO_BREAK_POINT()	NG_BREAK_POINT()
 #else
 	#define NG_AUTO_BREAK_POINT()

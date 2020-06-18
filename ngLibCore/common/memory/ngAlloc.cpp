@@ -7,14 +7,13 @@
 
 #include "ngAlloc.h"
 #include "ngLibCore/common/debug/ngDbgMacro.h"
-//#include "ngLibCore/allocator/ngIMemoryAllocator.h"
+#include "ngLibCore/allocator/ngMemoryAllocator.h"
 
-#if 0
 void* operator new(
 	ng::size_type size
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	)
@@ -22,19 +21,19 @@ void* operator new(
 	void* p = alloc.Allocate(
 		size
 		, alignment
-	#if defined(NG_CONF_MEMORY_DBGINFO)
+	#if defined(NG_CONFIG_MEMORY_DBGINFO)
 		, src
 	#endif
 		);
 
-#if defined(NG_CONF_MEMORY_DBGINFO)
-#if defined(NG_CONF_MEMORY_PRINT_LOG)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
 	NG_DPRINTF("[new]   - <%s> 0x%p, size:%u\n", alloc.GetName(), p, size);
 	NG_DPRINTF("          %s\n", src);
-#endif	// NG_CONF_MEMORY_PRINT_LOG
+#endif	// NG_CONFIG_MEMORY_PRINT_LOG
 	NG_ASSERT(p, "operator new failed. size:%u, called from:\n\t%s", size, src);
 #else
-#endif	// NG_CONF_MEMORY_DBGINFO
+#endif	// NG_CONFIG_MEMORY_DBGINFO
 
 	return p;
 }
@@ -43,7 +42,7 @@ void* operator new[](
 	ng::size_type size
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	)
@@ -51,18 +50,18 @@ void* operator new[](
 	void* p = alloc.Allocate(
 		size
 		, alignment
-	#if defined(NG_CONF_MEMORY_DBGINFO)
+	#if defined(NG_CONFIG_MEMORY_DBGINFO)
 		, src
 	#endif
 		);
-#if defined(NG_CONF_MEMORY_DBGINFO)
-#if defined(NG_CONF_MEMORY_PRINT_LOG)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
 	NG_DPRINTF("[new[]] - <%s> 0x%p, size:%u\n", alloc.GetName(), p, size);
 	NG_DPRINTF("          %s\n", src);
-#endif	// NG_CONF_MEMORY_PRINT_LOG
+#endif	// NG_CONFIG_MEMORY_PRINT_LOG
 	NG_ASSERT(p, "operator new[] failed. size:%u, called from:\n\t%s", size, src);
 #else
-#endif	// NG_CONF_MEMORY_DBGINFO
+#endif	// NG_CONFIG_MEMORY_DBGINFO
 	return p;
 }
 
@@ -70,7 +69,7 @@ void operator delete(
 	void* p
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	)
@@ -82,7 +81,7 @@ void operator delete[](
 	void* p
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	)
@@ -93,13 +92,13 @@ void operator delete[](
 void operator delete(
 	void* p
 	, ng::IMemoryAllocator& alloc
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	)
 {
-#if defined(NG_CONF_MEMORY_DBGINFO)
-#if defined(NG_CONF_MEMORY_PRINT_LOG)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
 	NG_DPRINTF("[del]   - <%s> 0x%p\n", alloc.GetName(), p);
 	NG_DPRINTF("          %s\n", src);
 #endif
@@ -113,13 +112,13 @@ void operator delete(
 void operator delete[](
 	void* p
 	, ng::IMemoryAllocator& alloc
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	)
 {
-#if defined(NG_CONF_MEMORY_DBGINFO)
-#if defined(NG_CONF_MEMORY_PRINT_LOG)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
 	NG_DPRINTF("[del[]] - <%s> 0x%p\n", alloc.GetName(), p);
 	NG_DPRINTF("          %s\n", src);
 #endif
@@ -129,7 +128,6 @@ void operator delete[](
 		ng::GetArrayHeadPointer(p)
 		);
 }
-#endif
 
 namespace ng
 {

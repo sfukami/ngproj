@@ -38,6 +38,9 @@
     <Filter Include="ソース ファイル\common\error">
       <UniqueIdentifier>{f9d4458a-58de-456c-9bb9-b6621e0046d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\allocator">
+      <UniqueIdentifier>{8265cdc2-1662-4d76-99e9-dbb22021dc07}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -121,6 +124,12 @@
     <ClInclude Include="common\error\ngError.h">
       <Filter>ソース ファイル\common\error</Filter>
     </ClInclude>
+    <ClInclude Include="allocator\ngDefaultAllocator.h">
+      <Filter>ソース ファイル\allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="allocator\ngMemoryAllocator.h">
+      <Filter>ソース ファイル\allocator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -161,6 +170,9 @@
     </ClCompile>
     <ClCompile Include="common\error\ngError.cpp">
       <Filter>ソース ファイル\common\error</Filter>
+    </ClCompile>
+    <ClCompile Include="allocator\ngDefaultAllocator.cpp">
+      <Filter>ソース ファイル\allocator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

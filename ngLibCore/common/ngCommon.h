@@ -17,5 +17,8 @@
 #include "string/ngStrMacro.h"
 #include "memory/ngAlloc.h"
 #include "memory/ngMemMacro.h"
+#include "error/ngErrCode.h"
+#include "error/ngError.h"
+#include "error/ngErrMacro.h"
 
 #endif	// __NG_CORE_COMMON_H__

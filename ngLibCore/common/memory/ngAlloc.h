@@ -10,7 +10,9 @@
 
 #include <new>	// for placement new
 
-#if 0
+//! メモリアロケーション デフォルトアライメント
+#define NG_MEMORY_DEFAULT_ALIGNMENT		(8)
+
 namespace ng
 {
 	class IMemoryAllocator;
@@ -27,7 +29,7 @@ void* operator new(
 	ng::size_type size
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	);
@@ -43,7 +45,7 @@ void* operator new[](
 	ng::size_type size
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	);
@@ -61,7 +63,7 @@ void operator delete(
 	void* p
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	);
@@ -79,7 +81,7 @@ void operator delete[](
 	void* p
 	, ng::IMemoryAllocator& alloc
 	, ng::u32 alignment
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	);
@@ -94,7 +96,7 @@ void operator delete[](
 void operator delete(
 	void* p
 	, ng::IMemoryAllocator& alloc
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	);
@@ -108,17 +110,16 @@ void operator delete(
 void operator delete[](
 	void* p
 	, ng::IMemoryAllocator& alloc
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	, const char* src
 #endif
 	);
 
-#endif
 	/*!
 	* @brief					メモリアロケータを用いてメモリ領域を確保する
 	* @param _alloc				使用するメモリアロケータ
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	#define NG_NEW(_alloc)	new(_alloc, NG_MEMORY_DEFAULT_ALIGNMENT, NG_FILE_LINE)
 #else
 	#define NG_NEW(_alloc)	new(_alloc, NG_MEMORY_DEFAULT_ALIGNMENT)
@@ -129,7 +130,7 @@ void operator delete[](
 	* @param _alloc				使用するメモリアロケータ
 	* @param _alignment			アライメント
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	#define NG_NEW_ALIGNED(_alloc, _alignment)	new(_alloc, _alignment, NG_FILE_LINE)
 #else
 	#define NG_NEW_ALIGNED(_alloc, _alignment)	new(_alloc, _alignment)
@@ -140,7 +141,7 @@ void operator delete[](
 	* @param _alloc				使用するメモリアロケータ
 	* @param _p					解放するメモリ領域へのポインタ
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	#define NG_DELETE(_alloc, _p) \
 		{ \
 			if(_p) { \
@@ -164,7 +165,7 @@ void operator delete[](
 	* @param _p					解放するメモリ領域へのポインタ
 	* @note						引数 _p へnullを代入する
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 #define NG_SAFE_DELETE(_alloc, _p) \
 		{ \
 			if(_p) { \
@@ -189,7 +190,7 @@ void operator delete[](
 	* @param _alloc				使用するメモリアロケータ
 	* @param _p					解放するメモリ領域へのポインタ
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 #define NG_DELETE_ARRAY(_alloc, _p)	\
 		{ \
 			if(_p) { \
@@ -213,7 +214,7 @@ void operator delete[](
 	* @param _p					解放するメモリ領域へのポインタ
 	* @note						引数 _p へnullを代入する
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	#define NG_SAFE_DELETE_ARRAY(_alloc, _p)	\
 		{ \
 			if(_p) { \
@@ -238,7 +239,7 @@ void operator delete[](
 	* @param _alloc				使用するメモリアロケータ
 	* @param _size				確保するバイト数
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	#define NG_NEW_BYTE(_alloc, _size)	(new(_alloc, NG_MEMORY_DEFAULT_ALIGNMENT, NG_FILE_LINE) char[_size])
 #else
 	#define NG_NEW_BYTE(_alloc, _size)	(new(_alloc, NG_MEMORY_DEFAULT_ALIGNMENT) char[_size])
@@ -250,7 +251,7 @@ void operator delete[](
 	* @param _size				確保するバイト数
 	* @param _alignment			アライメント
 	*/
-#if defined(NG_CONF_MEMORY_DBGINFO)
+#if defined(NG_CONFIG_MEMORY_DBGINFO)
 	#define NG_NEW_BYTE_ALIGNED(_alloc, _size, _alignment)	(new(_alloc, _alignment, NG_FILE_LINE) char[_size])
 #else
 	#define NG_NEW_BYTE_ALIGNED(_alloc, _size, _alignment)	(new(_alloc, _alignment) char[_size])
