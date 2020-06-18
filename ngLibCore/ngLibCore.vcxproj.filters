@@ -59,6 +59,9 @@
     <Filter Include="ソース ファイル\io\console">
       <UniqueIdentifier>{5467ae3d-2e3f-4cfc-890e-9701a1e3514a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\debug\log">
+      <UniqueIdentifier>{428a51eb-7a87-4707-b4d5-8761d9637d25}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -169,6 +172,9 @@
     <ClInclude Include="io\console\ngConsoleMacro.h">
       <Filter>ソース ファイル\io\console</Filter>
     </ClInclude>
+    <ClInclude Include="debug\log\ngDebugLog.h">
+      <Filter>ソース ファイル\debug\log</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -227,6 +233,9 @@
     </ClCompile>
     <ClCompile Include="io\console\ngConsoleMacro.cpp">
       <Filter>ソース ファイル\io\console</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\log\ngDebugLog.cpp">
+      <Filter>ソース ファイル\debug\log</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

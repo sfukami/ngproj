@@ -39,6 +39,7 @@
     <ClInclude Include="common\type\ngType.h" />
     <ClInclude Include="common\type\ngTypeList.h" />
     <ClInclude Include="common\type\ngTypeUtil.h" />
+    <ClInclude Include="debug\log\ngDebugLog.h" />
     <ClInclude Include="debug\ngMemDump.h" />
     <ClInclude Include="debug\ngStackTrace.h" />
     <ClInclude Include="io\console\ngConsole.h" />
@@ -68,6 +69,7 @@
     <ClCompile Include="common\std\ngStd.cpp" />
     <ClCompile Include="common\std\ngStdIO.cpp" />
     <ClCompile Include="common\string\ngStrUtil.cpp" />
+    <ClCompile Include="debug\log\ngDebugLog.cpp" />
     <ClCompile Include="debug\ngMemDump.cpp" />
     <ClCompile Include="debug\ngStackTrace.cpp" />
     <ClCompile Include="io\console\ngConsole.cpp" />
