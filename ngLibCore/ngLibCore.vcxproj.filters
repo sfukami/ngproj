@@ -53,6 +53,9 @@
     <Filter Include="ソース ファイル\io\file">
       <UniqueIdentifier>{e9a674e7-d968-4880-a1aa-3e759b8e9ad5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\traits">
+      <UniqueIdentifier>{f9b60abf-308b-4e3b-a9a8-d5261014caf1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -150,6 +153,12 @@
     </ClInclude>
     <ClInclude Include="io\file\ngFile.h">
       <Filter>ソース ファイル\io\file</Filter>
+    </ClInclude>
+    <ClInclude Include="traits\ngNonCopyable.h">
+      <Filter>ソース ファイル\traits</Filter>
+    </ClInclude>
+    <ClInclude Include="traits\ngSingleton.h">
+      <Filter>ソース ファイル\traits</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
