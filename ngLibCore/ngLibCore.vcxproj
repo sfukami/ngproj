@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClInclude Include="common\debug\ngDbgMacro.h" />
     <ClInclude Include="common\debug\ngDebug.h" />
+    <ClInclude Include="common\error\ngErrCode.h" />
+    <ClInclude Include="common\error\ngErrMacro.h" />
+    <ClInclude Include="common\error\ngError.h" />
     <ClInclude Include="common\memory\ngAlloc.h" />
     <ClInclude Include="common\memory\ngMemMacro.h" />
     <ClInclude Include="common\ngCommon.h" />
@@ -47,6 +50,8 @@
   <ItemGroup>
     <ClCompile Include="common\debug\ngDbgMacro.cpp" />
     <ClCompile Include="common\debug\ngDebug.cpp" />
+    <ClCompile Include="common\error\ngErrCode.cpp" />
+    <ClCompile Include="common\error\ngError.cpp" />
     <ClCompile Include="common\memory\ngAlloc.cpp" />
     <ClCompile Include="common\std\msgbox\ngMsgBox.cpp" />
     <ClCompile Include="common\std\msgbox\ngMsgBoxMacro.cpp" />

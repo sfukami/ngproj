@@ -35,6 +35,9 @@
     <Filter Include="ソース ファイル\common\std\msgbox">
       <UniqueIdentifier>{1c7f3088-3f1a-46ee-b2fe-b971d0320178}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\common\error">
+      <UniqueIdentifier>{f9d4458a-58de-456c-9bb9-b6621e0046d3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -109,6 +112,15 @@
     <ClInclude Include="common\std\msgbox\ngMsgBoxMacro.h">
       <Filter>ソース ファイル\common\std\msgbox</Filter>
     </ClInclude>
+    <ClInclude Include="common\error\ngErrCode.h">
+      <Filter>ソース ファイル\common\error</Filter>
+    </ClInclude>
+    <ClInclude Include="common\error\ngErrMacro.h">
+      <Filter>ソース ファイル\common\error</Filter>
+    </ClInclude>
+    <ClInclude Include="common\error\ngError.h">
+      <Filter>ソース ファイル\common\error</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -143,6 +155,12 @@
     </ClCompile>
     <ClCompile Include="common\std\msgbox\ngMsgBoxMacro.cpp">
       <Filter>ソース ファイル\common\std\msgbox</Filter>
+    </ClCompile>
+    <ClCompile Include="common\error\ngErrCode.cpp">
+      <Filter>ソース ファイル\common\error</Filter>
+    </ClCompile>
+    <ClCompile Include="common\error\ngError.cpp">
+      <Filter>ソース ファイル\common\error</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
