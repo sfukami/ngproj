@@ -10,8 +10,6 @@
 
 #include <WinError.h>
 
-//! NG エラーコード
-#define NG_ERRCODE		HRESULT
 //! NG エラーコード 重要度
 #define NG_ERRCODE_SEVERITY		(1)
 //! NG エラーコード 種類

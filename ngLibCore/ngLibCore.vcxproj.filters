@@ -41,6 +41,12 @@
     <Filter Include="ソース ファイル\allocator">
       <UniqueIdentifier>{8265cdc2-1662-4d76-99e9-dbb22021dc07}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\memory">
+      <UniqueIdentifier>{9a804d21-01fc-4d78-88be-f3cd1d54bc90}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\memory\pool">
+      <UniqueIdentifier>{9c387d81-40d1-4e6b-b955-4d8773a60a4f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -130,6 +136,9 @@
     <ClInclude Include="allocator\ngMemoryAllocator.h">
       <Filter>ソース ファイル\allocator</Filter>
     </ClInclude>
+    <ClInclude Include="memory\pool\ngMemoryPool.h">
+      <Filter>ソース ファイル\memory\pool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -173,6 +182,9 @@
     </ClCompile>
     <ClCompile Include="allocator\ngDefaultAllocator.cpp">
       <Filter>ソース ファイル\allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\pool\ngMemoryPool.cpp">
+      <Filter>ソース ファイル\memory\pool</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

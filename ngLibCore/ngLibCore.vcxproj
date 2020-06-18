@@ -41,6 +41,7 @@
     <ClInclude Include="common\type\ngTypeUtil.h" />
     <ClInclude Include="debug\ngMemDump.h" />
     <ClInclude Include="debug\ngStackTrace.h" />
+    <ClInclude Include="memory\pool\ngMemoryPool.h" />
     <ClInclude Include="ngLibCore.h" />
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngBuild.h" />
@@ -63,6 +64,7 @@
     <ClCompile Include="common\string\ngStrUtil.cpp" />
     <ClCompile Include="debug\ngMemDump.cpp" />
     <ClCompile Include="debug\ngStackTrace.cpp" />
+    <ClCompile Include="memory\pool\ngMemoryPool.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ngLibCore/precmpl/ngPreCompiled.h</PrecompiledHeaderFile>

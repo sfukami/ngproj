@@ -41,4 +41,7 @@
 	#endif
 #endif
 
+//! NG エラーコード
+#define NG_ERRCODE		HRESULT
+
 #endif	// __NG_CORE_DEFINE_H__

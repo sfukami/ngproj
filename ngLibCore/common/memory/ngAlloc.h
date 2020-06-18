@@ -9,6 +9,7 @@
 #define __NG_CORE_ALLOC_H__
 
 #include <new>	// for placement new
+#include "../std/ngStdMacro.h"
 
 //! メモリアロケーション デフォルトアライメント
 #define NG_MEMORY_DEFAULT_ALIGNMENT		(8)

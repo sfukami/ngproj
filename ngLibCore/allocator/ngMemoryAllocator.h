@@ -8,8 +8,6 @@
 #ifndef __NG_CORE_MEMORY_ALLOCATOR_H__
 #define __NG_CORE_MEMORY_ALLOCATOR_H__
 
-#include "ngLibCore/common/error/ngErrCode.h"
-
 namespace ng
 {
 	class CMemoryPool;
