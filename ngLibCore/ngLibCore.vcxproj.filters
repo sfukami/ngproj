@@ -56,6 +56,9 @@
     <Filter Include="ソース ファイル\traits">
       <UniqueIdentifier>{f9b60abf-308b-4e3b-a9a8-d5261014caf1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\io\console">
+      <UniqueIdentifier>{5467ae3d-2e3f-4cfc-890e-9701a1e3514a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -160,6 +163,12 @@
     <ClInclude Include="traits\ngSingleton.h">
       <Filter>ソース ファイル\traits</Filter>
     </ClInclude>
+    <ClInclude Include="io\console\ngConsole.h">
+      <Filter>ソース ファイル\io\console</Filter>
+    </ClInclude>
+    <ClInclude Include="io\console\ngConsoleMacro.h">
+      <Filter>ソース ファイル\io\console</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -212,6 +221,12 @@
     </ClCompile>
     <ClCompile Include="io\file\ngFile.cpp">
       <Filter>ソース ファイル\io\file</Filter>
+    </ClCompile>
+    <ClCompile Include="io\console\ngConsole.cpp">
+      <Filter>ソース ファイル\io\console</Filter>
+    </ClCompile>
+    <ClCompile Include="io\console\ngConsoleMacro.cpp">
+      <Filter>ソース ファイル\io\console</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
