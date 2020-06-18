@@ -47,6 +47,12 @@
     <Filter Include="ソース ファイル\memory\pool">
       <UniqueIdentifier>{9c387d81-40d1-4e6b-b955-4d8773a60a4f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\io">
+      <UniqueIdentifier>{9dae0ea2-8a55-460a-91ee-84f996826b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\io\file">
+      <UniqueIdentifier>{e9a674e7-d968-4880-a1aa-3e759b8e9ad5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -142,6 +148,9 @@
     <ClInclude Include="memory\pool\ngRootMemoryPool.h">
       <Filter>ソース ファイル\memory\pool</Filter>
     </ClInclude>
+    <ClInclude Include="io\file\ngFile.h">
+      <Filter>ソース ファイル\io\file</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -191,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="memory\pool\ngRootMemoryPool.cpp">
       <Filter>ソース ファイル\memory\pool</Filter>
+    </ClCompile>
+    <ClCompile Include="io\file\ngFile.cpp">
+      <Filter>ソース ファイル\io\file</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

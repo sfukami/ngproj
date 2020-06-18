@@ -41,6 +41,7 @@
     <ClInclude Include="common\type\ngTypeUtil.h" />
     <ClInclude Include="debug\ngMemDump.h" />
     <ClInclude Include="debug\ngStackTrace.h" />
+    <ClInclude Include="io\file\ngFile.h" />
     <ClInclude Include="memory\pool\ngMemoryPool.h" />
     <ClInclude Include="memory\pool\ngRootMemoryPool.h" />
     <ClInclude Include="ngLibCore.h" />
@@ -65,6 +66,7 @@
     <ClCompile Include="common\string\ngStrUtil.cpp" />
     <ClCompile Include="debug\ngMemDump.cpp" />
     <ClCompile Include="debug\ngStackTrace.cpp" />
+    <ClCompile Include="io\file\ngFile.cpp" />
     <ClCompile Include="memory\pool\ngMemoryPool.cpp" />
     <ClCompile Include="memory\pool\ngRootMemoryPool.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
