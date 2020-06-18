@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\precmpl">
+      <UniqueIdentifier>{213c8fec-4a80-407d-b4f7-365a5f1c43b2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common">
+      <UniqueIdentifier>{113661bf-a58f-4733-a101-64872369c33a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\type">
+      <UniqueIdentifier>{c49f1657-5cf9-4d16-b776-b6d4da9c9714}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\debug">
+      <UniqueIdentifier>{7a72735a-a406-4354-98e3-d9dd01507bdc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\std">
+      <UniqueIdentifier>{b1f99c54-e77c-4219-9915-04cbd09c561c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\debug">
+      <UniqueIdentifier>{4a001d56-4a8b-4b62-8efc-7ecb9b75e5cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\preincl">
+      <UniqueIdentifier>{2fb373a9-8cb5-4ac0-a8c1-b45b093e446f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\string">
+      <UniqueIdentifier>{aa624781-05e9-4a2f-88c3-0a31ff1521a4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\memory">
+      <UniqueIdentifier>{03cdfef1-2170-4cb8-81bc-e6f9d3f592db}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\common\std\msgbox">
+      <UniqueIdentifier>{1c7f3088-3f1a-46ee-b2fe-b971d0320178}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="precmpl\ngPreCompiled.h">
+      <Filter>ソース ファイル\precmpl</Filter>
+    </ClInclude>
+    <ClInclude Include="ngLibCore.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ngCommon.h">
+      <Filter>ソース ファイル\common</Filter>
+    </ClInclude>
+    <ClInclude Include="common\type\ngType.h">
+      <Filter>ソース ファイル\common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="common\type\ngTypeList.h">
+      <Filter>ソース ファイル\common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="common\type\ngTypeUtil.h">
+      <Filter>ソース ファイル\common\type</Filter>
+    </ClInclude>
+    <ClInclude Include="common\debug\ngDbgMacro.h">
+      <Filter>ソース ファイル\common\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="common\debug\ngDebug.h">
+      <Filter>ソース ファイル\common\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="common\std\ngStdIO.h">
+      <Filter>ソース ファイル\common\std</Filter>
+    </ClInclude>
+    <ClInclude Include="common\std\ngStd.h">
+      <Filter>ソース ファイル\common\std</Filter>
+    </ClInclude>
+    <ClInclude Include="common\std\ngStdMacro.h">
+      <Filter>ソース ファイル\common\std</Filter>
+    </ClInclude>
+    <ClInclude Include="debug\ngMemDump.h">
+      <Filter>ソース ファイル\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="debug\ngStackTrace.h">
+      <Filter>ソース ファイル\debug</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\ngPreInclude.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\ngBuild.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\ngConfig.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\ngDefine.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\ngEnv.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="common\string\ngStrMacro.h">
+      <Filter>ソース ファイル\common\string</Filter>
+    </ClInclude>
+    <ClInclude Include="common\string\ngStrUtil.h">
+      <Filter>ソース ファイル\common\string</Filter>
+    </ClInclude>
+    <ClInclude Include="common\memory\ngAlloc.h">
+      <Filter>ソース ファイル\common\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="common\memory\ngMemMacro.h">
+      <Filter>ソース ファイル\common\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="common\std\msgbox\ngMsgBox.h">
+      <Filter>ソース ファイル\common\std\msgbox</Filter>
+    </ClInclude>
+    <ClInclude Include="common\std\msgbox\ngMsgBoxMacro.h">
+      <Filter>ソース ファイル\common\std\msgbox</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="precmpl\ngPreCompiled.cpp">
+      <Filter>ソース ファイル\precmpl</Filter>
+    </ClCompile>
+    <ClCompile Include="common\debug\ngDbgMacro.cpp">
+      <Filter>ソース ファイル\common\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="common\debug\ngDebug.cpp">
+      <Filter>ソース ファイル\common\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="common\std\ngStdIO.cpp">
+      <Filter>ソース ファイル\common\std</Filter>
+    </ClCompile>
+    <ClCompile Include="common\std\ngStd.cpp">
+      <Filter>ソース ファイル\common\std</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\ngMemDump.cpp">
+      <Filter>ソース ファイル\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\ngStackTrace.cpp">
+      <Filter>ソース ファイル\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="common\string\ngStrUtil.cpp">
+      <Filter>ソース ファイル\common\string</Filter>
+    </ClCompile>
+    <ClCompile Include="common\memory\ngAlloc.cpp">
+      <Filter>ソース ファイル\common\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="common\std\msgbox\ngMsgBox.cpp">
+      <Filter>ソース ファイル\common\std\msgbox</Filter>
+    </ClCompile>
+    <ClCompile Include="common\std\msgbox\ngMsgBoxMacro.cpp">
+      <Filter>ソース ファイル\common\std\msgbox</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>

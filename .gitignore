@@ -1,0 +1,5 @@
+Build/
+.vs/
+ngLibCore/ngLibCore.vcxproj.user
+ngLibApp/ngLibApp.vcxproj.user
+app/app.vcxproj.user

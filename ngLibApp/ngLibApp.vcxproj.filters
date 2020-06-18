@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="ソース ファイル">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;c++;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="ソース ファイル\common">
+      <UniqueIdentifier>{0ee2c3eb-43eb-4e4e-91e9-8eea7e230a78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\window">
+      <UniqueIdentifier>{62335a88-a9e0-4b95-a29e-ca907632f56b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\precmpl">
+      <UniqueIdentifier>{cd5e05a3-0284-434b-b563-3390c59308c2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\preincl">
+      <UniqueIdentifier>{de6c5c3b-48b9-4aca-8c24-dfa5c3d7aa67}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="precmpl\ngPreCompiled.cpp">
+      <Filter>ソース ファイル\precmpl</Filter>
+    </ClCompile>
+    <ClCompile Include="window\ngWindow.cpp">
+      <Filter>ソース ファイル\window</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="precmpl\ngPreCompiled.h">
+      <Filter>ソース ファイル\precmpl</Filter>
+    </ClInclude>
+    <ClInclude Include="window\ngWindow.h">
+      <Filter>ソース ファイル\window</Filter>
+    </ClInclude>
+    <ClInclude Include="ngLibApp.h">
+      <Filter>ソース ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="common\ngCommon.h">
+      <Filter>ソース ファイル\common</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\ngPreInclude.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\ngDefine.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>
