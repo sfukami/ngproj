@@ -139,6 +139,9 @@
     <ClInclude Include="memory\pool\ngMemoryPool.h">
       <Filter>ソース ファイル\memory\pool</Filter>
     </ClInclude>
+    <ClInclude Include="memory\pool\ngRootMemoryPool.h">
+      <Filter>ソース ファイル\memory\pool</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -184,6 +187,9 @@
       <Filter>ソース ファイル\allocator</Filter>
     </ClCompile>
     <ClCompile Include="memory\pool\ngMemoryPool.cpp">
+      <Filter>ソース ファイル\memory\pool</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\pool\ngRootMemoryPool.cpp">
       <Filter>ソース ファイル\memory\pool</Filter>
     </ClCompile>
   </ItemGroup>
