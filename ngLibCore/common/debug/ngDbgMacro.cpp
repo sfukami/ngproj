@@ -6,10 +6,10 @@
 */
 
 #include "ngDbgMacro.h"
+#include "../error/ngError.h"
 
 namespace ng
 {
-#if 0
 	/*!
 	* @brief					Win32API エラーコード詳細 デバッグ表示
 	*/
@@ -32,5 +32,5 @@ namespace ng
 		::wsprintf(buf2, _T("err:%d, desc:%s\n"), ret, buf);
 		NG_DMSGBOX(buf2);
 	}
-#endif
+
 }	// namespace ng

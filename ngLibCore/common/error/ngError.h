@@ -41,8 +41,6 @@ NG_INLINE NG_DECL DWORD GetLastErrMsg(LPTSTR pBuf, DWORD bufSize)
 	#endif	// UNICODE
 #endif	// __cplusplus
 
-//NG_DECL DWORD GetLastErrMsg(LPTSTR pBuf, DWORD bufSize);
-
 }	// namespace ng
 
 #endif	// __NG_CORE_ERROR_H__

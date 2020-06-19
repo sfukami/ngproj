@@ -10,6 +10,11 @@
 
 namespace ng
 {
+	class IOutputStream;
+}
+
+namespace ng
+{
 
 /*!
 * @brief					文字列出力
@@ -42,6 +47,12 @@ NG_DECL void DPrintf(const wchar_t* format, ...);
 */
 NG_DECL void DVPrintf(const char* format, va_list args);
 NG_DECL void DVPrintf(const wchar_t* format, va_list args);
+
+/*!
+* @brief					文字列出力（デバッグ用）の出力ストリームを設定
+* @param pStream			出力ストリーム
+*/
+NG_DECL void SetDebugPrintOutputStream(IOutputStream* pStream);
 
 }	// namespace ng
 

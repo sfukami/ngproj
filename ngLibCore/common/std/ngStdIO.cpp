@@ -8,12 +8,16 @@
 #include <stdarg.h>
 #include <stdio.h>
 #include "ngStdIO.h"
+#include "ngLibCore/io/stream/ngOutputStream.h"
 
 // Printf用バッファサイズ
 #define NG_PRINTF_BUFFER_SIZE	( 65536 )
 
 namespace ng
 {
+
+//! 文字列出力（デバッグ用）の出力ストリーム
+static IOutputStream* g_pDebugPrintOutputStream = nullptr;
 
 NG_DECL void Printf(const char* format, ...)
 {
@@ -69,6 +73,11 @@ NG_DECL void DVPrintf(const char* format, va_list args)
 
 	// コンソールへ出力
 	::vprintf(format, args);
+
+	// 外部設定のストリームへ出力
+	if(g_pDebugPrintOutputStream != nullptr) {
+		g_pDebugPrintOutputStream->Write(buffer);
+	}
 }
 NG_DECL void DVPrintf(const wchar_t* format, va_list args)
 {
@@ -79,6 +88,16 @@ NG_DECL void DVPrintf(const wchar_t* format, va_list args)
 
 	// コンソールへ出力
 	::vwprintf(format, args);
+
+	// 外部設定のストリームへ出力
+	if(g_pDebugPrintOutputStream != nullptr) {
+		g_pDebugPrintOutputStream->Write(buffer);
+	}
+}
+
+NG_DECL void SetDebugPrintOutputStream(IOutputStream* pStream)
+{
+	g_pDebugPrintOutputStream = pStream;
 }
 
 }	// namespace ng

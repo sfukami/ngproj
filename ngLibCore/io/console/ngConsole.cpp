@@ -27,14 +27,11 @@ namespace ng
 
 	bool CConsole::Boot(bool isCloseMenu)
 	{
-		/*
-		// TODO: xボタン終了や異常終了後などに再度コンソールを開くと上手くいかない？
 		if(IsBoot()) {
 			Shutdown();
 		} else {
 			::FreeConsole();
 		}
-		*/
 
 		bool ret = ::AllocConsole();
 		if(!ret) {

@@ -62,6 +62,12 @@
     <Filter Include="ソース ファイル\debug\log">
       <UniqueIdentifier>{428a51eb-7a87-4707-b4d5-8761d9637d25}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\locale">
+      <UniqueIdentifier>{d4e789b8-3687-44f8-8e89-9053f02d269f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\io\stream">
+      <UniqueIdentifier>{eb16ddbd-fe96-479b-a348-c5e1c19cb20c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -175,6 +181,12 @@
     <ClInclude Include="debug\log\ngDebugLog.h">
       <Filter>ソース ファイル\debug\log</Filter>
     </ClInclude>
+    <ClInclude Include="locale\ngLocale.h">
+      <Filter>ソース ファイル\locale</Filter>
+    </ClInclude>
+    <ClInclude Include="io\stream\ngOutputStream.h">
+      <Filter>ソース ファイル\io\stream</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -236,6 +248,9 @@
     </ClCompile>
     <ClCompile Include="debug\log\ngDebugLog.cpp">
       <Filter>ソース ファイル\debug\log</Filter>
+    </ClCompile>
+    <ClCompile Include="locale\ngLocale.cpp">
+      <Filter>ソース ファイル\locale</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

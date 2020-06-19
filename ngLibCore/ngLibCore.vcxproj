@@ -45,6 +45,8 @@
     <ClInclude Include="io\console\ngConsole.h" />
     <ClInclude Include="io\console\ngConsoleMacro.h" />
     <ClInclude Include="io\file\ngFile.h" />
+    <ClInclude Include="io\stream\ngOutputStream.h" />
+    <ClInclude Include="locale\ngLocale.h" />
     <ClInclude Include="memory\pool\ngMemoryPool.h" />
     <ClInclude Include="memory\pool\ngRootMemoryPool.h" />
     <ClInclude Include="ngLibCore.h" />
@@ -75,6 +77,7 @@
     <ClCompile Include="io\console\ngConsole.cpp" />
     <ClCompile Include="io\console\ngConsoleMacro.cpp" />
     <ClCompile Include="io\file\ngFile.cpp" />
+    <ClCompile Include="locale\ngLocale.cpp" />
     <ClCompile Include="memory\pool\ngMemoryPool.cpp" />
     <ClCompile Include="memory\pool\ngRootMemoryPool.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
