@@ -39,8 +39,8 @@ namespace test
 
 			// Pop()
 			{
-				stack.Pop();
 				ng::Printf("pop.");
+				stack.Pop();
 			}
 
 			{
