@@ -77,6 +77,9 @@ namespace ng
 		*/
 		void _finalize();
 
+		/*! 初期化済みかを調べる */
+		bool _isInit() const;
+
 		/*! メモリ領域を取得 */
 		void* _getMemory();
 		const void* _getMemory() const;
@@ -84,10 +87,6 @@ namespace ng
 		/*! メモリをプールする */
 		NG_ERRCODE _poolMemory(void* pMemory, size_type memSize);
 		NG_ERRCODE _poolMemory(IMemoryAllocator& alloc, size_type memSize);
-
-	protected:
-		/*! 初期化済みかを調べる */
-		bool _isInit() const;
 		
 	private:
 		/*! 指定の位置を取得 */
