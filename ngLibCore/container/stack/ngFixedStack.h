@@ -64,25 +64,14 @@ namespace ng
 		virtual bool Full() const;
 
 	protected:
-		/*!
-		* @brief					初期化
-		* @param pMemory			用いるメモリ領域
-		* @param memSize			メモリ領域のサイズ
-		* @return					NG エラーコード
-		*/
-		NG_ERRCODE _initialize(void* pMemory, size_type memSize);
+		/*! 初期化 */
+		NG_ERRCODE _initialize(u32 max);
 
-		/*!
-		* 終了処理
-		*/
+		/*! 終了処理 */
 		void _finalize();
 
 		/*! 初期化済みかを調べる */
 		bool _isInit() const;
-
-		/*! メモリ領域を取得 */
-		void* _getMemory();
-		const void* _getMemory() const;
 
 		/*! メモリをプールする */
 		NG_ERRCODE _poolMemory(void* pMemory, size_type memSize);
@@ -101,6 +90,10 @@ namespace ng
 
 		/*! 要素を破棄 */
 		void _destroyElem(ElemType* pElem);
+
+		/*! メモリ領域を取得 */
+		void* _getMemory();
+		const void* _getMemory() const;
 
 		/*! メモリ領域のサイズを取得 */
 		size_type _getMemSize() const;
@@ -226,20 +219,26 @@ namespace ng
 	}
 
 	template <typename T>
-	NG_ERRCODE CFixedStackBase<T>::_initialize(void* pMemory, size_type memSize)
+	NG_ERRCODE CFixedStackBase<T>::_initialize(u32 max)
 	{
+		void* pMemory = m_memPool.GetMemory();
+		size_type memSize = m_memPool.GetSize();
+
 		NG_ASSERT(pMemory);
-		NG_ASSERT(memSize >= ELEM_SIZE);
 		if( ! pMemory)
 		{
 			return eNG_E_INVALIDMEMORY;
 		}
-		if(memSize < ELEM_SIZE)
+
+		u32 capacity = (u32)(memSize / ELEM_SIZE);
+
+		NG_ASSERT(max <= capacity);
+		if(max > capacity)
 		{
 			return eNG_E_CAPACITYLACK;
 		}
 
-		m_maxSize = (u32)(memSize / ELEM_SIZE);
+		m_maxSize = max;
 		m_pTop = PointerCast<ElemType*>(pMemory);
 
 		return eNG_S_OK;
@@ -249,6 +248,7 @@ namespace ng
 	void CFixedStackBase<T>::_finalize()
 	{
 		Clear();
+		
 		m_maxSize = 0;
 		m_pTop = nullptr;
 		m_memPool.Unpool();
@@ -258,17 +258,6 @@ namespace ng
 	NG_INLINE bool CFixedStackBase<T>::_isInit() const
 	{
 		return (_getMemory() != nullptr);
-	}
-
-	template <typename T>
-	NG_INLINE void* CFixedStackBase<T>::_getMemory()
-	{
-		return m_memPool.GetMemory();
-	}
-	template <typename T>
-	NG_INLINE const void* CFixedStackBase<T>::_getMemory() const
-	{
-		return m_memPool.GetMemory();
 	}
 
 	template <typename T>
@@ -319,6 +308,17 @@ namespace ng
 	}
 
 	template <typename T>
+	NG_INLINE void* CFixedStackBase<T>::_getMemory()
+	{
+		return m_memPool.GetMemory();
+	}
+	template <typename T>
+	NG_INLINE const void* CFixedStackBase<T>::_getMemory() const
+	{
+		return m_memPool.GetMemory();
+	}
+
+	template <typename T>
 	NG_INLINE size_type CFixedStackBase<T>::_getMemSize() const
 	{
 		return m_memPool.GetSize();
@@ -350,7 +350,7 @@ namespace ng
 		NG_ERRCODE err = this->_poolMemory(m_buffer, bufSize);
 		NG_ASSERT_AND_ABORT(NG_SUCCEEDED(err));
 
-		err = this->_initialize(m_buffer, bufSize);
+		err = this->_initialize(SIZE);
 		NG_ASSERT_AND_ABORT(NG_SUCCEEDED(err));
 	}
 
@@ -420,7 +420,7 @@ namespace ng
 		}
 
 		// 初期化
-		if(NG_FAILED(err = this->_initialize(this->_getMemory(), reqMemSize))) {
+		if(NG_FAILED(err = this->_initialize(max))) {
 			Finalize();
 		}
 

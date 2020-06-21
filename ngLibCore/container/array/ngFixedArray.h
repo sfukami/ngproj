@@ -54,26 +54,14 @@ namespace ng
 		virtual const ElemType* ToArray() const;
 
 	protected:
-		/*!
-		* @brief					初期化
-		* @param size				要素数
-		* @param pMemory			用いるメモリ領域
-		* @param memSize			メモリ領域のサイズ
-		* @return					NG エラーコード
-		*/
-		NG_ERRCODE _initialize(u32 size, void* pMemory, size_type memSize);
+		/*! 初期化 */
+		NG_ERRCODE _initialize(u32 size);
 
-		/*!
-		* 終了処理
-		*/
+		/*! 終了処理 */
 		void _finalize();
 
 		/*! 初期化済みかを調べる */
 		bool _isInit() const;
-
-		/*! メモリ領域を取得 */
-		void* _getMemory();
-		const void* _getMemory() const;
 
 		/*! メモリをプールする */
 		NG_ERRCODE _poolMemory(void* pMemory, size_type memSize);
@@ -85,6 +73,10 @@ namespace ng
 
 		/*! 要素を破棄 */
 		void _destroyElem(ElemType* pElem);
+
+		/*! メモリ領域を取得 */
+		void* _getMemory();
+		const void* _getMemory() const;
 
 		/*! メモリ領域のサイズを取得 */
 		size_type _getMemSize() const;
@@ -170,17 +162,21 @@ namespace ng
 	}
 
 	template <typename T>
-	NG_ERRCODE CFixedArrayBase<T>::_initialize(u32 size, void* pMemory, size_type memSize)
+	NG_ERRCODE CFixedArrayBase<T>::_initialize(u32 size)
 	{
+		void* pMemory = m_memPool.GetMemory();
+		size_type memSize = m_memPool.GetSize();
+
 		NG_ASSERT(pMemory);
 		if(!pMemory)
 		{
 			return eNG_E_INVALIDMEMORY;
 		}
 
-		size_type reqMemSize = size * this->ELEM_SIZE;
-		NG_ASSERT(memSize >= reqMemSize);
-		if(!(memSize >= reqMemSize))
+		u32 capacity = (u32)(memSize / ELEM_SIZE);
+
+		NG_ASSERT(size <= capacity);
+		if(size > capacity)
 		{
 			return eNG_E_CAPACITYLACK;
 		}
@@ -216,17 +212,6 @@ namespace ng
 	}
 
 	template <typename T>
-	NG_INLINE void* CFixedArrayBase<T>::_getMemory()
-	{
-		return m_memPool.GetMemory();
-	}
-	template <typename T>
-	NG_INLINE const void* CFixedArrayBase<T>::_getMemory() const
-	{
-		return m_memPool.GetMemory();
-	}
-
-	template <typename T>
 	NG_ERRCODE CFixedArrayBase<T>::_poolMemory(void* pMemory, size_type memSize)
 	{
 		return m_memPool.Pool(pMemory, memSize);
@@ -247,6 +232,17 @@ namespace ng
 	NG_INLINE void CFixedArrayBase<T>::_destroyElem(ElemType* pElem)
 	{
 		NG_PLACEMENT_DELETE(pElem, pElem);
+	}
+
+	template <typename T>
+	NG_INLINE void* CFixedArrayBase<T>::_getMemory()
+	{
+		return m_memPool.GetMemory();
+	}
+	template <typename T>
+	NG_INLINE const void* CFixedArrayBase<T>::_getMemory() const
+	{
+		return m_memPool.GetMemory();
 	}
 
 	template <typename T>
@@ -281,7 +277,7 @@ namespace ng
 		NG_ERRCODE err = this->_poolMemory(m_buffer, bufSize);
 		NG_ASSERT_AND_ABORT(NG_SUCCEEDED(err));
 
-		err = this->_initialize(SIZE, m_buffer, bufSize);
+		err = this->_initialize(SIZE);
 		NG_ASSERT_AND_ABORT(NG_SUCCEEDED(err));
 	}
 
@@ -352,7 +348,7 @@ namespace ng
 			}
 		}
 
-		return this->_initialize(size, this->_getMemory(), reqMemSize);
+		return this->_initialize(size);
 	}
 
 	template<typename T>

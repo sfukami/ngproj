@@ -73,17 +73,13 @@ namespace ng
 
 	protected:
 		/*! 初期化 */
-		NG_ERRCODE _initialize();
+		NG_ERRCODE _initialize(u32 max);
 
 		/*! 終了処理 */
 		void _finalize();
 
 		/*! 初期化済みかを調べる */
 		bool _isInit() const;
-
-		/*! メモリ領域を取得 */
-		void* _getMemory();
-		const void* _getMemory() const;
 
 		/*! メモリをプールする */
 		NG_ERRCODE _poolMemory(void* pMemory, size_type memSize);
@@ -103,6 +99,10 @@ namespace ng
 
 		/*! 要素を破棄 */
 		void _destroyElem(ElemType* pElem);
+
+		/*! メモリ領域を取得 */
+		void* _getMemory();
+		const void* _getMemory() const;
 
 		/*! メモリ領域のサイズを取得 */
 		size_type _getMemSize() const;
@@ -266,7 +266,7 @@ namespace ng
 	}
 
 	template <typename T>
-	NG_ERRCODE CFixedQueueBase<T>::_initialize()
+	NG_ERRCODE CFixedQueueBase<T>::_initialize(u32 max)
 	{
 		void* pMemory = m_memPool.GetMemory();
 		size_type memSize = m_memPool.GetSize();
@@ -276,13 +276,16 @@ namespace ng
 		{
 			return eNG_E_INVALIDMEMORY;
 		}
-		NG_ASSERT( memSize >= ELEM_SIZE + 1);
-		if(memSize < ELEM_SIZE + 1)
+
+		u32 capacity = (u32)(memSize / ELEM_SIZE);
+
+		NG_ASSERT(max+1 <= capacity);
+		if(max+1 > capacity)
 		{
 			return eNG_E_CAPACITYLACK;
 		}
 
-		m_maxSize = (u32)(memSize / ELEM_SIZE) - 1;
+		m_maxSize = max;
 		m_pBack = m_pFront = PointerCast<ElemType*>(pMemory);
 
 		return eNG_S_OK;
@@ -296,7 +299,6 @@ namespace ng
 		m_maxSize = 0;
 		m_pFront = nullptr;
 		m_pBack = nullptr;
-		
 		m_memPool.Unpool();
 	}
 
@@ -304,17 +306,6 @@ namespace ng
 	NG_INLINE bool CFixedQueueBase<T>::_isInit() const
 	{
 		return (_getMemory() != nullptr);
-	}
-
-	template <typename T>
-	NG_INLINE void* CFixedQueueBase<T>::_getMemory()
-	{
-		return m_memPool.GetMemory();
-	}
-	template <typename T>
-	NG_INLINE const void* CFixedQueueBase<T>::_getMemory() const
-	{
-		return m_memPool.GetMemory();
 	}
 
 	template <typename T>
@@ -367,6 +358,17 @@ namespace ng
 	}
 
 	template <typename T>
+	NG_INLINE void* CFixedQueueBase<T>::_getMemory()
+	{
+		return m_memPool.GetMemory();
+	}
+	template <typename T>
+	NG_INLINE const void* CFixedQueueBase<T>::_getMemory() const
+	{
+		return m_memPool.GetMemory();
+	}
+
+	template <typename T>
 	NG_INLINE size_type CFixedQueueBase<T>::_getMemSize() const
 	{
 		return m_memPool.GetSize();
@@ -398,7 +400,7 @@ namespace ng
 		NG_ERRCODE err = this->_poolMemory(m_buffer, bufSize);
 		NG_ASSERT_AND_ABORT(NG_SUCCEEDED(err));
 
-		err = this->_initialize();
+		err = this->_initialize(SIZE);
 		NG_ASSERT_AND_ABORT(NG_SUCCEEDED(err));
 	}
 
@@ -418,10 +420,7 @@ namespace ng
 	class NG_DECL CFixedQueue<T, NG_UNSPECIFIED_SIZE> : public CFixedQueueBase<T>
 	{
 	public:
-		/*! コンストラクタ */
 		CFixedQueue();
-
-		/*! デストラクタ */
 		virtual ~CFixedQueue();
 
 		/*!
@@ -473,7 +472,7 @@ namespace ng
 		}
 
 		// 初期化
-		if(NG_FAILED(err = this->_initialize())) {
+		if(NG_FAILED(err = this->_initialize(max))) {
 			Finalize();
 		}
 
