@@ -1,12 +1,12 @@
 ﻿/*!
-* @file		ngFixedListBidirectional.h
-* @brief	固定長リスト（双方向）
+* @file		ngFixedListForward.h
+* @brief	固定長リスト（単方向）
 * @date		2017-12-02
 * @author	s.fukami
 */
 
-#ifndef __NG_CORE_FIXED_LIST_BIDIRECTIONAL_H__
-#define __NG_CORE_FIXED_LIST_BIDIRECTIONAL_H__
+#ifndef __NG_CORE_FIXED_LIST_FORWARD_H__
+#define __NG_CORE_FIXED_LIST_FORWARD_H__
 
 #include "../ngList.h"
 #include "ngFixedListBase.h"
@@ -17,24 +17,21 @@
 namespace ng
 {
 	/*!
-	* @brief					固定長リスト(双方向) ベースクラス
+	* @brief					固定長リスト(単方向) ベースクラス
 	* @tparam T					格納する要素の型
 	* @note						初期化時にバッファを指定する固定長のコンテナ
 	*/
 	template <typename T>
-	class NG_DECL CFixedListBase<T, BidirectionalLinked> : public IList<T, BidirectionalLinked>
+	class NG_DECL CFixedListBase<T, ForwardLinked> : public IList<T, ForwardLinked>
 	{
 	public:
-		typedef IList<T, BidirectionalLinked> BaseType;	//!< 基底クラス
+		typedef IList<T, ForwardLinked> BaseType;	//!< 基底クラス
 		typedef typename BaseType::ElemType ElemType;	//!< 要素の型
 		typedef typename BaseType::NodeType NodeType;	//!< ノードの型
-		typedef CFixedListNode<CBidirectionalListNode<T> > MyNodeType;	//!< ノードの型（具象クラス）
+		typedef CFixedListNode<CForwardListNode<T> > MyNodeType;	//!< ノードの型（具象クラス）
 
 	public:
-		/*! コンストラクタ */
 		CFixedListBase();
-
-		/*! デストラクタ */
 		virtual ~CFixedListBase();
 
 		/*! 先頭の要素を返す */
@@ -43,23 +40,11 @@ namespace ng
 		/*! 先頭の要素を返す */
 		virtual const ElemType& Front() const;
 
-		/*! 末尾の要素を返す */
-		virtual ElemType& Back();
-
-		/*! 末尾の要素を返す */
-		virtual const ElemType& Back() const;
-
 		/*! 先頭に要素を挿入する */
 		virtual void PushFront(const ElemType& e);
 
-		/*! 末尾に要素を挿入する */
-		virtual void PushBack(const ElemType& e);
-
 		/*! 先頭の要素を取り出す */
 		virtual void PopFront();
-
-		/*! 末尾の要素を取り出す */
-		virtual void PopBack();
 
 		/*! 先頭のノードを返す */
 		virtual NodeType* Begin();
@@ -75,13 +60,6 @@ namespace ng
 
 		/*! 指定要素の後方に要素を追加する */
 		virtual void Insert(NodeType* pos, const ElemType& e);
-
-		/*! 
-		* @brief					posの指す要素を削除する
-		* @return					削除された要素の次の要素を返す
-		* @retval nullptr			削除失敗
-		*/
-		virtual NodeType* Erase(NodeType* pos);
 
 		/*! 要素を全て削除 */
 		virtual void Clear();
@@ -152,19 +130,19 @@ namespace ng
 	};
 
 	template <typename T>
-	CFixedListBase<T, BidirectionalLinked>::CFixedListBase()
+	CFixedListBase<T, ForwardLinked>::CFixedListBase()
 		: m_size(0)
 		, m_maxSize(0)
 	{
 	}
 
 	template <typename T>
-	CFixedListBase<T, BidirectionalLinked>::~CFixedListBase()
+	CFixedListBase<T, ForwardLinked>::~CFixedListBase()
 	{
 	}
 
 	template <typename T>
-	NG_ERRCODE CFixedListBase<T, BidirectionalLinked>::_initialize(u32 max)
+	NG_ERRCODE CFixedListBase<T, ForwardLinked>::_initialize(u32 max)
 	{
 		void* pMemory = m_memPool.GetMemory();
 		size_type memSize = m_memPool.GetSize();
@@ -202,7 +180,7 @@ namespace ng
 	}
 
 	template <typename T>
-	void CFixedListBase<T, BidirectionalLinked>::_finalize()
+	void CFixedListBase<T, ForwardLinked>::_finalize()
 	{
 		Clear();
 
@@ -212,16 +190,7 @@ namespace ng
 	}
 
 	template <typename T>
-	typename CFixedListBase<T, BidirectionalLinked>::ElemType& CFixedListBase<T, BidirectionalLinked>::Front()
-	{
-		NG_ASSERT(_isInit());
-		NG_ASSERT_AND_ABORT( ! Empty());
-
-		return m_useHead.next->GetElem();
-	}
-
-	template <typename T>
-	typename const CFixedListBase<T, BidirectionalLinked>::ElemType& CFixedListBase<T, BidirectionalLinked>::Front() const
+	typename CFixedListBase<T, ForwardLinked>::ElemType& CFixedListBase<T, ForwardLinked>::Front()
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 		NG_ASSERT_AND_ABORT( ! Empty());
@@ -230,25 +199,16 @@ namespace ng
 	}
 
 	template <typename T>
-	typename CFixedListBase<T, BidirectionalLinked>::ElemType& CFixedListBase<T, BidirectionalLinked>::Back()
+	typename const CFixedListBase<T, ForwardLinked>::ElemType& CFixedListBase<T, ForwardLinked>::Front() const
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 		NG_ASSERT_AND_ABORT( ! Empty());
 
-		return m_useHead.prev->GetElem();
+		return m_useHead.next->GetElem();
 	}
 
 	template <typename T>
-	typename const CFixedListBase<T, BidirectionalLinked>::ElemType& CFixedListBase<T, BidirectionalLinked>::Back() const
-	{
-		NG_ASSERT_AND_ABORT(_isInit());
-		NG_ASSERT_AND_ABORT( ! Empty());
-
-		return m_useHead.prev->GetElem();
-	}
-
-	template <typename T>
-	void CFixedListBase<T, BidirectionalLinked>::PushFront(const ElemType& e)
+	void CFixedListBase<T, ForwardLinked>::PushFront(const ElemType& e)
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 
@@ -267,26 +227,7 @@ namespace ng
 	}
 
 	template <typename T>
-	void CFixedListBase<T, BidirectionalLinked>::PushBack(const ElemType& e)
-	{
-		NG_ASSERT_AND_ABORT(_isInit());
-
-		// フリーノードより空きノードを取得
-		NodeType* pNode = _popFreeNode();
-		NG_ASSERT(pNode);
-		if( ! pNode)
-		{
-			return;
-		}
-
-		// ユーズノードへ追加
-		_createElem(pNode, &e);
-		this->_insertNodeFront(&m_useHead, pNode);
-		m_size++;
-	}
-
-	template <typename T>
-	void CFixedListBase<T, BidirectionalLinked>::PopFront()
+	void CFixedListBase<T, ForwardLinked>::PopFront()
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 		if(Empty())
@@ -294,7 +235,7 @@ namespace ng
 			return;
 		}
 		NodeType* pNode = m_useHead.next;
-		this->_removeNode(pNode);
+		this->_removeNode(&m_useHead, pNode);
 		m_size--;
 
 		_destroyElem(pNode, &pNode->GetElem());
@@ -302,23 +243,7 @@ namespace ng
 	}
 
 	template <typename T>
-	void CFixedListBase<T, BidirectionalLinked>::PopBack()
-	{
-		NG_ASSERT_AND_ABORT(_isInit());
-		if(Empty())
-		{
-			return;
-		}
-		NodeType* pNode = m_useHead.prev;
-		this->_removeNode(pNode);
-		m_size--;
-
-		_destroyElem(pNode, &pNode->GetElem());
-		this->_insertNodeBehind(&m_freeHead, pNode);
-	}
-
-	template <typename T>
-	typename CFixedListBase<T, BidirectionalLinked>::NodeType* CFixedListBase<T, BidirectionalLinked>::Begin()
+	typename CFixedListBase<T, ForwardLinked>::NodeType* CFixedListBase<T, ForwardLinked>::Begin()
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 
@@ -326,7 +251,7 @@ namespace ng
 	}
 
 	template <typename T>
-	typename const CFixedListBase<T, BidirectionalLinked>::NodeType* CFixedListBase<T, BidirectionalLinked>::Begin() const
+	typename const CFixedListBase<T, ForwardLinked>::NodeType* CFixedListBase<T, ForwardLinked>::Begin() const
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 
@@ -334,7 +259,7 @@ namespace ng
 	}
 
 	template <typename T>
-	typename CFixedListBase<T, BidirectionalLinked>::NodeType* CFixedListBase<T, BidirectionalLinked>::End()
+	typename CFixedListBase<T, ForwardLinked>::NodeType* CFixedListBase<T, ForwardLinked>::End()
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 
@@ -342,7 +267,7 @@ namespace ng
 	}
 
 	template <typename T>
-	typename const CFixedListBase<T, BidirectionalLinked>::NodeType* CFixedListBase<T, BidirectionalLinked>::End() const
+	typename const CFixedListBase<T, ForwardLinked>::NodeType* CFixedListBase<T, ForwardLinked>::End() const
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 
@@ -350,7 +275,7 @@ namespace ng
 	}
 
 	template <typename T>
-	void CFixedListBase<T, BidirectionalLinked>::Insert(NodeType* pos, const ElemType& e)
+	void CFixedListBase<T, ForwardLinked>::Insert(NodeType* pos, const ElemType& e)
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 
@@ -369,53 +294,34 @@ namespace ng
 	}
 
 	template <typename T>
-	typename CFixedListBase<T, BidirectionalLinked>::NodeType* CFixedListBase<T, BidirectionalLinked>::Erase(NodeType* pos)
-	{
-		NG_ASSERT_AND_ABORT(_isInit());
-		if(Empty())
-		{
-			return nullptr;
-		}
-
-		NodeType* pNext = pos->GetNext();
-		this->_removeNode(pos);
-		m_size--;
-
-		_destroyElem(pos, &pos->GetElem());
-		this->_insertNodeBehind(&m_freeHead, pos);
-
-		return pNext;
-	}
-
-	template <typename T>
-	void CFixedListBase<T, BidirectionalLinked>::Clear()
+	void CFixedListBase<T, ForwardLinked>::Clear()
 	{
 		while( ! Empty())
 		{
-			PopBack();
+			PopFront();
 		}
 	}
 
 	template <typename T>
-	NG_INLINE bool CFixedListBase<T, BidirectionalLinked>::Empty() const
+	NG_INLINE bool CFixedListBase<T, ForwardLinked>::Empty() const
 	{
 		return (m_size == 0);
 	}
 
 	template <typename T>
-	NG_INLINE u32 CFixedListBase<T, BidirectionalLinked>::Size() const
+	NG_INLINE u32 CFixedListBase<T, ForwardLinked>::Size() const
 	{
 		return m_size;
 	}
 
 	template <typename T>
-	NG_INLINE u32 CFixedListBase<T, BidirectionalLinked>::MaxSize() const
+	NG_INLINE u32 CFixedListBase<T, ForwardLinked>::MaxSize() const
 	{
 		return m_maxSize;
 	}
 
 	template <typename T>
-	NG_INLINE bool CFixedListBase<T, BidirectionalLinked>::Full() const
+	bool CFixedListBase<T, ForwardLinked>::Full() const
 	{
 		if(m_maxSize == 0)
 		{
@@ -425,47 +331,44 @@ namespace ng
 	}
 
 	template <typename T>
-	NG_INLINE bool CFixedListBase<T, BidirectionalLinked>::_isInit() const
+	NG_INLINE bool CFixedListBase<T, ForwardLinked>::_isInit() const
 	{
 		return (_getMemory() != nullptr);
 	}
 
 	template <typename T>
-	NG_ERRCODE CFixedListBase<T, BidirectionalLinked>::_poolMemory(void* pMemory, size_type memSize)
+	NG_ERRCODE CFixedListBase<T, ForwardLinked>::_poolMemory(void* pMemory, size_type memSize)
 	{
 		return m_memPool.Pool(pMemory, memSize);
 	}
 	template <typename T>
-	NG_ERRCODE CFixedListBase<T, BidirectionalLinked>::_poolMemory(IMemoryAllocator& alloc, size_type memSize)
+	NG_ERRCODE CFixedListBase<T, ForwardLinked>::_poolMemory(IMemoryAllocator& alloc, size_type memSize)
 	{
 		return m_memPool.Pool(alloc, memSize);
 	}
 
 	template <typename T>
-	NG_INLINE void CFixedListBase<T, BidirectionalLinked>::_initDummyNode()
+	NG_INLINE void CFixedListBase<T, ForwardLinked>::_initDummyNode()
 	{
 		m_freeHead.next = &m_freeHead;
-		m_freeHead.prev = &m_freeHead;
 		m_useHead.next = &m_useHead;
-		m_useHead.prev = &m_useHead;
 	}
 
 	template <typename T>
-	NG_INLINE typename CFixedListBase<T, BidirectionalLinked>::MyNodeType* CFixedListBase<T, BidirectionalLinked>::_createNode(void* p)
+	NG_INLINE typename CFixedListBase<T, ForwardLinked>::MyNodeType* CFixedListBase<T, ForwardLinked>::_createNode(void* p)
 	{
 		return NG_PLACEMENT_NEW(p) MyNodeType();
 	}
 
 	template <typename T>
-	NG_INLINE void CFixedListBase<T, BidirectionalLinked>::_destroyNode(NodeType* pNode)
+	NG_INLINE void CFixedListBase<T, ForwardLinked>::_destroyNode(NodeType* pNode)
 	{
 		NG_PLACEMENT_DELETE(pNode, pNode);
 	}
 
 	template <typename T>
-	NG_INLINE typename CFixedListBase<T, BidirectionalLinked>::NodeType* CFixedListBase<T, BidirectionalLinked>::_popFreeNode()
+	NG_INLINE typename CFixedListBase<T, ForwardLinked>::NodeType* CFixedListBase<T, ForwardLinked>::_popFreeNode()
 	{
-		//NG_ASSERT(&m_freeHead != m_freeHead.next);
 		if(&m_freeHead == m_freeHead.next)
 		{
 			return nullptr;
@@ -473,62 +376,62 @@ namespace ng
 
 		// フリーノードより空きノードを取得
 		NodeType* pNode = m_freeHead.next;
-		this->_removeNode(pNode);
+		this->_removeNode(&m_freeHead, pNode);
 		return pNode;
 	}
 
 	template <typename T>
-	NG_INLINE void CFixedListBase<T, BidirectionalLinked>::_createElem(NodeType* pNode, const ElemType* pElem)
+	NG_INLINE void CFixedListBase<T, ForwardLinked>::_createElem(NodeType* pNode, const ElemType* pElem)
 	{
 		ElemType* pDst = PointerOffset<ElemType*>(pNode, NG_SIZEOF(MyNodeType));
 		NG_PLACEMENT_NEW(pDst) ElemType(*pElem);
 	}
 
 	template <typename T>
-	NG_INLINE void CFixedListBase<T, BidirectionalLinked>::_destroyElem(NodeType* pNode, ElemType* pElem)
+	NG_INLINE void CFixedListBase<T, ForwardLinked>::_destroyElem(NodeType* /*pNode*/, ElemType* pElem)
 	{
 		NG_PLACEMENT_DELETE(pElem, pElem);
 	}
 
 	template <typename T>
-	NG_INLINE void* CFixedListBase<T, BidirectionalLinked>::_getMemory()
+	NG_INLINE void* CFixedListBase<T, ForwardLinked>::_getMemory()
 	{
 		return m_memPool.GetMemory();
 	}
 	template <typename T>
-	NG_INLINE const void* CFixedListBase<T, BidirectionalLinked>::_getMemory() const
+	NG_INLINE const void* CFixedListBase<T, ForwardLinked>::_getMemory() const
 	{
 		return m_memPool.GetMemory();
 	}
 
 	template <typename T>
-	NG_INLINE size_type CFixedListBase<T, BidirectionalLinked>::_getMemSize() const
+	NG_INLINE size_type CFixedListBase<T, ForwardLinked>::_getMemSize() const
 	{
 		return m_memPool.GetSize();
 	}
 
 	/*!
-	* @brief					固定長リスト(双方向)
+	* @brief					固定長リスト(単方向)
 	* @tparam T					格納する要素の型
 	* @tparam SIZE				格納する要素数。NG_UNSPECIFIED_SIZE で初期化時に要素数を指定する
-	* @note						宣言時にバッファを指定する固定長のコンテナ
+	* @note						初期化時にバッファを指定する固定長のコンテナ
 	*/
 	template <typename T, u32 SIZE>
-	class NG_DECL CFixedList<T, BidirectionalLinked, SIZE> : public CFixedListBase<T, BidirectionalLinked>
+	class NG_DECL CFixedList<T, ForwardLinked, SIZE> : public CFixedListBase<T, ForwardLinked>
 	{
 	public:
 		CFixedList();
 		virtual ~CFixedList();
 
 	private:
-		typedef CFixedListBase<T, BidirectionalLinked> BaseType;	//!< 基底クラス
+		typedef CFixedListBase<T, ForwardLinked> BaseType;	//!< 基底クラス
 
 	private:
 		char m_buffer[ SIZE * BaseType::BLOCK_SIZE ];	//!< バッファ
 	};
 
 	template <typename T, u32 SIZE>
-	CFixedList<T, BidirectionalLinked, SIZE>::CFixedList()
+	CFixedList<T, ForwardLinked, SIZE>::CFixedList()
 	{
 		size_type bufSize = NG_SIZEOF(m_buffer);
 
@@ -540,18 +443,18 @@ namespace ng
 	}
 
 	template <typename T, u32 SIZE>
-	CFixedList<T, BidirectionalLinked, SIZE>::~CFixedList()
+	CFixedList<T, ForwardLinked, SIZE>::~CFixedList()
 	{
 		this->_finalize();
 	}
 
 	/*!
-	* @brief					固定長リスト(双方向)
+	* @brief					固定長リスト(単方向)
 	* @tparam T					格納する要素の型
 	* @note						初期化時にバッファを指定する固定長のコンテナ
 	*/
 	template <typename T>
-	class NG_DECL CFixedList<T, BidirectionalLinked, NG_UNSPECIFIED_SIZE> : public CFixedListBase<T, BidirectionalLinked>
+	class NG_DECL CFixedList<T, ForwardLinked, NG_UNSPECIFIED_SIZE> : public CFixedListBase<T, ForwardLinked>
 	{
 	public:
 		CFixedList();
@@ -572,18 +475,18 @@ namespace ng
 	};
 
 	template <typename T>
-	CFixedList<T, BidirectionalLinked, NG_UNSPECIFIED_SIZE>::CFixedList()
+	CFixedList<T, ForwardLinked, NG_UNSPECIFIED_SIZE>::CFixedList()
 	{
 	}
 
 	template <typename T>
-	CFixedList<T, BidirectionalLinked, NG_UNSPECIFIED_SIZE>::~CFixedList()
+	CFixedList<T, ForwardLinked, NG_UNSPECIFIED_SIZE>::~CFixedList()
 	{
 		Finalize();
 	}
 
 	template <typename T>
-	NG_ERRCODE CFixedList<T, BidirectionalLinked, NG_UNSPECIFIED_SIZE>::Initialize(u32 max, IMemoryAllocator& alloc)
+	NG_ERRCODE CFixedList<T, ForwardLinked, NG_UNSPECIFIED_SIZE>::Initialize(u32 max, IMemoryAllocator& alloc)
 	{
 		if(this->_isInit()) {
 			return eNG_E_LEAK;
@@ -608,11 +511,11 @@ namespace ng
 	}
 
 	template <typename T>
-	void CFixedList<T, BidirectionalLinked, NG_UNSPECIFIED_SIZE>::Finalize()
+	void CFixedList<T, ForwardLinked, NG_UNSPECIFIED_SIZE>::Finalize()
 	{
 		this->_finalize();
 	}
 
 }	// namespace ng
 
-#endif	// __NG_CORE_FIXED_LIST_BIDIRECTIONAL_H__
+#endif	// __NG_CORE_FIXED_LIST_FORWARD_H__

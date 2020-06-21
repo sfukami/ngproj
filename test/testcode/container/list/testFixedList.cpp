@@ -26,6 +26,7 @@ namespace test
 
 			TType t1(1), t2(2), t3(3);
 
+			ng::Printf("push back.");
 			list.PushBack(t1);
 			list.PushBack(t2);
 			list.PushBack(t3);
@@ -52,7 +53,39 @@ namespace test
 				ng::Printf("display all.\n");
 				int count = 0;
 				ListType::NodeType* pNode = list.Begin();
-				for(; pNode != list.End(); pNode = pNode->GetNext())
+				for(; pNode != list.End(); pNode = pNode->GetNext(), count++)
+				{
+					TType& t = pNode->GetElem();
+					ng::Printf(" %d: value:%d\n", count, t.GetValue());
+				}
+			}
+		}
+
+		TEST_METHOD(TestFixedList_Forward)
+		{
+			typedef CDummy TType;
+			typedef ng::CFixedList<TType, ng::ForwardLinked, 8> ListType;
+
+			ListType list;
+
+			TType t1(1), t2(2), t3(3);
+
+			ng::Printf("push front.");
+			list.PushFront(t1);
+			list.PushFront(t2);
+			list.PushFront(t3);
+
+			// Front()
+			{
+				TType& t = list.Front();
+				ng::Printf("front. value:%d\n", t.GetValue());
+			}
+
+			{
+				ng::Printf("display all.\n");
+				int count = 0;
+				ListType::NodeType* pNode = list.Begin();
+				for(; pNode != list.End(); pNode = pNode->GetNext(), count++)
 				{
 					TType& t = pNode->GetElem();
 					ng::Printf(" %d: value:%d\n", count, t.GetValue());

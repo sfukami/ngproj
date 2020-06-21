@@ -43,6 +43,7 @@
     <ClInclude Include="container\array\ngFixedArray.h" />
     <ClInclude Include="container\list\fixed\ngFixedListBase.h" />
     <ClInclude Include="container\list\fixed\ngFixedListBidirectional.h" />
+    <ClInclude Include="container\list\fixed\ngFixedListForward.h" />
     <ClInclude Include="container\list\fixed\ngFixedListNode.h" />
     <ClInclude Include="container\list\ngFixedList.h" />
     <ClInclude Include="container\list\ngList.h" />
