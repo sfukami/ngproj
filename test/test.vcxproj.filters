@@ -29,6 +29,12 @@
     <Filter Include="ソース ファイル\testcode\debug">
       <UniqueIdentifier>{505446da-03da-469c-9a06-ce54bb743caa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\container">
+      <UniqueIdentifier>{3bafc9c3-0397-4c38-9015-d82dcbee5861}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\testcode\container\array">
+      <UniqueIdentifier>{305ceb15-f331-4d38-a8f1-e9213264b945}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -46,6 +52,9 @@
     <ClInclude Include="setup\testSetup.h">
       <Filter>ソース ファイル\setup</Filter>
     </ClInclude>
+    <ClInclude Include="common\testDummy.h">
+      <Filter>ソース ファイル\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="testcode\io\console\testConsole.cpp">
@@ -59,6 +68,9 @@
     </ClCompile>
     <ClCompile Include="testcode\debug\testAssert.cpp">
       <Filter>ソース ファイル\testcode\debug</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\container\array\testFixedArray.cpp">
+      <Filter>ソース ファイル\testcode\container\array</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

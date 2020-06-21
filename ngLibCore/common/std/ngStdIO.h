@@ -49,6 +49,12 @@ NG_DECL void DVPrintf(const char* format, va_list args);
 NG_DECL void DVPrintf(const wchar_t* format, va_list args);
 
 /*!
+* @brief					文字列出力の出力ストリームを設定
+* @param pStream			出力ストリーム
+*/
+NG_DECL void SetPrintOutputStream(IOutputStream* pStream);
+
+/*!
 * @brief					文字列出力（デバッグ用）の出力ストリームを設定
 * @param pStream			出力ストリーム
 */

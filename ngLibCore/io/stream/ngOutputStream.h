@@ -1,4 +1,4 @@
-/*!
+﻿/*!
 * @file		ngOutputStream.h
 * @brief	出力ストリーム インターフェース
 * @date		2020-06-19

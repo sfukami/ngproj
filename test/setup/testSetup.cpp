@@ -20,11 +20,13 @@ namespace test
 		void Write(const wchar_t* pMessage) { Logger::WriteMessage(pMessage); }
 	};
 
-	static CLogStream g_logStream;
-
 	void Setup()
 	{
-		ng::SetDebugPrintOutputStream(&g_logStream);
+		static CLogStream g_logStrm;
+		static CLogStream g_logStrmDbg;
+
+		ng::SetPrintOutputStream(&g_logStrm);
+		ng::SetDebugPrintOutputStream(&g_logStrmDbg);
 	}
 
 }	// namespace test

@@ -9,5 +9,6 @@
 #define __TEST_COMMON_H__
 
 #include "testMacro.h"
+#include "testDummy.h"
 
 #endif	// __TEST_COMMON_H__
