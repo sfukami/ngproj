@@ -41,6 +41,13 @@
     <ClInclude Include="common\type\ngTypeUtil.h" />
     <ClInclude Include="container\array\ngArray.h" />
     <ClInclude Include="container\array\ngFixedArray.h" />
+    <ClInclude Include="container\list\fixed\ngFixedListBase.h" />
+    <ClInclude Include="container\list\fixed\ngFixedListBidirectional.h" />
+    <ClInclude Include="container\list\fixed\ngFixedListNode.h" />
+    <ClInclude Include="container\list\ngFixedList.h" />
+    <ClInclude Include="container\list\ngList.h" />
+    <ClInclude Include="container\list\ngListLinkedType.h" />
+    <ClInclude Include="container\list\ngListNode.h" />
     <ClInclude Include="container\queue\ngFixedQueue.h" />
     <ClInclude Include="container\queue\ngQueue.h" />
     <ClInclude Include="container\stack\ngFixedStack.h" />

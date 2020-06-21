@@ -80,6 +80,12 @@
     <Filter Include="ソース ファイル\container\queue">
       <UniqueIdentifier>{c4c4c140-89c2-495f-a1e9-d91894a08efe}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\container\list">
+      <UniqueIdentifier>{cbc5a75f-0219-445a-a387-92775b512bb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\container\list\fixed">
+      <UniqueIdentifier>{b9519690-224a-42ff-a9f5-536c7dbdbcc0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -216,6 +222,27 @@
     </ClInclude>
     <ClInclude Include="container\queue\ngQueue.h">
       <Filter>ソース ファイル\container\queue</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\ngList.h">
+      <Filter>ソース ファイル\container\list</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\ngListLinkedType.h">
+      <Filter>ソース ファイル\container\list</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\ngListNode.h">
+      <Filter>ソース ファイル\container\list</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\ngFixedList.h">
+      <Filter>ソース ファイル\container\list</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\fixed\ngFixedListBidirectional.h">
+      <Filter>ソース ファイル\container\list\fixed</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\fixed\ngFixedListNode.h">
+      <Filter>ソース ファイル\container\list\fixed</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\fixed\ngFixedListBase.h">
+      <Filter>ソース ファイル\container\list\fixed</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
