@@ -77,6 +77,9 @@
     <Filter Include="ソース ファイル\container\stack">
       <UniqueIdentifier>{a2c65fe3-4eed-482c-a66f-caa55955c764}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\container\queue">
+      <UniqueIdentifier>{c4c4c140-89c2-495f-a1e9-d91894a08efe}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -207,6 +210,12 @@
     </ClInclude>
     <ClInclude Include="container\stack\ngStack.h">
       <Filter>ソース ファイル\container\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="container\queue\ngFixedQueue.h">
+      <Filter>ソース ファイル\container\queue</Filter>
+    </ClInclude>
+    <ClInclude Include="container\queue\ngQueue.h">
+      <Filter>ソース ファイル\container\queue</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
