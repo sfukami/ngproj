@@ -39,6 +39,8 @@
     <ClInclude Include="common\type\ngType.h" />
     <ClInclude Include="common\type\ngTypeList.h" />
     <ClInclude Include="common\type\ngTypeUtil.h" />
+    <ClInclude Include="container\array\ngArray.h" />
+    <ClInclude Include="container\array\ngFixedArray.h" />
     <ClInclude Include="debug\log\ngDebugLog.h" />
     <ClInclude Include="debug\ngMemDump.h" />
     <ClInclude Include="debug\ngStackTrace.h" />

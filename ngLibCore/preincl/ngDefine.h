@@ -44,4 +44,7 @@
 //! NG エラーコード
 #define NG_ERRCODE		HRESULT
 
+//! サイズ指定なし
+#define NG_UNSPECIFIED_SIZE		(0)
+
 #endif	// __NG_CORE_DEFINE_H__

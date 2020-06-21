@@ -68,6 +68,12 @@
     <Filter Include="ソース ファイル\io\stream">
       <UniqueIdentifier>{eb16ddbd-fe96-479b-a348-c5e1c19cb20c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\container">
+      <UniqueIdentifier>{867d8931-831a-45e4-b102-d0395f0c4b70}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\container\array">
+      <UniqueIdentifier>{4ec7164c-62bf-4081-8038-bfe2d0c825f8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -186,6 +192,12 @@
     </ClInclude>
     <ClInclude Include="io\stream\ngOutputStream.h">
       <Filter>ソース ファイル\io\stream</Filter>
+    </ClInclude>
+    <ClInclude Include="container\array\ngArray.h">
+      <Filter>ソース ファイル\container\array</Filter>
+    </ClInclude>
+    <ClInclude Include="container\array\ngFixedArray.h">
+      <Filter>ソース ファイル\container\array</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

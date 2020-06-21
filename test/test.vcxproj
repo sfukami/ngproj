@@ -175,6 +175,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="setup\testSetup.cpp" />
+    <ClCompile Include="testcode\container\array\testFixedArray.cpp" />
     <ClCompile Include="testcode\debug\testAssert.cpp" />
     <ClCompile Include="testcode\io\console\testConsole.cpp" />
     <ClCompile Include="testcode\test\testUnitTest.cpp" />
