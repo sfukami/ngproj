@@ -74,6 +74,9 @@
     <Filter Include="ソース ファイル\container\array">
       <UniqueIdentifier>{4ec7164c-62bf-4081-8038-bfe2d0c825f8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\container\stack">
+      <UniqueIdentifier>{a2c65fe3-4eed-482c-a66f-caa55955c764}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -198,6 +201,12 @@
     </ClInclude>
     <ClInclude Include="container\array\ngFixedArray.h">
       <Filter>ソース ファイル\container\array</Filter>
+    </ClInclude>
+    <ClInclude Include="container\stack\ngFixedStack.h">
+      <Filter>ソース ファイル\container\stack</Filter>
+    </ClInclude>
+    <ClInclude Include="container\stack\ngStack.h">
+      <Filter>ソース ファイル\container\stack</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

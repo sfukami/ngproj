@@ -35,6 +35,9 @@
     <Filter Include="ソース ファイル\testcode\container\array">
       <UniqueIdentifier>{305ceb15-f331-4d38-a8f1-e9213264b945}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\container\stack">
+      <UniqueIdentifier>{e95fbeae-aedd-4c96-b54f-165cfd5f599d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -71,6 +74,9 @@
     </ClCompile>
     <ClCompile Include="testcode\container\array\testFixedArray.cpp">
       <Filter>ソース ファイル\testcode\container\array</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\container\stack\testFixedStack.cpp">
+      <Filter>ソース ファイル\testcode\container\stack</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -48,7 +48,7 @@ NG_INLINE T PointerOffset(const void* p, OFFSET offset)
 * @param right				右項
 * @return					ポインタの差（バイト数）
 */
-NG_DECL void* PointerDiff(const void* left, const void* right);
+NG_DECL intptr_t PointerDiff(const void* left, const void* right);
 
 /*!
 * @brief					指定の値でアライメントする

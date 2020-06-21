@@ -16,9 +16,9 @@ namespace ng
 * @param right				右項
 * @return					ポインタの差（バイト数）
 */
-NG_DECL void* PointerDiff(const void* left, const void* right)
+NG_DECL intptr_t PointerDiff(const void* left, const void* right)
 {
-	return reinterpret_cast<void*>(static_cast<char*>(const_cast<void*>(left)) - static_cast<char*>(const_cast<void*>(right)));
+	return (reinterpret_cast<intptr_t>(const_cast<void*>(left)) - reinterpret_cast<intptr_t>(const_cast<void*>(right)));
 }
 
 }	// namespace ng
