@@ -68,16 +68,16 @@ namespace ng
 		*/
 		void _finalize();
 
-		/*! メモリをプールする */
-		NG_ERRCODE _poolMemory(void* pMemory, size_type memSize);
-		NG_ERRCODE _poolMemory(IMemoryAllocator& alloc, size_type memSize);
-
 		/*! 初期化済みかを調べる */
 		bool _isInit() const;
 
 		/*! メモリ領域を取得 */
 		void* _getMemory();
 		const void* _getMemory() const;
+
+		/*! メモリをプールする */
+		NG_ERRCODE _poolMemory(void* pMemory, size_type memSize);
+		NG_ERRCODE _poolMemory(IMemoryAllocator& alloc, size_type memSize);
 
 	private:
 		/*! 要素を生成 */
@@ -210,6 +210,23 @@ namespace ng
 	}
 
 	template <typename T>
+	NG_INLINE bool CFixedArrayBase<T>::_isInit() const
+	{
+		return (_getMemory() != nullptr);
+	}
+
+	template <typename T>
+	NG_INLINE void* CFixedArrayBase<T>::_getMemory()
+	{
+		return m_memPool.GetMemory();
+	}
+	template <typename T>
+	NG_INLINE const void* CFixedArrayBase<T>::_getMemory() const
+	{
+		return m_memPool.GetMemory();
+	}
+
+	template <typename T>
 	NG_ERRCODE CFixedArrayBase<T>::_poolMemory(void* pMemory, size_type memSize)
 	{
 		return m_memPool.Pool(pMemory, memSize);
@@ -218,12 +235,6 @@ namespace ng
 	NG_ERRCODE CFixedArrayBase<T>::_poolMemory(IMemoryAllocator& alloc, size_type memSize)
 	{
 		return m_memPool.Pool(alloc, memSize);
-	}
-
-	template <typename T>
-	NG_INLINE bool CFixedArrayBase<T>::_isInit() const
-	{
-		return (_getMemory() != nullptr);
 	}
 
 	template <typename T>
@@ -236,17 +247,6 @@ namespace ng
 	NG_INLINE void CFixedArrayBase<T>::_destroyElem(ElemType* pElem)
 	{
 		NG_PLACEMENT_DELETE(pElem, pElem);
-	}
-
-	template <typename T>
-	NG_INLINE void* CFixedArrayBase<T>::_getMemory()
-	{
-		return m_memPool.GetMemory();
-	}
-	template <typename T>
-	NG_INLINE const void* CFixedArrayBase<T>::_getMemory() const
-	{
-		return m_memPool.GetMemory();
 	}
 
 	template <typename T>

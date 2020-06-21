@@ -11,7 +11,7 @@
 namespace test
 {
 	/*!
-	* 固定長配列 テスト
+	* @brief					固定長配列 テスト
 	*/
 	TEST_CLASS(CTestFixedArray)
 	{
