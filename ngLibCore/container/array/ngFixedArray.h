@@ -266,7 +266,10 @@ namespace ng
 		virtual ~CFixedArray();
 
 	private:
-		char m_buffer[ SIZE * CFixedArrayBase<T>::ELEM_SIZE ];	//!< バッファ
+		typedef CFixedArrayBase<T> BaseType;	//!< 基底クラス
+
+	private:
+		char m_buffer[ SIZE * BaseType::ELEM_SIZE ];	//!< バッファ
 	};
 
 	template <typename T, u32 SIZE>

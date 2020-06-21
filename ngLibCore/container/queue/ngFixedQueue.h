@@ -389,7 +389,10 @@ namespace ng
 		virtual ~CFixedQueue();
 
 	private:
-		char m_buffer[ (SIZE+1) * CFixedQueueBase<T>::ELEM_SIZE ];	//!< バッファ
+		typedef CFixedQueueBase<T> BaseType;	//!< 基底クラス
+
+	private:
+		char m_buffer[ (SIZE+1) * BaseType::ELEM_SIZE ];	//!< バッファ
 	};
 
 	template <typename T, u32 SIZE>

@@ -339,7 +339,10 @@ namespace ng
 		virtual ~CFixedStack();
 
 	private:
-		char m_buffer[ SIZE * CFixedStackBase<T>::ELEM_SIZE ];	//!< バッファ
+		typedef CFixedStackBase<T> BaseType;	//!< 基底クラス
+
+	private:
+		char m_buffer[ SIZE * BaseType::ELEM_SIZE ];	//!< バッファ
 	};
 
 	template <typename T, u32 SIZE>
@@ -375,8 +378,8 @@ namespace ng
 
 		/*!
 		* @brief					初期化
-		* @param alloc				使用するメモリアロケータ
 		* @param max				最大要素数
+		* @param alloc				使用するメモリアロケータ
 		* @return					NG エラーコード
 		*/
 		virtual NG_ERRCODE Initialize(u32 max, IMemoryAllocator& alloc);
