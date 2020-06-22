@@ -44,10 +44,10 @@
 /*!
 * @brief					配列の要素数を取得
 */
-#if defined(NG_CPLUSPLUS_ISO_98)
-	#define NG_ARRAY_SIZE(_a)		( sizeof(_a) / sizeof(_a[0]) )
-#else
+#if NG_CHECK_CPLUSPLUS_COMPILER_SUPPORT(11)
 	#define NG_ARRAY_SIZE(_a)		( ng::ArraySize(_a) )
+#else
+	#define NG_ARRAY_SIZE(_a)		( sizeof(_a) / sizeof(_a[0]) )
 #endif
 
 /*!
@@ -84,7 +84,7 @@
 
 namespace ng
 {
-#if !defined(NG_CPLUSPLUS_ISO_98)
+#if NG_CHECK_CPLUSPLUS_COMPILER_SUPPORT(11)
 	/*!
 	* @brief					配列のサイズを取得
 	* @note						C++11以降で有効

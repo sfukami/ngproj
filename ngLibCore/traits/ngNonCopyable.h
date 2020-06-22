@@ -35,20 +35,34 @@ namespace ng
 		*/
 		~CNonCopyable() { }
 
+	#if NG_CHECK_CPLUSPLUS_COMPILER_SUPPORT(11)
+		/*!
+		* @brief					コピーコンストラクタ
+		* @note						呼び出し禁止
+		*/
+		CNonCopyable(const CNonCopyable&) = delete;
+
+		/*!
+		* @brief					代入演算子のオーバーロード
+		* @note						呼び出し禁止
+		*/
+		CNonCopyable& operator=(const CNonCopyable&) = delete;
+	#else
 	private:
 		/*!
 		* @brief					コピーコンストラクタ
 		* @note						呼び出し禁止のためprivate宣言
-		*							実装の必要無し
+		*							実装不要
 		*/
 		CNonCopyable(const CNonCopyable&);
 
 		/*!
 		* @brief					代入演算子のオーバーロード
 		* @note						呼び出し禁止のためprivate宣言
-		* 							実装の必要無し
+		*							実装不要
 		*/
 		CNonCopyable& operator=(const CNonCopyable&);
+	#endif
 	};
 
 }	// namespace ng

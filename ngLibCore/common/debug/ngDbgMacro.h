@@ -194,7 +194,7 @@
 */
 #if defined(NG_DEBUG)
 	// C++11ならば static_assert が使用可能
-	#if defined(NG_CPLUSPLUS_ISO_11) || defined(NG_CPLUSPLUS_ISO_14)
+	#if NG_CHECK_CPLUSPLUS_COMPILER_SUPPORT(11)
 		#define NG_STATIC_ASSERT(_expr, _msg) \
 			static_assert(_expr, _msg)
 	#else
