@@ -21,10 +21,7 @@ namespace ng
 	class NG_DECL CMemoryPool
 	{
 	public:
-		/*! コンストラクタ */
 		CMemoryPool();
-
-		/*! デストラクタ */
 		virtual ~CMemoryPool();
 
 		/*!

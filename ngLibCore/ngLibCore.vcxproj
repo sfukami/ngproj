@@ -78,6 +78,7 @@
     <ClInclude Include="locale\ngLocale.h" />
     <ClInclude Include="math\ngMath.h" />
     <ClInclude Include="math\ngMathDef.h" />
+    <ClInclude Include="memory\ngMemoryManager.h" />
     <ClInclude Include="memory\pool\ngMemoryPool.h" />
     <ClInclude Include="memory\pool\ngRootMemoryPool.h" />
     <ClInclude Include="ngLibCore.h" />
@@ -119,6 +120,7 @@
     <ClCompile Include="io\file\ngFile.cpp" />
     <ClCompile Include="locale\ngLocale.cpp" />
     <ClCompile Include="math\ngMath.cpp" />
+    <ClCompile Include="memory\ngMemoryManager.cpp" />
     <ClCompile Include="memory\pool\ngMemoryPool.cpp" />
     <ClCompile Include="memory\pool\ngRootMemoryPool.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">

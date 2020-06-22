@@ -316,6 +316,9 @@
     <ClInclude Include="preincl\ngMacro.h">
       <Filter>ソース ファイル\preincl</Filter>
     </ClInclude>
+    <ClInclude Include="memory\ngMemoryManager.h">
+      <Filter>ソース ファイル\memory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -410,6 +413,9 @@
     </ClCompile>
     <ClCompile Include="math\ngMath.cpp">
       <Filter>ソース ファイル\math</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\ngMemoryManager.cpp">
+      <Filter>ソース ファイル\memory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -14,7 +14,7 @@
 namespace ng
 {
 	/*!
-	* ルートメモリプール
+	* @brief					ルートメモリプール
 	*/
 	class NG_DECL CRootMemoryPool
 	{

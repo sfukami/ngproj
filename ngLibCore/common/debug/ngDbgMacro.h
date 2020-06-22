@@ -49,6 +49,16 @@
 #endif
 	
 /*!
+* @brief					エラーメッセージ出力
+* @param _category			カテゴリ
+*/
+#define NG_ERRMSG(_category, _msg, ...) \
+	{ \
+		NG_DPRINTF("[%s] ", _category); \
+		NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
+	}
+
+/*!
 * @brief					エラーログ出力
 */
 #define NG_ERRLOG(_errcode, _msg, ...) \
