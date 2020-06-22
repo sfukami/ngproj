@@ -262,6 +262,9 @@
     <ClInclude Include="container\list\intrusive\ngIntrusiveListNode.h">
       <Filter>ソース ファイル\container\list\intrusive</Filter>
     </ClInclude>
+    <ClInclude Include="preincl\ngMacro.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
