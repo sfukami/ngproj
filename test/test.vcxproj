@@ -182,6 +182,7 @@
     <ClCompile Include="testcode\container\queue\testFixedQueue.cpp" />
     <ClCompile Include="testcode\container\stack\testFixedStack.cpp" />
     <ClCompile Include="testcode\debug\testAssert.cpp" />
+    <ClCompile Include="testcode\geometry\testVector.cpp" />
     <ClCompile Include="testcode\io\console\testConsole.cpp" />
     <ClCompile Include="testcode\test\testUnitTest.cpp" />
   </ItemGroup>

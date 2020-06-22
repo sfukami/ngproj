@@ -44,6 +44,9 @@
     <Filter Include="ソース ファイル\testcode\container\list">
       <UniqueIdentifier>{99ee8b2b-be2b-493d-8b82-2303ab9bbabd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\geometry">
+      <UniqueIdentifier>{e8220c97-1dfd-4ab0-8648-ee754da96a70}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -92,6 +95,9 @@
     </ClCompile>
     <ClCompile Include="testcode\container\list\testIntrusiveList.cpp">
       <Filter>ソース ファイル\testcode\container\list</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\geometry\testVector.cpp">
+      <Filter>ソース ファイル\testcode\geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
