@@ -5,8 +5,8 @@
 * @author	s.fukami
 */
 
-#include "ngConsoleMacro.h"
 #include "ngLibCore/io/console/ngConsole.h"
+#include "ngConsoleMacro.h"
 
 namespace ng
 {

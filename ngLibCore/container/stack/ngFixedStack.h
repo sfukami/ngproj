@@ -8,9 +8,10 @@
 #ifndef __NG_CORE_FIXED_STACK_H__
 #define __NG_CORE_FIXED_STACK_H__
 
-#include "ngStack.h"
+#include "ngLibCore/common/ngCommon.h"
 #include "ngLibCore/allocator/ngMemoryAllocator.h"
 #include "ngLibCore/memory/pool/ngMemoryPool.h"
+#include "ngStack.h"
 
 namespace ng
 {

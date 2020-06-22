@@ -8,6 +8,7 @@
 #ifndef __NG_CORE_INTRUSIVE_LIST_BIDIRECTIONAL_H__
 #define __NG_CORE_INTRUSIVE_LIST_BIDIRECTIONAL_H__
 
+#include "ngLibCore/common/ngCommon.h"
 #include "ngIntrusiveListBase.h"
 #include "ngIntrusiveListNode.h"
 

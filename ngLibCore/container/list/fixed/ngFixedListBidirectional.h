@@ -8,11 +8,12 @@
 #ifndef __NG_CORE_FIXED_LIST_BIDIRECTIONAL_H__
 #define __NG_CORE_FIXED_LIST_BIDIRECTIONAL_H__
 
+#include "ngLibCore/common/ngCommon.h"
+#include "ngLibCore/allocator/ngMemoryAllocator.h"
+#include "ngLibCore/memory/pool/ngMemoryPool.h"
 #include "../ngList.h"
 #include "ngFixedListBase.h"
 #include "ngFixedListNode.h"
-#include "ngLibCore/allocator/ngMemoryAllocator.h"
-#include "ngLibCore/memory/pool/ngMemoryPool.h"
 
 namespace ng
 {

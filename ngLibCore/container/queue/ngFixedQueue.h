@@ -8,9 +8,10 @@
 #ifndef __NG_CORE_FIXED_QUEUE_H__
 #define __NG_CORE_FIXED_QUEUE_H__
 
-#include "ngQueue.h"
+#include "ngLibCore/common/ngCommon.h"
 #include "ngLibCore/allocator/ngMemoryAllocator.h"
 #include "ngLibCore/memory/pool/ngMemoryPool.h"
+#include "ngQueue.h"
 
 namespace ng
 {

@@ -9,7 +9,6 @@
 #define __NG_CORE_DEFAULT_ALLOCATOR_H__
 
 #include "ngMemoryAllocator.h"
-#include "ngLibCore/common/error/ngErrCode.h"
 
 namespace ng
 {

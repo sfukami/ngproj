@@ -7,9 +7,8 @@
 
 #include <stdlib.h>
 #include <stdint.h>
+#include "ngLibCore/common/ngCommon.h"
 #include "ngDefaultAllocator.h"
-#include "ngLibCore/common/string/ngStrMacro.h"
-#include "ngLibCore/common/memory/ngMemMacro.h"
 
 namespace ng
 {

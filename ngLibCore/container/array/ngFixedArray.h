@@ -8,9 +8,10 @@
 #ifndef __NG_CORE_FIXED_ARRAY_H__
 #define __NG_CORE_FIXED_ARRAY_H__
 
-#include "ngArray.h"
+#include "ngLibCore/common/ngCommon.h"
 #include "ngLibCore/allocator/ngMemoryAllocator.h"
 #include "ngLibCore/memory/pool/ngMemoryPool.h"
+#include "ngArray.h"
 
 namespace ng
 {

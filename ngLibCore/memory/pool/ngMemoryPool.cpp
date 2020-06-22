@@ -5,8 +5,7 @@
 * @author	s.fukami
 */
 
-#include "ngLibCore/common/error/ngErrCode.h"
-#include "ngLibCore/common/memory/ngAlloc.h"
+#include "ngLibCore/common/ngCommon.h"
 #include "ngMemoryPool.h"
 
 namespace ng

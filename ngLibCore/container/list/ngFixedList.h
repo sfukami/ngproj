@@ -8,7 +8,7 @@
 #ifndef __NG_CORE_FIXED_LIST_H__
 #define __NG_CORE_FIXED_LIST_H__
 
-#include "./fixed/ngFixedListBidirectional.h"
-#include "./fixed/ngFixedListForward.h"
+#include "fixed/ngFixedListBidirectional.h"
+#include "fixed/ngFixedListForward.h"
 
 #endif	// __NG_CORE_FIXED_LIST_H__
