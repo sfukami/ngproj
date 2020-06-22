@@ -15,8 +15,9 @@ namespace test
 	TEST_CLASS(CTestIntrusiveList)
 	{
 	private:
+		template <class LinkedType = ng::BidirectionalLinked>
 		class CTest
-			: public ng::CIntrusiveListNode<CTest>
+			: public ng::CIntrusiveListNode<CTest<LinkedType>, LinkedType>
 			, public CDummy
 		{
 		public:
@@ -24,7 +25,8 @@ namespace test
 			explicit CTest(int value) : CDummy(value) { }
 		};
 
-		typedef CTest TType;
+		typedef CTest<> TTypeB;
+		typedef CTest<ng::ForwardLinked> TTypeF;
 
 	public:
 		TEST_DEFINE_INITIALIZE;
@@ -32,26 +34,45 @@ namespace test
 		// 双方向、実体
 		TEST_METHOD(TestIntrusiveList_Bidirectional_Real)
 		{
-			typedef ng::CIntrusiveList<TType> ListType;
+			typedef ng::CIntrusiveList<TTypeB> ListType;
 			ListType list;
 
-			_common(list);
+			_common_bidirectional(list);
 		}
 
 		// 双方向、ポインタ
 		TEST_METHOD(TestIntrusiveList_Bidirectional_Pointer)
 		{
-			typedef ng::CIntrusiveList<TType*> ListType;
+			typedef ng::CIntrusiveList<TTypeB*> ListType;
 			ListType list;
 
-			_common(list);
+			_common_bidirectional(list);
+		}
+
+		// 単方向、実体
+		TEST_METHOD(TestIntrusiveList_Forward_Real)
+		{
+			typedef ng::CIntrusiveList<TTypeF, ng::ForwardLinked> ListType;
+			ListType list;
+
+			_common_forward(list);
+		}
+
+		// 単方向、ポインタ
+		TEST_METHOD(TestIntrusiveList_Forward_Pointer)
+		{
+			typedef ng::CIntrusiveList<TTypeF*, ng::ForwardLinked> ListType;
+			ListType list;
+
+			_common_forward(list);
 		}
 
 	private:
 		template <class T>
-		void _common(T& list)
+		void _common_bidirectional(T& list)
 		{
 			typedef T ListType;
+			typedef TTypeB TType;
 
 			TType t1(1), t2(2), t3(3);
 
@@ -75,6 +96,36 @@ namespace test
 				ng::Printf("delete [1] element.\n");
 				TType::NodeType* pNode = list.Erase(list.Begin()->GetNext());
 				ng::Printf("value:%d\n", pNode->GetElem().GetValue());
+			}
+
+			{
+				ng::Printf("display all.\n");
+				int count = 0;
+				typename ListType::NodeType* pNode = list.Begin();
+				for(; pNode != list.End(); pNode = pNode->GetNext(), count++)
+				{
+					TType& t = pNode->GetElem();
+					ng::Printf("%d: value:%d\n", count, t.GetValue());
+				}
+			}
+		}
+
+		template <class T>
+		void _common_forward(T& list)
+		{
+			typedef T ListType;
+			typedef TTypeF TType;
+
+			TType t1(1), t2(2), t3(3);
+
+			list.PushFront(t1);
+			list.PushFront(t2);
+			list.PushFront(t3);
+
+			// Front()
+			{
+				TType& t = list.Front();
+				ng::Printf("front. value:%d\n", t.GetValue());
 			}
 
 			{

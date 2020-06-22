@@ -42,6 +42,8 @@ namespace ng
 	template <class T>
 	class NG_DECL CIntrusiveListBase<T, ForwardLinked> : public IList<T, ForwardLinked>
 	{
+	public:
+		typedef IList<T, ForwardLinked> BaseType;
 	};
 
 	/*!
@@ -64,6 +66,8 @@ namespace ng
 	template <class T>
 	class NG_DECL CIntrusiveListBase<T*, ForwardLinked> : public IList<T, ForwardLinked>
 	{
+	public:
+		typedef IList<T, ForwardLinked> BaseType;
 	};
 
 	/*!

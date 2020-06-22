@@ -9,6 +9,6 @@
 #define __NG_CORE_INTRUSIVE_LIST_H__
 
 #include "intrusive/ngIntrusiveListBidirectional.h"
-//#include "intrusive/ngIntrusiveListForward.h"
+#include "intrusive/ngIntrusiveListForward.h"
 
 #endif	// __NG_CORE_INTRUSIVE_LIST_H__
