@@ -18,17 +18,6 @@
 #define NG_MAKE_NG_ERRCODE(_code) \
 	MAKE_HRESULT(NG_ERRCODE_SEVERITY, NG_ERRCODE_FACILITY, _code)
 
-/*!
-* @brief					関数戻り値 成功判定
-* @param _retCode			Enum定義 NG_ERRCODE
-*/
-#define NG_SUCCEEDED(_retCode)		((_retCode) >= 0)
-
-/*!
-* @brief					関数戻り値 失敗判定
-*/
-#define NG_FAILED(_retCode)			( ! NG_SUCCEEDED(_retCode))
-
 namespace ng
 {
 	/*!

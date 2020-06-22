@@ -11,6 +11,17 @@
 #include "ngLibCore/common/std/msgbox/ngMsgBoxMacro.h"
 
 /*!
+* @brief					関数戻り値 成功判定
+* @param _retCode			Enum定義 NG_ERRCODE
+*/
+#define NG_SUCCEEDED(_retCode)		((_retCode) >= 0)
+
+/*!
+* @brief					関数戻り値 失敗判定
+*/
+#define NG_FAILED(_retCode)			( ! NG_SUCCEEDED(_retCode))
+
+/*!
 * @brief					エラー メッセージボックス
 * @param _message			メッセージ
 */
