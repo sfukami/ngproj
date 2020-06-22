@@ -90,5 +90,8 @@
     <ClCompile Include="testcode\container\list\testFixedList.cpp">
       <Filter>ソース ファイル\testcode\container\list</Filter>
     </ClCompile>
+    <ClCompile Include="testcode\container\list\testIntrusiveList.cpp">
+      <Filter>ソース ファイル\testcode\container\list</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

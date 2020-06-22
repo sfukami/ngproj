@@ -86,6 +86,9 @@
     <Filter Include="ソース ファイル\container\list\fixed">
       <UniqueIdentifier>{b9519690-224a-42ff-a9f5-536c7dbdbcc0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\container\list\intrusive">
+      <UniqueIdentifier>{2719909b-7059-45d1-99ac-eb95b4aeacd9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -246,6 +249,21 @@
     </ClInclude>
     <ClInclude Include="container\list\fixed\ngFixedListForward.h">
       <Filter>ソース ファイル\container\list\fixed</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\ngIntrusiveList.h">
+      <Filter>ソース ファイル\container\list</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListBase.h">
+      <Filter>ソース ファイル\container\list\intrusive</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListBidirectional.h">
+      <Filter>ソース ファイル\container\list\intrusive</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListForward.h">
+      <Filter>ソース ファイル\container\list\intrusive</Filter>
+    </ClInclude>
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListNode.h">
+      <Filter>ソース ファイル\container\list\intrusive</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -45,7 +45,12 @@
     <ClInclude Include="container\list\fixed\ngFixedListBidirectional.h" />
     <ClInclude Include="container\list\fixed\ngFixedListForward.h" />
     <ClInclude Include="container\list\fixed\ngFixedListNode.h" />
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListBase.h" />
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListBidirectional.h" />
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListForward.h" />
+    <ClInclude Include="container\list\intrusive\ngIntrusiveListNode.h" />
     <ClInclude Include="container\list\ngFixedList.h" />
+    <ClInclude Include="container\list\ngIntrusiveList.h" />
     <ClInclude Include="container\list\ngList.h" />
     <ClInclude Include="container\list\ngListLinkedType.h" />
     <ClInclude Include="container\list\ngListNode.h" />
