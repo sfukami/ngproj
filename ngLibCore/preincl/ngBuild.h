@@ -1,6 +1,6 @@
-/*!
+ï»¿/*!
 * @file		ngBuild.h
-* @brief	ƒrƒ‹ƒhİ’è
+* @brief	ãƒ“ãƒ«ãƒ‰è¨­å®š
 * @date		2020-06-18
 * @author	s.fukami
 */
@@ -8,10 +8,10 @@
 #ifndef __NG_CORE_BUILD_H__
 #define __NG_CORE_BUILD_H__
 
-//! C++‹KŠiw’è—LŒø
-#define NG_BUILD_CPLUSPLUS_ISO_VERSION
+//! C++è¦æ ¼ ç›´æŒ‡å®šæœ‰åŠ¹
+#define NG_BUILD_CPLUSPLUS_ISO_VERSION_SPECIFIED
 
-//! DLLƒGƒNƒXƒ|[ƒg
+//! DLLã‚¨ã‚¯ã‚¹ãƒãƒ¼ãƒˆ
 //#define NG_BUILD_MAKE_DLL
 
 #endif	// __NG_CORE_BUILD_H__

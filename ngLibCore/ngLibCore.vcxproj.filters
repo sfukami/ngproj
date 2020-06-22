@@ -142,9 +142,6 @@
     <ClInclude Include="preincl\ngDefine.h">
       <Filter>ソース ファイル\preincl</Filter>
     </ClInclude>
-    <ClInclude Include="preincl\ngEnv.h">
-      <Filter>ソース ファイル\preincl</Filter>
-    </ClInclude>
     <ClInclude Include="common\string\ngStrMacro.h">
       <Filter>ソース ファイル\common\string</Filter>
     </ClInclude>

@@ -73,7 +73,6 @@
     <ClInclude Include="preincl\ngBuild.h" />
     <ClInclude Include="preincl\ngConfig.h" />
     <ClInclude Include="preincl\ngDefine.h" />
-    <ClInclude Include="preincl\ngEnv.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
     <ClInclude Include="traits\ngNonCopyable.h" />
     <ClInclude Include="traits\ngSingleton.h" />

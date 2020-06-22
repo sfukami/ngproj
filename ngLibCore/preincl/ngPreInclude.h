@@ -11,7 +11,6 @@
 #include "ngBuild.h"
 #include "ngDefine.h"
 #include "ngConfig.h"
-#include "ngEnv.h"
 
 #include "ngLibCore/common/type/ngType.h"
 

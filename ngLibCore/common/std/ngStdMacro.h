@@ -9,6 +9,12 @@
 #define __NG_CORE_STD_MACRO_H__
 
 /*!
+* @brief					コンパイラバージョンチェック
+*/
+#define NG_CHECK_CPLUSPLUS_COMPILER_SUPPORT(_version) \
+	(NG_CPLUSPLUS_COMPILER_VERSION >= NG_CPLUSPLUS_COMPILER_VERSION_##_version)
+
+/*!
 * @brief					変数のサイズ取得
 */
 #define NG_SIZEOF(_v)		(sizeof(_v))
