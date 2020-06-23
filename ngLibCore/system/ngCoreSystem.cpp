@@ -31,7 +31,7 @@ namespace ng
 		// システムメモリ初期化
 		{
 			if(NG_FAILED(ret = m_sysMem.Initialize(param.sysMemInitParam))) {
-				NG_ERRLOG(ret, "システムメモリの初期化に失敗");
+				NG_ERRLOG_C("CoreSystem", ret, "システムメモリの初期化に失敗");
 				return ret;
 			}
 		}

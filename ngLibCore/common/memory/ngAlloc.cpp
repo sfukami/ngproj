@@ -74,7 +74,7 @@ void operator delete(
 #endif
 	)
 {
-	NG_ASSERT(false, "使用禁止関数の呼び出し");
+	NG_ASSERT(false, "使用禁止関数の呼び出し.");
 }
 
 void operator delete[](
@@ -86,7 +86,7 @@ void operator delete[](
 #endif
 	)
 {
-	NG_ASSERT(false, "使用禁止関数の呼び出し");
+	NG_ASSERT(false, "使用禁止関数の呼び出し.");
 }
 
 void operator delete(

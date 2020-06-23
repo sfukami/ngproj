@@ -166,8 +166,8 @@ namespace ng
 	template <typename Elem>
 	NG_INLINE void IList<Elem, BidirectionalLinked>::_checkNodeIsNull(NodeType* node) const
 	{
-		NG_ASSERT(node->GetNext() == nullptr, "ノードに既存のリンクが存在します");
-		NG_ASSERT(node->GetPrev() == nullptr, "ノードに既存のリンクが存在します");
+		NG_ASSERT(node->GetNext() == nullptr, "ノードに既存のリンクが存在します.");
+		NG_ASSERT(node->GetPrev() == nullptr, "ノードに既存のリンクが存在します.");
 	}
 
 	/*!
@@ -257,7 +257,7 @@ namespace ng
 	template <typename Elem>
 	NG_INLINE void IList<Elem, ForwardLinked>::_checkNodeIsNull(NodeType* node) const
 	{
-		NG_ASSERT(node->GetNext() == nullptr, "ノードに既存のリンクが存在します");
+		NG_ASSERT(node->GetNext() == nullptr, "ノードに既存のリンクが存在します.");
 	}
 
 }	// namespace ng

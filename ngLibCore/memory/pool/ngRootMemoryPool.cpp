@@ -24,11 +24,11 @@ namespace ng
 		NG_ERRCODE ret = eNG_S_OK;
 
 		if(NG_FAILED(ret = m_rootAlloc.Initialize("ng_rootmem"))) {
-			NG_ERRLOG(ret, "ルートアロケータの初期化に失敗");
+			NG_ERRLOG_C("RootMemoryPool", ret, "ルートアロケータの初期化に失敗");
 			return ret;
 		}
 		if(NG_FAILED(ret = m_memPool.Pool(NG_NEW_BYTE(m_rootAlloc, size), size))) {
-			NG_ERRLOG(ret, "ルートアロケータを用いたメモリ領域のプールに失敗");
+			NG_ERRLOG_C("RootMemoryPool", ret, "ルートアロケータを用いたメモリ領域のプールに失敗");
 			return ret;
 		}
 

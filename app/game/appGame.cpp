@@ -37,7 +37,7 @@ namespace app
 
 			ng::CCoreSystem::CreateInstance();
 			if(NG_FAILED(ng::CCoreSystem::GetInstance().Setup(param))) {
-				NG_ERRMSG("Game", "NGコアシステムのセットアップに失敗しました");
+				NG_ERRLOG("Game", "NGコアシステムのセットアップに失敗しました.");
 				return false;
 			}
 		}
@@ -50,7 +50,7 @@ namespace app
 			_T("app"),
 			WndProc
 			)) {
-			NG_ERRMSG("Game", "ウィンドウの生成に失敗");
+			NG_ERRLOG("Game", "ウィンドウの生成に失敗しました.");
 			return false;
 		}
 
@@ -60,7 +60,7 @@ namespace app
 		{
 			// Directインプット生成
 			if(NG_FAILED(m_input.Create())) {
-				NG_ERRMSG("Game", "Directインプットの生成に失敗しました");
+				NG_ERRLOG("Game", "Directインプットの生成に失敗しました.");
 				return false;
 			}
 			// DirectInputキーボードのセットアップ
@@ -68,7 +68,7 @@ namespace app
 				m_window.GetHandle(),
 				DISCL_NONEXCLUSIVE | DISCL_FOREGROUND | DISCL_NOWINKEY
 				))) {
-				NG_ERRMSG("Game", "DirectInputキーボードのセットアップに失敗しました");
+				NG_ERRLOG("Game", "DirectInputキーボードのセットアップに失敗しました.");
 				return false;
 			}
 			// DirectInputマウスのセットアップ
@@ -76,7 +76,7 @@ namespace app
 				m_window.GetHandle(),
 				DISCL_NONEXCLUSIVE | DISCL_FOREGROUND
 				))) {
-				NG_ERRMSG("Game", "DirectInputマウスのセットアップに失敗しました");
+				NG_ERRLOG("Game", "DirectInputマウスのセットアップに失敗しました.");
 				return false;
 			}
 

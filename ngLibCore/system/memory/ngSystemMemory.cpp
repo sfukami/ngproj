@@ -67,7 +67,7 @@ namespace ng
 		{
 			size_type allocSize = param.GetTotalAllocSize() + eSystemMemoryMinSize::INSTANCE;
 			if(NG_FAILED(ret = m_memPool.Initialize(allocSize))) {
-				NG_ERRLOG(ret, "ルートメモリプールの初期化に失敗");
+				NG_ERRLOG_C("SystemMemory", ret, "ルートメモリプールの初期化に失敗");
 				return ret;
 			}
 		}
@@ -75,7 +75,7 @@ namespace ng
 		// メモリマネージャ初期化
 		if(NG_FAILED(ret = m_memMngr.Initialize(m_memPool.GetMemoryPool(), static_cast<u32>(eSystemMemoryType::NUM)))) {
 			m_memPool.Finalize();
-			NG_ERRLOG(ret, "メモリマネージャの初期化に失敗");
+			NG_ERRLOG_C("SystemMemory", ret, "メモリマネージャの初期化に失敗");
 			return ret;
 		}
 

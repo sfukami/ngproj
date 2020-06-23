@@ -31,7 +31,7 @@ namespace ng
 
 		if(err != 0) {
 			NG_ERRCODE ret = eNG_E_FAIL;
-			NG_ERRLOG(ret, "ファイルオープン失敗. file:%s, mode:%s", pFilename, mode);
+			NG_ERRLOG_C("File", ret, "ファイルオープン失敗しました. file:%s, mode:%s", pFilename, mode);
 			NG_DPRINT_LASTERRMSG();
 			return ret;
 		}
@@ -46,7 +46,7 @@ namespace ng
 
 		if(err != 0) {
 			NG_ERRCODE ret = eNG_E_FAIL;
-			NG_ERRLOG(ret, L"ファイルオープン失敗. file:%s, mode:%s", pFilename, mode);
+			NG_ERRLOG_C("File", ret, L"ファイルオープン失敗しました. file:%s, mode:%s", pFilename, mode);
 			NG_DPRINT_LASTERRMSG();
 			return ret;
 		}
@@ -62,7 +62,7 @@ namespace ng
 
 		if(err != 0) {
 			NG_ERRCODE ret = eNG_E_FAIL;
-			NG_ERRLOG(ret, "新たなファイルオープンに失敗. file:%s, mode:%s", pFilename, mode);
+			NG_ERRLOG_C("File", ret, "新たなファイルオープンに失敗しました. file:%s, mode:%s", pFilename, mode);
 			NG_DPRINT_LASTERRMSG();
 			return ret;
 		}
@@ -77,7 +77,7 @@ namespace ng
 
 		if(err != 0) {
 			NG_ERRCODE ret = eNG_E_FAIL;
-			NG_ERRLOG(ret, L"新たなファイルオープンに失敗. file:%s, mode:%s", pFilename, mode);
+			NG_ERRLOG_C("File", ret, L"新たなファイルオープンに失敗しました. file:%s, mode:%s", pFilename, mode);
 			NG_DPRINT_LASTERRMSG();
 			return ret;
 		}
@@ -142,7 +142,7 @@ namespace ng
 		if(::fseek(m_fp, offset, origin) == 0) {
 			ret = eNG_S_OK;
 		} else {
-			NG_ERRLOG(ret, "ファイルポインタの移動に失敗");
+			NG_ERRLOG_C("File", ret, "ファイルポインタの移動に失敗しました.");
 			NG_DPRINT_LASTERRMSG();
 			return ret;
 		}

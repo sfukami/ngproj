@@ -33,7 +33,7 @@ namespace ng
 		)
 	{
 		// 多重生成
-		NG_ASSERT( ! m_hWnd, "ウィンドウ多重生成");
+		NG_ASSERT( ! m_hWnd, "ウィンドウの多重生成は禁止されています.");
 		if(m_hWnd) {
 			return false;
 		}
@@ -63,7 +63,7 @@ namespace ng
 
 		// ウィンドウクラス登録
 		if( ! ::RegisterClassEx(&windowClass)) {
-			NG_DPRINTF("ウィンドウクラスの登録に失敗\n");
+			NG_DPRINTF("ウィンドウクラスの登録に失敗しました.\n");
 			return false;
 		}
 
@@ -87,7 +87,7 @@ namespace ng
 			);
 
 		if( ! m_hWnd) {
-			NG_DPRINTF("ウィンドウの作成に失敗\n");
+			NG_DPRINTF("ウィンドウの作成に失敗しました.\n");
 			return false;
 		}
 
@@ -96,7 +96,7 @@ namespace ng
 
 	void CWindow::Show()
 	{
-		NG_ASSERT(m_hWnd, "ウィンドウが生成されていない");
+		NG_ASSERT(m_hWnd, "ウィンドウが生成されていない.");
 		if( ! (m_hWnd)) {
 			return;
 		}
@@ -110,14 +110,14 @@ namespace ng
 		HINSTANCE hInstance = (HINSTANCE)::GetModuleHandle(0);
 
 		if(::UnregisterClass(m_className, hInstance)) {
-			ng::DPrintf("ウィンドウクラスの登録を解除しました。 className:%s\n", m_className);
+			NG_DPRINTF("ウィンドウクラスの登録を解除しました. className:%s\n", m_className);
 		}
 	}
 
 	void CWindow::Destroy()
 	{
 		if(::DestroyWindow(m_hWnd)) {
-			ng::DPrintf("ウィンドウを破棄しました。 windowName:%s\n", m_windowName);
+			NG_DPRINTF("ウィンドウを破棄しました. windowName:%s\n", m_windowName);
 		}
 	}
 

@@ -25,7 +25,7 @@ namespace ng
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		if(pIDirectInput8 == nullptr) {
-			NG_ERRMSG("DIMouse", "DirectInput8 インターフェースが無効");
+			NG_ERRLOG("DIMouse", "DirectInput8 インターフェースが無効です.");
 			return eNG_E_FAIL;
 		}
 
@@ -38,14 +38,14 @@ namespace ng
 			nullptr
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, CreateDevice, "DirectInput8Deviceの生成に失敗");
+			NG_DXERR("DIMouse", ret, CreateDevice, "DirectInput8Deviceの生成に失敗しました.");
 			return ret;
 		}
 
 		// デバイスのデータフォーマットをマウスに設定
 		ret = m_pIDIDevice->SetDataFormat(&c_dfDIMouse2);
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗");
+			NG_DXERR("DIMouse", ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗しました.");
 			return ret;
 		}
 
@@ -55,7 +55,7 @@ namespace ng
 			cooperativeLevel
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗");
+			NG_DXERR("DIMouse", ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗しました.");
 			return ret;
 		}
 
@@ -68,7 +68,7 @@ namespace ng
 			diprop.diph.dwHow			= DIPH_DEVICE;
 			diprop.dwData				= DIPROPAXISMODE_REL;	// 相対値モードで設定（絶対値はDIPROPAXISMODE_ABS）
 			if(NG_FAILED(ret = m_pIDIDevice->SetProperty(DIPROP_AXISMODE, &diprop.diph))) {
-				NG_DXERR(ret, SetProperty, "入力デバイスの動作プロパティ設定に失敗");
+				NG_DXERR("DIMouse", ret, SetProperty, "入力デバイスの動作プロパティ設定に失敗しました.");
 				return ret;
 			}
 		}
@@ -190,7 +190,7 @@ namespace ng
 
 	BYTE CDIMouse::MouseState::GetFlag(const DIMOUSESTATE2& state, eMouseCode code) const
 	{
-		NG_ASSERT(static_cast<u32>(code) < (u32)NG_ARRAY_SIZE(state.rgbButtons), "入力コードが範囲外");
+		NG_ASSERT(static_cast<u32>(code) < (u32)NG_ARRAY_SIZE(state.rgbButtons), "入力コードが範囲外です.");
 		return state.rgbButtons[ static_cast<u32>(code) ];
 	}
 

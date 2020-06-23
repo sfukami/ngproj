@@ -25,7 +25,7 @@ namespace ng
 		if(NG_SUCCEEDED(ret = m_file.Open(pFilename, "w"))) {
 			NG_DPRINTF("Debug log file open succeeded. file:%s\n", pFilename);
 		} else {
-			NG_ERRLOG(ret, "Debug log file open failed. file:%s", pFilename);
+			NG_ERRLOG_C("DebugLog", ret, "Debug log file open failed. file:%s", pFilename);
 		}
 
 		return ret;

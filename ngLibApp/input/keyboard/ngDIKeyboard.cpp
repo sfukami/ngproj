@@ -25,7 +25,7 @@ namespace ng
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		if(pIDirectInput8 == nullptr) {
-			NG_ERRMSG("DIKeyboard", "DirectInput8 インターフェースが無効");
+			NG_ERRLOG("DIKeyboard", "DirectInput8 インターフェースが無効です.");
 			return eNG_E_FAIL;
 		}
 
@@ -38,14 +38,14 @@ namespace ng
 			nullptr
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, CreateDevice, "DirectInput8Deviceの生成に失敗");
+			NG_DXERR("DIKeyboard", ret, CreateDevice, "DirectInput8Deviceの生成に失敗しました.");
 			return ret;
 		}
 
 		// デバイスのデータフォーマットをキーボードに設定
 		ret = m_pIDIDevice->SetDataFormat(&c_dfDIKeyboard);
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗");
+			NG_DXERR("DIKeyboard", ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗しました.");
 			return ret;
 		}
 
@@ -55,7 +55,7 @@ namespace ng
 			cooperativeLevel
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗");
+			NG_DXERR("DIKeyboard", ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗しました.");
 			return ret;
 		}
 
@@ -64,7 +64,7 @@ namespace ng
 		/*
 		ret = m_pIDIDevice->Acquire();
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, Acquire, "入力デバイスのアクセス権取得に失敗");
+			NG_DXERR("DIKeyboard", ret, Acquire, "入力デバイスのアクセス権取得に失敗しました.");
 			return ret;
 		}
 		*/
@@ -149,7 +149,7 @@ namespace ng
 	
 	BYTE CDIKeyboard::KeyFlag::GetFlag(const BYTE* pDiks, eKeyCode code) const
 	{
-		NG_ASSERT(UnderlyingCast(code) < KEYCODE_MAX, "入力コードが範囲外");
+		NG_ASSERT(UnderlyingCast(code) < KEYCODE_MAX, "入力コードが範囲外です.");
 		return pDiks[ UnderlyingCast(code) ];
 	}
 

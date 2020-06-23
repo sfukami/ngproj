@@ -27,19 +27,19 @@ namespace ng
 		NG_ERRCODE ret = eNG_S_OK;
 
 		if(!memPool.IsPool()) {
-			NG_ERRMSG("MemoryManager", "メモリプールが利用できませんでした");
+			NG_ERRLOG("MemoryManager", "メモリプールが利用できませんでした.");
 			return eNG_E_INVALIDMEMORY;
 		}
 
 		// メモリアロケータ初期化
 		if(NG_FAILED(ret = m_memAlloc.Initialize("memory_manager", memPool, memPool.GetSize()))) {
-			NG_ERRLOG(ret, "メモリアロケータの初期化に失敗");
+			NG_ERRLOG_C("MemoryManager", ret, "メモリアロケータの初期化に失敗しました.");
 			return ret;
 		}
 
 		// 追加のメモリアロケータ格納先配列初期化
 		if(NG_FAILED(ret = m_allocArr.Initialize(allocNumMax, m_memAlloc))) {
-			NG_ERRLOG(ret, "追加のメモリアロケータ格納先配列の初期化に失敗");
+			NG_ERRLOG_C("MemoryManager", ret, "追加のメモリアロケータ格納先配列の初期化に失敗しました.");
 			return ret;
 		}
 

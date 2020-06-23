@@ -33,7 +33,7 @@ namespace ng
 			nullptr
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR(ret, DirectInput8Create, "DirectInput8の生成に失敗");
+			NG_DXERR("DirectInput", ret, DirectInput8Create, "DirectInput8の生成に失敗しました.");
 			return ret;
 		}
 
@@ -43,7 +43,7 @@ namespace ng
 	NG_ERRCODE CDirectInput::SetupKeyboard(HWND hWnd, DWORD cooperativeLevel)
 	{
 		if(!IsValid()) {
-			NG_ERRMSG("DirectInput", "Directインプットが有効でないため、DirectInputキーボードのセットアップに失敗しました");
+			NG_ERRLOG("DirectInput", "Directインプットが有効でないため、DirectInputキーボードのセットアップに失敗しました.");
 			return eNG_E_FAIL;
 		}
 
@@ -51,7 +51,7 @@ namespace ng
 		NG_ERRCODE ret = m_keyboard.Setup(m_pIInput, hWnd, cooperativeLevel);
 
 		if(NG_FAILED(ret)) {
-			NG_ERRLOG(ret, "DirectInputキーボードのセットアップに失敗");
+			NG_ERRLOG_C("DirectInput", ret, "DirectInputキーボードのセットアップに失敗しました.");
 			return ret;
 		}
 
@@ -61,7 +61,7 @@ namespace ng
 	NG_ERRCODE CDirectInput::SetupMouse(HWND hWnd, DWORD cooperativeLevel)
 	{
 		if(!IsValid()) {
-			NG_ERRMSG("DirectInput", "Directインプットが有効でないため、DirectInputマウスのセットアップに失敗しました");
+			NG_ERRLOG("DirectInput", "Directインプットが有効でないため、DirectInputマウスのセットアップに失敗しました.");
 			return eNG_E_FAIL;
 		}
 
@@ -69,7 +69,7 @@ namespace ng
 		NG_ERRCODE ret = m_mouse.Setup(m_pIInput, hWnd, cooperativeLevel);
 
 		if(NG_FAILED(ret)) {
-			NG_ERRLOG(ret, "DirectInputマウスのセットアップに失敗");
+			NG_ERRLOG_C("DirectInput", ret, "DirectInputマウスのセットアップに失敗しました.");
 			return ret;
 		}
 
