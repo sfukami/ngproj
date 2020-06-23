@@ -71,6 +71,7 @@
     <ClInclude Include="geometry\matrix\ngMatrix4x4.h" />
     <ClInclude Include="geometry\matrix\ngMatrixOp.h" />
     <ClInclude Include="geometry\ngGeometry.h" />
+    <ClInclude Include="geometry\point\ngPoint.h" />
     <ClInclude Include="geometry\quaternion\ngQuaternion.h" />
     <ClInclude Include="geometry\quaternion\ngQuaternionOp.h" />
     <ClInclude Include="geometry\vector\ngVector2.h" />
@@ -120,6 +121,7 @@
     <ClCompile Include="geometry\matrix\ngMatrix3x3.cpp" />
     <ClCompile Include="geometry\matrix\ngMatrix4x4.cpp" />
     <ClCompile Include="geometry\matrix\ngMatrixOp.cpp" />
+    <ClCompile Include="geometry\point\ngPoint.cpp" />
     <ClCompile Include="geometry\quaternion\ngQuaternion.cpp" />
     <ClCompile Include="geometry\quaternion\ngQuaternionOp.cpp" />
     <ClCompile Include="geometry\vector\ngVector2.cpp" />

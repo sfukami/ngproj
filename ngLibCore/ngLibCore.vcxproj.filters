@@ -119,6 +119,9 @@
     <Filter Include="ソース ファイル\common\bit">
       <UniqueIdentifier>{0b3432a0-1c89-4437-a031-aee9fe0046e4}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\geometry\point">
+      <UniqueIdentifier>{4afe25c1-2842-4f77-8d6e-7dbdbf9c68bf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -361,6 +364,9 @@
     <ClInclude Include="common\bit\ngBitMacro.h">
       <Filter>ソース ファイル\common\bit</Filter>
     </ClInclude>
+    <ClInclude Include="geometry\point\ngPoint.h">
+      <Filter>ソース ファイル\geometry\point</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -470,6 +476,9 @@
     </ClCompile>
     <ClCompile Include="common\bit\ngBit.cpp">
       <Filter>ソース ファイル\common\bit</Filter>
+    </ClCompile>
+    <ClCompile Include="geometry\point\ngPoint.cpp">
+      <Filter>ソース ファイル\geometry\point</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
