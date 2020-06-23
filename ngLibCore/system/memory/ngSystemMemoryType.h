@@ -13,7 +13,7 @@ namespace ng
 	/*!
 	* @brief					NGライブラリ システムメモリタイプ
 	*/
-	enum class eSystemMemoryType
+	enum class eSystemMemoryType : u32
 	{
 		MAINSYS,	//!< メインシステム
 		GRAPHIC,	//!< グラフィック

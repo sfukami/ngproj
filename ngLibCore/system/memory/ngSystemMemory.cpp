@@ -27,10 +27,20 @@ namespace ng
 		NG_MEMCPY(allocInfo, info, NG_SIZEOF(info));
 	}
 
+	void CSystemMemory::InitParam::SetAllocSize(eSystemMemoryType type, size_type allocSize)
+	{
+		allocInfo[ static_cast<u32>(type) ].allocSize = allocSize;
+	}
+
+	const CSystemMemory::InitParam::AllocInfo& CSystemMemory::InitParam::GetAllocInfo(eSystemMemoryType type) const
+	{
+		return allocInfo[ static_cast<u32>(type) ];
+	}
+
 	size_type CSystemMemory::InitParam::GetTotalAllocSize() const
 	{
 		size_type total = 0;
-		for(int i = 0; i < static_cast<int>(eSystemMemoryType::NUM); i++)
+		for(int i = 0; i < static_cast<u32>(eSystemMemoryType::NUM); i++)
 		{
 			total += allocInfo[i].allocSize;
 		}
@@ -73,7 +83,7 @@ namespace ng
 		{
 			// メモリアロケータ生成マクロ
 			#define CREATE_ALLOC(_alloc, _type, _name) { \
-				const InitParam::AllocInfo& info = param.allocInfo[ static_cast<int>(_type) ]; \
+				const InitParam::AllocInfo& info = param.GetAllocInfo(_type); \
 				_alloc* pAlloc = m_memMngr.CreateAndRegisterAllocator<_alloc>(static_cast<u32>(_type), _name, info.allocSize); \
 			}
 			

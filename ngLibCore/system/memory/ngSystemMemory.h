@@ -37,6 +37,12 @@ namespace ng
 
 			} allocInfo[ static_cast<int>(eSystemMemoryType::NUM) ];
 
+			/*! アロケーションサイズ設定 */
+			void SetAllocSize(eSystemMemoryType type, size_type allocSize);
+
+			/*! アロケーション情報取得 */
+			const AllocInfo& GetAllocInfo(eSystemMemoryType type) const;
+
 			/*! 合計アロケーションサイズ取得 */
 			size_type GetTotalAllocSize() const;
 		};
