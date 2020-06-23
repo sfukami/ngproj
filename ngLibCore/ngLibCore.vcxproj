@@ -64,6 +64,9 @@
     <ClInclude Include="debug\log\ngDebugLog.h" />
     <ClInclude Include="debug\ngMemDump.h" />
     <ClInclude Include="debug\ngStackTrace.h" />
+    <ClInclude Include="dx\ngDXCommon.h" />
+    <ClInclude Include="dx\ngDXError.h" />
+    <ClInclude Include="dx\ngDXMacro.h" />
     <ClInclude Include="geometry\matrix\ngMatrix3x3.h" />
     <ClInclude Include="geometry\matrix\ngMatrix4x4.h" />
     <ClInclude Include="geometry\matrix\ngMatrixOp.h" />
@@ -113,6 +116,7 @@
     <ClCompile Include="debug\log\ngDebugLog.cpp" />
     <ClCompile Include="debug\ngMemDump.cpp" />
     <ClCompile Include="debug\ngStackTrace.cpp" />
+    <ClCompile Include="dx\ngDXError.cpp" />
     <ClCompile Include="geometry\matrix\ngMatrix3x3.cpp" />
     <ClCompile Include="geometry\matrix\ngMatrix4x4.cpp" />
     <ClCompile Include="geometry\matrix\ngMatrixOp.cpp" />

@@ -113,6 +113,9 @@
     <Filter Include="ソース ファイル\common\enum">
       <UniqueIdentifier>{dcf846a3-4685-46fb-a1e7-f84f3060b3d3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\dx">
+      <UniqueIdentifier>{670049a3-42f3-47ad-8e72-c198741e322b}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\common\bit">
       <UniqueIdentifier>{0b3432a0-1c89-4437-a031-aee9fe0046e4}</UniqueIdentifier>
     </Filter>
@@ -343,6 +346,15 @@
     <ClInclude Include="common\enum\ngEnumMacro.h">
       <Filter>ソース ファイル\common\enum</Filter>
     </ClInclude>
+    <ClInclude Include="dx\ngDXCommon.h">
+      <Filter>ソース ファイル\dx</Filter>
+    </ClInclude>
+    <ClInclude Include="dx\ngDXError.h">
+      <Filter>ソース ファイル\dx</Filter>
+    </ClInclude>
+    <ClInclude Include="dx\ngDXMacro.h">
+      <Filter>ソース ファイル\dx</Filter>
+    </ClInclude>
     <ClInclude Include="common\bit\ngBit.h">
       <Filter>ソース ファイル\common\bit</Filter>
     </ClInclude>
@@ -452,6 +464,9 @@
     </ClCompile>
     <ClCompile Include="system\ngCoreSystem.cpp">
       <Filter>ソース ファイル\system</Filter>
+    </ClCompile>
+    <ClCompile Include="dx\ngDXError.cpp">
+      <Filter>ソース ファイル\dx</Filter>
     </ClCompile>
     <ClCompile Include="common\bit\ngBit.cpp">
       <Filter>ソース ファイル\common\bit</Filter>
