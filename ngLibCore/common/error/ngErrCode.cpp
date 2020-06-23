@@ -35,6 +35,7 @@ namespace ng
 		MAKE_DETAIL(E_OUTOFMEMORY,			"Failed to allocate necessary memory"),
 		MAKE_DETAIL(E_POINTER,				"Pointer that is not valid"),
 		MAKE_DETAIL(E_UNEXPECTED,			"Unexpected failure"),
+		MAKE_DETAIL(eNG_E_INDEFINITE,		"(NG ErrCode) 不定"),
 		MAKE_DETAIL(eNG_E_UNKNOWN,			"(NG ErrCode) 不明なエラー"),
 		MAKE_DETAIL(eNG_E_INVALIDMEMORY,	"(NG ErrCode) 無効なメモリ領域"),
 		MAKE_DETAIL(eNG_E_CAPACITYLACK,		"(NG ErrCode) 指定サイズが不足"),

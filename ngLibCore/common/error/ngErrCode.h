@@ -17,6 +17,8 @@
 //! NG エラーコード作成
 #define NG_MAKE_NG_ERRCODE(_code) \
 	MAKE_HRESULT(NG_ERRCODE_SEVERITY, NG_ERRCODE_FACILITY, _code)
+//! NG エラーコード デフォルト値
+#define NG_ERRCODE_DEFAULT		(ng::eErrCode::eNG_DEFAULT)
 
 namespace ng
 {
@@ -32,12 +34,15 @@ namespace ng
 		eNG_S_FALSE		= S_FALSE,	//!< 成功
 		eNG_E_FAIL		= E_FAIL,	//!< 失敗
 
-		eNG_E_UNKNOWN			= NG_MAKE_NG_ERRCODE(1),	//!< 不明なエラー
-		eNG_E_INVALIDMEMORY		= NG_MAKE_NG_ERRCODE(2),	//!< メモリが不正である
-		eNG_E_CAPACITYLACK		= NG_MAKE_NG_ERRCODE(3),	//!< 指定した容量が不足している
-		eNG_E_LEAK				= NG_MAKE_NG_ERRCODE(4),	//!< 未解放エラー
-		eNG_E_BUFFOVERFLOW		= NG_MAKE_NG_ERRCODE(5),	//!< バッファオーバーフロー
-		eNG_E_INITFAILED		= NG_MAKE_NG_ERRCODE(6),	//!< 初期化失敗
+		eNG_E_INDEFINITE		= NG_MAKE_NG_ERRCODE(1),	//!< 不定
+		eNG_E_UNKNOWN			= NG_MAKE_NG_ERRCODE(2),	//!< 不明なエラー
+		eNG_E_INVALIDMEMORY		= NG_MAKE_NG_ERRCODE(3),	//!< メモリが不正である
+		eNG_E_CAPACITYLACK		= NG_MAKE_NG_ERRCODE(4),	//!< 指定した容量が不足している
+		eNG_E_LEAK				= NG_MAKE_NG_ERRCODE(5),	//!< 未解放エラー
+		eNG_E_BUFFOVERFLOW		= NG_MAKE_NG_ERRCODE(6),	//!< バッファオーバーフロー
+		eNG_E_INITFAILED		= NG_MAKE_NG_ERRCODE(7),	//!< 初期化失敗
+
+		eNG_DEFAULT				= eNG_E_INDEFINITE,
 	};
 
 	/*!
