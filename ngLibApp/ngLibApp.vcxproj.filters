@@ -23,6 +23,9 @@
     <Filter Include="ソース ファイル\input\keyboard">
       <UniqueIdentifier>{6dc322f0-a219-40ba-a1b4-e3746b199903}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\input\mouse">
+      <UniqueIdentifier>{7ac68da2-ba3b-40ee-bb41-868f5fc289aa}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -39,6 +42,9 @@
     </ClCompile>
     <ClCompile Include="input\keyboard\ngDIKeyboard.cpp">
       <Filter>ソース ファイル\input\keyboard</Filter>
+    </ClCompile>
+    <ClCompile Include="input\mouse\ngDIMouse.cpp">
+      <Filter>ソース ファイル\input\mouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -71,6 +77,9 @@
     </ClInclude>
     <ClInclude Include="input\keyboard\ngDIKeyboard.h">
       <Filter>ソース ファイル\input\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="input\mouse\ngDIMouse.h">
+      <Filter>ソース ファイル\input\mouse</Filter>
     </ClInclude>
     <ClInclude Include="input\ngInputState.h">
       <Filter>ソース ファイル\input</Filter>

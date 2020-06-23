@@ -49,6 +49,16 @@ namespace ng
 		return m_pInput->CheckKeyboardInput(code, state);
 	}
 
+	bool CInputManager::CheckMouseInput(
+		eMouseCode code,
+		eInputState state
+		) const
+	{
+		if(!IsAssigned()) return false;
+
+		return m_pInput->CheckMouseInput(code, state);
+	}
+
 	bool CInputManager::IsAssigned() const
 	{
 		return (m_pInput != nullptr);

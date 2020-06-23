@@ -12,6 +12,7 @@ namespace ng
 {
 	class IKeyboard;
 	enum class eKeyCode : u32;
+	enum class eMouseCode : u32;
 	enum class eInputState : u32;
 }
 
@@ -36,7 +37,17 @@ namespace ng
 		virtual bool CheckKeyboardInput(
 			eKeyCode code,
 			eInputState state
-		) const = 0;
+			) const = 0;
+
+		/*!
+		* @brief					マウス入力状態チェック
+		* @param code				入力コード
+		* @param state				チェックする入力状態
+		*/
+		virtual bool CheckMouseInput(
+			eMouseCode code,
+			eInputState state
+			) const = 0;
 	};
 
 }	// namespace ng

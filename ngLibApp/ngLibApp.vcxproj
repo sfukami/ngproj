@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="input\keyboard\ngDIKeyboard.cpp" />
+    <ClCompile Include="input\mouse\ngDIMouse.cpp" />
     <ClCompile Include="input\ngDirectInput.cpp" />
     <ClCompile Include="input\ngInputManager.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -33,6 +34,7 @@
   <ItemGroup>
     <ClInclude Include="common\ngCommon.h" />
     <ClInclude Include="input\keyboard\ngDIKeyboard.h" />
+    <ClInclude Include="input\mouse\ngDIMouse.h" />
     <ClInclude Include="input\ngDirectInput.h" />
     <ClInclude Include="input\ngInput.h" />
     <ClInclude Include="input\ngInputCode.h" />

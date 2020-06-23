@@ -58,14 +58,34 @@ namespace ng
 		return ret;
 	}
 
+	NG_ERRCODE CDirectInput::SetupMouse(HWND hWnd, DWORD cooperativeLevel)
+	{
+		if(!IsValid()) {
+			NG_ERRMSG("DirectInput", "Directインプットが有効でないため、DirectInputマウスのセットアップに失敗しました");
+			return eNG_E_FAIL;
+		}
+
+		// DirectInputマウス セットアップ
+		NG_ERRCODE ret = m_mouse.Setup(m_pIInput, hWnd, cooperativeLevel);
+
+		if(NG_FAILED(ret)) {
+			NG_ERRLOG(ret, "DirectInputマウスのセットアップに失敗");
+			return ret;
+		}
+
+		return ret;
+	}
+
 	void CDirectInput::Update()
 	{
 		m_keyboard.Poll();
+		m_mouse.Poll();
 	}
 
 	void CDirectInput::Destroy()
 	{
 		m_keyboard.Shutdown();
+		m_mouse.Shutdown();
 
 		NG_SAFE_RELEASE(m_pIInput);
 	}
@@ -81,6 +101,14 @@ namespace ng
 		) const
 	{
 		return m_keyboard.CheckInputState(code, state);
+	}
+
+	bool CDirectInput::CheckMouseInput(
+		eMouseCode code,
+		eInputState state
+		) const
+	{
+		return m_mouse.CheckInputState(code, state);
 	}
 
 	IDirectInput8* CDirectInput::Interface()

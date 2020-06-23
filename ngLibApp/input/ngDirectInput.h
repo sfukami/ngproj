@@ -11,12 +11,14 @@
 #include <dinput.h>
 #include "ngInput.h"
 #include "keyboard/ngDIKeyboard.h"
+#include "mouse/ngDIMouse.h"
 
 struct IDirectInput8;
 
 namespace ng
 {
 	enum class eKeyCode : u32;
+	enum class eMouseCode : u32;
 	enum class eInputState : u32;
 }
 
@@ -46,6 +48,14 @@ namespace ng
 		NG_ERRCODE SetupKeyboard(HWND hWnd, DWORD cooperativeLevel);
 
 		/*!
+		* @brief					DirectInputマウス セットアップ
+		* @param hWnd				ウィンドウハンドル
+		* @param cooperativeLevel	協調レベル
+		* @return					NG エラーコード
+		*/
+		NG_ERRCODE SetupMouse(HWND hWnd, DWORD cooperativeLevel);
+
+		/*!
 		* @brief					更新
 		*/
 		void Update();
@@ -66,6 +76,16 @@ namespace ng
 			) const;
 
 		/*!
+		* @brief					マウス入力状態チェック
+		* @param code				入力コード
+		* @param state				チェックする入力状態
+		*/
+		bool CheckMouseInput(
+			eMouseCode code,
+			eInputState state
+			) const;
+
+		/*!
 		* @brief					有効か
 		*/
 		bool IsValid() const;
@@ -80,6 +100,7 @@ namespace ng
 		IDirectInput8* m_pIInput;	//!< DirectInput8 インターフェース
 
 		CDIKeyboard m_keyboard;		//!< DirectInputキーボード
+		CDIMouse m_mouse;			//!< DirectInputマウス
 	};
 
 }	// namespace ng
