@@ -27,7 +27,7 @@ namespace ng
 		NG_ERRCODE ret = eNG_S_OK;
 
 		if(!memPool.IsPool()) {
-			NG_ERRMSG("CMemoryManager", "メモリプールが利用できませんでした");
+			NG_ERRMSG("MemoryManager", "メモリプールが利用できませんでした");
 			return eNG_E_INVALIDMEMORY;
 		}
 
@@ -52,6 +52,7 @@ namespace ng
 	{
 		if(!IsInit()) return;
 
+		ClearAllocator();
 		m_allocArr.Finalize();
 		m_memAlloc.Finalize();
 
