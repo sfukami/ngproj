@@ -20,5 +20,7 @@
 #include "error/ngErrCode.h"
 #include "error/ngError.h"
 #include "error/ngErrMacro.h"
+#include "bit/ngBit.h"
+#include "bit/ngBitMacro.h"
 
 #endif	// __NG_CORE_COMMON_H__

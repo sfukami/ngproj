@@ -110,6 +110,9 @@
     <Filter Include="ソース ファイル\system\memory">
       <UniqueIdentifier>{e848e1b8-ef2e-4e33-b24c-8558fc51dd95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\common\bit">
+      <UniqueIdentifier>{0b3432a0-1c89-4437-a031-aee9fe0046e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -334,6 +337,12 @@
     <ClInclude Include="system\ngCoreSystem.h">
       <Filter>ソース ファイル\system</Filter>
     </ClInclude>
+    <ClInclude Include="common\bit\ngBit.h">
+      <Filter>ソース ファイル\common\bit</Filter>
+    </ClInclude>
+    <ClInclude Include="common\bit\ngBitMacro.h">
+      <Filter>ソース ファイル\common\bit</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -437,6 +446,9 @@
     </ClCompile>
     <ClCompile Include="system\ngCoreSystem.cpp">
       <Filter>ソース ファイル\system</Filter>
+    </ClCompile>
+    <ClCompile Include="common\bit\ngBit.cpp">
+      <Filter>ソース ファイル\common\bit</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

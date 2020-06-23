@@ -21,6 +21,8 @@
   <ItemGroup>
     <ClInclude Include="allocator\ngDefaultAllocator.h" />
     <ClInclude Include="allocator\ngMemoryAllocator.h" />
+    <ClInclude Include="common\bit\ngBit.h" />
+    <ClInclude Include="common\bit\ngBitMacro.h" />
     <ClInclude Include="common\debug\ngDbgMacro.h" />
     <ClInclude Include="common\debug\ngDebug.h" />
     <ClInclude Include="common\error\ngErrCode.h" />
@@ -96,6 +98,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="allocator\ngDefaultAllocator.cpp" />
+    <ClCompile Include="common\bit\ngBit.cpp" />
     <ClCompile Include="common\debug\ngDbgMacro.cpp" />
     <ClCompile Include="common\debug\ngDebug.cpp" />
     <ClCompile Include="common\error\ngErrCode.cpp" />
