@@ -20,6 +20,7 @@
 #include "error/ngErrCode.h"
 #include "error/ngError.h"
 #include "error/ngErrMacro.h"
+#include "enum/ngEnumMacro.h"
 #include "bit/ngBit.h"
 #include "bit/ngBitMacro.h"
 

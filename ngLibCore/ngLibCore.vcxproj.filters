@@ -110,6 +110,9 @@
     <Filter Include="ソース ファイル\system\memory">
       <UniqueIdentifier>{e848e1b8-ef2e-4e33-b24c-8558fc51dd95}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\common\enum">
+      <UniqueIdentifier>{dcf846a3-4685-46fb-a1e7-f84f3060b3d3}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\common\bit">
       <UniqueIdentifier>{0b3432a0-1c89-4437-a031-aee9fe0046e4}</UniqueIdentifier>
     </Filter>
@@ -336,6 +339,9 @@
     </ClInclude>
     <ClInclude Include="system\ngCoreSystem.h">
       <Filter>ソース ファイル\system</Filter>
+    </ClInclude>
+    <ClInclude Include="common\enum\ngEnumMacro.h">
+      <Filter>ソース ファイル\common\enum</Filter>
     </ClInclude>
     <ClInclude Include="common\bit\ngBit.h">
       <Filter>ソース ファイル\common\bit</Filter>
