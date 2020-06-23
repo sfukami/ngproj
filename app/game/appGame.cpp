@@ -7,6 +7,7 @@
 
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
+#include "ngLibApp/input/ngInputManager.h"
 #include "appGame.h"
 
 namespace app
@@ -55,6 +56,26 @@ namespace app
 
 		m_window.Show();
 
+		// デバイス入力 セットアップ
+		{
+			// Directインプット生成
+			if(NG_FAILED(m_input.Create())) {
+				NG_ERRMSG("Game", "Directインプットの生成に失敗しました");
+				return false;
+			}
+			// DirectInputキーボードのセットアップ
+			if(NG_FAILED(m_input.SetupKeyboard(
+				m_window.GetHandle(),
+				DISCL_NONEXCLUSIVE | DISCL_FOREGROUND | DISCL_NOWINKEY
+				))) {
+				NG_ERRMSG("Game", "DirectInputキーボードのセットアップに失敗しました");
+				return false;
+			}
+
+			ng::CInputManager::CreateInstance();
+			ng::CInputManager::GetInstance().AssignInput(&m_input);
+		}
+
 		return true;
 	}
 	
@@ -73,7 +94,21 @@ namespace app
 			} else {
 				// 更新処理
 				{
-					
+					ng::CInputManager::GetInstance().Update();
+
+					// test
+					{
+						auto& inputMngr = ng::CInputManager::GetInstance();
+						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::PRESSED)) {
+							ng::DPrintf("key A pressed.\n");
+						}
+						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::RELEASED)) {
+							ng::DPrintf("key A released.\n");
+						}
+						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::HELD)) {
+							ng::DPrintf("key A held.\n");
+						}
+					}
 				}
 				// 描画処理
 				{
@@ -88,6 +123,11 @@ namespace app
 	void CGame::Finalize()
 	{
 		m_window.Destroy();
+
+		// Directインプット 破棄
+		m_input.Destroy();
+		ng::CInputManager::GetInstance().UnassignInput();
+		ng::CInputManager::DestroyInstance();
 
 		// NGコアシステム シャットダウン
 		ng::CCoreSystem::GetInstance().Shutdown();

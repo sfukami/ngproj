@@ -10,6 +10,7 @@
 
 #include <Windows.h>
 #include "ngLibApp/window/ngWindow.h"
+#include "ngLibApp/input/ngDirectInput.h"
 
 namespace app
 {
@@ -39,6 +40,7 @@ namespace app
 
 	private:
 		ng::CWindow m_window;	//!< ウィンドウ
+		ng::CDirectInput m_input;	//!< Directインプット
 	};
 
 }	// namespace app
