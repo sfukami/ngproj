@@ -88,6 +88,8 @@
     <ClInclude Include="preincl\ngDefine.h" />
     <ClInclude Include="preincl\ngMacro.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
+    <ClInclude Include="system\memory\ngSystemMemory.h" />
+    <ClInclude Include="system\memory\ngSystemMemoryType.h" />
     <ClInclude Include="traits\ngNonCopyable.h" />
     <ClInclude Include="traits\ngSingleton.h" />
   </ItemGroup>
@@ -133,6 +135,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ngLibCore/precmpl/ngPreCompiled.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="system\memory\ngSystemMemory.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

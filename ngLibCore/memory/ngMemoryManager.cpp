@@ -5,8 +5,8 @@
 * @author	s.fukami
 */
 
-#include "ngMemoryManager.h"
 #include "ngLibCore/common/ngCommon.h"
+#include "ngMemoryManager.h"
 
 namespace ng
 {

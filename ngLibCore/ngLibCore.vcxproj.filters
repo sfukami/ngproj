@@ -104,6 +104,12 @@
     <Filter Include="ソース ファイル\math">
       <UniqueIdentifier>{50ea04ca-faf5-4c39-9418-2208e4e05261}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\system">
+      <UniqueIdentifier>{32568199-1a50-415e-bd35-55e194cab604}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\system\memory">
+      <UniqueIdentifier>{e848e1b8-ef2e-4e33-b24c-8558fc51dd95}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -319,6 +325,12 @@
     <ClInclude Include="memory\ngMemoryManager.h">
       <Filter>ソース ファイル\memory</Filter>
     </ClInclude>
+    <ClInclude Include="system\memory\ngSystemMemory.h">
+      <Filter>ソース ファイル\system\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="system\memory\ngSystemMemoryType.h">
+      <Filter>ソース ファイル\system\memory</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -416,6 +428,9 @@
     </ClCompile>
     <ClCompile Include="memory\ngMemoryManager.cpp">
       <Filter>ソース ファイル\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="system\memory\ngSystemMemory.cpp">
+      <Filter>ソース ファイル\system\memory</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
