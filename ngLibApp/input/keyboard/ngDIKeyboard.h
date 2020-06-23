@@ -27,7 +27,7 @@ namespace ng
 
 		/*!
 		* @brief					セットアップ
-		* @param DInput				DirectInput8 インターフェース
+		* @param pIDirectInput8		DirectInput8 インターフェース
 		* @param hWnd				ウィンドウハンドル
 		* @param cooperativeLevel	協調レベル
 		* @return					NG エラーコード
