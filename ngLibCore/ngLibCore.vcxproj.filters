@@ -331,6 +331,9 @@
     <ClInclude Include="system\memory\ngSystemMemoryType.h">
       <Filter>ソース ファイル\system\memory</Filter>
     </ClInclude>
+    <ClInclude Include="system\ngCoreSystem.h">
+      <Filter>ソース ファイル\system</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -431,6 +434,9 @@
     </ClCompile>
     <ClCompile Include="system\memory\ngSystemMemory.cpp">
       <Filter>ソース ファイル\system\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="system\ngCoreSystem.cpp">
+      <Filter>ソース ファイル\system</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
