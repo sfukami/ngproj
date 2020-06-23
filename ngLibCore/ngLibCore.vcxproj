@@ -98,6 +98,7 @@
     <ClInclude Include="system\memory\ngSystemMemory.h" />
     <ClInclude Include="system\memory\ngSystemMemoryType.h" />
     <ClInclude Include="system\ngCoreSystem.h" />
+    <ClInclude Include="system\ngSysUtil.h" />
     <ClInclude Include="traits\ngNonCopyable.h" />
     <ClInclude Include="traits\ngSingleton.h" />
   </ItemGroup>

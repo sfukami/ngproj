@@ -367,6 +367,9 @@
     <ClInclude Include="geometry\point\ngPoint.h">
       <Filter>ソース ファイル\geometry\point</Filter>
     </ClInclude>
+    <ClInclude Include="system\ngSysUtil.h">
+      <Filter>ソース ファイル\system</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
