@@ -6,6 +6,7 @@
 */
 
 #include <tchar.h>
+#include "ngLibCore/system/ngCoreSystem.h"
 #include "appGame.h"
 
 namespace app
@@ -25,6 +26,22 @@ namespace app
 		const int CLIENT_WIDTH = 640;
 		const int CLIENT_HEIGHT = 480;
 
+		// メモリリークチェック
+		NG_CHECK_MEMLEAK();
+
+		// NGコアシステム セットアップ
+		{
+			ng::CCoreSystem::SetupParam param;
+			param.sysMemInitParam.SetAllocSize(ng::eSystemMemoryType::GRAPHIC, NG_MB(1));
+
+			ng::CCoreSystem::CreateInstance();
+			if(NG_FAILED(ng::CCoreSystem::GetInstance().Setup(param))) {
+				NG_ERRMSG("Game", "NGコアシステムのセットアップに失敗しました");
+				return false;
+			}
+		}
+
+		// アプリケーションウィンドウ生成
 		if( ! m_window.Create(
 			CLIENT_WIDTH,
 			CLIENT_HEIGHT,
@@ -32,7 +49,7 @@ namespace app
 			_T("app"),
 			WndProc
 			)) {
-		//	NG_DPRINTF("ウィンドウ生成失敗\n");
+			NG_ERRMSG("Game", "ウィンドウの生成に失敗");
 			return false;
 		}
 
@@ -71,6 +88,10 @@ namespace app
 	void CGame::Finalize()
 	{
 		m_window.Destroy();
+
+		// NGコアシステム シャットダウン
+		ng::CCoreSystem::GetInstance().Shutdown();
+		ng::CCoreSystem::DestroyInstance();
 	}
 
 	/*! ウィンドウプロシージャ */
