@@ -12,6 +12,10 @@ namespace ng
 {
 	CCoreSystem CCoreSystem::m_instance;
 
+	CCoreSystem::SetupParam::SetupParam()
+	{
+	}
+
 	CCoreSystem::CCoreSystem()
 	{
 	}
