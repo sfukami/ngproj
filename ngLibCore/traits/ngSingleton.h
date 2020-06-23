@@ -62,6 +62,11 @@ namespace ng
 		*/
 		static T& GetInstance();
 
+		/*!
+		* @brief					シングルトンインスタンスが存在するか
+		*/
+		static bool IsExistInstance();
+
 	private:
 		static T* m_pInstance;	//!< シングルトンインスタンスへの参照
 	};
@@ -69,9 +74,6 @@ namespace ng
 	template <class T>
 	T* CSingleton<T>::m_pInstance = nullptr;
 
-	/*!
-	* @brief					シングルトンインスタンス生成
-	*/
 	template <class T>
 	void CSingleton<T>::CreateInstance()
 	{
@@ -83,9 +85,6 @@ namespace ng
 		}
 	}
 
-	/*!
-	* @brief					シングルトンインスタンス破棄
-	*/
 	template <class T>
 	void CSingleton<T>::DestroyInstance()
 	{
@@ -94,14 +93,17 @@ namespace ng
 		m_pInstance = nullptr;
 	}
 
-	/*!
-	* @brief					シングルトンインスタンス取得
-	*/
 	template <class T>
 	T& CSingleton<T>::GetInstance()
 	{
 		NG_ASSERT(m_pInstance);
 		return *m_pInstance;
+	}
+
+	template <class T>
+	bool CSingleton<T>::IsExistInstance()
+	{
+		return (m_pInstance != nullptr);
 	}
 
 }	// namespace ng
