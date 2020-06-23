@@ -71,6 +71,14 @@ namespace app
 				NG_ERRMSG("Game", "DirectInputキーボードのセットアップに失敗しました");
 				return false;
 			}
+			// DirectInputマウスのセットアップ
+			if(NG_FAILED(m_input.SetupMouse(
+				m_window.GetHandle(),
+				DISCL_NONEXCLUSIVE | DISCL_FOREGROUND
+				))) {
+				NG_ERRMSG("Game", "DirectInputマウスのセットアップに失敗しました");
+				return false;
+			}
 
 			ng::CInputManager::CreateInstance();
 			ng::CInputManager::GetInstance().AssignInput(&m_input);
@@ -99,6 +107,8 @@ namespace app
 					// test
 					{
 						auto& inputMngr = ng::CInputManager::GetInstance();
+
+						// Keyboard
 						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::PRESSED)) {
 							ng::DPrintf("key A pressed.\n");
 						}
@@ -107,6 +117,16 @@ namespace app
 						}
 						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::HELD)) {
 							ng::DPrintf("key A held.\n");
+						}
+						// Mouse
+						if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::PRESSED)) {
+							ng::DPrintf("button Left pressed.\n");
+						}
+						if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::RELEASED)) {
+							ng::DPrintf("button Left released.\n");
+						}
+						if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::HELD)) {
+							ng::DPrintf("button Left held.\n");
 						}
 					}
 				}
