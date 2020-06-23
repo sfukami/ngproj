@@ -8,5 +8,6 @@
 #ifndef __NG_GRAPHIC_PRE_INCLUDE_H__
 #define __NG_GRAPHIC_PRE_INCLUDE_H__
 
+#include "ngLibCore/preincl/ngPreInclude.h"
 
 #endif	// __NG_GRAPHIC_PRE_INCLUDE_H__

@@ -14,6 +14,12 @@
     <Filter Include="ソース ファイル\preincl">
       <UniqueIdentifier>{1bcfdd6b-f906-4d3f-b7d5-b6feeb8b9194}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic">
+      <UniqueIdentifier>{ee48bfcc-a2e4-4d01-ae50-1ad9c2f20f9b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12">
+      <UniqueIdentifier>{d0a40a4f-99a4-4daf-b0e7-452751b90570}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -28,10 +34,25 @@
     <ClInclude Include="preincl\ngPreInclude.h">
       <Filter>ソース ファイル\preincl</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\ngGraphic.h">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\ngGraphicManager.h">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\ngDX12Graphic.h">
+      <Filter>ソース ファイル\graphic\dx12</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
       <Filter>ソース ファイル\precmpl</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\ngGraphicManager.cpp">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp">
+      <Filter>ソース ファイル\graphic\dx12</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -171,11 +171,16 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="common\ngCommon.h" />
+    <ClInclude Include="graphic\dx12\ngDX12Graphic.h" />
+    <ClInclude Include="graphic\ngGraphic.h" />
+    <ClInclude Include="graphic\ngGraphicManager.h" />
     <ClInclude Include="ngLibGraphic.h" />
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp" />
+    <ClCompile Include="graphic\ngGraphicManager.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">ngLibGraphic/precmpl/ngPreCompiled.h</PrecompiledHeaderFile>
