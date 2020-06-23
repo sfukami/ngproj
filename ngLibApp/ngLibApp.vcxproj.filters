@@ -17,6 +17,12 @@
     <Filter Include="ソース ファイル\preincl">
       <UniqueIdentifier>{de6c5c3b-48b9-4aca-8c24-dfa5c3d7aa67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\input">
+      <UniqueIdentifier>{1b30e163-b85b-47ad-a504-645ee3386c5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\input\keyboard">
+      <UniqueIdentifier>{6dc322f0-a219-40ba-a1b4-e3746b199903}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -24,6 +30,15 @@
     </ClCompile>
     <ClCompile Include="window\ngWindow.cpp">
       <Filter>ソース ファイル\window</Filter>
+    </ClCompile>
+    <ClCompile Include="input\ngInputManager.cpp">
+      <Filter>ソース ファイル\input</Filter>
+    </ClCompile>
+    <ClCompile Include="input\ngDirectInput.cpp">
+      <Filter>ソース ファイル\input</Filter>
+    </ClCompile>
+    <ClCompile Include="input\keyboard\ngDIKeyboard.cpp">
+      <Filter>ソース ファイル\input\keyboard</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +59,24 @@
     </ClInclude>
     <ClInclude Include="preincl\ngDefine.h">
       <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="input\ngInput.h">
+      <Filter>ソース ファイル\input</Filter>
+    </ClInclude>
+    <ClInclude Include="input\ngInputManager.h">
+      <Filter>ソース ファイル\input</Filter>
+    </ClInclude>
+    <ClInclude Include="input\ngDirectInput.h">
+      <Filter>ソース ファイル\input</Filter>
+    </ClInclude>
+    <ClInclude Include="input\keyboard\ngDIKeyboard.h">
+      <Filter>ソース ファイル\input\keyboard</Filter>
+    </ClInclude>
+    <ClInclude Include="input\ngInputState.h">
+      <Filter>ソース ファイル\input</Filter>
+    </ClInclude>
+    <ClInclude Include="input\ngInputCode.h">
+      <Filter>ソース ファイル\input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="input\keyboard\ngDIKeyboard.cpp" />
+    <ClCompile Include="input\ngDirectInput.cpp" />
+    <ClCompile Include="input\ngInputManager.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
@@ -29,6 +32,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\ngCommon.h" />
+    <ClInclude Include="input\keyboard\ngDIKeyboard.h" />
+    <ClInclude Include="input\ngDirectInput.h" />
+    <ClInclude Include="input\ngInput.h" />
+    <ClInclude Include="input\ngInputCode.h" />
+    <ClInclude Include="input\ngInputManager.h" />
+    <ClInclude Include="input\ngInputState.h" />
     <ClInclude Include="ngLibApp.h" />
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngDefine.h" />
@@ -132,6 +141,9 @@ set CONFIGURATION=$(Configuration)
 set TARGET_FILE_NAME=$(TargetFileName)
 call "$(SolutionDir)copy_nglib.bat"</Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -156,6 +168,9 @@ set CONFIGURATION=$(Configuration)
 set TARGET_FILE_NAME=$(TargetFileName)
 call "$(SolutionDir)copy_nglib.bat"</Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -184,6 +199,9 @@ set CONFIGURATION=$(Configuration)
 set TARGET_FILE_NAME=$(TargetFileName)
 call "$(SolutionDir)copy_nglib.bat"</Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
@@ -212,6 +230,9 @@ set CONFIGURATION=$(Configuration)
 set TARGET_FILE_NAME=$(TargetFileName)
 call "$(SolutionDir)copy_nglib.bat"</Command>
     </PostBuildEvent>
+    <Lib>
+      <AdditionalDependencies>dxguid.lib;dinput8.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
