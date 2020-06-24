@@ -1,0 +1,5 @@
+﻿
+■d3dx12.hヘルパー
+d3dx12.h を以下のパスに配置
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um
+（↑最新のWindowsSDKに置き換える）
