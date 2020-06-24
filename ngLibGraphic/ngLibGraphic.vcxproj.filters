@@ -35,6 +35,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\command\allocator">
       <UniqueIdentifier>{549f1c55-0ebe-4710-a8d6-94c516f3b7fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\fence">
+      <UniqueIdentifier>{e246b2f5-0e49-4d3c-b8d8-0420fb2332a6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -90,6 +93,9 @@
     </ClInclude>
     <ClInclude Include="graphic\dx12\command\allocator\ngDX12CommandAllocatorManager.h">
       <Filter>ソース ファイル\graphic\dx12\command\allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\fence\ngDX12Fence.h">
+      <Filter>ソース ファイル\graphic\dx12\fence</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
