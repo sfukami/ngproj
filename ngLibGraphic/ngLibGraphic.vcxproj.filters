@@ -64,6 +64,12 @@
     <ClInclude Include="graphic\dx12\common\ngDX12Std.h">
       <Filter>ソース ファイル\graphic\dx12\common</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\common\ngDX12Define.h">
+      <Filter>ソース ファイル\graphic\dx12\common</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\common\ngDX12Macro.h">
+      <Filter>ソース ファイル\graphic\dx12\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">

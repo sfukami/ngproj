@@ -186,6 +186,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="common\ngCommon.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Common.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Const.h" />
+    <ClInclude Include="graphic\dx12\common\ngDX12Define.h" />
+    <ClInclude Include="graphic\dx12\common\ngDX12Macro.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Std.h" />
     <ClInclude Include="graphic\dx12\device\ngDX12Device.h" />
     <ClInclude Include="graphic\dx12\device\ngDX12DeviceDriverType.h" />

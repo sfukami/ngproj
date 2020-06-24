@@ -6,6 +6,7 @@
 */
 
 #include "ngLibCore/common/ngCommon.h"
+#include "ngLibGraphic/graphic/dx12/common/ngDX12Common.h"
 #include "ngDX12Graphic.h"
 
 namespace ng
@@ -30,6 +31,9 @@ namespace ng
 	NG_ERRCODE CDX12Graphic::Create(const CreateParam& param)
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		// DX12デバッグレイヤー有効化
+		NG_DX12_ENABLE_DEBUG_LAYER();
 
 		// DX12デバイス生成
 		{

@@ -9,7 +9,9 @@
 #define __NG_GRAPHIC_DX12_COMMON_H__
 
 #include "ngLibCore/dx/ngDXCommon.h"
+#include "ngDX12Define.h"
 #include "ngDX12Const.h"
 #include "ngDX12Std.h"
+#include "ngDX12Macro.h"
 
 #endif	// __NG_GRAPHIC_DX12_COMMON_H__
