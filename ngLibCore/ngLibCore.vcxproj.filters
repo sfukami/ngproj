@@ -370,6 +370,9 @@
     <ClInclude Include="system\ngSysUtil.h">
       <Filter>ソース ファイル\system</Filter>
     </ClInclude>
+    <ClInclude Include="dx\ngDXDebug.h">
+      <Filter>ソース ファイル\dx</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -482,6 +485,9 @@
     </ClCompile>
     <ClCompile Include="geometry\point\ngPoint.cpp">
       <Filter>ソース ファイル\geometry\point</Filter>
+    </ClCompile>
+    <ClCompile Include="dx\ngDXDebug.cpp">
+      <Filter>ソース ファイル\dx</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
