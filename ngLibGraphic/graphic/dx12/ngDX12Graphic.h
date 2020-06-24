@@ -9,6 +9,7 @@
 #define __NG_GRAPHIC_DX12_GRAPHIC_H__
 
 #include "../ngGraphic.h"
+#include "device/ngDX12Device.h"
 
 namespace ng
 {
@@ -18,6 +19,7 @@ namespace ng
 	class NG_DECL CDX12Graphic : public IGraphic
 	{
 	public:
+		//! 生成パラメータ
 		struct CreateParam
 		{
 			CreateParam();
@@ -26,7 +28,7 @@ namespace ng
 			u32 clientWidth;	//!< クライアント領域幅
 			u32 clientHeight;	//!< クライアント領域高さ
 			bool isFullscreen;	//!< フルスクリーンか
-		//	DX12DeviceCreateParam devCP;	//!< DX12デバイス生成パラメータ
+			CDX12Device::CreateParam deviceParam;	//!< DX12デバイス生成パラメータ
 		};
 
 	public:
@@ -49,6 +51,15 @@ namespace ng
 		* @brief					破棄
 		*/
 		void Destroy();
+
+		/*!
+		* @brief					DX12デバイス取得
+		*/
+		CDX12Device& GetDevice();
+		const CDX12Device& GetDevice() const;
+
+	private:
+		CDX12Device			m_device;	//!< DX12デバイス
 	};
 
 }	// namespace ng

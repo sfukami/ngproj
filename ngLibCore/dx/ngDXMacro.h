@@ -22,9 +22,11 @@
 /*!
 * @brief					ログ出力
 */
+/*
 #define NG_DXLOG(_msg, ...) \
 	{ \
 		NG_DPRINTF("[NG_DXLOG] "); NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
 	}
+*/
 
 #endif	// __NG_DX_MACRO_H__

@@ -20,6 +20,12 @@
     <Filter Include="ソース ファイル\graphic\dx12">
       <UniqueIdentifier>{d0a40a4f-99a4-4daf-b0e7-452751b90570}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\device">
+      <UniqueIdentifier>{f2d26b69-4770-4d62-8b82-e15f9dabe7a6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\common">
+      <UniqueIdentifier>{2c6b162c-ac02-43c4-91ed-f9ce1ba7bccf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -43,6 +49,21 @@
     <ClInclude Include="graphic\dx12\ngDX12Graphic.h">
       <Filter>ソース ファイル\graphic\dx12</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\device\ngDX12Device.h">
+      <Filter>ソース ファイル\graphic\dx12\device</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\device\ngDX12DeviceDriverType.h">
+      <Filter>ソース ファイル\graphic\dx12\device</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\common\ngDX12Common.h">
+      <Filter>ソース ファイル\graphic\dx12\common</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\common\ngDX12Const.h">
+      <Filter>ソース ファイル\graphic\dx12\common</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\common\ngDX12Std.h">
+      <Filter>ソース ファイル\graphic\dx12\common</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -53,6 +74,12 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp">
       <Filter>ソース ファイル\graphic\dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\device\ngDX12Device.cpp">
+      <Filter>ソース ファイル\graphic\dx12\device</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\common\ngDX12Std.cpp">
+      <Filter>ソース ファイル\graphic\dx12\common</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

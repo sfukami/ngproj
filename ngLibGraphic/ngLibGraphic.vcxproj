@@ -184,6 +184,11 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="common\ngCommon.h" />
+    <ClInclude Include="graphic\dx12\common\ngDX12Common.h" />
+    <ClInclude Include="graphic\dx12\common\ngDX12Const.h" />
+    <ClInclude Include="graphic\dx12\common\ngDX12Std.h" />
+    <ClInclude Include="graphic\dx12\device\ngDX12Device.h" />
+    <ClInclude Include="graphic\dx12\device\ngDX12DeviceDriverType.h" />
     <ClInclude Include="graphic\dx12\ngDX12Graphic.h" />
     <ClInclude Include="graphic\ngGraphic.h" />
     <ClInclude Include="graphic\ngGraphicManager.h" />
@@ -192,6 +197,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="preincl\ngPreInclude.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="graphic\dx12\common\ngDX12Std.cpp" />
+    <ClCompile Include="graphic\dx12\device\ngDX12Device.cpp" />
     <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp" />
     <ClCompile Include="graphic\ngGraphicManager.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
