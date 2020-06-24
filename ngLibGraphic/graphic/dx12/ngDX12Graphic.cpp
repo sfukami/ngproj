@@ -99,6 +99,23 @@ namespace ng
 				return ret;
 			}
 		}
+		// バックバッファ用のレンダーターゲット生成
+		{
+			if(NG_FAILED(ret = _createRTBackBuffer(
+				m_device,
+				m_swapChain,
+				0, eDX12RenderTargetId::ID_BACK_BUFFER_01
+				))) {
+				return ret;
+			}
+			if(NG_FAILED(ret = _createRTBackBuffer(
+				m_device,
+				m_swapChain,
+				1, eDX12RenderTargetId::ID_BACK_BUFFER_02
+				))) {
+				return ret;
+			}
+		}
 
 		return ret;
 	}
@@ -113,6 +130,7 @@ namespace ng
 		m_cmdListMngr.Finalize();
 		m_cmdAllocMngr.Finalize();
 		m_cmdQueueMngr.Finalize();
+		m_rtMngr.Finalize();
 		m_swapChain.Destroy();
 		m_device.Destroy();
 	}
@@ -162,6 +180,15 @@ namespace ng
 		return m_cmdListMngr;
 	}
 
+	CDX12RenderTargetManager& CDX12Graphic::GetRenderTargetMngr()
+	{
+		return m_rtMngr;
+	}
+	const CDX12RenderTargetManager& CDX12Graphic::GetRenderTargetMngr() const
+	{
+		return m_rtMngr;
+	}
+
 	NG_ERRCODE CDX12Graphic::_createCommandAllocator(CDX12Device& device, D3D12_COMMAND_LIST_TYPE type, u32 index)
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
@@ -194,6 +221,23 @@ namespace ng
 			cmdListIdx
 		))) {
 			NG_ERRLOG_C("DX12Graphic", ret, "DX12コマンドリストの生成に失敗しました. index:%u", cmdListIdx);
+			return ret;
+		}
+
+		return ret;
+	}
+
+	NG_ERRCODE CDX12Graphic::_createRTBackBuffer(CDX12Device& device, CDX12SwapChain& swapChain, u32 bufferIndex, eDX12RenderTargetId id)
+	{
+		NG_ERRCODE ret = eNG_E_FAIL;
+		
+		if(NG_FAILED(ret = m_rtMngr.CreateRenderTargetView(
+			device,
+			swapChain,
+			bufferIndex,
+			id
+			))) {
+			NG_ERRLOG_C("DX12Graphic", ret, "DX12レンダーターゲット（バックバッファ）の生成に失敗. bufferIndex:%u, id:%u", bufferIndex, id);
 			return ret;
 		}
 

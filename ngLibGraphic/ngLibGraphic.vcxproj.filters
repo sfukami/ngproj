@@ -139,6 +139,12 @@
     <ClInclude Include="graphic\dx12\barrier\ngDX12ResourceBarrierTransition.h">
       <Filter>ソース ファイル\graphic\dx12\barrier</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetId.h">
+      <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetManager.h">
+      <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -194,6 +200,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\barrier\ngDX12ResourceBarrierTransition.cpp">
       <Filter>ソース ファイル\graphic\dx12\barrier</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTargetManager.cpp">
+      <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

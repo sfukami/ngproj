@@ -14,6 +14,7 @@
 #include "command/queue/ngDX12CommandQueueManager.h"
 #include "command/allocator/ngDX12CommandAllocatorManager.h"
 #include "command/list/ngDX12CommandListManager.h"
+#include "target/render/ngDX12RenderTargetManager.h"
 
 namespace ng
 {
@@ -86,6 +87,12 @@ namespace ng
 		CDX12CommandListManager& GetCommandListMngr();
 		const CDX12CommandListManager& GetCommandListMngr() const;
 
+		/*!
+		* @brief					DX12レンダーターゲットマネージャ取得
+		*/
+		CDX12RenderTargetManager& GetRenderTargetMngr();
+		const CDX12RenderTargetManager& GetRenderTargetMngr() const;
+
 	private:
 		/*!
 		* @brief					DX12コマンドアロケータ生成
@@ -103,12 +110,22 @@ namespace ng
 		*/
 		NG_ERRCODE _createCommandList(CDX12Device& device, u32 cmdAllocIdx, u32 cmdListIdx);
 
+		/*!
+		* @brief					バックバッファ用レンダーターゲット生成
+		* @param device				DX12デバイス
+		* @param swapchain			DX12スワップチェイン
+		* @param bufferIndex		バックバッファのインデックス
+		* @param id					DX12レンダーターゲットID
+		*/
+		NG_ERRCODE _createRTBackBuffer(CDX12Device&, CDX12SwapChain& swapChain, u32 bufferIndex, eDX12RenderTargetId id);
+		
 	private:
 		CDX12Device			m_device;	//!< DX12デバイス
 		CDX12SwapChain					m_swapChain;	//!< DX12スワップチェイン
 		CDX12CommandQueueManager		m_cmdQueueMngr;	//!< DX12コマンドキューマネージャ
 		CDX12CommandListManager			m_cmdListMngr;	//!< DX12コマンドリストマネージャ
 		CDX12CommandAllocatorManager	m_cmdAllocMngr;	//!< DX12コマンドアロケータマネージャ
+		CDX12RenderTargetManager		m_rtMngr;		//!< DX12レンダーターゲットマネージャ
 	};
 
 }	// namespace ng
