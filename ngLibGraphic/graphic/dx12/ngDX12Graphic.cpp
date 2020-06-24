@@ -43,7 +43,14 @@ namespace ng
 				return ret;
 			}
 		}
-
+		// DX12コマンドキューマネージャ初期化
+		{
+			NG_DX12LOG("DX12Graphic", "DX12コマンドキューマネージャ初期化を開始...");
+			if(NG_FAILED(ret = m_cmdQueueMngr.Initialize(m_device))) {
+				NG_ERRLOG_C("DX12Graphic", ret, "DX12コマンドキューマネージャの初期化に失敗しました.");
+				return ret;
+			}
+		}
 		// DX12コマンドアロケータ生成
 		{
 			NG_DX12LOG("DX12Graphic", "DX12コマンドアロケータの生成を開始...");
@@ -79,6 +86,7 @@ namespace ng
 	{
 		m_cmdListMngr.Finalize();
 		m_cmdAllocMngr.Finalize();
+		m_cmdQueueMngr.Finalize();
 		m_device.Destroy();
 	}
 
@@ -91,6 +99,15 @@ namespace ng
 		return m_device;
 	}
 
+	CDX12CommandQueueManager& CDX12Graphic::GetCommandQueueMngr()
+	{
+		return m_cmdQueueMngr;
+	}
+	const CDX12CommandQueueManager& CDX12Graphic::GetCommandQueueMngr() const
+	{
+		return m_cmdQueueMngr;
+	}
+	
 	CDX12CommandAllocatorManager& CDX12Graphic::GetCommandAllocatorMngr()
 	{
 		return m_cmdAllocMngr;

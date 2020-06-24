@@ -188,6 +188,9 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\command\allocator\ngDX12CommandAllocatorManager.h" />
     <ClInclude Include="graphic\dx12\command\list\ngDX12CommandList.h" />
     <ClInclude Include="graphic\dx12\command\list\ngDX12CommandListManager.h" />
+    <ClInclude Include="graphic\dx12\command\queue\ngDX12CommandQueue.h" />
+    <ClInclude Include="graphic\dx12\command\queue\ngDX12CommandQueueManager.h" />
+    <ClInclude Include="graphic\dx12\command\queue\ngDX12CommandQueueType.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Common.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Const.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Define.h" />
@@ -208,6 +211,9 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\command\allocator\ngDX12CommandAllocatorManager.cpp" />
     <ClCompile Include="graphic\dx12\command\list\ngDX12CommandList.cpp" />
     <ClCompile Include="graphic\dx12\command\list\ngDX12CommandListManager.cpp" />
+    <ClCompile Include="graphic\dx12\command\queue\ngDX12CommandQueue.cpp" />
+    <ClCompile Include="graphic\dx12\command\queue\ngDX12CommandQueueManager.cpp" />
+    <ClCompile Include="graphic\dx12\command\queue\ngDX12CommandQueueType.cpp" />
     <ClCompile Include="graphic\dx12\common\ngDX12Std.cpp" />
     <ClCompile Include="graphic\dx12\device\ngDX12Device.cpp" />
     <ClCompile Include="graphic\dx12\fence\ngDX12Fence.cpp" />
