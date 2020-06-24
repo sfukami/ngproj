@@ -56,6 +56,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\barrier">
       <UniqueIdentifier>{fe20bf71-d415-4660-8ee2-0feedab22a6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\resource">
+      <UniqueIdentifier>{cb4dcaf9-38fd-4b06-9853-2706a66b73f2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -145,6 +148,9 @@
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetManager.h">
       <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\resource\ngDX12Resource.h">
+      <Filter>ソース ファイル\graphic\dx12\resource</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -203,6 +209,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTargetManager.cpp">
       <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\resource\ngDX12Resource.cpp">
+      <Filter>ソース ファイル\graphic\dx12\resource</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
