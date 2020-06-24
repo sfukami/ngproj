@@ -205,6 +205,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\ngDX12Graphic.h" />
     <ClInclude Include="graphic\dx12\resource\ngDX12Resource.h" />
     <ClInclude Include="graphic\dx12\swapchain\ngDX12SwapChain.h" />
+    <ClInclude Include="graphic\dx12\target\depth\ngDX12DepthStencil.h" />
+    <ClInclude Include="graphic\dx12\target\depth\ngDX12DepthStencilId.h" />
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTarget.h" />
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetId.h" />
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetManager.h" />
@@ -231,6 +233,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp" />
     <ClCompile Include="graphic\dx12\resource\ngDX12Resource.cpp" />
     <ClCompile Include="graphic\dx12\swapchain\ngDX12SwapChain.cpp" />
+    <ClCompile Include="graphic\dx12\target\depth\ngDX12DepthStencil.cpp" />
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTarget.cpp" />
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTargetManager.cpp" />
     <ClCompile Include="graphic\ngGraphicManager.cpp" />
