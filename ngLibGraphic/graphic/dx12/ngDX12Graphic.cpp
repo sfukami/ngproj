@@ -43,6 +43,14 @@ namespace ng
 				return ret;
 			}
 		}
+		// DX12コマンドキューマネージャ初期化
+		{
+			NG_DX12LOG("DX12Graphic", "DX12コマンドキューマネージャ初期化を開始...");
+			if(NG_FAILED(ret = m_cmdQueueMngr.Initialize(m_device))) {
+				NG_ERRLOG_C("DX12Graphic", ret, "DX12コマンドキューマネージャの初期化に失敗しました.");
+				return ret;
+			}
+		}
 		// DX12スワップチェイン生成
 		{
 			bool isFullscreen = param.isFullscreen;
@@ -66,14 +74,6 @@ namespace ng
 				isFullscreen
 				))) {
 				NG_ERRLOG_C("DX12Graphic", ret, "DX12スワップチェインの生成に失敗しました.");
-				return ret;
-			}
-		}
-		// DX12コマンドキューマネージャ初期化
-		{
-			NG_DX12LOG("DX12Graphic", "DX12コマンドキューマネージャ初期化を開始...");
-			if(NG_FAILED(ret = m_cmdQueueMngr.Initialize(m_device))) {
-				NG_ERRLOG_C("DX12Graphic", ret, "DX12コマンドキューマネージャの初期化に失敗しました.");
 				return ret;
 			}
 		}
