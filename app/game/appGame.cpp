@@ -8,6 +8,7 @@
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "ngLibApp/input/ngInputManager.h"
+#include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appGame.h"
 
 namespace app
@@ -30,12 +31,18 @@ namespace app
 		// メモリリークチェック
 		NG_CHECK_MEMLEAK();
 
+		// シングルトンインスタンス生成
+		{
+			ng::CCoreSystem::CreateInstance();
+			ng::CInputManager::CreateInstance();
+			ng::CGraphicManager::CreateInstance();
+		}
+
 		// NGコアシステム セットアップ
 		{
 			ng::CCoreSystem::SetupParam param;
 			param.sysMemInitParam.SetAllocSize(ng::eSystemMemoryType::GRAPHIC, NG_MB(1));
 
-			ng::CCoreSystem::CreateInstance();
 			if(NG_FAILED(ng::CCoreSystem::GetInstance().Setup(param))) {
 				NG_ERRLOG("Game", "NGコアシステムのセットアップに失敗しました.");
 				return false;
@@ -79,9 +86,26 @@ namespace app
 				NG_ERRLOG("Game", "DirectInputマウスのセットアップに失敗しました.");
 				return false;
 			}
-
-			ng::CInputManager::CreateInstance();
+			
 			ng::CInputManager::GetInstance().AssignInput(&m_input);
+		}
+
+		// グラフィック セットアップ
+		{
+			ng::CDX12Graphic::CreateParam param;
+			param.hWnd = m_window.GetHandle();
+			param.clientWidth = CLIENT_WIDTH;
+			param.clientHeight = CLIENT_HEIGHT;
+			param.isFullscreen = false;
+			param.deviceParam.featureLevel = D3D_FEATURE_LEVEL_11_0;
+			param.deviceParam.isUseWarpDevice = true;
+			
+			if(NG_FAILED(m_graphic.Create(param))) {
+				NG_ERRLOG("Game", "DirectX12グラフィックの生成に失敗しました.");
+				return false;
+			}
+
+			ng::CGraphicManager::GetInstance().AssignGraphic(&m_graphic);
 		}
 
 		return true;
@@ -132,7 +156,7 @@ namespace app
 				}
 				// 描画処理
 				{
-					
+					ng::CGraphicManager::GetInstance().Render();
 				}
 			}
 		}
@@ -143,6 +167,11 @@ namespace app
 	void CGame::Finalize()
 	{
 		m_window.Destroy();
+
+		// DX12グラフィック 破棄
+		m_graphic.Destroy();
+		ng::CGraphicManager::GetInstance().UnassignGraphic();
+		ng::CGraphicManager::DestroyInstance();
 
 		// Directインプット 破棄
 		m_input.Destroy();

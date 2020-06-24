@@ -11,6 +11,7 @@
 #include <Windows.h>
 #include "ngLibApp/window/ngWindow.h"
 #include "ngLibApp/input/ngDirectInput.h"
+#include "ngLibGraphic/graphic/dx12/ngDX12Graphic.h"
 
 namespace app
 {
@@ -41,6 +42,7 @@ namespace app
 	private:
 		ng::CWindow m_window;	//!< ウィンドウ
 		ng::CDirectInput m_input;	//!< Directインプット
+		ng::CDX12Graphic m_graphic;	//!< DX12グラフィック
 	};
 
 }	// namespace app
