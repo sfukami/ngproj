@@ -14,12 +14,12 @@
 #ifdef NG_DEBUG
 	#define NG_DXERRLOG(_category, _hr, _func, _msg, ...) \
 		{ \
-			NG_DPRINTF("(!)DXERR [%s] func:%s() returned [%s](%s)\n", _category, \
+			NG_DPRINTF("(!)DXERRLOG [%s] func:%s() returned [%s](%s)\n", _category, \
 				NG_TO_STRING(_func), DXErrorCodeToString(_hr), DXErrorCodeToDescription(_hr)); \
 			NG_DPRINTF("\tmsg:"); NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
 		}
 #else
-	#define NG_DXERR(_hr, _func, _msg, ...)
+	#define NG_DXERRLOG(_hr, _func, _msg, ...)
 #endif
 
 namespace ng
