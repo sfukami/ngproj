@@ -11,7 +11,7 @@
 namespace ng
 {
 	/*!
-	* ウィンドウ
+	* @brief					アプリケーションウィンドウ
 	*/
 	class NG_DECL CWindow
 	{
@@ -20,10 +20,7 @@ namespace ng
 		static const int WINDOW_NAME_LENGTH = 255;	// ウィンドウ名 文字列長
 
 	public:
-		/*! コンストラクタ */
 		CWindow();
-
-		/*! デストラクタ */
 		~CWindow();
 
 		/*!
