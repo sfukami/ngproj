@@ -20,12 +20,18 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game\appGame.cpp" />
+    <ClCompile Include="graphic\appGraphic.cpp" />
+    <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp" />
+    <ClCompile Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.cpp" />
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h" />
     <ClInclude Include="game\appGame.h" />
+    <ClInclude Include="graphic\appGraphic.h" />
+    <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
+    <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="preincl\appPreInclude.h" />
   </ItemGroup>

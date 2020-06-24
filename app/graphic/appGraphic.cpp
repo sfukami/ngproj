@@ -46,11 +46,19 @@ namespace app
 		// グラフィック管理へ割り当て
 		ng::CGraphicManager::GetInstance().AssignGraphic(&m_dx12Graphic);
 
+		// グラフィックパイプライン初期化
+		if(!m_pipeline.Initialize()) {
+			return false;
+		}
+
 		return true;
 	}
 
 	void CGraphic::Finalize()
 	{
+		// グラフィックパイプライン終了処理
+		m_pipeline.Finalize();
+
 		// DX12グラフィック 破棄
 		m_dx12Graphic.Destroy();
 
@@ -63,6 +71,8 @@ namespace app
 
 	void CGraphic::Render()
 	{
+		m_pipeline.Render();
+		
 		ng::CGraphicManager::GetInstance().Render();
 	}
 

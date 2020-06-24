@@ -17,6 +17,12 @@
     <Filter Include="ソース ファイル\graphic">
       <UniqueIdentifier>{a32b05a0-285e-4538-aa02-5c439e9a0811}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\pipeline">
+      <UniqueIdentifier>{21a1d003-9528-4110-8a79-eb41f916e57f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\pipeline\test">
+      <UniqueIdentifier>{1c5a58e4-75e6-4bed-a127-9006ee872adf}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\input">
       <UniqueIdentifier>{1730f104-6788-4350-8e1d-eb1167386c31}</UniqueIdentifier>
     </Filter>
@@ -30,6 +36,12 @@
     </ClCompile>
     <ClCompile Include="graphic\appGraphic.cpp">
       <Filter>ソース ファイル\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp">
+      <Filter>ソース ファイル\graphic\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.cpp">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClCompile>
     <ClCompile Include="input\appInput.cpp">
       <Filter>ソース ファイル\input</Filter>
@@ -47,6 +59,12 @@
     </ClInclude>
     <ClInclude Include="graphic\appGraphic.h">
       <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\pipeline\appGraphicPipeline.h">
+      <Filter>ソース ファイル\graphic\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClInclude>
     <ClInclude Include="input\appInput.h">
       <Filter>ソース ファイル\input</Filter>

@@ -10,6 +10,8 @@
 
 #include <Windows.h>
 #include "ngLibGraphic/graphic/dx12/ngDX12Graphic.h"
+//test
+#include "pipeline/test/appGraphicPipelineClearBuffer.h"
 
 namespace app
 {
@@ -49,6 +51,8 @@ namespace app
 
 	private:
 		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック
+
+		CGraphicPipelineClearBuffer m_pipeline;	//!< グラフィックパイプラインテスト
 	};
 
 }	// namespace app
