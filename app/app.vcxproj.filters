@@ -14,6 +14,9 @@
     <Filter Include="ソース ファイル\preincl">
       <UniqueIdentifier>{72f60e4c-d4db-4f8b-9660-1f545b0a4417}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic">
+      <UniqueIdentifier>{a32b05a0-285e-4538-aa02-5c439e9a0811}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -21,6 +24,9 @@
     </ClCompile>
     <ClCompile Include="game\appGame.cpp">
       <Filter>ソース ファイル\game</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\appGraphic.cpp">
+      <Filter>ソース ファイル\graphic</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -32,6 +38,9 @@
     </ClInclude>
     <ClInclude Include="preincl\appPreInclude.h">
       <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\appGraphic.h">
+      <Filter>ソース ファイル\graphic</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

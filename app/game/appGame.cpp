@@ -8,7 +8,6 @@
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "ngLibApp/input/ngInputManager.h"
-#include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appGame.h"
 
 namespace app
@@ -25,8 +24,8 @@ namespace app
 
 	bool CGame::Initialize(HINSTANCE hInst)
 	{
-		const int CLIENT_WIDTH = 640;
-		const int CLIENT_HEIGHT = 480;
+		const unsigned int CLIENT_WIDTH = 640;
+		const unsigned int CLIENT_HEIGHT = 480;
 
 		// メモリリークチェック
 		NG_CHECK_MEMLEAK();
@@ -35,7 +34,6 @@ namespace app
 		{
 			ng::CCoreSystem::CreateInstance();
 			ng::CInputManager::CreateInstance();
-			ng::CGraphicManager::CreateInstance();
 		}
 
 		// NGコアシステム セットアップ
@@ -90,22 +88,14 @@ namespace app
 			ng::CInputManager::GetInstance().AssignInput(&m_input);
 		}
 
-		// グラフィック セットアップ
-		{
-			ng::CDX12Graphic::CreateParam param;
-			param.hWnd = m_window.GetHandle();
-			param.clientWidth = CLIENT_WIDTH;
-			param.clientHeight = CLIENT_HEIGHT;
-			param.isFullscreen = false;
-			param.deviceParam.featureLevel = D3D_FEATURE_LEVEL_11_0;
-			param.deviceParam.isUseWarpDevice = true;
-			
-			if(NG_FAILED(m_graphic.Create(param))) {
-				NG_ERRLOG("Game", "DirectX12グラフィックの生成に失敗しました.");
-				return false;
-			}
-
-			ng::CGraphicManager::GetInstance().AssignGraphic(&m_graphic);
+		// グラフィック初期化
+		if(!m_graphic.Initialize(
+			m_window.GetHandle(),
+			CLIENT_WIDTH,
+			CLIENT_HEIGHT,
+			false
+			)) {
+			return false;
 		}
 
 		return true;
@@ -125,39 +115,9 @@ namespace app
 				::DispatchMessage(&msg);
 			} else {
 				// 更新処理
-				{
-					ng::CInputManager::GetInstance().Update();
-
-					// test
-					{
-						auto& inputMngr = ng::CInputManager::GetInstance();
-
-						// Keyboard
-						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::PRESSED)) {
-							ng::DPrintf("key A pressed.\n");
-						}
-						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::RELEASED)) {
-							ng::DPrintf("key A released.\n");
-						}
-						if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::HELD)) {
-							ng::DPrintf("key A held.\n");
-						}
-						// Mouse
-						if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::PRESSED)) {
-							ng::DPrintf("button Left pressed.\n");
-						}
-						if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::RELEASED)) {
-							ng::DPrintf("button Left released.\n");
-						}
-						if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::HELD)) {
-							ng::DPrintf("button Left held.\n");
-						}
-					}
-				}
+				_update();
 				// 描画処理
-				{
-					ng::CGraphicManager::GetInstance().Render();
-				}
+				_render();
 			}
 		}
 
@@ -166,12 +126,8 @@ namespace app
 	
 	void CGame::Finalize()
 	{
+		m_graphic.Finalize();
 		m_window.Destroy();
-
-		// DX12グラフィック 破棄
-		m_graphic.Destroy();
-		ng::CGraphicManager::GetInstance().UnassignGraphic();
-		ng::CGraphicManager::DestroyInstance();
 
 		// Directインプット 破棄
 		m_input.Destroy();
@@ -181,6 +137,42 @@ namespace app
 		// NGコアシステム シャットダウン
 		ng::CCoreSystem::GetInstance().Shutdown();
 		ng::CCoreSystem::DestroyInstance();
+	}
+
+	void CGame::_update()
+	{
+		ng::CInputManager::GetInstance().Update();
+
+		// test
+		{
+			auto& inputMngr = ng::CInputManager::GetInstance();
+
+			// Keyboard
+			if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::PRESSED)) {
+				ng::DPrintf("key A pressed.\n");
+			}
+			if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::RELEASED)) {
+				ng::DPrintf("key A released.\n");
+			}
+			if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::HELD)) {
+				ng::DPrintf("key A held.\n");
+			}
+			// Mouse
+			if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::PRESSED)) {
+				ng::DPrintf("button Left pressed.\n");
+			}
+			if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::RELEASED)) {
+				ng::DPrintf("button Left released.\n");
+			}
+			if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::HELD)) {
+				ng::DPrintf("button Left held.\n");
+			}
+		}
+	}
+
+	void CGame::_render()
+	{
+		m_graphic.Render();
 	}
 
 	/*! ウィンドウプロシージャ */
