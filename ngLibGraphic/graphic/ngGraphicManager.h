@@ -49,6 +49,12 @@ namespace ng
 		*/
 		bool IsAssigned() const;
 
+		/*!
+		* @brief					割り当て済みのグラフィックを取得
+		*/
+		IGraphic* GetGraphic();
+		const IGraphic* GetGraphic() const;
+
 	private:
 		static CGraphicManager m_instance;	//!< グラフィック管理 インスタンス
 

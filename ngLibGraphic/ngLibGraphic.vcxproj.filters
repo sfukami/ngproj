@@ -175,6 +175,9 @@
     <ClInclude Include="graphic\dx12\scissor\ngDX12Scissor.h">
       <Filter>ソース ファイル\graphic\dx12\scissor</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\ngDX12Util.h">
+      <Filter>ソース ファイル\graphic\dx12</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -248,6 +251,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\scissor\ngDX12Scissor.cpp">
       <Filter>ソース ファイル\graphic\dx12\scissor</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\ngDX12Util.cpp">
+      <Filter>ソース ファイル\graphic\dx12</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -45,6 +45,15 @@ namespace ng
 		return (m_pGraphic != nullptr);
 	}
 
+	IGraphic* CGraphicManager::GetGraphic()
+	{
+		return m_pGraphic;
+	}
+	const IGraphic* CGraphicManager::GetGraphic() const
+	{
+		return m_pGraphic;
+	}
+
 	CGraphicManager* CGraphicManager::_createInstance()
 	{
 		return &m_instance;
