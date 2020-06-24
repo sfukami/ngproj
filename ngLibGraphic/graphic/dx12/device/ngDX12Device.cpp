@@ -41,7 +41,7 @@ namespace ng
 	void CDX12Device::CreateDesc::Reset()
 	{
 		driverType = eDX12DriverType::UNKNOWN;
-		featureLevel = D3D_FEATURE_LEVEL_NONE;
+		featureLevel = NG_D3D_FEATURE_LEVEL_NONE;
 
 		NG_ZERO_MEMORY(&adapterDesc, sizeof(adapterDesc));
 	}
@@ -97,7 +97,7 @@ namespace ng
 			if(NG_FAILED(ret)) {
 				for(int i = 0; pIFactory->EnumAdapters1(i, &pIAdapter) != DXGI_ERROR_NOT_FOUND; i++)
 				{
-					ret = _createDeviceInOrder(pIAdapter, D3D_FEATURE_LEVEL_NONE);
+					ret = _createDeviceInOrder(pIAdapter, NG_D3D_FEATURE_LEVEL_NONE);
 					NG_SAFE_RELEASE(pIAdapter);
 					if(NG_SUCCEEDED(ret)) {
 						break;
@@ -167,7 +167,7 @@ namespace ng
 	#endif
 
 		NG_ERRCODE ret = eNG_E_FAIL;
-		if(featureLevel != D3D_FEATURE_LEVEL_NONE) {
+		if(featureLevel != NG_D3D_FEATURE_LEVEL_NONE) {
 			ret = D3D12CreateDevice(pIAdapter, featureLevel, IID_PPV_ARGS(&m_pIDevice));
 		}
 
@@ -191,10 +191,10 @@ namespace ng
 
 		// 指定の機能レベル以下のデバイスの生成を試みる
 		const D3D_FEATURE_LEVEL* pSupportedFeatureLevels = GetSupportedDX12FeatureLevels();
-		for(int i = 0; pSupportedFeatureLevels[i] != D3D_FEATURE_LEVEL_NONE; i++)
+		for(int i = 0; pSupportedFeatureLevels[i] != NG_D3D_FEATURE_LEVEL_NONE; i++)
 		{
 			tryLevel = pSupportedFeatureLevels[i];
-			if(featureLevel != D3D_FEATURE_LEVEL_NONE) {
+			if(featureLevel != NG_D3D_FEATURE_LEVEL_NONE) {
 				if(tryLevel > featureLevel) {
 					continue;
 				}
