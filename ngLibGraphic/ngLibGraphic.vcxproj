@@ -196,6 +196,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\common\ngDX12Define.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Macro.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Std.h" />
+    <ClInclude Include="graphic\dx12\descriptor\ngDX12DescriptorHeap.h" />
     <ClInclude Include="graphic\dx12\device\ngDX12Device.h" />
     <ClInclude Include="graphic\dx12\device\ngDX12DeviceDriverType.h" />
     <ClInclude Include="graphic\dx12\fence\ngDX12Fence.h" />
@@ -215,6 +216,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\command\queue\ngDX12CommandQueueManager.cpp" />
     <ClCompile Include="graphic\dx12\command\queue\ngDX12CommandQueueType.cpp" />
     <ClCompile Include="graphic\dx12\common\ngDX12Std.cpp" />
+    <ClCompile Include="graphic\dx12\descriptor\ngDX12DescriptorHeap.cpp" />
     <ClCompile Include="graphic\dx12\device\ngDX12Device.cpp" />
     <ClCompile Include="graphic\dx12\fence\ngDX12Fence.cpp" />
     <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp" />
