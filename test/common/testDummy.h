@@ -20,6 +20,7 @@ namespace test
 		CDummy() : m_value(0) { ng::Printf("[CDummy::CDummy()]\n"); }
 		explicit CDummy(int value) : m_value(value) { ng::Printf("[CDummy::CDummy(int)] value:%d\n", value); }
 		explicit CDummy(const CDummy& src) : m_value(src.m_value) { ng::Printf("[CDummy::CDummy(const CDummy&)]\n"); }
+		explicit CDummy(CDummy&& src) noexcept : m_value(src.m_value) { ng::Printf("[CDumy::CDummy(CDummy&&)]\n"); }
 		/*! デストラクタ */
 		~CDummy() { ng::Printf("[CDummy::~CDummy()] value:%d\n", m_value); }
 
