@@ -9,10 +9,10 @@
 #define __NG_DX_ERROR_H__
 
 /*!
-* @brief					DX エラーコード出力
+* @brief					DirectX エラーログ出力
 */
 #ifdef NG_DEBUG
-	#define NG_DXERR(_category, _hr, _func, _msg, ...) \
+	#define NG_DXERRLOG(_category, _hr, _func, _msg, ...) \
 		{ \
 			NG_DPRINTF("(!)DXERR [%s] func:%s() returned [%s](%s)\n", _category, \
 				NG_TO_STRING(_func), DXErrorCodeToString(_hr), DXErrorCodeToDescription(_hr)); \

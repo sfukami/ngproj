@@ -38,14 +38,14 @@ namespace ng
 			nullptr
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR("DIKeyboard", ret, CreateDevice, "DirectInput8Deviceの生成に失敗しました.");
+			NG_DXERRLOG("DIKeyboard", ret, CreateDevice, "DirectInput8Deviceの生成に失敗しました.");
 			return ret;
 		}
 
 		// デバイスのデータフォーマットをキーボードに設定
 		ret = m_pIDIDevice->SetDataFormat(&c_dfDIKeyboard);
 		if(NG_FAILED(ret)) {
-			NG_DXERR("DIKeyboard", ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗しました.");
+			NG_DXERRLOG("DIKeyboard", ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗しました.");
 			return ret;
 		}
 
@@ -55,7 +55,7 @@ namespace ng
 			cooperativeLevel
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR("DIKeyboard", ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗しました.");
+			NG_DXERRLOG("DIKeyboard", ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗しました.");
 			return ret;
 		}
 

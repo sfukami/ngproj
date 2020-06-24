@@ -62,7 +62,7 @@ namespace ng
 		// DXGI1.1ファクトリを生成
 		IDXGIFactory4* pIFactory = nullptr;
 		if(NG_FAILED(ret = CreateDXGIFactory1(IID_PPV_ARGS(&pIFactory)))) {
-			NG_DXERR("DX12Device", ret, CreateDXGIFactory1, "DXGI1.1ファクトリの作成に失敗");
+			NG_DXERRLOG("DX12Device", ret, CreateDXGIFactory1, "DXGI1.1ファクトリの作成に失敗");
 			return ret;
 		}
 
@@ -73,7 +73,7 @@ namespace ng
 			IDXGIAdapter1* pIAdapter = nullptr;
 			// Warpデバイス対応アダプタの列挙
 			if(NG_FAILED(ret = pIFactory->EnumWarpAdapter(IID_PPV_ARGS(&pIAdapter)))) {
-				NG_DXERR("DX12Device", ret, EnumWarpAdapter, "Warpデバイス対応アダプタの列挙に失敗");
+				NG_DXERRLOG("DX12Device", ret, EnumWarpAdapter, "Warpデバイス対応アダプタの列挙に失敗");
 				return ret;
 			}
 

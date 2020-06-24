@@ -33,7 +33,7 @@ namespace ng
 			nullptr
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR("DirectInput", ret, DirectInput8Create, "DirectInput8の生成に失敗しました.");
+			NG_DXERRLOG("DirectInput", ret, DirectInput8Create, "DirectInput8の生成に失敗しました.");
 			return ret;
 		}
 

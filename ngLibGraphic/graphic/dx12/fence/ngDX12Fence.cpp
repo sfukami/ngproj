@@ -33,7 +33,7 @@ namespace ng
 			flags,
 			IID_PPV_ARGS(&m_pIFence)
 			))) {
-			NG_DXERR("DX12Fence", ret, CreateFence, "DX12フェンスの生成に失敗しました.");
+			NG_DXERRLOG("DX12Fence", ret, CreateFence, "DX12フェンスの生成に失敗しました.");
 			return ret;
 		}
 

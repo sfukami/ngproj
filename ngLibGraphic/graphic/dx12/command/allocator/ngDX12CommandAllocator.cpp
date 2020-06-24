@@ -33,7 +33,7 @@ namespace ng
 			type,
 			IID_PPV_ARGS(&m_pIAllocator)
 			))) {
-			NG_DXERR("DX12CommandAllocator", ret, CreateCommandAllocator, "DX12コマンドアロケーターの生成に失敗しました.");
+			NG_DXERRLOG("DX12CommandAllocator", ret, CreateCommandAllocator, "DX12コマンドアロケーターの生成に失敗しました.");
 			return ret;
 		}
 

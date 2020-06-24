@@ -39,7 +39,7 @@ namespace ng
 			nullptr,
 			IID_PPV_ARGS(&m_pIList)
 			))) {
-			NG_DXERR("DX12CommandList", ret, CreateCommandList, "コマンドリストの生成に失敗しました.");
+			NG_DXERRLOG("DX12CommandList", ret, CreateCommandList, "コマンドリストの生成に失敗しました.");
 			return ret;
 		}
 

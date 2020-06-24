@@ -43,7 +43,7 @@ namespace ng
 		desc.Flags = D3D12_COMMAND_QUEUE_FLAG_NONE;
 
 		if(NG_FAILED(ret = pIDevice->CreateCommandQueue(&desc, IID_PPV_ARGS(&m_pIQueue)))) {
-			NG_DXERR("DX12CommandQueue", ret, CreateCommandQueue, "DX12コマンドキューの生成に失敗しました.");
+			NG_DXERRLOG("DX12CommandQueue", ret, CreateCommandQueue, "DX12コマンドキューの生成に失敗しました.");
 			return ret;
 		}
 

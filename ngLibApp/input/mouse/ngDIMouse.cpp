@@ -38,14 +38,14 @@ namespace ng
 			nullptr
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR("DIMouse", ret, CreateDevice, "DirectInput8Deviceの生成に失敗しました.");
+			NG_DXERRLOG("DIMouse", ret, CreateDevice, "DirectInput8Deviceの生成に失敗しました.");
 			return ret;
 		}
 
 		// デバイスのデータフォーマットをマウスに設定
 		ret = m_pIDIDevice->SetDataFormat(&c_dfDIMouse2);
 		if(NG_FAILED(ret)) {
-			NG_DXERR("DIMouse", ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗しました.");
+			NG_DXERRLOG("DIMouse", ret, SetDataFormat, "入力デバイスのデータフォーマット設定に失敗しました.");
 			return ret;
 		}
 
@@ -55,7 +55,7 @@ namespace ng
 			cooperativeLevel
 			);
 		if(NG_FAILED(ret)) {
-			NG_DXERR("DIMouse", ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗しました.");
+			NG_DXERRLOG("DIMouse", ret, SetCooperativeLevel, "入力デバイスの協調レベル設定に失敗しました.");
 			return ret;
 		}
 
@@ -68,7 +68,7 @@ namespace ng
 			diprop.diph.dwHow			= DIPH_DEVICE;
 			diprop.dwData				= DIPROPAXISMODE_REL;	// 相対値モードで設定（絶対値はDIPROPAXISMODE_ABS）
 			if(NG_FAILED(ret = m_pIDIDevice->SetProperty(DIPROP_AXISMODE, &diprop.diph))) {
-				NG_DXERR("DIMouse", ret, SetProperty, "入力デバイスの動作プロパティ設定に失敗しました.");
+				NG_DXERRLOG("DIMouse", ret, SetProperty, "入力デバイスの動作プロパティ設定に失敗しました.");
 				return ret;
 			}
 		}
