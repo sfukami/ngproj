@@ -20,11 +20,13 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="game\appGame.cpp" />
+    <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h" />
     <ClInclude Include="game\appGame.h" />
+    <ClInclude Include="input\appInput.h" />
     <ClInclude Include="preincl\appPreInclude.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

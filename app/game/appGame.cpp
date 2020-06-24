@@ -7,7 +7,6 @@
 
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
-#include "ngLibApp/input/ngInputManager.h"
 #include "appGame.h"
 
 namespace app
@@ -31,10 +30,7 @@ namespace app
 		NG_CHECK_MEMLEAK();
 
 		// シングルトンインスタンス生成
-		{
-			ng::CCoreSystem::CreateInstance();
-			ng::CInputManager::CreateInstance();
-		}
+		ng::CCoreSystem::CreateInstance();
 
 		// NGコアシステム セットアップ
 		{
@@ -58,34 +54,13 @@ namespace app
 			NG_ERRLOG("Game", "ウィンドウの生成に失敗しました.");
 			return false;
 		}
-
 		m_window.Show();
 
-		// デバイス入力 セットアップ
-		{
-			// Directインプット生成
-			if(NG_FAILED(m_input.Create())) {
-				NG_ERRLOG("Game", "Directインプットの生成に失敗しました.");
-				return false;
-			}
-			// DirectInputキーボードのセットアップ
-			if(NG_FAILED(m_input.SetupKeyboard(
-				m_window.GetHandle(),
-				DISCL_NONEXCLUSIVE | DISCL_FOREGROUND | DISCL_NOWINKEY
-				))) {
-				NG_ERRLOG("Game", "DirectInputキーボードのセットアップに失敗しました.");
-				return false;
-			}
-			// DirectInputマウスのセットアップ
-			if(NG_FAILED(m_input.SetupMouse(
-				m_window.GetHandle(),
-				DISCL_NONEXCLUSIVE | DISCL_FOREGROUND
-				))) {
-				NG_ERRLOG("Game", "DirectInputマウスのセットアップに失敗しました.");
-				return false;
-			}
-			
-			ng::CInputManager::GetInstance().AssignInput(&m_input);
+		// 入力初期化
+		if(!m_input.Initialize(
+			m_window.GetHandle()
+			)) {
+			return false;
 		}
 
 		// グラフィック初期化
@@ -127,12 +102,8 @@ namespace app
 	void CGame::Finalize()
 	{
 		m_graphic.Finalize();
+		m_input.Finalize();
 		m_window.Destroy();
-
-		// Directインプット 破棄
-		m_input.Destroy();
-		ng::CInputManager::GetInstance().UnassignInput();
-		ng::CInputManager::DestroyInstance();
 
 		// NGコアシステム シャットダウン
 		ng::CCoreSystem::GetInstance().Shutdown();
@@ -141,30 +112,28 @@ namespace app
 
 	void CGame::_update()
 	{
-		ng::CInputManager::GetInstance().Update();
+		m_input.Update();
 
 		// test
 		{
-			auto& inputMngr = ng::CInputManager::GetInstance();
-
 			// Keyboard
-			if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::PRESSED)) {
+			if(CInput::CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::PRESSED)) {
 				ng::DPrintf("key A pressed.\n");
 			}
-			if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::RELEASED)) {
+			if(CInput::CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::RELEASED)) {
 				ng::DPrintf("key A released.\n");
 			}
-			if(inputMngr.CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::HELD)) {
+			if(CInput::CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::HELD)) {
 				ng::DPrintf("key A held.\n");
 			}
 			// Mouse
-			if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::PRESSED)) {
+			if(CInput::CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::PRESSED)) {
 				ng::DPrintf("button Left pressed.\n");
 			}
-			if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::RELEASED)) {
+			if(CInput::CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::RELEASED)) {
 				ng::DPrintf("button Left released.\n");
 			}
-			if(inputMngr.CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::HELD)) {
+			if(CInput::CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::HELD)) {
 				ng::DPrintf("button Left held.\n");
 			}
 		}

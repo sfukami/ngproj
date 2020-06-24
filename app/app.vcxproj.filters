@@ -17,6 +17,9 @@
     <Filter Include="ソース ファイル\graphic">
       <UniqueIdentifier>{a32b05a0-285e-4538-aa02-5c439e9a0811}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\input">
+      <UniqueIdentifier>{1730f104-6788-4350-8e1d-eb1167386c31}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -27,6 +30,9 @@
     </ClCompile>
     <ClCompile Include="graphic\appGraphic.cpp">
       <Filter>ソース ファイル\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="input\appInput.cpp">
+      <Filter>ソース ファイル\input</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +47,9 @@
     </ClInclude>
     <ClInclude Include="graphic\appGraphic.h">
       <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="input\appInput.h">
+      <Filter>ソース ファイル\input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
