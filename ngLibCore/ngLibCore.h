@@ -8,6 +8,8 @@
 #ifndef __NG_CORE_H__
 #define __NG_CORE_H__
 
+#pragma comment(lib, "winmm.lib")
+
 #include "preincl/ngPreInclude.h"
 #include "common/ngCommon.h"
 

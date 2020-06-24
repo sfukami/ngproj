@@ -8,6 +8,9 @@
 #ifndef __NG_APP_H__
 #define __NG_APP_H__
 
+#pragma comment(lib, "dxguid.lib")
+#pragma comment(lib, "dinput8.lib")
+
 #include "preincl/ngPreInclude.h"
 #include "common/ngCommon.h"
 

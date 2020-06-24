@@ -10,5 +10,6 @@
 
 #include "ngLibCore/ngLibCore.h"
 #include "ngLibApp/ngLibApp.h"
+#include "ngLibGraphic/ngLibGraphic.h"
 
 #endif	// __APP_PRE_INCLUDE_H__

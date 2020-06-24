@@ -240,7 +240,8 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>winmm.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
       <Command>set TARGET_PATH=$(TargetPath)
@@ -267,7 +268,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>winmm.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
       <Command>set TARGET_PATH=$(TargetPath)
@@ -298,7 +300,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>winmm.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
       <Command>set TARGET_PATH=$(TargetPath)
@@ -329,7 +332,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>winmm.lib</AdditionalDependencies>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Lib>
     <PostBuildEvent>
       <Command>set TARGET_PATH=$(TargetPath)

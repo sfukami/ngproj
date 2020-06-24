@@ -8,4 +8,6 @@
 #ifndef __NG_GRAPHIC_COMMON_H__
 #define __NG_GRAPHIC_COMMON_H__
 
+#include "ngLibCore/common/ngCommon.h"
+
 #endif	// __NG_GRAPHIC_COMMON_H__
