@@ -14,4 +14,6 @@
 #include "ngDX12Std.h"
 #include "ngDX12Macro.h"
 
+#include "ngLibCore/system/ngSysUtil.h"
+
 #endif	// __NG_GRAPHIC_DX12_COMMON_H__

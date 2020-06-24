@@ -184,6 +184,10 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="common\ngCommon.h" />
+    <ClInclude Include="graphic\dx12\command\allocator\ngDX12CommandAllocator.h" />
+    <ClInclude Include="graphic\dx12\command\allocator\ngDX12CommandAllocatorManager.h" />
+    <ClInclude Include="graphic\dx12\command\list\ngDX12CommandList.h" />
+    <ClInclude Include="graphic\dx12\command\list\ngDX12CommandListManager.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Common.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Const.h" />
     <ClInclude Include="graphic\dx12\common\ngDX12Define.h" />
@@ -199,6 +203,10 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="preincl\ngPreInclude.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="graphic\dx12\command\allocator\ngDX12CommandAllocator.cpp" />
+    <ClCompile Include="graphic\dx12\command\allocator\ngDX12CommandAllocatorManager.cpp" />
+    <ClCompile Include="graphic\dx12\command\list\ngDX12CommandList.cpp" />
+    <ClCompile Include="graphic\dx12\command\list\ngDX12CommandListManager.cpp" />
     <ClCompile Include="graphic\dx12\common\ngDX12Std.cpp" />
     <ClCompile Include="graphic\dx12\device\ngDX12Device.cpp" />
     <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp" />

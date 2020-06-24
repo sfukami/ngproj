@@ -10,6 +10,8 @@
 
 #include "../ngGraphic.h"
 #include "device/ngDX12Device.h"
+#include "command/allocator/ngDX12CommandAllocatorManager.h"
+#include "command/list/ngDX12CommandListManager.h"
 
 namespace ng
 {
@@ -58,8 +60,39 @@ namespace ng
 		CDX12Device& GetDevice();
 		const CDX12Device& GetDevice() const;
 
+		/*!
+		* @brief					DX12コマンドアロケータマネージャ取得
+		*/
+		CDX12CommandAllocatorManager& GetCommandAllocatorMngr();
+		const CDX12CommandAllocatorManager& GetCommandAllocatorMngr() const;
+		
+		/*!
+		* @brief					DX12コマンドリストマネージャ取得
+		*/
+		CDX12CommandListManager& GetCommandListMngr();
+		const CDX12CommandListManager& GetCommandListMngr() const;
+
+	private:
+		/*!
+		* @brief					DX12コマンドアロケータ生成
+		* @param device				DX12デバイス
+		* @param type				コマンドリストのタイプ
+		* @param index				DX12コマンドアロケータのインデックス [0, NG_DX12_COMMAND_ALLOCATOR_MAX-1]
+		*/
+		NG_ERRCODE _createCommandAllocator(CDX12Device& device, D3D12_COMMAND_LIST_TYPE type, u32 index);
+
+		/*!
+		* @brief					DX12コマンドリスト生成
+		* @param device				DX12デバイス
+		* @param cmdAllocIdx		DX12コマンドアロケータのインデックス [0, NG_DX12_COMMAND_ALLOCATOR_MAX-1]
+		* @param cmdListIdx			DX12コマンドリストのインデックス [0, NG_DX12_COMMAND_LIST_MAX-1]
+		*/
+		NG_ERRCODE _createCommandList(CDX12Device& device, u32 cmdAllocIdx, u32 cmdListIdx);
+
 	private:
 		CDX12Device			m_device;	//!< DX12デバイス
+		CDX12CommandListManager			m_cmdListMngr;	//!< DX12コマンドリストマネージャ
+		CDX12CommandAllocatorManager	m_cmdAllocMngr;	//!< DX12コマンドアロケータマネージャ
 	};
 
 }	// namespace ng

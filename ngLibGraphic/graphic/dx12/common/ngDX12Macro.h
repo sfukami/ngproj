@@ -19,4 +19,14 @@
 	#define NG_DX12_ENABLE_DEBUG_LAYER()
 #endif
 
+/*!
+* @brief					DX12ログ出力
+* @param _category			カテゴリ
+*/
+#define NG_DX12LOG(_category, _msg, ...) \
+	{ \
+		NG_DPRINTF("NG_DX12LOG [%s] ", _category); \
+		NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
+	}
+
 #endif	// __NG_GRAPHIC_DX12_MACRO_H__

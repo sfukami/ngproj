@@ -26,6 +26,15 @@
     <Filter Include="ソース ファイル\graphic\dx12\common">
       <UniqueIdentifier>{2c6b162c-ac02-43c4-91ed-f9ce1ba7bccf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\command">
+      <UniqueIdentifier>{fc1a18f2-491a-4e38-b30b-f158c23eb665}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\command\list">
+      <UniqueIdentifier>{f1209ea7-5041-4215-a426-4f99068c2fbc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\command\allocator">
+      <UniqueIdentifier>{549f1c55-0ebe-4710-a8d6-94c516f3b7fc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -70,6 +79,18 @@
     <ClInclude Include="graphic\dx12\common\ngDX12Macro.h">
       <Filter>ソース ファイル\graphic\dx12\common</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\command\list\ngDX12CommandList.h">
+      <Filter>ソース ファイル\graphic\dx12\command\list</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\command\allocator\ngDX12CommandAllocator.h">
+      <Filter>ソース ファイル\graphic\dx12\command\allocator</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\command\list\ngDX12CommandListManager.h">
+      <Filter>ソース ファイル\graphic\dx12\command\list</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\command\allocator\ngDX12CommandAllocatorManager.h">
+      <Filter>ソース ファイル\graphic\dx12\command\allocator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -86,6 +107,18 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\common\ngDX12Std.cpp">
       <Filter>ソース ファイル\graphic\dx12\common</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\command\list\ngDX12CommandList.cpp">
+      <Filter>ソース ファイル\graphic\dx12\command\list</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\command\allocator\ngDX12CommandAllocator.cpp">
+      <Filter>ソース ファイル\graphic\dx12\command\allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\command\list\ngDX12CommandListManager.cpp">
+      <Filter>ソース ファイル\graphic\dx12\command\list</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\command\allocator\ngDX12CommandAllocatorManager.cpp">
+      <Filter>ソース ファイル\graphic\dx12\command\allocator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

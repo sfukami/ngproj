@@ -140,7 +140,7 @@ namespace ng
 	#if defined(NG_DEBUG)
 		{
 			const DXGI_ADAPTER_DESC1& adapterDesc = m_createDesc.adapterDesc;
-			NG_LOG("DX12Device",
+			NG_DX12LOG("DX12Device",
 				L"Creating device..."
 				"\n FeatureLevel:%#0x"		// TODO: 文字列にしたい
 				"\n <DXGI_ADAPTER_DESC>"
