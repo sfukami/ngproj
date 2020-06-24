@@ -62,6 +62,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\resource">
       <UniqueIdentifier>{cb4dcaf9-38fd-4b06-9853-2706a66b73f2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\viewport">
+      <UniqueIdentifier>{536921e8-1271-4d13-94ef-83f4f41b3f3d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -163,6 +166,9 @@
     <ClInclude Include="graphic\dx12\resource\ngDX12Resource.h">
       <Filter>ソース ファイル\graphic\dx12\resource</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\viewport\ngDX12Viewport.h">
+      <Filter>ソース ファイル\graphic\dx12\viewport</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -230,6 +236,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\resource\ngDX12Resource.cpp">
       <Filter>ソース ファイル\graphic\dx12\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\viewport\ngDX12Viewport.cpp">
+      <Filter>ソース ファイル\graphic\dx12\viewport</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
