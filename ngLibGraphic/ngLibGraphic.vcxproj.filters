@@ -151,6 +151,9 @@
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetManager.h">
       <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\target\depth\ngDX12DepthStencilManager.h">
+      <Filter>ソース ファイル\graphic\dx12\target\depth</Filter>
+    </ClInclude>
     <ClInclude Include="graphic\dx12\target\depth\ngDX12DepthStencil.h">
       <Filter>ソース ファイル\graphic\dx12\target\depth</Filter>
     </ClInclude>
@@ -220,6 +223,9 @@
       <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
     </ClCompile>
     <ClCompile Include="graphic\dx12\target\depth\ngDX12DepthStencil.cpp">
+      <Filter>ソース ファイル\graphic\dx12\target\depth</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\target\depth\ngDX12DepthStencilManager.cpp">
       <Filter>ソース ファイル\graphic\dx12\target\depth</Filter>
     </ClCompile>
     <ClCompile Include="graphic\dx12\resource\ngDX12Resource.cpp">

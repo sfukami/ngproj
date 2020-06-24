@@ -116,6 +116,17 @@ namespace ng
 				return ret;
 			}
 		}
+		// DX12深度ステンシル生成
+		{
+			if(NG_FAILED(ret = m_dsMngr.CreateDepthStencil(
+				m_device,
+				param.clientWidth,
+				param.clientHeight,
+				eDX12DepthStencilId::ID_01
+				))) {
+				return ret;
+			}
+		}
 
 		return ret;
 	}
@@ -130,6 +141,7 @@ namespace ng
 		m_cmdListMngr.Finalize();
 		m_cmdAllocMngr.Finalize();
 		m_cmdQueueMngr.Finalize();
+		m_dsMngr.Finalize();
 		m_rtMngr.Finalize();
 		m_swapChain.Destroy();
 		m_device.Destroy();
@@ -187,6 +199,15 @@ namespace ng
 	const CDX12RenderTargetManager& CDX12Graphic::GetRenderTargetMngr() const
 	{
 		return m_rtMngr;
+	}
+
+	CDX12DepthStencilManager& CDX12Graphic::GetDepthStencilMngr()
+	{
+		return m_dsMngr;
+	}
+	const CDX12DepthStencilManager& CDX12Graphic::GetDepthStencilMngr() const
+	{
+		return m_dsMngr;
 	}
 
 	NG_ERRCODE CDX12Graphic::_createCommandAllocator(CDX12Device& device, D3D12_COMMAND_LIST_TYPE type, u32 index)

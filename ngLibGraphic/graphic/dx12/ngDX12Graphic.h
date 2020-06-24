@@ -15,6 +15,7 @@
 #include "command/allocator/ngDX12CommandAllocatorManager.h"
 #include "command/list/ngDX12CommandListManager.h"
 #include "target/render/ngDX12RenderTargetManager.h"
+#include "target/depth/ngDX12DepthStencilManager.h"
 
 namespace ng
 {
@@ -93,6 +94,12 @@ namespace ng
 		CDX12RenderTargetManager& GetRenderTargetMngr();
 		const CDX12RenderTargetManager& GetRenderTargetMngr() const;
 
+		/*!
+		* @brief					DX12深度ステンシルマネージャ取得
+		*/
+		CDX12DepthStencilManager& GetDepthStencilMngr();
+		const CDX12DepthStencilManager& GetDepthStencilMngr() const;
+
 	private:
 		/*!
 		* @brief					DX12コマンドアロケータ生成
@@ -126,6 +133,7 @@ namespace ng
 		CDX12CommandListManager			m_cmdListMngr;	//!< DX12コマンドリストマネージャ
 		CDX12CommandAllocatorManager	m_cmdAllocMngr;	//!< DX12コマンドアロケータマネージャ
 		CDX12RenderTargetManager		m_rtMngr;		//!< DX12レンダーターゲットマネージャ
+		CDX12DepthStencilManager		m_dsMngr;		//!< DX12深度ステンシルマネージャ
 	};
 
 }	// namespace ng
