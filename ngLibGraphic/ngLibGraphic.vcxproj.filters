@@ -65,6 +65,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\viewport">
       <UniqueIdentifier>{536921e8-1271-4d13-94ef-83f4f41b3f3d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\scissor">
+      <UniqueIdentifier>{c2194121-29ed-4000-a3eb-3b52deddcdf4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -169,6 +172,9 @@
     <ClInclude Include="graphic\dx12\viewport\ngDX12Viewport.h">
       <Filter>ソース ファイル\graphic\dx12\viewport</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\scissor\ngDX12Scissor.h">
+      <Filter>ソース ファイル\graphic\dx12\scissor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -239,6 +245,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\viewport\ngDX12Viewport.cpp">
       <Filter>ソース ファイル\graphic\dx12\viewport</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\scissor\ngDX12Scissor.cpp">
+      <Filter>ソース ファイル\graphic\dx12\scissor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
