@@ -43,6 +43,32 @@ namespace ng
 				return ret;
 			}
 		}
+		// DX12スワップチェイン生成
+		{
+			bool isFullscreen = param.isFullscreen;
+			// TODO: 要調査
+			// Warpデバイスの場合はフルスクリーン不可?
+			const CDX12Device::CreateDesc& createDesc = m_device.GetCreateDesc();
+			if(createDesc.driverType == eDX12DriverType::SOFTWARE) {
+				isFullscreen = false;
+			}
+
+			NG_DX12LOG("DX12Graphic", "DX12スワップチェイン生成を開始...");
+			const u32 bufferCount = 2;
+			if(NG_FAILED(ret = m_swapChain.Create(
+				m_device,
+				*m_cmdQueueMngr.GetCommandQueue(eDX12CommandQueueType::GRAPHIC),
+				param.hWnd,
+				bufferCount,
+				param.clientWidth,
+				param.clientHeight,
+				DXGI_FORMAT_R8G8B8A8_UNORM,
+				isFullscreen
+				))) {
+				NG_ERRLOG_C("DX12Graphic", ret, "DX12スワップチェインの生成に失敗しました.");
+				return ret;
+			}
+		}
 		// DX12コマンドキューマネージャ初期化
 		{
 			NG_DX12LOG("DX12Graphic", "DX12コマンドキューマネージャ初期化を開始...");
@@ -87,6 +113,7 @@ namespace ng
 		m_cmdListMngr.Finalize();
 		m_cmdAllocMngr.Finalize();
 		m_cmdQueueMngr.Finalize();
+		m_swapChain.Destroy();
 		m_device.Destroy();
 	}
 
@@ -97,6 +124,15 @@ namespace ng
 	const CDX12Device& CDX12Graphic::GetDevice() const
 	{
 		return m_device;
+	}
+
+	CDX12SwapChain& CDX12Graphic::GetSwapChain()
+	{
+		return m_swapChain;
+	}
+	const CDX12SwapChain& CDX12Graphic::GetSwapChain() const
+	{
+		return m_swapChain;
 	}
 
 	CDX12CommandQueueManager& CDX12Graphic::GetCommandQueueMngr()

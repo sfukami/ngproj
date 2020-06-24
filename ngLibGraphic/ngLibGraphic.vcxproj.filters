@@ -41,6 +41,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\fence">
       <UniqueIdentifier>{e246b2f5-0e49-4d3c-b8d8-0420fb2332a6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\swapchain">
+      <UniqueIdentifier>{fa712935-5f55-44f8-8562-e4c8ef6e6d69}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\graphic\dx12\target">
       <UniqueIdentifier>{4b928141-d9c5-4086-8512-7a613b9ab781}</UniqueIdentifier>
     </Filter>
@@ -121,6 +124,9 @@
     <ClInclude Include="graphic\dx12\fence\ngDX12Fence.h">
       <Filter>ソース ファイル\graphic\dx12\fence</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\swapchain\ngDX12SwapChain.h">
+      <Filter>ソース ファイル\graphic\dx12\swapchain</Filter>
+    </ClInclude>
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTarget.h">
       <Filter>ソース ファイル\graphic\dx12\target\render</Filter>
     </ClInclude>
@@ -173,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\fence\ngDX12Fence.cpp">
       <Filter>ソース ファイル\graphic\dx12\fence</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\swapchain\ngDX12SwapChain.cpp">
+      <Filter>ソース ファイル\graphic\dx12\swapchain</Filter>
     </ClCompile>
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTarget.cpp">
       <Filter>ソース ファイル\graphic\dx12\target\render</Filter>

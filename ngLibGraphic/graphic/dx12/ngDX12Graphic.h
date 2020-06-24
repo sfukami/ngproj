@@ -10,6 +10,7 @@
 
 #include "../ngGraphic.h"
 #include "device/ngDX12Device.h"
+#include "swapchain/ngDX12SwapChain.h"
 #include "command/queue/ngDX12CommandQueueManager.h"
 #include "command/allocator/ngDX12CommandAllocatorManager.h"
 #include "command/list/ngDX12CommandListManager.h"
@@ -62,6 +63,12 @@ namespace ng
 		const CDX12Device& GetDevice() const;
 
 		/*!
+		* @brief					DX12スワップチェイン取得
+		*/
+		CDX12SwapChain& GetSwapChain();
+		const CDX12SwapChain& GetSwapChain() const;
+
+		/*!
 		* @brief					DX12コマンドキューマネージャ取得
 		*/
 		CDX12CommandQueueManager& GetCommandQueueMngr();
@@ -98,6 +105,7 @@ namespace ng
 
 	private:
 		CDX12Device			m_device;	//!< DX12デバイス
+		CDX12SwapChain					m_swapChain;	//!< DX12スワップチェイン
 		CDX12CommandQueueManager		m_cmdQueueMngr;	//!< DX12コマンドキューマネージャ
 		CDX12CommandListManager			m_cmdListMngr;	//!< DX12コマンドリストマネージャ
 		CDX12CommandAllocatorManager	m_cmdAllocMngr;	//!< DX12コマンドアロケータマネージャ
