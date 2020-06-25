@@ -7,6 +7,9 @@
 
 #include "ngDX12Util.h"
 #include "ngDX12Graphic.h"
+#include "swapchain/ngDX12SwapChain.h"
+#include "command/allocator/ngDX12CommandAllocator.h"
+#include "command/queue/ngDX12CommandQueue.h"
 #include "../ngGraphicManager.h"
 
 namespace ng
@@ -91,6 +94,46 @@ namespace ng
 
 		ng::u32 frameIndex = pSwapChain->GetCurrentBackBufferIndex();
 		return ng::GetDX12RenderTarget(static_cast<ng::eDX12RenderTargetId>(frameIndex));
+	}
+
+	NG_DECL void ResetAllDX12CommandAllocator()
+	{
+		CDX12Graphic* pDX12Graphic = GetDX12Graphic();
+
+		if(pDX12Graphic == nullptr) return;
+
+		CDX12CommandAllocatorManager& cmdAllocMngr = pDX12Graphic->GetCommandAllocatorMngr();
+
+		for(u32 i = 0; i < cmdAllocMngr.GetCommandAllocatorMax(); i++)
+		{
+			CDX12CommandAllocator* pCmdAlloc = cmdAllocMngr.GetCommandAllocator(i);
+			if(pCmdAlloc != nullptr) {
+				pCmdAlloc->Reset();
+			}
+		}
+	}
+
+	NG_DECL void ExecuteAllDX12CommandList(eDX12CommandQueueType type)
+	{
+		CDX12Graphic* pDX12Graphic = GetDX12Graphic();
+
+		if(pDX12Graphic == nullptr) return;
+
+		CDX12CommandListManager& cmdListMngr = pDX12Graphic->GetCommandListMngr();
+
+		CDX12CommandList* pCmdLists[ NG_DX12_COMMAND_LIST_MAX ] = {nullptr};
+		u32 count = 0;
+		for(u32 i = 0; i < cmdListMngr.GetCommandListMax(); i++)
+		{
+			CDX12CommandList* pCmdList = cmdListMngr.GetCommandList(i);
+			if(pCmdList != nullptr) {
+				pCmdLists[ count ] = pCmdList;
+				count++;
+			}
+		}
+
+		CDX12CommandQueue* pCmdQueue = GetDX12CommandQueue(type);
+		pCmdQueue->ExecuteCommandLists(pCmdLists, count);
 	}
 
 }	// namespace ng

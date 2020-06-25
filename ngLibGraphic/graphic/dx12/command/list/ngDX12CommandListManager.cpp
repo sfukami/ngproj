@@ -42,9 +42,9 @@ namespace ng
 
 	void CDX12CommandListManager::DeleteCommandList(u32 index)
 	{
-		NG_ASSERT(index < NG_DX12_COMMAND_LIST_MAX);
+		NG_ASSERT(index < COMMAND_LIST_MAX);
 
-		if(index >= NG_DX12_COMMAND_LIST_MAX) return;
+		if(index >= COMMAND_LIST_MAX) return;
 
 		CDX12CommandList* pList = GetCommandList(index);
 		if(pList) {
@@ -56,7 +56,7 @@ namespace ng
 
 	void CDX12CommandListManager::Finalize()
 	{
-		for(u32 i = 0; i < NG_DX12_COMMAND_LIST_MAX; i++)
+		for(u32 i = 0; i < COMMAND_LIST_MAX; i++)
 		{
 			DeleteCommandList(i);
 		}
@@ -64,7 +64,7 @@ namespace ng
 
 	CDX12CommandList* CDX12CommandListManager::GetCommandList(u32 index)
 	{
-		NG_ASSERT(index < NG_DX12_COMMAND_LIST_MAX);
+		NG_ASSERT(index < COMMAND_LIST_MAX);
 
 		return m_cmdLists[index];
 	}

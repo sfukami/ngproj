@@ -35,9 +35,9 @@ namespace app
 		void Finalize();
 
 		/*!
-		* @brief					描画
+		* @brief					実行
 		*/
-		void Render();
+		void Execute();
 		
 	private:
 		ng::CDX12Viewport m_viewport;	//!< DX12ビューポート

@@ -6,11 +6,13 @@
 */
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
+#include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphic.h"
 
 namespace app
 {
 	CGraphic::CGraphic()
+		: m_isInit(false)
 	{
 	}
 	CGraphic::~CGraphic()
@@ -24,6 +26,8 @@ namespace app
 		bool isFullScreen
 		)
 	{
+		NG_ASSERT(!_isInit());
+
 		// シングルトンインスタンス生成
 		ng::CGraphicManager::CreateInstance();
 
@@ -51,6 +55,8 @@ namespace app
 			return false;
 		}
 
+		m_isInit = true;
+
 		return true;
 	}
 
@@ -67,13 +73,52 @@ namespace app
 
 		// シングルトンインスタンス破棄
 		ng::CGraphicManager::DestroyInstance();
+
+		m_isInit = false;
 	}
 
 	void CGraphic::Render()
 	{
-		m_pipeline.Render();
+		if(!_isInit()) return;
+
+		// パイプライン実行
+		_preprocessPipeline();
+		_executePipeline();
+		_postprocessPipeline();
 		
+		// 描画
 		ng::CGraphicManager::GetInstance().Render();
+	}
+
+	void CGraphic::_executePipeline()
+	{
+		// test
+		m_pipeline.Execute();
+	}
+
+	void CGraphic::_preprocessPipeline()
+	{
+		// 全コマンドアロケータリセット
+		ng::ResetAllDX12CommandAllocator();
+	}
+
+	void CGraphic::_postprocessPipeline()
+	{
+		// 全コマンドリスト実行
+		ng::ExecuteAllDX12CommandList(ng::eDX12CommandQueueType::GRAPHIC);
+
+		// バックバッファを表示
+		ng::CDX12SwapChain* pSwapChain = ng::GetDX12SwapChain();
+		pSwapChain->Present(1);
+
+		// 描画完了待ち
+		ng::CDX12CommandQueue* pCmdQueue = ng::GetDX12CommandQueue(ng::eDX12CommandQueueType::GRAPHIC);
+		pCmdQueue->WaitForFence();
+	}
+
+	bool CGraphic::_isInit() const
+	{
+		return m_isInit;
 	}
 
 }	// namespace app

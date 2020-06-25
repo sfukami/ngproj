@@ -60,8 +60,14 @@ namespace ng
 		CDX12CommandList* GetCommandList(u32 index);
 		const CDX12CommandList* GetCommandList(u32 index) const;
 
+		/*! DX12コマンドリスト最大数取得 */
+		u32 GetCommandListMax() const { return COMMAND_LIST_MAX; }
+
+	public:
+		static const u32 COMMAND_LIST_MAX = NG_DX12_COMMAND_LIST_MAX;	//!< DX12コマンドリスト最大数
+
 	private:
-		CFixedArray<CDX12CommandList*, NG_DX12_COMMAND_LIST_MAX> m_cmdLists;	//!< コマンドリスト配列
+		CFixedArray<CDX12CommandList*, COMMAND_LIST_MAX> m_cmdLists;	//!< コマンドリスト配列
 	};
 
 }	// namespace ng

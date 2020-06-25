@@ -33,12 +33,8 @@ namespace app
 
 	}
 
-	void CGraphicPipelineClearBuffer::Render()
+	void CGraphicPipelineClearBuffer::Execute()
 	{
-		// コマンドアロケータリセット
-		ng::CDX12CommandAllocator* pCmdAlloc = ng::GetDX12CommandAllocator(0);
-		pCmdAlloc->Reset();
-
 		// コマンドリストリセット
 		ng::CDX12CommandList* pCmdList = ng::GetDX12CommandList(0);
 		pCmdList->Reset();
@@ -75,17 +71,6 @@ namespace app
 
 		// コマンドの記録を終了
 		pCmdList->Close();
-
-		// コマンド実行
-		ng::CDX12CommandQueue* pCmdQueue = ng::GetDX12CommandQueue(ng::eDX12CommandQueueType::GRAPHIC);
-		pCmdQueue->ExecuteCommandList(*pCmdList);
-
-		// バックバッファを表示
-		ng::CDX12SwapChain* pSwapChain = ng::GetDX12SwapChain();
-		pSwapChain->Present(1);
-
-		// 描画完了待ち
-		pCmdQueue->WaitForFence();
 	}
 
 }	// namespace app

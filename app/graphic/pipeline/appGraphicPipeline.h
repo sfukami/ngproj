@@ -31,9 +31,9 @@ namespace app
 		virtual void Finalize();
 
 		/*!
-		* @brief					描画
+		* @brief					実行
 		*/
-		virtual void Render();
+		virtual void Execute();
 	};
 
 }	// namespace app

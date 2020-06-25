@@ -27,7 +27,7 @@ namespace ng
 		u32 index
 		)
 	{
-		NG_ASSERT(index < NG_DX12_COMMAND_ALLOCATOR_MAX);
+		NG_ASSERT(index < COMMAND_ALLOCATOR_MAX);
 
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
@@ -44,9 +44,9 @@ namespace ng
 
 	void CDX12CommandAllocatorManager::DeleteCommandAllocator(u32 index)
 	{
-		NG_ASSERT(index < NG_DX12_COMMAND_ALLOCATOR_MAX);
+		NG_ASSERT(index < COMMAND_ALLOCATOR_MAX);
 
-		if(index >= NG_DX12_COMMAND_ALLOCATOR_MAX) return;
+		if(index >= COMMAND_ALLOCATOR_MAX) return;
 
 		CDX12CommandAllocator* pAlloc = GetCommandAllocator(index);
 		if(pAlloc) {
@@ -58,7 +58,7 @@ namespace ng
 	
 	void CDX12CommandAllocatorManager::Finalize()
 	{
-		for(u32 i = 0; i < NG_DX12_COMMAND_ALLOCATOR_MAX; i++)
+		for(u32 i = 0; i < COMMAND_ALLOCATOR_MAX; i++)
 		{
 			DeleteCommandAllocator(i);
 		}
@@ -66,11 +66,7 @@ namespace ng
 
 	CDX12CommandAllocator* CDX12CommandAllocatorManager::GetCommandAllocator(u32 index)
 	{
-		NG_ASSERT(index < NG_DX12_COMMAND_ALLOCATOR_MAX);
-
-		if(index < 0) {
-			return nullptr;
-		}
+		NG_ASSERT(index < COMMAND_ALLOCATOR_MAX);
 
 		return m_cmdAllocs[index];
 	}

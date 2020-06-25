@@ -26,7 +26,7 @@ namespace app
 
 	}
 
-	void CGraphicPipeline::Render()
+	void CGraphicPipeline::Execute()
 	{
 
 	}

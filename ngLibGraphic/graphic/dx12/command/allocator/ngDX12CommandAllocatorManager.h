@@ -60,8 +60,14 @@ namespace ng
 		CDX12CommandAllocator* GetCommandAllocator(u32 index);
 		const CDX12CommandAllocator* GetCommandAllocator(u32 index) const;
 
+		/*! DX12コマンドアロケータ最大数取得 */
+		u32 GetCommandAllocatorMax() const { return COMMAND_ALLOCATOR_MAX; }
+		
+	public:
+		static const u32 COMMAND_ALLOCATOR_MAX = NG_DX12_COMMAND_ALLOCATOR_MAX;	//!< DX12コマンドアロケータ最大数
+
 	private:
-		CFixedArray<CDX12CommandAllocator*, NG_DX12_COMMAND_ALLOCATOR_MAX> m_cmdAllocs;	//!< DX12コマンドアロケータ配列
+		CFixedArray<CDX12CommandAllocator*, COMMAND_ALLOCATOR_MAX> m_cmdAllocs;	//!< DX12コマンドアロケータ配列
 	};
 
 }	// namespace ng

@@ -50,8 +50,29 @@ namespace app
 		void Render();
 
 	private:
-		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック
+		/*!
+		* @brief					パイプライン実行
+		*/
+		void _executePipeline();
 
+		/*!
+		* @brief					パイプライン実行 事前処理
+		*/
+		void _preprocessPipeline();
+
+		/*!
+		* @brief					パイプライン実行 事後処理
+		*/
+		void _postprocessPipeline();
+
+		/*! 初期化済みか */
+		bool _isInit() const;
+
+	private:
+		bool m_isInit;	//!< 初期化済みか
+		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック
+		
+		// test
 		CGraphicPipelineClearBuffer m_pipeline;	//!< グラフィックパイプラインテスト
 	};
 

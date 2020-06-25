@@ -70,6 +70,16 @@ namespace ng
 	*/
 	NG_DECL CDX12RenderTarget* GetDX12RenderTargetOfCurrentBackBuffer();
 
+	/*!
+	* @brief					全DX12コマンドアロケータのリセット
+	*/
+	NG_DECL void ResetAllDX12CommandAllocator();
+
+	/*!
+	* @brief					全DX12コマンドリストの実行
+	*/
+	NG_DECL void ExecuteAllDX12CommandList(eDX12CommandQueueType type);
+
 }	// namespace ng
 
 #endif	// __NG_GRAPHIC_DX12_UTIL_H__
