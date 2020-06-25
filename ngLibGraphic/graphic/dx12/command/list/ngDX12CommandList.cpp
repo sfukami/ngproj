@@ -7,15 +7,20 @@
 
 #include <d3d12.h>
 #include "ngLibCore/common/ngCommon.h"
+#include "ngLibCore/math/ngMath.h"
 #include "../../common/ngDX12Common.h"
 #include "../../device/ngDX12Device.h"
 #include "../allocator/ngDX12CommandAllocator.h"
+#include "../../barrier/ngDX12ResourceBarrier.h"
+#include "../../viewport/ngDX12Viewport.h"
+#include "../../scissor/ngDX12Scissor.h"
 #include "ngDX12CommandList.h"
 
 namespace ng
 {
 	CDX12CommandList::CDX12CommandList()
 		: m_pIList(nullptr)
+		, m_pCmdAlloc(nullptr)
 	{
 	}
 
@@ -29,6 +34,8 @@ namespace ng
 		CDX12CommandAllocator& allocator
 		)
 	{
+		NG_ASSERT(!IsValid());
+
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		// DX12コマンドリスト生成
@@ -45,6 +52,8 @@ namespace ng
 
 		Close();
 
+		m_pCmdAlloc = &allocator;
+
 		return ret;
 	}
 	
@@ -53,9 +62,142 @@ namespace ng
 		return m_pIList->Close();
 	}
 
+	/*
+	NG_ERRCODE CDX12CommandList::Reset(CDX12CommandAllocator& allocator, CDX12PipelineState& state)
+	{
+		return m_pIList->Reset(allocator.Interface(), state.Interface());
+	}
+	*/
+	/*
+	NG_ERRCODE CDX12CommandList::Reset(CDX12CommandAllocator& allocator)
+	{
+		return m_pIList->Reset(allocator.Interface(), nullptr);
+	}
+	*/
+	NG_ERRCODE CDX12CommandList::Reset()
+	{
+		NG_ASSERT(IsValid());
+
+		return m_pIList->Reset(m_pCmdAlloc->Interface(), nullptr);
+	}
+
+	void CDX12CommandList::SetViewports(const CDX12Viewport* ppViewports[], u32 num)
+	{
+		NG_ASSERT(IsValid());
+		NG_ASSERT(num < NG_DX12_VIEWPORT_MAX_PER_PIPELINE);
+
+		D3D12_VIEWPORT viewports[NG_DX12_VIEWPORT_MAX_PER_PIPELINE];
+		num = Clamp<u32>(num, 0, NG_ARRAY_SIZE(viewports));
+
+		for(u32 i = 0; i < num; i++)
+		{
+			viewports[i] = ppViewports[i]->GetViewport();
+		}
+
+		m_pIList->RSSetViewports(num, viewports);
+	}
+	void CDX12CommandList::SetViewport(const CDX12Viewport& viewport)
+	{
+		if(!IsValid()) return;
+
+		m_pIList->RSSetViewports(1, &viewport.GetViewport());
+	}
+
+	void CDX12CommandList::SetScissorRects(const CDX12Scissor* ppScissors[], u32 num)
+	{
+		NG_ASSERT(IsValid());
+		NG_ASSERT(num < NG_DX12_SCISSORRECT_MAX_PER_PIPELINE);
+
+		CD3DX12_RECT rects[NG_DX12_SCISSORRECT_MAX_PER_PIPELINE];
+		num = Clamp<u32>(num, 0, NG_ARRAY_SIZE(rects));
+
+		for(u32 i = 0; i < num; i++)
+		{
+			rects[i] = ppScissors[i]->GetScissorRect();
+		}
+
+		m_pIList->RSSetScissorRects(num, rects);
+	}
+	void CDX12CommandList::SetScissorRect(const CDX12Scissor& scissor)
+	{
+		NG_ASSERT(IsValid());
+
+		m_pIList->RSSetScissorRects(1, &scissor.GetScissorRect());
+	}
+
+	void CDX12CommandList::ResourceBarriers(const CDX12ResourceBarrier* ppBarriers[], u32 num)
+	{
+		NG_ASSERT(IsValid());
+		NG_ASSERT(num < NG_DX12_RESOURCE_BARRIER_SET_MAX_AT_ONCE);
+
+		D3D12_RESOURCE_BARRIER barriers[NG_DX12_RESOURCE_BARRIER_SET_MAX_AT_ONCE];
+		num = Clamp<u32>(num, 0, NG_ARRAY_SIZE(barriers));
+
+		for(u32 i = 0; i < num; i++)
+		{
+			barriers[i] = ppBarriers[i]->GetResourceBarrier();
+		}
+
+		m_pIList->ResourceBarrier(num, barriers);
+	}
+	void CDX12CommandList::ResourceBarrier(const CDX12ResourceBarrier& barrier)
+	{
+		NG_ASSERT(IsValid());
+
+		m_pIList->ResourceBarrier(1, &barrier.GetResourceBarrier());
+	}
+
+	void CDX12CommandList::SetRenderTargets(
+		const D3D12_CPU_DESCRIPTOR_HANDLE pRTVDescriptorHndls[],
+		u32 RTVNum,
+		const D3D12_CPU_DESCRIPTOR_HANDLE* pDSVDescriptorHndl
+		)
+	{
+		NG_ASSERT(IsValid());
+
+		m_pIList->OMSetRenderTargets(RTVNum, pRTVDescriptorHndls, FALSE, pDSVDescriptorHndl);
+	}
+	void CDX12CommandList::SetRenderTarget(
+		const D3D12_CPU_DESCRIPTOR_HANDLE& RTVDescriptorHndl,
+		const D3D12_CPU_DESCRIPTOR_HANDLE* pDSVDescriptorHndl
+		)
+	{
+		NG_ASSERT(IsValid());
+
+		m_pIList->OMSetRenderTargets(1, &RTVDescriptorHndl, FALSE, pDSVDescriptorHndl);
+	}
+
+	void CDX12CommandList::ClearRenderTarget(
+		const D3D12_CPU_DESCRIPTOR_HANDLE& RTVDescriptorHndl,
+		const float colorRGBA[4],
+		const D3D12_RECT pRects[],
+		u32 rectNum
+		)
+	{
+		NG_ASSERT(IsValid());
+
+		m_pIList->ClearRenderTargetView(RTVDescriptorHndl, colorRGBA, rectNum, pRects);
+	}
+
+	void CDX12CommandList::ClearDepthStencil(
+		const D3D12_CPU_DESCRIPTOR_HANDLE& DSVDescriptorHndl,
+		D3D12_CLEAR_FLAGS flags,
+		float depth,
+		u8 stencil,
+		const D3D12_RECT pRects[],
+		u32 rectNum
+		)
+	{
+		NG_ASSERT(IsValid());
+
+		m_pIList->ClearDepthStencilView(DSVDescriptorHndl, D3D12_CLEAR_FLAG_DEPTH, depth, stencil, rectNum, pRects);
+	}
+
 	void CDX12CommandList::Destroy()
 	{
 		NG_SAFE_RELEASE(m_pIList);
+
+		m_pCmdAlloc = nullptr;
 	}
 	
 	bool CDX12CommandList::IsValid() const

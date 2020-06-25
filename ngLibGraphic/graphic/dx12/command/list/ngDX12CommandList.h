@@ -17,6 +17,9 @@ namespace ng
 {
 	class CDX12Device;
 	class CDX12CommandAllocator;
+	class CDX12ResourceBarrier;
+	class CDX12Viewport;
+	class CDX12Scissor;
 }
 
 namespace ng
@@ -50,6 +53,90 @@ namespace ng
 		NG_ERRCODE Close();
 
 		/*!
+		* @brief					コマンドリストの状態をリセット
+		* @param allocator			DX12コマンドアロケータ
+		* @param state				DX12パイプラインステート
+		*/
+		//NG_ERRCODE Reset(CDX12CommandAllocator& allocator, CDX12PipelineState& state);
+		//NG_ERRCODE Reset(CDX12CommandAllocator& allocator);
+		/*!
+		* @brief					コマンドリストの状態をリセット
+		*/
+		NG_ERRCODE Reset();
+
+		/*!
+		* @brief					ビューポート設定
+		* @param ppViewports		ビューポートの配列
+		* @param num				ビューポートの数[0,DX12_VIEWPORT_MAX_PER_PIPELINE]
+		*/
+		void SetViewports(const CDX12Viewport* ppViewports[], u32 num);
+		void SetViewport(const CDX12Viewport& viewport);
+
+		/*!
+		* @brief					シザー矩形設定
+		* @param ppViewports		シザー矩形の配列
+		* @param num				シザー矩形の数[0,DX12_SCISSORRECT_MAX_PER_PIPELINE]
+		*/
+		void SetScissorRects(const CDX12Scissor* ppScissors[], u32 num);
+		void SetScissorRect(const CDX12Scissor& scissor);
+
+		/*!
+		* @brief					リソースバリア設定
+		* @param ppBarriers			リソースバリアの配列
+		* @param num				リソースバリアの数
+		*/
+		void ResourceBarriers(const CDX12ResourceBarrier* ppBarriers[], u32 num);
+		void ResourceBarrier(const CDX12ResourceBarrier& barrier);
+		
+		/*!
+		* @brief					レンダーターゲット設定
+		* @param pRTVDescriptorHndlsレンダーターゲットビューのデスクリプターハンドルの配列
+		* @param RTVNum				レンダーターゲットビューのデスクリプターハンドルの数
+		* @param pDSVDescriptorHndl	深度ステンシルビューのデスクリプターハンドル
+		*/
+		void SetRenderTargets(
+			const D3D12_CPU_DESCRIPTOR_HANDLE pRTVDescriptorHndls[],
+			u32 RTVNum,
+			const D3D12_CPU_DESCRIPTOR_HANDLE* pDSVDescriptorHndl
+			);
+		void SetRenderTarget(
+			const D3D12_CPU_DESCRIPTOR_HANDLE& RTVDescriptorHndl,
+			const D3D12_CPU_DESCRIPTOR_HANDLE* pDSVDescriptorHndl
+			);
+
+		/*!
+		* @brief					レンダーターゲットのクリア
+		* @param RTVDescriptorHndl	レンダーターゲットビューのデスクリプターハンドル
+		* @param colorRGBA			クリアカラー
+		* @param pRect				クリアする矩形
+		* @param rectNum			クリアする矩形の数
+		*/
+		void ClearRenderTarget(
+			const D3D12_CPU_DESCRIPTOR_HANDLE& RTVDescriptorHndl,
+			const float colorRGBA[4],
+			const D3D12_RECT pRects[] = nullptr,
+			u32 rectNum = 0
+			);
+
+		/*!
+		* @brief					深度ステンシルのクリア
+		* @param DSVDescriptorHndl	深度ステンシルビューのデスクリプターハンドル
+		* @param flags				クリアフラグ。 D3D12_CLEAR_FLAG_DEPTH, D3D12_CLEAR_FLAG_STENCIL
+		* @param depth				クリアに用いる深度値
+		* @param stencil			クリアに用いるステンシルの値
+		* @param pRect				クリアする矩形
+		* @param rectNum			クリアする矩形の数
+		*/
+		void ClearDepthStencil(
+			const D3D12_CPU_DESCRIPTOR_HANDLE& DSVDescriptorHndl,
+			D3D12_CLEAR_FLAGS flags = D3D12_CLEAR_FLAG_DEPTH,
+			float depth = 1.f,
+			u8 stencil = 0,
+			const D3D12_RECT pRects[] = nullptr,
+			u32 rectNum = 0
+			);
+
+		/*!
 		* @brief					破棄
 		*/
 		void Destroy();
@@ -67,6 +154,7 @@ namespace ng
 
 	private:
 		DX12IfType* m_pIList;	//!< DX12コマンドリスト インターフェース
+		CDX12CommandAllocator* m_pCmdAlloc;	//!< 利用するDX12コマンドアロケータ
 	};
 
 }	// namespace ng
