@@ -72,29 +72,29 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(VCInstallDir)Auxiliary\VS\UnitTest\include\UWP;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(VCInstallDir)Auxiliary\VS\UnitTest\lib\UWP;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\Obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(VCInstallDir)Auxiliary\VS\UnitTest\include\UWP;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(VCInstallDir)Auxiliary\VS\UnitTest\lib\UWP;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\Obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(VCInstallDir)Auxiliary\VS\UnitTest\include\UWP;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(VCInstallDir)Auxiliary\VS\UnitTest\lib\UWP;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\Obj\$(Configuration)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(VCInstallDir)Auxiliary\VS\UnitTest\include;$(VCInstallDir)Auxiliary\VS\UnitTest\include\UWP;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VCInstallDir)Auxiliary\VS\UnitTest\lib;$(VCInstallDir)Auxiliary\VS\UnitTest\lib\UWP;$(SolutionDir)Build\$(Platform)\ngLib\Lib\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\$(Configuration)\</OutDir>
     <IntDir>$(SolutionDir)Build\$(Platform)\$(ProjectName)\Obj\$(Configuration)\</IntDir>
   </PropertyGroup>
