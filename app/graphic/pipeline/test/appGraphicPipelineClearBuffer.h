@@ -1,7 +1,7 @@
 ﻿/*!
 * @file		appGraphicPipelineClearBuffer.h
 * @brief	グラフィックパイプライン バッファクリア
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
@@ -9,6 +9,8 @@
 #define __APP_GRAPHIC_PIPELINE_CLEAR_BUFFER_H__
 
 #include "../appGraphicPipeline.h"
+#include "ngLibGraphic/graphic/dx12/viewport/ngDX12Viewport.h"
+#include "ngLibGraphic/graphic/dx12/scissor/ngDX12Scissor.h"
 
 namespace app
 {
@@ -38,7 +40,8 @@ namespace app
 		void Render();
 		
 	private:
-		
+		ng::CDX12Viewport m_viewport;	//!< DX12ビューポート
+		ng::CDX12Scissor m_scissor;		//!< DX12シザー矩形
 	};
 
 }	// namespace app
