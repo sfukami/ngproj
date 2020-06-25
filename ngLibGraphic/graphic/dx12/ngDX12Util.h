@@ -65,6 +65,11 @@ namespace ng
 	*/
 	NG_DECL CDX12DepthStencil* GetDX12DepthStencil(eDX12DepthStencilId id);
 
+	/*!
+	* @brief					現在のバックバッファであるレンダーターゲットを取得
+	*/
+	NG_DECL CDX12RenderTarget* GetDX12RenderTargetOfCurrentBackBuffer();
+
 }	// namespace ng
 
 #endif	// __NG_GRAPHIC_DX12_UTIL_H__

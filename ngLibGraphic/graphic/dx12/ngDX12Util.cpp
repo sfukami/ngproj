@@ -83,4 +83,14 @@ namespace ng
 		return pDX12Graphic->GetDepthStencilMngr().GetDepthStencil(id);
 	}
 
+	NG_DECL CDX12RenderTarget* GetDX12RenderTargetOfCurrentBackBuffer()
+	{
+		ng::CDX12SwapChain* pSwapChain = ng::GetDX12SwapChain();
+
+		if(pSwapChain == nullptr) return nullptr;
+
+		ng::u32 frameIndex = pSwapChain->GetCurrentBackBufferIndex();
+		return ng::GetDX12RenderTarget(static_cast<ng::eDX12RenderTargetId>(frameIndex));
+	}
+
 }	// namespace ng
