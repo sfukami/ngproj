@@ -43,9 +43,9 @@ namespace ng
 
 	void CDX12DepthStencilManager::Finalize()
 	{
-		for(int i = 0; i < NG_ARRAY_SIZE(m_dss); i++)
+		for(auto& ds : m_dss)
 		{
-			m_dss[i].Destroy();
+			ds.Destroy();
 		}
 	}
 

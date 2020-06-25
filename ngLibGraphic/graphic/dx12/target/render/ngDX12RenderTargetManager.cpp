@@ -44,9 +44,9 @@ namespace ng
 
 	void CDX12RenderTargetManager::Finalize()
 	{
-		for(int i = 0; i < NG_ARRAY_SIZE(m_rts); i++)
+		for(auto& rt : m_rts)
 		{
-			m_rts[i].Destroy();
+			rt.Destroy();
 		}
 	}
 
