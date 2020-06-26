@@ -8,11 +8,13 @@
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphic.h"
+#include "pipeline/appGraphicPipeline.h"
 
 namespace app
 {
 	CGraphic::CGraphic()
 		: m_isInit(false)
+		, m_pPipeline(nullptr)
 	{
 	}
 	CGraphic::~CGraphic()
@@ -50,11 +52,6 @@ namespace app
 		// グラフィック管理へ割り当て
 		ng::CGraphicManager::GetInstance().AssignGraphic(&m_dx12Graphic);
 
-		// グラフィックパイプライン初期化
-		if(!m_pipeline.Initialize()) {
-			return false;
-		}
-
 		m_isInit = true;
 
 		return true;
@@ -62,9 +59,6 @@ namespace app
 
 	void CGraphic::Finalize()
 	{
-		// グラフィックパイプライン終了処理
-		m_pipeline.Finalize();
-
 		// DX12グラフィック 破棄
 		m_dx12Graphic.Destroy();
 
@@ -90,29 +84,35 @@ namespace app
 		ng::CGraphicManager::GetInstance().Render();
 	}
 
+	void CGraphic::SetPipeline(CGraphicPipeline* pPipeline)
+	{
+		m_pPipeline = pPipeline;
+	}
+
 	void CGraphic::_executePipeline()
 	{
-		// test
-		m_pipeline.Execute();
+		if(m_pPipeline != nullptr) {
+			m_pPipeline->Execute();
+		}
 	}
 
 	void CGraphic::_preprocessPipeline()
 	{
 		// 全コマンドアロケータリセット
-		ng::ResetAllDX12CommandAllocator();
+		ng::DX12Util::ResetAllCommandAllocator();
 	}
 
 	void CGraphic::_postprocessPipeline()
 	{
 		// 全コマンドリスト実行
-		ng::ExecuteAllDX12CommandList(ng::eDX12CommandQueueType::GRAPHIC);
+		ng::DX12Util::ExecuteAllCommandList(ng::eDX12CommandQueueType::GRAPHIC);
 
 		// バックバッファを表示
-		ng::CDX12SwapChain* pSwapChain = ng::GetDX12SwapChain();
+		ng::CDX12SwapChain* pSwapChain = ng::DX12Util::GetSwapChain();
 		pSwapChain->Present(1);
 
 		// 描画完了待ち
-		ng::CDX12CommandQueue* pCmdQueue = ng::GetDX12CommandQueue(ng::eDX12CommandQueueType::GRAPHIC);
+		ng::CDX12CommandQueue* pCmdQueue = ng::DX12Util::GetCommandQueue(ng::eDX12CommandQueueType::GRAPHIC);
 		pCmdQueue->WaitForFence();
 	}
 

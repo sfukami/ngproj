@@ -10,8 +10,11 @@
 
 #include <Windows.h>
 #include "ngLibGraphic/graphic/dx12/ngDX12Graphic.h"
-//test
-#include "pipeline/test/appGraphicPipelineClearBuffer.h"
+
+namespace app
+{
+	class CGraphicPipeline;
+}
 
 namespace app
 {
@@ -49,16 +52,21 @@ namespace app
 		*/
 		void Render();
 
-	private:
 		/*!
-		* @brief					パイプライン実行
+		* @brief					グラフィックパイプライン設定
 		*/
-		void _executePipeline();
+		void SetPipeline(CGraphicPipeline* pPipeline);
 
+	private:
 		/*!
 		* @brief					パイプライン実行 事前処理
 		*/
 		void _preprocessPipeline();
+
+		/*!
+		* @brief					パイプライン実行
+		*/
+		void _executePipeline();
 
 		/*!
 		* @brief					パイプライン実行 事後処理
@@ -71,9 +79,7 @@ namespace app
 	private:
 		bool m_isInit;	//!< 初期化済みか
 		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック
-		
-		// test
-		CGraphicPipelineClearBuffer m_pipeline;	//!< グラフィックパイプラインテスト
+		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 	};
 
 }	// namespace app

@@ -73,6 +73,12 @@ namespace app
 			return false;
 		}
 
+		//test
+		if(!m_pipeline.Initialize()) {
+			return false;
+		}
+		m_graphic.SetPipeline(&m_pipeline);
+
 		return true;
 	}
 	
