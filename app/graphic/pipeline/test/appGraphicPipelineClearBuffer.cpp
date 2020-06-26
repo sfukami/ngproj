@@ -36,7 +36,7 @@ namespace app
 	void CGraphicPipelineClearBuffer::Execute()
 	{
 		// コマンドリストリセット
-		ng::CDX12CommandList* pCmdList = ng::GetDX12CommandList(0);
+		ng::CDX12CommandList* pCmdList = ng::DX12Util::GetCommandList(0);
 		pCmdList->Reset();
 
 		// ビューポート設定
@@ -45,29 +45,15 @@ namespace app
 		pCmdList->SetScissorRect(m_scissor);
 
 		// バックバッファをレンダリングターゲットとして使用
-		ng::CDX12RenderTarget* pBackBufferRT = ng::GetDX12RenderTargetOfCurrentBackBuffer();
-		{
-			ng::CDX12ResourceBarrierTransition barrier;
-			pBackBufferRT->GetResourceBarrierForSetRenderTarget(&barrier);
-			pCmdList->ResourceBarrier(barrier);
-		}
-
-		D3D12_CPU_DESCRIPTOR_HANDLE rtvHandle = pBackBufferRT->GetCPUDescriptorHandle();
-		D3D12_CPU_DESCRIPTOR_HANDLE dsvHandle = ng::GetDX12DepthStencil(ng::eDX12DepthStencilId::ID_01)->GetCPUDescriptorHandle();
-		pCmdList->SetRenderTarget(rtvHandle, &dsvHandle);
+		ng::CDX12RenderTarget* pRTBackBuffer = ng::DX12Util::GetRenderTargetOfCurrentBackBuffer();
+		ng::CDX12DepthStencil* pDS = ng::DX12Util::GetDepthStencil(ng::eDX12DepthStencilId::ID_01);
+		ng::DX12Util::SetRenderTarget(pCmdList, pRTBackBuffer, pDS);
 
 		// バックバッファクリア
-		{
-			const float clearColor[] = {0.0f, 0.0f, 0.5f, 1.0f};
-			pCmdList->ClearRenderTarget(rtvHandle, clearColor);
-			pCmdList->ClearDepthStencil(dsvHandle);
-		}
+		const float clearColor[4] = {0.0f, 0.0f, 0.5f, 1.0f};
+		ng::DX12Util::ClearRenderTarget(pCmdList, pRTBackBuffer, clearColor, pDS);
 
-		{
-			ng::CDX12ResourceBarrierTransition barrier;
-			pBackBufferRT->GetResourceBarrierForPresent(&barrier);
-			pCmdList->ResourceBarrier(barrier);
-		}
+		ng::DX12Util::SetRenderTargetToPresent(pCmdList, pRTBackBuffer);
 
 		// コマンドの記録を終了
 		pCmdList->Close();
