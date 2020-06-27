@@ -74,6 +74,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\shader">
       <UniqueIdentifier>{5701b96a-9dc7-44e7-baca-98e7ede6cf7f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\rootsign">
+      <UniqueIdentifier>{d749817c-80b1-46c1-ba5d-ea4803b55c19}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -193,6 +196,8 @@
     <ClInclude Include="graphic\dx12\shader\ngDX12Shader.h">
       <Filter>ソース ファイル\graphic\dx12\shader</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\rootsign\ngDX12RootSignature.h">
+      <Filter>ソース ファイル\graphic\dx12\rootsign</Filter>
     </ClInclude>
     <ClInclude Include="graphic\dx12\polygon\ngDX12IndexBuffer.h">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
@@ -283,6 +288,8 @@
     <ClCompile Include="graphic\dx12\shader\ngDX12Shader.cpp">
       <Filter>ソース ファイル\graphic\dx12\shader</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\dx12\rootsign\ngDX12RootSignature.cpp">
+      <Filter>ソース ファイル\graphic\dx12\rootsign</Filter>
     </ClCompile>
     <ClCompile Include="graphic\dx12\polygon\ngDX12IndexBuffer.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
