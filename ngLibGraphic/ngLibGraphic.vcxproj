@@ -210,6 +210,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\polygon\ngDX12VertexBuffer.h" />
     <ClInclude Include="graphic\dx12\resource\ngDX12Resource.h" />
     <ClInclude Include="graphic\dx12\scissor\ngDX12Scissor.h" />
+    <ClInclude Include="graphic\dx12\shader\ngDX12Shader.h" />
     <ClInclude Include="graphic\dx12\swapchain\ngDX12SwapChain.h" />
     <ClInclude Include="graphic\dx12\target\depth\ngDX12DepthStencil.h" />
     <ClInclude Include="graphic\dx12\target\depth\ngDX12DepthStencilId.h" />
@@ -245,6 +246,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\polygon\ngDX12VertexBuffer.cpp" />
     <ClCompile Include="graphic\dx12\resource\ngDX12Resource.cpp" />
     <ClCompile Include="graphic\dx12\scissor\ngDX12Scissor.cpp" />
+    <ClCompile Include="graphic\dx12\shader\ngDX12Shader.cpp" />
     <ClCompile Include="graphic\dx12\swapchain\ngDX12SwapChain.cpp" />
     <ClCompile Include="graphic\dx12\target\depth\ngDX12DepthStencil.cpp" />
     <ClCompile Include="graphic\dx12\target\depth\ngDX12DepthStencilManager.cpp" />

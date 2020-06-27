@@ -71,6 +71,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\polygon">
       <UniqueIdentifier>{fbc36c05-9b8e-4025-b6b0-a0e2d5c115ef}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\shader">
+      <UniqueIdentifier>{5701b96a-9dc7-44e7-baca-98e7ede6cf7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -187,6 +190,9 @@
     <ClInclude Include="graphic\dx12\polygon\ngDX12Polygon.h">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\shader\ngDX12Shader.h">
+      <Filter>ソース ファイル\graphic\dx12\shader</Filter>
+    </ClInclude>
     </ClInclude>
     <ClInclude Include="graphic\dx12\polygon\ngDX12IndexBuffer.h">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
@@ -274,6 +280,8 @@
     <ClCompile Include="graphic\dx12\polygon\ngDX12Polygon.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\dx12\shader\ngDX12Shader.cpp">
+      <Filter>ソース ファイル\graphic\dx12\shader</Filter>
     </ClCompile>
     </ClCompile>
     <ClCompile Include="graphic\dx12\polygon\ngDX12IndexBuffer.cpp">
