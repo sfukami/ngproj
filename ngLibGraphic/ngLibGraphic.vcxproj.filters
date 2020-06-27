@@ -77,6 +77,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\rootsign">
       <UniqueIdentifier>{d749817c-80b1-46c1-ba5d-ea4803b55c19}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\pipeline">
+      <UniqueIdentifier>{4cd2afb7-8c1d-4779-83d8-3144735cb3a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -205,6 +208,12 @@
     <ClInclude Include="graphic\dx12\polygon\ngDX12VertexBuffer.h">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\pipeline\ngDX12GraphicPipelineStateDesc.h">
+      <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\pipeline\ngDX12PipelineState.h">
+      <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -296,6 +305,12 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\polygon\ngDX12VertexBuffer.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\pipeline\ngDX12GraphicPipelineStateDesc.cpp">
+      <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\pipeline\ngDX12PipelineState.cpp">
+      <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
