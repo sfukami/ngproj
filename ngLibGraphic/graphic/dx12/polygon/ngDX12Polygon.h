@@ -9,8 +9,8 @@
 #define __NG_GRAPHIC_DX12_POLYGON_H__
 
 #include <d3dcommon.h>
-#include "../primitive/ngDX12VertexBuffer.h"
-#include "../primitive/ngDX12IndexBuffer.h"
+#include "ngDX12VertexBuffer.h"
+#include "ngDX12IndexBuffer.h"
 
 namespace ng
 {

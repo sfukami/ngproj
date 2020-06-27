@@ -68,9 +68,6 @@
     <Filter Include="ソース ファイル\graphic\dx12\scissor">
       <UniqueIdentifier>{c2194121-29ed-4000-a3eb-3b52deddcdf4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\graphic\dx12\primitive">
-      <UniqueIdentifier>{78b07a11-1fd9-44fa-b021-4a5c52413518}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\graphic\dx12\polygon">
       <UniqueIdentifier>{fbc36c05-9b8e-4025-b6b0-a0e2d5c115ef}</UniqueIdentifier>
     </Filter>
@@ -187,13 +184,14 @@
     <ClInclude Include="graphic\dx12\ngDX12.h">
       <Filter>ソース ファイル\graphic\dx12</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\dx12\primitive\ngDX12IndexBuffer.h">
-      <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
-    </ClInclude>
-    <ClInclude Include="graphic\dx12\primitive\ngDX12VertexBuffer.h">
-      <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
-    </ClInclude>
     <ClInclude Include="graphic\dx12\polygon\ngDX12Polygon.h">
+      <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
+    </ClInclude>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\polygon\ngDX12IndexBuffer.h">
+      <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\polygon\ngDX12VertexBuffer.h">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClInclude>
   </ItemGroup>
@@ -273,13 +271,15 @@
     <ClCompile Include="graphic\dx12\ngDX12Util.cpp">
       <Filter>ソース ファイル\graphic\dx12</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\dx12\primitive\ngDX12IndexBuffer.cpp">
-      <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
-    </ClCompile>
-    <ClCompile Include="graphic\dx12\primitive\ngDX12VertexBuffer.cpp">
-      <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
-    </ClCompile>
     <ClCompile Include="graphic\dx12\polygon\ngDX12Polygon.cpp">
+      <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
+    </ClCompile>
+    </ClCompile>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\polygon\ngDX12IndexBuffer.cpp">
+      <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\polygon\ngDX12VertexBuffer.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClCompile>
   </ItemGroup>
