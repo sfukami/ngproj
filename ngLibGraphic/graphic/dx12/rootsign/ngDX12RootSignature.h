@@ -5,6 +5,9 @@
 * @author	s.fukami
 */
 
+#ifndef __NG_GRAPHIC_DX12_ROOT_SIGNATURE_H__
+#define __NG_GRAPHIC_DX12_ROOT_SIGNATURE_H__
+
 struct ID3D12RootSignature;
 struct CD3DX12_ROOT_SIGNATURE_DESC;
 
@@ -53,3 +56,5 @@ namespace ng
 	};
 
 }	// namespace ng
+
+#endif	// __NG_GRAPHIC_DX12_ROOT_SIGNATURE_H__
