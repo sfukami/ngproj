@@ -208,10 +208,10 @@
     <ClInclude Include="graphic\dx12\polygon\ngDX12VertexBuffer.h">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\dx12\pipeline\ngDX12GraphicPipelineStateDesc.h">
+    <ClInclude Include="graphic\dx12\pipeline\ngDX12PipelineState.h">
       <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\dx12\pipeline\ngDX12PipelineState.h">
+    <ClInclude Include="graphic\dx12\pipeline\ngDX12PipelineStateDesc.h">
       <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
     </ClInclude>
   </ItemGroup>
@@ -306,10 +306,10 @@
     <ClCompile Include="graphic\dx12\polygon\ngDX12VertexBuffer.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\dx12\pipeline\ngDX12GraphicPipelineStateDesc.cpp">
+    <ClCompile Include="graphic\dx12\pipeline\ngDX12PipelineState.cpp">
       <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\dx12\pipeline\ngDX12PipelineState.cpp">
+    <ClCompile Include="graphic\dx12\pipeline\ngDX12PipelineStateDesc.cpp">
       <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
     </ClCompile>
   </ItemGroup>

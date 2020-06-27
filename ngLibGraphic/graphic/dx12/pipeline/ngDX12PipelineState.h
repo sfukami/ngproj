@@ -13,7 +13,7 @@ struct ID3D12PipelineState;
 namespace ng
 {
 	class CDX12Device;
-	class CDX12GraphicPipelineStateDesc;
+	class CDX12PipelineStateDesc;
 }
 
 namespace ng
@@ -35,7 +35,7 @@ namespace ng
 		*/
 		NG_ERRCODE Create(
 			CDX12Device& device,
-			const CDX12GraphicPipelineStateDesc& desc
+			const CDX12PipelineStateDesc& desc
 			);
 
 		/*!

@@ -205,8 +205,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\ngDX12.h" />
     <ClInclude Include="graphic\dx12\ngDX12Graphic.h" />
     <ClInclude Include="graphic\dx12\ngDX12Util.h" />
-    <ClInclude Include="graphic\dx12\pipeline\ngDX12GraphicPipelineStateDesc.h" />
     <ClInclude Include="graphic\dx12\pipeline\ngDX12PipelineState.h" />
+    <ClInclude Include="graphic\dx12\pipeline\ngDX12PipelineStateDesc.h" />
     <ClInclude Include="graphic\dx12\polygon\ngDX12IndexBuffer.h" />
     <ClInclude Include="graphic\dx12\polygon\ngDX12Polygon.h" />
     <ClInclude Include="graphic\dx12\polygon\ngDX12VertexBuffer.h" />
@@ -244,8 +244,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\fence\ngDX12Fence.cpp" />
     <ClCompile Include="graphic\dx12\ngDX12Graphic.cpp" />
     <ClCompile Include="graphic\dx12\ngDX12Util.cpp" />
-    <ClCompile Include="graphic\dx12\pipeline\ngDX12GraphicPipelineStateDesc.cpp" />
     <ClCompile Include="graphic\dx12\pipeline\ngDX12PipelineState.cpp" />
+    <ClCompile Include="graphic\dx12\pipeline\ngDX12PipelineStateDesc.cpp" />
     <ClCompile Include="graphic\dx12\polygon\ngDX12IndexBuffer.cpp" />
     <ClCompile Include="graphic\dx12\polygon\ngDX12Polygon.cpp" />
     <ClCompile Include="graphic\dx12\polygon\ngDX12VertexBuffer.cpp" />

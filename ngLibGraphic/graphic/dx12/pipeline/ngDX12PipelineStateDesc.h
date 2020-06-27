@@ -1,12 +1,12 @@
 ﻿/*!
-* @file		ngDX12GraphicPipelineStateDesc.h
+* @file		ngDX12PipelineStateDesc.h
 * @brief	DX12グラフィックパイプラインステート記述子
 * @date		2019-03-24
 * @author	s.fukami
 */
 
-#ifndef __NG_GRAPHIC_DX12_GRAPHIC_PIPELINE_STATE_DESC_H__
-#define __NG_GRAPHIC_DX12_GRAPHIC_PIPELINE_STATE_DESC_H__
+#ifndef __NG_GRAPHIC_DX12_PIPELINE_STATE_DESC_H__
+#define __NG_GRAPHIC_DX12_PIPELINE_STATE_DESC_H__
 
 #include <d3d12.h>
 
@@ -21,11 +21,11 @@ namespace ng
 	/*!
 	* @brief					DX12グラフィックパイプラインステート 記述子
 	*/
-	class NG_DECL CDX12GraphicPipelineStateDesc : public D3D12_GRAPHICS_PIPELINE_STATE_DESC
+	class NG_DECL CDX12PipelineStateDesc : public D3D12_GRAPHICS_PIPELINE_STATE_DESC
 	{
 	public:
-		CDX12GraphicPipelineStateDesc();
-		~CDX12GraphicPipelineStateDesc();
+		CDX12PipelineStateDesc();
+		~CDX12PipelineStateDesc();
 
 		/*!
 		* @brief					初期化
@@ -53,4 +53,4 @@ namespace ng
 
 }	// namespace ng
 
-#endif	// __NG_GRAPHIC_DX12_GRAPHIC_PIPELINE_STATE_DESC_H__
+#endif	// __NG_GRAPHIC_DX12_PIPELINE_STATE_DESC_H__

@@ -9,19 +9,19 @@
 #include "ngLibCore/common/ngCommon.h"
 #include "../rootsign/ngDX12RootSignature.h"
 #include "../shader/ngDX12Shader.h"
-#include "ngDX12GraphicPipelineStateDesc.h"
+#include "ngDX12PipelineStateDesc.h"
 
 namespace ng
 {
-	CDX12GraphicPipelineStateDesc::CDX12GraphicPipelineStateDesc()
+	CDX12PipelineStateDesc::CDX12PipelineStateDesc()
 		: D3D12_GRAPHICS_PIPELINE_STATE_DESC()
 	{
 	}
-	CDX12GraphicPipelineStateDesc::~CDX12GraphicPipelineStateDesc()
+	CDX12PipelineStateDesc::~CDX12PipelineStateDesc()
 	{
 	}
 
-	void CDX12GraphicPipelineStateDesc::Initialize()
+	void CDX12PipelineStateDesc::Initialize()
 	{
 		RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
 		BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
@@ -31,12 +31,12 @@ namespace ng
 		SampleDesc.Count = 1;
 	}
 
-	void CDX12GraphicPipelineStateDesc::SetRootSignature(CDX12RootSignature& signature)
+	void CDX12PipelineStateDesc::SetRootSignature(CDX12RootSignature& signature)
 	{
 		pRootSignature = signature.Interface();
 	}
 
-	void CDX12GraphicPipelineStateDesc::SetVertexShader(CDX12Shader& shader)
+	void CDX12PipelineStateDesc::SetVertexShader(CDX12Shader& shader)
 	{
 		D3D12_SHADER_BYTECODE bytecode;
 		getShaderBytecode(&bytecode, shader);
@@ -44,7 +44,7 @@ namespace ng
 		VS = bytecode;
 	}
 
-	void CDX12GraphicPipelineStateDesc::SetPixelShader(CDX12Shader& shader)
+	void CDX12PipelineStateDesc::SetPixelShader(CDX12Shader& shader)
 	{
 		D3D12_SHADER_BYTECODE bytecode;
 		getShaderBytecode(&bytecode, shader);
@@ -52,7 +52,7 @@ namespace ng
 		PS = bytecode;
 	}
 
-	void CDX12GraphicPipelineStateDesc::SetDomainShader(CDX12Shader& shader)
+	void CDX12PipelineStateDesc::SetDomainShader(CDX12Shader& shader)
 	{
 		D3D12_SHADER_BYTECODE bytecode;
 		getShaderBytecode(&bytecode, shader);
@@ -60,7 +60,7 @@ namespace ng
 		DS = bytecode;
 	}
 
-	void CDX12GraphicPipelineStateDesc::SetHullShader(CDX12Shader& shader)
+	void CDX12PipelineStateDesc::SetHullShader(CDX12Shader& shader)
 	{
 		D3D12_SHADER_BYTECODE bytecode;
 		getShaderBytecode(&bytecode, shader);
@@ -68,7 +68,7 @@ namespace ng
 		HS = bytecode;
 	}
 
-	void CDX12GraphicPipelineStateDesc::SetGeometryShader(CDX12Shader& shader)
+	void CDX12PipelineStateDesc::SetGeometryShader(CDX12Shader& shader)
 	{
 		D3D12_SHADER_BYTECODE bytecode;
 		getShaderBytecode(&bytecode, shader);
@@ -76,7 +76,7 @@ namespace ng
 		GS = bytecode;
 	}
 
-	void CDX12GraphicPipelineStateDesc::getShaderBytecode(D3D12_SHADER_BYTECODE* pDst, CDX12Shader& shader)
+	void CDX12PipelineStateDesc::getShaderBytecode(D3D12_SHADER_BYTECODE* pDst, CDX12Shader& shader)
 	{
 		NG_ASSERT(pDst != nullptr);
 

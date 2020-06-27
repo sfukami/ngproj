@@ -12,7 +12,7 @@
 #include "../rootsign/ngDX12RootSignature.h"
 #include "../shader/ngDX12Shader.h"
 #include "ngDX12PipelineState.h"
-#include "ngDX12GraphicPipelineStateDesc.h"
+#include "ngDX12PipelineStateDesc.h"
 
 namespace ng
 {
@@ -28,7 +28,7 @@ namespace ng
 
 	NG_ERRCODE CDX12PipelineState::Create(
 		CDX12Device& device,
-		const CDX12GraphicPipelineStateDesc& desc
+		const CDX12PipelineStateDesc& desc
 		)
 	{
 		NG_ASSERT(!IsValid());
