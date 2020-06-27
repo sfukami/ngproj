@@ -184,6 +184,9 @@
     <ClInclude Include="graphic\dx12\ngDX12.h">
       <Filter>ソース ファイル\graphic\dx12</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\primitive\ngDX12IndexBuffer.h">
+      <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
+    </ClInclude>
     <ClInclude Include="graphic\dx12\primitive\ngDX12VertexBuffer.h">
       <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
     </ClInclude>
@@ -263,6 +266,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\ngDX12Util.cpp">
       <Filter>ソース ファイル\graphic\dx12</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\primitive\ngDX12IndexBuffer.cpp">
+      <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
     </ClCompile>
     <ClCompile Include="graphic\dx12\primitive\ngDX12VertexBuffer.cpp">
       <Filter>ソース ファイル\graphic\dx12\primitive</Filter>
