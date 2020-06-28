@@ -9,6 +9,7 @@
 #define __NG_CORE_STD_H__
 
 #include <type_traits>
+#include "ngStdMacro.h"
 
 namespace ng
 {
