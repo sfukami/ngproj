@@ -20,5 +20,9 @@
 #include "target/depth/ngDX12DepthStencil.h"
 #include "target/depth/ngDX12DepthStencilId.h"
 #include "barrier/ngDX12ResourceBarrierTransition.h"
+#include "rootsign/ngDX12RootSignature.h"
+#include "pipeline/ngDX12PipelineState.h"
+#include "pipeline/ngDX12PipelineStateDesc.h"
+#include "polygon/ngDX12Polygon.h"
 
 #endif	// __NG_GRAPHIC_DX12_H__
