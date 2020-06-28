@@ -11,7 +11,10 @@
 #include "../../common/ngDX12Common.h"
 #include "../../device/ngDX12Device.h"
 #include "../allocator/ngDX12CommandAllocator.h"
+#include "../../rootsign/ngDX12RootSignature.h"
+#include "../../pipeline/ngDX12PipelineState.h"
 #include "../../barrier/ngDX12ResourceBarrier.h"
+#include "../../descriptor/ngDX12DescriptorHeap.h"
 #include "../../viewport/ngDX12Viewport.h"
 #include "../../scissor/ngDX12Scissor.h"
 #include "ngDX12CommandList.h"
@@ -62,23 +65,22 @@ namespace ng
 		return m_pIList->Close();
 	}
 
-	/*
-	NG_ERRCODE CDX12CommandList::Reset(CDX12CommandAllocator& allocator, CDX12PipelineState& state)
-	{
-		return m_pIList->Reset(allocator.Interface(), state.Interface());
-	}
-	*/
-	/*
-	NG_ERRCODE CDX12CommandList::Reset(CDX12CommandAllocator& allocator)
-	{
-		return m_pIList->Reset(allocator.Interface(), nullptr);
-	}
-	*/
 	NG_ERRCODE CDX12CommandList::Reset()
 	{
 		NG_ASSERT(IsValid());
 
 		return m_pIList->Reset(m_pCmdAlloc->Interface(), nullptr);
+	}
+	NG_ERRCODE CDX12CommandList::Reset(CDX12PipelineState& state)
+	{
+		NG_ASSERT(IsValid());
+
+		return m_pIList->Reset(m_pCmdAlloc->Interface(), state.Interface());
+	}
+
+	void CDX12CommandList::SetRootSignature(CDX12RootSignature& signature)
+	{
+		m_pIList->SetGraphicsRootSignature(signature.Interface());
 	}
 
 	void CDX12CommandList::SetViewports(const CDX12Viewport* ppViewports[], u32 num)
@@ -191,6 +193,31 @@ namespace ng
 		NG_ASSERT(IsValid());
 
 		m_pIList->ClearDepthStencilView(DSVDescriptorHndl, D3D12_CLEAR_FLAG_DEPTH, depth, stencil, rectNum, pRects);
+	}
+
+	void CDX12CommandList::SetDescriptorHeaps(CDX12DescriptorHeap* const ppDescriptorHeaps[], u32 num)
+	{
+		ID3D12DescriptorHeap* ppIDescriptorHeaps[ NG_DX12_DESCRIPTOR_HEAP_MAX ];
+		
+		for(u32 i = 0; i < num; i++)
+		{
+			ppIDescriptorHeaps[i] = ppDescriptorHeaps[i]->Interface();
+		}
+
+		m_pIList->SetDescriptorHeaps(num, ppIDescriptorHeaps);
+	}
+	void CDX12CommandList::SetDescriptorHeap(CDX12DescriptorHeap& descriptorHeap)
+	{
+		ID3D12DescriptorHeap* const ppIDescriptorHeaps[] = {descriptorHeap.Interface()};
+		m_pIList->SetDescriptorHeaps(1, ppIDescriptorHeaps);
+	}
+
+	void CDX12CommandList::SetGraphicsRootDescriptorTable(
+		u32 index,
+		const D3D12_GPU_DESCRIPTOR_HANDLE& handle
+		)
+	{
+		m_pIList->SetGraphicsRootDescriptorTable(index, handle);
 	}
 
 	void CDX12CommandList::Destroy()

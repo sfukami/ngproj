@@ -17,7 +17,10 @@ namespace ng
 {
 	class CDX12Device;
 	class CDX12CommandAllocator;
+	class CDX12RootSignature;
+	class CDX12PipelineState;
 	class CDX12ResourceBarrier;
+	class CDX12DescriptorHeap;
 	class CDX12Viewport;
 	class CDX12Scissor;
 }
@@ -54,16 +57,16 @@ namespace ng
 
 		/*!
 		* @brief					コマンドリストの状態をリセット
-		* @param allocator			DX12コマンドアロケータ
 		* @param state				DX12パイプラインステート
 		*/
-		//NG_ERRCODE Reset(CDX12CommandAllocator& allocator, CDX12PipelineState& state);
-		//NG_ERRCODE Reset(CDX12CommandAllocator& allocator);
-		/*!
-		* @brief					コマンドリストの状態をリセット
-		*/
 		NG_ERRCODE Reset();
+		NG_ERRCODE Reset(CDX12PipelineState& state);
 
+		/*!
+		* @brief					ルートシグネチャ設定
+		*/
+		void SetRootSignature(CDX12RootSignature& signature);
+		
 		/*!
 		* @brief					ビューポート設定
 		* @param ppViewports		ビューポートの配列
@@ -134,6 +137,24 @@ namespace ng
 			u8 stencil = 0,
 			const D3D12_RECT pRects[] = nullptr,
 			u32 rectNum = 0
+			);
+
+		/*!
+		* @brief					ディスクリプタヒープ設定
+		* @param ppDescriptorHeaps	DX12ディスクリプタヒープの配列
+		* @param num				DX12ディスクリプタヒープの数[0,DX12_DESCRIPTOR_HEAP_MAX]
+		*/
+		void SetDescriptorHeaps(CDX12DescriptorHeap* const ppDescriptorHeaps[], u32 num);
+		void SetDescriptorHeap(CDX12DescriptorHeap& descriptorHeap);
+
+		/*!
+		* @brief					ディスクリプタテーブルをルートシグネチャへ設定
+		* @param index				バインド先のインデックス
+		* @param handle				ベースとなるディスクリプタのGPUディスクリプタハンドル
+		*/
+		void SetGraphicsRootDescriptorTable(
+			u32 index,
+			const D3D12_GPU_DESCRIPTOR_HANDLE& handle
 			);
 
 		/*!
