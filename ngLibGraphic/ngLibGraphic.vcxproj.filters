@@ -214,6 +214,9 @@
     <ClInclude Include="graphic\dx12\pipeline\ngDX12PipelineStateDesc.h">
       <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\shader\ngDX12ConstantBuffer.h">
+      <Filter>ソース ファイル\graphic\dx12\shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -311,6 +314,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\pipeline\ngDX12PipelineStateDesc.cpp">
       <Filter>ソース ファイル\graphic\dx12\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\shader\ngDX12ConstantBuffer.cpp">
+      <Filter>ソース ファイル\graphic\dx12\shader</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
