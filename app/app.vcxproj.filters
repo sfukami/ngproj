@@ -46,6 +46,9 @@
     <ClCompile Include="input\appInput.cpp">
       <Filter>ソース ファイル\input</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\pipeline\test\appGraphicPipelinePolygon.cpp">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\appGame.h">
@@ -68,6 +71,9 @@
     </ClInclude>
     <ClInclude Include="input\appInput.h">
       <Filter>ソース ファイル\input</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

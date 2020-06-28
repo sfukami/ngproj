@@ -23,6 +23,7 @@
     <ClCompile Include="graphic\appGraphic.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.cpp" />
+    <ClCompile Include="graphic\pipeline\test\appGraphicPipelinePolygon.cpp" />
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -32,6 +33,7 @@
     <ClInclude Include="graphic\appGraphic.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />
+    <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="preincl\appPreInclude.h" />
   </ItemGroup>
