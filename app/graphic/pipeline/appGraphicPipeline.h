@@ -48,6 +48,16 @@ namespace app
 		/*! 実行 */
 		virtual void _execute();
 
+		/*!
+		* @brief					パイプライン実行 事前処理
+		*/
+		void _preprocessPipeline();
+
+		/*!
+		* @brief					パイプライン実行 事後処理
+		*/
+		void _postprocessPipeline();
+
 	private:
 		bool m_isInit;	//!< 初期化済みか
 	};

@@ -6,7 +6,6 @@
 */
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
-#include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphic.h"
 #include "pipeline/appGraphicPipeline.h"
 
@@ -77,9 +76,7 @@ namespace app
 		if(!_isValidPipeline()) return;
 
 		// パイプライン実行
-		_preprocessPipeline();
-		_executePipeline();
-		_postprocessPipeline();
+		m_pPipeline->Execute();
 		
 		// 描画
 		ng::CGraphicManager::GetInstance().Render();
@@ -88,31 +85,6 @@ namespace app
 	void CGraphic::SetPipeline(CGraphicPipeline* pPipeline)
 	{
 		m_pPipeline = pPipeline;
-	}
-
-	void CGraphic::_executePipeline()
-	{
-		m_pPipeline->Execute();
-	}
-
-	void CGraphic::_preprocessPipeline()
-	{
-		// 全コマンドアロケータリセット
-		ng::DX12Util::ResetAllCommandAllocator();
-	}
-
-	void CGraphic::_postprocessPipeline()
-	{
-		// 全コマンドリスト実行
-		ng::DX12Util::ExecuteAllCommandList(ng::eDX12CommandQueueType::GRAPHIC);
-
-		// バックバッファを表示
-		ng::CDX12SwapChain* pSwapChain = ng::DX12Util::GetSwapChain();
-		pSwapChain->Present(1);
-
-		// 描画完了待ち
-		ng::CDX12CommandQueue* pCmdQueue = ng::DX12Util::GetCommandQueue(ng::eDX12CommandQueueType::GRAPHIC);
-		pCmdQueue->WaitForFence();
 	}
 
 	bool CGraphic::_isInit() const
