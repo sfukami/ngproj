@@ -20,8 +20,7 @@ cbuffer ShaderParameter : register(b0)
 struct VSInput
 {
 	float4 pos			: POSITION;
-	float4 normal		: NORMAL;
-	float2 uv			: TEXCOORD0;
+	float4 color		: COLOR;
 };
 struct VSOutput
 {
