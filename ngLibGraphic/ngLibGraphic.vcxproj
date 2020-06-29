@@ -184,6 +184,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="common\ngCommon.h" />
+    <ClInclude Include="coordsys\ngCoordSys.h" />
     <ClInclude Include="graphic\dx12\barrier\ngDX12ResourceBarrier.h" />
     <ClInclude Include="graphic\dx12\barrier\ngDX12ResourceBarrierTransition.h" />
     <ClInclude Include="graphic\dx12\command\allocator\ngDX12CommandAllocator.h" />
@@ -272,6 +273,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ngLibGraphic/precmpl/ngPreCompiled.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="projection\ngProjection.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
