@@ -21,6 +21,9 @@
   <ItemGroup>
     <ClInclude Include="allocator\ngDefaultAllocator.h" />
     <ClInclude Include="allocator\ngMemoryAllocator.h" />
+    <ClInclude Include="color\ngColor.h" />
+    <ClInclude Include="color\ngColorCode.h" />
+    <ClInclude Include="color\ngColorUtil.h" />
     <ClInclude Include="common\bit\ngBit.h" />
     <ClInclude Include="common\bit\ngBitMacro.h" />
     <ClInclude Include="common\debug\ngDbgMacro.h" />
@@ -105,6 +108,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="allocator\ngDefaultAllocator.cpp" />
+    <ClCompile Include="color\ngColor.cpp" />
+    <ClCompile Include="color\ngColorUtil.cpp" />
     <ClCompile Include="common\bit\ngBit.cpp" />
     <ClCompile Include="common\debug\ngDbgMacro.cpp" />
     <ClCompile Include="common\debug\ngDebug.cpp" />

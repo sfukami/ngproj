@@ -122,6 +122,9 @@
     <Filter Include="ソース ファイル\geometry\point">
       <UniqueIdentifier>{4afe25c1-2842-4f77-8d6e-7dbdbf9c68bf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\color">
+      <UniqueIdentifier>{1f386004-8ff4-486c-88f7-39e4b66c013f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -373,6 +376,15 @@
     <ClInclude Include="dx\ngDXDebug.h">
       <Filter>ソース ファイル\dx</Filter>
     </ClInclude>
+    <ClInclude Include="color\ngColor.h">
+      <Filter>ソース ファイル\color</Filter>
+    </ClInclude>
+    <ClInclude Include="color\ngColorCode.h">
+      <Filter>ソース ファイル\color</Filter>
+    </ClInclude>
+    <ClInclude Include="color\ngColorUtil.h">
+      <Filter>ソース ファイル\color</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -488,6 +500,12 @@
     </ClCompile>
     <ClCompile Include="dx\ngDXDebug.cpp">
       <Filter>ソース ファイル\dx</Filter>
+    </ClCompile>
+    <ClCompile Include="color\ngColor.cpp">
+      <Filter>ソース ファイル\color</Filter>
+    </ClCompile>
+    <ClCompile Include="color\ngColorUtil.cpp">
+      <Filter>ソース ファイル\color</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
