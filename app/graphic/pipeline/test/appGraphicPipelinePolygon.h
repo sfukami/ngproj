@@ -17,6 +17,8 @@
 #include "ngLibGraphic/graphic/dx12/shader/ngDX12ConstantBuffer.h"
 #include "ngLibGraphic/graphic/dx12/viewport/ngDX12Viewport.h"
 #include "ngLibGraphic/graphic/dx12/scissor/ngDX12Scissor.h"
+#include "ngLibGraphic/camera/ngCamera.h"
+#include "ngLibGraphic/projection/ngProjection.h"
 
 namespace app
 {
@@ -29,21 +31,22 @@ namespace app
 		CGraphicPipelinePolygon();
 		~CGraphicPipelinePolygon();
 
+	private:
 		/*!
 		* @brief					初期化
 		* @return					成否
 		*/
-		bool Initialize();
+		bool _initialize();
 
 		/*!
 		* @brief					終了処理
 		*/
-		void Finalize();
+		void _finalize();
 
 		/*!
 		* @brief					実行
 		*/
-		void Execute();
+		void _execute();
 		
 	private:
 		ng::CDX12Shader m_vs;			//!< DX12頂点シェーダー
@@ -55,6 +58,8 @@ namespace app
 		ng::CDX12ConstantBuffer m_constBuf;	//!< DX12コンスタントバッファ
 		ng::CDX12Viewport m_viewport;	//!< DX12ビューポート
 		ng::CDX12Scissor m_scissor;		//!< DX12シザー矩形
+		ng::CCamera m_camera;		//!< カメラ
+		ng::CProjection m_proj;		//!< プロジェクション
 	};
 
 }	// namespace app

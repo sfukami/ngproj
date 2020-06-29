@@ -23,17 +23,33 @@ namespace app
 		* @brief					初期化
 		* @return					成否
 		*/
-		virtual bool Initialize();
+		bool Initialize();
 
 		/*!
 		* @brief					終了処理
 		*/
-		virtual void Finalize();
+		void Finalize();
 
 		/*!
 		* @brief					実行
 		*/
-		virtual void Execute();
+		void Execute();
+
+		/*! 初期化済みか */
+		bool IsInit() const;
+
+	private:
+		/*! 初期化 */
+		virtual bool _initialize();
+
+		/*! 終了処理 */
+		virtual void _finalize();
+		
+		/*! 実行 */
+		virtual void _execute();
+
+	private:
+		bool m_isInit;	//!< 初期化済みか
 	};
 
 }	// namespace app

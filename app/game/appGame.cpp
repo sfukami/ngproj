@@ -9,12 +9,18 @@
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "appGame.h"
 
+// test
+#include "ngLibCore/system/ngSysUtil.h"
+#include "../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
+#include "../graphic/pipeline/test/appGraphicPipelinePolygon.h"
+
 namespace app
 {
 	/*! ウィンドウプロシージャ */
 	static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 	CGame::CGame()
+		: m_pPipeline(nullptr)
 	{
 	}
 	CGame::~CGame()
@@ -73,11 +79,14 @@ namespace app
 			return false;
 		}
 
-		//test
-		if(!m_pipeline.Initialize()) {
+		// TODO: 仮にシステムアロケータを使用する
+		m_pPipeline = NG_NEW(NG_SYSALLOC_GRAPHIC) CGraphicPipelinePolygon();
+		if(m_pPipeline->Initialize()) {
+			m_graphic.SetPipeline(m_pPipeline);
+		} else {
+			NG_ERRLOG("Game", "グラフィックパイプラインの初期化に失敗しました.");
 			return false;
 		}
-		m_graphic.SetPipeline(&m_pipeline);
 
 		return true;
 	}
@@ -107,6 +116,10 @@ namespace app
 	
 	void CGame::Finalize()
 	{
+		if(m_pPipeline != nullptr) {
+			NG_SAFE_DELETE(NG_SYSALLOC_GRAPHIC, m_pPipeline);
+		}
+
 		m_graphic.Finalize();
 		m_input.Finalize();
 		m_window.Destroy();

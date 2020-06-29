@@ -17,7 +17,7 @@ namespace app
 	{
 	}
 
-	bool CGraphicPipelineClearBuffer::Initialize()
+	bool CGraphicPipelineClearBuffer::_initialize()
 	{
 		const unsigned int clientWidth = 640;
 		const unsigned int clientHeight = 480;
@@ -28,12 +28,12 @@ namespace app
 		return true;
 	}
 
-	void CGraphicPipelineClearBuffer::Finalize()
+	void CGraphicPipelineClearBuffer::_finalize()
 	{
 
 	}
 
-	void CGraphicPipelineClearBuffer::Execute()
+	void CGraphicPipelineClearBuffer::_execute()
 	{
 		// コマンドリストリセット
 		ng::CDX12CommandList* pCmdList = ng::DX12Util::GetCommandList(0);

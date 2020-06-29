@@ -12,8 +12,11 @@
 #include "ngLibApp/window/ngWindow.h"
 #include "../input/appInput.h"
 #include "../graphic/appGraphic.h"
-// test
-#include "../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
+
+namespace app
+{
+	class CGraphicPipeline;
+}
 
 namespace app
 {
@@ -56,8 +59,7 @@ namespace app
 		CInput m_input;			//!< 入力
 		CGraphic m_graphic;		//!< グラフィック
 
-		//test
-		CGraphicPipelineClearBuffer m_pipeline;
+		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 	};
 
 }	// namespace app

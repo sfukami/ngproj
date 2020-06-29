@@ -10,6 +10,7 @@
 namespace app
 {
 	CGraphicPipeline::CGraphicPipeline()
+		: m_isInit(false)
 	{
 	}
 	CGraphicPipeline::~CGraphicPipeline()
@@ -18,17 +19,41 @@ namespace app
 
 	bool CGraphicPipeline::Initialize()
 	{
-		return true;
+		m_isInit = _initialize();
+
+		return m_isInit;
 	}
 
 	void CGraphicPipeline::Finalize()
 	{
+		_finalize();
 
+		m_isInit = false;
 	}
 
 	void CGraphicPipeline::Execute()
 	{
+		if(IsInit()) {
+			_execute();
+		}
+	}
 
+	bool CGraphicPipeline::IsInit() const
+	{
+		return m_isInit;
+	}
+
+	bool CGraphicPipeline::_initialize()
+	{
+		return true;
+	}
+
+	void CGraphicPipeline::_finalize()
+	{
+	}
+	
+	void CGraphicPipeline::_execute()
+	{
 	}
 
 }	// namespace app

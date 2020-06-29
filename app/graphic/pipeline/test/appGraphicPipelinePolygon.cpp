@@ -7,9 +7,11 @@
 
 #include <DirectXMath.h>
 #include "ngLibCore/common/ngCommon.h"
+#include "ngLibCore/math/ngMath.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "ngLibCore/geometry/matrix/ngMatrix4x4.h"
-//#include "ngLibCore/color/ngColor.h"
+#include "ngLibCore/geometry/matrix/ngMatrixOp.h"
+#include "ngLibCore/color/ngColor.h"
 #include "appGraphicPipelinePolygon.h"
 
 using namespace DirectX;
@@ -20,10 +22,10 @@ namespace app
 	struct ShaderParam
 	{
 		ShaderParam()
-		//	: color(1,1,1,1)
-		{ }
+			: color(1,1,1,1)
+		{ ng::MatrixOp::Identity(matWVP); }
 		ng::Matrix4 matWVP;
-		//ColorF color;
+		ng::Color color;
 	};
 
 	CGraphicPipelinePolygon::CGraphicPipelinePolygon()
@@ -33,13 +35,10 @@ namespace app
 	{
 	}
 
-	bool CGraphicPipelinePolygon::Initialize()
+	bool CGraphicPipelinePolygon::_initialize()
 	{
 		const unsigned int clientWidth = 640;
 		const unsigned int clientHeight = 480;
-
-		m_viewport.Initialize(0.0f, 0.0f, (float)clientWidth, (float)clientHeight, 0.0f, 1.0f);
-		m_scissor.Initialize(0, 0, (LONG)clientWidth, (LONG)clientHeight);
 
 		ng::CDX12Device* pDX12Device = ng::DX12Util::GetDevice();
 		NG_ASSERT(pDX12Device != nullptr);
@@ -49,7 +48,7 @@ namespace app
 			D3D12_DESCRIPTOR_RANGE descriptorRange = {};
 			descriptorRange.NumDescriptors = 1;
 			descriptorRange.BaseShaderRegister = 0;
-			descriptorRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_SRV;
+			descriptorRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;
 			descriptorRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
 
 			D3D12_ROOT_PARAMETER rootParam = {};
@@ -59,7 +58,6 @@ namespace app
 			rootParam.DescriptorTable.pDescriptorRanges = &descriptorRange;
 
 			D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
-			//samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_LINEAR;
 			samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT;
 			samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
 			samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
@@ -144,19 +142,18 @@ namespace app
 
 		// ポリゴン生成
 		{
-			float aspectRatio = clientWidth / (float)clientHeight;
 			struct Vertex
 			{
 				XMFLOAT3	position;
-				XMFLOAT2	uv;
+				XMFLOAT4	color;
 			};
+			const float lenDiv2 = 1.f/2;
 			const Vertex squareVertices[] = {
-				{{-0.25f,  0.25f*aspectRatio, 0.0f}, {0.0f, 0.0f}},	// 0
-				{{ 0.25f,  0.25f*aspectRatio, 0.0f}, {1.0f, 0.0f}},	// 1
-				{{-0.25f, -0.25f*aspectRatio, 0.0f}, {0.0f, 1.0f}},	// 2
-				{{ 0.25f, -0.25f*aspectRatio, 0.0f}, {1.0f, 1.0f}}	// 3
+				{{-lenDiv2,  lenDiv2, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},	// 0
+				{{ lenDiv2,  lenDiv2, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},	// 1
+				{{-lenDiv2, -lenDiv2, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}},	// 2
+				{{ lenDiv2, -lenDiv2, 0.0f}, {1.0f, 1.0f, 1.0f, 1.0f}}	// 3
 			};
-
 			const ng::u32 squareIndices[] = {
 				0, 1, 2,
 				2, 1, 3,
@@ -213,10 +210,31 @@ namespace app
 			}
 		}
 
+		// カメラ
+		{
+			m_camera.SetPos(ng::Vector3(0.f, 0.f, -3.f));
+			m_camera.SetAtPos(ng::Vector3::ZERO);
+			m_camera.SetUpVec(ng::Vector3::AXIS_Y);
+			m_camera.CalcViewMatrix();
+		}
+
+		// プロジェクション
+		{
+			m_proj.SetWidth(clientWidth);
+			m_proj.SetHeight(clientHeight);
+			m_proj.SetNear(0.1f);
+			m_proj.SetFar(100.f);
+			m_proj.SetFOV(ng::DegreeToRadian(60.f));
+			m_proj.CalcProjMatrix();
+		}
+
+		m_viewport.Initialize(0.0f, 0.0f, (float)clientWidth, (float)clientHeight, 0.0f, 1.0f);
+		m_scissor.Initialize(0, 0, (LONG)clientWidth, (LONG)clientHeight);
+
 		return true;
 	}
 
-	void CGraphicPipelinePolygon::Finalize()
+	void CGraphicPipelinePolygon::_finalize()
 	{
 		m_vs.Destroy();
 		m_ps.Destroy();
@@ -229,7 +247,7 @@ namespace app
 		m_rootSign.Destroy();
 	}
 
-	void CGraphicPipelinePolygon::Execute()
+	void CGraphicPipelinePolygon::_execute()
 	{
 		// コマンドリストリセット
 		ng::CDX12CommandList* pCmdList = ng::DX12Util::GetCommandList(0);
@@ -252,12 +270,11 @@ namespace app
 		const float clearColor[4] = {0.0f, 0.0f, 0.5f, 1.0f};
 		ng::DX12Util::ClearRenderTarget(pCmdList, pRTBackBuffer, clearColor, pDS);
 
-		/*
-		// メッシュ描画
+		// ポリゴン描画
 		{
+			// シェーダーパラメータ設定
 			ng::Matrix4 matWorld, matView, matProj, matWVP;
-			matWorld = g_matWorld;
-			//ng::MatrixOp::Translation(matWorld, 0, 0, 0);
+			ng::MatrixOp::Identity(matWorld);
 			matView = m_camera.GetViewMatrix();
 			matProj = m_proj.GetProjMatrix();
 
@@ -265,25 +282,9 @@ namespace app
 			ng::MatrixOp::Multiply(matWVP, matWorld, matWVP);
 			ng::MatrixOp::Transpose(matWVP, matWVP);
 
-			// シェーダーパラメータ設定
-			m_shdImpl.SetColor(ng::ColorF(ng::eColorCode::RED));
-			m_shdImpl.SetWVPMatrix(matWVP);
-			m_shdImpl.UpdateConstantBuffer();
-
-			// ディスクリプタヒープ設定
-			pCmdList->SetDescriptorHeap(m_descHeap);
-			// コンスタントバッファのディスクリプタテーブルを設定
-			pCmdList->SetGraphicsRootDescriptorTable(0, m_descHeap.GetGPUDescriptorHandle(0));
-
-			m_meshBox.Render(*pCmdList);
-		}
-		*/
-		// ポリゴン描画
-		{
-			// シェーダーパラメータ設定
 			ShaderParam shdPrm;
-			//shdPrm.matWVP = mat;
-			//shdPrm.color = color;
+			shdPrm.matWVP = matWVP;
+			shdPrm.color = ng::Color(0,1,0);
 			m_constBuf.CopyData(&shdPrm, sizeof(ShaderParam));
 
 			// ディスクリプタヒープ設定

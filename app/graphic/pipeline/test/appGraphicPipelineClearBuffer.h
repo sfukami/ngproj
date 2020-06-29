@@ -23,21 +23,22 @@ namespace app
 		CGraphicPipelineClearBuffer();
 		~CGraphicPipelineClearBuffer();
 
+	private:
 		/*!
 		* @brief					初期化
 		* @return					成否
 		*/
-		bool Initialize();
+		bool _initialize();
 
 		/*!
 		* @brief					終了処理
 		*/
-		void Finalize();
+		void _finalize();
 
 		/*!
 		* @brief					実行
 		*/
-		void Execute();
+		void _execute();
 		
 	private:
 		ng::CDX12Viewport m_viewport;	//!< DX12ビューポート
