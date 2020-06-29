@@ -76,6 +76,9 @@ namespace app
 		/*! 初期化済みか */
 		bool _isInit() const;
 
+		/*! グラフィックパイプラインが有効か */
+		bool _isValidPipeline() const;
+
 	private:
 		bool m_isInit;	//!< 初期化済みか
 		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック

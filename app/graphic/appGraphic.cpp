@@ -74,6 +74,7 @@ namespace app
 	void CGraphic::Render()
 	{
 		if(!_isInit()) return;
+		if(!_isValidPipeline()) return;
 
 		// パイプライン実行
 		_preprocessPipeline();
@@ -91,9 +92,7 @@ namespace app
 
 	void CGraphic::_executePipeline()
 	{
-		if(m_pPipeline != nullptr) {
-			m_pPipeline->Execute();
-		}
+		m_pPipeline->Execute();
 	}
 
 	void CGraphic::_preprocessPipeline()
@@ -119,6 +118,11 @@ namespace app
 	bool CGraphic::_isInit() const
 	{
 		return m_isInit;
+	}
+
+	bool CGraphic::_isValidPipeline() const
+	{
+		return (m_pPipeline != nullptr && m_pPipeline->IsInit());
 	}
 
 }	// namespace app
