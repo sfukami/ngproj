@@ -80,6 +80,9 @@
     <Filter Include="ソース ファイル\graphic\dx12\pipeline">
       <UniqueIdentifier>{4cd2afb7-8c1d-4779-83d8-3144735cb3a3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\camera">
+      <UniqueIdentifier>{a9ed7303-8078-42dd-918d-0f50e24c2d41}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\coordsys">
       <UniqueIdentifier>{4db7a38d-0246-42b7-b592-74b0e8f0bf35}</UniqueIdentifier>
     </Filter>
@@ -220,6 +223,9 @@
     <ClInclude Include="graphic\dx12\shader\ngDX12ConstantBuffer.h">
       <Filter>ソース ファイル\graphic\dx12\shader</Filter>
     </ClInclude>
+    <ClInclude Include="camera\ngCamera.h">
+      <Filter>ソース ファイル\camera</Filter>
+    </ClInclude>
     <ClInclude Include="coordsys\ngCoordSys.h">
       <Filter>ソース ファイル\coordsys</Filter>
     </ClInclude>
@@ -323,6 +329,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\shader\ngDX12ConstantBuffer.cpp">
       <Filter>ソース ファイル\graphic\dx12\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="camera\ngCamera.cpp">
+      <Filter>ソース ファイル\camera</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

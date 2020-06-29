@@ -183,6 +183,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="camera\ngCamera.h" />
     <ClInclude Include="common\ngCommon.h" />
     <ClInclude Include="coordsys\ngCoordSys.h" />
     <ClInclude Include="graphic\dx12\barrier\ngDX12ResourceBarrier.h" />
@@ -231,6 +232,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="preincl\ngPreInclude.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="camera\ngCamera.cpp" />
     <ClCompile Include="graphic\dx12\barrier\ngDX12ResourceBarrier.cpp" />
     <ClCompile Include="graphic\dx12\barrier\ngDX12ResourceBarrierTransition.cpp" />
     <ClCompile Include="graphic\dx12\command\allocator\ngDX12CommandAllocator.cpp" />
