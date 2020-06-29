@@ -230,6 +230,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="ngLibGraphic.h" />
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
+    <ClInclude Include="projection\ngProjection.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera\ngCamera.cpp" />

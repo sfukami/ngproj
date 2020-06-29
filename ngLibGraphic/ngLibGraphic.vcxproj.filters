@@ -83,6 +83,9 @@
     <Filter Include="ソース ファイル\camera">
       <UniqueIdentifier>{a9ed7303-8078-42dd-918d-0f50e24c2d41}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\projection">
+      <UniqueIdentifier>{354925fb-d892-4d61-b903-cec1ecbfe67a}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\coordsys">
       <UniqueIdentifier>{4db7a38d-0246-42b7-b592-74b0e8f0bf35}</UniqueIdentifier>
     </Filter>
@@ -226,6 +229,9 @@
     <ClInclude Include="camera\ngCamera.h">
       <Filter>ソース ファイル\camera</Filter>
     </ClInclude>
+    <ClInclude Include="projection\ngProjection.h">
+      <Filter>ソース ファイル\projection</Filter>
+    </ClInclude>
     <ClInclude Include="coordsys\ngCoordSys.h">
       <Filter>ソース ファイル\coordsys</Filter>
     </ClInclude>
@@ -332,6 +338,9 @@
     </ClCompile>
     <ClCompile Include="camera\ngCamera.cpp">
       <Filter>ソース ファイル\camera</Filter>
+    </ClCompile>
+    <ClCompile Include="projection\ngProjection.cpp">
+      <Filter>ソース ファイル\projection</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
