@@ -26,6 +26,15 @@
     <Filter Include="ソース ファイル\input">
       <UniqueIdentifier>{1730f104-6788-4350-8e1d-eb1167386c31}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\scene">
+      <UniqueIdentifier>{daf91002-f10d-4086-8171-ed97cd0d6d1c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\scene\test">
+      <UniqueIdentifier>{842caf6e-1472-4049-9749-8e7c401d5bb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\scene\root">
+      <UniqueIdentifier>{c2e7ec69-53f1-4c91-a822-f010c0f29fb8}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -48,6 +57,15 @@
     </ClCompile>
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelinePolygon.cpp">
       <Filter>ソース ファイル\graphic\pipeline\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\appSceneManager.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneTest.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\root\appSceneRoot.cpp">
+      <Filter>ソース ファイル\scene\root</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +92,21 @@
     </ClInclude>
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h">
       <Filter>ソース ファイル\graphic\pipeline\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\appScene.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\appSceneManager.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneTest.h">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\root\appSceneRoot.h">
+      <Filter>ソース ファイル\scene\root</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\appSceneId.h">
+      <Filter>ソース ファイル\scene</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
