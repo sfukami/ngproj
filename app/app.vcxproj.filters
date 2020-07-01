@@ -58,6 +58,9 @@
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelinePolygon.cpp">
       <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\pipeline\test\appGraphicPipelineModel.cpp">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
+    </ClCompile>
     <ClCompile Include="scene\appSceneManager.cpp">
       <Filter>ソース ファイル\scene</Filter>
     </ClCompile>
@@ -91,6 +94,9 @@
       <Filter>ソース ファイル\input</Filter>
     </ClInclude>
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\pipeline\test\appGraphicPipelineModel.h">
       <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClInclude>
     <ClInclude Include="scene\appScene.h">
