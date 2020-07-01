@@ -38,11 +38,6 @@ namespace app
 		bool Initialize(unsigned int sceneMax);
 		
 		/*!
-		* @brief					終了処理
-		*/
-		void Finalize();
-		
-		/*!
 		* @brief					更新
 		* @param deltaTime			フレーム更新間隔
 		*/
@@ -52,6 +47,11 @@ namespace app
 		* @brief					描画
 		*/
 		void Render();
+
+		/*!
+		* @brief					終了処理
+		*/
+		void Finalize();
 
 		/*!
 		* @brief					シーン登録

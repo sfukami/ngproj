@@ -70,6 +70,15 @@
     <ClCompile Include="scene\root\appSceneRoot.cpp">
       <Filter>ソース ファイル\scene\root</Filter>
     </ClCompile>
+    <ClCompile Include="input\appInputModule.cpp">
+      <Filter>ソース ファイル\input</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\appGraphicModule.cpp">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\appSceneModule.cpp">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\appGame.h">
@@ -112,6 +121,15 @@
       <Filter>ソース ファイル\scene\root</Filter>
     </ClInclude>
     <ClInclude Include="scene\appSceneId.h">
+      <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="input\appInputModule.h">
+      <Filter>ソース ファイル\input</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\appGraphicModule.h">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\appSceneModule.h">
       <Filter>ソース ファイル\scene</Filter>
     </ClInclude>
   </ItemGroup>

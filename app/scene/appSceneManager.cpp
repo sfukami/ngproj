@@ -39,16 +39,6 @@ namespace app
 		return true;
 	}
 
-	void CSceneManager::Finalize()
-	{
-		for(unsigned int i = 0; i < m_sceneArr.Size(); i++)
-		{
-			DeleteScene(i);
-		}
-
-		m_isInit = false;
-	}
-
 	void CSceneManager::Update(float deltaTime)
 	{
 		if(!_isInit()) return;
@@ -73,6 +63,18 @@ namespace app
 				pScene->Render();
 			}
 		}
+	}
+
+	void CSceneManager::Finalize()
+	{
+		for(unsigned int i = 0; i < m_sceneArr.Size(); i++)
+		{
+			DeleteScene(i);
+		}
+
+		m_sceneArr.Finalize();
+
+		m_isInit = false;
 	}
 
 	void CSceneManager::DeleteScene(unsigned int index)

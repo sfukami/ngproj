@@ -8,15 +8,11 @@
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "appGame.h"
+#include "../input/appInputModule.h"
+#include "../graphic/appGraphicModule.h"
+#include "../scene/appSceneModule.h"
 #include "../scene/appSceneId.h"
 #include "../scene/root/appSceneRoot.h"
-
-// test
-/*
-#include "ngLibCore/system/ngSysUtil.h"
-#include "../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
-#include "../graphic/pipeline/test/appGraphicPipelinePolygon.h"
-*/
 
 namespace app
 {
@@ -24,7 +20,6 @@ namespace app
 	static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 	CGame::CGame()
-		//: m_pPipeline(nullptr)
 	{
 	}
 	CGame::~CGame()
@@ -54,13 +49,13 @@ namespace app
 		}
 
 		// アプリケーションウィンドウ生成
-		if( ! m_window.Create(
+		if(!m_window.Create(
 			CLIENT_WIDTH,
 			CLIENT_HEIGHT,
 			_T("gamemain"),
 			_T("app"),
 			WndProc
-			)) {
+		)) {
 			NG_ERRLOG("Game", "ウィンドウの生成に失敗しました.");
 			return false;
 		}
@@ -69,7 +64,7 @@ namespace app
 		// 入力初期化
 		if(!m_input.Initialize(
 			m_window.GetHandle()
-			)) {
+		)) {
 			NG_ERRLOG("Game", "入力の初期化に失敗しました.");
 			return false;
 		}
@@ -80,34 +75,28 @@ namespace app
 			CLIENT_WIDTH,
 			CLIENT_HEIGHT,
 			false
-			)) {
+		)) {
 			NG_ERRLOG("Game", "グラフィックの初期化に失敗しました.");
 			return false;
 		}
 
-		/*
-		// TODO: 仮にシステムアロケータを使用する
-		m_pPipeline = NG_NEW(NG_SYSALLOC_GRAPHIC) CGraphicPipelinePolygon();
-		if(m_pPipeline->Initialize()) {
-			m_graphic.SetPipeline(m_pPipeline);
-		} else {
-			NG_ERRLOG("Game", "グラフィックパイプラインの初期化に失敗しました.");
-			return false;
-		}
-		*/
-		/*
 		// シーン管理初期化
 		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM))) {
 			NG_ERRLOG("Game", "シーン管理の初期化に失敗しました.");
 			return false;
 		}
+
+		// 各種インスタンス設定
+		CInputModule::SetInput(&m_input);
+		CGraphicModule::SetGraphic(&m_graphic);
+		CSceneModule::SetSceneManager(&m_sceneMngr);
+
 		// ルートシーン登録
 		m_sceneMngr.RegisterScene<CSceneRoot>(static_cast<unsigned int>(eSceneId::GAME));
-		*/
 
 		return true;
 	}
-	
+
 	int CGame::MainLoop()
 	{
 		MSG msg = {0};
@@ -115,7 +104,7 @@ namespace app
 		while(true)
 		{
 			if(::PeekMessage(&msg, NULL, 0, 0, PM_NOREMOVE)) {
-				if( ! ::GetMessage(&msg, NULL, 0, 0)) {
+				if(!::GetMessage(&msg, NULL, 0, 0)) {
 					return (int)msg.wParam;
 				}
 				::TranslateMessage(&msg);
@@ -130,16 +119,10 @@ namespace app
 
 		return (int)msg.wParam;
 	}
-	
+
 	void CGame::Finalize()
 	{
 		m_sceneMngr.Finalize();
-
-		/*
-		if(m_pPipeline != nullptr) {
-			NG_SAFE_DELETE(NG_SYSALLOC_GRAPHIC, m_pPipeline);
-		}
-		*/
 
 		m_graphic.Finalize();
 		m_input.Finalize();
@@ -156,32 +139,6 @@ namespace app
 
 		m_input.Update();
 		m_sceneMngr.Update(deltaTime);
-
-		/*
-		// test
-		{
-			// Keyboard
-			if(CInput::CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::PRESSED)) {
-				ng::DPrintf("key A pressed.\n");
-			}
-			if(CInput::CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::RELEASED)) {
-				ng::DPrintf("key A released.\n");
-			}
-			if(CInput::CheckKeyboardInput(ng::eKeyCode::A, ng::eInputState::HELD)) {
-				ng::DPrintf("key A held.\n");
-			}
-			// Mouse
-			if(CInput::CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::PRESSED)) {
-				ng::DPrintf("button Left pressed.\n");
-			}
-			if(CInput::CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::RELEASED)) {
-				ng::DPrintf("button Left released.\n");
-			}
-			if(CInput::CheckMouseInput(ng::eMouseCode::LEFT, ng::eInputState::HELD)) {
-				ng::DPrintf("button Left held.\n");
-			}
-		}
-		*/
 	}
 
 	void CGame::_render()
@@ -209,7 +166,7 @@ namespace app
 		default:
 			break;
 		}
-		
+
 		return ::DefWindowProc(hWnd, msg, wParam, lParam);
 	}
 

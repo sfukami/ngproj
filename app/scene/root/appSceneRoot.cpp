@@ -6,6 +6,8 @@
 */
 
 #include "appSceneRoot.h"
+#include "../appSceneModule.h"
+#include "../test/appSceneTest.h"
 
 namespace app
 {
@@ -21,15 +23,16 @@ namespace app
 		return true;
 	}
 
-	void CSceneRoot::Finalize()
-	{
-	}
-
 	void CSceneRoot::Update(float deltaTime)
 	{
+		CSceneModule::ChangeScene<CSceneTest>(eSceneId::GAME);
 	}
 
 	void CSceneRoot::Render()
+	{
+	}
+
+	void CSceneRoot::Finalize()
 	{
 	}
 

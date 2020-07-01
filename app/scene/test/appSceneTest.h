@@ -12,6 +12,11 @@
 
 namespace app
 {
+	class CGraphicPipeline;
+}
+
+namespace app
+{
 	/*!
 	* @brief					シーン テスト
 	*/
@@ -28,11 +33,6 @@ namespace app
 		bool Initialize();
 
 		/*!
-		* @brief					終了処理
-		*/
-		void Finalize();
-
-		/*!
 		* @brief					更新
 		* @param deltaTime			フレーム更新間隔
 		*/
@@ -43,7 +43,13 @@ namespace app
 		*/
 		void Render();
 
+		/*!
+		* @brief					終了処理
+		*/
+		void Finalize();
+
 	private:
+		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 	};
 
 }	// namespace app

@@ -14,13 +14,6 @@
 #include "../graphic/appGraphic.h"
 #include "../scene/appSceneManager.h"
 
-/*
-namespace app
-{
-	class CGraphicPipeline;
-}
-*/
-
 namespace app
 {
 	/*!
@@ -64,8 +57,6 @@ namespace app
 		CInput m_input;			//!< 入力
 		CGraphic m_graphic;		//!< グラフィック
 		CSceneManager m_sceneMngr;	//!< シーン管理
-
-		//CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 	};
 
 }	// namespace app
