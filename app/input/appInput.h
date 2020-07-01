@@ -1,7 +1,7 @@
 ﻿/*!
 * @file		appInput.h
 * @brief	アプリケーション入力
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
@@ -47,20 +47,20 @@ namespace app
 		* @param code				入力コード
 		* @param state				チェックする入力状態
 		*/
-		static bool CheckKeyboardInput(
+		bool CheckKeyboardInput(
 			ng::eKeyCode code,
 			ng::eInputState state
-			);
+			) const;
 
 		/*!
 		* @brief					マウス入力状態チェック
 		* @param code				入力コード
 		* @param state				チェックする入力状態
 		*/
-		static bool CheckMouseInput(
+		bool CheckMouseInput(
 			ng::eMouseCode code,
 			ng::eInputState state
-			);
+			) const;
 
 	private:
 		ng::CDirectInput m_dinput;	//!< Directインプット

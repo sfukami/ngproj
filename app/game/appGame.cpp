@@ -8,11 +8,15 @@
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "appGame.h"
+#include "../scene/appSceneId.h"
+#include "../scene/root/appSceneRoot.h"
 
 // test
+/*
 #include "ngLibCore/system/ngSysUtil.h"
 #include "../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
 #include "../graphic/pipeline/test/appGraphicPipelinePolygon.h"
+*/
 
 namespace app
 {
@@ -20,7 +24,7 @@ namespace app
 	static LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 
 	CGame::CGame()
-		: m_pPipeline(nullptr)
+		//: m_pPipeline(nullptr)
 	{
 	}
 	CGame::~CGame()
@@ -66,6 +70,7 @@ namespace app
 		if(!m_input.Initialize(
 			m_window.GetHandle()
 			)) {
+			NG_ERRLOG("Game", "入力の初期化に失敗しました.");
 			return false;
 		}
 
@@ -76,9 +81,11 @@ namespace app
 			CLIENT_HEIGHT,
 			false
 			)) {
+			NG_ERRLOG("Game", "グラフィックの初期化に失敗しました.");
 			return false;
 		}
 
+		/*
 		// TODO: 仮にシステムアロケータを使用する
 		m_pPipeline = NG_NEW(NG_SYSALLOC_GRAPHIC) CGraphicPipelinePolygon();
 		if(m_pPipeline->Initialize()) {
@@ -87,6 +94,16 @@ namespace app
 			NG_ERRLOG("Game", "グラフィックパイプラインの初期化に失敗しました.");
 			return false;
 		}
+		*/
+		/*
+		// シーン管理初期化
+		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM))) {
+			NG_ERRLOG("Game", "シーン管理の初期化に失敗しました.");
+			return false;
+		}
+		// ルートシーン登録
+		m_sceneMngr.RegisterScene<CSceneRoot>(static_cast<unsigned int>(eSceneId::GAME));
+		*/
 
 		return true;
 	}
@@ -116,9 +133,13 @@ namespace app
 	
 	void CGame::Finalize()
 	{
+		m_sceneMngr.Finalize();
+
+		/*
 		if(m_pPipeline != nullptr) {
 			NG_SAFE_DELETE(NG_SYSALLOC_GRAPHIC, m_pPipeline);
 		}
+		*/
 
 		m_graphic.Finalize();
 		m_input.Finalize();
@@ -131,8 +152,12 @@ namespace app
 
 	void CGame::_update()
 	{
-		m_input.Update();
+		const float deltaTime = 0.f;	// TODO:
 
+		m_input.Update();
+		m_sceneMngr.Update(deltaTime);
+
+		/*
 		// test
 		{
 			// Keyboard
@@ -156,10 +181,12 @@ namespace app
 				ng::DPrintf("button Left held.\n");
 			}
 		}
+		*/
 	}
 
 	void CGame::_render()
 	{
+		m_sceneMngr.Render();
 		m_graphic.Render();
 	}
 

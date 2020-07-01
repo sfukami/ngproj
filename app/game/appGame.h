@@ -12,11 +12,14 @@
 #include "ngLibApp/window/ngWindow.h"
 #include "../input/appInput.h"
 #include "../graphic/appGraphic.h"
+#include "../scene/appSceneManager.h"
 
+/*
 namespace app
 {
 	class CGraphicPipeline;
 }
+*/
 
 namespace app
 {
@@ -25,6 +28,8 @@ namespace app
 	*/
 	class CGame
 	{
+		friend class GameModule;
+
 	public:
 		CGame();
 		~CGame();
@@ -58,8 +63,9 @@ namespace app
 		ng::CWindow m_window;	//!< ウィンドウ
 		CInput m_input;			//!< 入力
 		CGraphic m_graphic;		//!< グラフィック
+		CSceneManager m_sceneMngr;	//!< シーン管理
 
-		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
+		//CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 	};
 
 }	// namespace app

@@ -1,7 +1,7 @@
 ﻿/*!
 * @file		appInput.cpp
 * @brief	アプリケーション入力
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
@@ -75,7 +75,7 @@ namespace app
 	bool CInput::CheckKeyboardInput(
 		ng::eKeyCode code,
 		ng::eInputState state
-		)
+		) const
 	{
 		return ng::CInputManager::GetInstance().CheckKeyboardInput(code, state);
 	}
@@ -83,7 +83,7 @@ namespace app
 	bool CInput::CheckMouseInput(
 		ng::eMouseCode code,
 		ng::eInputState state
-		)
+		) const
 	{
 		return ng::CInputManager::GetInstance().CheckMouseInput(code, state);
 	}

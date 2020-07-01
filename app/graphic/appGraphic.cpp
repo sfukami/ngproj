@@ -77,9 +77,6 @@ namespace app
 
 		// パイプライン実行
 		m_pPipeline->Execute();
-		
-		// 描画
-		ng::CGraphicManager::GetInstance().Render();
 	}
 
 	void CGraphic::SetPipeline(CGraphicPipeline* pPipeline)
