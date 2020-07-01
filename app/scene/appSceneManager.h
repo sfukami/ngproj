@@ -87,6 +87,7 @@ namespace app
 	bool CSceneManager::RegisterScene(unsigned int index)
 	{
 		IScene* pScene = NG_NEW(_getMemAlloc()) Scene();
+		DeleteScene(index);
 		return _registerScene(index, pScene);
 	}
 
