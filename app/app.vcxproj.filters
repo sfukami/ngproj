@@ -35,6 +35,9 @@
     <Filter Include="ソース ファイル\scene\root">
       <UniqueIdentifier>{c2e7ec69-53f1-4c91-a822-f010c0f29fb8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\memory">
+      <UniqueIdentifier>{4d7c6ca4-60f0-49a4-9e79-193bbe23b379}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -78,6 +81,12 @@
     </ClCompile>
     <ClCompile Include="scene\appSceneModule.cpp">
       <Filter>ソース ファイル\scene</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\appMemoryModule.cpp">
+      <Filter>ソース ファイル\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\appApplicationMemory.cpp">
+      <Filter>ソース ファイル\memory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -131,6 +140,15 @@
     </ClInclude>
     <ClInclude Include="scene\appSceneModule.h">
       <Filter>ソース ファイル\scene</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\appMemoryModule.h">
+      <Filter>ソース ファイル\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\appMemoryAllocatorId.h">
+      <Filter>ソース ファイル\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\appApplicationMemory.h">
+      <Filter>ソース ファイル\memory</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
