@@ -16,6 +16,15 @@ namespace ng
 	class IMemoryAllocator;
 }
 
+/*!
+* @brief					CSharedPtr生成マクロ
+* @param _type				生成する値の型
+* @param _alloc				利用するメモリアロケータ
+* @param _ctor				生成する値のコンストラクタ
+*/
+#define NG_MAKE_SHARED_PTR(_type, _alloc, _ctor) \
+	ng::CSharedPtr<_type>(NG_NEW(_alloc) _ctor, _alloc)
+
 namespace ng
 {
 	//! std::shared_ptr拡張 基底クラス

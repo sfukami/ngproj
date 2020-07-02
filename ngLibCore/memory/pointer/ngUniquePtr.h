@@ -16,6 +16,15 @@ namespace ng
 	class IMemoryAllocator;
 }
 
+/*!
+* @brief					CUniquePtr生成マクロ
+* @param _type				生成する値の型
+* @param _alloc				利用するメモリアロケータ
+* @param _ctor				生成する値のコンストラクタ
+*/
+#define NG_MAKE_UNIQUE_PTR(_type, _alloc, _ctor) \
+	ng::CUniquePtr<_type>(NG_NEW(_alloc) _ctor, _alloc)
+
 namespace ng
 {
 	//! std::unique_ptr拡張 基底クラス
