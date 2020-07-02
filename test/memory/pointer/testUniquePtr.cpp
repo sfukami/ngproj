@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include <memory>
 #include "ngLibCore/memory/pointer/ngUniquePtr.h"
 #include "ngLibCore/allocator/ngDefaultAllocator.h"
 
@@ -37,12 +38,13 @@ namespace test
 	public:
 		TEST_DEFINE_INITIALIZE;
 
+		TEST_ATTRIBUTE_TRAIT(TestUniquePtr, "Pointer")
 		TEST_METHOD(TestUniquePtr)
 		{
 			//CTestPtr<CDummy> ptr(new CDummy());
 
 			ng::CDefaultAllocator alloc;
-			ng::CUniquePtr<CDummy> ptr(new CDummy(), alloc);
+			ng::CUniquePtr<CDummy> ptr(NG_NEW(alloc) CDummy(), alloc);
 		}
 	};
 
