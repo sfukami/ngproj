@@ -64,7 +64,7 @@
 */
 #define NG_ERRLOG(_category, _msg, ...) \
 	{ \
-		NG_DPRINTF("(!)NG_ERRLOG [%s] ", _category); \
+		NG_DPRINTF("(!)ERRLOG [%s] ", _category); \
 		NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
 	}
 
@@ -75,7 +75,7 @@
 */
 #define NG_ERRLOG_C(_category, _errcode, _msg, ...) \
 	{ \
-		NG_DPRINTF("(!)NG_ERRLOG [%s] code:(%s) ", _category, ng::ErrorCodeToString(_errcode)); \
+		NG_DPRINTF("(!)ERRLOG [%s] code:(%s) ", _category, ng::ErrorCodeToString(_errcode)); \
 		NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
 	}
 

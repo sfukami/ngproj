@@ -25,7 +25,7 @@
 */
 #define NG_DX12LOG(_category, _msg, ...) \
 	{ \
-		NG_DPRINTF("NG_DX12LOG [%s] ", _category); \
+		NG_DPRINTF("DX12LOG [%s] ", _category); \
 		NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
 	}
 
