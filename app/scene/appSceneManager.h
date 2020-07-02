@@ -8,6 +8,7 @@
 #ifndef __APP_SCENE_MANAGER_H__
 #define __APP_SCENE_MANAGER_H__
 
+#include "ngLibCore/memory/pointer/ngSharedPtr.h"
 #include "ngLibCore/container/array/ngFixedArray.h"
 
 namespace ng
@@ -33,9 +34,10 @@ namespace app
 		/*!
 		* @brief					初期化
 		* @param sceneMax			シーン最大数
+		* @param alloc				利用するメモリアロケータ
 		* @return					成否
 		*/
-		bool Initialize(unsigned int sceneMax);
+		bool Initialize(unsigned int sceneMax, ng::IMemoryAllocator& alloc);
 		
 		/*!
 		* @brief					更新
@@ -55,12 +57,11 @@ namespace app
 
 		/*!
 		* @brief					シーン登録
-		* @tparam Scene				登録するシーン
 		* @param index				シーンのインデックス
+		* @param scenePtr			登録するシーン
 		* @return					成否
 		*/
-		template <class Scene>
-		bool RegisterScene(unsigned int index);
+		bool RegisterScene(unsigned int index, ng::CSharedPtr<IScene>& scenePtr);
 
 		/*!
 		* @brief					シーン削除
@@ -72,24 +73,10 @@ namespace app
 		/*! 初期化済みか */
 		bool _isInit() const;
 
-		/*! シーン登録 */
-		bool _registerScene(unsigned int index, IScene* pScene);
-
-		/*! メモリアロケータ取得 */
-		ng::IMemoryAllocator& _getMemAlloc() const;
-
 	private:
-		ng::CFixedArray<IScene*> m_sceneArr;	//!< シーン配列
+		ng::CFixedArray<ng::CSharedPtr<IScene> > m_sceneArr;	//!< シーン配列
 		bool m_isInit;	//!< 初期化済みか
 	};
-
-	template <class Scene>
-	bool CSceneManager::RegisterScene(unsigned int index)
-	{
-		IScene* pScene = NG_NEW(_getMemAlloc()) Scene();
-		DeleteScene(index);
-		return _registerScene(index, pScene);
-	}
 
 }	// namespace app
 

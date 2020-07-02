@@ -9,6 +9,9 @@
 #include "../appSceneModule.h"
 #include "../test/appSceneTest.h"
 
+//test
+#include "ngLibCore/system/ngSysUtil.h"
+
 namespace app
 {
 	CSceneRoot::CSceneRoot()
@@ -25,7 +28,8 @@ namespace app
 
 	void CSceneRoot::Update(float deltaTime)
 	{
-		CSceneModule::ChangeScene<CSceneTest>(eSceneId::GAME);
+		auto scenePtr = NG_MAKE_SHARED_PTR(IScene, NG_SYSALLOC_MAINSYS, CSceneTest());
+		CSceneModule::ChangeScene(eSceneId::GAME, scenePtr);
 	}
 
 	void CSceneRoot::Render()

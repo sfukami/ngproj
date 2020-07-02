@@ -14,6 +14,9 @@
 #include "../scene/appSceneId.h"
 #include "../scene/root/appSceneRoot.h"
 
+//test
+#include "ngLibCore/system/ngSysUtil.h"
+
 namespace app
 {
 	/*! ウィンドウプロシージャ */
@@ -81,7 +84,7 @@ namespace app
 		}
 
 		// シーン管理初期化
-		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM))) {
+		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM), NG_SYSALLOC_MAINSYS)) {
 			NG_ERRLOG("Game", "シーン管理の初期化に失敗しました.");
 			return false;
 		}
@@ -92,7 +95,11 @@ namespace app
 		CSceneModule::SetSceneManager(&m_sceneMngr);
 
 		// ルートシーン登録
-		m_sceneMngr.RegisterScene<CSceneRoot>(static_cast<unsigned int>(eSceneId::GAME));
+		//m_sceneMngr.RegisterScene<CSceneRoot>(static_cast<unsigned int>(eSceneId::GAME));
+		{
+			auto scenePtr = NG_MAKE_SHARED_PTR(IScene, NG_SYSALLOC_MAINSYS, CSceneRoot());
+			m_sceneMngr.RegisterScene(static_cast<unsigned int>(eSceneId::GAME), scenePtr);
+		}
 
 		return true;
 	}

@@ -31,26 +31,22 @@ namespace app
 
 		/*!
 		* @brief					シーン切り替え
-		* @tparam Scene				登録するシーン
 		* @param sceneId			シーンID
+		* @tparam scenePtr			登録するシーン
 		* @return					成否
 		*/
-		template <class Scene>
-		static bool ChangeScene(eSceneId sceneId);
+		static bool ChangeScene(eSceneId sceneId, ng::CSharedPtr<IScene>& scenePtr);
 
 	private:
 		/*! シーン管理のインスタンスを設定 */
 		static void SetSceneManager(CSceneManager* pSceneMngr);
 
+		/*! 有効か */
+		static bool _isValid();
+		
 	private:
 		static CSceneManager* s_pSceneMngr;	//!< シーン管理への参照
 	};
-
-	template <class Scene>
-	bool CSceneModule::ChangeScene(eSceneId sceneId)
-	{
-		return s_pSceneMngr->RegisterScene<Scene>(static_cast<unsigned int>(sceneId));
-	}
 
 }	// namespace app
 

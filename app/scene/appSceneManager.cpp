@@ -8,9 +8,6 @@
 #include "appSceneManager.h"
 #include "appScene.h"
 
-// test
-#include "ngLibCore/system/ngSysUtil.h"
-
 namespace app
 {
 	CSceneManager::CSceneManager()
@@ -23,13 +20,13 @@ namespace app
 		Finalize();
 	}
 
-	bool CSceneManager::Initialize(unsigned int sceneMax)
+	bool CSceneManager::Initialize(unsigned int sceneMax, ng::IMemoryAllocator& alloc)
 	{
 		NG_ASSERT(!_isInit());
 
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
-		if(NG_FAILED(err = m_sceneArr.Initialize(sceneMax, _getMemAlloc()))) {
+		if(NG_FAILED(err = m_sceneArr.Initialize(sceneMax, alloc))) {
 			NG_ERRLOG_C("SceneManager", err, "シーン管理の初期化に失敗しました.");
 			return false;
 		}
@@ -45,9 +42,9 @@ namespace app
 
 		for(unsigned int i = 0; i < m_sceneArr.Size(); i++)
 		{
-			IScene* pScene = m_sceneArr[i];
-			if(pScene != nullptr) {
-				pScene->Update(deltaTime);
+			ng::CSharedPtr<IScene>& p = m_sceneArr[i];
+			if(p) {
+				p->Update(deltaTime);
 			}
 		}
 	}
@@ -58,9 +55,9 @@ namespace app
 
 		for(unsigned int i = 0; i < m_sceneArr.Size(); i++)
 		{
-			IScene* pScene = m_sceneArr[i];
-			if(pScene != nullptr) {
-				pScene->Render();
+			ng::CSharedPtr<IScene>& p = m_sceneArr[i];
+			if(p) {
+				p->Render();
 			}
 		}
 	}
@@ -77,43 +74,41 @@ namespace app
 		m_isInit = false;
 	}
 
+	bool CSceneManager::RegisterScene(unsigned int index, ng::CSharedPtr<IScene>& scenePtr)
+	{
+		if(!_isInit()) return false;
+		if(!scenePtr) return false;
+
+		NG_ASSERT(index < m_sceneArr.Size());
+
+		DeleteScene(index);
+
+		if(!scenePtr->Initialize()) {
+			NG_ERRLOG("SceneManager", "シーンの初期化に失敗しました.");
+			scenePtr->Finalize();
+			return false;
+		}
+		m_sceneArr[index] = scenePtr;
+
+		return true;
+	}
+
 	void CSceneManager::DeleteScene(unsigned int index)
 	{
 		if(!_isInit()) return;
 
 		NG_ASSERT(index < m_sceneArr.Size());
 
-		IScene* pScene = m_sceneArr[ index ];
-		if(pScene != nullptr) {
-			pScene->Finalize();
-
-			NG_SAFE_DELETE(NG_SYSALLOC_MAINSYS, pScene);
-			m_sceneArr[ index ] = nullptr;
+		ng::CSharedPtr<IScene>& p = m_sceneArr[index];
+		if(p) {
+			p->Finalize();
+			p.reset();
 		}
 	}
 
 	bool CSceneManager::_isInit() const
 	{
 		return m_isInit;
-	}
-
-	bool CSceneManager::_registerScene(unsigned int index, IScene* pScene)
-	{
-		NG_ASSERT(_isInit());
-		NG_ASSERT(index < m_sceneArr.Size());
-
-		if(!pScene->Initialize()) {
-			return false;
-		}
-
-		m_sceneArr[ index ] = pScene;
-
-		return true;
-	}
-
-	ng::IMemoryAllocator& CSceneManager::_getMemAlloc() const
-	{
-		return NG_SYSALLOC_MAINSYS;
 	}
 
 }	// namespace app
