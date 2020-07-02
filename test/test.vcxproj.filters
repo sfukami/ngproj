@@ -53,6 +53,9 @@
     <Filter Include="ソース ファイル\testcode\memory\pointer">
       <UniqueIdentifier>{82325898-55ef-4470-a578-021ac3ede483}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\job">
+      <UniqueIdentifier>{f8baa760-0cf9-47c7-b8e4-013890e92184}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -110,6 +113,9 @@
     </ClCompile>
     <ClCompile Include="memory\pointer\testSharedPtr.cpp">
       <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    </ClCompile>
+    <ClCompile Include="job\testJobQueue.cpp">
+      <Filter>ソース ファイル\testcode\job</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -86,6 +86,8 @@
     <ClInclude Include="io\console\ngConsoleMacro.h" />
     <ClInclude Include="io\file\ngFile.h" />
     <ClInclude Include="io\stream\ngOutputStream.h" />
+    <ClInclude Include="job\ngJob.h" />
+    <ClInclude Include="job\ngJobQueue.h" />
     <ClInclude Include="locale\ngLocale.h" />
     <ClInclude Include="math\ngMath.h" />
     <ClInclude Include="math\ngMathDef.h" />
@@ -142,6 +144,7 @@
     <ClCompile Include="io\console\ngConsole.cpp" />
     <ClCompile Include="io\console\ngConsoleMacro.cpp" />
     <ClCompile Include="io\file\ngFile.cpp" />
+    <ClCompile Include="job\ngJobQueue.cpp" />
     <ClCompile Include="locale\ngLocale.cpp" />
     <ClCompile Include="math\ngMath.cpp" />
     <ClCompile Include="memory\ngMemoryManager.cpp" />

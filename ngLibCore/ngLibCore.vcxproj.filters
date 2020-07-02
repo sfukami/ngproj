@@ -125,6 +125,9 @@
     <Filter Include="ソース ファイル\color">
       <UniqueIdentifier>{1f386004-8ff4-486c-88f7-39e4b66c013f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\job">
+      <UniqueIdentifier>{5cc2ec0e-bb26-4fd7-9b73-12b641e73780}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\memory\pointer">
       <UniqueIdentifier>{dd7fa1ae-53ed-4991-b2e5-85af2eb19597}</UniqueIdentifier>
     </Filter>
@@ -388,6 +391,12 @@
     <ClInclude Include="color\ngColorUtil.h">
       <Filter>ソース ファイル\color</Filter>
     </ClInclude>
+    <ClInclude Include="job\ngJob.h">
+      <Filter>ソース ファイル\job</Filter>
+    </ClInclude>
+    <ClInclude Include="job\ngJobQueue.h">
+      <Filter>ソース ファイル\job</Filter>
+    </ClInclude>
     <ClInclude Include="memory\pointer\ngUniquePtr.h">
       <Filter>ソース ファイル\memory\pointer</Filter>
     </ClInclude>
@@ -518,6 +527,9 @@
     </ClCompile>
     <ClCompile Include="color\ngColorUtil.cpp">
       <Filter>ソース ファイル\color</Filter>
+    </ClCompile>
+    <ClCompile Include="job\ngJobQueue.cpp">
+      <Filter>ソース ファイル\job</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
