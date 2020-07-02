@@ -41,6 +41,8 @@ namespace ng
 		using BaseType = UniquePtrBase<T>;	//!< 基底クラス
 
 	public:
+		explicit CUniquePtr() noexcept = default;
+
 		/*!
 		* @brief					コンストラクタ
 		* @param p					対象のポインタ

@@ -41,6 +41,8 @@ namespace ng
 		using BaseType = SharedPtrBase<T>;	//!< 基底クラス
 
 	public:
+		explicit CSharedPtr() noexcept = default;
+
 		/*!
 		* @brief					コンストラクタ
 		* @param p					対象のポインタ
