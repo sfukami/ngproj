@@ -8,14 +8,12 @@
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "appGame.h"
+#include "../memory/appMemoryModule.h"
 #include "../input/appInputModule.h"
 #include "../graphic/appGraphicModule.h"
 #include "../scene/appSceneModule.h"
 #include "../scene/appSceneId.h"
 #include "../scene/root/appSceneRoot.h"
-
-//test
-#include "ngLibCore/system/ngSysUtil.h"
 
 namespace app
 {
@@ -51,6 +49,13 @@ namespace app
 			}
 		}
 
+		// アプリケーションメモリ初期化
+		if(!m_memory.Initialize()) {
+			NG_ERRLOG("Game", "アプリケーションメモリの初期化に失敗しました.");
+			return false;
+		}
+		CMemoryModule::SetApplicationMemory(&m_memory);
+
 		// アプリケーションウィンドウ生成
 		if(!m_window.Create(
 			CLIENT_WIDTH,
@@ -71,6 +76,7 @@ namespace app
 			NG_ERRLOG("Game", "入力の初期化に失敗しました.");
 			return false;
 		}
+		CInputModule::SetInput(&m_input);
 
 		// グラフィック初期化
 		if(!m_graphic.Initialize(
@@ -82,22 +88,18 @@ namespace app
 			NG_ERRLOG("Game", "グラフィックの初期化に失敗しました.");
 			return false;
 		}
+		CGraphicModule::SetGraphic(&m_graphic);
 
 		// シーン管理初期化
-		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM), NG_SYSALLOC_MAINSYS)) {
+		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM), APP_MEMALLOC_APPLICATION)) {
 			NG_ERRLOG("Game", "シーン管理の初期化に失敗しました.");
 			return false;
 		}
-
-		// 各種インスタンス設定
-		CInputModule::SetInput(&m_input);
-		CGraphicModule::SetGraphic(&m_graphic);
 		CSceneModule::SetSceneManager(&m_sceneMngr);
 
 		// ルートシーン登録
-		//m_sceneMngr.RegisterScene<CSceneRoot>(static_cast<unsigned int>(eSceneId::GAME));
 		{
-			auto scenePtr = NG_MAKE_SHARED_PTR(IScene, NG_SYSALLOC_MAINSYS, CSceneRoot());
+			auto scenePtr = NG_MAKE_SHARED_PTR(IScene, APP_MEMALLOC_APPLICATION, CSceneRoot());
 			m_sceneMngr.RegisterScene(static_cast<unsigned int>(eSceneId::GAME), scenePtr);
 		}
 

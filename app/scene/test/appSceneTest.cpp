@@ -6,13 +6,12 @@
 */
 
 #include "appSceneTest.h"
-
+#include "../../memory/appMemoryModule.h"
+#include "../../input/appInputModule.h"
+#include "../../graphic/appGraphicModule.h"
 // test
-#include "ngLibCore/system/ngSysUtil.h"
 #include "../../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
 #include "../../graphic/pipeline/test/appGraphicPipelinePolygon.h"
-#include "../../graphic/appGraphicModule.h"
-#include "../../input/appInputModule.h"
 
 namespace app
 {
@@ -25,13 +24,15 @@ namespace app
 
 	bool CSceneTest::Initialize()
 	{
-		// TODO: 仮にシステムアロケータを使用する
-		m_pPipeline = NG_NEW(NG_SYSALLOC_GRAPHIC) CGraphicPipelinePolygon();
+		m_pPipeline = NG_NEW(APP_MEMALLOC_APPLICATION) 
+			//CGraphicPipelineClearBuffer()
+			CGraphicPipelinePolygon()
+			;
 		if(m_pPipeline->Initialize()) {
 			CGraphicModule::SetGraphicPipeline(m_pPipeline);
 		} else {
 			NG_ERRLOG("Game", "グラフィックパイプラインの初期化に失敗しました.");
-			NG_SAFE_DELETE(NG_SYSALLOC_GRAPHIC, m_pPipeline);
+			NG_SAFE_DELETE(APP_MEMALLOC_APPLICATION, m_pPipeline);
 			return false;
 		}
 
@@ -72,7 +73,7 @@ namespace app
 	void CSceneTest::Finalize()
 	{
 		if(m_pPipeline != nullptr) {
-			NG_SAFE_DELETE(NG_SYSALLOC_GRAPHIC, m_pPipeline);
+			NG_SAFE_DELETE(APP_MEMALLOC_APPLICATION, m_pPipeline);
 		}
 	}
 
