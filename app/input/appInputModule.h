@@ -53,6 +53,9 @@ namespace app
 		/*! 入力のインスタンスを設定 */
 		static void SetInput(CInput* pInput);
 
+		/*! 有効か */
+		static bool _isValid();
+		
 	private:
 		static CInput* s_pInput;	//!< 入力への参照
 	};

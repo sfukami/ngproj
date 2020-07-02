@@ -17,7 +17,7 @@ namespace app
 		ng::eInputState state
 		)
 	{
-		if(s_pInput != nullptr) {
+		if(_isValid()) {
 			return s_pInput->CheckKeyboardInput(code, state);
 		}
 
@@ -29,7 +29,7 @@ namespace app
 		ng::eInputState state
 		)
 	{
-		if(s_pInput != nullptr) {
+		if(_isValid()) {
 			return s_pInput->CheckMouseInput(code, state);
 		}
 
@@ -39,6 +39,11 @@ namespace app
 	void CInputModule::SetInput(CInput* pInput)
 	{
 		s_pInput = pInput;
+	}
+
+	bool CInputModule::_isValid()
+	{
+		return (s_pInput != nullptr);
 	}
 
 }	// namespace app
