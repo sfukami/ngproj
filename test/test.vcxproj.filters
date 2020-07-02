@@ -108,5 +108,8 @@
     <ClCompile Include="memory\pointer\testUniquePtr.cpp">
       <Filter>ソース ファイル\testcode\memory\pointer</Filter>
     </ClCompile>
+    <ClCompile Include="memory\pointer\testSharedPtr.cpp">
+      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

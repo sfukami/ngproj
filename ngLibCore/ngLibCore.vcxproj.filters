@@ -394,6 +394,9 @@
     <ClInclude Include="memory\pointer\ngPtrDeleter.h">
       <Filter>ソース ファイル\memory\pointer</Filter>
     </ClInclude>
+    <ClInclude Include="memory\pointer\ngSharedPtr.h">
+      <Filter>ソース ファイル\memory\pointer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">

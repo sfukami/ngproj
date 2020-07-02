@@ -91,6 +91,7 @@
     <ClInclude Include="math\ngMathDef.h" />
     <ClInclude Include="memory\ngMemoryManager.h" />
     <ClInclude Include="memory\pointer\ngPtrDeleter.h" />
+    <ClInclude Include="memory\pointer\ngSharedPtr.h" />
     <ClInclude Include="memory\pointer\ngUniquePtr.h" />
     <ClInclude Include="memory\pool\ngMemoryPool.h" />
     <ClInclude Include="memory\pool\ngRootMemoryPool.h" />
