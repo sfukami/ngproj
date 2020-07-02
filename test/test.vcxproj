@@ -175,6 +175,7 @@
     <ClInclude Include="setup\testSetup.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="memory\pointer\testUniquePtr.cpp" />
     <ClCompile Include="setup\testSetup.cpp" />
     <ClCompile Include="testcode\container\array\testFixedArray.cpp" />
     <ClCompile Include="testcode\container\list\testFixedList.cpp" />

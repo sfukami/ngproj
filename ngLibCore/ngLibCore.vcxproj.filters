@@ -125,6 +125,9 @@
     <Filter Include="ソース ファイル\color">
       <UniqueIdentifier>{1f386004-8ff4-486c-88f7-39e4b66c013f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\memory\pointer">
+      <UniqueIdentifier>{dd7fa1ae-53ed-4991-b2e5-85af2eb19597}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -384,6 +387,12 @@
     </ClInclude>
     <ClInclude Include="color\ngColorUtil.h">
       <Filter>ソース ファイル\color</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\pointer\ngUniquePtr.h">
+      <Filter>ソース ファイル\memory\pointer</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\pointer\ngPtrDeleter.h">
+      <Filter>ソース ファイル\memory\pointer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

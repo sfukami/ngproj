@@ -47,6 +47,12 @@
     <Filter Include="ソース ファイル\testcode\geometry">
       <UniqueIdentifier>{e8220c97-1dfd-4ab0-8648-ee754da96a70}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\memory">
+      <UniqueIdentifier>{89806ef6-c676-4039-9521-da245ee717dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\testcode\memory\pointer">
+      <UniqueIdentifier>{82325898-55ef-4470-a578-021ac3ede483}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -98,6 +104,9 @@
     </ClCompile>
     <ClCompile Include="testcode\geometry\testVector.cpp">
       <Filter>ソース ファイル\testcode\geometry</Filter>
+    </ClCompile>
+    <ClCompile Include="memory\pointer\testUniquePtr.cpp">
+      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
