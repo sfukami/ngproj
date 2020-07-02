@@ -50,11 +50,11 @@ namespace app
 		}
 
 		// アプリケーションメモリ初期化
-		if(!m_memory.Initialize()) {
+		if(!m_appMem.Initialize()) {
 			NG_ERRLOG("Game", "アプリケーションメモリの初期化に失敗しました.");
 			return false;
 		}
-		CMemoryModule::SetApplicationMemory(&m_memory);
+		CMemoryModule::SetApplicationMemory(&m_appMem);
 
 		// アプリケーションウィンドウ生成
 		if(!m_window.Create(

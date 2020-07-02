@@ -55,7 +55,7 @@ namespace app
 
 	private:
 		ng::CWindow m_window;		//!< ウィンドウ
-		CApplicationMemory m_memory;	//!< アプリケーションメモリ
+		CApplicationMemory m_appMem;	//!< アプリケーションメモリ
 		CInput m_input;				//!< 入力
 		CGraphic m_graphic;			//!< グラフィック
 		CSceneManager m_sceneMngr;	//!< シーン管理
