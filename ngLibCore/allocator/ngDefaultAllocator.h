@@ -12,7 +12,7 @@
 
 namespace ng
 {
-	class IMemoryPool;
+	class CMemoryPool;
 }
 
 namespace ng
