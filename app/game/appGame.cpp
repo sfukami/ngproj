@@ -7,11 +7,14 @@
 
 #include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
+#include "app/common/appCommon.h"
 #include "appGame.h"
 #include "../memory/appMemoryModule.h"
 #include "../input/appInputModule.h"
 #include "../graphic/appGraphicModule.h"
 #include "../scene/appSceneModule.h"
+#include "../job/appJobModule.h"
+
 #include "../scene/appSceneId.h"
 #include "../scene/root/appSceneRoot.h"
 
@@ -97,6 +100,13 @@ namespace app
 		}
 		CSceneModule::SetSceneManager(&m_sceneMngr);
 
+		// ジョブ管理初期化
+		if(!m_jobMngr.Initialize(32, APP_MEMALLOC_APPLICATION)) {
+			NG_ERRLOG("Game", "ジョブ管理の初期化に失敗しました.");
+			return false;
+		}
+		CJobModule::SetJobManager(&m_jobMngr);
+
 		// ルートシーン登録
 		{
 			auto scenePtr = NG_MAKE_SHARED_PTR(IScene, APP_MEMALLOC_APPLICATION, CSceneRoot());
@@ -148,12 +158,16 @@ namespace app
 
 		m_input.Update();
 		m_sceneMngr.Update(deltaTime);
+		m_jobMngr.ExecuteJob(eJobProcess::UPDATE);
+
+		m_jobMngr.ExecuteJob(eJobProcess::LATE_UPDATE);
 	}
 
 	void CGame::_render()
 	{
 		m_sceneMngr.Render();
 		m_graphic.Render();
+		m_jobMngr.ExecuteJob(eJobProcess::END_OF_FRAME);
 	}
 
 	/*! ウィンドウプロシージャ */

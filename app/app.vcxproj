@@ -28,6 +28,8 @@
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelinePolygon.cpp" />
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="input\appInputModule.cpp" />
+    <ClCompile Include="job\appJobManager.cpp" />
+    <ClCompile Include="job\appJobModule.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory\appApplicationMemory.cpp" />
     <ClCompile Include="memory\appMemoryModule.cpp" />
@@ -47,9 +49,13 @@
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="input\appInputModule.h" />
+    <ClInclude Include="job\appJobManager.h" />
+    <ClInclude Include="job\appJobModule.h" />
+    <ClInclude Include="job\appJobProcess.h" />
     <ClInclude Include="memory\appApplicationMemory.h" />
     <ClInclude Include="memory\appMemoryAllocatorId.h" />
     <ClInclude Include="memory\appMemoryModule.h" />
+    <ClInclude Include="memory\appMemoryUtil.h" />
     <ClInclude Include="preincl\appPreInclude.h" />
     <ClInclude Include="scene\appScene.h" />
     <ClInclude Include="scene\appSceneId.h" />

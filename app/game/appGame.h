@@ -14,6 +14,7 @@
 #include "../input/appInput.h"
 #include "../graphic/appGraphic.h"
 #include "../scene/appSceneManager.h"
+#include "../job/appJobManager.h"
 
 namespace app
 {
@@ -59,6 +60,7 @@ namespace app
 		CInput m_input;				//!< 入力
 		CGraphic m_graphic;			//!< グラフィック
 		CSceneManager m_sceneMngr;	//!< シーン管理
+		CJobManager m_jobMngr;		//!< ジョブ管理
 	};
 
 }	// namespace app

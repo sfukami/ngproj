@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include "app/common/appCommon.h"
 #include "appSceneRoot.h"
 #include "../appSceneModule.h"
 #include "../test/appSceneTest.h"

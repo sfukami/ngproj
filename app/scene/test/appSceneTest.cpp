@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include "app/common/appCommon.h"
 #include "appSceneTest.h"
 #include "../../memory/appMemoryModule.h"
 #include "../../input/appInputModule.h"

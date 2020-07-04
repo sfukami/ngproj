@@ -8,6 +8,6 @@
 #ifndef __APP_COMMON_H__
 #define __APP_COMMON_H__
 
-#include <Windows.h>
+#include "../memory/appMemoryUtil.h"
 
 #endif	// __APP_COMMON_H__

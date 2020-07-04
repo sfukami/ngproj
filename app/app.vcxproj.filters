@@ -38,6 +38,9 @@
     <Filter Include="ソース ファイル\memory">
       <UniqueIdentifier>{4d7c6ca4-60f0-49a4-9e79-193bbe23b379}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\job">
+      <UniqueIdentifier>{124043a6-96a2-46db-bf6a-0d17f5c735dd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,6 +90,12 @@
     </ClCompile>
     <ClCompile Include="memory\appApplicationMemory.cpp">
       <Filter>ソース ファイル\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="job\appJobManager.cpp">
+      <Filter>ソース ファイル\job</Filter>
+    </ClCompile>
+    <ClCompile Include="job\appJobModule.cpp">
+      <Filter>ソース ファイル\job</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -148,6 +157,18 @@
       <Filter>ソース ファイル\memory</Filter>
     </ClInclude>
     <ClInclude Include="memory\appApplicationMemory.h">
+      <Filter>ソース ファイル\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="job\appJobManager.h">
+      <Filter>ソース ファイル\job</Filter>
+    </ClInclude>
+    <ClInclude Include="job\appJobModule.h">
+      <Filter>ソース ファイル\job</Filter>
+    </ClInclude>
+    <ClInclude Include="job\appJobProcess.h">
+      <Filter>ソース ファイル\job</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\appMemoryUtil.h">
       <Filter>ソース ファイル\memory</Filter>
     </ClInclude>
   </ItemGroup>
