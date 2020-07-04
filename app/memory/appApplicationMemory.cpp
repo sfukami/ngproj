@@ -11,6 +11,20 @@
 
 namespace app
 {
+	//! メモリサイズ
+	enum eMemorySize : ng::size_type
+	{
+		INSTANCE		= NG_KB(1),		//!< インスタンス
+		APPLICATION		= NG_KB(1),		//!< アプリケーション
+		WORK			= NG_KB(1),		//!< ワーク
+
+		//! 合計
+		TOTAL			= INSTANCE
+						+ APPLICATION
+						+ WORK
+						,
+	};
+
 	CApplicationMemory::CApplicationMemory()
 	{
 	}
@@ -26,7 +40,7 @@ namespace app
 
 		// ルートメモリプール初期化
 		{
-			ng::size_type allocSize = NG_MB(1);	// TODO:
+			ng::size_type allocSize = eMemorySize::TOTAL;
 			if(NG_FAILED(err = m_memPool.Initialize(allocSize))) {
 				NG_ERRLOG_C("ApplicationMemory", err, "ルートメモリプールの初期化に失敗");
 				return false;
@@ -45,12 +59,11 @@ namespace app
 
 		// 各メモリアロケータ初期化
 		{
-			// TODO:
 			m_memMngr.CreateAndRegisterAllocator<ng::CDefaultAllocator>(
-				static_cast<ng::u32>(eMemoryAllocatorId::APPLICATION), "app_application", NG_KB(1)
+				static_cast<ng::u32>(eMemoryAllocatorId::APPLICATION), "app_application", eMemorySize::APPLICATION
 				);
 			m_memMngr.CreateAndRegisterAllocator<ng::CStackAllocator>(
-				static_cast<ng::u32>(eMemoryAllocatorId::WORK), "app_work", NG_KB(1)
+				static_cast<ng::u32>(eMemoryAllocatorId::WORK), "app_work", eMemorySize::WORK
 				);
 		}
 
