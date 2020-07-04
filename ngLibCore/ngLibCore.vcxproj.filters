@@ -409,6 +409,9 @@
     <ClInclude Include="traits\ngNonInstantiable.h">
       <Filter>ソース ファイル\traits</Filter>
     </ClInclude>
+    <ClInclude Include="allocator\ngStackAllocator.h">
+      <Filter>ソース ファイル\allocator</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -533,6 +536,9 @@
     </ClCompile>
     <ClCompile Include="job\ngJobQueue.cpp">
       <Filter>ソース ファイル\job</Filter>
+    </ClCompile>
+    <ClCompile Include="allocator\ngStackAllocator.cpp">
+      <Filter>ソース ファイル\allocator</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

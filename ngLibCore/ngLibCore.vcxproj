@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="allocator\ngDefaultAllocator.h" />
     <ClInclude Include="allocator\ngMemoryAllocator.h" />
+    <ClInclude Include="allocator\ngStackAllocator.h" />
     <ClInclude Include="color\ngColor.h" />
     <ClInclude Include="color\ngColorCode.h" />
     <ClInclude Include="color\ngColorUtil.h" />
@@ -114,6 +115,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="allocator\ngDefaultAllocator.cpp" />
+    <ClCompile Include="allocator\ngStackAllocator.cpp" />
     <ClCompile Include="color\ngColor.cpp" />
     <ClCompile Include="color\ngColorUtil.cpp" />
     <ClCompile Include="common\bit\ngBit.cpp" />
