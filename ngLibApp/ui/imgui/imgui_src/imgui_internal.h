@@ -1,4 +1,4 @@
-// dear imgui, v1.78 WIP
+﻿// dear imgui, v1.78 WIP
 // (internal structures/api)
 
 // You may use this file to debug, understand or extend ImGui features but we don't provide any guarantee of forward compatibility!
@@ -1326,7 +1326,9 @@ struct ImGuiContext
         IO.Fonts = shared_font_atlas ? shared_font_atlas : IM_NEW(ImFontAtlas)();
         Time = 0.0f;
         FrameCount = 0;
-        FrameCountEnded = FrameCountRendered = -1;
+        // ※バグ？ Render()でアサートするため修正
+        //FrameCountEnded = FrameCountRendered = -1;
+        FrameCountEnded = FrameCountRendered = 0;
         WithinFrameScope = WithinFrameScopeWithImplicitWindow = WithinEndChild = false;
         TestEngineHookItems = false;
         TestEngineHookIdInfo = 0;

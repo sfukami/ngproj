@@ -1,4 +1,4 @@
-// dear imgui: Renderer for DirectX12
+﻿// dear imgui: Renderer for DirectX12
 // This needs to be used along with a Platform Binding (e.g. Win32)
 
 // Implemented features:
@@ -386,8 +386,9 @@ static void ImGui_ImplDX12_CreateFontsTexture()
         g_pFontTextureResource = pTexture;
     }
 
+    // ※32bit環境のため、ImTextureID を UINT64 に変更し対応
     // Store our identifier
-    static_assert(sizeof(ImTextureID) >= sizeof(g_hFontSrvGpuDescHandle.ptr), "Can't pack descriptor handle into TexID, 32-bit not supported yet.");
+    //static_assert(sizeof(ImTextureID) >= sizeof(g_hFontSrvGpuDescHandle.ptr), "Can't pack descriptor handle into TexID, 32-bit not supported yet.");
     io.Fonts->TexID = (ImTextureID)g_hFontSrvGpuDescHandle.ptr;
 }
 

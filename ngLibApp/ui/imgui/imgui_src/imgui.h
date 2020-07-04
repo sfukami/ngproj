@@ -1,4 +1,4 @@
-// dear imgui, v1.78 WIP
+﻿// dear imgui, v1.78 WIP
 // (headers)
 
 // Help:
@@ -170,7 +170,9 @@ typedef int ImGuiWindowFlags;       // -> enum ImGuiWindowFlags_     // Flags: f
 
 // Other types
 #ifndef ImTextureID                 // ImTextureID [configurable type: override in imconfig.h with '#define ImTextureID xxx']
-typedef void* ImTextureID;          // User data for rendering back-end to identify a texture. This is whatever to you want it to be! read the FAQ about ImTextureID for details.
+// ※32bit環境対応 void* -> UINT64
+//typedef void* ImTextureID;          // User data for rendering back-end to identify a texture. This is whatever to you want it to be! read the FAQ about ImTextureID for details.
+typedef UINT64 ImTextureID;
 #endif
 typedef unsigned int ImGuiID;       // A unique ID used by widgets, typically hashed from a stack of string.
 typedef int (*ImGuiInputTextCallback)(ImGuiInputTextCallbackData* data);
