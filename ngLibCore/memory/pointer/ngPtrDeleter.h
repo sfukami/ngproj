@@ -22,7 +22,7 @@ namespace ng
 	* @brief					スマートポインタ拡張用 メモリ解放
 	*/
 	template <class T>
-	NG_DECL class CPtrDeleter
+	class NG_DECL CPtrDeleter
 	{
 	public:
 		explicit CPtrDeleter(IMemoryAllocator& alloc) noexcept;

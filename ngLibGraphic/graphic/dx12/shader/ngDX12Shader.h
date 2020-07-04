@@ -18,11 +18,8 @@ namespace ng
 	class NG_DECL CDX12Shader
 	{
 	public:
-		/*! コンストラクタ */
 		CDX12Shader();
-
-		/*! デストラクタ */
-		virtual ~CDX12Shader();
+		~CDX12Shader();
 
 		/*!
 		* @brief					DX12シェーダー生成

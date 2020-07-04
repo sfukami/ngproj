@@ -26,7 +26,7 @@ namespace ng
 	{
 	public:
 		CMemoryManager();
-		virtual ~CMemoryManager();
+		~CMemoryManager();
 
 		/*!
 		* @brief					初期化

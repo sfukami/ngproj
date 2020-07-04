@@ -31,7 +31,7 @@ namespace ng
 
 	private:
 		CCoreSystem();
-		virtual ~CCoreSystem();
+		~CCoreSystem();
 
 	public:
 		/*!

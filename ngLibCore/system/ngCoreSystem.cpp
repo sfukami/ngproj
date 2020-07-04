@@ -26,7 +26,7 @@ namespace ng
 
 	NG_ERRCODE CCoreSystem::Setup(const SetupParam& param)
 	{
-		NG_ERRCODE ret = eNG_S_OK;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		// システムメモリ初期化
 		{

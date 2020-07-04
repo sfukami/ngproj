@@ -35,7 +35,7 @@ namespace ng
 	* @brief					スマートポインタ std::shared_ptr拡張
 	*/
 	template <class T>
-	NG_DECL class CSharedPtr : public SharedPtrBase<T>
+	class NG_DECL CSharedPtr : public SharedPtrBase<T>
 	{
 	public:
 		using BaseType = SharedPtrBase<T>;	//!< 基底クラス

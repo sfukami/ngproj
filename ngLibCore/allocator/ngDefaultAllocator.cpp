@@ -23,12 +23,10 @@ namespace ng
 
 	NG_ERRCODE CDefaultAllocator::Initialize(const char* name)
 	{
-		NG_ERRCODE ret = eNG_S_OK;
-		
 		m_isInit = true;
 		NG_STRCPY(m_name, name);
 
-		return ret;
+		return eNG_S_OK;
 	}
 
 	NG_ERRCODE CDefaultAllocator::Initialize(

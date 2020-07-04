@@ -45,7 +45,7 @@ namespace ng
 		size_type size
 		)
 	{
-		NG_ERRCODE ret = eNG_S_OK;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		if(NG_FAILED(ret = Pool(NG_NEW_BYTE(alloc, size), size))) {
 			return ret;

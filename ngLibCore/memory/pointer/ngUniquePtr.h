@@ -35,7 +35,7 @@ namespace ng
 	* @brief					スマートポインタ std::unique_ptr拡張
 	*/
 	template <class T>
-	NG_DECL class CUniquePtr : public UniquePtrBase<T>
+	class NG_DECL CUniquePtr : public UniquePtrBase<T>
 	{
 	public:
 		using BaseType = UniquePtrBase<T>;	//!< 基底クラス

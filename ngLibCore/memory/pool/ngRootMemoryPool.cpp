@@ -21,7 +21,7 @@ namespace ng
 
 	NG_ERRCODE CRootMemoryPool::Initialize(size_type size)
 	{
-		NG_ERRCODE ret = eNG_S_OK;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		if(NG_FAILED(ret = m_rootAlloc.Initialize("ng_rootmem"))) {
 			NG_ERRLOG_C("RootMemoryPool", ret, "ルートアロケータの初期化に失敗");

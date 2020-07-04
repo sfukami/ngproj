@@ -22,7 +22,7 @@ namespace ng
 	/*!
 	* @brief					ジョブキュー
 	*/
-	NG_DECL class CJobQueue
+	class NG_DECL CJobQueue
 	{
 	public:
 		CJobQueue();

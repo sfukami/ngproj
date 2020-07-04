@@ -133,7 +133,7 @@ namespace ng
 
 	NG_ERRCODE CFile::Seek(long offset, int origin)
 	{
-		NG_ERRCODE ret = eNG_E_FAIL;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		if(!IsOpen()) {
 			return ret;
@@ -142,6 +142,7 @@ namespace ng
 		if(::fseek(m_fp, offset, origin) == 0) {
 			ret = eNG_S_OK;
 		} else {
+			ret = eNG_E_UNKNOWN;
 			NG_ERRLOG_C("File", ret, "ファイルポインタの移動に失敗しました.");
 			NG_DPRINT_LASTERRMSG();
 			return ret;

@@ -60,7 +60,6 @@ namespace ng
 		return m_up;
 	}
 	
-
 	void CCamera::MoveStraightToAtPos(float length)
 	{
 		Vector3 dir;

@@ -250,7 +250,7 @@ namespace ng
 
 	NG_ERRCODE CDX12Graphic::_createRTBackBuffer(CDX12Device& device, CDX12SwapChain& swapChain, u32 bufferIndex, eDX12RenderTargetId id)
 	{
-		NG_ERRCODE ret = eNG_E_FAIL;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 		
 		if(NG_FAILED(ret = m_rtMngr.CreateRenderTargetView(
 			device,

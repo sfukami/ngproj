@@ -29,7 +29,7 @@ namespace ng
 
 	public:
 		CIntrusiveList();
-		virtual ~CIntrusiveList();
+		~CIntrusiveList();
 
 		/*! 先頭の要素を返す */
 		ElemType& Front();

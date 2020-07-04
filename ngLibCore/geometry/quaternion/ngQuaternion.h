@@ -26,7 +26,6 @@ namespace ng
 			f32 m[4];
 		};
 
-		/*! コンストラクタ */
 		Quaternion(f32 _x = .0f, f32 _y = .0f, f32 _z = .0f, f32 _w = .0f) 
 			: x(_x), y(_y), z(_z), w(_w) { }
 		explicit Quaternion(const f32 pElems[]);

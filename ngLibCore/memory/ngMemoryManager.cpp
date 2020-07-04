@@ -24,7 +24,7 @@ namespace ng
 		u32 allocNumMax
 		)
 	{
-		NG_ERRCODE ret = eNG_S_OK;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		if(!memPool.IsPool()) {
 			NG_ERRLOG("MemoryManager", "メモリプールが利用できませんでした.");

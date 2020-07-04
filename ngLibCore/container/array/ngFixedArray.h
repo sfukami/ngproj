@@ -264,7 +264,7 @@ namespace ng
 	{
 	public:
 		CFixedArray();
-		virtual ~CFixedArray();
+		~CFixedArray();
 
 	private:
 		typedef CFixedArrayBase<T> BaseType;	//!< 基底クラス
@@ -302,7 +302,7 @@ namespace ng
 	{
 	public:
 		CFixedArray();
-		virtual ~CFixedArray();
+		~CFixedArray();
 
 		/*!
 		* @brief					初期化

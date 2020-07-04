@@ -66,7 +66,7 @@ namespace ng
 			return ret;
 		}
 
-		ret = eNG_E_FAIL;
+		ret = NG_ERRCODE_DEFAULT;
 
 		// Warpデバイス生成
 		if(param.isUseWarpDevice) {
@@ -166,7 +166,7 @@ namespace ng
 		}
 	#endif
 
-		NG_ERRCODE ret = eNG_E_FAIL;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 		if(featureLevel != NG_D3D_FEATURE_LEVEL_NONE) {
 			ret = D3D12CreateDevice(pIAdapter, featureLevel, IID_PPV_ARGS(&m_pIDevice));
 		}

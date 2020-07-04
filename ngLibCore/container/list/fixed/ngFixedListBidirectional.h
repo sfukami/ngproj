@@ -32,10 +32,7 @@ namespace ng
 		typedef CFixedListNode<CBidirectionalListNode<T> > MyNodeType;	//!< ノードの型（具象クラス）
 
 	public:
-		/*! コンストラクタ */
 		CFixedListBase();
-
-		/*! デストラクタ */
 		virtual ~CFixedListBase();
 
 		/*! 先頭の要素を返す */
@@ -519,7 +516,7 @@ namespace ng
 	{
 	public:
 		CFixedList();
-		virtual ~CFixedList();
+		~CFixedList();
 
 	private:
 		typedef CFixedListBase<T, BidirectionalLinked> BaseType;	//!< 基底クラス
@@ -556,7 +553,7 @@ namespace ng
 	{
 	public:
 		CFixedList();
-		virtual ~CFixedList();
+		~CFixedList();
 
 		/*!
 		* @brief					初期化

@@ -20,7 +20,7 @@ namespace ng
 
 	NG_ERRCODE CDebugLog::Open(const char* pFilename)
 	{
-		NG_ERRCODE ret = eNG_E_FAIL;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		if(NG_SUCCEEDED(ret = m_file.Open(pFilename, "w"))) {
 			NG_DPRINTF("Debug log file open succeeded. file:%s\n", pFilename);

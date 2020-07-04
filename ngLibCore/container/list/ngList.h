@@ -182,10 +182,7 @@ namespace ng
 		typedef IListNode<ElemType, ForwardLinked> NodeType;	//!< ノードの型
 
 	public:
-		/*! コンストラクタ */
 		IList() { }
-
-		/*! デストラクタ */
 		virtual ~IList() { }
 
 		/*! 先頭の要素を返す */

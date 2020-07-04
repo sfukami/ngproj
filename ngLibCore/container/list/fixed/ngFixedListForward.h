@@ -422,7 +422,7 @@ namespace ng
 	{
 	public:
 		CFixedList();
-		virtual ~CFixedList();
+		~CFixedList();
 
 	private:
 		typedef CFixedListBase<T, ForwardLinked> BaseType;	//!< 基底クラス
@@ -459,7 +459,7 @@ namespace ng
 	{
 	public:
 		CFixedList();
-		virtual ~CFixedList();
+		~CFixedList();
 
 		/*!
 		* @brief					初期化

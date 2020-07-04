@@ -13,7 +13,7 @@ namespace ng
 	/*!
 	* @brief					ジョブ インターフェース
 	*/
-	NG_DECL class IJob
+	class NG_DECL IJob
 	{
 	public:
 		IJob() { }

@@ -387,7 +387,7 @@ namespace ng
 	{
 	public:
 		CFixedQueue();
-		virtual ~CFixedQueue();
+		~CFixedQueue();
 
 	private:
 		typedef CFixedQueueBase<T> BaseType;	//!< 基底クラス
@@ -425,7 +425,7 @@ namespace ng
 	{
 	public:
 		CFixedQueue();
-		virtual ~CFixedQueue();
+		~CFixedQueue();
 
 		/*!
 		* @brief					初期化
@@ -433,7 +433,7 @@ namespace ng
 		* @param alloc				使用するメモリアロケータ
 		* @return					NG エラーコード
 		*/
-		virtual NG_ERRCODE Initialize(u32 max, IMemoryAllocator& alloc);
+		NG_ERRCODE Initialize(u32 max, IMemoryAllocator& alloc);
 
 		/*!
 		* 終了処理
@@ -468,7 +468,7 @@ namespace ng
 			return eNG_E_CAPACITYLACK;
 		}
 
-		NG_ERRCODE err = eNG_E_FAIL;
+		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
 		// メモリ領域をプール
 		if(NG_FAILED(err = this->_poolMemory(alloc, reqMemSize))) {

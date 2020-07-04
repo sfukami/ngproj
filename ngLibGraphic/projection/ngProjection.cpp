@@ -21,11 +21,9 @@ namespace ng
 		, m_coordSys(eCoordSys::LEFT_HAND)
 		, m_projMethod(PERSPECTIVE)
 	{
-
 	}
 	CProjection::~CProjection()
 	{
-
 	}
 
 	void CProjection::CalcProjMatrix()

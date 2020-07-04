@@ -15,7 +15,7 @@ namespace ng
 	/*!
 	* デバッグログ出力
 	*/
-	NG_DECL class CDebugLog
+	class NG_DECL CDebugLog
 	{
 	public:
 		CDebugLog();

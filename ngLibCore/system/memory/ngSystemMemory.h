@@ -49,7 +49,7 @@ namespace ng
 
 	public:
 		CSystemMemory();
-		virtual ~CSystemMemory();
+		~CSystemMemory();
 
 		/*!
 		* @brief					初期化

@@ -22,7 +22,7 @@ namespace ng
 	{
 	public:
 		CMemoryPool();
-		virtual ~CMemoryPool();
+		~CMemoryPool();
 
 		/*!
 		* @brief					メモリ領域をプール
@@ -30,7 +30,7 @@ namespace ng
 		* @param size				メモリ領域のサイズ
 		* @return					NG エラーコード
 		*/
-		virtual NG_ERRCODE Pool(
+		NG_ERRCODE Pool(
 			void* pMemory,
 			size_type size
 			);
@@ -41,7 +41,7 @@ namespace ng
 		* @param size				メモリ領域のサイズ
 		* @return					NG エラーコード
 		*/
-		virtual NG_ERRCODE Pool(
+		NG_ERRCODE Pool(
 			IMemoryAllocator& alloc,
 			size_type size
 			);
@@ -49,17 +49,17 @@ namespace ng
 		/*!
 		* @brief					プールされたメモリ領域を解放する
 		*/
-		virtual void Unpool();
+		void Unpool();
 
 		/*! メモリ領域取得 */
-		virtual void* GetMemory();
-		virtual const void* GetMemory() const;
+		void* GetMemory();
+		const void* GetMemory() const;
 
 		/*! メモリ領域のサイズを取得 */
-		virtual size_type GetSize() const;
+		size_type GetSize() const;
 
 		/*! メモリ領域がプールされているか */
-		virtual bool IsPool() const;
+		bool IsPool() const;
 
 	private:
 		void*		m_pMemory;	//!< メモリ領域

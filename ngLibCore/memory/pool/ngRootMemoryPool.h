@@ -19,11 +19,8 @@ namespace ng
 	class NG_DECL CRootMemoryPool
 	{
 	public:
-		/*! コンストラクタ */
 		CRootMemoryPool();
-
-		/*! デストラクタ */
-		virtual ~CRootMemoryPool();
+		~CRootMemoryPool();
 
 		/*!
 		* @brief					初期化

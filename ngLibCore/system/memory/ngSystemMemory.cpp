@@ -59,7 +59,7 @@ namespace ng
 
 	NG_ERRCODE CSystemMemory::Initialize(const InitParam& param)
 	{
-		NG_ERRCODE ret = eNG_S_OK;
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		Finalize();
 

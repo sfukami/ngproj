@@ -29,62 +29,62 @@ namespace ng
 
 	public:
 		CIntrusiveList();
-		virtual ~CIntrusiveList();
+		~CIntrusiveList();
 
 		/*! 先頭の要素を返す */
-		virtual ElemType& Front();
+		ElemType& Front();
 
 		/*! 先頭の要素を返す */
-		virtual const ElemType& Front() const;
+		const ElemType& Front() const;
 
 		/*! 末尾の要素を返す */
-		virtual ElemType& Back();
+		ElemType& Back();
 
 		/*! 末尾の要素を返す */
-		virtual const ElemType& Back() const;
+		const ElemType& Back() const;
 
 		/*! 先頭に要素を挿入する */
-		virtual void PushFront(const ElemType& e);
+		void PushFront(const ElemType& e);
 
 		/*! 末尾に要素を挿入する */
-		virtual void PushBack(const ElemType& e);
+		void PushBack(const ElemType& e);
 
 		/*! 先頭の要素を取り出す */
-		virtual void PopFront();
+		void PopFront();
 
 		/*! 末尾の要素を取り出す */
-		virtual void PopBack();
+		void PopBack();
 
 		/*! 先頭のノードを返す */
-		virtual NodeType* Begin();
+		NodeType* Begin();
 
 		/*! 先頭のノードを返す */
-		virtual const NodeType* Begin() const;
+		const NodeType* Begin() const;
 
 		/*! 終端のノードを返す */
-		virtual NodeType* End();
+		NodeType* End();
 
 		/*! 終端のノードを返す */
-		virtual const NodeType* End() const;
+		const NodeType* End() const;
 
 		/*! 指定要素の後方に要素を追加する */
-		virtual void Insert(NodeType* pos, const ElemType& e);
+		void Insert(NodeType* pos, const ElemType& e);
 
 		/*! 
 		* @brief					posの指す要素を削除する
 		* @return					削除された要素の次の要素を返す
 		* @retval nullptr			削除失敗
 		*/
-		virtual NodeType* Erase(NodeType* pos);
+		NodeType* Erase(NodeType* pos);
 
 		/*! 要素を全て削除 */
-		virtual void Clear();
+		void Clear();
 
 		/*! 要素が無いか調べる */
-		virtual bool Empty() const;
+		bool Empty() const;
 
 		/*! 要素数取得 */
-		virtual u32 Size() const;
+		u32 Size() const;
 
 	private:
 		/*! ダミーノードの初期化を行う */
