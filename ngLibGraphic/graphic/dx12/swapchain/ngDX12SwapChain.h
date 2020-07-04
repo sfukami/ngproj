@@ -115,9 +115,14 @@ namespace ng
 		u32 GetBackBufferWidth() const;
 
 		/*!
-		* @brief					バックバッファの高さ
+		* @brief					バックバッファの高さを取得
 		*/
 		u32 GetBackBufferHeight() const;
+
+		/*!
+		* @brief					バックバッファのフォーマットを取得
+		*/
+		DXGI_FORMAT GetBackBufferFormat() const;
 		
 	private:
 		IDXGISwapChain3*	m_pISwapChain;	//!< DX12スワップチェイン インターフェース
@@ -126,6 +131,7 @@ namespace ng
 		u32 m_bufferCount;	//!< バックバッファの数
 		u32 m_bufferWidth;	//!< バックバッファの幅
 		u32 m_bufferHeight;	//!< バックバッファの高さ
+		DXGI_FORMAT m_bufferFormat;	//!< バックバッファのフォーマット
 	};
 
 }	// namespace ng

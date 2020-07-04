@@ -22,6 +22,7 @@ namespace ng
 		, m_bufferCount(0U)
 		, m_bufferWidth(0U)
 		, m_bufferHeight(0U)
+		, m_bufferFormat(DXGI_FORMAT_UNKNOWN)
 	{
 	}
 
@@ -96,6 +97,7 @@ namespace ng
 		m_bufferCount = bufferCount;
 		m_bufferWidth = bufferWidth;
 		m_bufferHeight = bufferHeight;
+		m_bufferFormat = format;
 
 		// DX12レンダーターゲットビュー生成
 		for(u32 i = 0; i < bufferCount; i++)
@@ -178,6 +180,11 @@ namespace ng
 	u32 CDX12SwapChain::GetBackBufferHeight() const
 	{
 		return m_bufferHeight;
+	}
+
+	DXGI_FORMAT CDX12SwapChain::GetBackBufferFormat() const
+	{
+		return m_bufferFormat;
 	}
 
 }	// namespace ng
