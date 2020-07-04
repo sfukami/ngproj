@@ -8,6 +8,7 @@
 #ifndef __APP_MEMORY_MODULE_H__
 #define __APP_MEMORY_MODULE_H__
 
+#include "ngLibCore/traits/ngNonInstantiable.h"
 #include "appMemoryAllocatorId.h"
 
 namespace ng
@@ -19,28 +20,16 @@ namespace app
 	class CApplicationMemory;
 }
 
-/*!
-* @brief					アプリケーション メモリアロケータ取得
-*/
-#define APP_GET_MEMALLOC(_id)	(*app::CMemoryModule::GetAllocator(_id))
-//! アプリケーション
-#define APP_MEMALLOC_APPLICATION	(APP_GET_MEMALLOC(app::eMemoryAllocatorId::APPLICATION))
-//! ワーク
-#define APP_MEMALLOC_WORK			(APP_GET_MEMALLOC(app::eMemoryAllocatorId::WORK))
-
 namespace app
 {
 	/*!
 	* @brief					メモリ機能
 	*/
-	class CMemoryModule
+	class CMemoryModule : public ng::CNonInstantiable
 	{
 		friend class CGame;
 
 	public:
-		CMemoryModule() = delete;
-		~CMemoryModule() = delete;
-
 		/*!
 		* @brief					メモリアロケータ取得
 		* @param id					メモリアロケータID

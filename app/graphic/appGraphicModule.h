@@ -8,6 +8,8 @@
 #ifndef __APP_GRAPHIC_MODULE_H__
 #define __APP_GRAPHIC_MODULE_H__
 
+#include "ngLibCore/traits/ngNonInstantiable.h"
+
 namespace app
 {
 	class CGraphic;
@@ -19,14 +21,11 @@ namespace app
 	/*!
 	* @brief					グラフィック機能
 	*/
-	class CGraphicModule
+	class CGraphicModule : public ng::CNonInstantiable
 	{
 		friend class CGame;
 
 	public:
-		CGraphicModule() = delete;
-		~CGraphicModule() = delete;
-
 		/*!
 		* @brief					グラフィックパイプライン設定
 		*/

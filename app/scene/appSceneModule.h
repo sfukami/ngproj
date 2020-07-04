@@ -8,6 +8,7 @@
 #ifndef __APP_SCENE_MODULE_H__
 #define __APP_SCENE_MODULE_H__
 
+#include "ngLibCore/traits/ngNonInstantiable.h"
 #include "appSceneId.h"
 #include "appSceneManager.h"
 
@@ -21,13 +22,11 @@ namespace app
 	/*!
 	* @brief					シーン機能
 	*/
-	class CSceneModule
+	class CSceneModule : public ng::CNonInstantiable
 	{
 		friend class CGame;
 
 	public:
-		CSceneModule() = delete;
-		~CSceneModule() = delete;
 		/*!
 		* @brief					シーン切り替え（フレーム終了時）
 		* @param sceneId			シーンID

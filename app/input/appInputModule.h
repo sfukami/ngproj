@@ -8,6 +8,7 @@
 #ifndef __APP_INPUT_MODULE_H__
 #define __APP_INPUT_MODULE_H__
 
+#include "ngLibCore/traits/ngNonInstantiable.h"
 #include "ngLibApp/input/ngInputCode.h"
 #include "ngLibApp/input/ngInputState.h"
 
@@ -21,14 +22,11 @@ namespace app
 	/*!
 	* @brief					入力機能
 	*/
-	class CInputModule
+	class CInputModule : public ng::CNonInstantiable
 	{
 		friend class CGame;
 
 	public:
-		CInputModule() = delete;
-		~CInputModule() = delete;
-
 		/*!
 		* @brief					キーボード入力状態チェック
 		* @param code				入力コード
