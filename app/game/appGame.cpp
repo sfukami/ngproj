@@ -5,7 +5,6 @@
 * @author	s.fukami
 */
 
-#include <tchar.h>
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "app/common/appCommon.h"
 #include "appGame.h"

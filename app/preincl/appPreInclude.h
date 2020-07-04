@@ -8,6 +8,9 @@
 #ifndef __APP_PRE_INCLUDE_H__
 #define __APP_PRE_INCLUDE_H__
 
+#include <tchar.h>
+#include <Windows.h>
+
 #include "ngLibCore/ngLibCore.h"
 #include "ngLibApp/ngLibApp.h"
 #include "ngLibGraphic/ngLibGraphic.h"
