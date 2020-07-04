@@ -155,6 +155,8 @@ namespace app
 	{
 		const float deltaTime = 0.f;	// TODO:
 
+		m_appMem.ClearWorkMemory();
+
 		m_input.Update();
 		m_sceneMngr.Update(deltaTime);
 		m_jobMngr.ExecuteJob(eJobProcess::UPDATE);

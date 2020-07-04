@@ -40,6 +40,11 @@ namespace app
 		void Finalize();
 
 		/*!
+		* @brief					ワークメモリをクリア
+		*/
+		void ClearWorkMemory();
+
+		/*!
 		* @brief					メモリアロケータ取得
 		* @param id					メモリアロケータID
 		* @return					メモリアロケータ

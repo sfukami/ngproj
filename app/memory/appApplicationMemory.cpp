@@ -6,6 +6,7 @@
 */
 
 #include "ngLibCore/allocator/ngDefaultAllocator.h"
+#include "ngLibCore/allocator/ngStackAllocator.h"
 #include "appApplicationMemory.h"
 
 namespace app
@@ -48,7 +49,7 @@ namespace app
 			m_memMngr.CreateAndRegisterAllocator<ng::CDefaultAllocator>(
 				static_cast<ng::u32>(eMemoryAllocatorId::APPLICATION), "app_application", NG_KB(1)
 				);
-			m_memMngr.CreateAndRegisterAllocator<ng::CDefaultAllocator>(
+			m_memMngr.CreateAndRegisterAllocator<ng::CStackAllocator>(
 				static_cast<ng::u32>(eMemoryAllocatorId::WORK), "app_work", NG_KB(1)
 				);
 		}
@@ -60,6 +61,14 @@ namespace app
 	{
 		m_memMngr.Finalize();
 		m_memPool.Finalize();
+	}
+
+	void CApplicationMemory::ClearWorkMemory()
+	{
+		ng::CStackAllocator* pAlloc = ng::PointerCast<ng::CStackAllocator*>(GetAllocator(eMemoryAllocatorId::WORK));
+		if(pAlloc != nullptr) {
+			pAlloc->Clear();
+		}
 	}
 
 	ng::IMemoryAllocator* CApplicationMemory::GetAllocator(eMemoryAllocatorId id)
