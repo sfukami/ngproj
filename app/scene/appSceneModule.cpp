@@ -5,11 +5,36 @@
 * @author	s.fukami
 */
 
+#include "ngLibCore/job/ngJob.h"
+#include "app/common/appCommon.h"
 #include "appSceneModule.h"
+#include "../job/appJobModule.h"
 
 namespace app
 {
 	CSceneManager* CSceneModule::s_pSceneMngr = nullptr;
+
+	void CSceneModule::RequestChangeScene(eSceneId sceneId, ng::CSharedPtr<IScene>& scenePtr)
+	{
+		class CJobChangeScene : public ng::IJob
+		{
+		public:
+			CJobChangeScene(eSceneId sceneId, ng::CSharedPtr<IScene>& scenePtr)
+				: m_sceneId(sceneId), m_scenePtr(scenePtr)
+			{ }
+			void Execute()
+			{
+				CSceneModule::ChangeScene(m_sceneId, m_scenePtr);
+			}
+
+		private:
+			eSceneId m_sceneId;
+			ng::CSharedPtr<IScene> m_scenePtr;
+		};
+
+		auto jobPtr = NG_MAKE_SHARED_PTR(ng::IJob, APP_MEMALLOC_WORK, CJobChangeScene(sceneId, scenePtr));
+		CJobModule::AddJob(jobPtr, eJobProcess::END_OF_FRAME);
+	}
 
 	bool CSceneModule::ChangeScene(eSceneId sceneId, ng::CSharedPtr<IScene>& scenePtr)
 	{

@@ -28,7 +28,8 @@ namespace app
 	void CSceneRoot::Update(float deltaTime)
 	{
 		auto scenePtr = NG_MAKE_SHARED_PTR(IScene, APP_MEMALLOC_APPLICATION, CSceneTest());
-		CSceneModule::ChangeScene(eSceneId::GAME, scenePtr);
+		//CSceneModule::ChangeScene(eSceneId::GAME, scenePtr);
+		CSceneModule::RequestChangeScene(eSceneId::GAME, scenePtr);
 	}
 
 	void CSceneRoot::Render()

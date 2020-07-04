@@ -28,6 +28,12 @@ namespace app
 	public:
 		CSceneModule() = delete;
 		~CSceneModule() = delete;
+		/*!
+		* @brief					シーン切り替え（フレーム終了時）
+		* @param sceneId			シーンID
+		* @tparam scenePtr			登録するシーン
+		*/
+		static void RequestChangeScene(eSceneId sceneId, ng::CSharedPtr<IScene>& scenePtr);
 
 		/*!
 		* @brief					シーン切り替え
