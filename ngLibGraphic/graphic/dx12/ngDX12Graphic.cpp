@@ -16,6 +16,7 @@ namespace ng
 		, clientWidth(0)
 		, clientHeight(0)
 		, isFullscreen(false)
+		, commandListNum(1)
 	{
 	}
 
@@ -78,23 +79,24 @@ namespace ng
 			}
 		}
 		// DX12コマンドアロケータ生成
+		NG_DX12LOG("DX12Graphic", "DX12コマンドアロケータの生成を開始...");
+		for(u32 i = 0; i < param.commandListNum; i++)
 		{
-			NG_DX12LOG("DX12Graphic", "DX12コマンドアロケータの生成を開始...");
 			if(NG_FAILED(ret = _createCommandAllocator(
 				m_device,
 				D3D12_COMMAND_LIST_TYPE_DIRECT,
-				0
+				i
 				))) {
 				return ret;
 			}
 		}
 		// DX12コマンドリスト生成
+		NG_DX12LOG("DX12Graphic", "DX12コマンドリストの生成を開始...");
+		for(u32 i = 0; i < param.commandListNum; i++)
 		{
-			NG_DX12LOG("DX12Graphic", "DX12コマンドリストの生成を開始...");
 			if(NG_FAILED(ret = _createCommandList(
 				m_device,
-				0,
-				0
+				i, i
 				))) {
 				return ret;
 			}

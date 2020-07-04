@@ -34,6 +34,7 @@ namespace ng
 			u32 clientWidth;	//!< クライアント領域幅
 			u32 clientHeight;	//!< クライアント領域高さ
 			bool isFullscreen;	//!< フルスクリーンか
+			u32 commandListNum;	//!< 生成するDX12コマンドリストの数
 			CDX12Device::CreateParam deviceParam;	//!< DX12デバイス生成パラメータ
 		};
 
