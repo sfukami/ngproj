@@ -406,6 +406,9 @@
     <ClInclude Include="memory\pointer\ngSharedPtr.h">
       <Filter>ソース ファイル\memory\pointer</Filter>
     </ClInclude>
+    <ClInclude Include="traits\ngNonInstantiable.h">
+      <Filter>ソース ファイル\traits</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">

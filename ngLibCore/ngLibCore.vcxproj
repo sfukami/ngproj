@@ -109,6 +109,7 @@
     <ClInclude Include="system\ngCoreSystem.h" />
     <ClInclude Include="system\ngSysUtil.h" />
     <ClInclude Include="traits\ngNonCopyable.h" />
+    <ClInclude Include="traits\ngNonInstantiable.h" />
     <ClInclude Include="traits\ngSingleton.h" />
   </ItemGroup>
   <ItemGroup>
