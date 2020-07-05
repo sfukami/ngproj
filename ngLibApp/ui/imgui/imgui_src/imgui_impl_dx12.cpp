@@ -41,6 +41,7 @@ static ID3D12RootSignature*         g_pRootSignature = NULL;
 static ID3D12PipelineState*         g_pPipelineState = NULL;
 static DXGI_FORMAT                  g_RTVFormat = DXGI_FORMAT_UNKNOWN;
 static ID3D12Resource*              g_pFontTextureResource = NULL;
+static ID3D12DescriptorHeap*        g_pd3dDescHeap = NULL;      // ※ディスクリプタヒープの再設定を行うため参照を保持する
 static D3D12_CPU_DESCRIPTOR_HANDLE  g_hFontSrvCpuDescHandle = {};
 static D3D12_GPU_DESCRIPTOR_HANDLE  g_hFontSrvGpuDescHandle = {};
 
@@ -230,6 +231,7 @@ void ImGui_ImplDX12_RenderDrawData(ImDrawData* draw_data, ID3D12GraphicsCommandL
             }
             else
             {
+                ctx->SetDescriptorHeaps(1, &g_pd3dDescHeap);
                 // Apply Scissor, Bind texture, Draw
                 const D3D12_RECT r = { (LONG)(pcmd->ClipRect.x - clip_off.x), (LONG)(pcmd->ClipRect.y - clip_off.y), (LONG)(pcmd->ClipRect.z - clip_off.x), (LONG)(pcmd->ClipRect.w - clip_off.y) };
                 ctx->SetGraphicsRootDescriptorTable(1, *(D3D12_GPU_DESCRIPTOR_HANDLE*)&pcmd->TextureId);
@@ -628,6 +630,7 @@ bool ImGui_ImplDX12_Init(ID3D12Device* device, int num_frames_in_flight, DXGI_FO
 
     g_pd3dDevice = device;
     g_RTVFormat = rtv_format;
+    g_pd3dDescHeap = cbv_srv_heap;
     g_hFontSrvCpuDescHandle = font_srv_cpu_desc_handle;
     g_hFontSrvGpuDescHandle = font_srv_gpu_desc_handle;
     g_pFrameResources = new FrameResources[num_frames_in_flight];
@@ -654,6 +657,7 @@ void ImGui_ImplDX12_Shutdown()
     delete[] g_pFrameResources;
     g_pFrameResources = NULL;
     g_pd3dDevice = NULL;
+    g_pd3dDescHeap = NULL;
     g_hFontSrvCpuDescHandle.ptr = 0;
     g_hFontSrvGpuDescHandle.ptr = 0;
     g_numFramesInFlight = 0;
