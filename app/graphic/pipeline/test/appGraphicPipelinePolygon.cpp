@@ -13,6 +13,7 @@
 #include "ngLibCore/geometry/matrix/ngMatrixOp.h"
 #include "ngLibCore/color/ngColor.h"
 #include "appGraphicPipelinePolygon.h"
+#include "../../appGraphicModule.h"
 
 using namespace DirectX;
 
@@ -250,7 +251,7 @@ namespace app
 	void CGraphicPipelinePolygon::_execute()
 	{
 		// コマンドリストリセット
-		ng::CDX12CommandList* pCmdList = ng::DX12Util::GetCommandList(0);
+		ng::CDX12CommandList* pCmdList = _getDX12CommandList(eGraphicCommandListId::MAIN);
 		pCmdList->Reset(m_pipelineState);
 
 		// ルートシグネチャ設定

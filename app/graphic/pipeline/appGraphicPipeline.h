@@ -8,6 +8,13 @@
 #ifndef __APP_GRAPHIC_PIPELINE_H__
 #define __APP_GRAPHIC_PIPELINE_H__
 
+#include "../command/appGraphicCommandListId.h"
+
+namespace ng
+{
+	class CDX12CommandList;
+}
+
 namespace app
 {
 	/*!
@@ -37,6 +44,10 @@ namespace app
 
 		/*! 初期化済みか */
 		bool IsInit() const;
+
+	protected:
+		/*! DX12コマンドリスト取得 */
+		ng::CDX12CommandList* _getDX12CommandList(eGraphicCommandListId id) const;
 
 	private:
 		/*! 初期化 */

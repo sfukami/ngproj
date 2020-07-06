@@ -1,7 +1,7 @@
 ﻿/*!
 * @file		appGraphic.cpp
 * @brief	グラフィック
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
@@ -84,6 +84,15 @@ namespace app
 	void CGraphic::SetPipeline(CGraphicPipeline* pPipeline)
 	{
 		m_pPipeline = pPipeline;
+	}
+
+	ng::CDX12Graphic& CGraphic::GetDX12Graphic()
+	{
+		return m_dx12Graphic;
+	}
+	const ng::CDX12Graphic& CGraphic::GetDX12Graphic() const
+	{
+		return m_dx12Graphic;
 	}
 
 	bool CGraphic::_isInit() const

@@ -13,6 +13,7 @@
 // test
 #include "../../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
 #include "../../graphic/pipeline/test/appGraphicPipelinePolygon.h"
+#include "ngLibApp/ui/imgui/imgui_src/imgui.h"
 
 namespace app
 {
@@ -69,6 +70,11 @@ namespace app
 
 	void CSceneTest::Render()
 	{
+		//test
+		ImGui::SetNextWindowSize(ImVec2(320, 100), ImGuiCond_::ImGuiCond_Once);
+		ImGui::Begin("config 1");
+		ImGui::Text("fugafuga");
+		ImGui::End();
 	}
 
 	void CSceneTest::Finalize()

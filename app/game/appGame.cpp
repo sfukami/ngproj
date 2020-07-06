@@ -13,7 +13,8 @@
 #include "../graphic/appGraphicModule.h"
 #include "../scene/appSceneModule.h"
 #include "../job/appJobModule.h"
-
+#include "../tool/gui/appToolGUIModule.h"
+// Scene
 #include "../scene/appSceneId.h"
 #include "../scene/root/appSceneRoot.h"
 
@@ -106,6 +107,16 @@ namespace app
 		}
 		CJobModule::SetJobManager(&m_jobMngr);
 
+		// ツールGUI初期化
+		if(!m_toolGUI.Initialize(
+			m_window.GetHandle(),
+			m_graphic
+			)) {
+			NG_ERRLOG("Game", "ツールGUIの初期化に失敗しました.");
+			return false;
+		}
+		CToolGUIModule::SetToolGUI(&m_toolGUI);
+
 		// ルートシーン登録
 		{
 			auto scenePtr = NG_MAKE_SHARED_PTR(IScene, APP_MEMALLOC_APPLICATION, CSceneRoot());
@@ -142,6 +153,8 @@ namespace app
 	{
 		m_sceneMngr.Finalize();
 
+		m_toolGUI.Finalize();
+
 		m_graphic.Finalize();
 		m_input.Finalize();
 		m_window.Destroy();
@@ -166,14 +179,23 @@ namespace app
 
 	void CGame::_render()
 	{
+		m_toolGUI.BeginRender();
+		
 		m_sceneMngr.Render();
+		
 		m_graphic.Render();
+		m_toolGUI.EndRender();
+
 		m_jobMngr.ExecuteJob(eJobProcess::END_OF_FRAME);
 	}
 
 	/*! ウィンドウプロシージャ */
 	LRESULT CALLBACK WndProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 	{
+		if(CToolGUI::WinProcHandler(hWnd, msg, wParam, lParam)) {
+			return true;
+		}
+
 		switch(msg)
 		{
 		case WM_DESTROY:

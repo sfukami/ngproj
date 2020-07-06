@@ -44,6 +44,12 @@
     <Filter Include="ソース ファイル\graphic\command">
       <UniqueIdentifier>{6fe54e17-05ba-4fbc-adc8-fe03e0128bc6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\tool">
+      <UniqueIdentifier>{41598700-5347-429a-b474-76b33d0980e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\tool\gui">
+      <UniqueIdentifier>{7914bf5e-70c5-44ce-969b-52622950043c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -99,6 +105,12 @@
     </ClCompile>
     <ClCompile Include="job\appJobModule.cpp">
       <Filter>ソース ファイル\job</Filter>
+    </ClCompile>
+    <ClCompile Include="tool\gui\appToolGUI.cpp">
+      <Filter>ソース ファイル\tool\gui</Filter>
+    </ClCompile>
+    <ClCompile Include="tool\gui\appToolGUIModule.cpp">
+      <Filter>ソース ファイル\tool\gui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -176,6 +188,12 @@
     </ClInclude>
     <ClInclude Include="graphic\command\appGraphicCommandListId.h">
       <Filter>ソース ファイル\graphic\command</Filter>
+    </ClInclude>
+    <ClInclude Include="tool\gui\appToolGUI.h">
+      <Filter>ソース ファイル\tool\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="tool\gui\appToolGUIModule.h">
+      <Filter>ソース ファイル\tool\gui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

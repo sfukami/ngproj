@@ -1,7 +1,7 @@
 ﻿/*!
 * @file		appGraphic.h
 * @brief	アプリケーショングラフィック
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
@@ -56,6 +56,10 @@ namespace app
 		* @brief					グラフィックパイプライン設定
 		*/
 		void SetPipeline(CGraphicPipeline* pPipeline);
+
+		/*! DX12グラフィック取得 */
+		ng::CDX12Graphic& GetDX12Graphic();
+		const ng::CDX12Graphic& GetDX12Graphic() const;
 
 	private:
 		/*! 初期化済みか */
