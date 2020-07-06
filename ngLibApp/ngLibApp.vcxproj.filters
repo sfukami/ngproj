@@ -73,6 +73,9 @@
     <ClCompile Include="ui\imgui\imgui_src\imgui_impl_win32.cpp">
       <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
     </ClCompile>
+    <ClCompile Include="ui\imgui\ngImGuiDX12.cpp">
+      <Filter>ソース ファイル\ui\imgui</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -132,14 +135,14 @@
     <ClInclude Include="ui\imgui\imgui_src\imconfig.h">
       <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
     </ClInclude>
-    <ClInclude Include="ui\imgui\ngImGui.h">
-      <Filter>ソース ファイル\ui\imgui</Filter>
-    </ClInclude>
     <ClInclude Include="ui\imgui\imgui_src\imgui_impl_dx12.h">
       <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
     </ClInclude>
     <ClInclude Include="ui\imgui\imgui_src\imgui_impl_win32.h">
       <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\ngImGuiDX12.h">
+      <Filter>ソース ファイル\ui\imgui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -35,6 +35,7 @@
     <ClCompile Include="ui\imgui\imgui_src\imgui_impl_dx12.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui_impl_win32.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui_widgets.cpp" />
+    <ClCompile Include="ui\imgui\ngImGuiDX12.cpp" />
     <ClCompile Include="window\ngWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -58,7 +59,7 @@
     <ClInclude Include="ui\imgui\imgui_src\imstb_rectpack.h" />
     <ClInclude Include="ui\imgui\imgui_src\imstb_textedit.h" />
     <ClInclude Include="ui\imgui\imgui_src\imstb_truetype.h" />
-    <ClInclude Include="ui\imgui\ngImGui.h" />
+    <ClInclude Include="ui\imgui\ngImGuiDX12.h" />
     <ClInclude Include="window\ngWindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
