@@ -15,6 +15,7 @@
 #include "../graphic/appGraphic.h"
 #include "../scene/appSceneManager.h"
 #include "../job/appJobManager.h"
+#include "../tool/gui/appToolGUI.h"
 
 namespace app
 {
@@ -61,6 +62,7 @@ namespace app
 		CGraphic m_graphic;			//!< グラフィック
 		CSceneManager m_sceneMngr;	//!< シーン管理
 		CJobManager m_jobMngr;		//!< ジョブ管理
+		CToolGUI m_toolGUI;			//!< ツールGUI
 	};
 
 }	// namespace app

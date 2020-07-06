@@ -26,6 +26,15 @@
     <Filter Include="ソース ファイル\input\mouse">
       <UniqueIdentifier>{7ac68da2-ba3b-40ee-bb41-868f5fc289aa}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\ui">
+      <UniqueIdentifier>{9f715b95-1c6b-4f36-a75b-d4c9f6931a3d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ui\imgui">
+      <UniqueIdentifier>{f57f921e-8b7a-453c-98ae-573da6891aa4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ui\imgui\imgui_src">
+      <UniqueIdentifier>{f2782593-d567-48f7-bae8-204a7496ef51}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -45,6 +54,27 @@
     </ClCompile>
     <ClCompile Include="input\mouse\ngDIMouse.cpp">
       <Filter>ソース ファイル\input\mouse</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\imgui_src\imgui.cpp">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\imgui_src\imgui_draw.cpp">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\imgui_src\imgui_widgets.cpp">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\imgui_src\imgui_demo.cpp">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\imgui_src\imgui_impl_dx12.cpp">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\imgui_src\imgui_impl_win32.cpp">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\ngImGuiDX12.cpp">
+      <Filter>ソース ファイル\ui\imgui</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +116,33 @@
     </ClInclude>
     <ClInclude Include="input\ngInputCode.h">
       <Filter>ソース ファイル\input</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imgui.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imgui_internal.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imstb_rectpack.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imstb_textedit.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imstb_truetype.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imconfig.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imgui_impl_dx12.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\imgui_src\imgui_impl_win32.h">
+      <Filter>ソース ファイル\ui\imgui\imgui_src</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\ngImGuiDX12.h">
+      <Filter>ソース ファイル\ui\imgui</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

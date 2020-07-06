@@ -8,6 +8,7 @@
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphicPipelineModel.h"
+#include "../../appGraphicModule.h"
 
 namespace app
 {
@@ -37,7 +38,7 @@ namespace app
 	void CGraphicPipelineModel::_execute()
 	{
 		// コマンドリストリセット
-		ng::CDX12CommandList* pCmdList = ng::DX12Util::GetCommandList(0);
+		ng::CDX12CommandList* pCmdList = _getDX12CommandList(eGraphicCommandListId::MAIN);
 		pCmdList->Reset();
 
 		// ビューポート設定

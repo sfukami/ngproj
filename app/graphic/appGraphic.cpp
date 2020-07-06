@@ -1,12 +1,13 @@
 ﻿/*!
 * @file		appGraphic.cpp
 * @brief	グラフィック
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appGraphic.h"
+#include "command/appGraphicCommandListId.h"
 #include "pipeline/appGraphicPipeline.h"
 
 namespace app
@@ -39,6 +40,7 @@ namespace app
 			param.clientWidth = clientWidth;
 			param.clientHeight = clientHeight;
 			param.isFullscreen = isFullScreen;
+			param.commandListNum = static_cast<ng::u32>(eGraphicCommandListId::NUM);
 			param.deviceParam.featureLevel = D3D_FEATURE_LEVEL_11_0;
 			param.deviceParam.isUseWarpDevice = true;
 			
@@ -82,6 +84,15 @@ namespace app
 	void CGraphic::SetPipeline(CGraphicPipeline* pPipeline)
 	{
 		m_pPipeline = pPipeline;
+	}
+
+	ng::CDX12Graphic& CGraphic::GetDX12Graphic()
+	{
+		return m_dx12Graphic;
+	}
+	const ng::CDX12Graphic& CGraphic::GetDX12Graphic() const
+	{
+		return m_dx12Graphic;
 	}
 
 	bool CGraphic::_isInit() const

@@ -29,6 +29,13 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="ui\imgui\imgui_src\imgui.cpp" />
+    <ClCompile Include="ui\imgui\imgui_src\imgui_demo.cpp" />
+    <ClCompile Include="ui\imgui\imgui_src\imgui_draw.cpp" />
+    <ClCompile Include="ui\imgui\imgui_src\imgui_impl_dx12.cpp" />
+    <ClCompile Include="ui\imgui\imgui_src\imgui_impl_win32.cpp" />
+    <ClCompile Include="ui\imgui\imgui_src\imgui_widgets.cpp" />
+    <ClCompile Include="ui\imgui\ngImGuiDX12.cpp" />
     <ClCompile Include="window\ngWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -44,6 +51,15 @@
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngDefine.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imconfig.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imgui.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imgui_impl_dx12.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imgui_impl_win32.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imgui_internal.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imstb_rectpack.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imstb_textedit.h" />
+    <ClInclude Include="ui\imgui\imgui_src\imstb_truetype.h" />
+    <ClInclude Include="ui\imgui\ngImGuiDX12.h" />
     <ClInclude Include="window\ngWindow.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

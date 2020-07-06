@@ -7,6 +7,7 @@
 
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphicPipeline.h"
+#include "app/tool/gui/appToolGUIModule.h"
 
 namespace app
 {
@@ -38,12 +39,18 @@ namespace app
 
 		_preprocessPipeline();
 		_execute();
+		CToolGUIModule::RenderToolGUI();
 		_postprocessPipeline();
 	}
 
 	bool CGraphicPipeline::IsInit() const
 	{
 		return m_isInit;
+	}
+
+	ng::CDX12CommandList* CGraphicPipeline::_getDX12CommandList(eGraphicCommandListId id) const
+	{
+		return ng::DX12Util::GetCommandList(static_cast<ng::u32>(id));
 	}
 
 	bool CGraphicPipeline::_initialize()

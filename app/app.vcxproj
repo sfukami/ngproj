@@ -37,12 +37,15 @@
     <ClCompile Include="scene\appSceneModule.cpp" />
     <ClCompile Include="scene\root\appSceneRoot.cpp" />
     <ClCompile Include="scene\test\appSceneTest.cpp" />
+    <ClCompile Include="tool\gui\appToolGUI.cpp" />
+    <ClCompile Include="tool\gui\appToolGUIModule.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h" />
     <ClInclude Include="game\appGame.h" />
     <ClInclude Include="graphic\appGraphic.h" />
     <ClInclude Include="graphic\appGraphicModule.h" />
+    <ClInclude Include="graphic\command\appGraphicCommandListId.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineModel.h" />
@@ -63,6 +66,8 @@
     <ClInclude Include="scene\appSceneModule.h" />
     <ClInclude Include="scene\root\appSceneRoot.h" />
     <ClInclude Include="scene\test\appSceneTest.h" />
+    <ClInclude Include="tool\gui\appToolGUI.h" />
+    <ClInclude Include="tool\gui\appToolGUIModule.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
@@ -153,7 +158,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ngLibCore_d.lib;ngLibApp_d.lib;ngLibGraphic_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ngLibCore_d.lib;ngLibGraphic_d.lib;ngLibApp_d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -168,7 +173,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ngLibCore_d.lib;ngLibApp_d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ngLibCore_d.lib;ngLibGraphic_d.lib;ngLibApp_d.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -187,7 +192,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ngLibCore.lib;ngLibApp.lib;ngLibGraphic.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ngLibCore.lib;ngLibGraphic.lib;ngLibApp.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -206,7 +211,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>ngLibCore.lib;ngLibApp.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>ngLibCore.lib;ngLibGraphic.lib;ngLibApp.lib</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
