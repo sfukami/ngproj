@@ -43,6 +43,7 @@
     <ClInclude Include="game\appGame.h" />
     <ClInclude Include="graphic\appGraphic.h" />
     <ClInclude Include="graphic\appGraphicModule.h" />
+    <ClInclude Include="graphic\command\appGraphicCommandListId.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineModel.h" />

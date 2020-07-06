@@ -41,6 +41,9 @@
     <Filter Include="ソース ファイル\job">
       <UniqueIdentifier>{124043a6-96a2-46db-bf6a-0d17f5c735dd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\command">
+      <UniqueIdentifier>{6fe54e17-05ba-4fbc-adc8-fe03e0128bc6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -170,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="memory\appMemoryUtil.h">
       <Filter>ソース ファイル\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\command\appGraphicCommandListId.h">
+      <Filter>ソース ファイル\graphic\command</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

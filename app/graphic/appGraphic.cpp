@@ -7,6 +7,7 @@
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appGraphic.h"
+#include "command/appGraphicCommandListId.h"
 #include "pipeline/appGraphicPipeline.h"
 
 namespace app
@@ -39,6 +40,7 @@ namespace app
 			param.clientWidth = clientWidth;
 			param.clientHeight = clientHeight;
 			param.isFullscreen = isFullScreen;
+			param.commandListNum = static_cast<ng::u32>(eGraphicCommandListId::NUM);
 			param.deviceParam.featureLevel = D3D_FEATURE_LEVEL_11_0;
 			param.deviceParam.isUseWarpDevice = true;
 			
