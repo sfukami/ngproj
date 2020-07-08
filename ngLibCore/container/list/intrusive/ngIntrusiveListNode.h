@@ -9,6 +9,7 @@
 #define __NG_CORE_INTRUSIVE_LIST_NODE_H__
 
 #include "../ngListLinkedType.h"
+#include "../ngListNode.h"
 
 namespace ng
 {

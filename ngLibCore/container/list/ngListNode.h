@@ -8,6 +8,7 @@
 #ifndef __NG_CORE_LIST_NODE_H__
 #define __NG_CORE_LIST_NODE_H__
 
+#include "ngLibCore/common/debug/ngDbgMacro.h"
 #include "ngListLinkedType.h"
 
 namespace ng

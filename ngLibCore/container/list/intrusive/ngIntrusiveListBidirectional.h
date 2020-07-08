@@ -105,6 +105,7 @@ namespace ng
 	template <class T>
 	CIntrusiveList<T, BidirectionalLinked>::~CIntrusiveList()
 	{
+		Clear();
 	}
 
 	template <class T>
