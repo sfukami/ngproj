@@ -15,11 +15,6 @@ namespace ng
 	*/
 	class NG_DECL IGraphic
 	{
-	public:
-		/*!
-		* @brief					描画
-		*/
-		virtual void Render() = 0;
 	};
 
 }	// namespace ng

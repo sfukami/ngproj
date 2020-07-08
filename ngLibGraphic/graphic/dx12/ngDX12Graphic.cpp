@@ -133,11 +133,6 @@ namespace ng
 		return ret;
 	}
 
-	void CDX12Graphic::Render()
-	{
-
-	}
-
 	void CDX12Graphic::Destroy()
 	{
 		m_cmdListMngr.Finalize();

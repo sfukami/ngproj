@@ -65,6 +65,8 @@ namespace app
 
 		// グラフィック管理から割り当て解除
 		ng::CGraphicManager::GetInstance().UnassignGraphic();
+		// グラフィック管理 終了処理
+		ng::CGraphicManager::GetInstance().Finalize();
 
 		// シングルトンインスタンス破棄
 		ng::CGraphicManager::DestroyInstance();
@@ -79,6 +81,9 @@ namespace app
 
 		// パイプライン実行
 		m_pPipeline->Execute();
+
+		// 描画の後処理
+		ng::CGraphicManager::GetInstance().CleanupRender();
 	}
 
 	void CGraphic::SetPipeline(CGraphicPipeline* pPipeline)

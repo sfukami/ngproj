@@ -89,6 +89,9 @@
     <Filter Include="ソース ファイル\coordsys">
       <UniqueIdentifier>{4db7a38d-0246-42b7-b592-74b0e8f0bf35}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\render">
+      <UniqueIdentifier>{6e24138d-dd68-496f-8f34-d281bf92f2a9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -235,6 +238,15 @@
     <ClInclude Include="coordsys\ngCoordSys.h">
       <Filter>ソース ファイル\coordsys</Filter>
     </ClInclude>
+    <ClInclude Include="render\ngRenderSystem.h">
+      <Filter>ソース ファイル\render</Filter>
+    </ClInclude>
+    <ClInclude Include="render\ngRenderable.h">
+      <Filter>ソース ファイル\render</Filter>
+    </ClInclude>
+    <ClInclude Include="render\ngRenderCommand.h">
+      <Filter>ソース ファイル\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -341,6 +353,12 @@
     </ClCompile>
     <ClCompile Include="projection\ngProjection.cpp">
       <Filter>ソース ファイル\projection</Filter>
+    </ClCompile>
+    <ClCompile Include="render\ngRenderSystem.cpp">
+      <Filter>ソース ファイル\render</Filter>
+    </ClCompile>
+    <ClCompile Include="render\ngRenderCommand.cpp">
+      <Filter>ソース ファイル\render</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

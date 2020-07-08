@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include "ngLibCore/common/ngCommon.h"
 #include "ngGraphicManager.h"
 #include "ngGraphic.h"
 
@@ -19,6 +20,25 @@ namespace ng
 
 	CGraphicManager::~CGraphicManager()
 	{
+		Finalize();
+	}
+
+	NG_ERRCODE CGraphicManager::Initialize(u32 commandMax)
+	{
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		// 描画システムを初期化
+		if(NG_FAILED(ret = m_renderSys.Initialize(commandMax))) {
+			NG_ERRLOG_C("GraphicManager", ret, "描画システムの初期化に失敗しました.");
+			return ret;
+		}
+
+		return ret;
+	}
+
+	void CGraphicManager::Finalize()
+	{
+		m_renderSys.Finalize();
 	}
 
 	void CGraphicManager::AssignGraphic(IGraphic* pGraphic)
@@ -32,7 +52,14 @@ namespace ng
 	{
 		if(!IsAssigned()) return;
 
-		m_pGraphic->Render();
+		m_renderSys.ExecuteCommand();
+	}
+
+	void CGraphicManager::CleanupRender()
+	{
+		if(!IsAssigned()) return;
+
+		m_renderSys.ClearCommand();
 	}
 
 	void CGraphicManager::UnassignGraphic()

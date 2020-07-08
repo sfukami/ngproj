@@ -247,6 +247,9 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
     <ClInclude Include="projection\ngProjection.h" />
+    <ClInclude Include="render\ngRenderable.h" />
+    <ClInclude Include="render\ngRenderCommand.h" />
+    <ClInclude Include="render\ngRenderSystem.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="camera\ngCamera.cpp" />
@@ -293,6 +296,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ngLibGraphic/precmpl/ngPreCompiled.h</PrecompiledHeaderFile>
     </ClCompile>
     <ClCompile Include="projection\ngProjection.cpp" />
+    <ClCompile Include="render\ngRenderCommand.cpp" />
+    <ClCompile Include="render\ngRenderSystem.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

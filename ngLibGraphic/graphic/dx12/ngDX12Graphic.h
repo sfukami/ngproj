@@ -50,11 +50,6 @@ namespace ng
 		NG_ERRCODE Create(const CreateParam& param);
 
 		/*!
-		* @brief					描画
-		*/
-		void Render();
-
-		/*!
 		* @brief					破棄
 		*/
 		void Destroy();
