@@ -228,6 +228,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\polygon\ngDX12IndexBuffer.h" />
     <ClInclude Include="graphic\dx12\polygon\ngDX12Polygon.h" />
     <ClInclude Include="graphic\dx12\polygon\ngDX12VertexBuffer.h" />
+    <ClInclude Include="graphic\dx12\polygon\ngDX12VertexLayout.h" />
     <ClInclude Include="graphic\dx12\resource\ngDX12Resource.h" />
     <ClInclude Include="graphic\dx12\rootsign\ngDX12RootSignature.h" />
     <ClInclude Include="graphic\dx12\scissor\ngDX12Scissor.h" />
@@ -243,6 +244,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\viewport\ngDX12Viewport.h" />
     <ClInclude Include="graphic\ngGraphic.h" />
     <ClInclude Include="graphic\ngGraphicManager.h" />
+    <ClInclude Include="model\ngVertexFormat.h" />
     <ClInclude Include="ngLibGraphic.h" />
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
@@ -273,6 +275,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\polygon\ngDX12IndexBuffer.cpp" />
     <ClCompile Include="graphic\dx12\polygon\ngDX12Polygon.cpp" />
     <ClCompile Include="graphic\dx12\polygon\ngDX12VertexBuffer.cpp" />
+    <ClCompile Include="graphic\dx12\polygon\ngDX12VertexLayout.cpp" />
     <ClCompile Include="graphic\dx12\resource\ngDX12Resource.cpp" />
     <ClCompile Include="graphic\dx12\rootsign\ngDX12RootSignature.cpp" />
     <ClCompile Include="graphic\dx12\scissor\ngDX12Scissor.cpp" />
