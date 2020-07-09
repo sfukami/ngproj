@@ -26,6 +26,7 @@
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineModel.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelinePolygon.cpp" />
+    <ClCompile Include="graphic\pipeline\test\appGraphicPipelineShape.cpp" />
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="input\appInputModule.cpp" />
     <ClCompile Include="job\appJobManager.cpp" />
@@ -50,6 +51,7 @@
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineModel.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h" />
+    <ClInclude Include="graphic\pipeline\test\appGraphicPipelineShape.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="input\appInputModule.h" />
     <ClInclude Include="job\appJobManager.h" />

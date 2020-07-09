@@ -92,6 +92,9 @@
     <Filter Include="ソース ファイル\render">
       <UniqueIdentifier>{6e24138d-dd68-496f-8f34-d281bf92f2a9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\polygon\shape">
+      <UniqueIdentifier>{40696cd3-30b9-4cdf-a2a4-de65cab7d503}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\model">
       <UniqueIdentifier>{e22508e8-e74a-4f78-89bf-2c4bc75a80e5}</UniqueIdentifier>
     </Filter>
@@ -250,6 +253,9 @@
     <ClInclude Include="render\ngRenderCommand.h">
       <Filter>ソース ファイル\render</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\polygon\shape\ngDX12ShapeSquare.h">
+      <Filter>ソース ファイル\graphic\dx12\polygon\shape</Filter>
+    </ClInclude>
     <ClInclude Include="graphic\dx12\polygon\ngDX12VertexLayout.h">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
     </ClInclude>
@@ -368,6 +374,9 @@
     </ClCompile>
     <ClCompile Include="render\ngRenderCommand.cpp">
       <Filter>ソース ファイル\render</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\polygon\shape\ngDX12ShapeSquare.cpp">
+      <Filter>ソース ファイル\graphic\dx12\polygon\shape</Filter>
     </ClCompile>
     <ClCompile Include="graphic\dx12\polygon\ngDX12VertexLayout.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
