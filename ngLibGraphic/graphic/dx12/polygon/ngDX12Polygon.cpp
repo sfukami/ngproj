@@ -83,7 +83,7 @@ namespace ng
 
 	bool CDX12Polygon::IsValid() const
 	{
-		return m_vb.IsValid() && m_ib.IsValid();
+		return m_vb.IsValid();
 	}
 
 }	// namespace ng

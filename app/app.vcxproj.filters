@@ -112,6 +112,9 @@
     <ClCompile Include="tool\gui\appToolGUIModule.cpp">
       <Filter>ソース ファイル\tool\gui</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\pipeline\test\appGraphicPipelineShape.cpp">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\appGame.h">
@@ -194,6 +197,9 @@
     </ClInclude>
     <ClInclude Include="tool\gui\appToolGUIModule.h">
       <Filter>ソース ファイル\tool\gui</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\pipeline\test\appGraphicPipelineShape.h">
+      <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

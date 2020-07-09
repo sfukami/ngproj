@@ -13,6 +13,7 @@
 // test
 #include "../../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
 #include "../../graphic/pipeline/test/appGraphicPipelinePolygon.h"
+#include "../../graphic/pipeline/test/appGraphicPipelineShape.h"
 #include "ngLibApp/ui/imgui/imgui_src/imgui.h"
 
 namespace app
@@ -28,7 +29,8 @@ namespace app
 	{
 		m_pPipeline = NG_NEW(APP_MEMALLOC_APPLICATION) 
 			//CGraphicPipelineClearBuffer()
-			CGraphicPipelinePolygon()
+			//CGraphicPipelinePolygon()
+			CGraphicPipelineShape()
 			;
 		if(m_pPipeline->Initialize()) {
 			CGraphicModule::SetGraphicPipeline(m_pPipeline);
@@ -43,6 +45,7 @@ namespace app
 
 	void CSceneTest::Update(float deltaTime)
 	{
+	#if 0
 		// test
 		{
 			// Keyboard
@@ -66,15 +69,18 @@ namespace app
 				ng::DPrintf("button Left held.\n");
 			}
 		}
+	#endif
 	}
 
 	void CSceneTest::Render()
 	{
+	#if 0
 		//test
 		ImGui::SetNextWindowSize(ImVec2(320, 100), ImGuiCond_::ImGuiCond_Once);
 		ImGui::Begin("config 1");
 		ImGui::Text("fugafuga");
 		ImGui::End();
+	#endif
 	}
 
 	void CSceneTest::Finalize()
