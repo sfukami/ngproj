@@ -88,4 +88,19 @@ namespace app
 		return ng::CInputManager::GetInstance().CheckMouseInput(code, state);
 	}
 
+	ng::Point CInput::GetCursorClientPos() const
+	{
+		return ng::CInputManager::GetInstance().GetCursorClientPos();
+	}
+
+	ng::Point CInput::GetMoveDelta() const
+	{
+		return ng::CInputManager::GetInstance().GetMoveDelta();
+	}
+
+	ng::s32 CInput::GetWheelDelta() const
+	{
+		return ng::CInputManager::GetInstance().GetWheelDelta();
+	}
+
 }	// namespace app

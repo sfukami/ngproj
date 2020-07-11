@@ -62,6 +62,24 @@ namespace app
 			ng::eInputState state
 			) const;
 
+		/*!
+		* @brief					クライアント座標におけるマウスカーソルの座標を取得
+		* @return					マウスカーソルの座標
+		*/
+		ng::Point GetCursorClientPos() const;
+
+		/*!
+		* @brief					マウスカーソルの相対的な移動量を取得
+		* @return					マウスカーソルの移動量（ピクセル）
+		*/
+		ng::Point GetMoveDelta() const;
+
+		/*!
+		* @brief					マウスホイールの相対的な変化量を取得
+		* @return					マウスホイールの変化量
+		*/
+		ng::s32 GetWheelDelta() const;
+
 	private:
 		ng::CDirectInput m_dinput;	//!< Directインプット
 	};

@@ -30,7 +30,7 @@ namespace ng
 		~CDX12Polygon();
 
 		/*!
-		* @brief					DX12頂点バッファ生成
+		* @brief					DX12ポリゴン生成
 		* @param device				DX12デバイス
 		* @param pVertices			頂点データ
 		* @param vertexDataSize		頂点データサイズ

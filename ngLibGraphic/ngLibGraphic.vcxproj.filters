@@ -262,6 +262,9 @@
     <ClInclude Include="model\ngVertexFormat.h">
       <Filter>ソース ファイル\model</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\polygon\shape\ngDX12ShapeBox.h">
+      <Filter>ソース ファイル\graphic\dx12\polygon\shape</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -380,6 +383,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\polygon\ngDX12VertexLayout.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\polygon\shape\ngDX12ShapeBox.cpp">
+      <Filter>ソース ファイル\graphic\dx12\polygon\shape</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
