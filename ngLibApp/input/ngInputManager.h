@@ -9,6 +9,7 @@
 #define __NG_APP_INPUT_MANAGER_H__
 
 #include "ngLibCore/traits/ngSingleton.h"
+#include "ngLibCore/geometry/point/ngPoint.h"
 
 namespace ng
 {
@@ -66,6 +67,24 @@ namespace ng
 			eMouseCode code,
 			eInputState state
 			) const;
+
+		/*!
+		* @brief					クライアント座標におけるマウスカーソルの座標を取得
+		* @return					マウスカーソルの座標
+		*/
+		Point GetCursorClientPos() const;
+
+		/*!
+		* @brief					マウスカーソルの相対的な移動量を取得
+		* @return					マウスカーソルの移動量（ピクセル）
+		*/
+		Point GetMoveDelta() const;
+
+		/*!
+		* @brief					マウスホイールの相対的な変化量を取得
+		* @return					マウスホイールの変化量
+		*/
+		s32 GetWheelDelta() const;
 
 		/*!
 		* @brief					デバイス入力が割り当て済みか

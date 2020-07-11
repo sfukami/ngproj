@@ -36,6 +36,33 @@ namespace app
 		return false;
 	}
 
+	ng::Point CInputModule::GetCursorClientPos()
+	{
+		if(_isValid()) {
+			return s_pInput->GetCursorClientPos();
+		}
+
+		return ng::Point::ZERO;
+	}
+
+	ng::Point CInputModule::GetMoveDelta()
+	{
+		if(_isValid()) {
+			return s_pInput->GetMoveDelta();
+		}
+
+		return ng::Point::ZERO;
+	}
+
+	ng::s32 CInputModule::GetWheelDelta()
+	{
+		if(_isValid()) {
+			return s_pInput->GetWheelDelta();
+		}
+
+		return 0;
+	}
+
 	void CInputModule::SetInput(CInput* pInput)
 	{
 		s_pInput = pInput;

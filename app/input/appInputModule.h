@@ -11,6 +11,7 @@
 #include "ngLibCore/traits/ngNonInstantiable.h"
 #include "ngLibApp/input/ngInputCode.h"
 #include "ngLibApp/input/ngInputState.h"
+#include "ngLibCore/geometry/point/ngPoint.h"
 
 namespace app
 {
@@ -46,6 +47,24 @@ namespace app
 			ng::eMouseCode code,
 			ng::eInputState state
 			);
+
+		/*!
+		* @brief					クライアント座標におけるマウスカーソルの座標を取得
+		* @return					マウスカーソルの座標
+		*/
+		static ng::Point GetCursorClientPos();
+
+		/*!
+		* @brief					マウスカーソルの相対的な移動量を取得
+		* @return					マウスカーソルの移動量（ピクセル）
+		*/
+		static ng::Point GetMoveDelta();
+
+		/*!
+		* @brief					マウスホイールの相対的な変化量を取得
+		* @return					マウスホイールの変化量
+		*/
+		static ng::s32 GetWheelDelta();
 
 	private:
 		/*! 入力のインスタンスを設定 */

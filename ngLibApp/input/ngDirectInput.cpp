@@ -111,6 +111,21 @@ namespace ng
 		return m_mouse.CheckInputState(code, state);
 	}
 
+	Point CDirectInput::GetCursorClientPos() const
+	{
+		return m_mouse.GetCursorClientPos();
+	}
+
+	Point CDirectInput::GetMoveDelta() const
+	{
+		return m_mouse.GetMoveDelta();
+	}
+
+	s32 CDirectInput::GetWheelDelta() const
+	{
+		return m_mouse.GetWheelDelta();
+	}
+
 	IDirectInput8* CDirectInput::Interface()
 	{
 		return m_pIInput;

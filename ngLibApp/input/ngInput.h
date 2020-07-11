@@ -14,6 +14,7 @@ namespace ng
 	enum class eKeyCode : u32;
 	enum class eMouseCode : u32;
 	enum class eInputState : u32;
+	struct Point;
 }
 
 namespace ng
@@ -48,6 +49,24 @@ namespace ng
 			eMouseCode code,
 			eInputState state
 			) const = 0;
+
+		/*!
+		* @brief					クライアント座標におけるマウスカーソルの座標を取得
+		* @return					マウスカーソルの座標
+		*/
+		virtual Point GetCursorClientPos() const = 0;
+
+		/*!
+		* @brief					マウスカーソルの相対的な移動量を取得
+		* @return					マウスカーソルの移動量（ピクセル）
+		*/
+		virtual Point GetMoveDelta() const = 0;
+
+		/*!
+		* @brief					マウスホイールの相対的な変化量を取得
+		* @return					マウスホイールの変化量
+		*/
+		virtual s32 GetWheelDelta() const = 0;
 	};
 
 }	// namespace ng
