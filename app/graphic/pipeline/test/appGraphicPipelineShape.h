@@ -20,6 +20,7 @@
 #include "ngLibGraphic/projection/ngProjection.h"
 // shape
 #include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
+#include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeBox.h"
 
 namespace app
 {
@@ -49,6 +50,9 @@ namespace app
 		*/
 		void _execute();
 		
+		/*! ワールド変換行列更新 */
+		void _updateWorldMatrix();
+
 	private:
 		ng::CDX12Shader m_vs;			//!< DX12頂点シェーダー
 		ng::CDX12Shader m_ps;			//!< DX12ピクセルシェーダー
@@ -63,6 +67,7 @@ namespace app
 
 		// shape
 		ng::CDX12ShapeSquare m_square;	//!< DX12ポリゴン 矩形
+		ng::CDX12ShapeBox m_box;	//!< DX12ポリゴン ボックス
 	};
 
 }	// namespace app

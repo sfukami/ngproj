@@ -13,9 +13,12 @@
 #include "ngLibCore/color/ngColor.h"
 #include "appGraphicPipelineShape.h"
 #include "../../appGraphicModule.h"
+#include "../../../input/appInputModule.h"
 
 namespace app
 {
+	static ng::Matrix4 g_matWorld = ng::Matrix4::IDENTITY;
+
 	//! シェーダーパラメータ
 	struct ShaderParam
 	{
@@ -130,6 +133,15 @@ namespace app
 			}
 		}
 
+		// DX12ポリゴン ボックス生成
+		{
+			NG_ERRCODE err = m_box.Create(*pDX12Device, 1.f, 1.f, 1.f);
+			if(NG_FAILED(err)) {
+				NG_ERRLOG_C("GraphicPipelineShape", err, "DX12ポリゴン ボックスの生成に失敗しました.");
+				return false;
+			}
+		}
+
 		// パイプラインステート生成
 		{
 			ng::CDX12PipelineStateDesc stateDesc;
@@ -198,6 +210,7 @@ namespace app
 		m_ps.Destroy();
 
 		m_square.Destroy();
+		m_box.Destroy();
 
 		m_constBuf.Destroy();
 		m_descHeap.Destroy();
@@ -231,9 +244,13 @@ namespace app
 
 		// ポリゴン描画
 		{
+			// ワールド変換行列更新
+			_updateWorldMatrix();
+
 			// シェーダーパラメータ設定
 			ng::Matrix4 matWorld, matView, matProj, matWVP;
-			ng::MatrixOp::Identity(matWorld);
+
+			matWorld = g_matWorld;
 			matView = m_camera.GetViewMatrix();
 			matProj = m_proj.GetProjMatrix();
 
@@ -251,13 +268,25 @@ namespace app
 			// コンスタントバッファのディスクリプタテーブルを設定
 			pCmdList->SetGraphicsRootDescriptorTable(0, m_descHeap.GetGPUDescriptorHandle(0));
 
-			m_square.Render(*pCmdList);
+			//m_square.Render(*pCmdList);
+			m_box.Render(*pCmdList);
 		}
 
 		ng::DX12Util::SetRenderTargetToPresent(pCmdList, pRTBackBuffer);
 
 		// コマンドの記録を終了
 		pCmdList->Close();
+	}
+
+	void CGraphicPipelineShape::_updateWorldMatrix()
+	{
+		static float yaw=0, pitch=0, roll=0;
+
+		ng::Point move = CInputModule::GetMoveDelta();
+		yaw -= (float)move.x * 0.01f;
+		pitch += (float)move.y * 0.01f;
+
+		ng::MatrixOp::RotationYawPitchRoll(g_matWorld, yaw, pitch, roll);
 	}
 
 }	// namespace app
