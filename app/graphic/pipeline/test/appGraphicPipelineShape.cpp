@@ -43,36 +43,19 @@ namespace app
 
 		// ルートシグネチャ生成
 		{
-			D3D12_DESCRIPTOR_RANGE descriptorRange = {};
-			descriptorRange.NumDescriptors = 1;
-			descriptorRange.BaseShaderRegister = 0;
-			descriptorRange.RangeType = D3D12_DESCRIPTOR_RANGE_TYPE_CBV;
-			descriptorRange.OffsetInDescriptorsFromTableStart = D3D12_DESCRIPTOR_RANGE_OFFSET_APPEND;
+			CD3DX12_DESCRIPTOR_RANGE CBRange(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, 1, 0);
 
-			D3D12_ROOT_PARAMETER rootParam = {};
-			rootParam.ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
-			rootParam.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
-			rootParam.DescriptorTable.NumDescriptorRanges = 1;
-			rootParam.DescriptorTable.pDescriptorRanges = &descriptorRange;
+			CD3DX12_ROOT_PARAMETER rootParams[1];
+			rootParams[0].InitAsDescriptorTable(1, &CBRange, D3D12_SHADER_VISIBILITY_ALL);
 
-			D3D12_STATIC_SAMPLER_DESC samplerDesc = {};
-			samplerDesc.Filter = D3D12_FILTER_MIN_MAG_MIP_POINT;
-			samplerDesc.AddressU = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
-			samplerDesc.AddressV = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
-			samplerDesc.AddressW = D3D12_TEXTURE_ADDRESS_MODE_WRAP;
-			samplerDesc.MipLODBias = 0.0f;
-			samplerDesc.MaxAnisotropy = 16;
-			samplerDesc.ComparisonFunc = D3D12_COMPARISON_FUNC_NEVER;
-			samplerDesc.BorderColor = D3D12_STATIC_BORDER_COLOR_TRANSPARENT_BLACK;
-			samplerDesc.MinLOD = 0.0f;
-			samplerDesc.MaxLOD = D3D12_FLOAT32_MAX;
-			samplerDesc.ShaderRegister = 0;
-			samplerDesc.RegisterSpace = 0;
-			samplerDesc.ShaderVisibility = D3D12_SHADER_VISIBILITY_ALL;
+			CD3DX12_STATIC_SAMPLER_DESC samplerDesc;
+			samplerDesc.Init(
+				0, D3D12_FILTER_MIN_MAG_MIP_POINT
+				);
 
 			CD3DX12_ROOT_SIGNATURE_DESC rootSignDesc;
 			rootSignDesc.Init(
-				1, &rootParam,
+				NG_ARRAY_SIZE(rootParams), rootParams,
 				1, &samplerDesc,
 				D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT
 				);
@@ -140,7 +123,7 @@ namespace app
 
 		// DX12ポリゴン 矩形生成
 		{
-			NG_ERRCODE err = m_square.Create(*pDX12Device);
+			NG_ERRCODE err = m_square.Create(*pDX12Device, 1.f, 1.f, false);
 			if(NG_FAILED(err)) {
 				NG_ERRLOG_C("GraphicPipelineShape", err, "DX12ポリゴン 矩形の生成に失敗しました.");
 				return false;
@@ -150,6 +133,7 @@ namespace app
 		// パイプラインステート生成
 		{
 			ng::CDX12PipelineStateDesc stateDesc;
+			stateDesc.Initialize();
 
 			// ルートシグネチャ設定
 			stateDesc.SetRootSignature(m_rootSign);
@@ -165,16 +149,17 @@ namespace app
 			};
 			stateDesc.InputLayout = {inputElemDescs, _countof(inputElemDescs)};
 
-			stateDesc.RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
-			//stateDesc.RasterizerState.FrontCounterClockwise = true;
-			stateDesc.BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
-			stateDesc.DepthStencilState.DepthEnable = FALSE;
-			stateDesc.DepthStencilState.StencilEnable = FALSE;
-			stateDesc.SampleMask = UINT_MAX;
-			stateDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+			// 深度ステンシル
+			stateDesc.DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
+			stateDesc.DSVFormat = DXGI_FORMAT_D32_FLOAT;
+
+			// レンダーターゲット
 			stateDesc.NumRenderTargets = 1;
 			stateDesc.RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
-			stateDesc.SampleDesc.Count = 1;
+
+			// その他
+			stateDesc.PrimitiveTopologyType = D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;
+			stateDesc.SampleDesc = {1,0};
 
 			NG_ERRCODE err = m_pipelineState.Create(*pDX12Device, stateDesc);
 			if(NG_FAILED(err)) {
