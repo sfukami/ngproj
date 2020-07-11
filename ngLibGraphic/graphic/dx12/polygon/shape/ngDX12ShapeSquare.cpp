@@ -30,8 +30,8 @@ namespace ng
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
-		float w2 = width * 0.5f;
-		float h2 = height * 0.5f;
+		const float w2 = width * 0.5f;
+		const float h2 = height * 0.5f;
 
 		if(isSprite) {
 			const VertexFormat::Sprite vertices[] = {
