@@ -23,26 +23,32 @@ namespace ng
 
 	NG_ERRCODE CDX12ShapeSquare::Create(
 		CDX12Device& device
+		, float width
+		, float height
+		, bool isSprite
 		)
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
-		const VertexFormat::Static vertices[] = {
-			{{ -1,  1, 0}, Vector3::ZERO, {0, 0}},	// 0
-			{{  1,  1, 0}, Vector3::ZERO, {1, 0}},	// 1
-			{{ -1, -1, 0}, Vector3::ZERO, {0, 1}},	// 2
-			{{  1, -1, 0}, Vector3::ZERO, {1, 1}},	// 3
-		};
+		float w2 = width * 0.5f;
+		float h2 = height * 0.5f;
 
-		if(NG_FAILED(ret = m_polygon.Create(
-			device,
-			vertices,
-			sizeof(vertices),
-			sizeof(vertices[0]),
-			D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP
-			))) {
-			NG_ERRLOG_C("DX12ShapeSquare", ret, "DX12ポリゴンの生成に失敗しました.");
-			return ret;
+		if(isSprite) {
+			const VertexFormat::Sprite vertices[] = {
+				{{ -w2,  h2, 0}, Vector4::ONE, {0, 0}},	// 0
+				{{  w2,  h2, 0}, Vector4::ONE, {1, 0}},	// 1
+				{{ -w2, -h2, 0}, Vector4::ONE, {0, 1}},	// 2
+				{{  w2, -h2, 0}, Vector4::ONE, {1, 1}},	// 3
+			};
+			ret = _createPolygon(device, vertices, sizeof(vertices), sizeof(vertices[0]));
+		} else {
+			const VertexFormat::Static vertices[] = {
+				{{ -w2,  h2, 0}, Vector3::AXIS_Z, {0, 0}},	// 0
+				{{  w2,  h2, 0}, Vector3::AXIS_Z, {1, 0}},	// 1
+				{{ -w2, -h2, 0}, Vector3::AXIS_Z, {0, 1}},	// 2
+				{{  w2, -h2, 0}, Vector3::AXIS_Z, {1, 1}},	// 3
+			};
+			ret = _createPolygon(device, vertices, sizeof(vertices), sizeof(vertices[0]));
 		}
 
 		return ret;
@@ -63,6 +69,24 @@ namespace ng
 	const DX12VertexLayout* CDX12ShapeSquare::GetVertexLayout() const
 	{
 		return &DX12GetVertexLayout(eVertexLayout::STATIC);
+	}
+
+	NG_ERRCODE CDX12ShapeSquare::_createPolygon(CDX12Device& device, const void* pVertices, u32 vertexDataSize, u32 vertexStride)
+	{
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		if(NG_FAILED(ret = m_polygon.Create(
+			device,
+			pVertices,
+			vertexDataSize,
+			vertexStride,
+			D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP
+			))) {
+			NG_ERRLOG_C("DX12ShapeSquare", ret, "DX12ポリゴンの生成に失敗しました.");
+			return ret;
+		}
+
+		return ret;
 	}
 
 }	// namespace ng

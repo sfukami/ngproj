@@ -31,10 +31,16 @@ namespace ng
 		/*!
 		* @brief					DX12ポリゴン 矩形を生成
 		* @param device				DX12デバイス
+		* @param width				幅
+		* @param height				高さ
+		* @@param isSprite			スプライトか
 		* @return					NG エラーコード
 		*/
 		NG_ERRCODE Create(
 			CDX12Device& device
+			, float width
+			, float height
+			, bool isSprite
 			);
 
 		/*!
@@ -52,6 +58,10 @@ namespace ng
 
 		/*! 頂点レイアウト取得 */
 		const DX12VertexLayout* GetVertexLayout() const;
+
+	private:
+		/*! DX12ポリゴン生成 */
+		NG_ERRCODE _createPolygon(CDX12Device& device, const void* pVertices, u32 vertexDataSize, u32 vertexStride);
 
 	private:
 		CDX12Polygon m_polygon;	//!< DX12ポリゴン
