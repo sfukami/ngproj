@@ -243,6 +243,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTarget.h" />
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetId.h" />
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetManager.h" />
+    <ClInclude Include="graphic\dx12\texture\ngDX12Texture.h" />
     <ClInclude Include="graphic\dx12\viewport\ngDX12Viewport.h" />
     <ClInclude Include="graphic\ngGraphic.h" />
     <ClInclude Include="graphic\ngGraphicManager.h" />
@@ -290,6 +291,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\target\depth\ngDX12DepthStencilManager.cpp" />
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTarget.cpp" />
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTargetManager.cpp" />
+    <ClCompile Include="graphic\dx12\texture\ngDX12Texture.cpp" />
     <ClCompile Include="graphic\dx12\viewport\ngDX12Viewport.cpp" />
     <ClCompile Include="graphic\ngGraphicManager.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
