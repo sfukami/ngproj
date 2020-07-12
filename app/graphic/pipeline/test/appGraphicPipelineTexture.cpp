@@ -11,8 +11,11 @@
 #include "ngLibCore/geometry/matrix/ngMatrix4x4.h"
 #include "ngLibCore/geometry/matrix/ngMatrixOp.h"
 #include "ngLibCore/color/ngColor.h"
+#include "ngLibCore/io/file/ngFile.h"
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
+#include "ngLibGraphic/graphic/dx12/texture/ngDX12TextureLoader.h"
 #include "appGraphicPipelineTexture.h"
+#include "app/memory/appMemoryUtil.h"
 #include "../../appGraphicModule.h"
 #include "../../../input/appInputModule.h"
 
@@ -179,23 +182,66 @@ namespace app
 
 		// テクスチャ
 		{
-			const char* pFilePath = "resource/texture/test.bmp";
+			const wchar_t* pFilePath = L"resource/texture/test.bmp";
+			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
+		#if 1
+			// ビットマップ
 			if(!m_bitmap.LoadFromFile(pFilePath)) {
-				NG_ERRLOG("GraphicPipelineTexture", "ビットマップ画像の読み込みに失敗. file:%s", pFilePath);
+				NG_ERRLOG("GraphicPipelineTexture", L"ビットマップ画像の読み込みに失敗. file:%ls", pFilePath);
 				return false;
 			}
-			
-			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 			if(NG_FAILED(err = m_texture.Create(
 				*pDX12Device,
 				m_bitmap.GetPixelData(),
 				m_bitmap.GetWidth(),
-				m_bitmap.GetHeight()
+				m_bitmap.GetHeight(),
+				DXGI_FORMAT_R8G8B8A8_UNORM
 				))) {
 				NG_ERRLOG_C("GraphicPipelineTexture", err, "テクスチャの生成に失敗しました.");
 				return false;
 			}
+		#else
+			// DX12テクスチャローダー 
+			ng::CDX12TextureLoader loader;
+			#if 1
+			// from file
+			{
+				if(NG_FAILED(err = loader.LoadTextureWICFromFile(
+					*pDX12Device,
+					m_texture,
+					pFilePath
+					))) {
+					NG_ERRLOG_C("GraphicPipelineTexture", err, L"画像ファイルの読み込みに失敗しました. file:%ls", pFilePath);
+					return false;
+				}
+			}
+			#else
+			// from memory
+			{
+				ng::CFile file;
+				if(NG_FAILED(err = file.Open(pFilePath, L"rb"))) {
+					NG_ERRLOG_C("GraphicPipelineTexture", err, "画像ファイルの読み込みに失敗しました.");
+					return false;
+				}
 
+				ng::size_type size = file.GetFileSize();
+
+				char* pFileData = NG_NEW_BYTE(APP_MEMALLOC_WORK, size);
+				ng::size_type dataNum = file.Read(pFileData, size);
+
+				if(NG_FAILED(err = loader.LoadTextureWICFromMemory(
+					*pDX12Device,
+					m_texture,
+					pFileData,
+					size
+					))) {
+					NG_ERRLOG_C("GraphicPipelineTexture", err, "テクスチャの生成に失敗しました.");
+					return false;
+				}
+			}
+			#endif
+		#endif
+			
 			m_texture.CreateResourceView(
 				*pDX12Device,
 				m_descHeap, 1

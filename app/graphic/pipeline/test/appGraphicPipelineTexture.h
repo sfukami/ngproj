@@ -18,7 +18,6 @@
 #include "ngLibGraphic/graphic/dx12/scissor/ngDX12Scissor.h"
 #include "ngLibGraphic/camera/ngCamera.h"
 #include "ngLibGraphic/projection/ngProjection.h"
-
 #include "ngLibCore/image/ngBitmap.h"
 #include "ngLibGraphic/graphic/dx12/texture/ngDX12Texture.h"
 #include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
