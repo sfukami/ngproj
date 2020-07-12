@@ -151,6 +151,31 @@ namespace ng
 		return ret;
 	}
 
+	NG_ERRCODE CFile::Tell(long* pPos)
+	{
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		if(!IsOpen()) {
+			return ret;
+		}
+
+		long pos = ::ftell(m_fp);
+		if(pos >= 0) {
+			ret = eNG_S_OK;
+		} else {
+			ret = eNG_E_UNKNOWN;
+			NG_ERRLOG_C("File", ret, "読み書き位置の取得に失敗しました.");
+			NG_DPRINT_LASTERRMSG();
+			return ret;
+		}
+
+		if(pPos != nullptr) {
+			(*pPos) = pos;
+		}
+
+		return ret;
+	}
+
 	void CFile::Rewind()
 	{
 		if(!IsOpen()) {
@@ -158,6 +183,28 @@ namespace ng
 		}
 
 		::rewind(m_fp);
+	}
+
+	size_type CFile::GetFileSize()
+	{
+		if(!IsOpen()) {
+			return 0;
+		}
+
+		long curPos = 0;
+		if(NG_FAILED(Tell(&curPos))) {
+			return 0;
+		}
+
+		if(NG_FAILED(Seek(0, SEEK_END))) {
+			return 0;
+		}
+
+		long size = 0;
+		Tell(&size);
+		Seek(curPos, SEEK_SET);
+
+		return static_cast<size_type>(size);
 	}
 
 }	// namespace ng
