@@ -131,6 +131,9 @@
     <Filter Include="ソース ファイル\memory\pointer">
       <UniqueIdentifier>{dd7fa1ae-53ed-4991-b2e5-85af2eb19597}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\image">
+      <UniqueIdentifier>{68d857b3-22e9-4702-ac05-b8d7f4423cd2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -412,6 +415,9 @@
     <ClInclude Include="allocator\ngStackAllocator.h">
       <Filter>ソース ファイル\allocator</Filter>
     </ClInclude>
+    <ClInclude Include="image\ngBitmap.h">
+      <Filter>ソース ファイル\image</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -539,6 +545,9 @@
     </ClCompile>
     <ClCompile Include="allocator\ngStackAllocator.cpp">
       <Filter>ソース ファイル\allocator</Filter>
+    </ClCompile>
+    <ClCompile Include="image\ngBitmap.cpp">
+      <Filter>ソース ファイル\image</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
