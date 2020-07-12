@@ -271,6 +271,12 @@
     <ClInclude Include="graphic\dx12\texture\ngDX12Texture.h">
       <Filter>ソース ファイル\graphic\dx12\texture</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\texture\ngDX12TextureLoader.h">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\texture\ngDX12TextureLoaderFlag.h">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -394,6 +400,9 @@
       <Filter>ソース ファイル\graphic\dx12\polygon\shape</Filter>
     </ClCompile>
     <ClCompile Include="graphic\dx12\texture\ngDX12Texture.cpp">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\texture\ngDX12TextureLoader.cpp">
       <Filter>ソース ファイル\graphic\dx12\texture</Filter>
     </ClCompile>
   </ItemGroup>
