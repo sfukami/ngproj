@@ -14,6 +14,7 @@
 #include "../../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
 #include "../../graphic/pipeline/test/appGraphicPipelinePolygon.h"
 #include "../../graphic/pipeline/test/appGraphicPipelineShape.h"
+#include "../../graphic/pipeline/test/appGraphicPipelineTexture.h"
 #include "ngLibApp/ui/imgui/imgui_src/imgui.h"
 
 namespace app
@@ -30,7 +31,8 @@ namespace app
 		m_pPipeline = NG_NEW(APP_MEMALLOC_APPLICATION) 
 			//CGraphicPipelineClearBuffer()
 			//CGraphicPipelinePolygon()
-			CGraphicPipelineShape()
+			//CGraphicPipelineShape()
+			CGraphicPipelineTexture()
 			;
 		if(m_pPipeline->Initialize()) {
 			CGraphicModule::SetGraphicPipeline(m_pPipeline);
