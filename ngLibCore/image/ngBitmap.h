@@ -45,6 +45,9 @@ namespace ng
 		/*! 画像高さ取得 */
 		u32 GetHeight() const { return m_height; }
 
+		/*! 画像のデータサイズを取得 */
+		size_type GetDataSize() const;
+
 	private:
 		/*! ピクセル構築処理 */
 		void _buildPixel(HBITMAP hBitmap);

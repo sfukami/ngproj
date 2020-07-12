@@ -67,11 +67,7 @@ namespace ng
 		{
 			for(int x=0; x<bmp.bmWidth; x++)
 			{
-				COLORREF color = ::GetPixel(hMemDC, x, y);
-				BYTE r = color & 0xFF;
-				BYTE g = (color>>8) & 0xFF;
-				BYTE b = (color>>16) & 0xFF;
-				m_pixelData.push_back((r<<16) | (g<<8) | b);
+				m_pixelData.push_back(static_cast<u32>(::GetPixel(hMemDC, x, y)));
 			}
 		}
 		::DeleteObject(hMemDC);
@@ -89,6 +85,15 @@ namespace ng
 	const u32* CBitmap::GetPixelData() const
 	{
 		return const_cast<CBitmap*>(this)->GetPixelData();
+	}
+
+	size_type CBitmap::GetDataSize() const
+	{
+		size_t num = m_pixelData.size();
+
+		if(num == 0) return 0;
+
+		return m_pixelData[0] * num;
 	}
 
 }	// namespace ng
