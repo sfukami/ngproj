@@ -50,6 +50,7 @@ namespace ng
 		* @param pDst				読み込み値の格納先
 		* @param size				読み込むバイト数
 		* @param num				読み込むデータの数
+		* @return					読み込んだデータの数
 		*/
 		size_type Read(void* pDst, size_type size, size_type num = 1);
 
@@ -70,12 +71,21 @@ namespace ng
 		NG_ERRCODE Seek(long offset, int origin);
 
 		/*!
+		* @brief					読み書き位置を取得する
+		* @param pPos				読み書き位置の格納先
+		*/
+		NG_ERRCODE Tell(long* pPos);
+
+		/*!
 		* @brief					ファイルポインタを先頭に戻す
 		*/
 		void Rewind();
 
 		/*! ファイルをオープンしているか */
 		bool IsOpen() const { return (m_fp != nullptr); }
+
+		/*! ファイルサイズ取得 */
+		size_type GetFileSize();
 
 	private:
 		FILE* m_fp;	//!< ファイルポインタ

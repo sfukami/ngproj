@@ -15,8 +15,8 @@ namespace app
 	enum eMemorySize : ng::size_type
 	{
 		INSTANCE		= NG_KB(1),		//!< インスタンス
-		APPLICATION		= NG_KB(1),		//!< アプリケーション
-		WORK			= NG_KB(1),		//!< ワーク
+		APPLICATION		= NG_MB(1),		//!< アプリケーション
+		WORK			= NG_MB(1),		//!< ワーク
 
 		//! 合計
 		TOTAL			= INSTANCE

@@ -243,6 +243,9 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTarget.h" />
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetId.h" />
     <ClInclude Include="graphic\dx12\target\render\ngDX12RenderTargetManager.h" />
+    <ClInclude Include="graphic\dx12\texture\ngDX12Texture.h" />
+    <ClInclude Include="graphic\dx12\texture\ngDX12TextureLoader.h" />
+    <ClInclude Include="graphic\dx12\texture\ngDX12TextureLoaderFlag.h" />
     <ClInclude Include="graphic\dx12\viewport\ngDX12Viewport.h" />
     <ClInclude Include="graphic\ngGraphic.h" />
     <ClInclude Include="graphic\ngGraphicManager.h" />
@@ -290,6 +293,8 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="graphic\dx12\target\depth\ngDX12DepthStencilManager.cpp" />
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTarget.cpp" />
     <ClCompile Include="graphic\dx12\target\render\ngDX12RenderTargetManager.cpp" />
+    <ClCompile Include="graphic\dx12\texture\ngDX12Texture.cpp" />
+    <ClCompile Include="graphic\dx12\texture\ngDX12TextureLoader.cpp" />
     <ClCompile Include="graphic\dx12\viewport\ngDX12Viewport.cpp" />
     <ClCompile Include="graphic\ngGraphicManager.cpp" />
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -306,7 +311,17 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClCompile Include="render\ngRenderCommand.cpp" />
     <ClCompile Include="render\ngRenderSystem.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
+    <Import Project="..\packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets" Condition="Exists('..\packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets')" />
   </ImportGroup>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>このプロジェクトは、このコンピューター上にない NuGet パッケージを参照しています。それらのパッケージをダウンロードするには、[NuGet パッケージの復元] を使用します。詳細については、http://go.microsoft.com/fwlink/?LinkID=322105 を参照してください。見つからないファイルは {0} です。</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\directxtex_desktop_win10.2020.7.2.1\build\native\directxtex_desktop_win10.targets'))" />
+  </Target>
 </Project>

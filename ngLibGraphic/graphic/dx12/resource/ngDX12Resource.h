@@ -9,6 +9,7 @@
 #define __NG_GRAPHIC_DX12_RESOURCE_H__
 
 #include <d3d12.h>
+#include <DXGIFormat.h>
 
 struct ID3D12Resource;
 
@@ -47,13 +48,15 @@ namespace ng
 		* @param pTexData			テクスチャデータ
 		* @param width				テクスチャの幅
 		* @param height				テクスチャの高さ
+		* @param format				DXGIフォーマット
 		* @return					NG エラーコード
 		*/
 		NG_ERRCODE CreateTextureBuffer(
 			CDX12Device& device,
 			const void* pTexData,
 			u32 width,
-			u32 height
+			u32 height,
+			DXGI_FORMAT format
 			);
 
 		/*!

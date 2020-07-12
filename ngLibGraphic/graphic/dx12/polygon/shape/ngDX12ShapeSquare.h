@@ -57,7 +57,7 @@ namespace ng
 		void Destroy();
 
 		/*! 頂点レイアウト取得 */
-		const DX12VertexLayout* GetVertexLayout() const;
+		const DX12VertexLayout& GetVertexLayout() const;
 
 	private:
 		/*! DX12ポリゴン生成 */
@@ -65,6 +65,7 @@ namespace ng
 
 	private:
 		CDX12Polygon m_polygon;	//!< DX12ポリゴン
+		bool m_isSprite;	//!< スプライトか
 	};
 
 }	// namespace ng

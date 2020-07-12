@@ -83,6 +83,7 @@
     <ClInclude Include="geometry\vector\ngVector3.h" />
     <ClInclude Include="geometry\vector\ngVector4.h" />
     <ClInclude Include="geometry\vector\ngVectorOp.h" />
+    <ClInclude Include="image\ngBitmap.h" />
     <ClInclude Include="io\console\ngConsole.h" />
     <ClInclude Include="io\console\ngConsoleMacro.h" />
     <ClInclude Include="io\file\ngFile.h" />
@@ -144,6 +145,7 @@
     <ClCompile Include="geometry\vector\ngVector3.cpp" />
     <ClCompile Include="geometry\vector\ngVector4.cpp" />
     <ClCompile Include="geometry\vector\ngVectorOp.cpp" />
+    <ClCompile Include="image\ngBitmap.cpp" />
     <ClCompile Include="io\console\ngConsole.cpp" />
     <ClCompile Include="io\console\ngConsoleMacro.cpp" />
     <ClCompile Include="io\file\ngFile.cpp" />

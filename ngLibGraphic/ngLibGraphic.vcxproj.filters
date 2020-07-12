@@ -98,6 +98,9 @@
     <Filter Include="ソース ファイル\model">
       <UniqueIdentifier>{e22508e8-e74a-4f78-89bf-2c4bc75a80e5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\dx12\texture">
+      <UniqueIdentifier>{170d9804-6317-4b56-b156-c3ca65f00257}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ngLibGraphic.h">
@@ -265,6 +268,15 @@
     <ClInclude Include="graphic\dx12\polygon\shape\ngDX12ShapeBox.h">
       <Filter>ソース ファイル\graphic\dx12\polygon\shape</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\texture\ngDX12Texture.h">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\texture\ngDX12TextureLoader.h">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\dx12\texture\ngDX12TextureLoaderFlag.h">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -387,5 +399,14 @@
     <ClCompile Include="graphic\dx12\polygon\shape\ngDX12ShapeBox.cpp">
       <Filter>ソース ファイル\graphic\dx12\polygon\shape</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\dx12\texture\ngDX12Texture.cpp">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\texture\ngDX12TextureLoader.cpp">
+      <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
 </Project>
