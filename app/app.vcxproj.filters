@@ -208,4 +208,7 @@
       <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>
