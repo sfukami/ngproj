@@ -52,7 +52,8 @@ namespace ng
 			CDX12Device& device,
 			const void* pTexData,
 			u32 width,
-			u32 height
+			u32 height,
+			DXGI_FORMAT format
 			)
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
@@ -64,7 +65,7 @@ namespace ng
 			);
 		// D3D12_RESOURCE_DIMENSION_TEXTURE2D
 		CD3DX12_RESOURCE_DESC resDesc = CD3DX12_RESOURCE_DESC::Tex2D(
-			DXGI_FORMAT_B8G8R8A8_UNORM
+			format
 			, width, height
 			, 1		// arraySize
 			, 1		// mipLevels

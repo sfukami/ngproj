@@ -8,6 +8,7 @@
 #ifndef __NG_GRAPHIC_DX12_TEXTURE_LOADER_H__
 #define __NG_GRAPHIC_DX12_TEXTURE_LOADER_H__
 
+#include <DXGIFormat.h>
 #include "ngDX12TextureLoaderFlag.h"
 
 namespace DirectX
@@ -37,6 +38,40 @@ namespace ng
 		~CDX12TextureLoader();
 
 		/*!
+		* @brief					ファイルより画像(bmp, jpg, png等)を読み込み
+		* @param device				DX12デバイス
+		* @param dstTex				生成したDX12テクスチャの格納先
+		* @param pFileName			ファイル名
+		* @param flags				フラグ : https://github.com/microsoft/DirectXTex/wiki/WIC-I-O-Functions
+		* @param index				画像データのインデックス
+		* @return					NG エラーコード
+		*/
+		NG_ERRCODE LoadTextureWICFromFile(
+			CDX12Device& device,
+			CDX12Texture& dstTex,
+			const wchar_t* pFileName,
+			NG_WIC_FLAGS flags = NG_WIC_FLAGS::NONE,
+			u32 index = 0
+			) const;
+
+		/*!
+		* @brief					ファイルより画像(dds)を読み込み
+		* @param device				DX12デバイス
+		* @param dstTex				生成したDX12テクスチャの格納先
+		* @param pFileName			ファイル名
+		* @param flags				フラグ
+		* @param index				画像データのインデックス
+		* @return					NG エラーコード
+		*/
+		NG_ERRCODE LoadTextureDDSFromFile(
+			CDX12Device& device,
+			CDX12Texture& dstTex,
+			const wchar_t* pFileName,
+			NG_DDS_FLAGS flags = NG_DDS_FLAGS::NONE,
+			u32 index = 0
+			) const;
+
+		/*!
 		* @brief					システムメモリより画像(bmp, jpg, png等)を読み込み
 		* @param device				DX12デバイス
 		* @param dstTex				生成したDX12テクスチャの格納先
@@ -53,7 +88,7 @@ namespace ng
 			size_type size,
 			NG_WIC_FLAGS flags = NG_WIC_FLAGS::NONE,
 			u32 index = 0
-			);
+			) const;
 
 		/*!
 		* @brief					システムメモリより画像(dds)を読み込み
@@ -72,7 +107,7 @@ namespace ng
 			size_type size,
 			NG_DDS_FLAGS flags = NG_DDS_FLAGS::NONE,
 			u32 index = 0
-			);
+			) const;
 
 	private:
 		/*! DX12テクスチャ生成 */
@@ -81,7 +116,21 @@ namespace ng
 			CDX12Texture& dstTex,
 			DirectX::ScratchImage& scratchImage,
 			u32 index
-			);
+			) const;
+
+		/*! テクスチャ読み込み(WIC) */
+		NG_ERRCODE _loadTextureFromFile(
+			const wchar_t* pFileName,
+			DirectX::ScratchImage& scratchImage,
+			NG_WIC_FLAGS flags
+			) const;
+
+		/*! テクスチャ読み込み(DDS) */
+		NG_ERRCODE _loadTextureFromFile(
+			const wchar_t* pFileName,
+			DirectX::ScratchImage& scratchImage,
+			NG_DDS_FLAGS flags
+			) const;
 
 		/*! テクスチャ読み込み(WIC) */
 		NG_ERRCODE _loadTextureFromMemory(

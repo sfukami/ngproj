@@ -11,6 +11,8 @@
 #include "ngDX12TextureLoader.h"
 #include "../texture/ngDX12Texture.h"
 
+#pragma comment(lib, "ole32.lib")
+
 namespace ng
 {
 	CDX12TextureLoader::CDX12TextureLoader()
@@ -20,6 +22,64 @@ namespace ng
 	{
 	}
 
+	NG_ERRCODE CDX12TextureLoader::LoadTextureWICFromFile(
+		CDX12Device& device,
+		CDX12Texture& dstTex,
+		const wchar_t* pFileName,
+		NG_WIC_FLAGS flags,
+		u32 index
+		) const
+	{
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		DirectX::ScratchImage scratchImage;
+
+		// 画像読み込み
+		if(NG_FAILED(ret = _loadTextureFromFile(
+			pFileName, scratchImage, flags
+			))) {
+			return ret;
+		}
+
+		// DX12テクスチャ生成
+		if(NG_FAILED(ret = _createDX12Texture(
+			device, dstTex, scratchImage, index
+			))) {
+			return ret;
+		}
+
+		return ret;
+	}
+
+	NG_ERRCODE CDX12TextureLoader::LoadTextureDDSFromFile(
+		CDX12Device& device,
+		CDX12Texture& dstTex,
+		const wchar_t* pFileName,
+		NG_DDS_FLAGS flags,
+		u32 index
+		) const
+	{
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		DirectX::ScratchImage scratchImage;
+
+		// 画像読み込み
+		if(NG_FAILED(ret = _loadTextureFromFile(
+			pFileName, scratchImage, flags
+			))) {
+			return ret;
+		}
+
+		// DX12テクスチャ生成
+		if(NG_FAILED(ret = _createDX12Texture(
+			device, dstTex, scratchImage, index
+			))) {
+			return ret;
+		}
+
+		return ret;
+	}
+
 	NG_ERRCODE CDX12TextureLoader::LoadTextureWICFromMemory(
 		CDX12Device& device,
 		CDX12Texture& dstTex,
@@ -27,7 +87,7 @@ namespace ng
 		size_type size,
 		NG_WIC_FLAGS flags,
 		u32 index
-		)
+		) const
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
@@ -57,7 +117,7 @@ namespace ng
 		size_type size,
 		NG_DDS_FLAGS flags,
 		u32 index
-		)
+		) const
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
@@ -85,7 +145,7 @@ namespace ng
 		CDX12Texture& dstTex,
 		DirectX::ScratchImage& scratchImage,
 		u32 index
-		)
+		) const
 	{
 		// 指定インデックスの画像が存在するか
 		size_t imageNum = scratchImage.GetImageCount();
@@ -103,9 +163,48 @@ namespace ng
 			device,
 			srcImage.pixels,
 			static_cast<u32>(srcImage.width),
-			static_cast<u32>(srcImage.height)
+			static_cast<u32>(srcImage.height),
+			srcImage.format
 			))) {
 			NG_ERRLOG_C("DX12TextureLoader", ret, "DX12テクスチャの生成に失敗しました.");
+			return ret;
+		}
+
+		return ret;
+	}
+
+	NG_ERRCODE CDX12TextureLoader::_loadTextureFromFile(
+		const wchar_t* pFileName,
+		DirectX::ScratchImage& scratchImage,
+		NG_WIC_FLAGS flags
+		) const
+	{
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		DirectX::TexMetadata metadata;
+
+		if(NG_FAILED(ret = DirectX::LoadFromWICFile(
+			pFileName, static_cast<DirectX::WIC_FLAGS>(flags), &metadata, scratchImage
+			))) {
+			NG_DXERRLOG("DX12TextureLoader", ret, DirectX::LoadFromWICFile, L"画像の読み込みに失敗しました. file:%ls", pFileName);
+			return ret;
+		}
+
+		return ret;
+	}
+
+	NG_ERRCODE CDX12TextureLoader::_loadTextureFromFile(
+		const wchar_t* pFileName,
+		DirectX::ScratchImage& scratchImage,
+		NG_DDS_FLAGS flags
+		) const
+	{
+		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+
+		if(NG_FAILED(ret = DirectX::LoadFromDDSFile(
+			pFileName, static_cast<DirectX::DDS_FLAGS>(flags), nullptr, scratchImage
+			))) {
+			NG_DXERRLOG("DX12TextureLoader", ret, DirectX::LoadFromDDSFile, L"画像の読み込みに失敗しました. file:%ls", pFileName);
 			return ret;
 		}
 

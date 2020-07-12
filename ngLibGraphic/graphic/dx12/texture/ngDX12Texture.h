@@ -8,6 +8,7 @@
 #ifndef __NG_GRAPHIC_DX12_TEXTURE_H__
 #define __NG_GRAPHIC_DX12_TEXTURE_H__
 
+#include <DXGIFormat.h>
 #include "../resource/ngDX12Resource.h"
 
 namespace ng
@@ -33,13 +34,15 @@ namespace ng
 		* @param pTexData			テクスチャデータ
 		* @param width				テクスチャの幅
 		* @param height				テクスチャの高さ
+		* @param format				DXGIフォーマット
 		* @return					NG エラーコード
 		*/
 		NG_ERRCODE Create(
 			CDX12Device& device,
 			const void* pTexData,
 			u32 width,
-			u32 height
+			u32 height,
+			DXGI_FORMAT format
 			);
 
 		/*!
@@ -72,6 +75,7 @@ namespace ng
 
 	private:
 		CDX12Resource m_resource;	//!< DX12リソース
+		DXGI_FORMAT m_format;	//!< DXGIフォーマット
 	};
 
 }	// namespace ng

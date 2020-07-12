@@ -15,6 +15,7 @@
 namespace ng
 {
 	CDX12Texture::CDX12Texture()
+		: m_format(DXGI_FORMAT_UNKNOWN)
 	{
 	}
 	CDX12Texture::~CDX12Texture()
@@ -23,20 +24,23 @@ namespace ng
 	}
 
 	NG_ERRCODE CDX12Texture::Create(
-			CDX12Device& device,
-			const void* pTexData,
-			u32 width,
-			u32 height
-			)
+		CDX12Device& device,
+		const void* pTexData,
+		u32 width,
+		u32 height,
+		DXGI_FORMAT format
+		)
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
 		// テクスチャリソースを生成
 		if(NG_FAILED(ret = m_resource.CreateTextureBuffer(
-			device, pTexData, width, height
+			device, pTexData, width, height, format
 			))) {
 			return ret;
 		}
+
+		m_format = format;
 
 		return ret;
 	}
@@ -51,7 +55,7 @@ namespace ng
 
 		// シェーダーリソースビューを作成
 		D3D12_SHADER_RESOURCE_VIEW_DESC viewDesc = {};
-		viewDesc.Format = DXGI_FORMAT_B8G8R8A8_UNORM;
+		viewDesc.Format = m_format;
 		viewDesc.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
 		viewDesc.Texture2D.MipLevels = 1;
 		viewDesc.Texture2D.MostDetailedMip = 0;
