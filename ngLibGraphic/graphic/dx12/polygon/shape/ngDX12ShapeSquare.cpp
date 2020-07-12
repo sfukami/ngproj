@@ -13,6 +13,7 @@
 namespace ng
 {
 	CDX12ShapeSquare::CDX12ShapeSquare()
+		: m_isSprite(false)
 	{
 	}
 
@@ -51,6 +52,8 @@ namespace ng
 			ret = _createPolygon(device, vertices, sizeof(vertices), sizeof(vertices[0]));
 		}
 
+		m_isSprite = isSprite;
+
 		return ret;
 	}
 
@@ -66,9 +69,9 @@ namespace ng
 		m_polygon.Destroy();
 	}
 
-	const DX12VertexLayout* CDX12ShapeSquare::GetVertexLayout() const
+	const DX12VertexLayout& CDX12ShapeSquare::GetVertexLayout() const
 	{
-		return &DX12GetVertexLayout(eVertexLayout::STATIC);
+		return DX12GetVertexLayout(m_isSprite ? eVertexLayout::SPRITE : eVertexLayout::STATIC);
 	}
 
 	NG_ERRCODE CDX12ShapeSquare::_createPolygon(CDX12Device& device, const void* pVertices, u32 vertexDataSize, u32 vertexStride)
