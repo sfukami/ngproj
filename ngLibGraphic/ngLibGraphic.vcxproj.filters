@@ -406,4 +406,7 @@
       <Filter>ソース ファイル\graphic\dx12\texture</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
 </Project>
