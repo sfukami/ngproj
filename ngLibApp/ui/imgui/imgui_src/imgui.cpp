@@ -3398,7 +3398,12 @@ void ImGui::UpdateMouseMovingWindowEndFrame()
 
 static bool IsWindowActiveAndVisible(ImGuiWindow* window)
 {
-    return (window->Active) && (!window->Hidden);
+    //return (window->Active) && (!window->Hidden);
+    // ※親WindowがCollapseの場合は非表示
+    //   （本来Hiddenフラグで判断できるが、マウスで開閉した場合にフラグが有効になるタイミングが1F遅れるため）
+    return (window->Active) && (!window->Hidden) &&
+        (window->ParentWindow != NULL ? !window->ParentWindow->Collapsed : true)
+        ;
 }
 
 static void ImGui::UpdateMouseInputs()
@@ -5164,6 +5169,10 @@ static inline void ClampWindowRect(ImGuiWindow* window, const ImRect& visibility
 
 static void ImGui::RenderWindowOuterBorders(ImGuiWindow* window)
 {
+    // ※親WindowがCollapseの場合に、子Windowのボーダーを描画しないように修正
+    //   （Scissor領域外の描画を行うと警告が出るため）
+    if(!IsWindowActiveAndVisible(window)) return;
+
     ImGuiContext& g = *GImGui;
     float rounding = window->WindowRounding;
     float border_size = window->WindowBorderSize;
@@ -5246,10 +5255,14 @@ void ImGui::RenderWindowDecorations(ImGuiWindow* window, const ImRect& title_bar
         }
 
         // Scrollbars
-        if (window->ScrollbarX)
-            Scrollbar(ImGuiAxis_X);
-        if (window->ScrollbarY)
-            Scrollbar(ImGuiAxis_Y);
+        // ※親WindowがCollapseの場合に、子Windowのスクロールバーを描画しないように修正
+        //   （Scissor領域外の描画を行うと警告が出るため）
+        if(IsWindowActiveAndVisible(window)) {
+            if (window->ScrollbarX)
+                Scrollbar(ImGuiAxis_X);
+            if (window->ScrollbarY)
+                Scrollbar(ImGuiAxis_Y);
+        }
 
         // Render resize grips (after their input handling so we don't have a frame of latency)
         if (!(flags & ImGuiWindowFlags_NoResize))
