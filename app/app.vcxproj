@@ -23,6 +23,7 @@
     <ClCompile Include="graphic\appGraphic.cpp" />
     <ClCompile Include="graphic\appGraphicModule.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp" />
+    <ClCompile Include="graphic\pipeline\appGraphicPipelineDefault.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineModel.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelinePolygon.cpp" />
@@ -39,6 +40,7 @@
     <ClCompile Include="scene\appSceneModule.cpp" />
     <ClCompile Include="scene\root\appSceneRoot.cpp" />
     <ClCompile Include="scene\test\appSceneTest.cpp" />
+    <ClCompile Include="scene\test\appSceneTestImGui.cpp" />
     <ClCompile Include="tool\gui\appToolGUI.cpp" />
     <ClCompile Include="tool\gui\appToolGUIModule.cpp" />
   </ItemGroup>
@@ -49,6 +51,7 @@
     <ClInclude Include="graphic\appGraphicModule.h" />
     <ClInclude Include="graphic\command\appGraphicCommandListId.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
+    <ClInclude Include="graphic\pipeline\appGraphicPipelineDefault.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineModel.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h" />
@@ -70,6 +73,7 @@
     <ClInclude Include="scene\appSceneModule.h" />
     <ClInclude Include="scene\root\appSceneRoot.h" />
     <ClInclude Include="scene\test\appSceneTest.h" />
+    <ClInclude Include="scene\test\appSceneTestImGui.h" />
     <ClInclude Include="tool\gui\appToolGUI.h" />
     <ClInclude Include="tool\gui\appToolGUIModule.h" />
   </ItemGroup>

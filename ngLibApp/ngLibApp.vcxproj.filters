@@ -144,5 +144,8 @@
     <ClInclude Include="ui\imgui\ngImGuiDX12.h">
       <Filter>ソース ファイル\ui\imgui</Filter>
     </ClInclude>
+    <ClInclude Include="ui\imgui\ngImGui.h">
+      <Filter>ソース ファイル\ui\imgui</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
