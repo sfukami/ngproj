@@ -40,6 +40,7 @@
     <ClCompile Include="scene\appSceneModule.cpp" />
     <ClCompile Include="scene\root\appSceneRoot.cpp" />
     <ClCompile Include="scene\test\appSceneTest.cpp" />
+    <ClCompile Include="scene\test\appSceneTestImGui.cpp" />
     <ClCompile Include="tool\gui\appToolGUI.cpp" />
     <ClCompile Include="tool\gui\appToolGUIModule.cpp" />
   </ItemGroup>
@@ -72,6 +73,7 @@
     <ClInclude Include="scene\appSceneModule.h" />
     <ClInclude Include="scene\root\appSceneRoot.h" />
     <ClInclude Include="scene\test\appSceneTest.h" />
+    <ClInclude Include="scene\test\appSceneTestImGui.h" />
     <ClInclude Include="tool\gui\appToolGUI.h" />
     <ClInclude Include="tool\gui\appToolGUIModule.h" />
   </ItemGroup>
