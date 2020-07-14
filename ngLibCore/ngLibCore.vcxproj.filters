@@ -134,6 +134,9 @@
     <Filter Include="ソース ファイル\image">
       <UniqueIdentifier>{68d857b3-22e9-4702-ac05-b8d7f4423cd2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\functor">
+      <UniqueIdentifier>{e3e36405-c8f5-44e9-b37b-9b44903477ed}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -417,6 +420,9 @@
     </ClInclude>
     <ClInclude Include="image\ngBitmap.h">
       <Filter>ソース ファイル\image</Filter>
+    </ClInclude>
+    <ClInclude Include="functor\ngFunctor.h">
+      <Filter>ソース ファイル\functor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
