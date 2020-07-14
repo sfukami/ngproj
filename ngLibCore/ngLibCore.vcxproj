@@ -72,6 +72,7 @@
     <ClInclude Include="dx\ngDXDebug.h" />
     <ClInclude Include="dx\ngDXError.h" />
     <ClInclude Include="dx\ngDXMacro.h" />
+    <ClInclude Include="functor\ngFunctor.h" />
     <ClInclude Include="geometry\matrix\ngMatrix3x3.h" />
     <ClInclude Include="geometry\matrix\ngMatrix4x4.h" />
     <ClInclude Include="geometry\matrix\ngMatrixOp.h" />

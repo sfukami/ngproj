@@ -56,6 +56,9 @@
     <Filter Include="ソース ファイル\testcode\job">
       <UniqueIdentifier>{f8baa760-0cf9-47c7-b8e4-013890e92184}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\functor">
+      <UniqueIdentifier>{ec74333f-a60b-4c0d-8525-7c5287cbdee5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -116,6 +119,9 @@
     </ClCompile>
     <ClCompile Include="job\testJobQueue.cpp">
       <Filter>ソース ファイル\testcode\job</Filter>
+    </ClCompile>
+    <ClCompile Include="functor\testFunctor.cpp">
+      <Filter>ソース ファイル\testcode\functor</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

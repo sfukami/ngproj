@@ -175,6 +175,7 @@
     <ClInclude Include="setup\testSetup.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="functor\testFunctor.cpp" />
     <ClCompile Include="job\testJobQueue.cpp" />
     <ClCompile Include="memory\pointer\testSharedPtr.cpp" />
     <ClCompile Include="memory\pointer\testUniquePtr.cpp" />
