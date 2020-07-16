@@ -43,20 +43,23 @@ namespace test
 				NG_ERRLOG_C("TestJobQueue", err, "ジョブキューの初期化に失敗しました.")
 				return;
 			}
-			
-			// ジョブ追加
-			{
-				auto job1 = ng::CSharedPtr<ng::IJob>(NG_NEW(alloc) CJob(1), alloc);
-				auto job2 = NG_MAKE_SHARED_PTR(ng::IJob, alloc, CJob(2));
-				auto job3 = NG_MAKE_SHARED_PTR(ng::IJob, alloc, CJob(3));
 
-				jobQueue.AddJob(job1);
-				jobQueue.AddJob(job2);
-				jobQueue.AddJob(job3);
-			}
+			// ジョブ追加
+			CJob* pJob1 = NG_NEW(alloc) CJob(1);
+			CJob* pJob2 = NG_NEW(alloc) CJob(2);
+			CJob* pJob3 = NG_NEW(alloc) CJob(3);
+			
+			jobQueue.AddJob(pJob1);
+			jobQueue.AddJob(pJob2);
+			jobQueue.AddJob(pJob3);
 
 			// ジョブ実行
 			jobQueue.Execute();
+
+			// 後始末
+			NG_DELETE(alloc, pJob1);
+			NG_DELETE(alloc, pJob2);
+			NG_DELETE(alloc, pJob3);
 
 			jobQueue.Finalize();
 		}
