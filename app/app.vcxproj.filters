@@ -50,6 +50,9 @@
     <Filter Include="ソース ファイル\tool\gui">
       <UniqueIdentifier>{7914bf5e-70c5-44ce-969b-52622950043c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\application">
+      <UniqueIdentifier>{90c43ec9-8172-4410-bff3-629c5d5cacd3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -123,6 +126,9 @@
     </ClCompile>
     <ClCompile Include="graphic\pipeline\appGraphicPipelineDefault.cpp">
       <Filter>ソース ファイル\graphic\pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="application\appApplication.cpp">
+      <Filter>ソース ファイル\application</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
