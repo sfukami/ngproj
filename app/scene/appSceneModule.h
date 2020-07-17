@@ -24,7 +24,7 @@ namespace app
 	*/
 	class CSceneModule : public ng::CNonInstantiable
 	{
-		friend class CGame;
+		friend class CApplication;
 
 	public:
 		/*!

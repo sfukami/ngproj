@@ -23,7 +23,7 @@ namespace app
 	*/
 	class CGraphicModule : public ng::CNonInstantiable
 	{
-		friend class CGame;
+		friend class CApplication;
 
 	public:
 		/*!
