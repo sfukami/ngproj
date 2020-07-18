@@ -28,6 +28,13 @@ namespace ng
 	public:
 		/*!
 		* @brief					コンストラクタ
+		*/
+		CAction()
+			: m_pFunc(nullptr)
+		{ }
+
+		/*!
+		* @brief					コンストラクタ
 		* @param pFunc				関数ポインタ
 		*/
 		CAction(FuncType pFunc)
@@ -40,6 +47,8 @@ namespace ng
 		*/
 		Ret operator()(Args... args)
 		{
+			NG_ASSERT_NOT_NULL(m_pFunc);
+
 			return (*m_pFunc)(args...);
 		}
 
@@ -73,6 +82,13 @@ namespace ng
 	public:
 		/*!
 		* @brief					コンストラクタ
+		*/
+		CClassAction()
+			: m_pObj(nullptr), m_pFunc(nullptr)
+		{ }
+
+		/*!
+		* @brief					コンストラクタ
 		* @param pObj				呼び出し元のオブジェクト
 		* @param pFunc				メンバ関数ポインタ
 		*/
@@ -86,6 +102,9 @@ namespace ng
 		*/
 		Ret operator()(Args... args)
 		{
+			NG_ASSERT_NOT_NULL(m_pObj);
+			NG_ASSERT_NOT_NULL(m_pFunc);
+
 			return (m_pObj->*m_pFunc)(args...);
 		}
 
