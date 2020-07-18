@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="action\ngAction.h" />
     <ClInclude Include="allocator\ngDefaultAllocator.h" />
     <ClInclude Include="allocator\ngMemoryAllocator.h" />
     <ClInclude Include="allocator\ngStackAllocator.h" />
@@ -114,6 +115,7 @@
     <ClInclude Include="traits\ngNonCopyable.h" />
     <ClInclude Include="traits\ngNonInstantiable.h" />
     <ClInclude Include="traits\ngSingleton.h" />
+    <ClInclude Include="tuple\ngTupleArgs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="allocator\ngDefaultAllocator.cpp" />
