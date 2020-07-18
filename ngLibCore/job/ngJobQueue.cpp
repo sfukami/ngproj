@@ -45,13 +45,13 @@ namespace ng
 		m_jobQueue.Finalize();
 	}
 
-	bool CJobQueue::AddJob(CSharedPtr<IJob>& jobPtr)
+	bool CJobQueue::EnqueueJob(IJob* pJob)
 	{
 		if(m_jobQueue.Full()) {
 			return false;
 		}
 
-		m_jobQueue.PushBack(jobPtr);
+		m_jobQueue.PushBack(pJob);
 
 		return true;
 	}

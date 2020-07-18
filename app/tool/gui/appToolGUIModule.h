@@ -22,7 +22,7 @@ namespace app
 	*/
 	class CToolGUIModule : public ng::CNonInstantiable
 	{
-		friend class CGame;
+		friend class CApplication;
 
 	public:
 		/*!

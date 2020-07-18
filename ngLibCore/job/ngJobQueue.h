@@ -8,7 +8,6 @@
 #ifndef __NG_CORE_JOB_QUEUE_H__
 #define __NG_CORE_JOB_QUEUE_H__
 
-#include "ngLibCore/memory/pointer/ngSharedPtr.h"
 #include "ngLibCore/container/queue/ngFixedQueue.h"
 
 namespace ng
@@ -50,10 +49,10 @@ namespace ng
 		* @brief					ジョブ追加
 		* @return					成否
 		*/
-		bool AddJob(CSharedPtr<IJob>& jobPtr);
+		bool EnqueueJob(IJob* pJob);
 
 	private:
-		CFixedQueue<CSharedPtr<IJob>> m_jobQueue;	//!< ジョブのキュー
+		CFixedQueue<IJob*> m_jobQueue;	//!< ジョブのキュー
 	};
 
 }	// namespace ng

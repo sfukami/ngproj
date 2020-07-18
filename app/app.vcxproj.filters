@@ -50,13 +50,28 @@
     <Filter Include="ソース ファイル\tool\gui">
       <UniqueIdentifier>{7914bf5e-70c5-44ce-969b-52622950043c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\game\actor">
+      <UniqueIdentifier>{f07e4fc5-d834-4288-a6a9-82ae2cecfd5e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\game\actor\player">
+      <UniqueIdentifier>{898e56c0-664d-4b66-ae1d-250895eef89d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\game\world">
+      <UniqueIdentifier>{dd767942-b89d-4022-85c4-afce4dd8bc78}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\application">
+      <UniqueIdentifier>{90c43ec9-8172-4410-bff3-629c5d5cacd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\game\job">
+      <UniqueIdentifier>{ebb189d0-c80a-4968-9bbe-9ec439b7f9fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\game\common">
+      <UniqueIdentifier>{3890cdb0-5e76-4854-bc57-68bd34e0df0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>ソース ファイル</Filter>
-    </ClCompile>
-    <ClCompile Include="game\appGame.cpp">
-      <Filter>ソース ファイル\game</Filter>
     </ClCompile>
     <ClCompile Include="graphic\appGraphic.cpp">
       <Filter>ソース ファイル\graphic</Filter>
@@ -103,9 +118,6 @@
     <ClCompile Include="job\appJobManager.cpp">
       <Filter>ソース ファイル\job</Filter>
     </ClCompile>
-    <ClCompile Include="job\appJobModule.cpp">
-      <Filter>ソース ファイル\job</Filter>
-    </ClCompile>
     <ClCompile Include="tool\gui\appToolGUI.cpp">
       <Filter>ソース ファイル\tool\gui</Filter>
     </ClCompile>
@@ -124,11 +136,44 @@
     <ClCompile Include="graphic\pipeline\appGraphicPipelineDefault.cpp">
       <Filter>ソース ファイル\graphic\pipeline</Filter>
     </ClCompile>
+    <ClCompile Include="game\actor\appGameActor.cpp">
+      <Filter>ソース ファイル\game\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="game\actor\player\appGameActorPlayer.cpp">
+      <Filter>ソース ファイル\game\actor\player</Filter>
+    </ClCompile>
+    <ClCompile Include="game\world\appGameWorld.cpp">
+      <Filter>ソース ファイル\game\world</Filter>
+    </ClCompile>
+    <ClCompile Include="application\appApplication.cpp">
+      <Filter>ソース ファイル\application</Filter>
+    </ClCompile>
+    <ClCompile Include="game\appGame.cpp">
+      <Filter>ソース ファイル\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneTestGame.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
+    <ClCompile Include="game\job\appGameJobManager.cpp">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClCompile>
+    <ClCompile Include="game\job\appGameJobQueueSize.cpp">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClCompile>
+    <ClCompile Include="game\appGameModule.cpp">
+      <Filter>ソース ファイル\game</Filter>
+    </ClCompile>
+    <ClCompile Include="game\job\appGameJob.cpp">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClCompile>
+    <ClCompile Include="game\job\appGameJobUtil.cpp">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClCompile>
+    <ClCompile Include="game\actor\appGameActorMacro.cpp">
+      <Filter>ソース ファイル\game\actor</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="game\appGame.h">
-      <Filter>ソース ファイル\game</Filter>
-    </ClInclude>
     <ClInclude Include="common\appCommon.h">
       <Filter>ソース ファイル\common</Filter>
     </ClInclude>
@@ -189,12 +234,6 @@
     <ClInclude Include="job\appJobManager.h">
       <Filter>ソース ファイル\job</Filter>
     </ClInclude>
-    <ClInclude Include="job\appJobModule.h">
-      <Filter>ソース ファイル\job</Filter>
-    </ClInclude>
-    <ClInclude Include="job\appJobProcess.h">
-      <Filter>ソース ファイル\job</Filter>
-    </ClInclude>
     <ClInclude Include="memory\appMemoryUtil.h">
       <Filter>ソース ファイル\memory</Filter>
     </ClInclude>
@@ -218,6 +257,54 @@
     </ClInclude>
     <ClInclude Include="graphic\pipeline\appGraphicPipelineDefault.h">
       <Filter>ソース ファイル\graphic\pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\appGameActor.h">
+      <Filter>ソース ファイル\game\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\player\appGameActorPlayer.h">
+      <Filter>ソース ファイル\game\actor\player</Filter>
+    </ClInclude>
+    <ClInclude Include="game\world\appGameWorld.h">
+      <Filter>ソース ファイル\game\world</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\appGameActorType.h">
+      <Filter>ソース ファイル\game\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="application\appApplication.h">
+      <Filter>ソース ファイル\application</Filter>
+    </ClInclude>
+    <ClInclude Include="game\appGame.h">
+      <Filter>ソース ファイル\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneTestGame.h">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClInclude>
+    <ClInclude Include="game\job\appGameJobManager.h">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClInclude>
+    <ClInclude Include="game\job\appGameJobType.h">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClInclude>
+    <ClInclude Include="game\job\appGameJobQueueSize.h">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClInclude>
+    <ClInclude Include="game\appGameModule.h">
+      <Filter>ソース ファイル\game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\job\appGameJob.h">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClInclude>
+    <ClInclude Include="game\common\appGameCommon.h">
+      <Filter>ソース ファイル\game\common</Filter>
+    </ClInclude>
+    <ClInclude Include="game\job\appGameJobAction.h">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClInclude>
+    <ClInclude Include="game\job\appGameJobUtil.h">
+      <Filter>ソース ファイル\game\job</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\appGameActorMacro.h">
+      <Filter>ソース ファイル\game\actor</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

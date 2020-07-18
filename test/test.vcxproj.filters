@@ -47,17 +47,20 @@
     <Filter Include="ソース ファイル\testcode\geometry">
       <UniqueIdentifier>{e8220c97-1dfd-4ab0-8648-ee754da96a70}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\testcode\memory">
-      <UniqueIdentifier>{89806ef6-c676-4039-9521-da245ee717dc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\testcode\memory\pointer">
-      <UniqueIdentifier>{82325898-55ef-4470-a578-021ac3ede483}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ソース ファイル\testcode\job">
-      <UniqueIdentifier>{f8baa760-0cf9-47c7-b8e4-013890e92184}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\testcode\action">
+      <UniqueIdentifier>{7b6ad542-8051-4fde-9905-f38382aa00d5}</UniqueIdentifier>
     </Filter>
     <Filter Include="ソース ファイル\testcode\functor">
-      <UniqueIdentifier>{ec74333f-a60b-4c0d-8525-7c5287cbdee5}</UniqueIdentifier>
+      <UniqueIdentifier>{7e759dde-2e28-4c33-bceb-e112789fbda3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\testcode\job">
+      <UniqueIdentifier>{5db1d437-34aa-4a31-92d0-e2725fe60ad4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\testcode\memory">
+      <UniqueIdentifier>{d0000a62-7809-42ff-b5a9-5d14579d0521}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\testcode\memory\pointer">
+      <UniqueIdentifier>{c4522881-40ab-43d6-9730-c9a6c5959e5c}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -111,17 +114,20 @@
     <ClCompile Include="testcode\geometry\testVector.cpp">
       <Filter>ソース ファイル\testcode\geometry</Filter>
     </ClCompile>
-    <ClCompile Include="memory\pointer\testUniquePtr.cpp">
-      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    <ClCompile Include="testcode\action\testAction.cpp">
+      <Filter>ソース ファイル\testcode\action</Filter>
     </ClCompile>
-    <ClCompile Include="memory\pointer\testSharedPtr.cpp">
-      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    <ClCompile Include="testcode\functor\testFunctor.cpp">
+      <Filter>ソース ファイル\testcode\functor</Filter>
     </ClCompile>
-    <ClCompile Include="job\testJobQueue.cpp">
+    <ClCompile Include="testcode\job\testJobQueue.cpp">
       <Filter>ソース ファイル\testcode\job</Filter>
     </ClCompile>
-    <ClCompile Include="functor\testFunctor.cpp">
-      <Filter>ソース ファイル\testcode\functor</Filter>
+    <ClCompile Include="testcode\memory\pointer\testSharedPtr.cpp">
+      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\memory\pointer\testUniquePtr.cpp">
+      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

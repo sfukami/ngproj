@@ -27,7 +27,7 @@ namespace app
 	*/
 	class CMemoryModule : public ng::CNonInstantiable
 	{
-		friend class CGame;
+		friend class CApplication;
 
 	public:
 		/*!

@@ -80,4 +80,14 @@
 	NG_ENUM_COMPARE_OP_GLOBAL(_T, ==); \
 	NG_ENUM_COMPARE_OP_GLOBAL(_T, !=);
 
+/*!
+* @brief					指定enum型の範囲for文用の関数を定義
+*/
+#define NG_ENUM_RANGE_BASED_FOR_FUNC(_T, _begin, _end) \
+	NG_STATIC_ASSERT_ENUM_TYPE(_T); \
+	NG_INLINE _T begin(_T) { return _T::_begin; } \
+	NG_INLINE _T end(_T) { return _T::_end; } \
+	NG_INLINE _T operator*(_T t) { return t; } \
+	NG_INLINE _T operator++(_T& t) { return t = _T(NG_UNDERLYING_TYPE(_T)(t) + 1); }
+
 #endif	// __NG_CORE_ENUM_MACRO_H__

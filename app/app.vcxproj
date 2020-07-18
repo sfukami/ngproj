@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -19,7 +19,17 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="application\appApplication.cpp" />
+    <ClCompile Include="game\actor\appGameActor.cpp" />
+    <ClCompile Include="game\actor\appGameActorMacro.cpp" />
+    <ClCompile Include="game\actor\player\appGameActorPlayer.cpp" />
     <ClCompile Include="game\appGame.cpp" />
+    <ClCompile Include="game\appGameModule.cpp" />
+    <ClCompile Include="game\job\appGameJob.cpp" />
+    <ClCompile Include="game\job\appGameJobManager.cpp" />
+    <ClCompile Include="game\job\appGameJobQueueSize.cpp" />
+    <ClCompile Include="game\job\appGameJobUtil.cpp" />
+    <ClCompile Include="game\world\appGameWorld.cpp" />
     <ClCompile Include="graphic\appGraphic.cpp" />
     <ClCompile Include="graphic\appGraphicModule.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp" />
@@ -32,7 +42,6 @@
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="input\appInputModule.cpp" />
     <ClCompile Include="job\appJobManager.cpp" />
-    <ClCompile Include="job\appJobModule.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory\appApplicationMemory.cpp" />
     <ClCompile Include="memory\appMemoryModule.cpp" />
@@ -40,13 +49,28 @@
     <ClCompile Include="scene\appSceneModule.cpp" />
     <ClCompile Include="scene\root\appSceneRoot.cpp" />
     <ClCompile Include="scene\test\appSceneTest.cpp" />
+    <ClCompile Include="scene\test\appSceneTestGame.cpp" />
     <ClCompile Include="scene\test\appSceneTestImGui.cpp" />
     <ClCompile Include="tool\gui\appToolGUI.cpp" />
     <ClCompile Include="tool\gui\appToolGUIModule.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="application\appApplication.h" />
     <ClInclude Include="common\appCommon.h" />
+    <ClInclude Include="game\actor\appGameActor.h" />
+    <ClInclude Include="game\actor\appGameActorMacro.h" />
+    <ClInclude Include="game\actor\appGameActorType.h" />
+    <ClInclude Include="game\actor\player\appGameActorPlayer.h" />
     <ClInclude Include="game\appGame.h" />
+    <ClInclude Include="game\appGameModule.h" />
+    <ClInclude Include="game\common\appGameCommon.h" />
+    <ClInclude Include="game\job\appGameJob.h" />
+    <ClInclude Include="game\job\appGameJobAction.h" />
+    <ClInclude Include="game\job\appGameJobQueueSize.h" />
+    <ClInclude Include="game\job\appGameJobType.h" />
+    <ClInclude Include="game\job\appGameJobManager.h" />
+    <ClInclude Include="game\job\appGameJobUtil.h" />
+    <ClInclude Include="game\world\appGameWorld.h" />
     <ClInclude Include="graphic\appGraphic.h" />
     <ClInclude Include="graphic\appGraphicModule.h" />
     <ClInclude Include="graphic\command\appGraphicCommandListId.h" />
@@ -60,8 +84,6 @@
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="input\appInputModule.h" />
     <ClInclude Include="job\appJobManager.h" />
-    <ClInclude Include="job\appJobModule.h" />
-    <ClInclude Include="job\appJobProcess.h" />
     <ClInclude Include="memory\appApplicationMemory.h" />
     <ClInclude Include="memory\appMemoryAllocatorId.h" />
     <ClInclude Include="memory\appMemoryModule.h" />
@@ -73,6 +95,7 @@
     <ClInclude Include="scene\appSceneModule.h" />
     <ClInclude Include="scene\root\appSceneRoot.h" />
     <ClInclude Include="scene\test\appSceneTest.h" />
+    <ClInclude Include="scene\test\appSceneTestGame.h" />
     <ClInclude Include="scene\test\appSceneTestImGui.h" />
     <ClInclude Include="tool\gui\appToolGUI.h" />
     <ClInclude Include="tool\gui\appToolGUIModule.h" />

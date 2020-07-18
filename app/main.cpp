@@ -1,30 +1,30 @@
-/*!
+ï»¿/*!
 * @file		main.cpp
-* @brief	ƒGƒ“ƒgƒŠ
+* @brief	ã‚¨ãƒ³ãƒˆãƒª
 * @date		2016-08-22
 * @author	s.fukami
 */
 
 #include <Windows.h>
-#include "game/appGame.h"
+#include "application/appApplication.h"
 
-// ƒGƒ“ƒgƒŠ
+/*! ã‚¨ãƒ³ãƒˆãƒª */
 INT WINAPI WinMain(HINSTANCE hInst, HINSTANCE hPrevInst, LPSTR szStr, INT iCmdShow)
 {
 	INT retCode = 0;
 
-	app::CGame game;
+	app::CApplication application;
 
-	// ‰Šú‰»
-	if (!game.Initialize(hInst)) {
+	// åˆæœŸåŒ–
+	if (!application.Initialize(hInst)) {
 		return retCode;
 	}
 
-	// ƒƒCƒ“ƒ‹[ƒv
-	retCode = game.MainLoop();
+	// ãƒ¡ã‚¤ãƒ³ãƒ«ãƒ¼ãƒ—
+	retCode = application.MainLoop();
 
-	// I—¹ˆ—
-	game.Finalize();
+	// çµ‚äº†å‡¦ç†
+	application.Finalize();
 
 	return retCode;
 }

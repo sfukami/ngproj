@@ -137,6 +137,12 @@
     <Filter Include="ソース ファイル\functor">
       <UniqueIdentifier>{e3e36405-c8f5-44e9-b37b-9b44903477ed}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\action">
+      <UniqueIdentifier>{4ddec615-2479-4915-9084-6fe273a2eb91}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\tuple">
+      <UniqueIdentifier>{2a9b2c46-7808-4321-bd00-08e81433bae6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -423,6 +429,12 @@
     </ClInclude>
     <ClInclude Include="functor\ngFunctor.h">
       <Filter>ソース ファイル\functor</Filter>
+    </ClInclude>
+    <ClInclude Include="action\ngAction.h">
+      <Filter>ソース ファイル\action</Filter>
+    </ClInclude>
+    <ClInclude Include="tuple\ngTupleArgs.h">
+      <Filter>ソース ファイル\tuple</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

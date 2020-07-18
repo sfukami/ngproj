@@ -5,12 +5,12 @@
 * @author	s.fukami
 */
 
-#include "ngLibCore/memory/pointer/ngSharedPtr.h"
 #include "appJobManager.h"
 
 namespace app
 {
 	CJobManager::CJobManager()
+		: m_isInit(false)
 	{
 	}
 
@@ -18,50 +18,74 @@ namespace app
 	{
 	}
 
-	bool CJobManager::Initialize(ng::u32 jobMax, ng::IMemoryAllocator& alloc)
+	bool CJobManager::Initialize(
+		unsigned int slotMax
+		, const unsigned int jobMaxPerSlot[]
+		, ng::IMemoryAllocator& alloc
+		)
 	{
-		for(ng::size_type i = 0; i < m_jobQueueArr.Size(); i++)
+		NG_ERRCODE err = m_jobQueueArr.Initialize(slotMax, alloc);
+		if(NG_FAILED(err)) {
+			NG_ERRLOG_C("JobManager", err, "ジョブキュー配列の初期化に失敗しました.");
+			return false;
+		}
+
+		for(unsigned int i = 0; i < slotMax; i++)
 		{
-			NG_ERRCODE err = m_jobQueueArr[i].Initialize(jobMax, alloc);
-			if(NG_FAILED(err)) {
+			unsigned int jobMax = jobMaxPerSlot[i];
+			ng::CJobQueue& jobQueue = m_jobQueueArr[i];
+
+			if(NG_FAILED(err = jobQueue.Initialize(jobMax, alloc))) {
 				NG_ERRLOG_C("JobManager", err, "ジョブキューの初期化に失敗しました.");
+				Finalize();
 				return false;
 			}
 		}
 
+		m_isInit = true;
+
 		return true;
 	}
 
-	bool CJobManager::AddJob(
-		ng::CSharedPtr<ng::IJob>& jobPtr,
-		eJobProcess jobProc
-		)
+	bool CJobManager::EnqueueJob(unsigned int slot, ng::IJob* pJob)
 	{
-		ng::CJobQueue& jobQueue = _getJobQueue(jobProc);
+		NG_ASSERT(_isInit());
 
-		return jobQueue.AddJob(jobPtr);
+		return _getJobQueue(slot).EnqueueJob(pJob);
 	}
-
-	void CJobManager::ExecuteJob(eJobProcess jobProc)
+	void CJobManager::ExecuteJob(unsigned int slot)
 	{
-		ng::CJobQueue& jobQueue = _getJobQueue(jobProc);
+		NG_ASSERT(_isInit());
 
-		jobQueue.Execute();
+		_getJobQueue(slot).Execute();
 	}
-
 	void CJobManager::Finalize()
 	{
 		for(ng::size_type i = 0; i < m_jobQueueArr.Size(); i++)
 		{
-			m_jobQueueArr[i].Finalize();
+			_getJobQueue(i).Finalize();
 		}
+
+		m_jobQueueArr.Finalize();
+
+		m_isInit = false;
 	}
 
-	ng::CJobQueue& CJobManager::_getJobQueue(eJobProcess jobProc)
+	bool CJobManager::_isInit() const
 	{
-		NG_ASSERT(jobProc < eJobProcess::NUM);
-
-		return m_jobQueueArr[ static_cast<int>(jobProc) ];
+		return m_isInit;
 	}
-	
+
+	ng::CJobQueue& CJobManager::_getJobQueue(unsigned int slot)
+	{
+		NG_ASSERT(_isInit());
+		NG_ASSERT(slot < m_jobQueueArr.Size());
+
+		return m_jobQueueArr[slot];
+	}
+	const ng::CJobQueue& CJobManager::_getJobQueue(unsigned int slot) const
+	{
+		return const_cast<CJobManager*>(this)->_getJobQueue(slot);
+	}
+
 }	// namespace app

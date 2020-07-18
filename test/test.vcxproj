@@ -175,19 +175,20 @@
     <ClInclude Include="setup\testSetup.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="functor\testFunctor.cpp" />
-    <ClCompile Include="job\testJobQueue.cpp" />
-    <ClCompile Include="memory\pointer\testSharedPtr.cpp" />
-    <ClCompile Include="memory\pointer\testUniquePtr.cpp" />
     <ClCompile Include="setup\testSetup.cpp" />
+    <ClCompile Include="testcode\action\testAction.cpp" />
     <ClCompile Include="testcode\container\array\testFixedArray.cpp" />
     <ClCompile Include="testcode\container\list\testFixedList.cpp" />
     <ClCompile Include="testcode\container\list\testIntrusiveList.cpp" />
     <ClCompile Include="testcode\container\queue\testFixedQueue.cpp" />
     <ClCompile Include="testcode\container\stack\testFixedStack.cpp" />
     <ClCompile Include="testcode\debug\testAssert.cpp" />
+    <ClCompile Include="testcode\functor\testFunctor.cpp" />
     <ClCompile Include="testcode\geometry\testVector.cpp" />
     <ClCompile Include="testcode\io\console\testConsole.cpp" />
+    <ClCompile Include="testcode\job\testJobQueue.cpp" />
+    <ClCompile Include="testcode\memory\pointer\testSharedPtr.cpp" />
+    <ClCompile Include="testcode\memory\pointer\testUniquePtr.cpp" />
     <ClCompile Include="testcode\test\testUnitTest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

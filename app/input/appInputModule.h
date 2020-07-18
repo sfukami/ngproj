@@ -25,7 +25,7 @@ namespace app
 	*/
 	class CInputModule : public ng::CNonInstantiable
 	{
-		friend class CGame;
+		friend class CApplication;
 
 	public:
 		/*!
