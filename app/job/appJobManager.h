@@ -10,13 +10,11 @@
 
 #include "ngLibCore/job/ngJobQueue.h"
 #include "ngLibCore/container/array/ngFixedArray.h"
-#include "appJobProcess.h"
 
 namespace ng
 {
 	class IMemoryAllocator;
 	class IJob;
-	template <class T> class CSharedPtr;
 }
 
 namespace app
@@ -32,40 +30,47 @@ namespace app
 
 		/*!
 		* @brief					初期化
-		* @param jobMax				ジョブの最大数
+		* @param slotMax			スロット最大数
+		* @param jobMaxPerSlot		スロット毎のジョブ最大数
 		* @param alloc				使用するメモリアロケータ
 		* @return					成否
 		*/
-		bool Initialize(ng::u32 jobMax, ng::IMemoryAllocator& alloc);
-
-		/*!
-		* @brief					ジョブ追加
-		* @param jobPtr				追加するジョブ
-		* @param jobProc			ジョブ処理定義
-		* @return					成否
-		*/
-		bool AddJob(
-			ng::CSharedPtr<ng::IJob>& jobPtr,
-			eJobProcess jobProc
+		bool Initialize(
+			unsigned int slotMax
+			, const unsigned int jobMaxPerSlot[]
+			, ng::IMemoryAllocator& alloc
 			);
 
 		/*!
 		* @brief					ジョブ追加
-		* @param jobProc			ジョブ処理定義
+		* @param slot				対象のスロット
+		* @param pJob				追加するジョブ
+		* @return					成否
 		*/
-		void ExecuteJob(eJobProcess jobProc);
+		bool EnqueueJob(unsigned int slot, ng::IJob* pJob);
 
 		/*!
-		* @brief				終了処理
+		* @brief					ジョブ実行
+		* @param slot				対象のスロット
+		*/
+		void ExecuteJob(unsigned int slot);
+
+		/*!
+		* @brief					終了処理
 		*/
 		void Finalize();
 
 	private:
+		/*! 初期化済みか */
+		bool _isInit() const;
+		
 		/*! ジョブキュー取得 */
-		ng::CJobQueue& _getJobQueue(eJobProcess jobProc);
+		ng::CJobQueue& _getJobQueue(unsigned int slot);
+		const ng::CJobQueue& _getJobQueue(unsigned int slot) const;
 
 	private:
-		ng::CFixedArray<ng::CJobQueue, static_cast<int>(eJobProcess::NUM)> m_jobQueueArr;	//!< ジョブキューの配列
+		ng::CFixedArray<ng::CJobQueue> m_jobQueueArr;	//!< ジョブキューの配列
+		bool m_isInit;	//!< 初期化済みか
 	};
 
 }	// namespace app

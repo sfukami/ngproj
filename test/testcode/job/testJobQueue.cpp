@@ -49,9 +49,9 @@ namespace test
 			CJob* pJob2 = NG_NEW(alloc) CJob(2);
 			CJob* pJob3 = NG_NEW(alloc) CJob(3);
 			
-			jobQueue.AddJob(pJob1);
-			jobQueue.AddJob(pJob2);
-			jobQueue.AddJob(pJob3);
+			jobQueue.EnqueueJob(pJob1);
+			jobQueue.EnqueueJob(pJob2);
+			jobQueue.EnqueueJob(pJob3);
 
 			// ジョブ実行
 			jobQueue.Execute();

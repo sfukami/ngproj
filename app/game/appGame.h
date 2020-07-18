@@ -1,68 +1,70 @@
 ﻿/*!
 * @file		appGame.h
-* @brief	ゲームメイン
-* @date		2016-08-22
+* @brief	ゲーム
+* @date		2020-07-16
 * @author	s.fukami
 */
 
 #ifndef __APP_GAME_H__
 #define __APP_GAME_H__
 
-#include <Windows.h>
-#include "ngLibApp/window/ngWindow.h"
-#include "../memory/appApplicationMemory.h"
-#include "../input/appInput.h"
-#include "../graphic/appGraphic.h"
-#include "../scene/appSceneManager.h"
-#include "../job/appJobManager.h"
-#include "../tool/gui/appToolGUI.h"
+#include "world/appGameWorld.h"
+#include "job/appGameJobManager.h"
+
+namespace app
+{
+	class CGameJob;
+}
 
 namespace app
 {
 	/*!
-	* @brief					ゲームメイン
+	* @brief					ゲーム
 	*/
 	class CGame
 	{
-		friend class GameModule;
-
 	public:
 		CGame();
 		~CGame();
 
 		/*!
 		* @brief					初期化
-		* @param hInst				インスタンスハンドル
-		* @return					成否
 		*/
-		bool Initialize(HINSTANCE hInst);
+		bool Initialize();
 
 		/*!
-		* @brief					メインループ
-		* @return					リターンコード
+		* @brief					更新
+		* @param deltaTime			フレーム更新間隔
 		*/
-		int MainLoop();
+		void Update(float deltaTime);
+
+		/*!
+		* @brief					描画
+		*/
+		void Render();
 
 		/*!
 		* @brief					終了処理
 		*/
 		void Finalize();
 
-	private:
-		/*! 更新処理 */
-		void _update();
+		/*!
+		* @brief					ゲームアクター追加
+		* @param pActor				追加するアクター
+		*/
+		void AddActor(CGameActor* pActor);
 
-		/*! 描画処理 */
-		void _render();
+		/*!
+		* @brief					ゲームジョブ追加
+		* @param jobType			ゲームジョブ種類
+		* @param pJob				追加するジョブ
+		* @return					成否
+		*/
+		bool EnqueueJob(eGameJobType jobType, CGameJob* pJob);
 
 	private:
-		ng::CWindow m_window;		//!< ウィンドウ
-		CApplicationMemory m_appMem;	//!< アプリケーションメモリ
-		CInput m_input;				//!< 入力
-		CGraphic m_graphic;			//!< グラフィック
-		CSceneManager m_sceneMngr;	//!< シーン管理
-		CJobManager m_jobMngr;		//!< ジョブ管理
-		CToolGUI m_toolGUI;			//!< ツールGUI
+		CGameWorld m_world;		//!< ゲームワールド
+		CGameJobManager m_jobMngr;	//!< ジョブ管理
 	};
 
 }	// namespace app

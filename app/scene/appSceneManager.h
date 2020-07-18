@@ -10,6 +10,7 @@
 
 #include "ngLibCore/memory/pointer/ngSharedPtr.h"
 #include "ngLibCore/container/array/ngFixedArray.h"
+#include "app/job/appJobManager.h"
 
 namespace ng
 {
@@ -56,6 +57,18 @@ namespace app
 		void Finalize();
 
 		/*!
+		* @brief					シーン切り替えリクエスト
+		* @param index				シーンのインデックス
+		* @param scenePtr			登録するシーン
+		*/
+		void RequestChangeScene(unsigned int index, ng::CSharedPtr<IScene>& scenePtr);
+
+		/*!
+		* @brief					シーン切り替えリクエスト実行
+		*/
+		void ExecuteChangeScene();
+		
+		/*!
 		* @brief					シーン登録
 		* @param index				シーンのインデックス
 		* @param scenePtr			登録するシーン
@@ -68,7 +81,7 @@ namespace app
 		* @param index				シーンのインデックス
 		*/
 		void DeleteScene(unsigned int index);
-		
+
 	private:
 		/*! 初期化済みか */
 		bool _isInit() const;
@@ -76,6 +89,8 @@ namespace app
 	private:
 		ng::CFixedArray<ng::CSharedPtr<IScene> > m_sceneArr;	//!< シーン配列
 		bool m_isInit;	//!< 初期化済みか
+
+		CJobManager m_jobMngr;	//!< ジョブ管理
 	};
 
 }	// namespace app

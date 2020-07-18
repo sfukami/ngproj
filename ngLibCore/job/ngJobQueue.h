@@ -49,7 +49,7 @@ namespace ng
 		* @brief					ジョブ追加
 		* @return					成否
 		*/
-		bool AddJob(IJob* pJob);
+		bool EnqueueJob(IJob* pJob);
 
 	private:
 		CFixedQueue<IJob*> m_jobQueue;	//!< ジョブのキュー

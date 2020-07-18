@@ -5,11 +5,21 @@
 * @author	s.fukami
 */
 
+#include "ngLibCore/job/ngJob.h"
 #include "appSceneManager.h"
 #include "appScene.h"
+#include "app/memory/appMemoryUtil.h"
 
 namespace app
 {
+	//! ジョブスロット
+	enum eJobSlot
+	{
+		CHANGE_SCENE,	//!< シーン切り替え
+
+		NUM
+	};
+
 	CSceneManager::CSceneManager()
 		: m_isInit(false)
 	{
@@ -26,9 +36,19 @@ namespace app
 
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
+		// シーン配列初期化
 		if(NG_FAILED(err = m_sceneArr.Initialize(sceneMax, alloc))) {
-			NG_ERRLOG_C("SceneManager", err, "シーン管理の初期化に失敗しました.");
+			NG_ERRLOG_C("SceneManager", err, "シーン配列の初期化に失敗しました.");
 			return false;
+		}
+
+		// ジョブ管理初期化
+		{
+			unsigned int jobMax[] = {1};
+			if(!m_jobMngr.Initialize(NG_ARRAY_SIZE(jobMax), jobMax, alloc)) {
+				NG_ERRLOG("SceneManager", "ジョブ管理の初期化に失敗しました.");
+				return false;
+			}
 		}
 
 		m_isInit = true;
@@ -70,8 +90,50 @@ namespace app
 		}
 
 		m_sceneArr.Finalize();
+		m_jobMngr.Finalize();
 
 		m_isInit = false;
+	}
+
+	void CSceneManager::RequestChangeScene(unsigned int index, ng::CSharedPtr<IScene>& scenePtr)
+	{
+		if(!_isInit()) return;
+		if(!scenePtr) return;
+
+		NG_ASSERT(index < m_sceneArr.Size());
+
+		/*! シーン切り替えジョブ */
+		class CJobChangeScene : public ng::IJob
+		{
+		public:
+			CJobChangeScene(CSceneManager* pSceneMngr, unsigned int index, ng::CSharedPtr<IScene>& scenePtr)
+				: m_pSceneMngr(pSceneMngr), m_index(index), m_scenePtr(scenePtr)
+			{ }
+			void Execute()
+			{
+				m_pSceneMngr->RegisterScene(m_index, m_scenePtr);
+				// ※スタックアロケータを使用する前提
+				// デストラクタが呼ばれないため、明示的に解放する
+				m_scenePtr.reset();
+			}
+
+		private:
+			CSceneManager* m_pSceneMngr;
+			unsigned int m_index;
+			ng::CSharedPtr<IScene> m_scenePtr;
+		};
+
+		// シーン切り替えジョブ追加
+		m_jobMngr.EnqueueJob(eJobSlot::CHANGE_SCENE, 
+			NG_NEW(APP_MEMALLOC_WORK) CJobChangeScene(this, index, scenePtr)
+			);
+	}
+
+	void CSceneManager::ExecuteChangeScene()
+	{
+		if(!_isInit()) return;
+
+		m_jobMngr.ExecuteJob(eJobSlot::CHANGE_SCENE);
 	}
 
 	bool CSceneManager::RegisterScene(unsigned int index, ng::CSharedPtr<IScene>& scenePtr)

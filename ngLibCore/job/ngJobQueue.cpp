@@ -45,7 +45,7 @@ namespace ng
 		m_jobQueue.Finalize();
 	}
 
-	bool CJobQueue::AddJob(IJob* pJob)
+	bool CJobQueue::EnqueueJob(IJob* pJob)
 	{
 		if(m_jobQueue.Full()) {
 			return false;
