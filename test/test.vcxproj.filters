@@ -62,6 +62,9 @@
     <Filter Include="ソース ファイル\testcode\memory\pointer">
       <UniqueIdentifier>{c4522881-40ab-43d6-9730-c9a6c5959e5c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\state">
+      <UniqueIdentifier>{1c2214bd-7863-4c20-a10b-92ab85e2a976}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -128,6 +131,9 @@
     </ClCompile>
     <ClCompile Include="testcode\memory\pointer\testUniquePtr.cpp">
       <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\state\testStateMachine.cpp">
+      <Filter>ソース ファイル\testcode\state</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

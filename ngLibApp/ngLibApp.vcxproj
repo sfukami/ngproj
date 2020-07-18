@@ -51,6 +51,7 @@
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngDefine.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
+    <ClInclude Include="state\ngStateMachine.h" />
     <ClInclude Include="ui\imgui\imgui_src\imconfig.h" />
     <ClInclude Include="ui\imgui\imgui_src\imgui.h" />
     <ClInclude Include="ui\imgui\imgui_src\imgui_impl_dx12.h" />

@@ -35,6 +35,9 @@
     <Filter Include="ソース ファイル\ui\imgui\imgui_src">
       <UniqueIdentifier>{f2782593-d567-48f7-bae8-204a7496ef51}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\state">
+      <UniqueIdentifier>{a623d65c-1f0d-4ca4-8a5f-fa627d50a1ff}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -146,6 +149,9 @@
     </ClInclude>
     <ClInclude Include="ui\imgui\ngImGui.h">
       <Filter>ソース ファイル\ui\imgui</Filter>
+    </ClInclude>
+    <ClInclude Include="state\ngStateMachine.h">
+      <Filter>ソース ファイル\state</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
