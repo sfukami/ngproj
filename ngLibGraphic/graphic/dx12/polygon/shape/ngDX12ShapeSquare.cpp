@@ -69,6 +69,11 @@ namespace ng
 		m_polygon.Destroy();
 	}
 
+	bool CDX12ShapeSquare::IsValid() const
+	{
+		return m_polygon.IsValid();
+	}
+
 	const DX12VertexLayout& CDX12ShapeSquare::GetVertexLayout() const
 	{
 		return DX12GetVertexLayout(m_isSprite ? eVertexLayout::SPRITE : eVertexLayout::STATIC);

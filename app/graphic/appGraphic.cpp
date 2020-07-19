@@ -7,6 +7,7 @@
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appGraphic.h"
+#include "appGraphicDefine.h"
 #include "command/appGraphicCommandListId.h"
 #include "pipeline/appGraphicPipeline.h"
 
@@ -30,9 +31,6 @@ namespace app
 	{
 		NG_ASSERT(!_isInit());
 
-		// シングルトンインスタンス生成
-		ng::CGraphicManager::CreateInstance();
-
 		// DX12グラフィック セットアップ
 		{
 			ng::CDX12Graphic::CreateParam param;
@@ -46,6 +44,17 @@ namespace app
 			
 			if(NG_FAILED(m_dx12Graphic.Create(param))) {
 				NG_ERRLOG("Graphic", "DirectX12グラフィックの生成に失敗しました.");
+				return false;
+			}
+		}
+
+		// シングルトンインスタンス生成
+		ng::CGraphicManager::CreateInstance();
+
+		// グラフィック管理初期化
+		{
+			if(NG_FAILED(ng::CGraphicManager::GetInstance().Initialize(APP_GRAPHIC_RENDER_COMMAND_MAX))) {
+				NG_ERRLOG("Graphic", "グラフィック管理の初期化に失敗しました.");
 				return false;
 			}
 		}

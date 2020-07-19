@@ -16,7 +16,7 @@
 #include "ngLibGraphic/graphic/dx12/texture/ngDX12TextureLoader.h"
 #include "appGraphicPipelineTexture.h"
 #include "app/memory/appMemoryUtil.h"
-#include "../../appGraphicModule.h"
+#include "app/graphic/appGraphicUtil.h"
 #include "../../../input/appInputModule.h"
 
 namespace app
@@ -290,7 +290,7 @@ namespace app
 	void CGraphicPipelineTexture::_execute()
 	{
 		// コマンドリストリセット
-		ng::CDX12CommandList* pCmdList = _getDX12CommandList(eGraphicCommandListId::MAIN);
+		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(eGraphicCommandListId::MAIN);
 		pCmdList->Reset(m_pipelineState);
 
 		// ルートシグネチャ設定

@@ -14,6 +14,7 @@
 namespace app
 {
 	class CGraphicPipeline;
+	class CGameActorPlayerTest;
 }
 
 namespace app
@@ -52,6 +53,8 @@ namespace app
 	private:
 		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 		CGame m_game;	//!< ゲーム
+
+		CGameActorPlayerTest* m_pPlayer;
 	};
 
 }	// namespace app

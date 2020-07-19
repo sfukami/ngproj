@@ -12,10 +12,12 @@
 //test
 #include "app/game/actor/appGameActorMacro.h"
 #include "app/game/actor/player/appGameActorPlayer.h"
+#include "app/game/actor/player/test/appGameActorPlayerTest.h"
 
 namespace app
 {
 	CSceneTestGame::CSceneTestGame()
+		: m_pPlayer(nullptr)
 	{
 	}
 	CSceneTestGame::~CSceneTestGame()
@@ -42,7 +44,9 @@ namespace app
 		}
 
 		//test
-		CGameActorPlayer* pPlayer = APP_CREATE_GAME_ACTOR(CGameActorPlayer());
+		//CGameActorPlayer* pPlayer = APP_CREATE_GAME_ACTOR(CGameActorPlayer());
+		m_pPlayer = APP_CREATE_GAME_ACTOR(CGameActorPlayerTest());
+		m_pPlayer->Create();
 
 		return true;
 	}
@@ -59,6 +63,10 @@ namespace app
 
 	void CSceneTestGame::Finalize()
 	{
+		if(m_pPlayer != nullptr) {
+			m_pPlayer->Destroy();
+		}
+
 		m_game.Finalize();
 		
 		if(m_pPipeline != nullptr) {
