@@ -6,6 +6,7 @@
 */
 
 #include "ngLibCore/common/ngCommon.h"
+#include "ngLibGraphic/render/ngRenderCommand.h"
 #include "ngGraphicManager.h"
 #include "ngGraphic.h"
 
@@ -15,6 +16,7 @@ namespace ng
 
 	CGraphicManager::CGraphicManager()
 		: m_pGraphic(nullptr)
+		, m_isInit(false)
 	{
 	}
 
@@ -33,23 +35,37 @@ namespace ng
 			return ret;
 		}
 
+		m_isInit = true;
+
 		return ret;
 	}
 
 	void CGraphicManager::Finalize()
 	{
 		m_renderSys.Finalize();
+
+		m_isInit = false;
 	}
 
 	void CGraphicManager::AssignGraphic(IGraphic* pGraphic)
 	{
+		NG_ASSERT(_isInit());
 		if(pGraphic == nullptr) return;
 
 		m_pGraphic = pGraphic;
 	}
 
+	void CGraphicManager::AddRenderable(IRenderable& renderable)
+	{
+		NG_ASSERT(_isInit());
+		if(!IsAssigned()) return;
+
+		m_renderSys.AddCommand(renderable);
+	}
+
 	void CGraphicManager::Render(const RenderParam* pParam)
 	{
+		NG_ASSERT(_isInit());
 		if(!IsAssigned()) return;
 
 		m_renderSys.ExecuteCommand(pParam);
@@ -57,6 +73,7 @@ namespace ng
 
 	void CGraphicManager::CleanupRender()
 	{
+		NG_ASSERT(_isInit());
 		if(!IsAssigned()) return;
 
 		m_renderSys.ClearCommand();
@@ -79,6 +96,11 @@ namespace ng
 	const IGraphic* CGraphicManager::GetGraphic() const
 	{
 		return m_pGraphic;
+	}
+
+	bool CGraphicManager::_isInit() const
+	{
+		return m_isInit;
 	}
 
 	CGraphicManager* CGraphicManager::_createInstance()

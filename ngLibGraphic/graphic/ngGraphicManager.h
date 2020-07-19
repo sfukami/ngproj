@@ -14,6 +14,7 @@
 namespace ng
 {
 	class IGraphic;
+	class IRenderable;
 	struct RenderParam;
 }
 
@@ -49,6 +50,11 @@ namespace ng
 		void AssignGraphic(IGraphic* pGraphic);
 
 		/*!
+		* @brief					描画可能オブジェクトを追加
+		*/
+		void AddRenderable(IRenderable& renderable);
+
+		/*!
 		* @brief					描画
 		* @param pParam				描画パラメータ
 		*/
@@ -76,11 +82,17 @@ namespace ng
 		const IGraphic* GetGraphic() const;
 
 	private:
+		/*! 初期化済みか */
+		bool _isInit() const;
+
+	private:
 		static CGraphicManager m_instance;	//!< グラフィック管理 インスタンス
 
 	private:
 		IGraphic* m_pGraphic;	//!< グラフィック
 		CRenderSystem m_renderSys;	//!< 描画システム
+
+		bool m_isInit;	//!< 初期化済みか
 	};
 
 }	// namespace ng

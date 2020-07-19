@@ -14,7 +14,7 @@
 
 namespace ng
 {
-	class CRenderCommand;
+	class IRenderable;
 	struct RenderParam;
 }
 
@@ -43,8 +43,9 @@ namespace ng
 		
 		/*!
 		* @brief					描画コマンド追加
+		* @param renderable			描画可能オブジェクト
 		*/
-		void AddCommand(CRenderCommand& command);
+		void AddCommand(IRenderable& renderable);
 
 		/*!
 		* @brief					描画コマンド実行
@@ -58,6 +59,9 @@ namespace ng
 		void ClearCommand();
 
 	private:
+		/*! 描画コマンドを追加 */
+		void _addRenderCommand(CRenderCommand& command);
+
 		/*! 描画コマンドリストをソート */
 		void _sortCommandList();
 
