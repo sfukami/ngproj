@@ -81,6 +81,7 @@
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelinePolygon.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineShape.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineTexture.h" />
+    <ClInclude Include="graphic\render\appRenderParam.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="input\appInputModule.h" />
     <ClInclude Include="job\appJobManager.h" />

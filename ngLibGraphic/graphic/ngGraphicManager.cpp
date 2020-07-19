@@ -48,11 +48,11 @@ namespace ng
 		m_pGraphic = pGraphic;
 	}
 
-	void CGraphicManager::Render()
+	void CGraphicManager::Render(const RenderParam* pParam)
 	{
 		if(!IsAssigned()) return;
 
-		m_renderSys.ExecuteCommand();
+		m_renderSys.ExecuteCommand(pParam);
 	}
 
 	void CGraphicManager::CleanupRender()

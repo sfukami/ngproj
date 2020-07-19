@@ -10,6 +10,11 @@
 
 namespace ng
 {
+	struct RenderParam;
+}
+
+namespace ng
+{
 	/*!
 	* @brief					描画可能オブジェクト インターフェース
 	*/
@@ -20,10 +25,11 @@ namespace ng
 		virtual ~IRenderable() { }
 
 		/*!
-		* @brief				描画
-		* @note					描画コマンドの発行を行う
+		* @brief					描画
+		* @param pParam				描画パラメータ
+		* @note						描画コマンドの発行を行う
 		*/
-		virtual void Render() = 0;
+		virtual void Render(const RenderParam* pParam) = 0;
 	};
 
 }	// namespace ng

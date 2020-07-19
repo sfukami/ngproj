@@ -15,6 +15,7 @@
 namespace ng
 {
 	class CRenderCommand;
+	struct RenderParam;
 }
 
 namespace ng
@@ -47,8 +48,9 @@ namespace ng
 
 		/*!
 		* @brief					描画コマンド実行
+		* @param pParam				描画パラメータ
 		*/
-		void ExecuteCommand();
+		void ExecuteCommand(const RenderParam* pParam);
 
 		/*!
 		* @brief					描画コマンドクリア

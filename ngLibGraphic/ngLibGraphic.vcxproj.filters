@@ -277,6 +277,9 @@
     <ClInclude Include="graphic\dx12\texture\ngDX12TextureLoaderFlag.h">
       <Filter>ソース ファイル\graphic\dx12\texture</Filter>
     </ClInclude>
+    <ClInclude Include="render\ngRenderParam.h">
+      <Filter>ソース ファイル\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">

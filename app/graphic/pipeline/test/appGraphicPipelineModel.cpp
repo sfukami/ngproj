@@ -5,7 +5,6 @@
 * @author	s.fukami
 */
 
-#include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphicPipelineModel.h"
 #include "../../appGraphicModule.h"
@@ -54,9 +53,6 @@ namespace app
 		// バックバッファクリア
 		const float clearColor[4] = {0.0f, 0.0f, 0.5f, 1.0f};
 		ng::DX12Util::ClearRenderTarget(pCmdList, pRTBackBuffer, clearColor, pDS);
-
-		// 描画コマンド実行
-		ng::CGraphicManager::GetInstance().Render();
 
 		ng::DX12Util::SetRenderTargetToPresent(pCmdList, pRTBackBuffer);
 

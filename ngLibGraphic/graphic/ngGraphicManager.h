@@ -14,6 +14,7 @@
 namespace ng
 {
 	class IGraphic;
+	struct RenderParam;
 }
 
 namespace ng
@@ -49,8 +50,9 @@ namespace ng
 
 		/*!
 		* @brief					描画
+		* @param pParam				描画パラメータ
 		*/
-		void Render();
+		void Render(const RenderParam* pParam);
 
 		/*!
 		* @brief					描画の後処理

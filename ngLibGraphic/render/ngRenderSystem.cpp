@@ -48,7 +48,7 @@ namespace ng
 		m_isSorted = false;
 	}
 
-	void CRenderSystem::ExecuteCommand()
+	void CRenderSystem::ExecuteCommand(const RenderParam* pParam)
 	{
 		// ソート済みでない場合はソート
 		if(!m_isSorted) {
@@ -58,7 +58,7 @@ namespace ng
 		// 全描画コマンド実行
 		for(auto pNode = m_cmdList.Begin(); pNode != m_cmdList.End(); pNode = pNode->GetNext())
 		{
-			pNode->GetElem().Execute();
+			pNode->GetElem().Execute(pParam);
 		}
 	}
 

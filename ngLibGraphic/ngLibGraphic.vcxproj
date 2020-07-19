@@ -256,6 +256,7 @@ call "$(SolutionDir)copy_nglib.bat"</Command>
     <ClInclude Include="projection\ngProjection.h" />
     <ClInclude Include="render\ngRenderable.h" />
     <ClInclude Include="render\ngRenderCommand.h" />
+    <ClInclude Include="render\ngRenderParam.h" />
     <ClInclude Include="render\ngRenderSystem.h" />
   </ItemGroup>
   <ItemGroup>

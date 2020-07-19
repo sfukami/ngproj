@@ -68,6 +68,9 @@
     <Filter Include="ソース ファイル\game\common">
       <UniqueIdentifier>{3890cdb0-5e76-4854-bc57-68bd34e0df0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\render">
+      <UniqueIdentifier>{b02146f2-7fb1-4f8f-9d79-11ac5108883d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -305,6 +308,9 @@
     </ClInclude>
     <ClInclude Include="game\actor\appGameActorMacro.h">
       <Filter>ソース ファイル\game\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\appRenderParam.h">
+      <Filter>ソース ファイル\graphic\render</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

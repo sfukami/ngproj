@@ -13,6 +13,7 @@
 namespace ng
 {
 	class IRenderable;
+	struct RenderParam;
 }
 
 namespace ng
@@ -34,8 +35,9 @@ namespace ng
 
 		/*!
 		* @brief					実行
+		* @param pParam				描画パラメータ
 		*/
-		void Execute();
+		void Execute(const RenderParam* pParam);
 
 	private:
 		IRenderable* m_pRenderable;	//!< 描画可能オブジェクト
