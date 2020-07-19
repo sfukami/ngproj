@@ -143,6 +143,9 @@
     <Filter Include="ソース ファイル\tuple">
       <UniqueIdentifier>{2a9b2c46-7808-4321-bd00-08e81433bae6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\math\crc">
+      <UniqueIdentifier>{9378b44c-56a4-4098-abc7-29b3cbea9375}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -436,6 +439,12 @@
     <ClInclude Include="tuple\ngTupleArgs.h">
       <Filter>ソース ファイル\tuple</Filter>
     </ClInclude>
+    <ClInclude Include="math\crc\ngCrc.h">
+      <Filter>ソース ファイル\math\crc</Filter>
+    </ClInclude>
+    <ClInclude Include="math\crc\ngCrcTbl.h">
+      <Filter>ソース ファイル\math\crc</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -566,6 +575,12 @@
     </ClCompile>
     <ClCompile Include="image\ngBitmap.cpp">
       <Filter>ソース ファイル\image</Filter>
+    </ClCompile>
+    <ClCompile Include="math\crc\ngCrc.cpp">
+      <Filter>ソース ファイル\math\crc</Filter>
+    </ClCompile>
+    <ClCompile Include="math\crc\ngCrcTbl.cpp">
+      <Filter>ソース ファイル\math\crc</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
