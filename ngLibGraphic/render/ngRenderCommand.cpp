@@ -19,10 +19,10 @@ namespace ng
 	{
 	}
 
-	void CRenderCommand::Execute()
+	void CRenderCommand::Execute(const RenderParam* pParam)
 	{
 		if(m_pRenderable != nullptr) {
-			m_pRenderable->Render();
+			m_pRenderable->Render(pParam);
 		}
 	}
 

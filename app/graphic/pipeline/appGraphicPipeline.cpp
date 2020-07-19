@@ -1,7 +1,7 @@
 ﻿/*!
 * @file		appGraphicPipeline.cpp
 * @brief	グラフィックパイプライン 基底クラス
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
@@ -46,11 +46,6 @@ namespace app
 	bool CGraphicPipeline::IsInit() const
 	{
 		return m_isInit;
-	}
-
-	ng::CDX12CommandList* CGraphicPipeline::_getDX12CommandList(eGraphicCommandListId id) const
-	{
-		return ng::DX12Util::GetCommandList(static_cast<ng::u32>(id));
 	}
 
 	bool CGraphicPipeline::_initialize()

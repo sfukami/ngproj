@@ -12,7 +12,7 @@
 #include "ngLibCore/geometry/matrix/ngMatrixOp.h"
 #include "ngLibCore/color/ngColor.h"
 #include "appGraphicPipelineShape.h"
-#include "../../appGraphicModule.h"
+#include "app/graphic/appGraphicUtil.h"
 #include "../../../input/appInputModule.h"
 
 namespace app
@@ -222,7 +222,7 @@ namespace app
 	void CGraphicPipelineShape::_execute()
 	{
 		// コマンドリストリセット
-		ng::CDX12CommandList* pCmdList = _getDX12CommandList(eGraphicCommandListId::MAIN);
+		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(eGraphicCommandListId::MAIN);
 		pCmdList->Reset(m_pipelineState);
 
 		// ルートシグネチャ設定

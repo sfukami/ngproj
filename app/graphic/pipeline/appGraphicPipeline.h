@@ -1,19 +1,12 @@
 ﻿/*!
 * @file		appGraphicPipeline.h
 * @brief	グラフィックパイプライン 基底クラス
-* @date		2020-08-24
+* @date		2020-06-24
 * @author	s.fukami
 */
 
 #ifndef __APP_GRAPHIC_PIPELINE_H__
 #define __APP_GRAPHIC_PIPELINE_H__
-
-#include "../command/appGraphicCommandListId.h"
-
-namespace ng
-{
-	class CDX12CommandList;
-}
 
 namespace app
 {
@@ -44,10 +37,6 @@ namespace app
 
 		/*! 初期化済みか */
 		bool IsInit() const;
-
-	protected:
-		/*! DX12コマンドリスト取得 */
-		ng::CDX12CommandList* _getDX12CommandList(eGraphicCommandListId id) const;
 
 	private:
 		/*! 初期化 */

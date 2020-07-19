@@ -5,10 +5,9 @@
 * @author	s.fukami
 */
 
-#include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphicPipelineModel.h"
-#include "../../appGraphicModule.h"
+#include "app/graphic/appGraphicUtil.h"
 
 namespace app
 {
@@ -38,7 +37,7 @@ namespace app
 	void CGraphicPipelineModel::_execute()
 	{
 		// コマンドリストリセット
-		ng::CDX12CommandList* pCmdList = _getDX12CommandList(eGraphicCommandListId::MAIN);
+		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(eGraphicCommandListId::MAIN);
 		pCmdList->Reset();
 
 		// ビューポート設定
@@ -54,9 +53,6 @@ namespace app
 		// バックバッファクリア
 		const float clearColor[4] = {0.0f, 0.0f, 0.5f, 1.0f};
 		ng::DX12Util::ClearRenderTarget(pCmdList, pRTBackBuffer, clearColor, pDS);
-
-		// 描画コマンド実行
-		ng::CGraphicManager::GetInstance().Render();
 
 		ng::DX12Util::SetRenderTargetToPresent(pCmdList, pRTBackBuffer);
 

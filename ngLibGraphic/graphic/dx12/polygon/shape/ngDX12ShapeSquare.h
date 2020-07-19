@@ -56,6 +56,11 @@ namespace ng
 		*/
 		void Destroy();
 
+		/*!
+		* @brief					有効か
+		*/
+		bool IsValid() const;
+		
 		/*! 頂点レイアウト取得 */
 		const DX12VertexLayout& GetVertexLayout() const;
 

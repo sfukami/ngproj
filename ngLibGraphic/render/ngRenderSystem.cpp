@@ -40,15 +40,15 @@ namespace ng
 		m_cmdList.Clear();
 		m_cmdAlloc.Finalize();
 	}
-	
-	void CRenderSystem::AddCommand(CRenderCommand& command)
-	{
-		m_cmdList.PushBack(command);
 
-		m_isSorted = false;
+	void CRenderSystem::AddCommand(IRenderable& renderable)
+	{
+		CRenderCommand* pCommand = NG_NEW(m_cmdAlloc) CRenderCommand(&renderable);
+
+		_addRenderCommand(*pCommand);
 	}
 
-	void CRenderSystem::ExecuteCommand()
+	void CRenderSystem::ExecuteCommand(const RenderParam* pParam)
 	{
 		// ソート済みでない場合はソート
 		if(!m_isSorted) {
@@ -58,7 +58,7 @@ namespace ng
 		// 全描画コマンド実行
 		for(auto pNode = m_cmdList.Begin(); pNode != m_cmdList.End(); pNode = pNode->GetNext())
 		{
-			pNode->GetElem().Execute();
+			pNode->GetElem().Execute(pParam);
 		}
 	}
 
@@ -68,9 +68,18 @@ namespace ng
 		m_cmdAlloc.Clear();
 	}
 
+	void CRenderSystem::_addRenderCommand(CRenderCommand& command)
+	{
+		m_cmdList.PushBack(command);
+
+		m_isSorted = false;
+	}
+
 	void CRenderSystem::_sortCommandList()
 	{
 		m_isSorted = true;
+
+		// TODO: 
 	}
 
 }	// namespace ng

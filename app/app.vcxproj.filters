@@ -68,6 +68,15 @@
     <Filter Include="ソース ファイル\game\common">
       <UniqueIdentifier>{3890cdb0-5e76-4854-bc57-68bd34e0df0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\render">
+      <UniqueIdentifier>{b02146f2-7fb1-4f8f-9d79-11ac5108883d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\render\sprite">
+      <UniqueIdentifier>{d2681ded-bdfc-4aba-b722-c5a9af9380f4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\game\actor\player\test">
+      <UniqueIdentifier>{b836fbf4-e3b3-42ed-8feb-29c8763874dc}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -171,6 +180,18 @@
     </ClCompile>
     <ClCompile Include="game\actor\appGameActorMacro.cpp">
       <Filter>ソース ファイル\game\actor</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\appRenderable.cpp">
+      <Filter>ソース ファイル\graphic\render</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\sprite\appSprite.cpp">
+      <Filter>ソース ファイル\graphic\render\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\appGraphicUtil.cpp">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClCompile>
+    <ClCompile Include="game\actor\player\test\appGameActorPlayerTest.cpp">
+      <Filter>ソース ファイル\game\actor\player\test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,6 +326,24 @@
     </ClInclude>
     <ClInclude Include="game\actor\appGameActorMacro.h">
       <Filter>ソース ファイル\game\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\appRenderParam.h">
+      <Filter>ソース ファイル\graphic\render</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\appRenderable.h">
+      <Filter>ソース ファイル\graphic\render</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\sprite\appSprite.h">
+      <Filter>ソース ファイル\graphic\render\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\appGraphicUtil.h">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\player\test\appGameActorPlayerTest.h">
+      <Filter>ソース ファイル\game\actor\player\test</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\appGraphicDefine.h">
+      <Filter>ソース ファイル\graphic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
