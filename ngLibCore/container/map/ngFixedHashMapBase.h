@@ -38,7 +38,7 @@ namespace ng
 		virtual bool Add(const KeyType& key, const ValueType& value);
 
 		/*! 要素取得 */
-		virtual bool Get(const KeyType& key, ValueType& pDst);
+		virtual bool Get(const KeyType& key, ValueType& pDst) const;
 
 		/*! 要素削除 */
 		virtual bool Remove(const KeyType& key);
@@ -103,6 +103,7 @@ namespace ng
 
 		/*! テーブルよりノード取得 */
 		NodeType* _getNode(const KeyType& key);
+		const NodeType* _getNode(const KeyType& key) const;
 
 		/*! テーブルよりノードへの参照を取得 */
 		NodeType** _getNodeRef(const KeyType& key);
@@ -256,11 +257,11 @@ namespace ng
 	}
 
 	template <typename KEY, typename T>
-	bool CFixedHashMapBase<KEY, T>::Get(const KeyType& key, ValueType& pDst)
+	bool CFixedHashMapBase<KEY, T>::Get(const KeyType& key, ValueType& pDst) const
 	{
 		NG_ASSERT_AND_ABORT(_isInit());
 
-		NodeType* pNode = _getNode(key);
+		const NodeType* pNode = _getNode(key);
 		if(!pNode) {
 			return false;
 		}
@@ -538,6 +539,12 @@ namespace ng
 		NodeType** ppNode = _getNodeRef(key);
 
 		return (ppNode) ? *ppNode : nullptr;
+	}
+
+	template <typename KEY, typename T>
+	typename const CFixedHashMapBase<KEY, T>::NodeType* CFixedHashMapBase<KEY, T>::_getNode(const KeyType& key) const
+	{
+		return const_cast<CFixedHashMapBase<KEY, T>*>(this)->_getNode(key);
 	}
 
 	template <typename KEY, typename T>

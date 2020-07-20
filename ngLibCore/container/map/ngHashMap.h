@@ -32,7 +32,7 @@ namespace ng
 		virtual bool Add(const KeyType& key, const ValueType& value) = 0;
 
 		/*! 要素取得 */
-		virtual bool Get(const KeyType& key, ValueType& pDst) = 0;
+		virtual bool Get(const KeyType& key, ValueType& pDst) const = 0;
 
 		/*! 要素削除 */
 		virtual bool Remove(const KeyType& key) = 0;
