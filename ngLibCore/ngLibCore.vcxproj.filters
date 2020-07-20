@@ -143,6 +143,9 @@
     <Filter Include="ソース ファイル\tuple">
       <UniqueIdentifier>{2a9b2c46-7808-4321-bd00-08e81433bae6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\container\map">
+      <UniqueIdentifier>{b04e230c-7d55-4c73-8ff3-38354dffa604}</UniqueIdentifier>
+    </Filter>
     <Filter Include="ソース ファイル\math\crc">
       <UniqueIdentifier>{9378b44c-56a4-4098-abc7-29b3cbea9375}</UniqueIdentifier>
     </Filter>
@@ -438,6 +441,12 @@
     </ClInclude>
     <ClInclude Include="tuple\ngTupleArgs.h">
       <Filter>ソース ファイル\tuple</Filter>
+    </ClInclude>
+    <ClInclude Include="container\map\ngFixedHashMap.h">
+      <Filter>ソース ファイル\container\map</Filter>
+    </ClInclude>
+    <ClInclude Include="container\map\ngHashMap.h">
+      <Filter>ソース ファイル\container\map</Filter>
     </ClInclude>
     <ClInclude Include="math\crc\ngCrc.h">
       <Filter>ソース ファイル\math\crc</Filter>

@@ -62,6 +62,8 @@
     <ClInclude Include="container\list\ngList.h" />
     <ClInclude Include="container\list\ngListLinkedType.h" />
     <ClInclude Include="container\list\ngListNode.h" />
+    <ClInclude Include="container\map\ngFixedHashMap.h" />
+    <ClInclude Include="container\map\ngHashMap.h" />
     <ClInclude Include="container\queue\ngFixedQueue.h" />
     <ClInclude Include="container\queue\ngQueue.h" />
     <ClInclude Include="container\stack\ngFixedStack.h" />
