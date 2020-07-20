@@ -27,8 +27,8 @@ namespace ng
 	{
 	public:
 		typedef IList<T, BidirectionalLinked> BaseType;	//!< 基底クラス
-		typedef typename BaseType::ElemType ElemType;	//!< 要素の型
-		typedef typename BaseType::NodeType NodeType;	//!< ノードの型
+		using typename BaseType::ElemType;	//!< 要素の型
+		using typename BaseType::NodeType;	//!< ノードの型
 		typedef CFixedListNode<CBidirectionalListNode<T> > MyNodeType;	//!< ノードの型（具象クラス）
 
 	public:
@@ -141,7 +141,7 @@ namespace ng
 		static const size_type ELEM_SIZE = NG_SIZEOF(ElemType);		//!< 要素のサイズ
 		static const size_type BLOCK_SIZE = NODE_SIZE + ELEM_SIZE;	//!< ブロック（ノード+要素）のサイズ
 
-	protected:
+	private:
 		MyNodeType	m_freeHead;	//!< 先頭のフリーノード
 		MyNodeType	m_useHead;	//!< 先頭のユーズノード
 		u32			m_size;		//!< 要素数
@@ -167,7 +167,7 @@ namespace ng
 		void* pMemory = m_memPool.GetMemory();
 		size_type memSize = m_memPool.GetSize();
 
-		NG_ASSERT(pMemory);
+		NG_ASSERT_NOT_NULL(pMemory);
 		if( ! pMemory)
 		{
 			return eNG_E_INVALIDMEMORY;
@@ -557,16 +557,16 @@ namespace ng
 
 		/*!
 		* @brief					初期化
-		* @param max				最大要素数
 		* @param alloc				使用するメモリアロケータ
+		* @param max				最大要素数
 		* @return					NG エラーコード
 		*/
-		virtual NG_ERRCODE Initialize(u32 max, IMemoryAllocator& alloc);
+		NG_ERRCODE Initialize(IMemoryAllocator& alloc, u32 max);
 
 		/*!
-		* 終了処理
+		* @brief					終了処理
 		*/
-		virtual void Finalize();
+		void Finalize();
 	};
 
 	template <typename T>
@@ -581,7 +581,7 @@ namespace ng
 	}
 
 	template <typename T>
-	NG_ERRCODE CFixedList<T, BidirectionalLinked, NG_UNSPECIFIED_SIZE>::Initialize(u32 max, IMemoryAllocator& alloc)
+	NG_ERRCODE CFixedList<T, BidirectionalLinked, NG_UNSPECIFIED_SIZE>::Initialize(IMemoryAllocator& alloc, u32 max)
 	{
 		if(this->_isInit()) {
 			return eNG_E_LEAK;

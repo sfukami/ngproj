@@ -180,7 +180,7 @@ namespace ng
 		}
 		// ノードスタック初期化
 		{
-			NG_ERRCODE err = m_nodeStack.Initialize(nodeMax, alloc);
+			NG_ERRCODE err = m_nodeStack.Initialize(alloc, nodeMax);
 			if(NG_FAILED(err)) {
 				return err;
 			}

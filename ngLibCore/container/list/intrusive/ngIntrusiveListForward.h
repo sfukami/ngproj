@@ -23,8 +23,8 @@ namespace ng
 	{
 	public:
 		typedef typename CIntrusiveListBase<T, ForwardLinked>::BaseType BaseType;	//!< 基底クラス
-		typedef typename BaseType::ElemType ElemType;	//!< 要素の型
-		typedef typename BaseType::NodeType NodeType;	//!< ノードの型
+		using typename BaseType::ElemType;	//!< 要素の型
+		using typename BaseType::NodeType;	//!< ノードの型
 		typedef CIntrusiveListNode<ElemType, ForwardLinked> MyNodeType;	// ノードの型（具象クラス）
 
 	public:

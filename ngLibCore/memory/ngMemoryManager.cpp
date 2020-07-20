@@ -38,7 +38,7 @@ namespace ng
 		}
 
 		// 追加のメモリアロケータ格納先配列初期化
-		if(NG_FAILED(ret = m_allocArr.Initialize(allocNumMax, m_memAlloc))) {
+		if(NG_FAILED(ret = m_allocArr.Initialize(m_memAlloc, allocNumMax))) {
 			NG_ERRLOG_C("MemoryManager", ret, "追加のメモリアロケータ格納先配列の初期化に失敗しました.");
 			return ret;
 		}
