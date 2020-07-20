@@ -4,3 +4,4 @@ ngLibCore/ngLibCore.vcxproj.user
 ngLibApp/ngLibApp.vcxproj.user
 app/app.vcxproj.user
 app/imgui.ini
+stash/
