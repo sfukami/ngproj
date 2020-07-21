@@ -46,17 +46,27 @@ namespace app
 			param.sysMemInitParam.SetAllocSize(ng::eSystemMemoryType::GRAPHIC, NG_MB(1));
 
 			if(NG_FAILED(ng::CCoreSystem::GetInstance().Setup(param))) {
-				NG_ERRLOG("Game", "NGコアシステムのセットアップに失敗しました.");
+				NG_ERRLOG("Application", "NGコアシステムのセットアップに失敗しました.");
 				return false;
 			}
 		}
 
 		// アプリケーションメモリ初期化
 		if(!m_appMem.Initialize()) {
-			NG_ERRLOG("Game", "アプリケーションメモリの初期化に失敗しました.");
+			NG_ERRLOG("Application", "アプリケーションメモリの初期化に失敗しました.");
 			return false;
 		}
 		CMemoryModule::SetApplicationMemory(&m_appMem);
+
+		// リソースメモリ初期化
+		{
+			ng::CWeakPtr<ng::IMemoryAllocator> allocPtr = m_appMem.GetAllocator(eMemoryAllocatorId::RESOURCE);
+
+			if(!m_resMem.Initialize(*allocPtr)) {
+				NG_ERRLOG("Application", "リソースメモリの初期化に失敗しました.");
+				return false;
+			}
+		}
 
 		// アプリケーションウィンドウ生成
 		if(!m_window.Create(
@@ -66,7 +76,7 @@ namespace app
 			_T("app"),
 			WndProc
 		)) {
-			NG_ERRLOG("Game", "ウィンドウの生成に失敗しました.");
+			NG_ERRLOG("Application", "ウィンドウの生成に失敗しました.");
 			return false;
 		}
 		m_window.Show();
@@ -75,7 +85,7 @@ namespace app
 		if(!m_input.Initialize(
 			m_window.GetHandle()
 		)) {
-			NG_ERRLOG("Game", "入力の初期化に失敗しました.");
+			NG_ERRLOG("Application", "入力の初期化に失敗しました.");
 			return false;
 		}
 		CInputModule::SetInput(&m_input);
@@ -87,14 +97,14 @@ namespace app
 			CLIENT_HEIGHT,
 			false
 		)) {
-			NG_ERRLOG("Game", "グラフィックの初期化に失敗しました.");
+			NG_ERRLOG("Application", "グラフィックの初期化に失敗しました.");
 			return false;
 		}
 		CGraphicModule::SetGraphic(&m_graphic);
 
 		// シーン管理初期化
 		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM), APP_MEMALLOC_APPLICATION)) {
-			NG_ERRLOG("Game", "シーン管理の初期化に失敗しました.");
+			NG_ERRLOG("Application", "シーン管理の初期化に失敗しました.");
 			return false;
 		}
 		CSceneModule::SetSceneManager(&m_sceneMngr);
@@ -104,7 +114,7 @@ namespace app
 			m_window.GetHandle(),
 			m_graphic
 			)) {
-			NG_ERRLOG("Game", "ツールGUIの初期化に失敗しました.");
+			NG_ERRLOG("Application", "ツールGUIの初期化に失敗しました.");
 			return false;
 		}
 		CToolGUIModule::SetToolGUI(&m_toolGUI);

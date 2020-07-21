@@ -17,6 +17,7 @@ namespace app
 	{
 		APPLICATION,	//!< アプリケーション
 		WORK,			//!< ワーク
+		RESOURCE,		//!< リソース
 
 		NUM,
 		BEGIN	= 0,

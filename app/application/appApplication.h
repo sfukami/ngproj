@@ -11,6 +11,7 @@
 #include <Windows.h>
 #include "ngLibApp/window/ngWindow.h"
 #include "../memory/appApplicationMemory.h"
+#include "../resource/memory/appResourceMemory.h"
 #include "../input/appInput.h"
 #include "../graphic/appGraphic.h"
 #include "../scene/appSceneManager.h"
@@ -55,6 +56,7 @@ namespace app
 	private:
 		ng::CWindow m_window;	//!< ウィンドウ
 		CApplicationMemory m_appMem;	//!< アプリケーションメモリ
+		CResourceMemory m_resMem;	//!< リソースメモリ
 		CInput m_input;			//!< 入力
 		CGraphic m_graphic;		//!< グラフィック
 		CSceneManager m_sceneMngr;	//!< シーン管理

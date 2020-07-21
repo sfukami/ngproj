@@ -77,6 +77,12 @@
     <Filter Include="ソース ファイル\game\actor\player\test">
       <UniqueIdentifier>{b836fbf4-e3b3-42ed-8feb-29c8763874dc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\resource">
+      <UniqueIdentifier>{47f8b550-0581-4104-8810-58d48091c636}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\resource\memory">
+      <UniqueIdentifier>{4526e6e3-4627-48ae-9484-654cb5c3dd6f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -195,6 +201,12 @@
     </ClCompile>
     <ClCompile Include="memory\appApplicationMemorySize.cpp">
       <Filter>ソース ファイル\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\memory\appResourceMemory.cpp">
+      <Filter>ソース ファイル\resource\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\memory\appResourceMemorySize.cpp">
+      <Filter>ソース ファイル\resource\memory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -350,6 +362,15 @@
     </ClInclude>
     <ClInclude Include="memory\appApplicationMemorySize.h">
       <Filter>ソース ファイル\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\memory\appResourceMemory.h">
+      <Filter>ソース ファイル\resource\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\memory\appResourceMemorySize.h">
+      <Filter>ソース ファイル\resource\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\memory\appResourceMemoryType.h">
+      <Filter>ソース ファイル\resource\memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
