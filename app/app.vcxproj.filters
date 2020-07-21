@@ -193,6 +193,9 @@
     <ClCompile Include="game\actor\player\test\appGameActorPlayerTest.cpp">
       <Filter>ソース ファイル\game\actor\player\test</Filter>
     </ClCompile>
+    <ClCompile Include="memory\appApplicationMemorySize.cpp">
+      <Filter>ソース ファイル\memory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h">
@@ -344,6 +347,9 @@
     </ClInclude>
     <ClInclude Include="graphic\appGraphicDefine.h">
       <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="memory\appApplicationMemorySize.h">
+      <Filter>ソース ファイル\memory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

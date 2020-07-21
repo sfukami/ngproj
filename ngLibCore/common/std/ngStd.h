@@ -67,7 +67,7 @@ NG_INLINE T Align(T value, size_t alignment)
 * @param enumVal			Enum値
 */
 template <typename T>
-NG_INLINE typename std::underlying_type<T>::type UnderlyingCast(T enumVal)
+NG_INLINE constexpr typename std::underlying_type<T>::type UnderlyingCast(T enumVal)
 {
 	static_assert(std::is_enum<T>::value, "Assertion requires enum argument.");
 	return static_cast<typename std::underlying_type<T>::type>(enumVal);

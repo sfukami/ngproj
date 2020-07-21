@@ -48,6 +48,7 @@
     <ClCompile Include="job\appJobManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory\appApplicationMemory.cpp" />
+    <ClCompile Include="memory\appApplicationMemorySize.cpp" />
     <ClCompile Include="memory\appMemoryModule.cpp" />
     <ClCompile Include="scene\appSceneManager.cpp" />
     <ClCompile Include="scene\appSceneModule.cpp" />
@@ -95,6 +96,7 @@
     <ClInclude Include="input\appInputModule.h" />
     <ClInclude Include="job\appJobManager.h" />
     <ClInclude Include="memory\appApplicationMemory.h" />
+    <ClInclude Include="memory\appApplicationMemorySize.h" />
     <ClInclude Include="memory\appMemoryAllocatorId.h" />
     <ClInclude Include="memory\appMemoryModule.h" />
     <ClInclude Include="memory\appMemoryUtil.h" />

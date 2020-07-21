@@ -8,22 +8,12 @@
 #include "ngLibCore/allocator/ngDefaultAllocator.h"
 #include "ngLibCore/allocator/ngStackAllocator.h"
 #include "appApplicationMemory.h"
+#include "appApplicationMemorySize.h"
 
 namespace app
 {
-	//! メモリサイズ
-	enum eMemorySize : ng::size_type
-	{
-		INSTANCE		= NG_KB(1),		//!< インスタンス
-		APPLICATION		= NG_MB(1),		//!< アプリケーション
-		WORK			= NG_MB(1),		//!< ワーク
-
-		//! 合計
-		TOTAL			= INSTANCE
-						+ APPLICATION
-						+ WORK
-						,
-	};
+	//! インスタンス用メモリサイズ
+	#define _INSTANCE_MEMSIZE	(NG_KB(1))
 
 	CApplicationMemory::CApplicationMemory()
 	{
@@ -40,7 +30,9 @@ namespace app
 
 		// ルートメモリプール初期化
 		{
-			ng::size_type allocSize = eMemorySize::TOTAL;
+			ng::size_type allocSize = GetApplicationMemorySizeTotal();
+			allocSize += _INSTANCE_MEMSIZE;
+
 			if(NG_FAILED(err = m_memPool.Initialize(allocSize))) {
 				NG_ERRLOG_C("ApplicationMemory", err, "ルートメモリプールの初期化に失敗");
 				return false;
@@ -50,21 +42,27 @@ namespace app
 		// メモリマネージャ初期化
 		if(NG_FAILED(err = m_memMngr.Initialize(
 			m_memPool.GetMemoryPool(),
-			static_cast<unsigned int>(eMemoryAllocatorId::NUM)))
-			) {
+			ng::UnderlyingCast(eMemoryAllocatorId::NUM)
+			))) {
 			m_memPool.Finalize();
 			NG_ERRLOG_C("ApplicationMemory", err, "メモリマネージャの初期化に失敗");
 			return false;
 		}
 
-		// 各メモリアロケータ初期化
+		// 各メモリアロケータ生成
 		{
-			m_memMngr.CreateAndRegisterAllocator<ng::CDefaultAllocator>(
-				static_cast<ng::u32>(eMemoryAllocatorId::APPLICATION), "app_application", eMemorySize::APPLICATION
-				);
-			m_memMngr.CreateAndRegisterAllocator<ng::CStackAllocator>(
-				static_cast<ng::u32>(eMemoryAllocatorId::WORK), "app_work", eMemorySize::WORK
-				);
+			// メモリアロケータ生成マクロ
+			#define _CREATE_MEMALLOC(_type, _id, _name) \
+				m_memMngr.CreateAndRegisterAllocator<_type>( \
+					ng::UnderlyingCast(_id), _name, GetApplicationMemorySize(_id) \
+					);
+
+			// アプリケーション
+			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eMemoryAllocatorId::APPLICATION,	"app_application");
+			// ワーク
+			_CREATE_MEMALLOC(ng::CStackAllocator,	eMemoryAllocatorId::WORK,			"app_work");
+
+			#undef _CREATE_MEMALLOC
 		}
 
 		return true;
