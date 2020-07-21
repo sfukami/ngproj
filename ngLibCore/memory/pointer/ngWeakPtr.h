@@ -39,20 +39,6 @@ namespace ng
 		CWeakPtr(const CSharedPtr<T>& sp) noexcept
 			: BaseType(sp)
 		{ }
-
-		/*!
-		* @brief					コピーコンストラクタ。監視対象をコピー
-		*/
-		CWeakPtr(const CWeakPtr<T>& wp) noexcept
-			: BaseType(wp)
-		{ }
-
-		/*!
-		* @brief					ムーブコンストラクタ
-		*/
-		CWeakPtr(CWeakPtr<T>&& wp) noexcept
-			: BaseType(wp)
-		{ }
 	};
 
 }	// namespace ng
