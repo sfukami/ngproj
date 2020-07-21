@@ -67,7 +67,7 @@ namespace ng
 		{
 			size_type allocSize = param.GetTotalAllocSize() + eSystemMemoryMinSize::INSTANCE;
 			if(NG_FAILED(ret = m_memPool.Initialize(allocSize))) {
-				NG_ERRLOG_C("SystemMemory", ret, "ルートメモリプールの初期化に失敗");
+				NG_ERRLOG_C("SystemMemory", ret, "ルートメモリプールの初期化に失敗しました.");
 				return ret;
 			}
 		}
@@ -75,7 +75,7 @@ namespace ng
 		// メモリマネージャ初期化
 		if(NG_FAILED(ret = m_memMngr.Initialize(m_memPool.GetMemoryPool(), static_cast<u32>(eSystemMemoryType::NUM)))) {
 			m_memPool.Finalize();
-			NG_ERRLOG_C("SystemMemory", ret, "メモリマネージャの初期化に失敗");
+			NG_ERRLOG_C("SystemMemory", ret, "メモリマネージャの初期化に失敗しました.");
 			return ret;
 		}
 
@@ -84,7 +84,9 @@ namespace ng
 			// メモリアロケータ生成マクロ
 			#define CREATE_ALLOC(_alloc, _type, _name) { \
 				const InitParam::AllocInfo& info = param.GetAllocInfo(_type); \
-				_alloc* pAlloc = m_memMngr.CreateAndRegisterAllocator<_alloc>(static_cast<u32>(_type), _name, info.allocSize); \
+				if(!m_memMngr.CreateAndRegisterAllocator<_alloc>(static_cast<u32>(_type), _name, info.allocSize)) { \
+					NG_ERRLOG("SystemMemory", "メモリアロケータの生成に失敗しました. name:%s", _name); \
+				} \
 			}
 			
 			// メインシステム
@@ -104,7 +106,7 @@ namespace ng
 		m_memPool.Finalize();
 	}
 
-	IMemoryAllocator* CSystemMemory::GetAllocator(eSystemMemoryType type)
+	CWeakPtr<IMemoryAllocator> CSystemMemory::GetAllocator(eSystemMemoryType type)
 	{
 		return m_memMngr.GetAllocator(static_cast<u32>(type));
 	}

@@ -78,13 +78,14 @@ namespace app
 
 	void CApplicationMemory::ClearWorkMemory()
 	{
-		ng::CStackAllocator* pAlloc = ng::PointerCast<ng::CStackAllocator*>(GetAllocator(eMemoryAllocatorId::WORK));
-		if(pAlloc != nullptr) {
-			pAlloc->Clear();
+		ng::CWeakPtr<ng::IMemoryAllocator> allocPtr = GetAllocator(eMemoryAllocatorId::WORK);
+
+		if(allocPtr != nullptr) {
+			std::dynamic_pointer_cast<ng::CStackAllocator>(allocPtr)->Clear();
 		}
 	}
 
-	ng::IMemoryAllocator* CApplicationMemory::GetAllocator(eMemoryAllocatorId id)
+	ng::CWeakPtr<ng::IMemoryAllocator> CApplicationMemory::GetAllocator(eMemoryAllocatorId id)
 	{
 		return m_memMngr.GetAllocator(static_cast<ng::u32>(id));
 	}

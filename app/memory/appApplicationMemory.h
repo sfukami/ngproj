@@ -49,7 +49,7 @@ namespace app
 		* @param id					メモリアロケータID
 		* @return					メモリアロケータ
 		*/
-		ng::IMemoryAllocator* GetAllocator(eMemoryAllocatorId id);
+		ng::CWeakPtr<ng::IMemoryAllocator> GetAllocator(eMemoryAllocatorId id);
 
 	private:
 		ng::CRootMemoryPool	m_memPool;	//!< メモリプール
