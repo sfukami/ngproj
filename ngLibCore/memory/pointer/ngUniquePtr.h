@@ -41,7 +41,7 @@ namespace ng
 		using BaseType = UniquePtrBase<T>;	//!< 基底クラス
 
 	public:
-		explicit CUniquePtr() noexcept = default;
+		constexpr CUniquePtr() noexcept = default;
 
 		/*!
 		* @brief					コンストラクタ
