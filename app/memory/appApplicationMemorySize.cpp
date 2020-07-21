@@ -26,9 +26,9 @@ namespace app
 	{
 		unsigned int total = 0;
 
-		for(auto allocId : eMemoryAllocatorId())
+		for(auto id : eMemoryAllocatorId())
 		{
-			total += GetApplicationMemorySize(allocId);
+			total += GetApplicationMemorySize(id);
 		}
 		
 		return total;
