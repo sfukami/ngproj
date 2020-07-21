@@ -111,7 +111,7 @@ namespace app
 		{
 			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 			if(NG_FAILED(err = m_vs.Create(
-				L"resource/shader/texture.hlsl",
+				L"../resource/shader/texture.hlsl",
 				"VSMain",
 				"vs_5_0",
 				0, true
@@ -120,7 +120,7 @@ namespace app
 				return false;
 			}
 			if(NG_FAILED(err = m_ps.Create(
-				L"resource/shader/texture.hlsl",
+				L"../resource/shader/texture.hlsl",
 				"PSMain",
 				"ps_5_0",
 				0, true
@@ -182,7 +182,7 @@ namespace app
 
 		// テクスチャ
 		{
-			const wchar_t* pFilePath = L"resource/texture/test.bmp";
+			const wchar_t* pFilePath = L"../resource/texture/test.bmp";
 			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 		#if 1
 			// ビットマップ

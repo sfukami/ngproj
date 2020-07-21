@@ -105,7 +105,7 @@ namespace app
 		{
 			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 			if(NG_FAILED(err = m_vs.Create(
-				L"resource/shader/simple.hlsl",
+				L"../resource/shader/simple.hlsl",
 				"VSMain",
 				"vs_5_0",
 				0, true
@@ -114,7 +114,7 @@ namespace app
 				return false;
 			}
 			if(NG_FAILED(err = m_ps.Create(
-				L"resource/shader/simple.hlsl",
+				L"../resource/shader/simple.hlsl",
 				"PSMain",
 				"ps_5_0",
 				0, true
