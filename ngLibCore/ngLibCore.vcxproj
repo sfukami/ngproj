@@ -103,6 +103,7 @@
     <ClInclude Include="memory\pointer\ngPtrDeleter.h" />
     <ClInclude Include="memory\pointer\ngSharedPtr.h" />
     <ClInclude Include="memory\pointer\ngUniquePtr.h" />
+    <ClInclude Include="memory\pointer\ngWeakPtr.h" />
     <ClInclude Include="memory\pool\ngMemoryPool.h" />
     <ClInclude Include="memory\pool\ngRootMemoryPool.h" />
     <ClInclude Include="ngLibCore.h" />

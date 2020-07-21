@@ -454,6 +454,9 @@
     <ClInclude Include="math\crc\ngCrcTbl.h">
       <Filter>ソース ファイル\math\crc</Filter>
     </ClInclude>
+    <ClInclude Include="memory\pointer\ngWeakPtr.h">
+      <Filter>ソース ファイル\memory\pointer</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">

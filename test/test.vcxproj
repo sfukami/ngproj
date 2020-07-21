@@ -190,6 +190,7 @@
     <ClCompile Include="testcode\job\testJobQueue.cpp" />
     <ClCompile Include="testcode\memory\pointer\testSharedPtr.cpp" />
     <ClCompile Include="testcode\memory\pointer\testUniquePtr.cpp" />
+    <ClCompile Include="testcode\memory\pointer\testWeakPtr.cpp" />
     <ClCompile Include="testcode\state\testStateMachine.cpp" />
     <ClCompile Include="testcode\test\testUnitTest.cpp" />
   </ItemGroup>

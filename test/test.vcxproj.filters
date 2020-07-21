@@ -141,5 +141,8 @@
     <ClCompile Include="testcode\container\map\testFixedHashMap.cpp">
       <Filter>ソース ファイル\testcode\container\map</Filter>
     </ClCompile>
+    <ClCompile Include="testcode\memory\pointer\testWeakPtr.cpp">
+      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
