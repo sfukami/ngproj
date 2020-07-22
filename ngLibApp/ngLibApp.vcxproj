@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -29,6 +29,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="resource\ngResourceManager.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui_demo.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui_draw.cpp" />
@@ -51,6 +52,10 @@
     <ClInclude Include="precmpl\ngPreCompiled.h" />
     <ClInclude Include="preincl\ngDefine.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
+    <ClInclude Include="resource\ngResource.h" />
+    <ClInclude Include="resource\ngResourceHandle.h" />
+    <ClInclude Include="resource\ngResourceHandleIf.h" />
+    <ClInclude Include="resource\ngResourceManager.h" />
     <ClInclude Include="state\ngStateMachine.h" />
     <ClInclude Include="ui\imgui\imgui_src\imconfig.h" />
     <ClInclude Include="ui\imgui\imgui_src\imgui.h" />
