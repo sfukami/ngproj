@@ -27,6 +27,11 @@ namespace ng
 		IResourceHandle() { }
 		virtual ~IResourceHandle() { }
 
+		/*!
+		* @brief					解放
+		*/
+		virtual void Release() = 0;
+
 		/*! 有効か */
 		virtual bool IsValid() const = 0;
 

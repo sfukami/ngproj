@@ -34,6 +34,11 @@ namespace ng
 		*/
 		CWeakPtr<T> GetResource() const;
 
+		/*!
+		* @brief					解放
+		*/
+		void Release();
+
 		/*! 有効か */
 		bool IsValid() const;
 
@@ -61,6 +66,12 @@ namespace ng
 	CWeakPtr<T> CResourceHandle<T>::GetResource() const
 	{
 		return m_resPtr;
+	}
+
+	template <class T>
+	void CResourceHandle<T>::Release()
+	{
+		m_resPtr.reset();
 	}
 
 	template <class T>

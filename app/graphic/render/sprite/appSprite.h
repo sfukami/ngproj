@@ -10,6 +10,7 @@
 
 #include "../appRenderable.h"
 #include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
+#include "app/graphic/render/material/appMaterial.h"
 
 namespace app
 {
@@ -31,11 +32,13 @@ namespace app
 		* @brief					生成
 		* @param width				幅
 		* @param height				高さ
+		* @param pMaterial			コピー元のマテリアル
 		* @return					成否
 		*/
 		bool Create(
 			unsigned int width
 			, unsigned int height
+			, const CMaterial* pMaterial
 			);
 
 		/*!
@@ -57,6 +60,7 @@ namespace app
 
 	private:
 		ng::CDX12ShapeSquare m_square;	//!< DX12ポリゴン 矩形
+		CMaterial m_material;	//!< マテリアル
 	};
 
 }	// namespace app
