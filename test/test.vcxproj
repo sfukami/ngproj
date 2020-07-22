@@ -180,6 +180,7 @@
     <ClCompile Include="testcode\container\array\testFixedArray.cpp" />
     <ClCompile Include="testcode\container\list\testFixedList.cpp" />
     <ClCompile Include="testcode\container\list\testIntrusiveList.cpp" />
+    <ClCompile Include="testcode\container\map\testFixedHashMap.cpp" />
     <ClCompile Include="testcode\container\queue\testFixedQueue.cpp" />
     <ClCompile Include="testcode\container\stack\testFixedStack.cpp" />
     <ClCompile Include="testcode\debug\testAssert.cpp" />
@@ -189,6 +190,7 @@
     <ClCompile Include="testcode\job\testJobQueue.cpp" />
     <ClCompile Include="testcode\memory\pointer\testSharedPtr.cpp" />
     <ClCompile Include="testcode\memory\pointer\testUniquePtr.cpp" />
+    <ClCompile Include="testcode\memory\pointer\testWeakPtr.cpp" />
     <ClCompile Include="testcode\state\testStateMachine.cpp" />
     <ClCompile Include="testcode\test\testUnitTest.cpp" />
   </ItemGroup>

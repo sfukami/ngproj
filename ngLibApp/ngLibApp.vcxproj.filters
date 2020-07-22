@@ -38,6 +38,9 @@
     <Filter Include="ソース ファイル\state">
       <UniqueIdentifier>{a623d65c-1f0d-4ca4-8a5f-fa627d50a1ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\resource">
+      <UniqueIdentifier>{b0a92e1b-096c-437b-b70e-5f9d7242df60}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -78,6 +81,9 @@
     </ClCompile>
     <ClCompile Include="ui\imgui\ngImGuiDX12.cpp">
       <Filter>ソース ファイル\ui\imgui</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\ngResourceManager.cpp">
+      <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -152,6 +158,18 @@
     </ClInclude>
     <ClInclude Include="state\ngStateMachine.h">
       <Filter>ソース ファイル\state</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\ngResource.h">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\ngResourceManager.h">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\ngResourceHandle.h">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\ngResourceHandleIf.h">
+      <Filter>ソース ファイル\resource</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

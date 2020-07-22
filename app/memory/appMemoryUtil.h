@@ -18,6 +18,8 @@
 #define APP_MEMALLOC_APPLICATION	(APP_GET_MEMALLOC(app::eMemoryAllocatorId::APPLICATION))
 //! ワーク
 #define APP_MEMALLOC_WORK			(APP_GET_MEMALLOC(app::eMemoryAllocatorId::WORK))
+//! テンポラリ
+#define APP_MEMALLOC_TEMP			(APP_GET_MEMALLOC(app::eMemoryAllocatorId::TEMP))
 //! ゲームアクター
 #define APP_MEMALLOC_GAME_ACTOR		(APP_GET_MEMALLOC(app::eMemoryAllocatorId::APPLICATION))
 //! ゲームジョブ

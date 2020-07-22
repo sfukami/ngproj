@@ -38,7 +38,7 @@ namespace ng
 		}
 
 		// 追加のメモリアロケータ格納先配列初期化
-		if(NG_FAILED(ret = m_allocArr.Initialize(allocNumMax, m_memAlloc))) {
+		if(NG_FAILED(ret = m_allocArr.Initialize(m_memAlloc, allocNumMax))) {
 			NG_ERRLOG_C("MemoryManager", ret, "追加のメモリアロケータ格納先配列の初期化に失敗しました.");
 			return ret;
 		}
@@ -50,8 +50,6 @@ namespace ng
 
 	void CMemoryManager::Finalize()
 	{
-		if(!IsInit()) return;
-
 		ClearAllocator();
 		m_allocArr.Finalize();
 		m_memAlloc.Finalize();
@@ -61,27 +59,33 @@ namespace ng
 
 	void CMemoryManager::DeleteAllocator(u32 index)
 	{
-		IMemoryAllocator* pAlloc = GetAllocator(index);
-		if(pAlloc != nullptr) {
-			// デストラクタのため先にアロケータを破棄
-			pAlloc->Finalize();
-			NG_DELETE(m_memAlloc, pAlloc);
+		if(!IsInit()) return;
 
-			m_allocArr[index] = nullptr;
+		CWeakPtr<IMemoryAllocator> allocPtr = GetAllocator(index);
+		if(allocPtr != nullptr) {
+			allocPtr->Finalize();
+			allocPtr.reset();
+			
+			m_allocArr[index].reset();
 		}
 	}
 
 	void CMemoryManager::ClearAllocator()
 	{
+		if(!IsInit()) return;
+
 		for(u32 i = 0; i < m_allocArr.Size(); i++)
 		{
 			DeleteAllocator(i);
 		}
 	}
 
-	IMemoryAllocator* CMemoryManager::GetAllocator(u32 index)
+	CWeakPtr<IMemoryAllocator> CMemoryManager::GetAllocator(u32 index)
 	{
-		return m_allocArr[index];
+		NG_ASSERT(IsInit());
+		NG_ASSERT(index < m_allocArr.Size());
+
+		return CWeakPtr<IMemoryAllocator>(m_allocArr[index]);
 	}
 
 	bool CMemoryManager::IsInit() const
@@ -89,13 +93,12 @@ namespace ng
 		return (m_pMemPool != nullptr);
 	}
 
-	void CMemoryManager::_registerAllocator(u32 index, IMemoryAllocator* pAlloc)
+	void CMemoryManager::_registerAllocator(u32 index, CSharedPtr<IMemoryAllocator>& allocPtr)
 	{
-		if(pAlloc == nullptr) {
-			return;
-		}
+		NG_ASSERT(IsInit());
+		NG_ASSERT(index < m_allocArr.Size());
 
-		m_allocArr[index] = pAlloc;
+		m_allocArr[index] = allocPtr;
 	}
 
 }	// namespace ng

@@ -62,6 +62,8 @@
     <ClInclude Include="container\list\ngList.h" />
     <ClInclude Include="container\list\ngListLinkedType.h" />
     <ClInclude Include="container\list\ngListNode.h" />
+    <ClInclude Include="container\map\ngFixedHashMap.h" />
+    <ClInclude Include="container\map\ngHashMap.h" />
     <ClInclude Include="container\queue\ngFixedQueue.h" />
     <ClInclude Include="container\queue\ngQueue.h" />
     <ClInclude Include="container\stack\ngFixedStack.h" />
@@ -93,12 +95,15 @@
     <ClInclude Include="job\ngJob.h" />
     <ClInclude Include="job\ngJobQueue.h" />
     <ClInclude Include="locale\ngLocale.h" />
+    <ClInclude Include="math\crc\ngCrc.h" />
+    <ClInclude Include="math\crc\ngCrcTbl.h" />
     <ClInclude Include="math\ngMath.h" />
     <ClInclude Include="math\ngMathDef.h" />
     <ClInclude Include="memory\ngMemoryManager.h" />
     <ClInclude Include="memory\pointer\ngPtrDeleter.h" />
     <ClInclude Include="memory\pointer\ngSharedPtr.h" />
     <ClInclude Include="memory\pointer\ngUniquePtr.h" />
+    <ClInclude Include="memory\pointer\ngWeakPtr.h" />
     <ClInclude Include="memory\pool\ngMemoryPool.h" />
     <ClInclude Include="memory\pool\ngRootMemoryPool.h" />
     <ClInclude Include="ngLibCore.h" />
@@ -154,6 +159,8 @@
     <ClCompile Include="io\file\ngFile.cpp" />
     <ClCompile Include="job\ngJobQueue.cpp" />
     <ClCompile Include="locale\ngLocale.cpp" />
+    <ClCompile Include="math\crc\ngCrc.cpp" />
+    <ClCompile Include="math\crc\ngCrcTbl.cpp" />
     <ClCompile Include="math\ngMath.cpp" />
     <ClCompile Include="memory\ngMemoryManager.cpp" />
     <ClCompile Include="memory\pool\ngMemoryPool.cpp" />

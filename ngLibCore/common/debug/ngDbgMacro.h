@@ -80,6 +80,16 @@
 	}
 
 /*!
+* @brief					警告ログ出力
+* @param _category			カテゴリ
+*/
+#define NG_WARNLOG(_category, _msg, ...) \
+	{ \
+		NG_DPRINTF("(!)WARNLOG [%s] ", _category); \
+		NG_DPRINTF(_msg, __VA_ARGS__); NG_DPRINTF_S("\n"); \
+	}
+
+/*!
 * @brief					アサート
 * @param _expr				条件
 * @param ...				書式文字列
@@ -174,26 +184,6 @@
 		NG_AUTO_BREAK_POINT(); \
 		::abort(); \
 	}
-
-/*!
-* @brief					警告
-* @param ...				書式文字列
-* @note						NG_DEBUG 未定義時は削除される
-*/
-#if defined(NG_DEBUG)
-	#define NG_WARNING(...) \
-		{ \
-			NG_WARNING2(__VA_ARGS__, ""); \
-		}
-	#define NG_WARNING2(_format, ...) \
-		{ \
-			NG_DPRINTF("(!)WARNING msg:"); \
-			NG_DPRINTF("" _format, __VA_ARGS__); \
-			NG_DPRINTF_S("\n"); \
-		}
-#else
-	#define NG_WARNING(...)
-#endif
 
 /*!
 * @brief					アサート + 異常終了

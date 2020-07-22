@@ -21,7 +21,7 @@ namespace ng
 
 	NG_ERRCODE CJobQueue::Initialize(u32 max, IMemoryAllocator& alloc)
 	{
-		NG_ERRCODE ret = m_jobQueue.Initialize(max, alloc);
+		NG_ERRCODE ret = m_jobQueue.Initialize(alloc, max);
 
 		if(NG_FAILED(ret)) {
 			NG_ERRLOG_C("JobQueue", ret, "ジョブキューの初期化に失敗しました.");

@@ -12,13 +12,13 @@ namespace app
 {
 	CApplicationMemory* CMemoryModule::s_pAppMem = nullptr;
 
-	ng::IMemoryAllocator* CMemoryModule::GetAllocator(eMemoryAllocatorId id)
+	ng::CWeakPtr<ng::IMemoryAllocator> CMemoryModule::GetAllocator(eMemoryAllocatorId id)
 	{
 		if(_isValid()) {
 			return s_pAppMem->GetAllocator(id);
 		}
 
-		return nullptr;
+		return ng::CWeakPtr<ng::IMemoryAllocator>();
 	}
 
 	void CMemoryModule::SetApplicationMemory(CApplicationMemory* pAppMem)

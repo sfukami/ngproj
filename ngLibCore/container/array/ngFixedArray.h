@@ -168,7 +168,7 @@ namespace ng
 		void* pMemory = m_memPool.GetMemory();
 		size_type memSize = m_memPool.GetSize();
 
-		NG_ASSERT(pMemory);
+		NG_ASSERT_NOT_NULL(pMemory);
 		if(!pMemory)
 		{
 			return eNG_E_INVALIDMEMORY;
@@ -306,14 +306,14 @@ namespace ng
 
 		/*!
 		* @brief					初期化
-		* @param size				要素数
 		* @param alloc				使用するメモリアロケータ
+		* @param size				要素数
 		* @return					NG エラーコード
 		*/
-		virtual NG_ERRCODE Initialize(u32 size, IMemoryAllocator& alloc);
+		virtual NG_ERRCODE Initialize(IMemoryAllocator& alloc, u32 size);
 
 		/*!
-		* 終了処理
+		* @brief					終了処理
 		*/
 		void Finalize();
 
@@ -332,7 +332,7 @@ namespace ng
 	}
 
 	template<typename T>
-	NG_ERRCODE CFixedArray<T, NG_UNSPECIFIED_SIZE>::Initialize(u32 size, IMemoryAllocator& alloc)
+	NG_ERRCODE CFixedArray<T, NG_UNSPECIFIED_SIZE>::Initialize(IMemoryAllocator& alloc, u32 size)
 	{
 		if(this->_isInit()) {
 			return eNG_E_LEAK;

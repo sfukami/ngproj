@@ -9,6 +9,7 @@
 #define __APP_MEMORY_MODULE_H__
 
 #include "ngLibCore/traits/ngNonInstantiable.h"
+#include "ngLibCore/memory/pointer/ngWeakPtr.h"
 #include "appMemoryAllocatorId.h"
 
 namespace ng
@@ -35,7 +36,7 @@ namespace app
 		* @param id					メモリアロケータID
 		* @return					メモリアロケータ
 		*/
-		static ng::IMemoryAllocator* GetAllocator(eMemoryAllocatorId id);
+		static ng::CWeakPtr<ng::IMemoryAllocator> GetAllocator(eMemoryAllocatorId id);
 
 	private:
 		/*! アプリケーションメモリのインスタンスを設定 */

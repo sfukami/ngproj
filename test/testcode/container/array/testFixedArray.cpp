@@ -36,7 +36,7 @@ namespace test
 			ArrayType array;
 			
 			NG_ERRCODE err = ng::eNG_E_FAIL;
-			if(NG_FAILED(err = array.Initialize(8, alloc))) {
+			if(NG_FAILED(err = array.Initialize(alloc, 8))) {
 				NG_ERRLOG_C("FixedArray", err, "固定長配列の初期化に失敗");
 			}
 

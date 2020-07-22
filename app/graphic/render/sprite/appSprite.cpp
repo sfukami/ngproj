@@ -23,6 +23,7 @@ namespace app
 	bool CSprite::Create(
 		unsigned int width
 		, unsigned int height
+		, const CMaterial* pMaterial
 		)
 	{
 		ng::CDX12Device* pDX12Device = ng::DX12Util::GetDevice();
@@ -35,12 +36,18 @@ namespace app
 			return false;
 		}
 
+		// マテリアルをコピー
+		if(pMaterial != nullptr) {
+			m_material = (*pMaterial);
+		}
+
 		return true;
 	}
 
 	void CSprite::Destroy()
 	{
 		m_square.Destroy();
+		m_material.Destroy();
 	}
 
 	bool CSprite::IsEnable() const

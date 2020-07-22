@@ -65,6 +65,9 @@
     <Filter Include="ソース ファイル\testcode\state">
       <UniqueIdentifier>{1c2214bd-7863-4c20-a10b-92ab85e2a976}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\container\map">
+      <UniqueIdentifier>{4f161176-e444-4de8-95b7-4589a9b35fc2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -134,6 +137,12 @@
     </ClCompile>
     <ClCompile Include="testcode\state\testStateMachine.cpp">
       <Filter>ソース ファイル\testcode\state</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\container\map\testFixedHashMap.cpp">
+      <Filter>ソース ファイル\testcode\container\map</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\memory\pointer\testWeakPtr.cpp">
+      <Filter>ソース ファイル\testcode\memory\pointer</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -11,6 +11,7 @@
 #include "ngSystemMemoryType.h"
 #include "ngLibCore/memory/pool/ngRootMemoryPool.h"
 #include "ngLibCore/memory/ngMemoryManager.h"
+#include "ngLibCore/memory/pointer/ngWeakPtr.h"
 
 namespace ng
 {
@@ -68,7 +69,7 @@ namespace ng
 		* @param type				システムメモリタイプ
 		* @return					メモリアロケータ
 		*/
-		IMemoryAllocator* GetAllocator(eSystemMemoryType type);
+		CWeakPtr<IMemoryAllocator> GetAllocator(eSystemMemoryType type);
 
 	private:
 		CRootMemoryPool	m_memPool;	//!< メモリプール

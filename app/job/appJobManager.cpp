@@ -24,7 +24,7 @@ namespace app
 		, ng::IMemoryAllocator& alloc
 		)
 	{
-		NG_ERRCODE err = m_jobQueueArr.Initialize(slotMax, alloc);
+		NG_ERRCODE err = m_jobQueueArr.Initialize(alloc, slotMax);
 		if(NG_FAILED(err)) {
 			NG_ERRLOG_C("JobManager", err, "ジョブキュー配列の初期化に失敗しました.");
 			return false;

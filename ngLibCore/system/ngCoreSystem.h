@@ -9,6 +9,7 @@
 #define __NG_CORE_CORE_SYSTEM_H__
 
 #include "ngLibCore/traits/ngSingleton.h"
+#include "ngLibCore/memory/pointer/ngWeakPtr.h"
 #include "memory/ngSystemMemory.h"
 
 namespace ng
@@ -51,7 +52,7 @@ namespace ng
 		* @param type				システムメモリタイプ
 		* @return					メモリアロケータ
 		*/
-		IMemoryAllocator* GetSysMemAlloc(eSystemMemoryType type);
+		CWeakPtr<IMemoryAllocator> GetSysMemAlloc(eSystemMemoryType type);
 
 	private:
 		static CCoreSystem m_instance;	//!< コアシステム インスタンス

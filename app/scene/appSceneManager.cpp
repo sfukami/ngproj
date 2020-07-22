@@ -37,7 +37,7 @@ namespace app
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
 		// シーン配列初期化
-		if(NG_FAILED(err = m_sceneArr.Initialize(sceneMax, alloc))) {
+		if(NG_FAILED(err = m_sceneArr.Initialize(alloc, sceneMax))) {
 			NG_ERRLOG_C("SceneManager", err, "シーン配列の初期化に失敗しました.");
 			return false;
 		}

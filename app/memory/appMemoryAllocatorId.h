@@ -17,9 +17,14 @@ namespace app
 	{
 		APPLICATION,	//!< アプリケーション
 		WORK,			//!< ワーク
+		RESOURCE,		//!< リソース
+		TEMP,			//!< テンポラリ
 
 		NUM,
+		BEGIN	= 0,
+		END		= NUM-1,
 	};
+	NG_ENUM_RANGE_BASED_FOR_FUNC(eMemoryAllocatorId, BEGIN, END);
 
 }	// namespace ng
 

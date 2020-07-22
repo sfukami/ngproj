@@ -42,13 +42,21 @@
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineShape.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineTexture.cpp" />
     <ClCompile Include="graphic\render\appRenderable.cpp" />
+    <ClCompile Include="graphic\render\material\appMaterial.cpp" />
+    <ClCompile Include="graphic\render\material\appMaterialFormat.cpp" />
     <ClCompile Include="graphic\render\sprite\appSprite.cpp" />
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="input\appInputModule.cpp" />
     <ClCompile Include="job\appJobManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="memory\appApplicationMemory.cpp" />
+    <ClCompile Include="memory\appApplicationMemorySize.cpp" />
     <ClCompile Include="memory\appMemoryModule.cpp" />
+    <ClCompile Include="resource\appResourceModule.cpp" />
+    <ClCompile Include="resource\appResourceSystem.cpp" />
+    <ClCompile Include="resource\memory\appResourceMemory.cpp" />
+    <ClCompile Include="resource\memory\appResourceMemorySize.cpp" />
+    <ClCompile Include="resource\texture\appTexture.cpp" />
     <ClCompile Include="scene\appSceneManager.cpp" />
     <ClCompile Include="scene\appSceneModule.cpp" />
     <ClCompile Include="scene\root\appSceneRoot.cpp" />
@@ -60,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application\appApplication.h" />
+    <ClInclude Include="application\appApplicationConst.h" />
     <ClInclude Include="common\appCommon.h" />
     <ClInclude Include="game\actor\appGameActor.h" />
     <ClInclude Include="game\actor\appGameActorMacro.h" />
@@ -90,15 +99,24 @@
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineTexture.h" />
     <ClInclude Include="graphic\render\appRenderable.h" />
     <ClInclude Include="graphic\render\appRenderParam.h" />
+    <ClInclude Include="graphic\render\material\appMaterial.h" />
+    <ClInclude Include="graphic\render\material\appMaterialFormat.h" />
     <ClInclude Include="graphic\render\sprite\appSprite.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="input\appInputModule.h" />
     <ClInclude Include="job\appJobManager.h" />
     <ClInclude Include="memory\appApplicationMemory.h" />
+    <ClInclude Include="memory\appApplicationMemorySize.h" />
     <ClInclude Include="memory\appMemoryAllocatorId.h" />
     <ClInclude Include="memory\appMemoryModule.h" />
     <ClInclude Include="memory\appMemoryUtil.h" />
     <ClInclude Include="preincl\appPreInclude.h" />
+    <ClInclude Include="resource\appResourceModule.h" />
+    <ClInclude Include="resource\appResourceSystem.h" />
+    <ClInclude Include="resource\memory\appResourceMemory.h" />
+    <ClInclude Include="resource\memory\appResourceMemorySize.h" />
+    <ClInclude Include="resource\memory\appResourceMemoryType.h" />
+    <ClInclude Include="resource\texture\appTexture.h" />
     <ClInclude Include="scene\appScene.h" />
     <ClInclude Include="scene\appSceneId.h" />
     <ClInclude Include="scene\appSceneManager.h" />

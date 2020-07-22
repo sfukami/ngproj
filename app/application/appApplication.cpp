@@ -8,7 +8,9 @@
 #include "ngLibCore/system/ngCoreSystem.h"
 #include "app/common/appCommon.h"
 #include "appApplication.h"
+#include "appApplicationConst.h"
 #include "../memory/appMemoryModule.h"
+#include "../resource/appResourceModule.h"
 #include "../input/appInputModule.h"
 #include "../graphic/appGraphicModule.h"
 #include "../scene/appSceneModule.h"
@@ -31,8 +33,8 @@ namespace app
 
 	bool CApplication::Initialize(HINSTANCE hInst)
 	{
-		const unsigned int CLIENT_WIDTH = 640;
-		const unsigned int CLIENT_HEIGHT = 480;
+		const unsigned int clientWidth = APP_CLIENT_WIDTH_DEFAULT;
+		const unsigned int clientHeight = APP_CLIENT_HEIGHT_DEFAULT;
 
 		// メモリリークチェック
 		NG_CHECK_MEMLEAK();
@@ -43,30 +45,41 @@ namespace app
 		// NGコアシステム セットアップ
 		{
 			ng::CCoreSystem::SetupParam param;
-			param.sysMemInitParam.SetAllocSize(ng::eSystemMemoryType::GRAPHIC, NG_MB(1));
+			param.sysMemInitParam.SetAllocSize(ng::eSystemMemoryType::GRAPHIC, APP_GRAPHIC_MEMALLOC_SIZE);
 
 			if(NG_FAILED(ng::CCoreSystem::GetInstance().Setup(param))) {
-				NG_ERRLOG("Game", "NGコアシステムのセットアップに失敗しました.");
+				NG_ERRLOG("Application", "NGコアシステムのセットアップに失敗しました.");
 				return false;
 			}
 		}
 
 		// アプリケーションメモリ初期化
 		if(!m_appMem.Initialize()) {
-			NG_ERRLOG("Game", "アプリケーションメモリの初期化に失敗しました.");
+			NG_ERRLOG("Application", "アプリケーションメモリの初期化に失敗しました.");
 			return false;
 		}
 		CMemoryModule::SetApplicationMemory(&m_appMem);
 
+		// リソースシステム初期化
+		{
+			ng::CWeakPtr<ng::IMemoryAllocator> allocPtr = m_appMem.GetAllocator(eMemoryAllocatorId::RESOURCE);
+
+			if(!m_resSys.Initialize(*allocPtr, APP_RESOURCE_MANAGE_MAX)) {
+				NG_ERRLOG("Application", "リソースシステムの初期化に失敗しました.");
+				return false;
+			}
+		}
+		CResourceModule::SetResourceSystem(&m_resSys);
+
 		// アプリケーションウィンドウ生成
 		if(!m_window.Create(
-			CLIENT_WIDTH,
-			CLIENT_HEIGHT,
+			clientWidth,
+			clientHeight,
 			_T("gamemain"),
 			_T("app"),
 			WndProc
 		)) {
-			NG_ERRLOG("Game", "ウィンドウの生成に失敗しました.");
+			NG_ERRLOG("Application", "ウィンドウの生成に失敗しました.");
 			return false;
 		}
 		m_window.Show();
@@ -75,7 +88,7 @@ namespace app
 		if(!m_input.Initialize(
 			m_window.GetHandle()
 		)) {
-			NG_ERRLOG("Game", "入力の初期化に失敗しました.");
+			NG_ERRLOG("Application", "入力の初期化に失敗しました.");
 			return false;
 		}
 		CInputModule::SetInput(&m_input);
@@ -83,18 +96,18 @@ namespace app
 		// グラフィック初期化
 		if(!m_graphic.Initialize(
 			m_window.GetHandle(),
-			CLIENT_WIDTH,
-			CLIENT_HEIGHT,
+			clientWidth,
+			clientHeight,
 			false
 		)) {
-			NG_ERRLOG("Game", "グラフィックの初期化に失敗しました.");
+			NG_ERRLOG("Application", "グラフィックの初期化に失敗しました.");
 			return false;
 		}
 		CGraphicModule::SetGraphic(&m_graphic);
 
 		// シーン管理初期化
 		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM), APP_MEMALLOC_APPLICATION)) {
-			NG_ERRLOG("Game", "シーン管理の初期化に失敗しました.");
+			NG_ERRLOG("Application", "シーン管理の初期化に失敗しました.");
 			return false;
 		}
 		CSceneModule::SetSceneManager(&m_sceneMngr);
@@ -104,7 +117,7 @@ namespace app
 			m_window.GetHandle(),
 			m_graphic
 			)) {
-			NG_ERRLOG("Game", "ツールGUIの初期化に失敗しました.");
+			NG_ERRLOG("Application", "ツールGUIの初期化に失敗しました.");
 			return false;
 		}
 		CToolGUIModule::SetToolGUI(&m_toolGUI);
@@ -150,6 +163,9 @@ namespace app
 		m_graphic.Finalize();
 		m_input.Finalize();
 		m_window.Destroy();
+
+		m_resSys.Finalize();
+		m_appMem.Finalize();
 
 		// NGコアシステム シャットダウン
 		ng::CCoreSystem::GetInstance().Shutdown();

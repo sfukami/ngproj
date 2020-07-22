@@ -46,7 +46,7 @@ namespace ng
 		CCoreSystem::DestroyInstance();
 	}
 
-	IMemoryAllocator* CCoreSystem::GetSysMemAlloc(eSystemMemoryType type)
+	CWeakPtr<IMemoryAllocator> CCoreSystem::GetSysMemAlloc(eSystemMemoryType type)
 	{
 		return m_sysMem.GetAllocator(type);
 	}
