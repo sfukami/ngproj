@@ -39,6 +39,7 @@ namespace ng
 	{
 	public:
 		using BaseType = SharedPtrBase<T>;	//!< 基底クラス
+		using ElemType = BaseType::element_type;	//!< 要素の型
 
 	public:
 		constexpr CSharedPtr() noexcept = default;
@@ -51,7 +52,37 @@ namespace ng
 		explicit CSharedPtr(T* p, IMemoryAllocator& alloc) noexcept
 			: BaseType(p, CPtrDeleter<T>(alloc))
 		{ }
+
+		/*!
+		* @brief					コンストラクタ
+		* @param other				変換元のスマートポインタ
+		* @param p					対象のポインタ
+		*/
+		template <class Other>
+		CSharedPtr(const CSharedPtr<Other>& other, T* p) noexcept
+			: BaseType(other, p)
+		{ }
 	};
+
+	/*! 静的キャスト */
+	template <class Other, class Self>
+	CSharedPtr<Other> StaticCast(const CSharedPtr<Self>& self)
+	{
+		return CSharedPtr<Other>(self, self.get());
+	}
+
+	/*! 動的キャスト */
+	template <class Other, class Self>
+	CSharedPtr<Other> DynamicCast(const CSharedPtr<Self>& self)
+	{
+		const auto p = dynamic_cast<typename CSharedPtr<Other>::ElemType*>(self.get());
+
+		if(p) {
+			return CSharedPtr<Other>(self, p);
+		}
+
+		return CSharedPtr<Other>();
+	}
 
 }	// namespace ng
 
