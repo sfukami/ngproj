@@ -86,6 +86,9 @@
     <Filter Include="ソース ファイル\resource\texture">
       <UniqueIdentifier>{773499a5-29db-4f03-a2dc-dd0475a5c42b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\render\material">
+      <UniqueIdentifier>{8ed6681b-0813-4bb9-9f04-b16a9c263a01}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -219,6 +222,12 @@
     </ClCompile>
     <ClCompile Include="resource\appResourceSystem.cpp">
       <Filter>ソース ファイル\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\material\appMaterial.cpp">
+      <Filter>ソース ファイル\graphic\render\material</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\material\appMaterialFormat.cpp">
+      <Filter>ソース ファイル\graphic\render\material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -395,6 +404,12 @@
     </ClInclude>
     <ClInclude Include="application\appApplicationConst.h">
       <Filter>ソース ファイル\application</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\material\appMaterial.h">
+      <Filter>ソース ファイル\graphic\render\material</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\material\appMaterialFormat.h">
+      <Filter>ソース ファイル\graphic\render\material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

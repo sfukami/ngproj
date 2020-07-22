@@ -42,6 +42,8 @@
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineShape.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineTexture.cpp" />
     <ClCompile Include="graphic\render\appRenderable.cpp" />
+    <ClCompile Include="graphic\render\material\appMaterial.cpp" />
+    <ClCompile Include="graphic\render\material\appMaterialFormat.cpp" />
     <ClCompile Include="graphic\render\sprite\appSprite.cpp" />
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="input\appInputModule.cpp" />
@@ -97,6 +99,8 @@
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineTexture.h" />
     <ClInclude Include="graphic\render\appRenderable.h" />
     <ClInclude Include="graphic\render\appRenderParam.h" />
+    <ClInclude Include="graphic\render\material\appMaterial.h" />
+    <ClInclude Include="graphic\render\material\appMaterialFormat.h" />
     <ClInclude Include="graphic\render\sprite\appSprite.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="input\appInputModule.h" />
