@@ -13,7 +13,8 @@ namespace app
 	{
 		NG_MB(1),	// APPLICATION
 		NG_MB(1),	// WORK
-		NG_MB(1),	// RESOURCE
+		NG_MB(10),	// RESOURCE
+		NG_MB(10),	// TEMP
 	};
 
 	unsigned int GetApplicationMemorySize(eMemoryAllocatorId id)

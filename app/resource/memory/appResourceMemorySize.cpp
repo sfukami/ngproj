@@ -11,6 +11,7 @@ namespace app
 {
 	const unsigned int s_resMemSizeTbl[ ng::UnderlyingCast(eResourceMemoryType::NUM) ] =
 	{
+		NG_KB(1),	// MANAGE
 		NG_MB(1),	// FIXED
 		NG_MB(1),	// SCENE
 		NG_MB(1),	// TEMP

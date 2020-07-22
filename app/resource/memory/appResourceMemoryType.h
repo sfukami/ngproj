@@ -15,7 +15,8 @@ namespace app
 	*/
 	enum class eResourceMemoryType : unsigned int
 	{
-		FIXED,		//!< 常駐。固定
+		MANAGE,		//!< 管理用
+		FIXED,		//!< 固定。常駐用
 		SCENE,		//!< シーン用
 		TEMP,		//!< 一時利用
 

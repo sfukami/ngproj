@@ -58,6 +58,8 @@ namespace app
 					static_cast<ng::u32>(_id), _name, GetResourceMemorySize(_id) \
 					);
 
+			// MANAGE
+			_CREATE_MEMALLOC(ng::CDefaultAllocator, eResourceMemoryType::MANAGE, "res_manage");
 			// FIXED
 			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eResourceMemoryType::FIXED,	"res_fixed");
 			// SCENE

@@ -18,6 +18,7 @@ namespace app
 		APPLICATION,	//!< アプリケーション
 		WORK,			//!< ワーク
 		RESOURCE,		//!< リソース
+		TEMP,			//!< テンポラリ
 
 		NUM,
 		BEGIN	= 0,

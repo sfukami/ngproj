@@ -83,6 +83,9 @@
     <Filter Include="ソース ファイル\resource\memory">
       <UniqueIdentifier>{4526e6e3-4627-48ae-9484-654cb5c3dd6f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\resource\texture">
+      <UniqueIdentifier>{773499a5-29db-4f03-a2dc-dd0475a5c42b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -207,6 +210,15 @@
     </ClCompile>
     <ClCompile Include="resource\memory\appResourceMemorySize.cpp">
       <Filter>ソース ファイル\resource\memory</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\texture\appTexture.cpp">
+      <Filter>ソース ファイル\resource\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\appResourceModule.cpp">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\appResourceSystem.cpp">
+      <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -371,6 +383,18 @@
     </ClInclude>
     <ClInclude Include="resource\memory\appResourceMemoryType.h">
       <Filter>ソース ファイル\resource\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\texture\appTexture.h">
+      <Filter>ソース ファイル\resource\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\appResourceModule.h">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\appResourceSystem.h">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="application\appApplicationConst.h">
+      <Filter>ソース ファイル\application</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -62,7 +62,9 @@ namespace app
 			// ワーク
 			_CREATE_MEMALLOC(ng::CStackAllocator,	eMemoryAllocatorId::WORK,			"app_work");
 			// リソース
-			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eMemoryAllocatorId::RESOURCE,		"app_resource");
+			_CREATE_MEMALLOC(ng::CDefaultAllocator, eMemoryAllocatorId::RESOURCE,	"app_resource");
+			// テンポラリ
+			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eMemoryAllocatorId::TEMP,		"app_temp");
 
 			#undef _CREATE_MEMALLOC
 		}
