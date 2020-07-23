@@ -280,6 +280,9 @@
     <ClInclude Include="render\ngRenderParam.h">
       <Filter>ソース ファイル\render</Filter>
     </ClInclude>
+    <ClInclude Include="graphic\dx12\shader\ngDX12ShaderLoader.h">
+      <Filter>ソース ファイル\graphic\dx12\shader</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -407,6 +410,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\texture\ngDX12TextureLoader.cpp">
       <Filter>ソース ファイル\graphic\dx12\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\dx12\shader\ngDX12ShaderLoader.cpp">
+      <Filter>ソース ファイル\graphic\dx12\shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

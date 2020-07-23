@@ -12,6 +12,7 @@
 #include "ngLibCore/geometry/matrix/ngMatrixOp.h"
 #include "ngLibCore/color/ngColor.h"
 #include "ngLibCore/io/file/ngFile.h"
+#include "ngLibGraphic/graphic/dx12/shader/ngDX12ShaderLoader.h"
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
 #include "ngLibGraphic/graphic/dx12/texture/ngDX12TextureLoader.h"
 #include "appGraphicPipelineTexture.h"
@@ -110,22 +111,28 @@ namespace app
 		// シェーダー生成
 		{
 			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
-			if(NG_FAILED(err = m_vs.Create(
+			ng::CDX12ShaderLoader loader;
+
+			// 頂点シェーダー
+			if(NG_FAILED(err = loader.LoadShaderFromFile(
+				m_vs,
 				L"../resource/shader/texture.hlsl",
 				"VSMain",
 				"vs_5_0",
 				0, true
 				))) {
-				NG_ERRLOG_C("GraphicPipelineTexture", err, "DX12頂点シェーダーの生成に失敗しました.");
+				NG_ERRLOG_C("GraphicPipelinePolygon", err, "DX12頂点シェーダーの生成に失敗しました.");
 				return false;
 			}
-			if(NG_FAILED(err = m_ps.Create(
+			// ピクセルシェーダー
+			if(NG_FAILED(err = loader.LoadShaderFromFile(
+				m_ps,
 				L"../resource/shader/texture.hlsl",
 				"PSMain",
 				"ps_5_0",
 				0, true
 				))) {
-				NG_ERRLOG_C("GraphicPipelineTexture", err, "DX12ピクセルシェーダーの生成に失敗しました.");
+				NG_ERRLOG_C("GraphicPipelinePolygon", err, "DX12ピクセルシェーダーの生成に失敗しました.");
 				return false;
 			}
 		}
