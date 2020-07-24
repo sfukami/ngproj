@@ -13,12 +13,12 @@ namespace app
 	CResourceSystem* CResourceModule::s_pResSys = nullptr;
 
 	bool CResourceModule::LoadResource(
-		const char* fileName, eResourceMemoryType resMemType, ng::IResourceHandle& handle
+		const char* fileName, eResourceMemoryType resMemType, const void* pBuildParam, ng::IResourceHandle& handle
 		)
 	{
 		if(!_isValid()) return false;
 
-		return s_pResSys->LoadResource(fileName, resMemType, handle);
+		return s_pResSys->LoadResource(fileName, resMemType, pBuildParam, handle);
 	}
 
 	void CResourceModule::SetResourceSystem(CResourceSystem* pResSys)

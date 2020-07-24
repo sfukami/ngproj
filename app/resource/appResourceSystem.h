@@ -46,19 +46,68 @@ namespace app
 		* @brief					リソース読み込み
 		* @param fileName			ファイル名
 		* @param resMemType			リソースメモリタイプ
+		* @param pBuildParam		ビルドパラメータ
 		* @param handle				格納先のリソースハンドル
 		* @return					成否
 		*/
-		bool LoadResource(const char* fileName, eResourceMemoryType resMemType, ng::IResourceHandle& handle);
+		bool LoadResource(
+			const char* fileName, eResourceMemoryType resMemType, const void* pBuildParam, ng::IResourceHandle& handle
+			);
 
 	private:
-		/*! テクスチャ読み込み */
-		bool _loadTexture(const char* fileName, eResourceMemoryType resMemType, ng::IResourceHandle& handle);
+		/*! ファイル拡張子判定 */
+		bool _checkTextureExt(const char* ext) const;
+		bool _checkShaderExt(const char* ext) const;
+		bool _checkExtTable(const char* ext, const char* pExtTable[], unsigned int tableSize) const;
+
+		/*! リソース読み込み */
+		template <class T>
+		bool _loadResource(
+			const char* fileName, ng::IMemoryAllocator& alloc, const void* pBuildParam, ng::IResourceHandle& handle
+			);
+
+		/*! ファイル読み込み */
+		bool _loadFile(const char* fileName, void** ppFileData, ng::size_type* pFileSize);
+
+		/*! リソース構築 */
+		bool _buildResource(
+			ng::CSharedPtr<ng::IResource>& resPtr, const void* pFileData, ng::size_type fileSize, const void* pBuildParam
+			);
+
+		/*! リソース追加 */
+		bool _addResource(
+			const char* fileName, ng::CSharedPtr<ng::IResource>& resPtr, ng::IResourceHandle& handle
+			);
 
 	private:
 		CResourceMemory m_resMem;	//!< リソースメモリ
 		ng::CResourceManager m_resMngr;	//!< リソース管理
 	};
+
+	template <class T>
+	bool CResourceSystem::_loadResource(
+		const char* fileName, ng::IMemoryAllocator& alloc, const void* pBuildParam, ng::IResourceHandle& handle
+		)
+	{
+		void* pFileData = nullptr;
+		ng::size_type fileSize = 0;
+
+		// ファイル読み込み
+		if(!_loadFile(fileName, &pFileData, &fileSize)) {
+			return false;
+		}
+
+		// リソース生成 & 構築
+		auto resPtr = ng::StaticCast<ng::IResource>(NG_MAKE_SHARED_PTR(T, alloc, T));
+		bool result = _buildResource(resPtr, pFileData, fileSize, pBuildParam);
+
+		if(result) {
+			// リソース追加
+			result = _addResource(fileName, resPtr, handle);
+		}
+
+		return result;
+	}
 
 }	// namespace app
 

@@ -19,7 +19,7 @@ namespace app
 		Destroy();
 	}
 
-	bool CTexture::Build(void* pBinary, ng::size_type size)
+	bool CTexture::Build(const void* pBinary, ng::size_type size, const void* pBuildParam)
 	{
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 		ng::CDX12TextureLoader loader;

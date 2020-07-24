@@ -34,10 +34,13 @@ namespace app
 		* @brief					リソース読み込み
 		* @param fileName			ファイル名
 		* @param resMemType			リソースメモリタイプ
+		* @param pBuildParam		ビルドパラメータ
 		* @param handle				格納先のリソースハンドル
 		* @return					成否
 		*/
-		static bool LoadResource(const char* fileName, eResourceMemoryType resMemType, ng::IResourceHandle& handle);
+		static bool LoadResource(
+			const char* fileName, eResourceMemoryType resMemType, const void* pBuildParam, ng::IResourceHandle& handle
+			);
 
 	private:
 		/*! リソースシステムへの参照を設定 */

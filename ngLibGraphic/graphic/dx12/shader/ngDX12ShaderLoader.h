@@ -30,7 +30,7 @@ namespace ng
 		* @param dst				生成したDX12シェーダーの格納先
 		* @param pFilename			ファイル名
 		* @param pEntryPoint		エントリポイント
-		* @param pTarget			機能レベル
+		* @param pTarget			ビルドターゲット
 		* @param flags				コンパイルフラグ
 		* @param isDebugCompile		デバッグコンパイルオプションが有効か
 		*							NG_DEBUG 未定義時は無視される
@@ -51,7 +51,7 @@ namespace ng
 		* @param pSrcData			データ
 		* @param dataSize			データのサイズ
 		* @param pEntryPoint		エントリポイント
-		* @param pTarget			機能レベル
+		* @param pTarget			ビルドターゲット
 		* @param flags				コンパイルフラグ
 		* @param isDebugCompile		デバッグコンパイルオプションが有効か
 		*							NG_DEBUG 未定義時は無視される

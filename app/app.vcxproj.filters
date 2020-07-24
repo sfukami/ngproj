@@ -89,6 +89,9 @@
     <Filter Include="ソース ファイル\graphic\render\material">
       <UniqueIdentifier>{8ed6681b-0813-4bb9-9f04-b16a9c263a01}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\render\shader">
+      <UniqueIdentifier>{8a8fa10a-126e-47d2-8faa-1148fef16c97}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -228,6 +231,9 @@
     </ClCompile>
     <ClCompile Include="graphic\render\material\appMaterialFormat.cpp">
       <Filter>ソース ファイル\graphic\render\material</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\shader\appShader.cpp">
+      <Filter>ソース ファイル\graphic\render\shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -410,6 +416,9 @@
     </ClInclude>
     <ClInclude Include="graphic\render\material\appMaterialFormat.h">
       <Filter>ソース ファイル\graphic\render\material</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\shader\appShader.h">
+      <Filter>ソース ファイル\graphic\render\shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

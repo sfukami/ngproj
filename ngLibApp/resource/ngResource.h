@@ -23,9 +23,10 @@ namespace ng
 		* @brief					リソース構築
 		* @param pBinary			リソースバイナリ
 		* @param size				リソースバイナリのサイズ
+		* @param pBuildParam		ビルドパラメータ
 		* @return					成否
 		*/
-		virtual bool Build(void* pBinary, ng::size_type size) = 0;
+		virtual bool Build(const void* pBinary, ng::size_type size, const void* pBuildParam) = 0;
 	};
 
 }	// namespace ng

@@ -27,8 +27,20 @@ namespace app
 			// マテリアル構築
 			{
 				MaterialData matData;
-				const char* pFilePath = "../resource/texture/test.bmp";
-				NG_STRCPY(matData.diffuseMap.filePath, pFilePath);
+
+				matData.diffuseMap.SetFilePath("../resource/texture/test.bmp");
+				{
+					ShaderData& vs = matData.vertexShader;
+					vs.SetFilePath("../resource/shader/texture_vs.hlsl");
+					vs.SetEntryPoint("VSMain");
+					vs.SetTarget("vs_5_0");
+				}
+				{
+					ShaderData& ps = matData.pixelShader;
+					ps.SetFilePath("../resource/shader/texture_ps.hlsl");
+					ps.SetEntryPoint("PSMain");
+					ps.SetTarget("ps_5_0");
+				}
 
 				if(!material.Build(matData)) {
 					NG_ERRLOG("GameActorPlayerTest", "マテリアルの構築に失敗しました.");
@@ -36,9 +48,8 @@ namespace app
 				}
 			}
 
-			if(!m_sprite.Create(
-				1, 1, &material
-				)) {
+			// スプライト生成
+			if(!m_sprite.Create(1, 1, &material)) {
 				return false;
 			}
 		}
