@@ -102,6 +102,17 @@ namespace ng
 		return ::fread(pDst, size, num, m_fp);
 	}
 
+	bool CFile::ReadAll(void* pDst)
+	{
+		if(!IsOpen()) {
+			return false;
+		}
+
+		size_type dataNum = Read(pDst, GetFileSize());
+
+		return (dataNum == 1);
+	}
+
 	void CFile::Write(const char* format, ...)
 	{
 		if(!IsOpen()) {
