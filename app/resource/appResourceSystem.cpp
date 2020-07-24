@@ -9,8 +9,8 @@
 #include "ngLibCore/io/file/ngFile.h"
 #include "appResourceSystem.h"
 #include "app/memory/appMemoryUtil.h"
-#include "texture/appTexture.h"
-#include "shader/appShader.h"
+#include "../graphic/texture/appTexture.h"
+#include "../graphic/shader/appShader.h"
 
 #pragma comment(lib, "shlwapi.lib")
 

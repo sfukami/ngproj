@@ -9,8 +9,8 @@
 #define __APP_MATERIAL_H__
 
 #include "ngLibApp/resource/ngResourceHandle.h"
-#include "app/resource/texture/appTexture.h"
-#include "app/resource/shader/appShader.h"
+#include "app/graphic/texture/appTexture.h"
+#include "app/graphic/shader/appShader.h"
 
 namespace ng
 {

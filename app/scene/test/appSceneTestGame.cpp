@@ -15,7 +15,7 @@
 #include "app/game/actor/player/test/appGameActorPlayerTest.h"
 //test
 #include "app/resource/appResourceModule.h"
-#include "app/resource/texture/appTexture.h"
+#include "app/graphic/texture/appTexture.h"
 #include "ngLibApp/resource/ngResourceHandle.h"
 
 namespace app

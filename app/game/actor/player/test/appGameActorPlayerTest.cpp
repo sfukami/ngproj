@@ -6,8 +6,8 @@
 */
 
 #include "appGameActorPlayerTest.h"
-#include "app/graphic/render/material/appMaterial.h"
-#include "app/graphic/render/material/appMaterialFormat.h"
+#include "app/graphic/material/appMaterial.h"
+#include "app/graphic/material/appMaterialFormat.h"
 
 namespace app
 {

@@ -83,14 +83,14 @@
     <Filter Include="ソース ファイル\resource\memory">
       <UniqueIdentifier>{4526e6e3-4627-48ae-9484-654cb5c3dd6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\resource\texture">
-      <UniqueIdentifier>{773499a5-29db-4f03-a2dc-dd0475a5c42b}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\graphic\material">
+      <UniqueIdentifier>{9446bb9f-75fc-4f5a-8b63-bd809ab00556}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\graphic\render\material">
-      <UniqueIdentifier>{8ed6681b-0813-4bb9-9f04-b16a9c263a01}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\graphic\shader">
+      <UniqueIdentifier>{f0ab8b19-8d75-4e32-be11-2d9781eb3ad7}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\graphic\render\shader">
-      <UniqueIdentifier>{8a8fa10a-126e-47d2-8faa-1148fef16c97}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\graphic\texture">
+      <UniqueIdentifier>{bc555b6b-a32e-45c8-a366-8c0ecc67a03b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -217,23 +217,23 @@
     <ClCompile Include="resource\memory\appResourceMemorySize.cpp">
       <Filter>ソース ファイル\resource\memory</Filter>
     </ClCompile>
-    <ClCompile Include="resource\texture\appTexture.cpp">
-      <Filter>ソース ファイル\resource\texture</Filter>
-    </ClCompile>
     <ClCompile Include="resource\appResourceModule.cpp">
       <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
     <ClCompile Include="resource\appResourceSystem.cpp">
       <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\render\material\appMaterial.cpp">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClCompile Include="graphic\material\appMaterial.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\render\material\appMaterialFormat.cpp">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClCompile Include="graphic\material\appMaterialFormat.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClCompile>
-    <ClCompile Include="resource\shader\appShader.cpp">
-      <Filter>ソース ファイル\graphic\render\shader</Filter>
+    <ClCompile Include="graphic\texture\appTexture.cpp">
+      <Filter>ソース ファイル\graphic\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\appShader.cpp">
+      <Filter>ソース ファイル\graphic\shader</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -399,9 +399,6 @@
     <ClInclude Include="resource\memory\appResourceMemoryType.h">
       <Filter>ソース ファイル\resource\memory</Filter>
     </ClInclude>
-    <ClInclude Include="resource\texture\appTexture.h">
-      <Filter>ソース ファイル\resource\texture</Filter>
-    </ClInclude>
     <ClInclude Include="resource\appResourceModule.h">
       <Filter>ソース ファイル\resource</Filter>
     </ClInclude>
@@ -411,14 +408,17 @@
     <ClInclude Include="application\appApplicationConst.h">
       <Filter>ソース ファイル\application</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\render\material\appMaterial.h">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClInclude Include="graphic\material\appMaterial.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\render\material\appMaterialFormat.h">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClInclude Include="graphic\material\appMaterialFormat.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClInclude>
-    <ClInclude Include="resource\shader\appShader.h">
-      <Filter>ソース ファイル\graphic\render\shader</Filter>
+    <ClInclude Include="graphic\texture\appTexture.h">
+      <Filter>ソース ファイル\graphic\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\appShader.h">
+      <Filter>ソース ファイル\graphic\shader</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
