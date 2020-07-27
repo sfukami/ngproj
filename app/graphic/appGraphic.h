@@ -10,6 +10,7 @@
 
 #include <Windows.h>
 #include "ngLibGraphic/graphic/dx12/ngDX12Graphic.h"
+#include "rootsign/appRootSignatureManager.h"
 
 namespace app
 {
@@ -72,6 +73,7 @@ namespace app
 		bool m_isInit;	//!< 初期化済みか
 		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック
 		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
+		CRootSignatureManager m_rootSignMngr;	//!< ルートシグネチャ管理
 	};
 
 }	// namespace app

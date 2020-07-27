@@ -22,7 +22,16 @@ namespace ng
 * @param _alloc				利用するメモリアロケータ
 * @param _ctor				生成する値のコンストラクタ
 */
-#define NG_MAKE_SHARED_PTR(_type, _alloc, _ctor) \
+#define NG_MAKE_SHARED_PTR(_type, _alloc) \
+	NG_MAKE_SHARED_PTR_CTOR(_type, _alloc, _type)
+
+/*!
+* @brief					CSharedPtr生成マクロ（コンストラクタ指定）
+* @param _type				生成する値の型
+* @param _alloc				利用するメモリアロケータ
+* @param _ctor				生成する値のコンストラクタ
+*/
+#define NG_MAKE_SHARED_PTR_CTOR(_type, _alloc, _ctor) \
 	ng::CSharedPtr<_type>(NG_NEW(_alloc) _ctor, _alloc)
 
 namespace ng

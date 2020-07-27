@@ -8,7 +8,6 @@
 #ifndef __APP_GRAPHIC_DEFINE_H__
 #define __APP_GRAPHIC_DEFINE_H__
 
-//! 描画コマンド最大数
-#define APP_GRAPHIC_RENDER_COMMAND_MAX		(32)
+// TODO: 不要？
 
 #endif	// __APP_GRAPHIC_DEFINE_H__

@@ -104,7 +104,7 @@ namespace ng
 	{
 		NG_ASSERT(IsInit());
 
-		CSharedPtr<IMemoryAllocator> allocPtr = NG_MAKE_SHARED_PTR(IMemoryAllocator, m_memAlloc, T());
+		CSharedPtr<IMemoryAllocator> allocPtr = NG_MAKE_SHARED_PTR_CTOR(IMemoryAllocator, m_memAlloc, T);
 
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 		if(NG_FAILED(err = allocPtr->Initialize(

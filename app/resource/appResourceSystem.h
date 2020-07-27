@@ -98,7 +98,7 @@ namespace app
 		}
 
 		// リソース生成 & 構築
-		auto resPtr = ng::StaticCast<ng::IResource>(NG_MAKE_SHARED_PTR(T, alloc, T));
+		auto resPtr = ng::StaticCast<ng::IResource>(NG_MAKE_SHARED_PTR(T, alloc));
 		bool result = _buildResource(resPtr, pFileData, fileSize, pBuildParam);
 
 		if(result) {

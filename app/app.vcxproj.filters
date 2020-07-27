@@ -92,6 +92,12 @@
     <Filter Include="ソース ファイル\graphic\texture">
       <UniqueIdentifier>{bc555b6b-a32e-45c8-a366-8c0ecc67a03b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\rootsign">
+      <UniqueIdentifier>{dde92d86-cee0-45d2-9691-86f4985b499b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\rootsign\desc">
+      <UniqueIdentifier>{cab812d8-b86b-4bb0-93c9-75425e997c43}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -234,6 +240,15 @@
     </ClCompile>
     <ClCompile Include="graphic\shader\appShader.cpp">
       <Filter>ソース ファイル\graphic\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescSprite.cpp">
+      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\rootsign\appRootSignatureInfo.cpp">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\rootsign\appRootSignatureManager.cpp">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -419,6 +434,18 @@
     </ClInclude>
     <ClInclude Include="graphic\shader\appShader.h">
       <Filter>ソース ファイル\graphic\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescSprite.h">
+      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\rootsign\appRootSignatureInfo.h">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\rootsign\appRootSignatureManager.h">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\appGraphicConst.h">
+      <Filter>ソース ファイル\graphic</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

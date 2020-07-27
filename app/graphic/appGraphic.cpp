@@ -7,9 +7,10 @@
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appGraphic.h"
-#include "appGraphicDefine.h"
+#include "appGraphicConst.h"
 #include "command/appGraphicCommandListId.h"
 #include "pipeline/appGraphicPipeline.h"
+#include "app/memory/appMemoryUtil.h"
 
 namespace app
 {
@@ -62,6 +63,15 @@ namespace app
 		// グラフィック管理へ割り当て
 		ng::CGraphicManager::GetInstance().AssignGraphic(&m_dx12Graphic);
 
+		// ルートシグネチャ管理初期化
+		if(!m_rootSignMngr.Initialize(
+			APP_MEMALLOC_GRAPHIC,
+			m_dx12Graphic.GetDevice()
+			)) {
+			NG_ERRLOG("Graphic", "ルートシグネチャ管理の初期化に失敗しました.");
+			return false;
+		}
+
 		m_isInit = true;
 
 		return true;
@@ -69,6 +79,9 @@ namespace app
 
 	void CGraphic::Finalize()
 	{
+		// ルートシグネチャ管理 終了処理
+		m_rootSignMngr.Finalize();
+
 		// DX12グラフィック 破棄
 		m_dx12Graphic.Destroy();
 
