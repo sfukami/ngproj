@@ -49,6 +49,8 @@
     <ClCompile Include="graphic\rootsign\appRootSignatureManager.cpp" />
     <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescSprite.cpp" />
     <ClCompile Include="graphic\shader\appShader.cpp" />
+    <ClCompile Include="graphic\shader\effect\appShaderEffect.cpp" />
+    <ClCompile Include="graphic\shader\effect\appShaderEffectTexture.cpp" />
     <ClCompile Include="graphic\texture\appTexture.cpp" />
     <ClCompile Include="input\appInput.cpp" />
     <ClCompile Include="input\appInputModule.cpp" />
@@ -111,6 +113,8 @@
     <ClInclude Include="graphic\rootsign\appRootSignatureManager.h" />
     <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescSprite.h" />
     <ClInclude Include="graphic\shader\appShader.h" />
+    <ClInclude Include="graphic\shader\effect\appShaderEffect.h" />
+    <ClInclude Include="graphic\shader\effect\appShaderEffectTexture.h" />
     <ClInclude Include="graphic\texture\appTexture.h" />
     <ClInclude Include="input\appInput.h" />
     <ClInclude Include="input\appInputModule.h" />
