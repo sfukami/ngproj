@@ -14,6 +14,9 @@
 //! ルートシグネチャ最大数
 #define APP_GRAPHIC_ROOT_SIGNATURE_MAX		(32)
 
+//! パイプラインステート最大数
+#define APP_GRAPHIC_PIPELINE_STATE_MAX		(32)
+
 //! シェーダーエフェクト最大数
 #define APP_GRAPHIC_SHADER_EFFECT_FACTORY_MAX		(32)
 

@@ -11,6 +11,7 @@
 #include <Windows.h>
 #include "ngLibGraphic/graphic/dx12/ngDX12Graphic.h"
 #include "rootsign/appRootSignatureManager.h"
+#include "state/appPipelineStateManager.h"
 #include "shader/effect/factory/appShaderEffectFactory.h"
 
 namespace app
@@ -76,6 +77,7 @@ namespace app
 		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック
 		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 		CRootSignatureManager m_rootSignMngr;	//!< ルートシグネチャ管理
+		CPipelineStateManager m_plStateMngr;	//!< パイプラインステート管理
 		CShaderEffectFactory m_shEffFac;	//!< シェーダーエフェクトファクトリ
 	};
 

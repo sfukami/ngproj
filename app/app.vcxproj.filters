@@ -104,6 +104,9 @@
     <Filter Include="ソース ファイル\graphic\shader\effect\factory">
       <UniqueIdentifier>{9a5f813d-27c5-4835-9097-3b50c9730144}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\state">
+      <UniqueIdentifier>{fecd2e26-0e2b-4a0a-9b16-66c6f99a6096}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -264,6 +267,9 @@
     </ClCompile>
     <ClCompile Include="graphic\shader\effect\factory\appShaderEffectFactory.cpp">
       <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\state\appPipelineStateManager.cpp">
+      <Filter>ソース ファイル\graphic\state</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -470,6 +476,9 @@
     </ClInclude>
     <ClInclude Include="graphic\shader\effect\factory\appShaderEffectFactory.h">
       <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\state\appPipelineStateManager.h">
+      <Filter>ソース ファイル\graphic\state</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

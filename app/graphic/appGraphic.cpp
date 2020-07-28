@@ -85,9 +85,12 @@ namespace app
 
 	void CGraphic::Finalize()
 	{
-		// シェーダーエフェクトファクトリ終了処理
+		// シェーダーエフェクトファクトリ 終了処理
 		m_shEffFac.Finalize();
-		
+
+		// パイプラインステート管理 終了処理
+		m_plStateMngr.Finalize();
+
 		// ルートシグネチャ管理 終了処理
 		m_rootSignMngr.Finalize();
 
