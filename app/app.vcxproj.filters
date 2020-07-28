@@ -101,6 +101,9 @@
     <Filter Include="ソース ファイル\graphic\shader\effect">
       <UniqueIdentifier>{ce140abc-a4f4-4e4a-8c9d-22b38445d5b7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\shader\effect\factory">
+      <UniqueIdentifier>{9a5f813d-27c5-4835-9097-3b50c9730144}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -258,6 +261,9 @@
     </ClCompile>
     <ClCompile Include="graphic\shader\effect\appShaderEffect.cpp">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\effect\factory\appShaderEffectFactory.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -461,6 +467,9 @@
     </ClInclude>
     <ClInclude Include="graphic\shader\effect\appShaderEffect.h">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\effect\factory\appShaderEffectFactory.h">
+      <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

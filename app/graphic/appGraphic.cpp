@@ -72,6 +72,12 @@ namespace app
 			return false;
 		}
 
+		// シェーダーエフェクトファクトリ初期化
+		if(!m_shEffFac.Initialize()) {
+			NG_ERRLOG("Graphic", "シェーダーエフェクトファクトリの初期化に失敗しました.");
+			return false;
+		}
+
 		m_isInit = true;
 
 		return true;
@@ -79,6 +85,9 @@ namespace app
 
 	void CGraphic::Finalize()
 	{
+		// シェーダーエフェクトファクトリ終了処理
+		m_shEffFac.Finalize();
+		
 		// ルートシグネチャ管理 終了処理
 		m_rootSignMngr.Finalize();
 
