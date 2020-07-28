@@ -64,7 +64,7 @@ namespace app
 		using FuncType = CShaderEffect*(CShaderEffectFactory::*)(ng::IMemoryAllocator&);	//!< シェーダーエフェクト生成関数
 
 	private:
-		ng::CFixedHashMap<const char*, FuncType, APP_SHADER_EFFECT_FACTORY_MAX> m_funcMap;	//!< シェーダーエフェクト生成関数マップ
+		ng::CFixedHashMap<const char*, FuncType, APP_GRAPHIC_SHADER_EFFECT_FACTORY_MAX> m_funcMap;	//!< シェーダーエフェクト生成関数マップ
 	};
 
 	template <class T>
