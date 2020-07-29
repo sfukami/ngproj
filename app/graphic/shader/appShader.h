@@ -47,6 +47,10 @@ namespace app
 		*/
 		void Destroy();
 
+		/*! DX12シェーダー取得 */
+		ng::CDX12Shader& GetDX12Shader();
+		const ng::CDX12Shader& GetDX12Shader() const;
+
 	private:
 		ng::CDX12Shader m_shader;	//!< DX12シェーダー
 	};

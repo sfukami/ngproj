@@ -51,6 +51,10 @@ namespace app
 		// シェーダーデータ
 		ShaderData vertexShader;	//!< 頂点シェーダー
 		ShaderData pixelShader;		//!< ピクセルシェーダー
+
+		char rootSignName[32];	//!< ルートシグネチャ名
+		char plStateName[32];	//!< パイプラインステート名
+		char shEffName[32];		//!< シェーダーエフェクト名
 	};
 
 }	// namespace app

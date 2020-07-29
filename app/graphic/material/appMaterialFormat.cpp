@@ -39,6 +39,9 @@ namespace app
 
 	MaterialData::MaterialData()
 	{
+		ng::ClearString(rootSignName);
+		ng::ClearString(plStateName);
+		ng::ClearString(shEffName);
 	}
 
 }	// namespace app

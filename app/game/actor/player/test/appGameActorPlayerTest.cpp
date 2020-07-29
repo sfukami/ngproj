@@ -42,6 +42,10 @@ namespace app
 					ps.SetTarget("ps_5_0");
 				}
 
+				NG_STRCPY(matData.rootSignName, "sprite");
+				NG_STRCPY(matData.plStateName, "sprite");
+				NG_STRCPY(matData.shEffName, "texture");
+
 				if(!material.Build(matData)) {
 					NG_ERRLOG("GameActorPlayerTest", "マテリアルの構築に失敗しました.");
 					return false;

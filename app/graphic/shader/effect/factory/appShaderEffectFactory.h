@@ -53,22 +53,22 @@ namespace app
 		*/
 		bool Create(
 			ng::IMemoryAllocator& alloc, const char* name, ng::CSharedPtr<CShaderEffect>& dstPtr
-			);
+			) const;
 
 	private:
 		/*! シェーダーエフェクト生成 */
 		template <class T>
-		CShaderEffect* _createShaderEffect(ng::IMemoryAllocator& alloc);
+		CShaderEffect* _createShaderEffect(ng::IMemoryAllocator& alloc) const;
 
 	private:
-		using FuncType = CShaderEffect*(CShaderEffectFactory::*)(ng::IMemoryAllocator&);	//!< シェーダーエフェクト生成関数
+		using FuncType = CShaderEffect*(CShaderEffectFactory::*)(ng::IMemoryAllocator&)const;	//!< シェーダーエフェクト生成関数
 
 	private:
 		ng::CFixedHashMap<const char*, FuncType, APP_GRAPHIC_SHADER_EFFECT_FACTORY_MAX> m_funcMap;	//!< シェーダーエフェクト生成関数マップ
 	};
 
 	template <class T>
-	CShaderEffect* CShaderEffectFactory::_createShaderEffect(ng::IMemoryAllocator& alloc)
+	CShaderEffect* CShaderEffectFactory::_createShaderEffect(ng::IMemoryAllocator& alloc) const
 	{
 		return NG_NEW(alloc) T;
 	}

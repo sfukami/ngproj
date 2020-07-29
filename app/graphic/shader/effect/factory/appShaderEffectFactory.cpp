@@ -44,7 +44,7 @@ namespace app
 
 	bool CShaderEffectFactory::Create(
 		ng::IMemoryAllocator& alloc, const char* name, ng::CSharedPtr<CShaderEffect>& dstPtr
-		)
+		) const
 	{
 		FuncType func = nullptr;
 		if(!m_funcMap.Get(name, func)) {

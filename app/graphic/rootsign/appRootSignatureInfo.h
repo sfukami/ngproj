@@ -18,7 +18,7 @@ namespace app
 	struct RootSignatureInfo
 	{
 		const char* name;	//!< 名前
-		CD3DX12_ROOT_SIGNATURE_DESC* pDesc;	//!< ルートシグネチャ記述子
+		const CD3DX12_ROOT_SIGNATURE_DESC* pDesc;	//!< ルートシグネチャ記述子
 	};
 
 	/*!

@@ -58,4 +58,13 @@ namespace app
 		m_shader.Destroy();
 	}
 
+	ng::CDX12Shader& CShader::GetDX12Shader()
+	{
+		return m_shader;
+	}
+	const ng::CDX12Shader& CShader::GetDX12Shader() const
+	{
+		return m_shader;
+	}
+
 }	// namespace app

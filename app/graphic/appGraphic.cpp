@@ -134,6 +134,25 @@ namespace app
 		return m_dx12Graphic;
 	}
 
+	const CRootSignatureManager& CGraphic::GetRootSignatureManager() const
+	{
+		return m_rootSignMngr;
+	}
+
+	CPipelineStateManager& CGraphic::GetPipelineStateManager()
+	{
+		return m_plStateMngr;
+	}
+	const CPipelineStateManager& CGraphic::GetPipelineStateManager() const
+	{
+		return m_plStateMngr;
+	}
+
+	const CShaderEffectFactory& CGraphic::GetShaderEffectFactory() const
+	{
+		return m_shEffFac;
+	}
+
 	bool CGraphic::_isInit() const
 	{
 		return m_isInit;

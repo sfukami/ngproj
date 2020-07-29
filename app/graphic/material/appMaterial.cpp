@@ -5,9 +5,11 @@
 * @author	s.fukami
 */
 
+#include "ngLibGraphic/graphic/dx12/pipeline/ngDX12PipelineStateDesc.h"
 #include "appMaterial.h"
 #include "appMaterialFormat.h"
 #include "app/resource/appResourceModule.h"
+#include "../appGraphicModule.h"
 
 namespace app
 {
@@ -31,6 +33,38 @@ namespace app
 		// ピクセルシェーダー読み込み
 		result &= _loadShaderResource(data.pixelShader, m_pixelShader);
 
+		// DX12ルートシグネチャ取得
+		if(!CGraphicModule::GetRootSignature(data.rootSignName, m_rootSign)) {
+			NG_ERRLOG("Material", "DX12ルートシグネチャの取得に失敗しました. name:%s", data.rootSignName);
+			result = false;
+		}
+		// DX12パイプラインステート取得
+		if(!CGraphicModule::GetPipelineState(data.plStateName, m_plState)) {
+			// 取得に失敗した場合は新規作成し追加
+			ng::CDX12PipelineStateDesc stateDesc;
+			stateDesc.Initialize();
+
+			if(m_rootSign != nullptr) stateDesc.SetRootSignature(*m_rootSign);
+			if(m_vertexShader.IsValid()) stateDesc.SetVertexShader(m_vertexShader.GetResource()->GetDX12Shader());
+			if(m_pixelShader.IsValid()) stateDesc.SetPixelShader(m_pixelShader.GetResource()->GetDX12Shader());
+
+			if(CGraphicModule::CreateAndAddPipelineState(data.plStateName, stateDesc)) {
+				if(!CGraphicModule::GetPipelineState(data.plStateName, m_plState)) {
+					NG_ERRLOG("Material", "DX12パイプラインステートの取得に失敗しました. name:%s", data.plStateName);
+					result = false;
+				}
+			}
+			else {
+				NG_ERRLOG("Material", "DX12パイプラインステートの生成に失敗しました. name:%s", data.plStateName);
+				result = false;
+			}
+		}
+		// シェーダーエフェクト生成
+		if(!CGraphicModule::CreateShaderEffect(data.shEffName, m_shEff)) {
+			NG_ERRLOG("Material", "シェーダーエフェクトの生成に失敗しました. name:%s", data.shEffName);
+			result = false;
+		}
+
 		return result;
 	}
 
@@ -52,6 +86,8 @@ namespace app
 			NG_ERRLOG("Material", "リソースの読み込みに失敗しました. filePath:%s", filePath);
 			return false;
 		}
+
+		return true;
 	}
 
 	bool CMaterial::_loadShaderResource(const ShaderData& shaderData, ng::IResourceHandle& handle)

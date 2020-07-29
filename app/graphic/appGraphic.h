@@ -64,6 +64,16 @@ namespace app
 		ng::CDX12Graphic& GetDX12Graphic();
 		const ng::CDX12Graphic& GetDX12Graphic() const;
 
+		/*! ルートシグネチャ管理取得 */
+		const CRootSignatureManager& GetRootSignatureManager() const;
+
+		/*! パイプラインステート管理取得 */
+		CPipelineStateManager& GetPipelineStateManager();
+		const CPipelineStateManager& GetPipelineStateManager() const;
+
+		/*! シェーダーエフェクトファクトリ取得 */
+		const CShaderEffectFactory& GetShaderEffectFactory() const;
+
 	private:
 		/*! 初期化済みか */
 		bool _isInit() const;
