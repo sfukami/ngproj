@@ -35,42 +35,11 @@ namespace app
 		result &= _loadShaderResource(data.pixelShader, m_pixelShader);
 
 		// DX12ルートシグネチャ取得
-		if(!CGraphicModule::GetRootSignature(data.rootSignName, m_rootSign)) {
-			NG_ERRLOG("Material", "DX12ルートシグネチャの取得に失敗しました. name:%s", data.rootSignName);
-			result = false;
-		}
+		result &= _findRootSignature(data.rootSignatureName);
 		// DX12パイプラインステート取得
-		if(!CGraphicModule::GetPipelineState(data.plStateName, m_plState)) {
-			ng::CDX12PipelineStateDesc stateDesc;
-			stateDesc.Initialize();
-
-			// ルートシグネチャ
-			if(m_rootSign != nullptr) stateDesc.SetRootSignature(*m_rootSign);
-			// 各シェーダー
-			if(m_vertexShader.IsValid()) stateDesc.SetVertexShader(m_vertexShader.GetResource()->GetDX12Shader());
-			if(m_pixelShader.IsValid()) stateDesc.SetPixelShader(m_pixelShader.GetResource()->GetDX12Shader());
-
-			// 頂点レイアウト
-			const ng::DX12VertexLayout& layout = ng::DX12GetVertexLayout(data.vertexLayout);
-			stateDesc.InputLayout = {layout.descs, layout.descNum};
-
-			// 取得に失敗した場合は新規作成し追加
-			if(CGraphicModule::CreateAndAddPipelineState(data.plStateName, stateDesc)) {
-				if(!CGraphicModule::GetPipelineState(data.plStateName, m_plState)) {
-					NG_ERRLOG("Material", "DX12パイプラインステートの取得に失敗しました. name:%s", data.plStateName);
-					result = false;
-				}
-			}
-			else {
-				NG_ERRLOG("Material", "DX12パイプラインステートの生成に失敗しました. name:%s", data.plStateName);
-				result = false;
-			}
-		}
+		result &= _findPipelineState(data.pipelineStateName, data.vertexLayout);
 		// シェーダーエフェクト生成
-		if(!CGraphicModule::CreateShaderEffect(data.shEffName, m_shEff)) {
-			NG_ERRLOG("Material", "シェーダーエフェクトの生成に失敗しました. name:%s", data.shEffName);
-			result = false;
-		}
+		result &= _createShaderEffect(data.shaderEffectName);
 
 		return result;
 	}
@@ -101,6 +70,61 @@ namespace app
 	{
 		CShader::BuildParam buildParam(shaderData.entryPoint, shaderData.target);
 		return _loadResource(shaderData.filePath, &buildParam, handle);
+	}
+
+	bool CMaterial::_findRootSignature(const char* name)
+	{
+		if(!CGraphicModule::GetRootSignature(name, m_rootSignature)) {
+			NG_ERRLOG("Material", "DX12ルートシグネチャの取得に失敗しました. name:%s", name);
+			return false;
+		}
+
+		return true;
+	}
+
+	bool CMaterial::_findPipelineState(const char* name, ng::eVertexLayout vertexLayout)
+	{
+		// DX12パイプラインステート取得
+		if(!CGraphicModule::GetPipelineState(name, m_pipelineState)) {
+			ng::CDX12PipelineStateDesc stateDesc;
+			stateDesc.Initialize();
+
+			// ルートシグネチャ
+			if(m_rootSignature != nullptr) stateDesc.SetRootSignature(*m_rootSignature);
+			// 各シェーダー
+			if(m_vertexShader.IsValid()) stateDesc.SetVertexShader(m_vertexShader.GetResource()->GetDX12Shader());
+			if(m_pixelShader.IsValid()) stateDesc.SetPixelShader(m_pixelShader.GetResource()->GetDX12Shader());
+
+			// 頂点レイアウト
+			{
+				const ng::DX12VertexLayout& layout = ng::DX12GetVertexLayout(vertexLayout);
+				stateDesc.InputLayout = {layout.descs, layout.descNum};
+			}
+
+			// DX12パイプラインステートを生成&追加
+			if(CGraphicModule::CreateAndAddPipelineState(name, stateDesc)) {
+				if(!CGraphicModule::GetPipelineState(name, m_pipelineState)) {
+					NG_ERRLOG("Material", "DX12パイプラインステートの取得に失敗しました. name:%s", name);
+					return false;
+				}
+			}
+			else {
+				NG_ERRLOG("Material", "DX12パイプラインステートの生成に失敗しました. name:%s", name);
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	bool CMaterial::_createShaderEffect(const char* name)
+	{
+		if(!CGraphicModule::CreateShaderEffect(name, m_shaderEffect)) {
+			NG_ERRLOG("Material", "シェーダーエフェクトの生成に失敗しました. name:%s", name);
+			return false;
+		}
+
+		return true;
 	}
 
 }	// namespace app

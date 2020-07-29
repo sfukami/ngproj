@@ -44,9 +44,9 @@ namespace app
 					ps.SetTarget("ps_5_0");
 				}
 
-				NG_STRCPY(matData.rootSignName, "sprite");
-				NG_STRCPY(matData.plStateName, "sprite");
-				NG_STRCPY(matData.shEffName, "texture");
+				NG_STRCPY(matData.rootSignatureName, "sprite");
+				NG_STRCPY(matData.pipelineStateName, "sprite");
+				NG_STRCPY(matData.shaderEffectName, "texture");
 
 				matData.vertexLayout = ng::eVertexLayout::STATIC;
 

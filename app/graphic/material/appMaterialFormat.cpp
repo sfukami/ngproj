@@ -39,9 +39,9 @@ namespace app
 
 	MaterialData::MaterialData()
 	{
-		ng::ClearString(rootSignName);
-		ng::ClearString(plStateName);
-		ng::ClearString(shEffName);
+		ng::ClearString(rootSignatureName);
+		ng::ClearString(pipelineStateName);
+		ng::ClearString(shaderEffectName);
 
 		vertexLayout = ng::eVertexLayout::STATIC;
 	}

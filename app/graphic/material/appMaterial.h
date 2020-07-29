@@ -19,6 +19,7 @@ namespace ng
 	class IResourceHandle;
 	class CDX12RootSignature;
 	class CDX12PipelineState;
+	enum class eVertexLayout : u32;
 }
 namespace app
 {
@@ -55,15 +56,21 @@ namespace app
 		bool _loadResource(const char* filePath, const void* pBuildParam, ng::IResourceHandle& handle);
 		/*! シェーダーリソース読み込み */
 		bool _loadShaderResource(const ShaderData& shaderData, ng::IResourceHandle& handle);
+		/*! DX12ルートシグネチャ取得 */
+		bool _findRootSignature(const char* name);
+		/*! DX12パイプラインステート取得 */
+		bool _findPipelineState(const char* name, ng::eVertexLayout vertexLayout);
+		/*! シェーダーエフェクト生成 */
+		bool _createShaderEffect(const char* name);
 
 	private:
 		ng::CResourceHandle<CTexture> m_diffuseMap;		//!< ディフューズマップ
 		ng::CResourceHandle<CShader> m_vertexShader;	//!< 頂点シェーダー
 		ng::CResourceHandle<CShader> m_pixelShader;		//!< ピクセルシェーダー
 
-		ng::CWeakPtr<ng::CDX12RootSignature> m_rootSign;	//!< DX12ルートシグネチャ
-		ng::CWeakPtr<ng::CDX12PipelineState> m_plState;		//!< DX12パイプラインステート
-		ng::CSharedPtr<CShaderEffect> m_shEff;	//!< シェーダーエフェクト
+		ng::CWeakPtr<ng::CDX12RootSignature> m_rootSignature;	//!< DX12ルートシグネチャ
+		ng::CWeakPtr<ng::CDX12PipelineState> m_pipelineState;	//!< DX12パイプラインステート
+		ng::CSharedPtr<CShaderEffect> m_shaderEffect;	//!< シェーダーエフェクト
 	};
 
 }	// namespace app
