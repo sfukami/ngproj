@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include "ngLibCore/memory/pointer/ngWeakPtr.h"
 #include "ngLibGraphic/graphic/dx12/pipeline/ngDX12PipelineState.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12Util.h"
 #include "appPipelineStateManager.h"
@@ -54,9 +55,17 @@ namespace app
 		return Add(name, statePtr);
 	}
 
-	bool CPipelineStateManager::Get(const char* name, ng::CSharedPtr<ng::CDX12PipelineState>& dstPtr)
+	bool CPipelineStateManager::Get(const char* name, ng::CWeakPtr<ng::CDX12PipelineState>& dstPtr) const
 	{
-		return m_stateMap.Get(name, dstPtr);
+		ng::CSharedPtr<ng::CDX12PipelineState> sp;
+
+		if(!m_stateMap.Get(name, sp)) {
+			return false;
+		}
+
+		dstPtr = sp;
+
+		return true;
 	}
 
 }	// namespace app

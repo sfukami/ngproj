@@ -14,6 +14,7 @@
 
 namespace ng
 {
+	template <class T> class CWeakPtr;
 	class IMemoryAllocator;
 	class CDX12PipelineState;
 	class CDX12PipelineStateDesc;
@@ -53,12 +54,12 @@ namespace app
 		bool CreateAndAdd(ng::IMemoryAllocator& alloc, const char* name, const ng::CDX12PipelineStateDesc& stateDesc);
 
 		/*!
-		* @brief					パイプラインステート取得
-		* @param name				パイプラインステートの名前
-		* @param statePtr			取得したパイプラインステートの格納先
+		* @brief					DX12パイプラインステート取得
+		* @param name				DX12パイプラインステートの名前
+		* @param dstPtr				取得したDX12パイプラインステートの格納先
 		* @return					成否
 		*/
-		bool Get(const char* name, ng::CSharedPtr<ng::CDX12PipelineState>& dstPtr);
+		bool Get(const char* name, ng::CWeakPtr<ng::CDX12PipelineState>& dstPtr) const;
 
 	private:
 		//! DX12パイプラインステート ハッシュマップ
