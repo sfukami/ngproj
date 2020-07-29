@@ -23,12 +23,23 @@ namespace ng
 
 	void CDX12PipelineStateDesc::Initialize()
 	{
+		// ラスタライズ
 		RasterizerState = CD3DX12_RASTERIZER_DESC(D3D12_DEFAULT);
-		BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
-		DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
 
+		// ブレンド
+		BlendState = CD3DX12_BLEND_DESC(D3D12_DEFAULT);
+
+		// 深度ステンシル
+		DepthStencilState = CD3DX12_DEPTH_STENCIL_DESC(D3D12_DEFAULT);
+		DSVFormat = DXGI_FORMAT_D32_FLOAT;
+
+		// レンダーターゲット
+		NumRenderTargets = 1;
+		RTVFormats[0] = DXGI_FORMAT_R8G8B8A8_UNORM;
+
+		// サンプリング
 		SampleMask = UINT_MAX;
-		SampleDesc.Count = 1;
+		SampleDesc = {1,0};
 	}
 
 	void CDX12PipelineStateDesc::SetRootSignature(CDX12RootSignature& signature)
