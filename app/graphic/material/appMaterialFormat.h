@@ -8,6 +8,8 @@
 #ifndef __APP_MATERIAL_FORMAT_H__
 #define __APP_MATERIAL_FORMAT_H__
 
+#include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
+
 namespace app
 {
 	/*!
@@ -55,6 +57,8 @@ namespace app
 		char rootSignName[32];	//!< ルートシグネチャ名
 		char plStateName[32];	//!< パイプラインステート名
 		char shEffName[32];		//!< シェーダーエフェクト名
+
+		ng::eVertexLayout vertexLayout;	//!< 頂点レイアウト
 	};
 
 }	// namespace app

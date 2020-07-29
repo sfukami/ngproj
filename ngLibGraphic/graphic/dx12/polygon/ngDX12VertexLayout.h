@@ -8,6 +8,7 @@
 #ifndef __NG_GRAPHIC_DX12_VERTEX_LAYOUT_H__
 #define __NG_GRAPHIC_DX12_VERTEX_LAYOUT_H__
 
+#include <d3d12.h>
 #include "ngLibGraphic/graphic/dx12/common/ngDX12Const.h"
 
 namespace ng

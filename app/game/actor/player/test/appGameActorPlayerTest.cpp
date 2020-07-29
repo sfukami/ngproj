@@ -8,6 +8,8 @@
 #include "appGameActorPlayerTest.h"
 #include "app/graphic/material/appMaterial.h"
 #include "app/graphic/material/appMaterialFormat.h"
+//test
+#include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
 
 namespace app
 {
@@ -45,6 +47,8 @@ namespace app
 				NG_STRCPY(matData.rootSignName, "sprite");
 				NG_STRCPY(matData.plStateName, "sprite");
 				NG_STRCPY(matData.shEffName, "texture");
+
+				matData.vertexLayout = ng::eVertexLayout::STATIC;
 
 				if(!material.Build(matData)) {
 					NG_ERRLOG("GameActorPlayerTest", "マテリアルの構築に失敗しました.");

@@ -42,6 +42,8 @@ namespace app
 		ng::ClearString(rootSignName);
 		ng::ClearString(plStateName);
 		ng::ClearString(shEffName);
+
+		vertexLayout = ng::eVertexLayout::STATIC;
 	}
 
 }	// namespace app

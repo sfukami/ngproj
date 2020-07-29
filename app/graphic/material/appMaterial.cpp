@@ -6,6 +6,7 @@
 */
 
 #include "ngLibGraphic/graphic/dx12/pipeline/ngDX12PipelineStateDesc.h"
+#include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
 #include "appMaterial.h"
 #include "appMaterialFormat.h"
 #include "app/resource/appResourceModule.h"
@@ -40,14 +41,20 @@ namespace app
 		}
 		// DX12パイプラインステート取得
 		if(!CGraphicModule::GetPipelineState(data.plStateName, m_plState)) {
-			// 取得に失敗した場合は新規作成し追加
 			ng::CDX12PipelineStateDesc stateDesc;
 			stateDesc.Initialize();
 
+			// ルートシグネチャ
 			if(m_rootSign != nullptr) stateDesc.SetRootSignature(*m_rootSign);
+			// 各シェーダー
 			if(m_vertexShader.IsValid()) stateDesc.SetVertexShader(m_vertexShader.GetResource()->GetDX12Shader());
 			if(m_pixelShader.IsValid()) stateDesc.SetPixelShader(m_pixelShader.GetResource()->GetDX12Shader());
 
+			// 頂点レイアウト
+			const ng::DX12VertexLayout& layout = ng::DX12GetVertexLayout(data.vertexLayout);
+			stateDesc.InputLayout = {layout.descs, layout.descNum};
+
+			// 取得に失敗した場合は新規作成し追加
 			if(CGraphicModule::CreateAndAddPipelineState(data.plStateName, stateDesc)) {
 				if(!CGraphicModule::GetPipelineState(data.plStateName, m_plState)) {
 					NG_ERRLOG("Material", "DX12パイプラインステートの取得に失敗しました. name:%s", data.plStateName);
