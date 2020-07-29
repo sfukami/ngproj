@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include "ngLibCore/memory/pointer/ngWeakPtr.h"
 #include "ngLibGraphic/graphic/dx12/rootsign/ngDX12RootSignature.h"
 #include "appRootSignatureManager.h"
 #include "appRootSignatureInfo.h"
@@ -30,7 +31,14 @@ namespace app
 			NG_ASSERT_NOT_NULL(pRootSignInfo);
 			
 			auto rootSignPtr = NG_MAKE_SHARED_PTR(ng::CDX12RootSignature, alloc);
-			m_rootSignMap.Add(pRootSignInfo->name, rootSignPtr);
+
+			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
+			if(NG_SUCCEEDED(err = rootSignPtr->Create(device, *pRootSignInfo->pDesc))) {
+				m_rootSignMap.Add(pRootSignInfo->name, rootSignPtr);
+			}
+			else {
+				NG_ERRLOG_C("RootSignatureManager", err, "DX12ルートシグネチャの生成に失敗しました. name:%s", pRootSignInfo->name);
+			}
 		}
 
 		return true;
@@ -39,6 +47,19 @@ namespace app
 	void CRootSignatureManager::Finalize()
 	{
 		m_rootSignMap.Clear();
+	}
+
+	bool CRootSignatureManager::Get(const char* name, ng::CWeakPtr<ng::CDX12RootSignature>& dstPtr) const
+	{
+		ng::CSharedPtr<ng::CDX12RootSignature> sp;
+
+		if(!m_rootSignMap.Get(name, sp)) {
+			return false;
+		}
+
+		dstPtr = sp;
+
+		return true;
 	}
 
 }	// namespace app

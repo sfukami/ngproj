@@ -14,6 +14,7 @@
 
 namespace ng
 {
+	template <class T> class CWeakPtr;
 	class IMemoryAllocator;
 	class CDX12Device;
 	class CDX12RootSignature;
@@ -42,6 +43,14 @@ namespace app
 		* @brief					終了処理
 		*/
 		void Finalize();
+
+		/*!
+		* @brief					DX12ルートシグネチャ取得
+		* @param name				DX12ルートシグネチャの名前
+		* @param dstPtr				取得したDX12ルートシグネチャの格納先
+		* @return					成否
+		*/
+		bool Get(const char* name, ng::CWeakPtr<ng::CDX12RootSignature>& dstPtr) const;
 
 	private:
 		//! DX12ルートシグネチャ ハッシュマップ
