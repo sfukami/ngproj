@@ -39,11 +39,28 @@ namespace app
 
 	MaterialData::MaterialData()
 	{
+		ng::ClearString(name);
 		ng::ClearString(rootSignatureName);
 		ng::ClearString(pipelineStateName);
 		ng::ClearString(shaderEffectName);
 
 		vertexLayout = ng::eVertexLayout::STATIC;
+	}
+	void MaterialData::SetMaterialName(const char* _name)
+	{
+		NG_STRCPY(name, _name);
+	}
+	void MaterialData::SetRootSignatureName(const char* _name)
+	{
+		NG_STRCPY(rootSignatureName, _name);
+	}
+	void MaterialData::SetPipelineStateName(const char* _name)
+	{
+		NG_STRCPY(pipelineStateName, _name);
+	}
+	void MaterialData::SetShaderEffectName(const char* _name)
+	{
+		NG_STRCPY(shaderEffectName, _name);
 	}
 
 }	// namespace app

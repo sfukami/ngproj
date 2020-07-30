@@ -20,4 +20,7 @@
 //! シェーダーエフェクト最大数
 #define APP_GRAPHIC_SHADER_EFFECT_FACTORY_MAX		(32)
 
+//! マテリアル
+#define APP_GRAPHIC_MATERIAL_MAX			(32)
+
 #endif	// __APP_GRAPHIC_CONST_H__

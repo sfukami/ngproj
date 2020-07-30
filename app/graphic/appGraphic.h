@@ -10,6 +10,7 @@
 
 #include <Windows.h>
 #include "ngLibGraphic/graphic/dx12/ngDX12Graphic.h"
+#include "material/appMaterialLibrary.h"
 #include "rootsign/appRootSignatureManager.h"
 #include "state/appPipelineStateManager.h"
 #include "shader/effect/factory/appShaderEffectFactory.h"
@@ -64,6 +65,10 @@ namespace app
 		ng::CDX12Graphic& GetDX12Graphic();
 		const ng::CDX12Graphic& GetDX12Graphic() const;
 
+		/*! マテリアルライブラリ取得 */
+		CMaterialLibrary& GetMaterialLibrary();
+		const CMaterialLibrary& GetMaterialLibrary() const;
+
 		/*! ルートシグネチャ管理取得 */
 		const CRootSignatureManager& GetRootSignatureManager() const;
 
@@ -86,6 +91,7 @@ namespace app
 		
 		ng::CDX12Graphic m_dx12Graphic;	//!< DX12グラフィック
 		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
+		CMaterialLibrary m_matLib;	//!< マテリアルライブラリ
 		CRootSignatureManager m_rootSignMngr;	//!< ルートシグネチャ管理
 		CPipelineStateManager m_plStateMngr;	//!< パイプラインステート管理
 		CShaderEffectFactory m_shEffFac;	//!< シェーダーエフェクトファクトリ

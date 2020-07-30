@@ -36,6 +36,7 @@
     <ClCompile Include="graphic\appGraphicUtil.cpp" />
     <ClCompile Include="graphic\material\appMaterial.cpp" />
     <ClCompile Include="graphic\material\appMaterialFormat.cpp" />
+    <ClCompile Include="graphic\material\appMaterialLibrary.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipelineDefault.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.cpp" />
@@ -101,6 +102,7 @@
     <ClInclude Include="graphic\command\appGraphicCommandListId.h" />
     <ClInclude Include="graphic\material\appMaterial.h" />
     <ClInclude Include="graphic\material\appMaterialFormat.h" />
+    <ClInclude Include="graphic\material\appMaterialLibrary.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipelineDefault.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />

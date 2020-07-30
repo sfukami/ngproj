@@ -271,6 +271,9 @@
     <ClCompile Include="graphic\state\appPipelineStateManager.cpp">
       <Filter>ソース ファイル\graphic\state</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\material\appMaterialLibrary.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h">
@@ -479,6 +482,9 @@
     </ClInclude>
     <ClInclude Include="graphic\state\appPipelineStateManager.h">
       <Filter>ソース ファイル\graphic\state</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\material\appMaterialLibrary.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -46,6 +46,12 @@ namespace app
 	struct MaterialData
 	{
 		MaterialData();
+		void SetMaterialName(const char* _name);
+		void SetRootSignatureName(const char* _name);
+		void SetPipelineStateName(const char* _name);
+		void SetShaderEffectName(const char* _name);
+
+		char name[32];		//!< マテリアル名
 
 		// テクスチャデータ
 		TextureData diffuseMap;	//!< ディフューズマップ

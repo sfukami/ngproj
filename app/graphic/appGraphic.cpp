@@ -94,6 +94,9 @@ namespace app
 		// ルートシグネチャ管理 終了処理
 		m_rootSignMngr.Finalize();
 
+		// マテリアルライブラリ クリア
+		m_matLib.Clear();
+
 		// DX12グラフィック 破棄
 		m_dx12Graphic.Destroy();
 
@@ -132,6 +135,15 @@ namespace app
 	const ng::CDX12Graphic& CGraphic::GetDX12Graphic() const
 	{
 		return m_dx12Graphic;
+	}
+
+	CMaterialLibrary& CGraphic::GetMaterialLibrary()
+	{
+		return m_matLib;
+	}
+	const CMaterialLibrary& CGraphic::GetMaterialLibrary() const
+	{
+		return m_matLib;
 	}
 
 	const CRootSignatureManager& CGraphic::GetRootSignatureManager() const

@@ -30,6 +30,8 @@ namespace app
 			{
 				MaterialData matData;
 
+				matData.SetMaterialName("test");
+
 				matData.diffuseMap.SetFilePath("../resource/texture/test.bmp");
 				{
 					ShaderData& vs = matData.vertexShader;
@@ -44,9 +46,9 @@ namespace app
 					ps.SetTarget("ps_5_0");
 				}
 
-				NG_STRCPY(matData.rootSignatureName, "sprite");
-				NG_STRCPY(matData.pipelineStateName, "sprite");
-				NG_STRCPY(matData.shaderEffectName, "texture");
+				matData.SetRootSignatureName("sprite");
+				matData.SetPipelineStateName("sprite");
+				matData.SetShaderEffectName("texture");
 
 				matData.vertexLayout = ng::eVertexLayout::STATIC;
 
