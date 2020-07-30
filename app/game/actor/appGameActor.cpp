@@ -18,6 +18,11 @@ namespace app
 	{
 	}
 
+	bool CGameActor::Create()
+	{
+		return true;
+	}
+	
 	void CGameActor::Schedule(float deltaTime)
 	{
 	}
@@ -27,6 +32,10 @@ namespace app
 	}
 
 	void CGameActor::Render()
+	{
+	}
+
+	void CGameActor::Destroy()
 	{
 	}
 

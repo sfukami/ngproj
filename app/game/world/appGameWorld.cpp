@@ -6,6 +6,7 @@
 */
 
 #include "appGameWorld.h"
+#include "app/game/actor/appGameActorMacro.h"
 
 namespace app
 {
@@ -25,9 +26,9 @@ namespace app
 	void CGameWorld::Update(float deltaTime)
 	{
 		// 各アクターのスケジュール実行
-		for(auto type : eGameActorType())
+		for(auto actorType : eGameActorType())
 		{
-			ActorList& actorList = _getActorList(type);
+			ActorList& actorList = _getActorList(actorType);
 
 			typename ActorList::NodeType* pNode = actorList.Begin();
 			for(; pNode != actorList.End(); pNode = pNode->GetNext())
@@ -43,10 +44,9 @@ namespace app
 
 	void CGameWorld::Finalize()
 	{
-		for(auto type : eGameActorType())
+		for(auto actorType : eGameActorType())
 		{
-			ActorList& actorList = _getActorList(type);
-			actorList.Clear();
+			_clearActor(actorType);
 		}
 	}
 
@@ -55,6 +55,20 @@ namespace app
 		ActorList& actorList = _getActorList(actor.GetActorType());
 
 		actorList.PushBack(actor);
+	}
+
+	void CGameWorld::_clearActor(eGameActorType actorType)
+	{
+		ActorList& actorList = _getActorList(actorType);
+
+		while(!actorList.Empty())
+		{
+			CGameActor& actor = actorList.Front();
+			actorList.PopFront();
+
+			actor.Destroy();
+			NG_DELETE(app::GameActorMacro::_GetGameActorMemAlloc(), &actor);
+		}
 	}
 
 	CGameWorld::ActorList& CGameWorld::_getActorList(eGameActorType actorType)

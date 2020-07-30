@@ -47,7 +47,7 @@ namespace app
 		void Finalize();
 		
 		/*!
-		* @brief					ゲームアクター追加
+		* @brief					アクター追加
 		*/
 		void AddActor(CGameActor& actor);
 
@@ -56,6 +56,9 @@ namespace app
 		using ActorListArray = ng::CFixedArray<ActorList, static_cast<ng::u32>(eGameActorType::NUM)>;	//!< アクターリストの配列
 
 	private:
+		/*! 指定のアクタータイプを全削除 */
+		void _clearActor(eGameActorType actorType);
+
 		/*! アクターリスト取得 */
 		ActorList& _getActorList(eGameActorType actorType);
 		const ActorList& _getActorList(eGameActorType actorType) const;

@@ -10,7 +10,7 @@
 
 //! ゲームアクター生成
 #define APP_CREATE_GAME_ACTOR(_ctor) \
-	(static_cast<decltype(_ctor)*>(app::GameActorMacro::_AddGameActor( NG_NEW(app::GameActorMacro::_GetGameActorMemAlloc()) _ctor )))
+	app::GameActorMacro::_AddGameActor( NG_NEW(app::GameActorMacro::_GetGameActorMemAlloc()) _ctor )->Create()
 
 namespace ng
 {
