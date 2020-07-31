@@ -19,6 +19,23 @@
 
 namespace app
 {
+	//! リソースの拡張子テーブル宣言
+	#define _RESEXT_TABLE(_resName) \
+		static const char* s_pExtTbl_##_resName[]
+
+	_RESEXT_TABLE(Texture) = {".bmp"};	//!< テクスチャ
+	_RESEXT_TABLE(Shader) = {".hlsl"};	//!< シェーダー
+
+	//! リソース読み込み設定
+	struct LoadSetting
+	{
+		using FuncType = bool(CResourceSystem::*)(const char*, ng::IMemoryAllocator&, const void*, ng::IResourceHandle&);
+
+		const FuncType func;	//!< リソース読み込み関数
+		const char** ppExtTable;	//!< 拡張子テーブル
+		unsigned int extTableSize;	//!< 拡張子テーブルのサイズ
+	};
+
 	CResourceSystem::CResourceSystem()
 	{
 	}
@@ -76,33 +93,36 @@ namespace app
 		bool result = false;
 		auto allocPtr = m_resMem.GetAllocator(resMemType);
 
-		// リソース読み込み
-		if(_checkTextureExt(fileExt))		result = _loadResource<CTexture>(fileName, *allocPtr, pBuildParam, handle);
-		else if(_checkShaderExt(fileExt))	result = _loadResource<CShader>(fileName, *allocPtr, pBuildParam, handle);
+		//! リソース読み込み設定
+		#define _LOAD_SETTING(_resName) \
+			{ &CResourceSystem::_loadResource<C##_resName>, s_pExtTbl_##_resName, NG_ARRAY_SIZE(s_pExtTbl_##_resName) }
+
+		static const LoadSetting s_loadSettings[] =
+		{
+			_LOAD_SETTING(Texture),
+			_LOAD_SETTING(Shader),
+		};
+
+		// 拡張子が一致したリソースを読み込み
+		for(unsigned int i = 0; i < NG_ARRAY_SIZE(s_loadSettings); i++)
+		{
+			const LoadSetting& setting = s_loadSettings[i];
+
+			if(_checkExtTable(fileExt, setting.ppExtTable, setting.extTableSize)) {
+				result = (this->*setting.func)(fileName, *allocPtr, pBuildParam, handle);
+				break;
+			}
+		}
 
 	#if defined(_ENABLE_LOG)
-		NG_DPRINTF("リソースの読み込みに成功しました. fileName:%s\n", fileName);
+		if(result) {
+			NG_DPRINTF("リソースの読み込みに成功しました. fileName:%s\n", fileName);
+		} else {
+			NG_DPRINTF("リソースの読み込みに失敗しました. fileName:%s\n", fileName);
+		}
 	#endif
 
 		return result;
-	}
-
-	bool CResourceSystem::_checkTextureExt(const char* ext) const
-	{
-		const char* pExtTable[] = {
-			".bmp"
-		};
-
-		return _checkExtTable(ext, pExtTable, NG_ARRAY_SIZE(pExtTable));
-	}
-
-	bool CResourceSystem::_checkShaderExt(const char* ext) const
-	{
-		const char* pExtTable[] = {
-			".hlsl"
-		};
-
-		return _checkExtTable(ext, pExtTable, NG_ARRAY_SIZE(pExtTable));
 	}
 
 	bool CResourceSystem::_checkExtTable(const char* ext, const char* pExtTable[], unsigned int tableSize) const

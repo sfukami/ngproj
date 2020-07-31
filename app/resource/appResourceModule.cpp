@@ -21,6 +21,11 @@ namespace app
 		return s_pResSys->LoadResource(fileName, resMemType, pBuildParam, handle);
 	}
 
+	bool CResourceModule::LoadResource(const char* fileName, eResourceMemoryType resMemType, ng::IResourceHandle& handle)
+	{
+		return LoadResource(fileName, resMemType, nullptr, handle);
+	}
+
 	void CResourceModule::SetResourceSystem(CResourceSystem* pResSys)
 	{
 		s_pResSys = pResSys;

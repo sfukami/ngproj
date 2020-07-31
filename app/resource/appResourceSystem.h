@@ -56,8 +56,6 @@ namespace app
 
 	private:
 		/*! ファイル拡張子判定 */
-		bool _checkTextureExt(const char* ext) const;
-		bool _checkShaderExt(const char* ext) const;
 		bool _checkExtTable(const char* ext, const char* pExtTable[], unsigned int tableSize) const;
 
 		/*! リソース読み込み */
