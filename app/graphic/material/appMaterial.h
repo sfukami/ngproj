@@ -10,6 +10,7 @@
 
 #include "ngLibCore/memory/pointer/ngSharedPtr.h"
 #include "ngLibCore/memory/pointer/ngWeakPtr.h"
+#include "ngLibApp/resource/ngResource.h"
 #include "ngLibApp/resource/ngResourceHandle.h"
 #include "../texture/appTexture.h"
 #include "../shader/appShader.h"
@@ -33,18 +34,20 @@ namespace app
 	/*!
 	* @brief					マテリアル
 	*/
-	class CMaterial
+	class CMaterial : public ng::IResource
 	{
 	public:
 		CMaterial();
 		~CMaterial();
 
 		/*!
-		* @brief					マテリアル構築
-		* @param data				マテリアルデータ
+		* @brief					リソース構築
+		* @param pBinary			リソースバイナリ
+		* @param size				リソースバイナリのサイズ
+		* @param pBuildParam		ビルドパラメータ
 		* @return					成否
 		*/
-		bool Build(const MaterialData& data);
+		bool Build(const void* pBinary, ng::size_type size, const void* pBuildParam);
 
 		/*!
 		* @brief					破棄
@@ -52,6 +55,13 @@ namespace app
 		void Destroy();
 
 	private:
+		/*!
+		* @brief					マテリアル構築
+		* @param data				マテリアルデータ
+		* @return					成否
+		*/
+		bool _build(const MaterialData& data);
+
 		/*! リソース読み込み */
 		bool _loadResource(const char* filePath, const void* pBuildParam, ng::IResourceHandle& handle);
 		/*! シェーダーリソース読み込み */

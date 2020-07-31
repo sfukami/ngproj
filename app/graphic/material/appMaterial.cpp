@@ -22,7 +22,21 @@ namespace app
 		Destroy();
 	}
 	
-	bool CMaterial::Build(const MaterialData& data)
+	bool CMaterial::Build(const void* pBinary, ng::size_type size, const void* pBuildParam)
+	{
+		const MaterialData* pMatData = ng::PointerCast<const MaterialData*>(pBinary);
+
+		return _build(*pMatData);
+	}
+
+	void CMaterial::Destroy()
+	{
+		m_diffuseMap.Release();
+		m_vertexShader.Release();
+		m_pixelShader.Release();
+	}
+
+	bool CMaterial::_build(const MaterialData& data)
 	{
 		bool result = true;
 
@@ -42,13 +56,6 @@ namespace app
 		result &= _createShaderEffect(data.shaderEffectName);
 
 		return result;
-	}
-
-	void CMaterial::Destroy()
-	{
-		m_diffuseMap.Release();
-		m_vertexShader.Release();
-		m_pixelShader.Release();
 	}
 
 	bool CMaterial::_loadResource(const char* filePath, const void* pBuildParam, ng::IResourceHandle& handle)

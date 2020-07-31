@@ -11,20 +11,35 @@
 #include "app/memory/appMemoryUtil.h"
 #include "../graphic/texture/appTexture.h"
 #include "../graphic/shader/appShader.h"
+#include "../graphic/material/appMaterial.h"
 
 #pragma comment(lib, "shlwapi.lib")
 
 //! ログ出力有効
 #define _ENABLE_LOG
 
+//! リソースの拡張子テーブル宣言
+#define _RESEXT_TABLE(_resName) \
+	static const char* s_pExtTbl_##_resName[]
+
+//! リソース読み込み設定
+#define _LOAD_SETTING(_resName) \
+	{ &CResourceSystem::_loadResource<C##_resName>, s_pExtTbl_##_resName, NG_ARRAY_SIZE(s_pExtTbl_##_resName) }
+
 namespace app
 {
-	//! リソースの拡張子テーブル宣言
-	#define _RESEXT_TABLE(_resName) \
-		static const char* s_pExtTbl_##_resName[]
-
+	//! 各リソースの拡張子テーブル
 	_RESEXT_TABLE(Texture) = {".bmp"};	//!< テクスチャ
 	_RESEXT_TABLE(Shader) = {".hlsl"};	//!< シェーダー
+	_RESEXT_TABLE(Material) = {".mat"};	//!< マテリアル
+	
+	//! リソース読み込み設定テーブル宣言
+	#define _LOAD_SETTING_TABLE() \
+		static const LoadSetting s_loadSettings[] = { \
+			_LOAD_SETTING(Texture), \
+			_LOAD_SETTING(Shader), \
+			_LOAD_SETTING(Material), \
+		};
 
 	//! リソース読み込み設定
 	struct LoadSetting
@@ -93,18 +108,9 @@ namespace app
 		bool result = false;
 		auto allocPtr = m_resMem.GetAllocator(resMemType);
 
-		//! リソース読み込み設定
-		#define _LOAD_SETTING(_resName) \
-			{ &CResourceSystem::_loadResource<C##_resName>, s_pExtTbl_##_resName, NG_ARRAY_SIZE(s_pExtTbl_##_resName) }
-
-		static const LoadSetting s_loadSettings[] =
-		{
-			_LOAD_SETTING(Texture),
-			_LOAD_SETTING(Shader),
-		};
-
 		// 拡張子が一致したリソースを読み込み
-		for(unsigned int i = 0; i < NG_ARRAY_SIZE(s_loadSettings); i++)
+		_LOAD_SETTING_TABLE();
+		for(int i = 0; i < NG_ARRAY_SIZE(s_loadSettings); i++)
 		{
 			const LoadSetting& setting = s_loadSettings[i];
 
