@@ -30,10 +30,12 @@ namespace app
 		NG_ASSERT_NOT_NULL(pDX12Device);
 
 		// DX12ポリゴン 矩形生成
-		NG_ERRCODE err = m_square.Create(*pDX12Device, (float)width, (float)height, true);
-		if(NG_FAILED(err)) {
-			NG_ERRLOG_C("Sprite", err, "DX12ポリゴン 矩形の生成に失敗しました.");
-			return false;
+		{
+			NG_ERRCODE err = m_square.Create(*pDX12Device, (float)width, (float)height, true);
+			if(NG_FAILED(err)) {
+				NG_ERRLOG_C("Sprite", err, "DX12ポリゴン矩形の生成に失敗しました.");
+				return false;
+			}
 		}
 
 		// マテリアルをコピー
@@ -63,6 +65,9 @@ namespace app
 
 		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(pParam->cmdListId);
 		NG_ASSERT_NOT_NULL(pCmdList);
+
+		m_material.UpdateConstantBuffer();
+		m_material.BindResource(*pCmdList);
 
 		m_square.Render(*pCmdList);
 	}

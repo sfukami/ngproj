@@ -16,4 +16,12 @@ namespace app
 	{
 	}
 
+	void CShaderEffect::UpdateConstantBuffer()
+	{
+	}
+
+	void CShaderEffect::BindResource(ng::CDX12CommandList& commandList)
+	{
+	}
+
 }	// namespace app

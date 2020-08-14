@@ -18,6 +18,7 @@
 namespace ng
 {
 	class IResourceHandle;
+	class CDX12CommandList;
 	class CDX12RootSignature;
 	class CDX12PipelineState;
 	enum class eVertexLayout : u32;
@@ -53,6 +54,31 @@ namespace app
 		* @brief					破棄
 		*/
 		void Destroy();
+
+		/*!
+		* @brief					コンスタントバッファ更新
+		*/
+		void UpdateConstantBuffer();
+		
+		/*!
+		* @brief					リソースをバインド
+		* @param commandList		DX12コマンドリスト
+		*/
+		void BindResource(ng::CDX12CommandList& commandList);
+
+		/*!
+		* @brief					ディフューズマップ取得
+		* @param dstPtr				ディフューズマップの格納先
+		* @return					成否。リソースが無効な場合はfalse
+		*/
+		bool GetDiffuseMap(ng::CWeakPtr<CTexture>& dstPtr) const;
+
+		/*!
+		* @brief					シェーダーエフェクト取得
+		* @param dstPtr				シェーダーエフェクトの格納先
+		* @return					成否。リソースが無効な場合はfalse
+		*/
+		bool GetShaderEffect(ng::CWeakPtr<CShaderEffect>& dstPtr) const;
 
 	private:
 		/*!

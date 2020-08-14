@@ -9,6 +9,7 @@
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
 #include "appMaterial.h"
 #include "appMaterialFormat.h"
+#include "../shader/effect/appShaderEffect.h"
 #include "app/resource/appResourceModule.h"
 #include "../appGraphicModule.h"
 
@@ -66,6 +67,42 @@ namespace app
 		m_diffuseMap.Release();
 		m_vertexShader.Release();
 		m_pixelShader.Release();
+	}
+
+	void CMaterial::UpdateConstantBuffer()
+	{
+		if(m_shaderEffect) {
+			m_shaderEffect->UpdateConstantBuffer();
+		}
+	}
+
+	void CMaterial::BindResource(ng::CDX12CommandList& commandList)
+	{
+		if(m_shaderEffect) {
+			m_shaderEffect->BindResource(commandList);
+		}
+	}
+
+	bool CMaterial::GetDiffuseMap(ng::CWeakPtr<CTexture>& dstPtr) const
+	{
+		if(!m_diffuseMap.IsValid()) {
+			return false;
+		}
+
+		dstPtr = m_diffuseMap.GetResource();
+
+		return true;
+	}
+
+	bool CMaterial::GetShaderEffect(ng::CWeakPtr<CShaderEffect>& dstPtr) const
+	{
+		if(!m_shaderEffect) {
+			return false;
+		}
+
+		dstPtr = m_shaderEffect;
+
+		return true;
 	}
 
 	bool CMaterial::_build(const MaterialData& data)

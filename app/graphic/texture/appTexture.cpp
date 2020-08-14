@@ -45,4 +45,13 @@ namespace app
 		m_texture.Destroy();
 	}
 
+	ng::CDX12Texture& CTexture::GetTexture()
+	{
+		return m_texture;
+	}
+	const ng::CDX12Texture& CTexture::GetTexture() const
+	{
+		return m_texture;
+	}
+
 }	// namespace app

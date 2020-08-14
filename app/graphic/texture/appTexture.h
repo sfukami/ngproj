@@ -36,6 +36,12 @@ namespace app
 		*/
 		void Destroy();
 
+		/*!
+		* @brief					DX12テクスチャ取得
+		*/
+		ng::CDX12Texture& GetTexture();
+		const ng::CDX12Texture& GetTexture() const;
+
 	private:
 		ng::CDX12Texture m_texture;	//!< DX12テクスチャ
 	};
