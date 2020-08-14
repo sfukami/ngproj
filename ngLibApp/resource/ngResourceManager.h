@@ -68,8 +68,18 @@ namespace ng
 		* @param pKey				キー
 		* @param handle				格納先のリソースハンドル
 		* @return					成否
+		* @note						取得に失敗した場合は警告を出力
 		*/
 		bool Get(const char* pKey, IResourceHandle& handle);
+
+		/*!
+		* @brief					リソース取得
+		* @param pKey				キー
+		* @param handle				格納先のリソースハンドル
+		* @return					成否
+		* @note						取得に失敗した場合でも警告を出力しない
+		*/
+		bool TryGet(const char* pKey, IResourceHandle& handle);
 
 	private:
 		/*! 初期化済みか */
