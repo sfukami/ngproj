@@ -24,9 +24,41 @@ namespace app
 	
 	bool CMaterial::Build(const void* pBinary, ng::size_type size, const void* pBuildParam)
 	{
+	#if 1
+		//test
+		// マテリアル構築
+		{
+			MaterialData matData;
+
+			matData.SetMaterialName("test");
+
+			matData.diffuseMap.SetFilePath("../resource/texture/test.bmp");
+			{
+				ShaderData& vs = matData.vertexShader;
+				vs.SetFilePath("../resource/shader/texture_vs.hlsl");
+				vs.SetEntryPoint("VSMain");
+				vs.SetTarget("vs_5_0");
+			}
+			{
+				ShaderData& ps = matData.pixelShader;
+				ps.SetFilePath("../resource/shader/texture_ps.hlsl");
+				ps.SetEntryPoint("PSMain");
+				ps.SetTarget("ps_5_0");
+			}
+
+			matData.SetRootSignatureName("sprite");
+			matData.SetPipelineStateName("sprite");
+			matData.SetShaderEffectName("texture");
+
+			matData.vertexLayout = ng::eVertexLayout::STATIC;
+
+			return _build(matData);
+		}
+	#else
 		const MaterialData* pMatData = ng::PointerCast<const MaterialData*>(pBinary);
 
 		return _build(*pMatData);
+	#endif
 	}
 
 	void CMaterial::Destroy()

@@ -10,6 +10,7 @@
 #include "app/graphic/material/appMaterialFormat.h"
 //test
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
+#include "app/resource/appResourceModule.h"
 
 namespace app
 {
@@ -26,36 +27,9 @@ namespace app
 		{
 			CMaterial material;
 
-			// マテリアル構築
-			{
-				MaterialData matData;
-
-				matData.SetMaterialName("test");
-
-				matData.diffuseMap.SetFilePath("../resource/texture/test.bmp");
-				{
-					ShaderData& vs = matData.vertexShader;
-					vs.SetFilePath("../resource/shader/texture_vs.hlsl");
-					vs.SetEntryPoint("VSMain");
-					vs.SetTarget("vs_5_0");
-				}
-				{
-					ShaderData& ps = matData.pixelShader;
-					ps.SetFilePath("../resource/shader/texture_ps.hlsl");
-					ps.SetEntryPoint("PSMain");
-					ps.SetTarget("ps_5_0");
-				}
-
-				matData.SetRootSignatureName("sprite");
-				matData.SetPipelineStateName("sprite");
-				matData.SetShaderEffectName("texture");
-
-				matData.vertexLayout = ng::eVertexLayout::STATIC;
-
-				if(!material.Build(matData)) {
-					NG_ERRLOG("GameActorPlayerTest", "マテリアルの構築に失敗しました.");
-					return false;
-				}
+			ng::CResourceHandle<CMaterial> handle;
+			if(!CResourceModule::LoadResource("../resource/material/test.mat", eResourceMemoryType::FIXED, handle)) {
+				return false;
 			}
 
 			// スプライト生成
