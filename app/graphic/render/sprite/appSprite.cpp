@@ -61,8 +61,6 @@ namespace app
 
 	void CSprite::_render(const RenderParam* pParam)
 	{
-		if(!_isCreate()) return;
-
 		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(pParam->cmdListId);
 		NG_ASSERT_NOT_NULL(pCmdList);
 
@@ -70,6 +68,15 @@ namespace app
 		m_material.BindResource(*pCmdList);
 
 		m_square.Render(*pCmdList);
+	}
+
+	void CSprite::_setRenderState(const RenderParam* pParam)
+	{
+		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(pParam->cmdListId);
+		NG_ASSERT_NOT_NULL(pCmdList);
+
+		m_material.SetRootSignature(*pCmdList);
+		m_material.SetPipelineState(*pCmdList);
 	}
 
 	bool CSprite::_isCreate() const

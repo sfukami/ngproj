@@ -53,8 +53,8 @@ namespace app
 
 		// ディフューズマップのリソースビューを生成
 		{
-			ng::CWeakPtr<CTexture> diffuseMap;
-			if(material.GetDiffuseMap(diffuseMap)) {
+			ng::CWeakPtr<CTexture> diffuseMap = material.GetDiffuseMap();
+			if(diffuseMap) {
 				diffuseMap->GetTexture().CreateResourceView(
 					device,
 					m_descHeap, 1

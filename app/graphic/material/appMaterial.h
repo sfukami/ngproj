@@ -59,7 +59,7 @@ namespace app
 		* @brief					コンスタントバッファ更新
 		*/
 		void UpdateConstantBuffer();
-		
+
 		/*!
 		* @brief					リソースをバインド
 		* @param commandList		DX12コマンドリスト
@@ -67,18 +67,28 @@ namespace app
 		void BindResource(ng::CDX12CommandList& commandList);
 
 		/*!
-		* @brief					ディフューズマップ取得
-		* @param dstPtr				ディフューズマップの格納先
-		* @return					成否。リソースが無効な場合はfalse
+		* @brief					DX12ルートシグネチャをコマンドリストへ設定
+		* @param commandList		DX12コマンドリスト
 		*/
-		bool GetDiffuseMap(ng::CWeakPtr<CTexture>& dstPtr) const;
-
+		void SetRootSignature(ng::CDX12CommandList& commandList);
+		
 		/*!
-		* @brief					シェーダーエフェクト取得
-		* @param dstPtr				シェーダーエフェクトの格納先
-		* @return					成否。リソースが無効な場合はfalse
+		* @brief					DX12パイプラインステートをコマンドリストへ設定
+		* @param commandList		DX12コマンドリスト
 		*/
-		bool GetShaderEffect(ng::CWeakPtr<CShaderEffect>& dstPtr) const;
+		void SetPipelineState(ng::CDX12CommandList& commandList);
+
+		/*! ディフューズマップ取得 */
+		ng::CWeakPtr<CTexture> GetDiffuseMap() const;
+
+		/*! シェーダーエフェクト取得 */
+		ng::CWeakPtr<CShaderEffect> GetShaderEffect() const;
+
+		/*! DX12ルートシグネチャ取得 */
+		ng::CWeakPtr<ng::CDX12RootSignature> GetRootSignature() const;
+
+		/*! DX12パイプラインステート */
+		ng::CWeakPtr<ng::CDX12PipelineState> GetPipelineState() const;
 
 	private:
 		/*!
@@ -94,8 +104,8 @@ namespace app
 		bool _loadShaderResource(const ShaderData& shaderData, ng::IResourceHandle& handle);
 		/*! DX12ルートシグネチャ取得 */
 		bool _findRootSignature(const char* name);
-		/*! DX12パイプラインステート取得 */
-		bool _findPipelineState(const char* name, ng::eVertexLayout vertexLayout);
+		/*! DX12パイプラインステート生成 */
+		bool _createPipelineState(const char* name, ng::eVertexLayout vertexLayout);
 		/*! シェーダーエフェクト生成 */
 		bool _createShaderEffect(const char* name);
 

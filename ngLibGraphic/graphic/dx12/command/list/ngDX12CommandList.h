@@ -66,6 +66,11 @@ namespace ng
 		* @brief					ルートシグネチャ設定
 		*/
 		void SetRootSignature(CDX12RootSignature& signature);
+
+		/*!
+		* @brief					パイプラインステート設定
+		*/
+		void SetPipelineState(CDX12PipelineState& state);
 		
 		/*!
 		* @brief					ビューポート設定

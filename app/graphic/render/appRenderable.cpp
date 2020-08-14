@@ -26,7 +26,14 @@ namespace app
 
 	void CRenderable::Render(const ng::RenderParam* pParam)
 	{
-		_render(ng::PointerCast<const RenderParam*>(pParam));
+		if(!IsEnable()) return;
+
+		const RenderParam* pParamApp = ng::PointerCast<const RenderParam*>(pParam);
+
+		// TODO: パラメータからステート更新の判定？
+		_setRenderState(pParamApp);
+
+		_render(pParamApp);
 	}
 
 	bool CRenderable::IsEnable() const
@@ -35,6 +42,10 @@ namespace app
 	}
 
 	void CRenderable::_render(const RenderParam* pParam)
+	{
+	}
+
+	void CRenderable::_setRenderState(const RenderParam* pParam) const
 	{
 	}
 

@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include "ngLibGraphic/graphic/dx12/command/list/ngDX12CommandList.h"
 #include "ngLibGraphic/graphic/dx12/pipeline/ngDX12PipelineStateDesc.h"
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
 #include "appMaterial.h"
@@ -83,26 +84,42 @@ namespace app
 		}
 	}
 
-	bool CMaterial::GetDiffuseMap(ng::CWeakPtr<CTexture>& dstPtr) const
+	void CMaterial::SetRootSignature(ng::CDX12CommandList& commandList)
 	{
-		if(!m_diffuseMap.IsValid()) {
-			return false;
+		if(m_rootSignature) {
+			commandList.SetRootSignature(*m_rootSignature);
 		}
-
-		dstPtr = m_diffuseMap.GetResource();
-
-		return true;
 	}
 
-	bool CMaterial::GetShaderEffect(ng::CWeakPtr<CShaderEffect>& dstPtr) const
+	void CMaterial::SetPipelineState(ng::CDX12CommandList& commandList)
 	{
-		if(!m_shaderEffect) {
-			return false;
+		if(m_pipelineState) {
+			commandList.SetPipelineState(*m_pipelineState);
+		}
+	}
+
+	ng::CWeakPtr<CTexture> CMaterial::GetDiffuseMap() const
+	{
+		if(!m_diffuseMap.IsValid()) {
+			return ng::CWeakPtr<CTexture>();
 		}
 
-		dstPtr = m_shaderEffect;
+		return m_diffuseMap.GetResource();
+	}
 
-		return true;
+	ng::CWeakPtr<CShaderEffect> CMaterial::GetShaderEffect() const
+	{
+		return m_shaderEffect;
+	}
+
+	ng::CWeakPtr<ng::CDX12RootSignature> CMaterial::GetRootSignature() const
+	{
+		return m_rootSignature;
+	}
+
+	ng::CWeakPtr<ng::CDX12PipelineState> CMaterial::GetPipelineState() const
+	{
+		return m_pipelineState;
 	}
 
 	bool CMaterial::_build(const MaterialData& data)
@@ -119,8 +136,9 @@ namespace app
 
 		// DX12ルートシグネチャ取得
 		result &= _findRootSignature(data.rootSignatureName);
-		// DX12パイプラインステート取得
-		result &= _findPipelineState(data.pipelineStateName, data.vertexLayout);
+		// DX12パイプラインステート生成
+		result &= _createPipelineState(data.pipelineStateName, data.vertexLayout);
+
 		// シェーダーエフェクト生成
 		result &= _createShaderEffect(data.shaderEffectName);
 
@@ -158,7 +176,7 @@ namespace app
 		return true;
 	}
 
-	bool CMaterial::_findPipelineState(const char* name, ng::eVertexLayout vertexLayout)
+	bool CMaterial::_createPipelineState(const char* name, ng::eVertexLayout vertexLayout)
 	{
 		// DX12パイプラインステート取得
 		if(!CGraphicModule::GetPipelineState(name, m_pipelineState)) {

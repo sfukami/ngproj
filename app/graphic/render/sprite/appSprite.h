@@ -55,6 +55,9 @@ namespace app
 		/*! 描画 */
 		void _render(const RenderParam* pParam);
 
+		/*! 描画ステート設定 */
+		void _setRenderState(const RenderParam* pParam);
+
 		/*! 生成済みか */
 		bool _isCreate() const;
 
