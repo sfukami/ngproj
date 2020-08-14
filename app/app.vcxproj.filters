@@ -274,6 +274,9 @@
     <ClCompile Include="graphic\material\appMaterialLibrary.cpp">
       <Filter>ソース ファイル\graphic\material</Filter>
     </ClCompile>
+    <ClCompile Include="resource\appResourceExtTable.cpp">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h">

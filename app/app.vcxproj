@@ -62,6 +62,7 @@
     <ClCompile Include="memory\appApplicationMemory.cpp" />
     <ClCompile Include="memory\appApplicationMemorySize.cpp" />
     <ClCompile Include="memory\appMemoryModule.cpp" />
+    <ClCompile Include="resource\appResourceExtTable.cpp" />
     <ClCompile Include="resource\appResourceModule.cpp" />
     <ClCompile Include="resource\appResourceSystem.cpp" />
     <ClCompile Include="resource\memory\appResourceMemory.cpp" />
