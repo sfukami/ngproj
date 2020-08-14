@@ -277,6 +277,9 @@
     <ClCompile Include="resource\appResourceExtTable.cpp">
       <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\shader\effect\factory\appShaderEffectTable.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h">

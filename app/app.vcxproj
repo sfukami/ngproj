@@ -53,6 +53,7 @@
     <ClCompile Include="graphic\shader\effect\appShaderEffect.cpp" />
     <ClCompile Include="graphic\shader\effect\appShaderEffectTexture.cpp" />
     <ClCompile Include="graphic\shader\effect\factory\appShaderEffectFactory.cpp" />
+    <ClCompile Include="graphic\shader\effect\factory\appShaderEffectTable.cpp" />
     <ClCompile Include="graphic\state\appPipelineStateManager.cpp" />
     <ClCompile Include="graphic\texture\appTexture.cpp" />
     <ClCompile Include="input\appInput.cpp" />

@@ -6,8 +6,13 @@
 */
 
 #include "appShaderEffectFactory.h"
+/*
 // シェーダーエフェクト
 #include "../appShaderEffectTexture.h"
+*/
+
+// シェーダーエフェクト テーブル
+#include "appShaderEffectTable.cpp"
 
 namespace app
 {
@@ -23,7 +28,20 @@ namespace app
 	{
 		bool result = true;
 
+		// シェーダーエフェクトテーブル宣言
+		_SHADER_EFFECT_TABLE();
+
+		for(int i = 0; i < NG_ARRAY_SIZE(s_shaderEffectTable); i++)
+		{
+			const ShaderEffectInfo& info = s_shaderEffectTable[i];
+
+			if(!m_funcMap.Add(info.name, info.func)) {
+				NG_ERRLOG("ShaderEffectFactory", "シェーダーエフェクト生成関数の追加に失敗しました. name:%s", info.name);
+				result = false;
+			}
+		}
 		// シェーダーエフェクト生成関数追加
+		/*
 		{
 			// シェーダーエフェクト生成関数追加マクロ
 			#define _ADD_CREATE_FUNC(_name, _type) \
@@ -33,6 +51,7 @@ namespace app
 			
 			#undef _ADD_CREATE_FUNC
 		}
+		*/
 
 		return result;
 	}
