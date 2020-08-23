@@ -1,12 +1,12 @@
 ﻿/*!
-* @file		appShaderEffectTexture.h
-* @brief	シェーダーエフェクト テクスチャ描画
+* @file		appShaderEffectSprite.h
+* @brief	シェーダーエフェクト スプライト描画
 * @date		2020-07-28
 * @author	s.fukami
 */
 
-#ifndef __APP_SHADER_EFFECT_TEXTURE_H__
-#define __APP_SHADER_EFFECT_TEXTURE_H__
+#ifndef __APP_SHADER_EFFECT_SPRITE_H__
+#define __APP_SHADER_EFFECT_SPRITE_H__
 
 #include "ngLibGraphic/graphic/dx12/descriptor/ngDX12DescriptorHeap.h"
 #include "ngLibGraphic/graphic/dx12/shader/ngDX12ConstantBuffer.h"
@@ -27,13 +27,13 @@ namespace app
 namespace app
 {
 	/*!
-	* @brief					シェーダーエフェクト テクスチャ描画
+	* @brief					シェーダーエフェクト スプライト描画
 	*/
-	class CShaderEffectTexture : public CShaderEffect
+	class CShaderEffectSprite : public CShaderEffect
 	{
 	public:
-		CShaderEffectTexture();
-		~CShaderEffectTexture();
+		CShaderEffectSprite();
+		~CShaderEffectSprite();
 
 		/*!
 		* @brief					生成
@@ -75,4 +75,4 @@ namespace app
 
 }	// namespace app
 
-#endif	// __APP_SHADER_EFFECT_TEXTURE_H__
+#endif	// __APP_SHADER_EFFECT_SPRITE_H__

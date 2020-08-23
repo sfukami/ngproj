@@ -53,7 +53,7 @@ namespace app
 
 			matData.SetRootSignatureName("sprite");
 			matData.SetPipelineStateName("sprite");
-			matData.SetShaderEffectName("texture");
+			matData.SetShaderEffectName("sprite");
 
 			matData.vertexLayout = ng::eVertexLayout::SPRITE;
 

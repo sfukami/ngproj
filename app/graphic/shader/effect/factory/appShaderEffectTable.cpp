@@ -6,7 +6,7 @@
 */
 
 // シェーダーエフェクト
-#include "../appShaderEffectTexture.h"
+#include "../appShaderEffectSprite.h"
 
 namespace ng
 {
@@ -23,7 +23,7 @@ namespace app
 	//! シェーダーエフェクトテーブル宣言
 	#define _SHADER_EFFECT_TABLE() \
 		static const ShaderEffectInfo s_shaderEffectTable[] = { \
-			_SHADER_EFFECT_INFO("texture", CShaderEffectTexture), \
+			_SHADER_EFFECT_INFO("sprite", CShaderEffectSprite), \
 		};
 
 }	// namespace app

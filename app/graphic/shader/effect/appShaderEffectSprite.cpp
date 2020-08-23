@@ -1,25 +1,25 @@
 ﻿/*!
-* @file		appShaderEffectTexture.cpp
-* @brief	シェーダーエフェクト テクスチャ描画
+* @file		appShaderEffectSprite.h
+* @brief	シェーダーエフェクト スプライト描画
 * @date		2020-07-28
 * @author	s.fukami
 */
 
 #include "ngLibGraphic/graphic/dx12/command/list/ngDX12CommandList.h"
-#include "appShaderEffectTexture.h"
+#include "appShaderEffectSprite.h"
 #include "app/graphic/material/appMaterial.h"
 
 namespace app
 {
-	CShaderEffectTexture::CShaderEffectTexture()
+	CShaderEffectSprite::CShaderEffectSprite()
 	{
 	}
-	CShaderEffectTexture::~CShaderEffectTexture()
+	CShaderEffectSprite::~CShaderEffectSprite()
 	{
 		Destroy();
 	}
 
-	bool CShaderEffectTexture::Create(
+	bool CShaderEffectSprite::Create(
 		ng::CDX12Device& device,
 		CMaterial& material
 		)
@@ -33,7 +33,7 @@ namespace app
 			2,
 			D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
 			))) {
-			NG_ERRLOG_C("ShaderEffectTexture", err, "DX12ディスクリプタヒープの生成に失敗しました.");
+			NG_ERRLOG_C("ShaderEffectSprite", err, "DX12ディスクリプタヒープの生成に失敗しました.");
 			return false;
 		}
 
@@ -42,7 +42,7 @@ namespace app
 			device,
 			nullptr, sizeof(ShaderParam)
 			))) {
-			NG_ERRLOG_C("ShaderEffectTexture", err, "DX12コンスタントバッファの生成に失敗しました.");
+			NG_ERRLOG_C("ShaderEffectSprite", err, "DX12コンスタントバッファの生成に失敗しました.");
 			return false;
 		}
 
@@ -65,23 +65,23 @@ namespace app
 		return true;
 	}
 
-	void CShaderEffectTexture::Destroy()
+	void CShaderEffectSprite::Destroy()
 	{
 		m_cb.Destroy();
 		m_descHeap.Destroy();
 	}
 
-	void CShaderEffectTexture::SetShaderParam(const ShaderParam& param)
+	void CShaderEffectSprite::SetShaderParam(const ShaderParam& param)
 	{
 		m_shPrm = param;
 	}
 
-	void CShaderEffectTexture::UpdateConstantBuffer()
+	void CShaderEffectSprite::UpdateConstantBuffer()
 	{
 		m_cb.CopyData(&m_shPrm, sizeof(ShaderParam));
 	}
 
-	void CShaderEffectTexture::BindResource(ng::CDX12CommandList& commandList)
+	void CShaderEffectSprite::BindResource(ng::CDX12CommandList& commandList)
 	{
 		// ディスクリプタヒープ設定
 		commandList.SetDescriptorHeap(m_descHeap);
