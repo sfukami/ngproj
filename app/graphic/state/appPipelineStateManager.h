@@ -63,7 +63,10 @@ namespace app
 
 	private:
 		//! DX12パイプラインステート ハッシュマップ
-		ng::CFixedHashMap<const char*, ng::CSharedPtr<ng::CDX12PipelineState>, APP_GRAPHIC_PIPELINE_STATE_MAX> m_stateMap;
+		using MapType = ng::CFixedHashMap<const char*, ng::CSharedPtr<ng::CDX12PipelineState>, APP_GRAPHIC_PIPELINE_STATE_MAX>;
+
+	private:
+		MapType m_stateMap;	//!< DX12パイプラインステート ハッシュマップ
 	};
 
 }	// namespace app

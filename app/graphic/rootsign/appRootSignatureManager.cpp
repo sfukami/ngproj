@@ -51,13 +51,13 @@ namespace app
 
 	bool CRootSignatureManager::Get(const char* name, ng::CWeakPtr<ng::CDX12RootSignature>& dstPtr) const
 	{
-		ng::CSharedPtr<ng::CDX12RootSignature> sp;
+		const MapType::INodeType* pNode = m_rootSignMap.Find(name);
 
-		if(!m_rootSignMap.Get(name, sp)) {
+		if(pNode == nullptr) {
 			return false;
 		}
 
-		dstPtr = sp;
+		dstPtr = pNode->GetValue();
 
 		return true;
 	}

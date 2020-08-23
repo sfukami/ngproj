@@ -45,6 +45,7 @@
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineShape.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineTexture.cpp" />
     <ClCompile Include="graphic\render\appRenderable.cpp" />
+    <ClCompile Include="graphic\render\appRenderParam.cpp" />
     <ClCompile Include="graphic\render\sprite\appSprite.cpp" />
     <ClCompile Include="graphic\rootsign\appRootSignatureInfo.cpp" />
     <ClCompile Include="graphic\rootsign\appRootSignatureManager.cpp" />

@@ -8,9 +8,16 @@
 #ifndef __APP_SHADER_EFFECT_H__
 #define __APP_SHADER_EFFECT_H__
 
+#include "ngLibCore/geometry/ngGeometry.h"
+
 namespace ng
 {
+	class CDX12Device;
 	class CDX12CommandList;
+}
+namespace app
+{
+	class CMaterial;
 }
 
 namespace app
@@ -21,8 +28,33 @@ namespace app
 	class CShaderEffect
 	{
 	public:
+		//! シェーダーパラメータ
+		struct ShaderParam
+		{
+			ShaderParam();
+			
+			ng::Matrix4 wvpMat;		//!< ワールドビュープロジェクション行列
+		};
+
+	public:
 		CShaderEffect();
 		virtual ~CShaderEffect();
+
+		/*!
+		* @brief					生成
+		* @param device				DX12デバイス
+		* @param material			マテリアル
+		* @return					成否
+		*/
+		virtual bool Create(
+			ng::CDX12Device& device,
+			CMaterial& material
+			);
+
+		/*!
+		* @brief					シェーダーパラメータ設定
+		*/
+		virtual void SetShaderParam(const ShaderParam& param);
 
 		/*!
 		* @brief					コンスタントバッファ更新

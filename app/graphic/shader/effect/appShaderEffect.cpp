@@ -9,10 +9,27 @@
 
 namespace app
 {
+	CShaderEffect::ShaderParam::ShaderParam()
+	{
+		ng::MatrixOp::Identity(wvpMat);
+	}
+
 	CShaderEffect::CShaderEffect()
 	{
 	}
 	CShaderEffect::~CShaderEffect()
+	{
+	}
+
+	bool CShaderEffect::Create(
+		ng::CDX12Device& device,
+		CMaterial& material
+		)
+	{
+		return true;
+	}
+
+	void CShaderEffect::SetShaderParam(const ShaderParam& param)
 	{
 	}
 

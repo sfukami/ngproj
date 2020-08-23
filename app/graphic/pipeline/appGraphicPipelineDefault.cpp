@@ -79,6 +79,10 @@ namespace app
 		{
 			RenderParam param;
 			param.cmdListId = eGraphicCommandListId::MAIN;
+			param.viewMat = m_camera.GetViewMatrix();
+			param.projMat = m_proj.GetProjMatrix();
+			param.CalcViewProjMatrix();
+
 			ng::CGraphicManager::GetInstance().Render(&param);
 		}
 

@@ -57,13 +57,13 @@ namespace app
 
 	bool CPipelineStateManager::Get(const char* name, ng::CWeakPtr<ng::CDX12PipelineState>& dstPtr) const
 	{
-		ng::CSharedPtr<ng::CDX12PipelineState> sp;
+		const MapType::INodeType* pNode = m_stateMap.Find(name);
 
-		if(!m_stateMap.Get(name, sp)) {
+		if(pNode == nullptr) {
 			return false;
 		}
 
-		dstPtr = sp;
+		dstPtr = pNode->GetValue();
 
 		return true;
 	}

@@ -79,6 +79,16 @@ namespace ng
 		/*! 後方のノードを返す */
 		virtual const INodeType* Next(const INodeType* pNode) const;
 
+		/*! 要素を探す */
+		virtual INodeType* Find(const KeyType& key);
+
+		/*! 要素を探す */
+		virtual const INodeType* Find(const KeyType& key) const;
+
+		/*! 要素取得 */
+		ValueType& operator[](const KeyType& key);
+		const ValueType& operator[](const KeyType& key) const;
+
 	protected:
 		/*! 初期化 */
 		NG_ERRCODE _initialize(u32 hashMax, u32 chainMax);
@@ -444,6 +454,36 @@ namespace ng
 		return const_cast<CFixedHashMapBase<KEY, T>*>(this)->Next(const_cast<INodeType*>(pNode));
 	}
 
+	template <typename KEY, typename T>
+	typename CFixedHashMapBase<KEY, T>::INodeType* CFixedHashMapBase<KEY, T>::Find(const KeyType& key)
+	{
+		NG_ASSERT_AND_ABORT(_isInit());
+
+		return _getNode(key);
+	}
+
+	template <typename KEY, typename T>
+	typename const CFixedHashMapBase<KEY, T>::INodeType* CFixedHashMapBase<KEY, T>::Find(const KeyType& key) const
+	{
+		return const_cast<CFixedHashMapBase<KEY, T>*>(this)->Find(key);
+	}
+
+	template <typename KEY, typename T>
+	typename CFixedHashMapBase<KEY, T>::ValueType& CFixedHashMapBase<KEY, T>::operator[](const KeyType& key)
+	{
+		NG_ASSERT_AND_ABORT(_isInit());
+
+		NodeType* pNode = _getNode(key);
+		NG_ASSERT_NOT_NULL(pNode);
+
+		return pNode->GetValue();
+	}
+	template <typename KEY, typename T>
+	typename const CFixedHashMapBase<KEY, T>::ValueType& CFixedHashMapBase<KEY, T>::operator[](const KeyType& key) const
+	{
+		return (*const_cast<CFixedHashMapBase<KEY, T>*>(this))[key];
+	}
+	
 	template <typename KEY, typename T>
 	NG_ERRCODE CFixedHashMapBase<KEY, T>::_initialize(u32 hashMax, u32 chainMax)
 	{

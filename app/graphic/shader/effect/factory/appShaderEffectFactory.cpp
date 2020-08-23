@@ -6,10 +6,6 @@
 */
 
 #include "appShaderEffectFactory.h"
-/*
-// シェーダーエフェクト
-#include "../appShaderEffectTexture.h"
-*/
 
 // シェーダーエフェクト テーブル
 #include "appShaderEffectTable.cpp"
@@ -40,18 +36,6 @@ namespace app
 				result = false;
 			}
 		}
-		// シェーダーエフェクト生成関数追加
-		/*
-		{
-			// シェーダーエフェクト生成関数追加マクロ
-			#define _ADD_CREATE_FUNC(_name, _type) \
-				m_funcMap.Add(_name, &CShaderEffectFactory::_createShaderEffect<_type>)
-
-			result &= _ADD_CREATE_FUNC("texture", CShaderEffectTexture);
-			
-			#undef _ADD_CREATE_FUNC
-		}
-		*/
 
 		return result;
 	}
@@ -73,7 +57,7 @@ namespace app
 
 		CShaderEffect* pShEff = (this->*func)(alloc);
 		if(pShEff == nullptr) {
-			NG_ERRLOG("ShaderEffectFactory", "シェーダーエフェクトの生成に失敗しました. name:%s", name);
+			NG_ERRLOG("ShaderEffectFactory", "シェーダーエフェクトオブジェクトの生成に失敗しました. name:%s", name);
 			return false;
 		}
 

@@ -5,6 +5,7 @@
 * @author	s.fukami
 */
 
+#include "ngLibGraphic/graphic/dx12/ngDX12Util.h"
 #include "ngLibGraphic/graphic/dx12/command/list/ngDX12CommandList.h"
 #include "ngLibGraphic/graphic/dx12/pipeline/ngDX12PipelineStateDesc.h"
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
@@ -37,13 +38,15 @@ namespace app
 			matData.diffuseMap.SetFilePath("../resource/texture/test.bmp");
 			{
 				ShaderData& vs = matData.vertexShader;
-				vs.SetFilePath("../resource/shader/texture_vs.hlsl");
+				//vs.SetFilePath("../resource/shader/texture_vs.hlsl");
+				vs.SetFilePath("../resource/shader/sprite_vs.hlsl");
 				vs.SetEntryPoint("VSMain");
 				vs.SetTarget("vs_5_0");
 			}
 			{
 				ShaderData& ps = matData.pixelShader;
-				ps.SetFilePath("../resource/shader/texture_ps.hlsl");
+				//ps.SetFilePath("../resource/shader/texture_ps.hlsl");
+				ps.SetFilePath("../resource/shader/sprite_ps.hlsl");
 				ps.SetEntryPoint("PSMain");
 				ps.SetTarget("ps_5_0");
 			}
@@ -52,7 +55,7 @@ namespace app
 			matData.SetPipelineStateName("sprite");
 			matData.SetShaderEffectName("texture");
 
-			matData.vertexLayout = ng::eVertexLayout::STATIC;
+			matData.vertexLayout = ng::eVertexLayout::SPRITE;
 
 			return _build(matData);
 		}
@@ -68,20 +71,6 @@ namespace app
 		m_diffuseMap.Release();
 		m_vertexShader.Release();
 		m_pixelShader.Release();
-	}
-
-	void CMaterial::UpdateConstantBuffer()
-	{
-		if(m_shaderEffect) {
-			m_shaderEffect->UpdateConstantBuffer();
-		}
-	}
-
-	void CMaterial::BindResource(ng::CDX12CommandList& commandList)
-	{
-		if(m_shaderEffect) {
-			m_shaderEffect->BindResource(commandList);
-		}
 	}
 
 	void CMaterial::SetRootSignature(ng::CDX12CommandList& commandList)
@@ -213,7 +202,17 @@ namespace app
 
 	bool CMaterial::_createShaderEffect(const char* name)
 	{
+		// シェーダーエフェクトのオブジェクトを生成
 		if(!CGraphicModule::CreateShaderEffect(name, m_shaderEffect)) {
+			NG_ERRLOG("Material", "シェーダーエフェクトの生成に失敗しました. name:%s", name);
+			return false;
+		}
+
+		// シェーダーエフェクトを生成
+		ng::CDX12Device* pDX12Device = ng::DX12Util::GetDevice();
+		NG_ASSERT_NOT_NULL(pDX12Device);
+
+		if(!m_shaderEffect->Create(*pDX12Device, *this)) {
 			NG_ERRLOG("Material", "シェーダーエフェクトの生成に失敗しました. name:%s", name);
 			return false;
 		}

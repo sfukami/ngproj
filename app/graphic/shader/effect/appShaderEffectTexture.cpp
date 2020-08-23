@@ -19,31 +19,31 @@ namespace app
 		Destroy();
 	}
 
-	NG_ERRCODE CShaderEffectTexture::Create(
+	bool CShaderEffectTexture::Create(
 		ng::CDX12Device& device,
 		CMaterial& material
 		)
 	{
-		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
+		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
 		// DX12ディスクリプタヒープ生成
-		if(NG_FAILED(ret = m_descHeap.Create(
+		if(NG_FAILED(err = m_descHeap.Create(
 			device,
 			D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV,
 			2,
 			D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
 			))) {
-			NG_ERRLOG_C("ShaderEffectTexture", ret, "DX12ディスクリプタヒープの生成に失敗しました.");
-			return ret;
+			NG_ERRLOG_C("ShaderEffectTexture", err, "DX12ディスクリプタヒープの生成に失敗しました.");
+			return false;
 		}
 
 		// DX12コンスタントバッファ生成
-		if(NG_FAILED(ret = m_cb.Create(
+		if(NG_FAILED(err = m_cb.Create(
 			device,
 			nullptr, sizeof(ShaderParam)
 			))) {
-			NG_ERRLOG_C("ShaderEffectTexture", ret, "DX12コンスタントバッファの生成に失敗しました.");
-			return ret;
+			NG_ERRLOG_C("ShaderEffectTexture", err, "DX12コンスタントバッファの生成に失敗しました.");
+			return false;
 		}
 
 		// コンスタントバッファのリソースビュー生成
@@ -62,13 +62,18 @@ namespace app
 			}
 		}
 
-		return ret;
+		return true;
 	}
 
 	void CShaderEffectTexture::Destroy()
 	{
 		m_cb.Destroy();
 		m_descHeap.Destroy();
+	}
+
+	void CShaderEffectTexture::SetShaderParam(const ShaderParam& param)
+	{
+		m_shPrm = param;
 	}
 
 	void CShaderEffectTexture::UpdateConstantBuffer()
@@ -84,11 +89,6 @@ namespace app
 		commandList.SetGraphicsRootDescriptorTable(0, m_descHeap.GetGPUDescriptorHandle(0));
 		// テクスチャのディスクリプタテーブルを設定
 		commandList.SetGraphicsRootDescriptorTable(1, m_descHeap.GetGPUDescriptorHandle(1));
-	}
-
-	void CShaderEffectTexture::SetWVPMatrix(const ng::Matrix4& mat)
-	{
-		m_shPrm.matWVP = mat;
 	}
 
 }	// namespace app

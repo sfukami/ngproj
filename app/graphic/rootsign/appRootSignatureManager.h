@@ -54,7 +54,10 @@ namespace app
 
 	private:
 		//! DX12ルートシグネチャ ハッシュマップ
-		ng::CFixedHashMap<const char*, ng::CSharedPtr<ng::CDX12RootSignature>, APP_GRAPHIC_ROOT_SIGNATURE_MAX> m_rootSignMap;
+		using MapType = ng::CFixedHashMap<const char*, ng::CSharedPtr<ng::CDX12RootSignature>, APP_GRAPHIC_ROOT_SIGNATURE_MAX>;
+
+	private:
+		MapType m_rootSignMap;	//!< DX12ルートシグネチャ ハッシュマップ
 	};
 
 }	// namespace app

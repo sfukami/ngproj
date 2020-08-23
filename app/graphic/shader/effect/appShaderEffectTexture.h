@@ -8,7 +8,6 @@
 #ifndef __APP_SHADER_EFFECT_TEXTURE_H__
 #define __APP_SHADER_EFFECT_TEXTURE_H__
 
-#include "ngLibCore/geometry/ngGeometry.h"
 #include "ngLibGraphic/graphic/dx12/descriptor/ngDX12DescriptorHeap.h"
 #include "ngLibGraphic/graphic/dx12/shader/ngDX12ConstantBuffer.h"
 #include "ngLibApp/resource/ngResourceHandle.h"
@@ -40,9 +39,9 @@ namespace app
 		* @brief					生成
 		* @param device				DX12デバイス
 		* @param material			マテリアル
-		* @return					NG エラーコード
+		* @return					成否
 		*/
-		NG_ERRCODE Create(
+		bool Create(
 			ng::CDX12Device& device,
 			CMaterial& material
 			);
@@ -51,6 +50,11 @@ namespace app
 		* @brief					破棄
 		*/
 		void Destroy();
+
+		/*!
+		* @brief					シェーダーパラメータ設定
+		*/
+		void SetShaderParam(const ShaderParam& param);
 
 		/*!
 		* @brief					コンスタントバッファ更新
@@ -62,16 +66,6 @@ namespace app
 		* @param commandList		DX12コマンドリスト
 		*/
 		void BindResource(ng::CDX12CommandList& commandList);
-		
-		/*! ワールドビュープロジェクション行列設定 */
-		void SetWVPMatrix(const ng::Matrix4& mat);
-
-	private:
-		//! シェーダーパラメータ
-		struct ShaderParam
-		{
-			ng::Matrix4 matWVP;
-		};
 
 	private:
 		ng::CDX12DescriptorHeap m_descHeap;	//!< DX12ディスクリプタヒープ

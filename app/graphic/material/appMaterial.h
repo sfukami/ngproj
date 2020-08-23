@@ -56,17 +56,6 @@ namespace app
 		void Destroy();
 
 		/*!
-		* @brief					コンスタントバッファ更新
-		*/
-		void UpdateConstantBuffer();
-
-		/*!
-		* @brief					リソースをバインド
-		* @param commandList		DX12コマンドリスト
-		*/
-		void BindResource(ng::CDX12CommandList& commandList);
-
-		/*!
 		* @brief					DX12ルートシグネチャをコマンドリストへ設定
 		* @param commandList		DX12コマンドリスト
 		*/

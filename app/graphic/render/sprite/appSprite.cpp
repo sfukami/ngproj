@@ -7,6 +7,7 @@
 
 #include "ngLibCore/common/ngCommon.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
+#include "app/graphic/shader/effect/appShaderEffect.h"
 #include "appSprite.h"
 #include "../appRenderParam.h"
 #include "../../appGraphicUtil.h"
@@ -64,19 +65,26 @@ namespace app
 		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(pParam->cmdListId);
 		NG_ASSERT_NOT_NULL(pCmdList);
 
-		m_material.UpdateConstantBuffer();
-		m_material.BindResource(*pCmdList);
-
-		m_square.Render(*pCmdList);
-	}
-
-	void CSprite::_setRenderState(const RenderParam* pParam)
-	{
-		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(pParam->cmdListId);
-		NG_ASSERT_NOT_NULL(pCmdList);
-
+		// ルートシグネチャ設定
 		m_material.SetRootSignature(*pCmdList);
+		// パイプラインステート設定
 		m_material.SetPipelineState(*pCmdList);
+
+		// シェーダーエフェクト設定
+		auto shaderEffect = m_material.GetShaderEffect();
+		if(shaderEffect) {
+			CShaderEffect::ShaderParam param;
+			ng::Matrix4 worldMat;
+			ng::MatrixOp::Identity(worldMat);
+			ng::MatrixOp::Multiply(param.wvpMat, worldMat, pParam->vpMat);
+
+			shaderEffect->SetShaderParam(param);
+			shaderEffect->UpdateConstantBuffer();
+			shaderEffect->BindResource(*pCmdList);
+		}
+
+		// 矩形描画
+		m_square.Render(*pCmdList);
 	}
 
 	bool CSprite::_isCreate() const
