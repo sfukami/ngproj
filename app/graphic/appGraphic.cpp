@@ -7,9 +7,10 @@
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appGraphic.h"
-#include "appGraphicDefine.h"
+#include "appGraphicConst.h"
 #include "command/appGraphicCommandListId.h"
 #include "pipeline/appGraphicPipeline.h"
+#include "app/memory/appMemoryUtil.h"
 
 namespace app
 {
@@ -62,6 +63,21 @@ namespace app
 		// グラフィック管理へ割り当て
 		ng::CGraphicManager::GetInstance().AssignGraphic(&m_dx12Graphic);
 
+		// ルートシグネチャ管理初期化
+		if(!m_rootSignMngr.Initialize(
+			APP_MEMALLOC_GRAPHIC,
+			m_dx12Graphic.GetDevice()
+			)) {
+			NG_ERRLOG("Graphic", "ルートシグネチャ管理の初期化に失敗しました.");
+			return false;
+		}
+
+		// シェーダーエフェクトファクトリ初期化
+		if(!m_shEffFac.Initialize()) {
+			NG_ERRLOG("Graphic", "シェーダーエフェクトファクトリの初期化に失敗しました.");
+			return false;
+		}
+
 		m_isInit = true;
 
 		return true;
@@ -69,6 +85,18 @@ namespace app
 
 	void CGraphic::Finalize()
 	{
+		// シェーダーエフェクトファクトリ 終了処理
+		m_shEffFac.Finalize();
+
+		// パイプラインステート管理 終了処理
+		m_plStateMngr.Finalize();
+
+		// ルートシグネチャ管理 終了処理
+		m_rootSignMngr.Finalize();
+
+		// マテリアルライブラリ クリア
+		m_matLib.Clear();
+
 		// DX12グラフィック 破棄
 		m_dx12Graphic.Destroy();
 
@@ -107,6 +135,34 @@ namespace app
 	const ng::CDX12Graphic& CGraphic::GetDX12Graphic() const
 	{
 		return m_dx12Graphic;
+	}
+
+	CMaterialLibrary& CGraphic::GetMaterialLibrary()
+	{
+		return m_matLib;
+	}
+	const CMaterialLibrary& CGraphic::GetMaterialLibrary() const
+	{
+		return m_matLib;
+	}
+
+	const CRootSignatureManager& CGraphic::GetRootSignatureManager() const
+	{
+		return m_rootSignMngr;
+	}
+
+	CPipelineStateManager& CGraphic::GetPipelineStateManager()
+	{
+		return m_plStateMngr;
+	}
+	const CPipelineStateManager& CGraphic::GetPipelineStateManager() const
+	{
+		return m_plStateMngr;
+	}
+
+	const CShaderEffectFactory& CGraphic::GetShaderEffectFactory() const
+	{
+		return m_shEffFac;
 	}
 
 	bool CGraphic::_isInit() const

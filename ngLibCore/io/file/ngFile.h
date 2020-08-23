@@ -55,6 +55,13 @@ namespace ng
 		size_type Read(void* pDst, size_type size, size_type num = 1);
 
 		/*!
+		* @brief					ファイルの全データを読み込み
+		* @param pDst				読み込み値の格納先
+		* @return					成否
+		*/
+		bool ReadAll(void* pDst);
+
+		/*!
 		* @brief					ファイルへ書き込み
 		* @param format				文字列の書式
 		* @param ...				書き込む文字列（可変長）

@@ -50,6 +50,9 @@ namespace app
 	private:
 		/*! 描画 */
 		virtual void _render(const RenderParam* pParam);
+
+		/*! 描画ステート設定 */
+		virtual void _setRenderState(const RenderParam* pParam) const;
 	};
 
 }	// namespace app

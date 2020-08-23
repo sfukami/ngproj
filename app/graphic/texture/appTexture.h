@@ -26,14 +26,21 @@ namespace app
 		* @brief					リソース構築
 		* @param pBinary			リソースバイナリ
 		* @param size				リソースバイナリのサイズ
+		* @param pBuildParam		ビルドパラメータ
 		* @return					成否
 		*/
-		bool Build(void* pBinary, ng::size_type size);
+		bool Build(const void* pBinary, ng::size_type size, const void* pBuildParam);
 
 		/*!
 		* @brief					破棄
 		*/
 		void Destroy();
+
+		/*!
+		* @brief					DX12テクスチャ取得
+		*/
+		ng::CDX12Texture& GetTexture();
+		const ng::CDX12Texture& GetTexture() const;
 
 	private:
 		ng::CDX12Texture m_texture;	//!< DX12テクスチャ

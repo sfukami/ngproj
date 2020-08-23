@@ -63,12 +63,21 @@ namespace ng
 
 	bool CResourceManager::Get(const char* pKey, IResourceHandle& handle)
 	{
+		if(!TryGet(pKey, handle)) {
+			NG_WARNLOG("ResourceManager", "リソースの取得に失敗しました. key:%s", pKey);
+			return false;
+		}
+
+		return true;
+	}
+
+	bool CResourceManager::TryGet(const char* pKey, IResourceHandle& handle)
+	{
 		NG_ASSERT(_isInit());
 
 		// マップからリソースを取得
 		CSharedPtr<IResource> spRes;
 		if(!m_resMap.Get(pKey, spRes)) {
-			NG_WARNLOG("ResourceManager", "リソースの取得に失敗しました. key:%s", pKey);
 			return false;
 		}
 

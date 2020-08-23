@@ -15,7 +15,7 @@
 #include "app/game/actor/player/test/appGameActorPlayerTest.h"
 //test
 #include "app/resource/appResourceModule.h"
-#include "app/resource/texture/appTexture.h"
+#include "app/graphic/texture/appTexture.h"
 #include "ngLibApp/resource/ngResourceHandle.h"
 
 namespace app
@@ -48,18 +48,8 @@ namespace app
 		}
 
 		//test
-		//CGameActorPlayer* pPlayer = APP_CREATE_GAME_ACTOR(CGameActorPlayer());
-		m_pPlayer = APP_CREATE_GAME_ACTOR(CGameActorPlayerTest());
-		m_pPlayer->Create();
 
-		/*
-		//test
-		const char* pFilePath = "../resource/texture/test.bmp";
-		ng::CResourceHandle<CTexture> texHndl;
-		CResourceModule::LoadResource(pFilePath, eResourceMemoryType::FIXED, texHndl);
-
-		auto texPtr = texHndl.GetResource();
-		*/
+		bool result = APP_CREATE_GAME_ACTOR(CGameActorPlayerTest());
 
 		return true;
 	}
@@ -76,11 +66,6 @@ namespace app
 
 	void CSceneTestGame::Finalize()
 	{
-		if(m_pPlayer != nullptr) {
-			m_pPlayer->Destroy();
-			//NG_SAFE_DELETE(GameActorMacro::_GetGameActorMemAlloc(), m_pPlayer);
-		}
-
 		m_game.Finalize();
 		
 		if(m_pPipeline != nullptr) {

@@ -73,6 +73,12 @@ namespace ng
 		/*! 後方のノードを返す */
 		virtual const INodeType* Next(const INodeType* pNode) const = 0;
 
+		/*! 要素を探す */
+		virtual INodeType* Find(const KeyType& key) = 0;
+
+		/*! 要素を探す */
+		virtual const INodeType* Find(const KeyType& key) const = 0;
+
 	protected:
 		/*! ノード インターフェース */
 		template <typename T>

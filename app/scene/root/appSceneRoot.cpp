@@ -29,7 +29,7 @@ namespace app
 
 	void CSceneRoot::Update(float deltaTime)
 	{
-		auto scenePtr = NG_MAKE_SHARED_PTR(IScene, APP_MEMALLOC_APPLICATION,
+		auto scenePtr = NG_MAKE_SHARED_PTR_CTOR(IScene, APP_MEMALLOC_APPLICATION,
 			//CSceneTest()
 			//CSceneTestImGui()
 			CSceneTestGame()

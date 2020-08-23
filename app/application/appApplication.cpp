@@ -124,7 +124,7 @@ namespace app
 
 		// ルートシーン登録
 		{
-			auto scenePtr = NG_MAKE_SHARED_PTR(IScene, APP_MEMALLOC_APPLICATION, CSceneRoot());
+			auto scenePtr = NG_MAKE_SHARED_PTR_CTOR(IScene, APP_MEMALLOC_APPLICATION, CSceneRoot());
 			m_sceneMngr.RegisterScene(static_cast<unsigned int>(eSceneId::GAME), scenePtr);
 		}
 

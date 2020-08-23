@@ -6,8 +6,11 @@
 */
 
 #include "appGameActorPlayerTest.h"
-#include "app/graphic/render/material/appMaterial.h"
-#include "app/graphic/render/material/appMaterialFormat.h"
+#include "app/graphic/material/appMaterial.h"
+#include "app/graphic/material/appMaterialFormat.h"
+//test
+#include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
+#include "app/resource/appResourceModule.h"
 
 namespace app
 {
@@ -22,23 +25,13 @@ namespace app
 	{
 		// スプライト生成
 		{
-			CMaterial material;
-
-			// マテリアル構築
-			{
-				MaterialData matData;
-				const char* pFilePath = "../resource/texture/test.bmp";
-				NG_STRCPY(matData.diffuseMap.filePath, pFilePath);
-
-				if(!material.Build(matData)) {
-					NG_ERRLOG("GameActorPlayerTest", "マテリアルの構築に失敗しました.");
-					return false;
-				}
+			ng::CResourceHandle<CMaterial> handle;
+			if(!CResourceModule::LoadResource("../resource/material/test.mat", eResourceMemoryType::FIXED, handle)) {
+				return false;
 			}
 
-			if(!m_sprite.Create(
-				1, 1, &material
-				)) {
+			// スプライト生成
+			if(!m_sprite.Create(1, 1, &*handle.GetResource())) {
 				return false;
 			}
 		}

@@ -10,7 +10,7 @@
 
 #include "../appRenderable.h"
 #include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
-#include "app/graphic/render/material/appMaterial.h"
+#include "app/graphic/material/appMaterial.h"
 
 namespace app
 {

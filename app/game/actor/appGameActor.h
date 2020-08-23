@@ -31,6 +31,12 @@ namespace app
 		virtual ~CGameActor();
 		
 		/*!
+		* @brief					生成
+		* @return					成否
+		*/
+		virtual bool Create();
+
+		/*!
 		* @brief					スケジュール
 		* @param deltaTime			フレーム更新間隔
 		*/
@@ -46,6 +52,11 @@ namespace app
 		* @brief					描画
 		*/
 		virtual void Render();
+
+		/*!
+		* @brief					破棄
+		*/
+		virtual void Destroy();
 
 		/*! ゲームアクタータイプ取得 */
 		eGameActorType GetActorType() const;

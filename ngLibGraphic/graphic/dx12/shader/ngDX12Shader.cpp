@@ -25,46 +25,38 @@ namespace ng
 	}
 
 	NG_ERRCODE CDX12Shader::Create(
-		const wchar_t* pFilename,
-		const char* pEntryPoint,
-		const char* pTarget,
-		u32 flags,
-		bool isDebugCompile
+		const void* pCompiled,
+		size_type dataSize
 		)
 	{
 		NG_ASSERT(!IsValid());
+		NG_ASSERT_NOT_NULL(pCompiled);
 
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
-	#if defined(NG_DEBUG)
-		// デバッグコンパイルオプション
-		// デバッグ時はシェーダーデバッグ有効、最適化無効
-		if(isDebugCompile) {
-			flags |= (D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION);
-		}
-	#endif
-
-		// シェーダーコンパイル
-		ID3DBlob* pIError = nullptr;
-		if(NG_FAILED(ret = D3DCompileFromFile(
-			pFilename,
-			nullptr,
-			nullptr,
-			pEntryPoint,
-			pTarget,
-			flags,
-			0,
-			&m_pIBlob,
-			&pIError
-			))) {
-			NG_DXERRLOG("DX12Shader", ret, D3DCompileFromFile, "シェーダーのコンパイルに失敗しました. pFilename:%ls, pEntryPoint:%s, pTarget:%s, pIError:%s", 
-				pFilename, pEntryPoint, pTarget,
-				pIError ? PointerCast<const char*>(pIError->GetBufferPointer()) : "none"
-				);
+		// DX12ブロブ生成
+		if(NG_FAILED(ret = D3DCreateBlob(dataSize, &m_pIBlob))) {
+			NG_ERRLOG_C("Shader", ret, "DX12ブロブの生成に失敗しました.");
 			return ret;
 		}
-		
+
+		// シェーダーデータをコピー
+		NG_MEMCPY(m_pIBlob->GetBufferPointer(), pCompiled, dataSize);
+
 		return ret;
+	}
+
+	NG_ERRCODE CDX12Shader::Create(
+		ID3D10Blob* pBlob
+		)
+	{
+		NG_ASSERT(!IsValid());
+		NG_ASSERT_NOT_NULL(pBlob);
+
+		m_pIBlob = pBlob;
+		m_pIBlob->AddRef();
+
+		return eNG_S_OK;
 	}
 
 	bool CDX12Shader::IsValid() const

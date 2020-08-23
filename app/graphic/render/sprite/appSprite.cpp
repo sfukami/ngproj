@@ -7,6 +7,7 @@
 
 #include "ngLibCore/common/ngCommon.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
+#include "app/graphic/shader/effect/appShaderEffect.h"
 #include "appSprite.h"
 #include "../appRenderParam.h"
 #include "../../appGraphicUtil.h"
@@ -30,10 +31,12 @@ namespace app
 		NG_ASSERT_NOT_NULL(pDX12Device);
 
 		// DX12ポリゴン 矩形生成
-		NG_ERRCODE err = m_square.Create(*pDX12Device, (float)width, (float)height, true);
-		if(NG_FAILED(err)) {
-			NG_ERRLOG_C("Sprite", err, "DX12ポリゴン 矩形の生成に失敗しました.");
-			return false;
+		{
+			NG_ERRCODE err = m_square.Create(*pDX12Device, (float)width, (float)height, true);
+			if(NG_FAILED(err)) {
+				NG_ERRLOG_C("Sprite", err, "DX12ポリゴン矩形の生成に失敗しました.");
+				return false;
+			}
 		}
 
 		// マテリアルをコピー
@@ -59,11 +62,28 @@ namespace app
 
 	void CSprite::_render(const RenderParam* pParam)
 	{
-		if(!_isCreate()) return;
-
 		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(pParam->cmdListId);
 		NG_ASSERT_NOT_NULL(pCmdList);
 
+		// ルートシグネチャ設定
+		m_material.SetRootSignature(*pCmdList);
+		// パイプラインステート設定
+		m_material.SetPipelineState(*pCmdList);
+
+		// シェーダーエフェクト設定
+		auto shaderEffect = m_material.GetShaderEffect();
+		if(shaderEffect) {
+			CShaderEffect::ShaderParam param;
+			ng::Matrix4 worldMat;
+			ng::MatrixOp::Identity(worldMat);
+			ng::MatrixOp::Multiply(param.wvpMat, worldMat, pParam->vpMat);
+
+			shaderEffect->SetShaderParam(param);
+			shaderEffect->UpdateConstantBuffer();
+			shaderEffect->BindResource(*pCmdList);
+		}
+
+		// 矩形描画
 		m_square.Render(*pCmdList);
 	}
 

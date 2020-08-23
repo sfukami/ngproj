@@ -83,11 +83,29 @@
     <Filter Include="ソース ファイル\resource\memory">
       <UniqueIdentifier>{4526e6e3-4627-48ae-9484-654cb5c3dd6f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\resource\texture">
-      <UniqueIdentifier>{773499a5-29db-4f03-a2dc-dd0475a5c42b}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\graphic\material">
+      <UniqueIdentifier>{9446bb9f-75fc-4f5a-8b63-bd809ab00556}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\graphic\render\material">
-      <UniqueIdentifier>{8ed6681b-0813-4bb9-9f04-b16a9c263a01}</UniqueIdentifier>
+    <Filter Include="ソース ファイル\graphic\shader">
+      <UniqueIdentifier>{f0ab8b19-8d75-4e32-be11-2d9781eb3ad7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\texture">
+      <UniqueIdentifier>{bc555b6b-a32e-45c8-a366-8c0ecc67a03b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\rootsign">
+      <UniqueIdentifier>{dde92d86-cee0-45d2-9691-86f4985b499b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\rootsign\desc">
+      <UniqueIdentifier>{cab812d8-b86b-4bb0-93c9-75425e997c43}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\shader\effect">
+      <UniqueIdentifier>{ce140abc-a4f4-4e4a-8c9d-22b38445d5b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\shader\effect\factory">
+      <UniqueIdentifier>{9a5f813d-27c5-4835-9097-3b50c9730144}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\state">
+      <UniqueIdentifier>{fecd2e26-0e2b-4a0a-9b16-66c6f99a6096}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -214,20 +232,56 @@
     <ClCompile Include="resource\memory\appResourceMemorySize.cpp">
       <Filter>ソース ファイル\resource\memory</Filter>
     </ClCompile>
-    <ClCompile Include="resource\texture\appTexture.cpp">
-      <Filter>ソース ファイル\resource\texture</Filter>
-    </ClCompile>
     <ClCompile Include="resource\appResourceModule.cpp">
       <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
     <ClCompile Include="resource\appResourceSystem.cpp">
       <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\render\material\appMaterial.cpp">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClCompile Include="graphic\material\appMaterial.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\render\material\appMaterialFormat.cpp">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClCompile Include="graphic\material\appMaterialFormat.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\texture\appTexture.cpp">
+      <Filter>ソース ファイル\graphic\texture</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\appShader.cpp">
+      <Filter>ソース ファイル\graphic\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescSprite.cpp">
+      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\rootsign\appRootSignatureInfo.cpp">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\rootsign\appRootSignatureManager.cpp">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\effect\appShaderEffect.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\effect\factory\appShaderEffectFactory.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\state\appPipelineStateManager.cpp">
+      <Filter>ソース ファイル\graphic\state</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\material\appMaterialLibrary.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClCompile>
+    <ClCompile Include="resource\appResourceExtTable.cpp">
+      <Filter>ソース ファイル\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\effect\factory\appShaderEffectTable.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\appRenderParam.cpp">
+      <Filter>ソース ファイル\graphic\render</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\effect\appShaderEffectSprite.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -393,9 +447,6 @@
     <ClInclude Include="resource\memory\appResourceMemoryType.h">
       <Filter>ソース ファイル\resource\memory</Filter>
     </ClInclude>
-    <ClInclude Include="resource\texture\appTexture.h">
-      <Filter>ソース ファイル\resource\texture</Filter>
-    </ClInclude>
     <ClInclude Include="resource\appResourceModule.h">
       <Filter>ソース ファイル\resource</Filter>
     </ClInclude>
@@ -405,11 +456,44 @@
     <ClInclude Include="application\appApplicationConst.h">
       <Filter>ソース ファイル\application</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\render\material\appMaterial.h">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClInclude Include="graphic\material\appMaterial.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\render\material\appMaterialFormat.h">
-      <Filter>ソース ファイル\graphic\render\material</Filter>
+    <ClInclude Include="graphic\material\appMaterialFormat.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\texture\appTexture.h">
+      <Filter>ソース ファイル\graphic\texture</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\appShader.h">
+      <Filter>ソース ファイル\graphic\shader</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescSprite.h">
+      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\rootsign\appRootSignatureInfo.h">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\rootsign\appRootSignatureManager.h">
+      <Filter>ソース ファイル\graphic\rootsign</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\appGraphicConst.h">
+      <Filter>ソース ファイル\graphic</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\effect\appShaderEffect.h">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\effect\factory\appShaderEffectFactory.h">
+      <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\state\appPipelineStateManager.h">
+      <Filter>ソース ファイル\graphic\state</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\material\appMaterialLibrary.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\effect\appShaderEffectSprite.h">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

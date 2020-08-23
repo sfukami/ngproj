@@ -83,6 +83,11 @@ namespace ng
 		m_pIList->SetGraphicsRootSignature(signature.Interface());
 	}
 
+	void CDX12CommandList::SetPipelineState(CDX12PipelineState& state)
+	{
+		m_pIList->SetPipelineState(state.Interface());
+	}
+
 	void CDX12CommandList::SetViewports(const CDX12Viewport* ppViewports[], u32 num)
 	{
 		NG_ASSERT(IsValid());

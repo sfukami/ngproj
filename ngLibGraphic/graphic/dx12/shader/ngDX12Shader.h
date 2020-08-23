@@ -23,20 +23,22 @@ namespace ng
 
 		/*!
 		* @brief					DX12シェーダー生成
-		* @param pFilename			ファイル名
-		* @param pEntryPoint		シェーダーのエントリポイント
-		* @param pTarget			シェーダーの機能レベル
-		* @param flags				コンパイルフラグ
-		* @param isDebugCompile		デバッグコンパイルオプションが有効か
-		*							NG_DEBUG 未定義時は無視される
+		* @param pCompiled			コンパイル済みのシェーダーデータ
+		* @param dataSize			シェーダーデータのサイズ
 		* @return					NG エラーコード
 		*/
 		NG_ERRCODE Create(
-			const wchar_t* pFilename,
-			const char* pEntryPoint,
-			const char* pTarget,
-			u32 flags,
-			bool isDebugCompile
+			const void* pCompiled,
+			size_type dataSize
+			);
+
+		/*!
+		* @brief					DX12シェーダー生成
+		* @param pBlob				DX12ブロブ
+		* @return					NG エラーコード
+		*/
+		NG_ERRCODE Create(
+			ID3D10Blob* pBlob
 			);
 
 		/*!
