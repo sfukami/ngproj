@@ -107,6 +107,9 @@
     <Filter Include="ソース ファイル\graphic\state">
       <UniqueIdentifier>{fecd2e26-0e2b-4a0a-9b16-66c6f99a6096}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\transform">
+      <UniqueIdentifier>{5abeeb0d-83e5-44b0-93a7-90d0ed4033d5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -282,6 +285,9 @@
     </ClCompile>
     <ClCompile Include="graphic\shader\effect\appShaderEffectSprite.cpp">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="transform\appTransform.cpp">
+      <Filter>ソース ファイル\transform</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -494,6 +500,9 @@
     </ClInclude>
     <ClInclude Include="graphic\shader\effect\appShaderEffectSprite.h">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="transform\appTransform.h">
+      <Filter>ソース ファイル\transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -77,6 +77,7 @@
     <ClCompile Include="scene\test\appSceneTestImGui.cpp" />
     <ClCompile Include="tool\gui\appToolGUI.cpp" />
     <ClCompile Include="tool\gui\appToolGUIModule.cpp" />
+    <ClCompile Include="transform\appTransform.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="application\appApplication.h" />
@@ -149,6 +150,7 @@
     <ClInclude Include="scene\test\appSceneTestImGui.h" />
     <ClInclude Include="tool\gui\appToolGUI.h" />
     <ClInclude Include="tool\gui\appToolGUIModule.h" />
+    <ClInclude Include="transform\appTransform.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

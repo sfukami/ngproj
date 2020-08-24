@@ -60,6 +60,15 @@ namespace app
 		return true;
 	}
 
+	CTransform& CSprite::GetTransform()
+	{
+		return m_transform;
+	}
+	const CTransform& CSprite::GetTransform() const
+	{
+		return m_transform;
+	}
+
 	void CSprite::_render(const RenderParam* pParam)
 	{
 		ng::CDX12CommandList* pCmdList = GraphicUtil::GetDX12CommandList(pParam->cmdListId);

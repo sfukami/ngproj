@@ -10,6 +10,7 @@
 
 #include "../appRenderable.h"
 #include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
+#include "app/transform/appTransform.h"
 #include "app/graphic/material/appMaterial.h"
 
 namespace app
@@ -51,6 +52,10 @@ namespace app
 		*/
 		bool IsEnable() const;
 
+		/*! トランスフォーム取得 */
+		CTransform& GetTransform();
+		const CTransform& GetTransform() const;
+
 	private:
 		/*! 描画 */
 		void _render(const RenderParam* pParam);
@@ -60,6 +65,7 @@ namespace app
 
 	private:
 		ng::CDX12ShapeSquare m_square;	//!< DX12ポリゴン 矩形
+		CTransform m_transform;	//!< トランスフォーム
 		CMaterial m_material;	//!< マテリアル
 	};
 
