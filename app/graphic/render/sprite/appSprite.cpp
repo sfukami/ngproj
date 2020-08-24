@@ -75,8 +75,9 @@ namespace app
 		if(shaderEffect) {
 			CShaderEffect::ShaderParam param;
 			ng::Matrix4 worldMat;
-			ng::MatrixOp::Identity(worldMat);
+			m_transform.CalcWorldMatrix(worldMat);
 			ng::MatrixOp::Multiply(param.wvpMat, worldMat, pParam->vpMat);
+			ng::MatrixOp::Transpose(param.wvpMat, param.wvpMat);
 
 			shaderEffect->SetShaderParam(param);
 			shaderEffect->UpdateConstantBuffer();

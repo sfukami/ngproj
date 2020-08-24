@@ -21,9 +21,6 @@ namespace ng
 {
 	namespace QuaternionOp
 	{
-		/*!
-		* クォータニオン 初期化
-		*/
 		NG_DECL void Init(
 			Quaternion& dst
 			, float _x, float _y, float _z, float _w
@@ -35,9 +32,14 @@ namespace ng
 			dst.w = _w;
 		}
 
-		/*!
-		* クォータニオン ベクトル取得
-		*/
+		NG_DECL void Identity(
+			Quaternion& dst
+			)
+		{
+			dst.x = dst.y = dst.z = 0.f;
+			dst.w = 1.f;
+		}
+
 		NG_DECL void Vector(
 			Vector3& dst
 			, const Quaternion& src
@@ -48,9 +50,6 @@ namespace ng
 			dst.z = src.z;
 		}
 
-		/*!
-		* クォータニオン 回転角取得
-		*/
 		NG_DECL float Angle(
 			const Quaternion& src
 			)
@@ -58,9 +57,6 @@ namespace ng
 			return (2.0f*ACos(src.w));
 		}
 
-		/*!
-		* クォータニオン 回転軸取得
-		*/
 		NG_DECL void Axis(
 			Vector3& dst
 			, const Quaternion& src
@@ -74,9 +70,6 @@ namespace ng
 			}
 		}
 
-		/*!
-		* クォータニオン クォータニオン加算
-		*/
 		NG_DECL void Add(
 			Quaternion& dst
 			, const Quaternion& lhs
@@ -89,9 +82,6 @@ namespace ng
 			dst.w = lhs.w + rhs.w;
 		}
 
-		/*!
-		* クォータニオン クォータニオン減算
-		*/
 		NG_DECL void Subtract(
 			Quaternion& dst
 			, const Quaternion& lhs
@@ -104,9 +94,6 @@ namespace ng
 			dst.w = lhs.w - rhs.w;
 		}
 
-		/*!
-		* クォータニオン スカラー乗算
-		*/
 		NG_DECL void Multiply(
 			Quaternion& dst
 			, const Quaternion& lhs
@@ -119,9 +106,6 @@ namespace ng
 			dst.w = lhs.w * rhs;
 		}
 
-		/*!
-		* クォータニオン クォータニオン乗算
-		*/
 		NG_DECL void Multiply(
 			Quaternion& dst
 			, const Quaternion& lhs
@@ -136,9 +120,6 @@ namespace ng
 			dst = buf;
 		}
 
-		/*!
-		* クォータニオン ベクトル乗算
-		*/
 		NG_DECL void Multiply(
 			Quaternion& dst
 			, const Quaternion& lhs
@@ -154,9 +135,6 @@ namespace ng
 			dst = buf;
 		}
 
-		/*!
-		* クォータニオン スカラー除算
-		*/
 		NG_DECL void Divide(
 			Quaternion& dst
 			, const Quaternion& lhs
@@ -169,9 +147,6 @@ namespace ng
 			dst.z = lhs.z / rhs;
 		}
 
-		/*!
-		* クォータニオン 内積算出
-		*/
 		NG_DECL float Dot(
 			const Quaternion& lhs
 			, const Quaternion& rhs
@@ -185,9 +160,6 @@ namespace ng
 				);
 		}
 
-		/*!
-		* クォータニオン 長さ算出（平方前）
-		*/
 		NG_DECL float LengthSq(
 			const Quaternion& src
 			)
@@ -200,9 +172,6 @@ namespace ng
 				);
 		}
 
-		/*!
-		* クォータニオン 長さ算出
-		*/
 		NG_DECL float Length(
 			const Quaternion& src
 			)
@@ -212,9 +181,6 @@ namespace ng
 				);
 		}
 
-		/*!
-		* クォータニオン 正規化
-		*/
 		NG_DECL void Normalize(
 			Quaternion& dst
 			, const Quaternion& src
@@ -223,9 +189,6 @@ namespace ng
 			Divide(dst, src, Length(src));
 		}
 
-		/*!
-		* クォータニオン 逆クォータニオン算出
-		*/
 		NG_DECL void Inverse(
 			Quaternion& dst
 			, const Quaternion& src
@@ -234,9 +197,6 @@ namespace ng
 			Divide(dst, src, Dot(src, src));
 		}
 
-		/*!
-		* クォータニオン 共役クォータニオン算出
-		*/
 		NG_DECL void Conjugate(
 			Quaternion& dst
 			, const Quaternion& src
@@ -248,9 +208,6 @@ namespace ng
 			dst.z = -src.z;
 		}
 
-		/*!
-		* クォータニオン 任意の回転軸及び、回転角よりクォータニオンを算出
-		*/
 		NG_DECL void RotationAxis(
 			Quaternion& dst
 			, const Vector3& axis
@@ -266,9 +223,6 @@ namespace ng
 			dst.z = axis.z * sin;
 		}
 
-		/*!
-		* クォータニオン クォータニオン回転
-		*/
 		NG_DECL void Rotate(
 			Quaternion& dst
 			, const Quaternion& q
@@ -282,9 +236,6 @@ namespace ng
 			Multiply(dst, dst, buf);
 		}
 
-		/*!
-		* クォータニオン ベクトル回転
-		*/
 		NG_DECL void Rotate(
 			Vector3& dst
 			, const Vector3& v
@@ -299,11 +250,6 @@ namespace ng
 			Vector(dst, buf);
 		}
 
-		/*!
-		* クォータニオン 球面線形補間
-		*
-		* @attention		クォータニオンは正規化済みであること
-		*/
 		NG_DECL void Slerp(
 			Quaternion& dst
 			, const Quaternion& q1
@@ -332,67 +278,56 @@ namespace ng
 			}
 		}
 
-		/*!
-		* クォータニオン ヨー・ピッチ・ロールよりクォータニオンを算出
-		*/
-		NG_DECL void RotationYawPitchRoll(
-			Quaternion& dst
-			, float yaw
-			, float pitch
-			, float roll
-			)
-		{
-			float cy = Cos(yaw * 0.5f);
-			float sy = Sin(yaw * 0.5f);
-			float cp = Cos(pitch * 0.5f);
-			float sp = Sin(pitch * 0.5f);
-			float cr = Cos(roll * 0.5f);
-			float sr = Sin(roll * 0.5f);
-
-			dst.w = cy * cp * cr + sy * sp * sr;
-			dst.x = cy * sp * cr + sy * cp * sr;
-			dst.y = sy * cp * cr - cy * sp * sr;
-			dst.z = cy * cp * sr - sy * sp * cr;
-		}
-
-		/*!
-		* クォータニオン オイラー角を取得
-		*/
-		NG_DECL void EulerAngle(
+		NG_DECL void ToEulerAngle(
 			Vector3& dst
 			, const Quaternion& src
 			)
 		{
-			float q00 = src.w * src.w;
-			float q11 = src.x * src.x;
-			float q22 = src.y * src.y;
-			float q33 = src.z * src.z;
+			float q00 = src.x * src.x;
+			float q11 = src.y * src.y;
+			float q22 = src.z * src.z;
+			float q33 = src.w * src.w;
 
-			float r11 = q00 + q11 - q22 - q33;
-			float r21 = 2.0f * (src.x * src.y + src.w * src.z);
-			float r31 = 2.0f * (src.x * src.z - src.w * src.y);
-			float r32 = 2.0f * (src.y * src.z + src.w * src.x);
-			float r33 = q00 - q11 - q22 + q33;
+			float r11 = -2.f * (src.x * src.y - src.w * src.z);
+			float r12 = q33 - q00 + q11 - q22;
+			float r21 = 2.f * (src.y * src.z + src.w * src.x);
+			float r31 = 2.f * (src.x * src.z - src.w * src.y);
+			float r32 = q33 - q00 - q11 + q33;
 
-			float buf = Abs(r31);
-			if(buf > 0.999999f)
-			{
-				float r12 = 2.0f * (src.x * src.y - src.w * src.z);
-				float r13 = 2.0f * (src.x * src.z + src.w * src.y);
+			// ZXY
+			dst.x = ATan2(r31, r32);
+			dst.y = ASin(r21);
+			dst.z = ATan2(r11, r12);
 
-				dst.x = 0.0f;
-				dst.y = (-(NG_PI * 0.5f)) * r31 / buf;
-				dst.z = ATan2(-r12, -r31 * r13);
-			}
-			dst.x = ASin(-r31);			// pitch
-			dst.y = ATan2(r21, r11);	// yaw
-			dst.z = ATan2(r32, r33);	// roll
+			dst.x = RadianToDegree(dst.x);
+			dst.y = RadianToDegree(dst.y);
+			dst.z = RadianToDegree(dst.z);
 		}
 
-		/*!
-		* クォータニオン 4x4行列を算出
-		*/
-		NG_DECL void QuaternionToMat4(
+		NG_DECL void FromEulerAngle(
+			Quaternion& dst
+			, const Vector3& eulerAngle
+			)
+		{
+			float x = DegreeToRadian(eulerAngle.x);
+			float y = DegreeToRadian(eulerAngle.y);
+			float z = DegreeToRadian(eulerAngle.z);
+
+			float cx = Cos(x * 0.5f);
+			float sx = Sin(x * 0.5f);
+			float cy = Cos(y * 0.5f);
+			float sy = Sin(y * 0.5f);
+			float cz = Cos(z * 0.5f);
+			float sz = Sin(z * 0.5f);
+
+			// ZXY
+			dst.x = sx * cy * cz - cx * sy * sz;
+			dst.y = cx * sy * cz + sx * cy * sz;
+			dst.z = cx * cy * sz + sx * sy * cz;
+			dst.w = cx * cy * cz - sx * sy * sz;
+		}
+
+		NG_DECL void ToMatrix(
 			Matrix4& dst
 			, const Quaternion& src
 			)
@@ -413,10 +348,7 @@ namespace ng
 			dst.m44 = 1.0f;
 		}
 
-		/*!
-		* クォータニオン 4x4行列よりクォータニオンを算出
-		*/
-		NG_DECL void Mat4ToQuaternion(
+		NG_DECL void FromMatrix(
 			Quaternion& dst
 			, const Matrix4& src
 			)

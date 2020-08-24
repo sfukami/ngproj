@@ -29,6 +29,13 @@ namespace ng
 			);
 
 		/*!
+		* @brief					単位クォータニオン算出
+		*/
+		NG_DECL void Identity(
+			Quaternion& dst
+			);
+
+		/*!
 		* @brief					クォータニオン ベクトル取得
 		*/
 		NG_DECL void Vector(
@@ -190,35 +197,33 @@ namespace ng
 			);
 
 		/*!
-		* @brief					クォータニオン ヨー・ピッチ・ロールよりクォータニオンを算出
+		* @brief					クォータニオン オイラー角へ変換
 		*/
-		NG_DECL void RotationYawPitchRoll(
-			Quaternion& dst
-			, float yaw
-			, float pitch
-			, float roll
-			);
-
-		/*!
-		* @brief					クォータニオン オイラー角を取得
-		*/
-		NG_DECL void EulerAngle(
+		NG_DECL void ToEulerAngle(
 			Vector3& dst
 			, const Quaternion& src
 			);
 
 		/*!
-		* @brief					クォータニオン 4x4行列を算出
+		* @brief					クォータニオン オイラー角から変換
 		*/
-		NG_DECL void QuaternionToMat4(
+		NG_DECL void FromEulerAngle(
+			Quaternion& dst
+			, const Vector3& eulerAngle
+			);
+
+		/*!
+		* @brief					クォータニオン 4x4行列へ変換
+		*/
+		NG_DECL void ToMatrix(
 			Matrix4& dst
 			, const Quaternion& src
 			);
 
 		/*!
-		* @brief					クォータニオン 4x4行列よりクォータニオンを算出
+		* @brief					クォータニオン 4x4行列かから変換
 		*/
-		NG_DECL void Mat4ToQuaternion(
+		NG_DECL void FromMatrix(
 			Quaternion& dst
 			, const Matrix4& src
 			);
