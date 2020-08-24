@@ -21,15 +21,11 @@ namespace app
 	{
 		RenderParam();
 		void CalcViewProjMatrix();
-		void CalcWorldViewProjMatrix();
 		
 		eGraphicCommandListId cmdListId;	//!< グラフィックコマンドリストID
-
-		ng::Matrix4 worldMat;	//!< ワールド行列
 		ng::Matrix4 viewMat;	//!< ビュー行列
 		ng::Matrix4 projMat;	//!< 射影行列
 		ng::Matrix4 vpMat;		//!< ビュー行列 x 射影行列
-		ng::Matrix4 wvpMat;		//!< ワールド行列 x ビュー行列 x 射影行列
 	};
 
 }	// namespace app

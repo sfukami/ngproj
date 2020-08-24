@@ -39,13 +39,19 @@ namespace app
 		/*! 回転取得 */
 		const ng::Quaternion& GetRotation() const;
 
-		/*! ワールド行列算出 */
-		void CalcWorldMatrix(ng::Matrix4& dst);
+		/*! ワールド変換行列取得 */
+		const ng::Matrix4& GetWorldMatrix();
+
+	private:
+		/*! ワールド変換行列算出 */
+		void _calcWorldMatrix();
 
 	private:
 		ng::Vector3 m_position;	//!< 座標
 		ng::Vector3 m_scale;	//!< スケール
 		ng::Quaternion m_rotation;	//!< 回転
+		ng::Matrix4 m_worldMat;	//!< ワールド変換行列
+		bool m_isChanged;	//!< 変更済みか
 	};
 
 }	// namespace app

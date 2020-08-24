@@ -12,6 +12,7 @@ namespace app
 	CTransform::CTransform()
 		: m_scale(ng::Vector3::ONE)
 		, m_rotation(ng::Quaternion::IDENTITY)
+		, m_isChanged(true)
 	{
 	}
 	CTransform::~CTransform()
@@ -21,16 +22,19 @@ namespace app
 	void CTransform::SetPosition(const ng::Vector3& position)
 	{
 		m_position = position;
+		m_isChanged = true;
 	}
 
 	void CTransform::SetScale(const ng::Vector3& scale)
 	{
 		m_scale = scale;
+		m_isChanged = true;
 	}
 
 	void CTransform::SetRotation(const ng::Quaternion& rotation)
 	{
 		m_rotation = rotation;
+		m_isChanged = true;
 	}
 
 	const ng::Vector3& CTransform::GetPosition() const
@@ -48,20 +52,30 @@ namespace app
 		return m_rotation;
 	}
 
-	void CTransform::CalcWorldMatrix(ng::Matrix4& dst)
+	const ng::Matrix4& CTransform::GetWorldMatrix()
+	{
+		if(m_isChanged) {
+			_calcWorldMatrix();
+			m_isChanged = false;
+		}
+
+		return m_worldMat;
+	}
+
+	void CTransform::_calcWorldMatrix()
 	{
 		// スケーリング
-		ng::MatrixOp::Scaling(dst, m_scale.x, m_scale.y, m_scale.z);
+		ng::MatrixOp::Scaling(m_worldMat, m_scale.x, m_scale.y, m_scale.z);
 
 		// 回転
 		ng::Matrix4 rMat;
 		ng::QuaternionOp::ToMatrix(rMat, m_rotation);
-		ng::MatrixOp::Multiply(dst, dst, rMat);
+		ng::MatrixOp::Multiply(m_worldMat, m_worldMat, rMat);
 
 		// 移動
-		dst.m41 = m_position.x;
-		dst.m42 = m_position.y;
-		dst.m43 = m_position.z;
+		m_worldMat.m41 = m_position.x;
+		m_worldMat.m42 = m_position.y;
+		m_worldMat.m43 = m_position.z;
 	}
 
 }	// namespace app
