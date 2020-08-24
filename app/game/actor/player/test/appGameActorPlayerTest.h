@@ -9,6 +9,7 @@
 #define __APP_GAME_ACTOR_PLAYER_TEST_H__
 
 #include "../appGameActorPlayer.h"
+#include "app/transform/appTransform.h"
 #include "app/graphic/render/sprite/appSprite.h"
 
 namespace app
@@ -40,6 +41,7 @@ namespace app
 		virtual void _render();
 
 	private:
+		CTransform m_transform;	//!< トランスフォーム
 		CSprite m_sprite;	//!< スプライト
 	};
 

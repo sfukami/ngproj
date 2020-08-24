@@ -35,6 +35,10 @@ namespace app
 			if(!m_sprite.Create(1, 1, &*handle.GetResource())) {
 				return false;
 			}
+
+			// 親トランスフォーム設定
+			CTransform& transform = m_sprite.GetTransform();
+			transform.SetParent(&m_transform);
 		}
 
 		return true;
@@ -47,61 +51,86 @@ namespace app
 
 	void CGameActorPlayerTest::_update(float deltaTime)
 	{
-		//test
+		// プレイヤー
+		// 移動
+		{
+			ng::Vector3 position = m_transform.GetPosition();
+
+			if(CInputModule::CheckKeyboardInput(ng::eKeyCode::LEFT, ng::eInputState::HELD)) {
+				position.x -= 0.1f;
+			}
+			else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::RIGHT, ng::eInputState::HELD)) {
+				position.x += 0.1f;
+			}
+			else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::UP, ng::eInputState::HELD)) {
+				position.y += 0.1f;
+			}
+			else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::DOWN, ng::eInputState::HELD)) {
+				position.y -= 0.1f;
+			}
+
+			m_transform.SetPosition(position);
+		}
+		// 回転
+		{
+			ng::Quaternion rotation = m_transform.GetRotation();
+
+			ng::Vector3 angle;
+			ng::QuaternionOp::ToEulerAngle(angle, rotation);
+
+			if(CInputModule::CheckKeyboardInput(ng::eKeyCode::R, ng::eInputState::HELD)) {
+				angle.z -= 1.f;
+			} else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::Q, ng::eInputState::HELD)) {
+				angle.z += 1.f;
+			}
+
+			ng::QuaternionOp::FromEulerAngle(rotation, angle);
+			m_transform.SetRotation(rotation);
+		}
+		// スケーリング
+		{
+			ng::Vector3 scale = m_transform.GetScale();
+
+			if(CInputModule::CheckKeyboardInput(ng::eKeyCode::J, ng::eInputState::HELD)) {
+				scale.x -= 0.1f;
+			}
+			else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::L, ng::eInputState::HELD)) {
+				scale.x += 0.1f;
+			}
+			else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::I, ng::eInputState::HELD)) {
+				scale.y += 0.1f;
+			}
+			else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::K, ng::eInputState::HELD)) {
+				scale.y -= 0.1f;
+			}
+
+			m_transform.SetScale(scale);
+		}
+
+		// スプライト
 		{
 			CTransform& transform = m_sprite.GetTransform();
 
+			// 移動
 			{
 				ng::Vector3 position = transform.GetPosition();
 
-				if(CInputModule::CheckKeyboardInput(ng::eKeyCode::LEFT, ng::eInputState::HELD)) {
-					position.x -= 0.1f;
-				}
-				else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::RIGHT, ng::eInputState::HELD)) {
-					position.x += 0.1f;
-				}
-				else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::UP, ng::eInputState::HELD)) {
-					position.y += 0.1f;
-				}
-				else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::DOWN, ng::eInputState::HELD)) {
-					position.y -= 0.1f;
-				}
+				position.x = 1.f;
 
 				transform.SetPosition(position);
 			}
+			// 回転
 			{
 				ng::Quaternion rotation = transform.GetRotation();
 
 				ng::Vector3 angle;
 				ng::QuaternionOp::ToEulerAngle(angle, rotation);
 
-				if(CInputModule::CheckKeyboardInput(ng::eKeyCode::R, ng::eInputState::HELD)) {
-					angle.z -= 1.f;
-				} else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::Q, ng::eInputState::HELD)) {
-					angle.z += 1.f;
-				}
+				angle.z += 1.f;
 
 				ng::QuaternionOp::FromEulerAngle(rotation, angle);
 
 				transform.SetRotation(rotation);
-			}
-			{
-				ng::Vector3 scale = transform.GetScale();
-
-				if(CInputModule::CheckKeyboardInput(ng::eKeyCode::J, ng::eInputState::HELD)) {
-					scale.x -= 0.1f;
-				}
-				else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::L, ng::eInputState::HELD)) {
-					scale.x += 0.1f;
-				}
-				else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::I, ng::eInputState::HELD)) {
-					scale.y += 0.1f;
-				}
-				else if(CInputModule::CheckKeyboardInput(ng::eKeyCode::K, ng::eInputState::HELD)) {
-					scale.y -= 0.1f;
-				}
-
-				transform.SetScale(scale);
 			}
 		}
 	}

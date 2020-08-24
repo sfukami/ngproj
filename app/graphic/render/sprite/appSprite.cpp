@@ -83,7 +83,9 @@ namespace app
 		auto shaderEffect = m_material.GetShaderEffect();
 		if(shaderEffect) {
 			CShaderEffect::ShaderParam param;
-			const ng::Matrix4& worldMat = m_transform.GetWorldMatrix();
+
+			ng::Matrix4 worldMat;
+			m_transform.GetWorldMatrix(worldMat);
 			ng::MatrixOp::Multiply(param.wvpMat, worldMat, pParam->vpMat);
 			ng::MatrixOp::Transpose(param.wvpMat, param.wvpMat);
 
