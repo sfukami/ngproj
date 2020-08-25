@@ -9,6 +9,7 @@
 #define __APP_GAME_ACTOR_PLAYER_TEST_H__
 
 #include "../appGameActorPlayer.h"
+#include "../../appGameActorStateMachine.h"
 #include "app/transform/appTransform.h"
 #include "app/graphic/render/sprite/appSprite.h"
 
@@ -36,13 +37,27 @@ namespace app
 
 	private:
 		/*! 更新 */
-		virtual void _update(float deltaTime);
+		void _update(float deltaTime);
 		/*! 描画 */
-		virtual void _render();
+		void _render();
+
+		/*! ステート処理 */
+		void _state_default(float deltaTime);
+
+	private:
+		//! ステート
+		enum class State
+		{
+			DEFAULT,	//!< デフォルト
+
+			NUM
+		};
 
 	private:
 		CTransform m_transform;	//!< トランスフォーム
 		CSprite m_sprite;	//!< スプライト
+
+		CGameActorStateMachine<CGameActorPlayerTest, State, State::NUM> m_stateMachine;	//!< ステートマシン
 	};
 
 }	// namespace app
