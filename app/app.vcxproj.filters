@@ -504,6 +504,9 @@
     <ClInclude Include="transform\appTransform.h">
       <Filter>ソース ファイル\transform</Filter>
     </ClInclude>
+    <ClInclude Include="game\actor\appGameActorStateMachine.h">
+      <Filter>ソース ファイル\game\actor</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

@@ -85,6 +85,7 @@
     <ClInclude Include="common\appCommon.h" />
     <ClInclude Include="game\actor\appGameActor.h" />
     <ClInclude Include="game\actor\appGameActorMacro.h" />
+    <ClInclude Include="game\actor\appGameActorStateMachine.h" />
     <ClInclude Include="game\actor\appGameActorType.h" />
     <ClInclude Include="game\actor\player\appGameActorPlayer.h" />
     <ClInclude Include="game\actor\player\test\appGameActorPlayerTest.h" />
