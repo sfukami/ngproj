@@ -40,7 +40,7 @@ namespace ng
 		* @brief					ステート設定
 		* @param process			ステート処理
 		*/
-		void SetState(State state, const Process&& process);
+		void SetState(State state, const Process& process);
 
 		/*!
 		* @brief					ステート切り替え
@@ -49,8 +49,10 @@ namespace ng
 
 		/*!
 		* @brief					ステート処理実行
+		* @param args				引数
 		*/
-		void Execute();
+		template <typename ...Args>
+		void Execute(Args... args);
 
 	private:
 		State m_curState;	//!< 現在のステート
@@ -75,9 +77,9 @@ namespace ng
 	}
 
 	template <typename State, State Num, typename Process>
-	void CStateMachine<State, Num, Process>::SetState(State state, const Process&& process)
+	void CStateMachine<State, Num, Process>::SetState(State state, const Process& process)
 	{
-		m_procArr[static_cast<u32>(state)] = std::move(process);
+		m_procArr[static_cast<u32>(state)] = process;
 	}
 
 	template <typename State, State Num, typename Process>
@@ -87,9 +89,10 @@ namespace ng
 	}
 
 	template <typename State, State Num, typename Process>
-	void CStateMachine<State, Num, Process>::Execute()
+	template <typename... Args>
+	void CStateMachine<State, Num, Process>::Execute(Args... args)
 	{
-		m_procArr[static_cast<u32>(m_curState)]();
+		m_procArr[static_cast<u32>(m_curState)](args...);
 	}
 
 	/*!
