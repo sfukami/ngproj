@@ -40,12 +40,12 @@ namespace test
 		{
 			CTest t;
 
-			ng::CClassStateMachine<CTest, CTest::State, CTest::State::NUM> sm(CTest::State::DEFAULT);
+			ng::CClassStateMachine<CTest, CTest::State, CTest::State::NUM> sm(&t, CTest::State::DEFAULT);
 
 			// ステート設定
 			sm.SetState(CTest::State::FIRST, ng::CClassAction<CTest>(&t, &CTest::First));
-			sm.SetState(CTest::State::SECOND, &t, &CTest::Second);
-			sm.SetState(CTest::State::THIRD, &t, &CTest::Third);
+			sm.SetState(CTest::State::SECOND, &CTest::Second);
+			sm.SetState(CTest::State::THIRD, &CTest::Third);
 
 			// 実行
 			sm.Execute();
