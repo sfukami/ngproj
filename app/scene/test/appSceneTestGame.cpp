@@ -9,14 +9,10 @@
 #include "appSceneTestGame.h"
 #include "app/graphic/appGraphicModule.h"
 #include "app/graphic/pipeline/appGraphicPipelineDefault.h"
-//test
+
 #include "app/game/actor/appGameActorMacro.h"
-#include "app/game/actor/player/appGameActorPlayer.h"
 #include "app/game/actor/player/test/appGameActorPlayerTest.h"
-//test
-#include "app/resource/appResourceModule.h"
-#include "app/graphic/texture/appTexture.h"
-#include "ngLibApp/resource/ngResourceHandle.h"
+#include "app/game/actor/enemy/test/appGameActorEnemyTest.h"
 
 namespace app
 {
@@ -47,8 +43,22 @@ namespace app
 			return false;
 		}
 
-		//test
-		bool result = APP_CREATE_GAME_ACTOR(CGameActorPlayerTest());
+		// プレイヤー生成
+		{
+			CGameActorPlayerTest* pPlayer = APP_CREATE_GAME_ACTOR(CGameActorPlayerTest());
+			if(pPlayer != nullptr) {
+				CTransform& transform = pPlayer->GetTransform();
+				transform.SetPosition(ng::Vector3(0.f, -1.f, 0.f));
+			}
+		}
+		// 敵生成
+		{
+			CGameActorEnemyTest* pEnemy = APP_CREATE_GAME_ACTOR(CGameActorEnemyTest());
+			if(pEnemy != nullptr) {
+				CTransform& transform = pEnemy->GetTransform();
+				transform.SetPosition(ng::Vector3(0.f, 1.f, 0.f));
+			}
+		}
 
 		return true;
 	}
