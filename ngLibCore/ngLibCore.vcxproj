@@ -23,6 +23,8 @@
     <ClInclude Include="allocator\ngDefaultAllocator.h" />
     <ClInclude Include="allocator\ngMemoryAllocator.h" />
     <ClInclude Include="allocator\ngStackAllocator.h" />
+    <ClInclude Include="collision\ngCollision2DOp.h" />
+    <ClInclude Include="collision\ngCollision3DOp.h" />
     <ClInclude Include="color\ngColor.h" />
     <ClInclude Include="color\ngColorCode.h" />
     <ClInclude Include="color\ngColorUtil.h" />
@@ -80,6 +82,7 @@
     <ClInclude Include="geometry\matrix\ngMatrix4x4.h" />
     <ClInclude Include="geometry\matrix\ngMatrixOp.h" />
     <ClInclude Include="geometry\ngGeometry.h" />
+    <ClInclude Include="geometry\ngGeomMath.h" />
     <ClInclude Include="geometry\point\ngPoint.h" />
     <ClInclude Include="geometry\quaternion\ngQuaternion.h" />
     <ClInclude Include="geometry\quaternion\ngQuaternionOp.h" />
@@ -113,6 +116,17 @@
     <ClInclude Include="preincl\ngDefine.h" />
     <ClInclude Include="preincl\ngMacro.h" />
     <ClInclude Include="preincl\ngPreInclude.h" />
+    <ClInclude Include="shape\ngShape2DCapsule.h" />
+    <ClInclude Include="shape\ngShape2DCircle.h" />
+    <ClInclude Include="shape\ngShape2DOBB.h" />
+    <ClInclude Include="shape\ngShape2DSegment.h" />
+    <ClInclude Include="shape\ngShape2DSquare.h" />
+    <ClInclude Include="shape\ngShape3DBox.h" />
+    <ClInclude Include="shape\ngShape3DCapsule.h" />
+    <ClInclude Include="shape\ngShape3DOBB.h" />
+    <ClInclude Include="shape\ngShape3DPlane.h" />
+    <ClInclude Include="shape\ngShape3DSegment.h" />
+    <ClInclude Include="shape\ngShape3DSphere.h" />
     <ClInclude Include="system\memory\ngSystemMemory.h" />
     <ClInclude Include="system\memory\ngSystemMemoryType.h" />
     <ClInclude Include="system\ngCoreSystem.h" />
@@ -125,6 +139,8 @@
   <ItemGroup>
     <ClCompile Include="allocator\ngDefaultAllocator.cpp" />
     <ClCompile Include="allocator\ngStackAllocator.cpp" />
+    <ClCompile Include="collision\ngCollision2DOp.cpp" />
+    <ClCompile Include="collision\ngCollision3DOp.cpp" />
     <ClCompile Include="color\ngColor.cpp" />
     <ClCompile Include="color\ngColorUtil.cpp" />
     <ClCompile Include="common\bit\ngBit.cpp" />
@@ -146,6 +162,7 @@
     <ClCompile Include="geometry\matrix\ngMatrix3x3.cpp" />
     <ClCompile Include="geometry\matrix\ngMatrix4x4.cpp" />
     <ClCompile Include="geometry\matrix\ngMatrixOp.cpp" />
+    <ClCompile Include="geometry\ngGeomMath.cpp" />
     <ClCompile Include="geometry\point\ngPoint.cpp" />
     <ClCompile Include="geometry\quaternion\ngQuaternion.cpp" />
     <ClCompile Include="geometry\quaternion\ngQuaternionOp.cpp" />
@@ -175,6 +192,17 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
       <PrecompiledHeaderFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">ngLibCore/precmpl/ngPreCompiled.h</PrecompiledHeaderFile>
     </ClCompile>
+    <ClCompile Include="shape\ngShape2DCapsule.cpp" />
+    <ClCompile Include="shape\ngShape2DCircle.cpp" />
+    <ClCompile Include="shape\ngShape2DOBB.cpp" />
+    <ClCompile Include="shape\ngShape2DSegment.cpp" />
+    <ClCompile Include="shape\ngShape2DSquare.cpp" />
+    <ClCompile Include="shape\ngShape3DBox.cpp" />
+    <ClCompile Include="shape\ngShape3DCapsule.cpp" />
+    <ClCompile Include="shape\ngShape3DOBB.cpp" />
+    <ClCompile Include="shape\ngShape3DPlane.cpp" />
+    <ClCompile Include="shape\ngShape3DSegment.cpp" />
+    <ClCompile Include="shape\ngShape3DSphere.cpp" />
     <ClCompile Include="system\memory\ngSystemMemory.cpp" />
     <ClCompile Include="system\ngCoreSystem.cpp" />
   </ItemGroup>

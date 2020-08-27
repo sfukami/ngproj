@@ -149,6 +149,12 @@
     <Filter Include="ソース ファイル\math\crc">
       <UniqueIdentifier>{9378b44c-56a4-4098-abc7-29b3cbea9375}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\shape">
+      <UniqueIdentifier>{18538535-2418-4a0c-a73e-bb48e4caf1a3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\collision">
+      <UniqueIdentifier>{eaaa6679-b609-4c2e-be27-4f8b8a92a0e4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="precmpl\ngPreCompiled.h">
@@ -457,6 +463,48 @@
     <ClInclude Include="memory\pointer\ngWeakPtr.h">
       <Filter>ソース ファイル\memory\pointer</Filter>
     </ClInclude>
+    <ClInclude Include="shape\ngShape2DCapsule.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape2DCircle.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape2DOBB.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape2DSegment.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape2DSquare.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape3DBox.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape3DCapsule.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape3DOBB.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape3DPlane.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape3DSegment.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="shape\ngShape3DSphere.h">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClInclude>
+    <ClInclude Include="collision\ngCollision2DOp.h">
+      <Filter>ソース ファイル\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="collision\ngCollision3DOp.h">
+      <Filter>ソース ファイル\collision</Filter>
+    </ClInclude>
+    <ClInclude Include="geometry\ngGeomMath.h">
+      <Filter>ソース ファイル\geometry</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -593,6 +641,48 @@
     </ClCompile>
     <ClCompile Include="math\crc\ngCrcTbl.cpp">
       <Filter>ソース ファイル\math\crc</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape2DCapsule.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape2DCircle.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape2DOBB.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape2DSegment.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape2DSquare.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape3DBox.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape3DCapsule.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape3DOBB.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape3DPlane.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape3DSegment.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="shape\ngShape3DSphere.cpp">
+      <Filter>ソース ファイル\shape</Filter>
+    </ClCompile>
+    <ClCompile Include="collision\ngCollision2DOp.cpp">
+      <Filter>ソース ファイル\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="collision\ngCollision3DOp.cpp">
+      <Filter>ソース ファイル\collision</Filter>
+    </ClCompile>
+    <ClCompile Include="geometry\ngGeomMath.cpp">
+      <Filter>ソース ファイル\geometry</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

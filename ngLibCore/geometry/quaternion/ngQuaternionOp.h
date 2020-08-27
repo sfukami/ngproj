@@ -211,6 +211,10 @@ namespace ng
 			Quaternion& dst
 			, const Vector3& eulerAngle
 			);
+		NG_DECL void FromEulerAngle(
+			Quaternion& dst
+			, float x, float y, float z
+			);
 
 		/*!
 		* @brief					クォータニオン 4x4行列へ変換

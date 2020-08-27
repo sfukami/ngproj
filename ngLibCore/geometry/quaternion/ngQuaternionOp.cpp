@@ -309,16 +309,26 @@ namespace ng
 			, const Vector3& eulerAngle
 			)
 		{
-			float x = DegreeToRadian(eulerAngle.x);
-			float y = DegreeToRadian(eulerAngle.y);
-			float z = DegreeToRadian(eulerAngle.z);
+			FromEulerAngle(
+				dst
+				, eulerAngle.x, eulerAngle.y, eulerAngle.z
+				);
+		}
+		NG_DECL void FromEulerAngle(
+			Quaternion& dst
+			, float x, float y, float z
+			)
+		{
+			float rx = DegreeToRadian(x);
+			float ry = DegreeToRadian(y);
+			float rz = DegreeToRadian(z);
 
-			float cx = Cos(x * 0.5f);
-			float sx = Sin(x * 0.5f);
-			float cy = Cos(y * 0.5f);
-			float sy = Sin(y * 0.5f);
-			float cz = Cos(z * 0.5f);
-			float sz = Sin(z * 0.5f);
+			float cx = Cos(rx * 0.5f);
+			float sx = Sin(rx * 0.5f);
+			float cy = Cos(ry * 0.5f);
+			float sy = Sin(ry * 0.5f);
+			float cz = Cos(rz * 0.5f);
+			float sz = Sin(rz * 0.5f);
 
 			// ZXY
 			dst.x = sx * cy * cz - cx * sy * sz;

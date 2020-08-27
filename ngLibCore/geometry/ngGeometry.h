@@ -20,4 +20,6 @@
 #include "quaternion/ngQuaternion.h"
 #include "quaternion/ngQuaternionOp.h"
 
+#include "ngGeomMath.h"
+
 #endif	// __NG_CORE_GEOMETRY_H__
