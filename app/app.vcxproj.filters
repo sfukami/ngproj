@@ -304,6 +304,9 @@
     <ClCompile Include="game\actor\bullet\test\appGameActorPlayerBulletTest.cpp">
       <Filter>ソース ファイル\game\actor\bullet\test</Filter>
     </ClCompile>
+    <ClCompile Include="transform\appTransformObject.cpp">
+      <Filter>ソース ファイル\transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h">
@@ -530,6 +533,9 @@
     </ClInclude>
     <ClInclude Include="game\actor\bullet\test\appGameActorPlayerBulletTest.h">
       <Filter>ソース ファイル\game\actor\bullet\test</Filter>
+    </ClInclude>
+    <ClInclude Include="transform\appTransformObject.h">
+      <Filter>ソース ファイル\transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
