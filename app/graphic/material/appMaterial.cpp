@@ -73,6 +73,20 @@ namespace app
 		m_pixelShader.Release();
 	}
 
+	void CMaterial::CopyMaterial(CMaterial& dst) const
+	{
+		dst.m_diffuseMap = m_diffuseMap;
+		dst.m_vertexShader = m_vertexShader;
+		dst.m_pixelShader = m_pixelShader;
+		dst.m_rootSignature = m_rootSignature;
+		dst.m_pipelineState = m_pipelineState;
+
+		if(NG_STRLEN(m_shaderEffectName) > 0) {
+			NG_STRCPY(dst.m_shaderEffectName, m_shaderEffectName);
+			dst._createShaderEffect(m_shaderEffectName);
+		}
+	}
+
 	void CMaterial::SetRootSignature(ng::CDX12CommandList& commandList)
 	{
 		if(m_rootSignature) {
@@ -128,8 +142,8 @@ namespace app
 		// DX12パイプラインステート生成
 		result &= _createPipelineState(data.pipelineStateName, data.vertexLayout);
 
-		// シェーダーエフェクト生成
-		result &= _createShaderEffect(data.shaderEffectName);
+		// シェーダーエフェクト名をコピー
+		NG_STRCPY(m_shaderEffectName, data.shaderEffectName);
 
 		return result;
 	}

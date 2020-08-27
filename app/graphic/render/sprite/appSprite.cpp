@@ -41,7 +41,7 @@ namespace app
 
 		// マテリアルをコピー
 		if(pMaterial != nullptr) {
-			m_material = (*pMaterial);
+			pMaterial->CopyMaterial(m_material);
 		}
 
 		return true;
