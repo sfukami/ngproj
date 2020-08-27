@@ -10,13 +10,14 @@
 
 #include "ngLibCore/container/list/intrusive/ngIntrusiveListNode.h"
 #include "appGameActorType.h"
+#include "app/transform/appTransformObject.h"
 
 namespace app
 {
 	/*!
 	* @brief					ゲームアクター
 	*/
-	class CGameActor : public ng::CIntrusiveListNode<CGameActor>
+	class CGameActor : public ng::CIntrusiveListNode<CGameActor>, public CTransformObject
 	{
 	public:
 		/*!

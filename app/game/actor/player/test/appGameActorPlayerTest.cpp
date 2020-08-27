@@ -39,7 +39,7 @@ namespace app
 
 			// 親トランスフォーム設定
 			CTransform& transform = m_sprite.GetTransform();
-			transform.SetParent(&m_transform);
+			transform.SetParent(&GetTransform());
 		}
 
 		// ステート
@@ -98,10 +98,11 @@ namespace app
 
 	void CGameActorPlayerTest::_state_default(float deltaTime)
 	{
+		CTransform& transform = GetTransform();
 		// プレイヤー
 		// 移動
 		{
-			ng::Vector3 position = m_transform.GetPosition();
+			ng::Vector3 position = transform.GetPosition();
 
 			if(CInputModule::CheckKeyboardInput(ng::eKeyCode::LEFT, ng::eInputState::HELD)) {
 				position.x -= 0.1f;
@@ -113,11 +114,11 @@ namespace app
 				position.y -= 0.1f;
 			}
 
-			m_transform.SetPosition(position);
+			transform.SetPosition(position);
 		}
 		// 回転
 		{
-			ng::Quaternion rotation = m_transform.GetRotation();
+			ng::Quaternion rotation = transform.GetRotation();
 
 			ng::Vector3 angle;
 			ng::QuaternionOp::ToEulerAngle(angle, rotation);
@@ -129,11 +130,11 @@ namespace app
 			}
 
 			ng::QuaternionOp::FromEulerAngle(rotation, angle);
-			m_transform.SetRotation(rotation);
+			transform.SetRotation(rotation);
 		}
 		// スケーリング
 		{
-			ng::Vector3 scale = m_transform.GetScale();
+			ng::Vector3 scale = transform.GetScale();
 
 			if(CInputModule::CheckKeyboardInput(ng::eKeyCode::J, ng::eInputState::HELD)) {
 				scale.x -= 0.1f;
@@ -145,7 +146,7 @@ namespace app
 				scale.y -= 0.1f;
 			}
 
-			m_transform.SetScale(scale);
+			transform.SetScale(scale);
 		}
 
 		// 弾生成
@@ -153,7 +154,7 @@ namespace app
 			CGameActorPlayerBulletTest* pBullet = APP_CREATE_GAME_ACTOR(CGameActorPlayerBulletTest());
 			if(pBullet != nullptr) {
 				ng::Vector3 position = pBullet->GetTransform().GetPosition();
-				position = m_transform.GetPosition();
+				position = transform.GetPosition();
 				pBullet->GetTransform().SetPosition(position);
 			}
 		}

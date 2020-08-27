@@ -10,7 +10,6 @@
 
 #include "../appGameActorPlayerBullet.h"
 #include "../../appGameActorStateMachine.h"
-#include "app/transform/appTransform.h"
 #include "app/graphic/render/sprite/appSprite.h"
 
 namespace app
@@ -40,10 +39,6 @@ namespace app
 		*/
 		bool CheckDelete() const;
 
-		/*! トランスフォーム取得 */
-		CTransform& GetTransform();
-		const CTransform& GetTransform() const;
-
 	private:
 		/*! 更新 */
 		void _update(float deltaTime);
@@ -63,7 +58,6 @@ namespace app
 		};
 
 	private:
-		CTransform m_transform;	//!< トランスフォーム
 		CSprite m_sprite;	//!< スプライト
 
 		CGameActorStateMachine<CGameActorPlayerBulletTest, State, State::NUM> m_stateMachine;	//!< ステートマシン

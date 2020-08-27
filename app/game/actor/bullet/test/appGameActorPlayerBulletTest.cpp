@@ -34,7 +34,12 @@ namespace app
 
 			// 親トランスフォーム設定
 			CTransform& transform = m_sprite.GetTransform();
-			transform.SetParent(&m_transform);
+			transform.SetParent(&GetTransform());
+
+			// スケーリング
+			ng::Vector3 scale = transform.GetScale();
+			scale.x = scale.y = 0.5f;
+			transform.SetScale(scale);
 		}
 
 		// ステート
@@ -53,22 +58,12 @@ namespace app
 	bool CGameActorPlayerBulletTest::CheckDelete() const
 	{
 		//test
-		const ng::Vector3 position = m_transform.GetPosition();
+		const ng::Vector3 position = GetTransform().GetPosition();
 		if(position.y > 1.5f) {
 			return true;
 		}
 
 		return false;
-	}
-
-	/*! トランスフォーム取得 */
-	CTransform& CGameActorPlayerBulletTest::GetTransform()
-	{
-		return m_transform;
-	}
-	const CTransform& CGameActorPlayerBulletTest::GetTransform() const
-	{
-		return m_transform;
 	}
 
 	void CGameActorPlayerBulletTest::_update(float deltaTime)
@@ -83,18 +78,19 @@ namespace app
 
 	void CGameActorPlayerBulletTest::_state_default(float deltaTime)
 	{
-		// プレイヤー
+		CTransform& transform = GetTransform();
+
 		// 移動
 		{
-			ng::Vector3 position = m_transform.GetPosition();
+			ng::Vector3 position = transform.GetPosition();
 
 			position.y += 0.1f;
 
-			m_transform.SetPosition(position);
+			transform.SetPosition(position);
 		}
 		// 回転
 		{
-			ng::Quaternion rotation = m_transform.GetRotation();
+			ng::Quaternion rotation = transform.GetRotation();
 
 			ng::Vector3 angle;
 			ng::QuaternionOp::ToEulerAngle(angle, rotation);
@@ -102,7 +98,7 @@ namespace app
 			angle.z -= 1.f;
 
 			ng::QuaternionOp::FromEulerAngle(rotation, angle);
-			m_transform.SetRotation(rotation);
+			transform.SetRotation(rotation);
 		}
 	}
 

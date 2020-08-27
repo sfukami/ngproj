@@ -10,7 +10,6 @@
 
 #include "../appGameActorPlayer.h"
 #include "../../appGameActorStateMachine.h"
-#include "app/transform/appTransform.h"
 #include "app/graphic/render/sprite/appSprite.h"
 
 namespace app
@@ -54,7 +53,6 @@ namespace app
 		};
 
 	private:
-		CTransform m_transform;	//!< トランスフォーム
 		CSprite m_sprite;	//!< スプライト
 
 		CGameActorStateMachine<CGameActorPlayerTest, State, State::NUM> m_stateMachine;	//!< ステートマシン
