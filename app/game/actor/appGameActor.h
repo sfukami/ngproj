@@ -58,6 +58,11 @@ namespace app
 		*/
 		virtual void Destroy();
 
+		/*!
+		* @brief					削除チェック
+		*/
+		virtual bool CheckDelete() const;
+
 		/*! ゲームアクタータイプ取得 */
 		eGameActorType GetActorType() const;
 

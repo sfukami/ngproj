@@ -110,6 +110,12 @@
     <Filter Include="ソース ファイル\transform">
       <UniqueIdentifier>{5abeeb0d-83e5-44b0-93a7-90d0ed4033d5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\game\actor\bullet">
+      <UniqueIdentifier>{3ecdf548-4ef3-427b-8809-0cac3314f16c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\game\actor\bullet\test">
+      <UniqueIdentifier>{3c3bb47a-fa4b-40ad-a584-e4d0bf104074}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -288,6 +294,15 @@
     </ClCompile>
     <ClCompile Include="transform\appTransform.cpp">
       <Filter>ソース ファイル\transform</Filter>
+    </ClCompile>
+    <ClCompile Include="game\actor\bullet\appGameActorBullet.cpp">
+      <Filter>ソース ファイル\game\actor\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="game\actor\bullet\appGameActorPlayerBullet.cpp">
+      <Filter>ソース ファイル\game\actor\bullet</Filter>
+    </ClCompile>
+    <ClCompile Include="game\actor\bullet\test\appGameActorPlayerBulletTest.cpp">
+      <Filter>ソース ファイル\game\actor\bullet\test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -506,6 +521,15 @@
     </ClInclude>
     <ClInclude Include="game\actor\appGameActorStateMachine.h">
       <Filter>ソース ファイル\game\actor</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\bullet\appGameActorBullet.h">
+      <Filter>ソース ファイル\game\actor\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\bullet\appGameActorPlayerBullet.h">
+      <Filter>ソース ファイル\game\actor\bullet</Filter>
+    </ClInclude>
+    <ClInclude Include="game\actor\bullet\test\appGameActorPlayerBulletTest.h">
+      <Filter>ソース ファイル\game\actor\bullet\test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

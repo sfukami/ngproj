@@ -22,6 +22,9 @@
     <ClCompile Include="application\appApplication.cpp" />
     <ClCompile Include="game\actor\appGameActor.cpp" />
     <ClCompile Include="game\actor\appGameActorMacro.cpp" />
+    <ClCompile Include="game\actor\bullet\appGameActorBullet.cpp" />
+    <ClCompile Include="game\actor\bullet\appGameActorPlayerBullet.cpp" />
+    <ClCompile Include="game\actor\bullet\test\appGameActorPlayerBulletTest.cpp" />
     <ClCompile Include="game\actor\player\appGameActorPlayer.cpp" />
     <ClCompile Include="game\actor\player\test\appGameActorPlayerTest.cpp" />
     <ClCompile Include="game\appGame.cpp" />
@@ -87,6 +90,9 @@
     <ClInclude Include="game\actor\appGameActorMacro.h" />
     <ClInclude Include="game\actor\appGameActorStateMachine.h" />
     <ClInclude Include="game\actor\appGameActorType.h" />
+    <ClInclude Include="game\actor\bullet\appGameActorBullet.h" />
+    <ClInclude Include="game\actor\bullet\appGameActorPlayerBullet.h" />
+    <ClInclude Include="game\actor\bullet\test\appGameActorPlayerBulletTest.h" />
     <ClInclude Include="game\actor\player\appGameActorPlayer.h" />
     <ClInclude Include="game\actor\player\test\appGameActorPlayerTest.h" />
     <ClInclude Include="game\appGame.h" />

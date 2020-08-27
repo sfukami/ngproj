@@ -48,7 +48,6 @@ namespace app
 		}
 
 		//test
-
 		bool result = APP_CREATE_GAME_ACTOR(CGameActorPlayerTest());
 
 		return true;

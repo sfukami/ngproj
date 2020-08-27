@@ -9,6 +9,10 @@
 #include "app/resource/appResourceModule.h"
 #include "app/input/appInputModule.h"
 
+// test
+#include "app/game/actor/bullet/test/appGameActorPlayerBulletTest.h"
+#include "app/game/actor/appGameActorMacro.h"
+
 namespace app
 {
 	CGameActorPlayerTest::CGameActorPlayerTest()
@@ -60,6 +64,7 @@ namespace app
 			CTransform& transform = m_sprite.GetTransform();
 
 			// 移動
+			/*
 			{
 				ng::Vector3 position = transform.GetPosition();
 
@@ -67,7 +72,9 @@ namespace app
 
 				transform.SetPosition(position);
 			}
+			*/
 			// 回転
+			/*
 			{
 				ng::Quaternion rotation = transform.GetRotation();
 
@@ -80,6 +87,7 @@ namespace app
 
 				transform.SetRotation(rotation);
 			}
+			*/
 		}
 	}
 
@@ -138,6 +146,16 @@ namespace app
 			}
 
 			m_transform.SetScale(scale);
+		}
+
+		// 弾生成
+		if(CInputModule::CheckKeyboardInput(ng::eKeyCode::Z, ng::eInputState::PRESSED)) {
+			CGameActorPlayerBulletTest* pBullet = APP_CREATE_GAME_ACTOR(CGameActorPlayerBulletTest());
+			if(pBullet != nullptr) {
+				ng::Vector3 position = pBullet->GetTransform().GetPosition();
+				position = m_transform.GetPosition();
+				pBullet->GetTransform().SetPosition(position);
+			}
 		}
 	}
 

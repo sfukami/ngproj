@@ -39,6 +39,11 @@ namespace app
 	{
 	}
 
+	bool CGameActor::CheckDelete() const
+	{
+		return false;
+	}
+
 	eGameActorType CGameActor::GetActorType() const
 	{
 		return m_actorType;
