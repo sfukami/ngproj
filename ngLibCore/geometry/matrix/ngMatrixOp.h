@@ -328,7 +328,7 @@ namespace ng
 		/*!
 		* @brief					4x4行列 トランスフォーム行列算出
 		*/
-		void Translation(
+		void Translate(
 			Matrix4& dst
 			, f32 tx
 			, f32 ty

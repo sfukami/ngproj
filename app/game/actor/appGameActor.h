@@ -10,13 +10,14 @@
 
 #include "ngLibCore/container/list/intrusive/ngIntrusiveListNode.h"
 #include "appGameActorType.h"
+#include "app/transform/appTransformObject.h"
 
 namespace app
 {
 	/*!
 	* @brief					ゲームアクター
 	*/
-	class CGameActor : public ng::CIntrusiveListNode<CGameActor>
+	class CGameActor : public ng::CIntrusiveListNode<CGameActor>, public CTransformObject
 	{
 	public:
 		/*!
@@ -57,6 +58,11 @@ namespace app
 		* @brief					破棄
 		*/
 		virtual void Destroy();
+
+		/*!
+		* @brief					削除チェック
+		*/
+		virtual bool CheckDelete() const;
 
 		/*! ゲームアクタータイプ取得 */
 		eGameActorType GetActorType() const;

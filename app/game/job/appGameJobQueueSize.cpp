@@ -15,9 +15,13 @@ namespace app
 	{
 		1,		// UPDATE_PLAYER
 		10,		// UPDATE_ENEMY
+		10,		// UPDATE_PLAYER_BULLET
+		10,		// UPDATE_ENEMY_BULLET
 		10,		// CHKCOL_PLAYER_TO_ENEMY
 		1,		// RENDER_PLAYER
 		10,		// RENDER_ENEMY
+		10,		// RENDER_PLAYER_BULLET
+		10,		// RENDER_ENEMY_BULLET
 	};
 
 	unsigned int GetGameJobQueueSize(eGameJobType jobType)

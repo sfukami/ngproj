@@ -10,6 +10,7 @@
 
 #include "../appRenderable.h"
 #include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
+#include "app/transform/appTransformObject.h"
 #include "app/graphic/material/appMaterial.h"
 
 namespace app
@@ -22,7 +23,7 @@ namespace app
 	/*!
 	* @brief					スプライト
 	*/
-	class CSprite : public CRenderable
+	class CSprite : public CRenderable, public CTransformObject
 	{
 	public:
 		CSprite();

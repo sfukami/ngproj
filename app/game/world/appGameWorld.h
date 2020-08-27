@@ -56,6 +56,12 @@ namespace app
 		using ActorListArray = ng::CFixedArray<ActorList, static_cast<ng::u32>(eGameActorType::NUM)>;	//!< アクターリストの配列
 
 	private:
+		/*! 各アクターの削除チェック */
+		void _checkDeleteActors();
+
+		/*! 各アクターのスケジュール実行 */
+		void _scheduleActors(float deltaTime);
+
 		/*! 指定のアクタータイプを全削除 */
 		void _clearActor(eGameActorType actorType);
 

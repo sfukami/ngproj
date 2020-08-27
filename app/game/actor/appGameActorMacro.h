@@ -10,7 +10,11 @@
 
 //! ゲームアクター生成
 #define APP_CREATE_GAME_ACTOR(_ctor) \
-	app::GameActorMacro::_AddGameActor( NG_NEW(app::GameActorMacro::_GetGameActorMemAlloc()) _ctor )->Create()
+	app::GameActorMacro::_CreateActor<decltype(_ctor)>( NG_NEW(app::GameActorMacro::_GetGameActorMemAlloc()) _ctor )
+
+//! ゲームアクター削除
+#define APP_DELETE_GAME_ACTOR(_actor) \
+	NG_DELETE(app::GameActorMacro::_GetGameActorMemAlloc(), _actor)
 
 namespace ng
 {
@@ -29,6 +33,14 @@ namespace GameActorMacro
 	ng::IMemoryAllocator& _GetGameActorMemAlloc();
 	/*! ゲームアクター追加 */
 	CGameActor* _AddGameActor(CGameActor* pActor);
+
+	template <class T>
+	T* _CreateActor(T* pActor)
+	{
+		_AddGameActor(pActor);
+
+		return (pActor->Create() ? pActor : nullptr);
+	}
 
 }	// namespace GameActorMacro
 }	// namespace app

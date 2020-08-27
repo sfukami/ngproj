@@ -56,6 +56,12 @@ namespace app
 		void Destroy();
 
 		/*!
+		* @brief					マテリアル複製
+		* @param dst				コピー先のマテリアル
+		*/
+		void CopyMaterial(CMaterial& dst) const;
+
+		/*!
 		* @brief					DX12ルートシグネチャをコマンドリストへ設定
 		* @param commandList		DX12コマンドリスト
 		*/
@@ -102,10 +108,11 @@ namespace app
 		ng::CResourceHandle<CTexture> m_diffuseMap;		//!< ディフューズマップ
 		ng::CResourceHandle<CShader> m_vertexShader;	//!< 頂点シェーダー
 		ng::CResourceHandle<CShader> m_pixelShader;		//!< ピクセルシェーダー
-
 		ng::CWeakPtr<ng::CDX12RootSignature> m_rootSignature;	//!< DX12ルートシグネチャ
 		ng::CWeakPtr<ng::CDX12PipelineState> m_pipelineState;	//!< DX12パイプラインステート
+
 		ng::CSharedPtr<CShaderEffect> m_shaderEffect;	//!< シェーダーエフェクト
+		char m_shaderEffectName[32];	//!< シェーダーエフェクト名
 	};
 
 }	// namespace app

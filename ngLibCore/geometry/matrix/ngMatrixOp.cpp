@@ -768,7 +768,7 @@ namespace ng
 			dst.m44 = 1.0f;
 		}
 
-		void Translation(
+		void Translate(
 			Matrix4x4& dst
 			, f32 tx
 			, f32 ty

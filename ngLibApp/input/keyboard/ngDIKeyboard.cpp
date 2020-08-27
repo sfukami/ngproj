@@ -88,9 +88,13 @@ namespace ng
 		// DIERR_INPUTLOST で他のアプリケーションで占有されているか、デバイスロストしている
 		NG_ERRCODE err = m_pIDIDevice->Acquire();
 
+		m_keyFlag.Swap();
+
 		if(err == DI_OK || err == eNG_S_FALSE) {
-			m_keyFlag.Swap();
 			m_pIDIDevice->GetDeviceState(sizeof(m_keyFlag.diks[0]), m_keyFlag.pCurrDiks);
+		}
+		else {
+			m_keyFlag.Clear();
 		}
 	}
 
@@ -134,7 +138,7 @@ namespace ng
 		: pCurrDiks(diks[0])
 		, pPrevDiks(diks[1])
 	{
-		NG_ZERO_MEMORY(diks, sizeof(diks));
+		Clear();
 	}
 
 	BYTE CDIKeyboard::KeyFlag::GetCurr(eKeyCode code) const
@@ -158,6 +162,11 @@ namespace ng
 		BYTE* temp = pPrevDiks;
 		pPrevDiks = pCurrDiks;
 		pCurrDiks = temp;
+	}
+
+	void CDIKeyboard::KeyFlag::Clear()
+	{
+		NG_ZERO_MEMORY(diks, sizeof(diks));
 	}
 
 }	// namespace ng

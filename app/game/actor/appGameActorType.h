@@ -18,8 +18,8 @@ namespace app
 		UNKNOWN = -1,	//!< 不明
 		PLAYER,			//!< プレイヤー
 		ENEMY,			//!< 敵
-		BULLET_PLAYER,	//!< プレイヤーの弾
-		BULLET_ENEMY,	//!< 敵の弾
+		PLAYER_BULLET,	//!< プレイヤーの弾
+		ENEMY_BULLET,	//!< 敵の弾
 		ITEM,			//!< アイテム
 		BLOCK,			//!< ブロック
 

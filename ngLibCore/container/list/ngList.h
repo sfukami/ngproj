@@ -96,6 +96,42 @@ namespace ng
 
 		/*! 要素数取得 */
 		virtual u32 Size() const = 0;
+
+	public:
+		//! イテレータ
+		class Iterator
+		{
+		public:
+			explicit Iterator(NodeType* pNode) : m_pNode(pNode) { }
+
+			void operator++() { m_pNode = m_pNode->GetNext(); }
+			bool operator!=(Iterator& other) { return (m_pNode != other.m_pNode); }
+			ElemType& operator*() { return m_pNode->GetElem(); }
+
+		private:
+			NodeType* m_pNode;
+		};
+		//! constイテレータ
+		class ConstIterator
+		{
+		public:
+			explicit ConstIterator(const NodeType* pNode) : m_pNode(pNode) { }
+
+			void operator++() { m_pNode = m_pNode->GetNext(); }
+			bool operator!=(ConstIterator& other) { return (m_pNode != other.m_pNode); }
+			const ElemType& operator*() { return m_pNode->GetElem(); }
+
+		private:
+			const NodeType* m_pNode;
+		};
+
+		/*! 先頭のイテレータを取得 */
+		Iterator begin() { return Iterator(Begin()); }
+		ConstIterator begin() const { return ConstIterator(Begin()); }
+
+		/*! 末尾のイテレータを取得 */
+		Iterator end() { return Iterator(End()); }
+		ConstIterator end() const { return ConstIterator(End()); }
 		
 	protected:
 		/*! 2つのノード同士を繋げる */

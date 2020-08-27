@@ -27,17 +27,11 @@ namespace app
 
 	void CGameActorPlayer::Update(float deltaTime)
 	{
-		//test
-		NG_DPRINTF("[CGameActorPlayer::Update]\n");
-
 		_update(deltaTime);
 	}
 
 	void CGameActorPlayer::Render()
 	{
-		//test
-		NG_DPRINTF("[CGameActorPlayer::Render]\n");
-
 		_render();
 	}
 

@@ -80,6 +80,7 @@ namespace ng
 			BYTE GetPrev(eKeyCode code) const;
 			BYTE GetFlag(const BYTE* pDiks, eKeyCode code) const;
 			void Swap();
+			void Clear();
 
 			BYTE diks[2][KEYCODE_MAX];
 			BYTE *pCurrDiks, *pPrevDiks;

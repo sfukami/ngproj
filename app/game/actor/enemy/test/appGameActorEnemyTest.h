@@ -1,27 +1,27 @@
 ﻿/*!
-* @file		appGameActorPlayerTest.h
-* @brief	ゲームアクター プレイヤー テスト
-* @date		2020-07-19
+* @file		appGameActorEnemyTest.h
+* @brief	ゲームアクター 敵 テスト
+* @date		2020-08-28
 * @author	s.fukami
 */
 
-#ifndef __APP_GAME_ACTOR_PLAYER_TEST_H__
-#define __APP_GAME_ACTOR_PLAYER_TEST_H__
+#ifndef __APP_GAME_ACTOR_ENEMY_TEST_H__
+#define __APP_GAME_ACTOR_ENEMY_TEST_H__
 
-#include "../appGameActorPlayer.h"
+#include "../appGameActorEnemy.h"
 #include "../../appGameActorStateMachine.h"
 #include "app/graphic/render/sprite/appSprite.h"
 
 namespace app
 {
 	/*!
-	* @brief					ゲームアクター プレイヤー テスト
+	* @brief					ゲームアクター 敵 テスト
 	*/
-	class CGameActorPlayerTest : public CGameActorPlayer
+	class CGameActorEnemyTest : public CGameActorEnemy
 	{
 	public:
-		CGameActorPlayerTest();
-		~CGameActorPlayerTest();
+		CGameActorEnemyTest();
+		~CGameActorEnemyTest();
 
 		/*!
 		* @brief					生成
@@ -55,9 +55,9 @@ namespace app
 	private:
 		CSprite m_sprite;	//!< スプライト
 
-		CGameActorStateMachine<CGameActorPlayerTest, State, State::NUM> m_stateMachine;	//!< ステートマシン
+		CGameActorStateMachine<CGameActorEnemyTest, State, State::NUM> m_stateMachine;	//!< ステートマシン
 	};
 
 }	// namespace app
 
-#endif	// __APP_GAME_ACTOR_PLAYER_TEST_H__
+#endif	// __APP_GAME_ACTOR_ENEMY_TEST_H__

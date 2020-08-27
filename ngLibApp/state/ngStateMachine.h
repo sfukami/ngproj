@@ -29,7 +29,7 @@ namespace ng
 		* @brief					コンストラクタ
 		* @param defaultState		デフォルトステート
 		*/
-		CStateMachine(State defaultState);
+		explicit CStateMachine(State defaultState);
 
 		/*!
 		* @brief					デストラクタ
@@ -40,7 +40,7 @@ namespace ng
 		* @brief					ステート設定
 		* @param process			ステート処理
 		*/
-		void SetState(State state, const Process&& process);
+		void SetState(State state, const Process& process);
 
 		/*!
 		* @brief					ステート切り替え
@@ -49,8 +49,10 @@ namespace ng
 
 		/*!
 		* @brief					ステート処理実行
+		* @param args				引数
 		*/
-		void Execute();
+		template <typename ...Args>
+		void Execute(Args... args);
 
 	private:
 		State m_curState;	//!< 現在のステート
@@ -75,9 +77,9 @@ namespace ng
 	}
 
 	template <typename State, State Num, typename Process>
-	void CStateMachine<State, Num, Process>::SetState(State state, const Process&& process)
+	void CStateMachine<State, Num, Process>::SetState(State state, const Process& process)
 	{
-		m_procArr[static_cast<u32>(state)] = std::move(process);
+		m_procArr[static_cast<u32>(state)] = process;
 	}
 
 	template <typename State, State Num, typename Process>
@@ -87,9 +89,10 @@ namespace ng
 	}
 
 	template <typename State, State Num, typename Process>
-	void CStateMachine<State, Num, Process>::Execute()
+	template <typename... Args>
+	void CStateMachine<State, Num, Process>::Execute(Args... args)
 	{
-		m_procArr[static_cast<u32>(m_curState)]();
+		m_procArr[static_cast<u32>(m_curState)](args...);
 	}
 
 	/*!
@@ -105,14 +108,16 @@ namespace ng
 	public:
 		/*!
 		* @brief					コンストラクタ
+		* @param pObj				呼び出し元のオブジェクト
 		*/
-		CClassStateMachine();
+		explicit CClassStateMachine(T* pObj);
 
 		/*!
 		* @brief					コンストラクタ
+		* @param pObj				呼び出し元のオブジェクト
 		* @param defaultState		デフォルトステート
 		*/
-		CClassStateMachine(State defaultState);
+		CClassStateMachine(T* pObj, State defaultState);
 
 		/*!
 		* @brief					デストラクタ
@@ -121,20 +126,24 @@ namespace ng
 
 		/*!
 		* @brief					ステート設定
-		* @param pObj				呼び出し元のオブジェクト
 		* @param pFunc				メンバ関数ポインタ
 		*/
-		void SetState(State state, T* pObj, typename Process::FuncType pFunc);
+		void SetState(State state, typename Process::FuncType pFunc);
+
+	private:
+		T* m_pObj;	//!< 呼び出し元のオブジェクト
 	};
 
 	template <class T, typename State, State Num, typename Process>
-	CClassStateMachine<T, State, Num, Process>::CClassStateMachine()
+	CClassStateMachine<T, State, Num, Process>::CClassStateMachine(T* pObj)
+		: m_pObj(pObj)
 	{
 	}
 
 	template <class T, typename State, State Num, typename Process>
-	CClassStateMachine<T, State, Num, Process>::CClassStateMachine(State defaultState)
+	CClassStateMachine<T, State, Num, Process>::CClassStateMachine(T* pObj, State defaultState)
 		: BaseType(defaultState)
+		, m_pObj(pObj)
 	{
 	}
 
@@ -144,9 +153,9 @@ namespace ng
 	}
 
 	template <class T, typename State, State Num, typename Process>
-	void CClassStateMachine<T, State, Num, Process>::SetState(State state, T* pObj, typename Process::FuncType pFunc)
+	void CClassStateMachine<T, State, Num, Process>::SetState(State state, typename Process::FuncType pFunc)
 	{
-		SetState(state, Process(pObj, pFunc));
+		SetState(state, Process(m_pObj, pFunc));
 	}
 
 }	// namespace ng

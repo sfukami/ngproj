@@ -1,6 +1,6 @@
-/*!
+ï»¿/*!
 * @file		testSetup.cpp
-* @brief	ƒZƒbƒgƒAƒbƒv
+* @brief	ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
 * @date		2020-06-19
 * @author	s.fukami
 */
@@ -11,7 +11,7 @@
 namespace test
 {
 	/*!
-	* •¶š—ño—ÍiƒfƒoƒbƒO—pj‚Ìo—ÍƒXƒgƒŠ[ƒ€
+	* æ–‡å­—åˆ—å‡ºåŠ›ï¼ˆãƒ‡ãƒãƒƒã‚°ç”¨ï¼‰ã®å‡ºåŠ›ã‚¹ãƒˆãƒªãƒ¼ãƒ 
 	*/
 	class CLogStream : public ng::IOutputStream
 	{

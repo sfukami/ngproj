@@ -41,7 +41,7 @@ namespace app
 
 		// マテリアルをコピー
 		if(pMaterial != nullptr) {
-			m_material = (*pMaterial);
+			pMaterial->CopyMaterial(m_material);
 		}
 
 		return true;
@@ -74,9 +74,11 @@ namespace app
 		auto shaderEffect = m_material.GetShaderEffect();
 		if(shaderEffect) {
 			CShaderEffect::ShaderParam param;
+
 			ng::Matrix4 worldMat;
-			ng::MatrixOp::Identity(worldMat);
+			GetTransform().GetWorldMatrix(worldMat);
 			ng::MatrixOp::Multiply(param.wvpMat, worldMat, pParam->vpMat);
+			ng::MatrixOp::Transpose(param.wvpMat, param.wvpMat);
 
 			shaderEffect->SetShaderParam(param);
 			shaderEffect->UpdateConstantBuffer();

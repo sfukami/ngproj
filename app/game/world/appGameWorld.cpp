@@ -25,17 +25,8 @@ namespace app
 
 	void CGameWorld::Update(float deltaTime)
 	{
-		// 各アクターのスケジュール実行
-		for(auto actorType : eGameActorType())
-		{
-			ActorList& actorList = _getActorList(actorType);
-
-			typename ActorList::NodeType* pNode = actorList.Begin();
-			for(; pNode != actorList.End(); pNode = pNode->GetNext())
-			{
-				pNode->GetElem().Schedule(deltaTime);
-			}
-		}
+		_checkDeleteActors();
+		_scheduleActors(deltaTime);
 	}
 
 	void CGameWorld::Render()
@@ -55,6 +46,43 @@ namespace app
 		ActorList& actorList = _getActorList(actor.GetActorType());
 
 		actorList.PushBack(actor);
+	}
+
+	void CGameWorld::_checkDeleteActors()
+	{
+		// 削除可能なアクターを削除
+		for(auto actorType : eGameActorType())
+		{
+			ActorList& actorList = _getActorList(actorType);
+
+			typename ActorList::NodeType* pNode = actorList.Begin();
+			for(; pNode != actorList.End(); )
+			{
+				CGameActor* pActor = &pNode->GetElem();
+				if(pActor->CheckDelete()) {
+					pNode = actorList.Erase(pNode);
+
+					pActor->Destroy();
+					APP_DELETE_GAME_ACTOR(pActor);
+					continue;
+				}
+
+				pNode = pNode->GetNext();
+			}
+		}
+	}
+
+	void CGameWorld::_scheduleActors(float deltaTime)
+	{
+		// 各アクターのスケジュール実行
+		for(auto actorType : eGameActorType())
+		{
+			ActorList& actorList = _getActorList(actorType);
+			for(auto& actor : actorList)
+			{
+				actor.Schedule(deltaTime);
+			}
+		}
 	}
 
 	void CGameWorld::_clearActor(eGameActorType actorType)
