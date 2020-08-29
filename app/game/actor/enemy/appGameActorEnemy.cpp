@@ -6,23 +6,16 @@
 */
 
 #include "appGameActorEnemy.h"
-#include "app/game/job/appGameJobUtil.h"
 
 namespace app
 {
 	CGameActorEnemy::CGameActorEnemy()
-		: CGameActor(eGameActorType::PLAYER)
+		: CGameActor(eGameActorType::ENEMY)
 	{
 	}
 
 	CGameActorEnemy::~CGameActorEnemy()
 	{
-	}
-
-	void CGameActorEnemy::Schedule(float deltaTime)
-	{
-		GameJobUtil::CreateGameJob(eGameJobType::UPDATE_ENEMY, this, &CGameActorEnemy::Update, deltaTime);
-		GameJobUtil::CreateGameJob(eGameJobType::RENDER_ENEMY, this, &CGameActorEnemy::Render);
 	}
 
 	void CGameActorEnemy::Update(float deltaTime)

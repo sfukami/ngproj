@@ -33,7 +33,6 @@
     <ClCompile Include="game\appGameModule.cpp" />
     <ClCompile Include="game\job\appGameJob.cpp" />
     <ClCompile Include="game\job\appGameJobManager.cpp" />
-    <ClCompile Include="game\job\appGameJobQueueSize.cpp" />
     <ClCompile Include="game\job\appGameJobUtil.cpp" />
     <ClCompile Include="game\world\appGameWorld.cpp" />
     <ClCompile Include="graphic\appGraphic.cpp" />
@@ -105,7 +104,6 @@
     <ClInclude Include="game\common\appGameCommon.h" />
     <ClInclude Include="game\job\appGameJob.h" />
     <ClInclude Include="game\job\appGameJobAction.h" />
-    <ClInclude Include="game\job\appGameJobQueueSize.h" />
     <ClInclude Include="game\job\appGameJobType.h" />
     <ClInclude Include="game\job\appGameJobManager.h" />
     <ClInclude Include="game\job\appGameJobUtil.h" />

@@ -22,10 +22,6 @@ namespace app
 	{
 		return true;
 	}
-	
-	void CGameActor::Schedule(float deltaTime)
-	{
-	}
 
 	void CGameActor::Update(float deltaTime)
 	{

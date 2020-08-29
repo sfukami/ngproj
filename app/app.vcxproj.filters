@@ -211,9 +211,6 @@
     <ClCompile Include="game\job\appGameJobManager.cpp">
       <Filter>ソース ファイル\game\job</Filter>
     </ClCompile>
-    <ClCompile Include="game\job\appGameJobQueueSize.cpp">
-      <Filter>ソース ファイル\game\job</Filter>
-    </ClCompile>
     <ClCompile Include="game\appGameModule.cpp">
       <Filter>ソース ファイル\game</Filter>
     </ClCompile>
@@ -430,9 +427,6 @@
       <Filter>ソース ファイル\game\job</Filter>
     </ClInclude>
     <ClInclude Include="game\job\appGameJobType.h">
-      <Filter>ソース ファイル\game\job</Filter>
-    </ClInclude>
-    <ClInclude Include="game\job\appGameJobQueueSize.h">
       <Filter>ソース ファイル\game\job</Filter>
     </ClInclude>
     <ClInclude Include="game\appGameModule.h">

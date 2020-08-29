@@ -57,13 +57,20 @@ namespace app
 
 	private:
 		/*! 各アクターの削除チェック */
-		void _checkDeleteActors();
+		void _checkDeleteAllActors();
 
 		/*! 各アクターのスケジュール実行 */
-		void _scheduleActors(float deltaTime);
+		void _scheduleAllActors(float deltaTime);
 
-		/*! 指定のアクタータイプを全削除 */
-		void _clearActor(eGameActorType actorType);
+	public:
+		/*! 指定のアクタータイプを更新 */
+		void _updateActors(eGameActorType actorType, float deltaTime);
+		
+		/*! 指定のアクタータイプを描画 */
+		void _renderActors(eGameActorType actorType);
+
+		/*! 指定のアクタータイプを削除 */
+		void _clearActors(eGameActorType actorType);
 
 		/*! アクターリスト取得 */
 		ActorList& _getActorList(eGameActorType actorType);

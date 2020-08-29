@@ -22,12 +22,6 @@ namespace app
 		virtual ~CGameActorPlayer();
 
 		/*!
-		* @brief					スケジュール
-		* @param deltaTime			フレーム更新間隔
-		*/
-		void Schedule(float deltaTime);
-
-		/*!
 		* @brief					更新
 		* @param deltaTime			フレーム更新間隔
 		*/

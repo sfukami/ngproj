@@ -20,12 +20,6 @@ namespace app
 	public:
 		CGameActorPlayerBullet();
 		virtual ~CGameActorPlayerBullet();
-
-		/*!
-		* @brief					スケジュール
-		* @param deltaTime			フレーム更新間隔
-		*/
-		void Schedule(float deltaTime);
 	};
 
 }	// namespace app

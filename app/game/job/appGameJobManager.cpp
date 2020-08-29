@@ -7,7 +7,6 @@
 
 #include "appGameJobManager.h"
 #include "appGameJobType.h"
-#include "appGameJobQueueSize.h"
 #include "appGameJob.h"
 
 namespace app
@@ -21,10 +20,19 @@ namespace app
 
 	bool CGameJobManager::Initialize(ng::IMemoryAllocator& alloc)
 	{
+		const unsigned int jobQueueNum = ng::UnderlyingCast(eGameJobType::NUM);
+		unsigned int jobQueueSizeTable[ jobQueueNum ];
+
+		// 各ジョブキューのサイズ
+		for(int i = 0; i < NG_ARRAY_SIZE(jobQueueSizeTable); i++)
+		{
+			jobQueueSizeTable[i] = 1;
+		}
+
 		// ジョブ管理初期化
 		if(!m_jobMngr.Initialize(
-			static_cast<unsigned int>(eGameJobType::NUM)
-			, GetGameJobQueueSizeTable()
+			jobQueueNum
+			, jobQueueSizeTable
 			, alloc
 			)) {
 			NG_ERRLOG("GameJobManager", "ジョブ管理の初期化に失敗しました.");

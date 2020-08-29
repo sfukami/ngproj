@@ -6,7 +6,6 @@
 */
 
 #include "appGameActorPlayer.h"
-#include "app/game/job/appGameJobUtil.h"
 
 namespace app
 {
@@ -17,12 +16,6 @@ namespace app
 
 	CGameActorPlayer::~CGameActorPlayer()
 	{
-	}
-
-	void CGameActorPlayer::Schedule(float deltaTime)
-	{
-		GameJobUtil::CreateGameJob(eGameJobType::UPDATE_PLAYER, this, &CGameActorPlayer::Update, deltaTime);
-		GameJobUtil::CreateGameJob(eGameJobType::RENDER_PLAYER, this, &CGameActorPlayer::Render);
 	}
 
 	void CGameActorPlayer::Update(float deltaTime)

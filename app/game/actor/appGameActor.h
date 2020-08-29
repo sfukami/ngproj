@@ -38,12 +38,6 @@ namespace app
 		virtual bool Create();
 
 		/*!
-		* @brief					スケジュール
-		* @param deltaTime			フレーム更新間隔
-		*/
-		virtual void Schedule(float deltaTime);
-
-		/*!
 		* @brief					更新
 		* @param deltaTime			フレーム更新間隔
 		*/

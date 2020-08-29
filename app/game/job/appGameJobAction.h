@@ -35,7 +35,8 @@ namespace app
 		* @param action				アクション
 		* @param args				引数
 		*/
-		CGameJobAction(Action&& action, ArgsType&& args);
+		template <typename... Args>
+		CGameJobAction(Action&& action, Args... args);
 
 		/*!
 		* @brief					デストラクタ
@@ -59,9 +60,10 @@ namespace app
 	}
 
 	template <class Action>
-	CGameJobAction<Action>::CGameJobAction(Action&& action, ArgsType&& args)
+	template <typename... Args>
+	CGameJobAction<Action>::CGameJobAction(Action&& action, Args... args)
 		: m_action(action)
-		, m_args(args)
+		, m_args(args...)
 	{
 	}
 
