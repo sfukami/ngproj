@@ -13,7 +13,7 @@
 namespace ng
 {
 	/*!
-	* 2D形状 OBB
+	* @brief					2D形状 OBB
 	*/
 	struct NG_DECL Shape2DOBB
 	{

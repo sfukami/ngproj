@@ -19,7 +19,7 @@ namespace ng
 namespace ng
 {
 	/*!
-	* 2D形状 矩形
+	* @brief					2D形状 矩形
 	*/
 	struct NG_DECL Shape2DSquare
 	{

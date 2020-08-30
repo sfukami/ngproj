@@ -20,7 +20,7 @@ namespace ng
 namespace ng
 {
 	/*!
-	* 3D形状 Box(AABB)
+	* @brief					3D形状 Box(AABB)
 	*/
 	struct NG_DECL Shape3DBox
 	{

@@ -19,7 +19,7 @@ namespace ng
 namespace ng
 {
 	/*!
-	* 3D形状 カプセル（球スイープ）
+	* @brief					3D形状 カプセル（球スイープ）
 	*/
 	struct NG_DECL Shape3DCapsule
 	{

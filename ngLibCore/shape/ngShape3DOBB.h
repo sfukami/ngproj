@@ -18,7 +18,7 @@ namespace ng
 namespace ng
 {
 	/*!
-	* 3D形状 OBB
+	* @brief					3D形状 OBB
 	*/
 	struct NG_DECL Shape3DOBB
 	{

@@ -20,7 +20,7 @@ namespace ng
 namespace ng
 {
 	/*!
-	* 3D形状 無限平面
+	* @brief					3D形状 無限平面
 	*/
 	struct NG_DECL Shape3DPlane
 	{

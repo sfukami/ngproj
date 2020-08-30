@@ -19,7 +19,7 @@ namespace ng
 namespace ng
 {
 	/*!
-	* 2D形状 円
+	* @brief					2D形状 円
 	*/
 	struct NG_DECL Shape2DCircle
 	{

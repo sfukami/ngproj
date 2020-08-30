@@ -18,7 +18,7 @@ namespace ng
 namespace ng
 {
 	/*!
-	* 2D形状 線分
+	* @brief					2D形状 線分
 	*/
 	struct NG_DECL Shape2DSegment
 	{
