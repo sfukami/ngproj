@@ -8,9 +8,11 @@
 #include "app/common/appCommon.h"
 #include "appSceneRoot.h"
 #include "../appSceneModule.h"
+#include "../../memory/appMemoryModule.h"
+// test
 #include "../test/appSceneTest.h"
 #include "../test/appSceneInputTest.h"
-#include "../../memory/appMemoryModule.h"
+#include "../test/appSceneGraphicPipelineTest.h"
 
 namespace app
 {
@@ -30,8 +32,10 @@ namespace app
 	{
 		auto scenePtr = NG_MAKE_SHARED_PTR(IScene, APP_GET_MEMALLOC(APPLICATION)
 			//, CSceneTest()
-			, CSceneInputTest()
+			//, CSceneInputTest()
+			, CSceneGraphicPipelineTest()
 			);
+
 		//CSceneModule::ChangeScene(eSceneId::GAME, scenePtr);
 		CSceneModule::RequestChangeScene(eSceneId::GAME, scenePtr);
 	}

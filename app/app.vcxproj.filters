@@ -100,6 +100,9 @@
     <ClCompile Include="scene\test\appSceneInputTest.cpp">
       <Filter>ソース ファイル\scene\test</Filter>
     </ClCompile>
+    <ClCompile Include="scene\test\appSceneGraphicPipelineTest.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\appGame.h">
@@ -175,6 +178,9 @@
       <Filter>ソース ファイル\memory</Filter>
     </ClInclude>
     <ClInclude Include="scene\test\appSceneInputTest.h">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneGraphicPipelineTest.h">
       <Filter>ソース ファイル\scene\test</Filter>
     </ClInclude>
   </ItemGroup>

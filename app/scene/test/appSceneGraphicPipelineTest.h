@@ -1,25 +1,30 @@
 ﻿/*!
-* @file		appSceneTest.h
-* @brief	シーン テスト
-* @date		2020-06-30
+* @file		appSceneGraphicPipelineTest.h
+* @brief	シーン グラフィックパイプラインテスト
+* @date		2021-05-10
 * @author	s.fukami
 */
 
-#ifndef __APP_SCENE_TEST_H__
-#define __APP_SCENE_TEST_H__
+#ifndef __APP_SCENE_GRAPHIC_PIPELINE_TEST_H__
+#define __APP_SCENE_GRAPHIC_PIPELINE_TEST_H__
 
 #include "../appScene.h"
+
+namespace app
+{
+	class CGraphicPipeline;
+}
 
 namespace app
 {
 	/*!
 	* @brief					シーン テスト
 	*/
-	class CSceneTest : public IScene
+	class CSceneGraphicPipelineTest : public IScene
 	{
 	public:
-		CSceneTest();
-		~CSceneTest();
+		CSceneGraphicPipelineTest();
+		~CSceneGraphicPipelineTest();
 
 		/*!
 		* @brief					初期化
@@ -44,8 +49,9 @@ namespace app
 		void Finalize();
 
 	private:
+		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 	};
 
 }	// namespace app
 
-#endif	// __APP_SCENE_TEST_H__
+#endif	// __APP_SCENE_GRAPHIC_PIPELINE_TEST_H__
