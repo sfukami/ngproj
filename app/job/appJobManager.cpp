@@ -20,7 +20,7 @@ namespace app
 
 	bool CJobManager::Initialize(ng::u32 jobMax, ng::IMemoryAllocator& alloc)
 	{
-		for(ng::size_type i = 0; i < m_jobQueueArr.Size(); i++)
+		for(unsigned int i = 0; i < m_jobQueueArr.Size(); i++)
 		{
 			NG_ERRCODE err = m_jobQueueArr[i].Initialize(jobMax, alloc);
 			if(NG_FAILED(err)) {
@@ -51,7 +51,7 @@ namespace app
 
 	void CJobManager::Finalize()
 	{
-		for(ng::size_type i = 0; i < m_jobQueueArr.Size(); i++)
+		for(unsigned int i = 0; i < m_jobQueueArr.Size(); i++)
 		{
 			m_jobQueueArr[i].Finalize();
 		}

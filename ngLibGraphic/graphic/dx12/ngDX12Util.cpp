@@ -150,9 +150,10 @@ namespace ng
 			}
 
 			// レンダーターゲット設定
+			D3D12_CPU_DESCRIPTOR_HANDLE cpuDescriptorHandle = pDS->GetCPUDescriptorHandle();
 			pCmdList->SetRenderTarget(
 				pRT->GetCPUDescriptorHandle(),
-				(pDS != nullptr) ? &pDS->GetCPUDescriptorHandle() : nullptr
+				(pDS != nullptr) ? &cpuDescriptorHandle : nullptr
 				);
 		}
 
