@@ -90,11 +90,6 @@ namespace ng
 		NG_SAFE_RELEASE(m_pIInput);
 	}
 
-	bool CDirectInput::IsValid() const
-	{
-		return (m_pIInput != nullptr);
-	}
-
 	bool CDirectInput::CheckKeyboardInput(
 		eKeyCode code,
 		eInputState state
@@ -109,6 +104,36 @@ namespace ng
 		) const
 	{
 		return m_mouse.CheckInputState(code, state);
+	}
+
+	Point CDirectInput::GetMouseCursorClientPos() const
+	{
+		return m_mouse.GetCursorClientPos();
+	}
+
+	Point CDirectInput::GetMouseMoveDelta() const
+	{
+		return m_mouse.GetMoveDelta();
+	}
+
+	s32 CDirectInput::GetMouseWheelDelta() const
+	{
+		return m_mouse.GetWheelDelta();
+	}
+
+	bool CDirectInput::IsValid() const
+	{
+		return (m_pIInput != nullptr);
+	}
+
+	bool CDirectInput::IsValidKeyboard() const
+	{
+		return m_keyboard.IsValid();
+	}
+
+	bool CDirectInput::IsValidMouse() const
+	{
+		return m_mouse.IsValid();
 	}
 
 	IDirectInput8* CDirectInput::Interface()

@@ -9,6 +9,7 @@
 #define __NG_APP_INPUT_MANAGER_H__
 
 #include "ngLibCore/traits/ngSingleton.h"
+#include "ngLibCore/geometry/point/ngPoint.h"
 
 namespace ng
 {
@@ -68,9 +69,37 @@ namespace ng
 			) const;
 
 		/*!
+		* @brief					クライアント座標におけるマウスカーソルの座標を取得
+		* @return					マウスカーソルの座標
+		*/
+		Point GetMouseCursorClientPos() const;
+
+		/*!
+		* @brief					マウスカーソルの相対的な移動量を取得
+		* @return					マウスカーソルの移動量（ピクセル）
+		*/
+		Point GetMouseMoveDelta() const;
+
+		/*!
+		* @brief					マウスホイールの相対的な変化量を取得
+		* @return					マウスホイールの変化量
+		*/
+		s32 GetMouseWheelDelta() const;
+
+		/*!
 		* @brief					デバイス入力が割り当て済みか
 		*/
 		bool IsAssigned() const;
+
+		/*!
+		* @brief					キーボードが有効か
+		*/
+		bool IsValidKeyboard() const;
+
+		/*!
+		* @brief					マウスが有効か
+		*/
+		bool IsValidMouse() const;
 
 	private:
 		static CInputManager m_instance;	//!< デバイス入力管理 インスタンス
