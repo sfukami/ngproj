@@ -36,6 +36,7 @@
     <ClCompile Include="scene\appSceneManager.cpp" />
     <ClCompile Include="scene\appSceneModule.cpp" />
     <ClCompile Include="scene\root\appSceneRoot.cpp" />
+    <ClCompile Include="scene\test\appSceneInputTest.cpp" />
     <ClCompile Include="scene\test\appSceneTest.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -62,6 +63,7 @@
     <ClInclude Include="scene\appSceneManager.h" />
     <ClInclude Include="scene\appSceneModule.h" />
     <ClInclude Include="scene\root\appSceneRoot.h" />
+    <ClInclude Include="scene\test\appSceneInputTest.h" />
     <ClInclude Include="scene\test\appSceneTest.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

@@ -97,6 +97,9 @@
     <ClCompile Include="job\appJobModule.cpp">
       <Filter>ソース ファイル\job</Filter>
     </ClCompile>
+    <ClCompile Include="scene\test\appSceneInputTest.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="game\appGame.h">
@@ -170,6 +173,9 @@
     </ClInclude>
     <ClInclude Include="memory\appMemoryUtil.h">
       <Filter>ソース ファイル\memory</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneInputTest.h">
+      <Filter>ソース ファイル\scene\test</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
