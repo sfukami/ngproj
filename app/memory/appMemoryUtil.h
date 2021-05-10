@@ -13,10 +13,6 @@
 /*!
 * @brief					アプリケーション メモリアロケータ取得
 */
-#define APP_GET_MEMALLOC(_id)	(*app::CMemoryModule::GetAllocator(_id))
-//! アプリケーション
-#define APP_MEMALLOC_APPLICATION	(APP_GET_MEMALLOC(app::eMemoryAllocatorId::APPLICATION))
-//! ワーク
-#define APP_MEMALLOC_WORK			(APP_GET_MEMALLOC(app::eMemoryAllocatorId::WORK))
+#define APP_GET_MEMALLOC(_id)	(*app::CMemoryModule::GetAllocator(app::eMemoryAllocatorId::##_id))
 
 #endif	// __APP_MEMORY_UTIL_H__

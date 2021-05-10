@@ -32,7 +32,7 @@ namespace app
 			ng::CSharedPtr<IScene> m_scenePtr;
 		};
 
-		auto jobPtr = NG_MAKE_SHARED_PTR(ng::IJob, APP_MEMALLOC_WORK, CJobChangeScene(sceneId, scenePtr));
+		auto jobPtr = NG_MAKE_SHARED_PTR(ng::IJob, APP_GET_MEMALLOC(WORK), CJobChangeScene(sceneId, scenePtr));
 		CJobModule::AddJob(jobPtr, eJobProcess::END_OF_FRAME);
 	}
 

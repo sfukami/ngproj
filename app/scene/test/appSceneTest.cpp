@@ -25,7 +25,7 @@ namespace app
 
 	bool CSceneTest::Initialize()
 	{
-		m_pPipeline = NG_NEW(APP_MEMALLOC_APPLICATION) 
+		m_pPipeline = NG_NEW(APP_GET_MEMALLOC(APPLICATION))
 			//CGraphicPipelineClearBuffer()
 			CGraphicPipelinePolygon()
 			;
@@ -33,7 +33,7 @@ namespace app
 			CGraphicModule::SetGraphicPipeline(m_pPipeline);
 		} else {
 			NG_ERRLOG("Game", "グラフィックパイプラインの初期化に失敗しました.");
-			NG_SAFE_DELETE(APP_MEMALLOC_APPLICATION, m_pPipeline);
+			NG_SAFE_DELETE(APP_GET_MEMALLOC(APPLICATION), m_pPipeline);
 			return false;
 		}
 
@@ -74,7 +74,7 @@ namespace app
 	void CSceneTest::Finalize()
 	{
 		if(m_pPipeline != nullptr) {
-			NG_SAFE_DELETE(APP_MEMALLOC_APPLICATION, m_pPipeline);
+			NG_SAFE_DELETE(APP_GET_MEMALLOC(APPLICATION), m_pPipeline);
 		}
 	}
 
