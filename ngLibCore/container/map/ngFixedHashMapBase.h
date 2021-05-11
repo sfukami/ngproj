@@ -189,7 +189,7 @@ namespace ng
 			/*! 生成 */
 			void Create(const char* _key, const ValueType& _value)
 			{
-				hash = CalcCRC32Hash(_key, ::strlen(_key));
+				hash = CalcCRC32Hash(_key, static_cast<ng::u32>(::strlen(_key)));
 				NG_PLACEMENT_NEW(value) ValueType(_value);
 			}
 			/*! 破棄 */
@@ -204,11 +204,11 @@ namespace ng
 			/*! キー取得 */
 			u32 GetKey() const { return hash; }
 			/*! キーが等しいかチェック */
-			bool CheckKey(const char* _key) const { return (hash == CalcCRC32Hash(_key, ::strlen(_key))); }
+			bool CheckKey(const char* _key) const { return (hash == CalcCRC32Hash(_key, static_cast<ng::u32>(::strlen(_key)))); }
 			/*! mod値取得 */
 			u32 GetMod(u32 hashSize) const { return hash % hashSize; }
 			/*! mod値算出 */
-			static u32 CalcMod(const char* _key, u32 hashSize) { return CalcCRC32Hash(_key, ::strlen(_key)) % hashSize; }
+			static u32 CalcMod(const char* _key, u32 hashSize) { return CalcCRC32Hash(_key, static_cast<ng::u32>(::strlen(_key))) % hashSize; }
 
 		private:
 			/*! 次ノードを取得 */
