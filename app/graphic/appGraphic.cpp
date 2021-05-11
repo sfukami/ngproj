@@ -39,8 +39,8 @@ namespace app
 			param.clientWidth = clientWidth;
 			param.clientHeight = clientHeight;
 			param.isFullscreen = isFullScreen;
-			param.deviceParam.featureLevel = D3D_FEATURE_LEVEL_11_0;
-			param.deviceParam.isUseWarpDevice = true;
+			param.deviceParam.featureLevel = D3D_FEATURE_LEVEL_12_0;
+			param.deviceParam.isUseWarpDevice = false;
 			
 			if(NG_FAILED(m_dx12Graphic.Create(param))) {
 				NG_ERRLOG("Graphic", "DirectX12グラフィックの生成に失敗しました.");
