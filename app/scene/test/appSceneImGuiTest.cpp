@@ -6,7 +6,7 @@
 */
 
 #include "app/common/appCommon.h"
-#include "appSceneTestImGui.h"
+#include "appSceneImGuiTest.h"
 #include "../../memory/appMemoryModule.h"
 #include "../../graphic/appGraphicModule.h"
 #include "../../graphic/pipeline/appGraphicPipelineDefault.h"
@@ -14,45 +14,45 @@
 
 namespace app
 {
-	CSceneTestImGui::CSceneTestImGui()
+	CSceneImGuiTest::CSceneImGuiTest()
 	{
 	}
-	CSceneTestImGui::~CSceneTestImGui()
+	CSceneImGuiTest::~CSceneImGuiTest()
 	{
 	}
 
-	bool CSceneTestImGui::Initialize()
+	bool CSceneImGuiTest::Initialize()
 	{
-		m_pPipeline = NG_NEW(APP_MEMALLOC_APPLICATION) CGraphicPipelineDefault();
+		m_pPipeline = NG_NEW(APP_GET_MEMALLOC(APPLICATION)) CGraphicPipelineDefault();
 
 		if(m_pPipeline->Initialize()) {
 			CGraphicModule::SetGraphicPipeline(m_pPipeline);
 		} else {
 			NG_ERRLOG("Game", "グラフィックパイプラインの初期化に失敗しました.");
-			NG_SAFE_DELETE(APP_MEMALLOC_APPLICATION, m_pPipeline);
+			NG_SAFE_DELETE(APP_GET_MEMALLOC(APPLICATION), m_pPipeline);
 			return false;
 		}
 
 		return true;
 	}
 
-	void CSceneTestImGui::Update(float deltaTime)
+	void CSceneImGuiTest::Update(float deltaTime)
 	{
 	}
 
-	void CSceneTestImGui::Render()
+	void CSceneImGuiTest::Render()
 	{
 		_renderGUIWindow();
 	}
 
-	void CSceneTestImGui::Finalize()
+	void CSceneImGuiTest::Finalize()
 	{
 		if(m_pPipeline != nullptr) {
-			NG_SAFE_DELETE(APP_MEMALLOC_APPLICATION, m_pPipeline);
+			NG_SAFE_DELETE(APP_GET_MEMALLOC(APPLICATION), m_pPipeline);
 		}
 	}
 
-	void CSceneTestImGui::_renderGUIWindow()
+	void CSceneImGuiTest::_renderGUIWindow()
 	{
 		// ImGui で遊ぶ
 		// 参考:https://qiita.com/Ushio/items/446d78c881334919e156

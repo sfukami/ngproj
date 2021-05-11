@@ -7,6 +7,7 @@
 
 #include "appGraphicModule.h"
 #include "appGraphic.h"
+#include "appGraphicUtil.h"
 #include "app/memory/appMemoryUtil.h"
 #include "material/appMaterialLibrary.h"
 #include "rootsign/appRootSignatureManager.h"
@@ -66,7 +67,7 @@ namespace app
 
 		CPipelineStateManager& plStateMngr = s_pGraphic->GetPipelineStateManager();
 
-		return plStateMngr.CreateAndAdd(APP_MEMALLOC_GRAPHIC, name, stateDesc);
+		return plStateMngr.CreateAndAdd(app::GraphicUtil::GetGraphicMemAlloc(), name, stateDesc);
 	}
 
 	bool CGraphicModule::CreateShaderEffect(const char* name, ng::CSharedPtr<CShaderEffect>& dstPtr)
@@ -75,7 +76,7 @@ namespace app
 
 		const CShaderEffectFactory& shEffFac = s_pGraphic->GetShaderEffectFactory();
 
-		return shEffFac.Create(APP_MEMALLOC_GRAPHIC, name, dstPtr);
+		return shEffFac.Create(app::GraphicUtil::GetGraphicMemAlloc(), name, dstPtr);
 	}
 
 	bool CGraphicModule::_isValid()

@@ -77,9 +77,11 @@
     <ClCompile Include="scene\appSceneManager.cpp" />
     <ClCompile Include="scene\appSceneModule.cpp" />
     <ClCompile Include="scene\root\appSceneRoot.cpp" />
+    <ClCompile Include="scene\test\appSceneGameTest.cpp" />
+    <ClCompile Include="scene\test\appSceneGraphicPipelineTest.cpp" />
+    <ClCompile Include="scene\test\appSceneImGuiTest.cpp" />
+    <ClCompile Include="scene\test\appSceneInputTest.cpp" />
     <ClCompile Include="scene\test\appSceneTest.cpp" />
-    <ClCompile Include="scene\test\appSceneTestGame.cpp" />
-    <ClCompile Include="scene\test\appSceneTestImGui.cpp" />
     <ClCompile Include="tool\gui\appToolGUI.cpp" />
     <ClCompile Include="tool\gui\appToolGUIModule.cpp" />
     <ClCompile Include="transform\appTransform.cpp" />
@@ -157,9 +159,11 @@
     <ClInclude Include="scene\appSceneManager.h" />
     <ClInclude Include="scene\appSceneModule.h" />
     <ClInclude Include="scene\root\appSceneRoot.h" />
+    <ClInclude Include="scene\test\appSceneGameTest.h" />
+    <ClInclude Include="scene\test\appSceneGraphicPipelineTest.h" />
+    <ClInclude Include="scene\test\appSceneImGuiTest.h" />
+    <ClInclude Include="scene\test\appSceneInputTest.h" />
     <ClInclude Include="scene\test\appSceneTest.h" />
-    <ClInclude Include="scene\test\appSceneTestGame.h" />
-    <ClInclude Include="scene\test\appSceneTestImGui.h" />
     <ClInclude Include="tool\gui\appToolGUI.h" />
     <ClInclude Include="tool\gui\appToolGUIModule.h" />
     <ClInclude Include="transform\appTransform.h" />

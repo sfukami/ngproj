@@ -21,7 +21,7 @@ namespace app
 	bool CGame::Initialize()
 	{
 		// ジョブ管理初期化
-		if(!m_jobMngr.Initialize(APP_MEMALLOC_APPLICATION)) {
+		if(!m_jobMngr.Initialize(APP_GET_MEMALLOC(APPLICATION))) {
 			NG_ERRLOG("Game", "ジョブ管理の初期化に失敗しました.");
 			return false;
 		}

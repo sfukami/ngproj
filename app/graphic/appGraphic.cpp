@@ -65,7 +65,7 @@ namespace app
 
 		// ルートシグネチャ管理初期化
 		if(!m_rootSignMngr.Initialize(
-			APP_MEMALLOC_GRAPHIC,
+			APP_GET_MEMALLOC(APPLICATION),
 			m_dx12Graphic.GetDevice()
 			)) {
 			NG_ERRLOG("Graphic", "ルートシグネチャ管理の初期化に失敗しました.");

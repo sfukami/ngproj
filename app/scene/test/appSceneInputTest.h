@@ -1,25 +1,25 @@
 ﻿/*!
-* @file		appSceneTest.h
-* @brief	シーン テスト
-* @date		2020-06-30
+* @file		appSceneInputTest.h
+* @brief	シーン 入力テスト
+* @date		2021-05-10
 * @author	s.fukami
 */
 
-#ifndef __APP_SCENE_TEST_H__
-#define __APP_SCENE_TEST_H__
+#ifndef __APP_SCENE_INPUT_TEST_H__
+#define __APP_SCENE_INPUT_TEST_H__
 
 #include "../appScene.h"
 
 namespace app
 {
 	/*!
-	* @brief					シーン テスト
+	* @brief					シーン 入力テスト
 	*/
-	class CSceneTest : public IScene
+	class CSceneInputTest : public IScene
 	{
 	public:
-		CSceneTest();
-		~CSceneTest();
+		CSceneInputTest();
+		~CSceneInputTest();
 
 		/*!
 		* @brief					初期化
@@ -48,4 +48,4 @@ namespace app
 
 }	// namespace app
 
-#endif	// __APP_SCENE_TEST_H__
+#endif	// __APP_SCENE_INPUT_TEST_H__

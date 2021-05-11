@@ -1,12 +1,12 @@
 ﻿/*!
-* @file		appSceneTest.h
+* @file		appSceneImGuiTest.h
 * @brief	シーン ImGuiテスト
 * @date		2020-06-30
 * @author	s.fukami
 */
 
-#ifndef __APP_SCENE_TEST_IMGUI_H__
-#define __APP_SCENE_TEST_IMGUI_H__
+#ifndef __APP_SCENE_IMGUI_TEST_H__
+#define __APP_SCENE_IMGUI_TEST_H__
 
 #include "../appScene.h"
 
@@ -20,11 +20,11 @@ namespace app
 	/*!
 	* @brief					シーン ImGuiテスト
 	*/
-	class CSceneTestImGui : public IScene
+	class CSceneImGuiTest : public IScene
 	{
 	public:
-		CSceneTestImGui();
-		~CSceneTestImGui();
+		CSceneImGuiTest();
+		~CSceneImGuiTest();
 
 		/*!
 		* @brief					初期化
@@ -57,4 +57,4 @@ namespace app
 
 }	// namespace app
 
-#endif	// __APP_SCENE_TEST_IMGUI_H__
+#endif	// __APP_SCENE_IMGUI_TEST_H__
