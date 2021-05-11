@@ -90,24 +90,34 @@ namespace ng
 		* @brief					クライアント座標におけるマウスカーソルの座標を取得
 		* @return					マウスカーソルの座標
 		*/
-		Point GetCursorClientPos() const;
+		Point GetMouseCursorClientPos() const;
 
 		/*!
 		* @brief					マウスカーソルの相対的な移動量を取得
 		* @return					マウスカーソルの移動量（ピクセル）
 		*/
-		Point GetMoveDelta() const;
+		Point GetMouseMoveDelta() const;
 
 		/*!
 		* @brief					マウスホイールの相対的な変化量を取得
 		* @return					マウスホイールの変化量
 		*/
-		s32 GetWheelDelta() const;
+		s32 GetMouseWheelDelta() const;
 
 		/*!
 		* @brief					有効か
 		*/
 		bool IsValid() const;
+
+		/*!
+		* @brief					キーボードが有効か
+		*/
+		bool IsValidKeyboard() const;
+
+		/*!
+		* @brief					マウスが有効か
+		*/
+		bool IsValidMouse() const;
 
 		/*!
 		* @brief					DirectInput8 インターフェース取得

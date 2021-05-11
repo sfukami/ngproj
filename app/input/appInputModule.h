@@ -52,19 +52,29 @@ namespace app
 		* @brief					クライアント座標におけるマウスカーソルの座標を取得
 		* @return					マウスカーソルの座標
 		*/
-		static ng::Point GetCursorClientPos();
+		static ng::Point GetMouseCursorClientPos();
 
 		/*!
 		* @brief					マウスカーソルの相対的な移動量を取得
 		* @return					マウスカーソルの移動量（ピクセル）
 		*/
-		static ng::Point GetMoveDelta();
+		static ng::Point GetMouseMoveDelta();
 
 		/*!
 		* @brief					マウスホイールの相対的な変化量を取得
 		* @return					マウスホイールの変化量
 		*/
-		static ng::s32 GetWheelDelta();
+		static ng::s32 GetMouseWheelDelta();
+
+		/*!
+		* @brief					キーボードが有効か
+		*/
+		static bool IsValidKeyboard();
+
+		/*!
+		* @brief					マウスが有効か
+		*/
+		static bool IsValidMouse();
 
 	private:
 		/*! 入力のインスタンスを設定 */
