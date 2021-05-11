@@ -307,23 +307,23 @@
     <ClCompile Include="transform\appTransformObject.cpp">
       <Filter>ソース ファイル\transform</Filter>
     </ClCompile>
-    <ClCompile Include="scene\test\appSceneGameTest.cpp">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClCompile>
-    <ClCompile Include="scene\test\appSceneGraphicPipelineTest.cpp">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClCompile>
-    <ClCompile Include="scene\test\appSceneImGuiTest.cpp">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClCompile>
-    <ClCompile Include="scene\test\appSceneInputTest.cpp">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClCompile>
     <ClCompile Include="graphic\material\appMaterialData.cpp">
       <Filter>ソース ファイル\graphic\material</Filter>
     </ClCompile>
     <ClCompile Include="graphic\material\appMaterialDataPreset.cpp">
       <Filter>ソース ファイル\graphic\material</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneGameTest.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneGraphicPipelineTest.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneImGuiTest.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneInputTest.cpp">
+      <Filter>ソース ファイル\scene\test</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -549,23 +549,23 @@
     <ClInclude Include="transform\appTransformObject.h">
       <Filter>ソース ファイル\transform</Filter>
     </ClInclude>
-    <ClInclude Include="scene\test\appSceneGameTest.h">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClInclude>
-    <ClInclude Include="scene\test\appSceneGraphicPipelineTest.h">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClInclude>
-    <ClInclude Include="scene\test\appSceneImGuiTest.h">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClInclude>
-    <ClInclude Include="scene\test\appSceneInputTest.h">
-      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
-    </ClInclude>
     <ClInclude Include="graphic\material\appMaterialData.h">
       <Filter>ソース ファイル\graphic\material</Filter>
     </ClInclude>
     <ClInclude Include="graphic\material\appMaterialDataPreset.h">
       <Filter>ソース ファイル\graphic\material</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneGameTest.h">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneGraphicPipelineTest.h">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneImGuiTest.h">
+      <Filter>ソース ファイル\scene\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneInputTest.h">
+      <Filter>ソース ファイル\scene\test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
