@@ -22,7 +22,6 @@ namespace app
 {
 	class CGraphic;
 	class CGraphicPipeline;
-	class CMaterial;
 	class CShaderEffect;
 }
 
@@ -40,22 +39,6 @@ namespace app
 		* @brief					グラフィックパイプライン設定
 		*/
 		static void SetGraphicPipeline(CGraphicPipeline* pPipeline);
-
-		/*!
-		* @brief					マテリアル追加
-		* @param name				マテリアル名
-		* @param material			追加するマテリアル
-		* @return					成否
-		*/
-		static bool AddMaterial(const char* name, const CMaterial& material);
-
-		/*!
-		* @brief					マテリアル追加
-		* @param name				マテリアル名
-		* @param dst				マテリアルのコピー先
-		* @return					成否
-		*/
-		static bool CopyMaterial(const char* name, CMaterial& dst);
 
 		/*!
 		* @brief					DX12ルートシグネチャ取得

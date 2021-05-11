@@ -10,7 +10,6 @@
 
 #include "ngLibCore/memory/pointer/ngSharedPtr.h"
 #include "ngLibCore/memory/pointer/ngWeakPtr.h"
-#include "ngLibApp/resource/ngResource.h"
 #include "ngLibApp/resource/ngResourceHandle.h"
 #include "../texture/appTexture.h"
 #include "../shader/appShader.h"
@@ -25,8 +24,8 @@ namespace ng
 }
 namespace app
 {
-	struct MaterialData;
-	struct ShaderData;
+	struct ShaderFormat;
+	class CMaterialData;
 	class CShaderEffect;
 }
 
@@ -35,20 +34,18 @@ namespace app
 	/*!
 	* @brief					マテリアル
 	*/
-	class CMaterial : public ng::IResource
+	class CMaterial
 	{
 	public:
 		CMaterial();
 		~CMaterial();
 
 		/*!
-		* @brief					リソース構築
-		* @param pBinary			リソースバイナリ
-		* @param size				リソースバイナリのサイズ
-		* @param pBuildParam		ビルドパラメータ
+		* @brief					マテリアル生成
+		* @param data				マテリアルデータ
 		* @return					成否
 		*/
-		bool Build(const void* pBinary, ng::size_type size, const void* pBuildParam);
+		bool Create(const CMaterialData& data);
 
 		/*!
 		* @brief					破棄
@@ -86,17 +83,10 @@ namespace app
 		ng::CWeakPtr<ng::CDX12PipelineState> GetPipelineState() const;
 
 	private:
-		/*!
-		* @brief					マテリアル構築
-		* @param data				マテリアルデータ
-		* @return					成否
-		*/
-		bool _build(const MaterialData& data);
-
 		/*! リソース読み込み */
 		bool _loadResource(const char* filePath, const void* pBuildParam, ng::IResourceHandle& handle);
 		/*! シェーダーリソース読み込み */
-		bool _loadShaderResource(const ShaderData& shaderData, ng::IResourceHandle& handle);
+		bool _loadShaderResource(const ShaderFormat& shaderFormat, ng::IResourceHandle& handle);
 		/*! DX12ルートシグネチャ取得 */
 		bool _findRootSignature(const char* name);
 		/*! DX12パイプラインステート生成 */

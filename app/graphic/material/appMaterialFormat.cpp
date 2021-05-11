@@ -9,35 +9,35 @@
 
 namespace app
 {
-	TextureData::TextureData()
+	TextureFormat::TextureFormat()
 		: pBinary(nullptr)
 	{
 		ng::ClearString(filePath);
 	}
-	void TextureData::SetFilePath(const char* _filePath)
+	void TextureFormat::SetFilePath(const char* _filePath)
 	{
 		NG_STRCPY(filePath, _filePath);
 	}
 
-	ShaderData::ShaderData()
+	ShaderFormat::ShaderFormat()
 		: pBinary(nullptr)
 	{
 		ng::ClearString(filePath);
 	}
-	void ShaderData::SetFilePath(const char* _filePath)
+	void ShaderFormat::SetFilePath(const char* _filePath)
 	{
 		NG_STRCPY(filePath, _filePath);
 	}
-	void ShaderData::SetEntryPoint(const char* _entryPoint)
+	void ShaderFormat::SetEntryPoint(const char* _entryPoint)
 	{
 		NG_STRCPY(entryPoint, _entryPoint);
 	}
-	void ShaderData::SetTarget(const char* _target)
+	void ShaderFormat::SetTarget(const char* _target)
 	{
 		NG_STRCPY(target, _target);
 	}
 
-	MaterialData::MaterialData()
+	MaterialFormat::MaterialFormat()
 	{
 		ng::ClearString(name);
 		ng::ClearString(rootSignatureName);
@@ -46,19 +46,19 @@ namespace app
 
 		vertexLayout = ng::eVertexLayout::STATIC;
 	}
-	void MaterialData::SetMaterialName(const char* _name)
+	void MaterialFormat::SetMaterialName(const char* _name)
 	{
 		NG_STRCPY(name, _name);
 	}
-	void MaterialData::SetRootSignatureName(const char* _name)
+	void MaterialFormat::SetRootSignatureName(const char* _name)
 	{
 		NG_STRCPY(rootSignatureName, _name);
 	}
-	void MaterialData::SetPipelineStateName(const char* _name)
+	void MaterialFormat::SetPipelineStateName(const char* _name)
 	{
 		NG_STRCPY(pipelineStateName, _name);
 	}
-	void MaterialData::SetShaderEffectName(const char* _name)
+	void MaterialFormat::SetShaderEffectName(const char* _name)
 	{
 		NG_STRCPY(shaderEffectName, _name);
 	}

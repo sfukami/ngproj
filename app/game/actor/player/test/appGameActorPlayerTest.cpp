@@ -8,7 +8,6 @@
 #include "appGameActorPlayerTest.h"
 #include "app/resource/appResourceModule.h"
 #include "app/input/appInputModule.h"
-
 // test
 #include "app/game/actor/bullet/test/appGameActorPlayerBulletTest.h"
 #include "app/game/actor/appGameActorMacro.h"
@@ -26,26 +25,17 @@ namespace app
 	bool CGameActorPlayerTest::Create()
 	{
 		// スプライト生成
-		{
-			ng::CResourceHandle<CMaterial> handle;
-			if(!CResourceModule::LoadResource("../resource/material/test.mat", eResourceMemoryType::FIXED, handle)) {
-				return false;
-			}
-
-			// スプライト生成
-			if(!m_sprite.Create(1, 1, &*handle.GetResource())) {
-				return false;
-			}
-
-			// 親トランスフォーム設定
-			CTransform& transform = m_sprite.GetTransform();
-			transform.SetParent(&GetTransform());
+		if(!m_sprite.Create(1, 1)) {
+			return false;
 		}
+		
+
+		// 親トランスフォーム設定
+		CTransform& transform = m_sprite.GetTransform();
+		transform.SetParent(&GetTransform());
 
 		// ステート
-		{
-			m_stateMachine.SetState(State::DEFAULT, &CGameActorPlayerTest::_state_default);
-		}
+		m_stateMachine.SetState(State::DEFAULT, &CGameActorPlayerTest::_state_default);
 
 		return true;
 	}

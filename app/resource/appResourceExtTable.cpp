@@ -23,14 +23,14 @@ namespace app
 	//! 各リソースの拡張子テーブル
 	_RESEXT_TABLE(Texture) = {".bmp"};	//!< テクスチャ
 	_RESEXT_TABLE(Shader) = {".hlsl"};	//!< シェーダー
-	_RESEXT_TABLE(Material) = {".mat"};	//!< マテリアル
+	_RESEXT_TABLE(MaterialData) = {".mat"};	//!< マテリアルデータ
 
 	//! リソース読み込み設定テーブル宣言
 	#define _LOAD_SETTING_TABLE() \
 		static const LoadSetting s_loadSettings[] = { \
 			_LOAD_SETTING(Texture), \
 			_LOAD_SETTING(Shader), \
-			_LOAD_SETTING(Material), \
+			_LOAD_SETTING(MaterialData), \
 		};
 
 }	// namespace app

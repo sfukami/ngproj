@@ -22,26 +22,16 @@ namespace app
 	bool CGameActorEnemyTest::Create()
 	{
 		// スプライト生成
-		{
-			ng::CResourceHandle<CMaterial> handle;
-			if(!CResourceModule::LoadResource("../resource/material/test.mat", eResourceMemoryType::FIXED, handle)) {
-				return false;
-			}
-
-			// スプライト生成
-			if(!m_sprite.Create(1, 1, &*handle.GetResource())) {
-				return false;
-			}
-
-			// 親トランスフォーム設定
-			CTransform& transform = m_sprite.GetTransform();
-			transform.SetParent(&GetTransform());
+		if(!m_sprite.Create(1, 1)) {
+			return false;
 		}
+
+		// 親トランスフォーム設定
+		CTransform& transform = m_sprite.GetTransform();
+		transform.SetParent(&GetTransform());
 
 		// ステート
-		{
-			m_stateMachine.SetState(State::DEFAULT, &CGameActorEnemyTest::_state_default);
-		}
+		m_stateMachine.SetState(State::DEFAULT, &CGameActorEnemyTest::_state_default);
 
 		return true;
 	}

@@ -15,6 +15,7 @@
 
 namespace app
 {
+	class CMaterialData;
 	struct RenderParam;
 }
 
@@ -33,13 +34,13 @@ namespace app
 		* @brief					生成
 		* @param width				幅
 		* @param height				高さ
-		* @param pMaterial			コピー元のマテリアル
+		* @param pMaterialData		マテリアルデータ。nullptr の場合は、デフォルトのマテリアルデータを使用する
 		* @return					成否
 		*/
 		bool Create(
 			unsigned int width
 			, unsigned int height
-			, const CMaterial* pMaterial
+			, const CMaterialData* pMaterialData = nullptr
 			);
 
 		/*!

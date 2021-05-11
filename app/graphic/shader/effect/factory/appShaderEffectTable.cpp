@@ -20,9 +20,12 @@ namespace app
 
 namespace app
 {
+	//! シェーダーエフェクトテーブル
+	#define _SHADER_EFFECT_TABLE	(s_shaderEffectTable)
+
 	//! シェーダーエフェクトテーブル宣言
-	#define _SHADER_EFFECT_TABLE() \
-		static const ShaderEffectInfo s_shaderEffectTable[] = { \
+	#define _DECLARE_SHADER_EFFECT_TABLE() \
+		static const ShaderEffectInfo _SHADER_EFFECT_TABLE[] = { \
 			_SHADER_EFFECT_INFO("sprite", CShaderEffectSprite), \
 		};
 

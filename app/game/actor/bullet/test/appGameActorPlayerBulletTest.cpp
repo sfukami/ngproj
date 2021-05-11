@@ -21,31 +21,21 @@ namespace app
 	bool CGameActorPlayerBulletTest::Create()
 	{
 		// スプライト生成
-		{
-			ng::CResourceHandle<CMaterial> handle;
-			if(!CResourceModule::LoadResource("../resource/material/test.mat", eResourceMemoryType::FIXED, handle)) {
-				return false;
-			}
-
-			// スプライト生成
-			if(!m_sprite.Create(1, 1, &*handle.GetResource())) {
-				return false;
-			}
-
-			// 親トランスフォーム設定
-			CTransform& transform = m_sprite.GetTransform();
-			transform.SetParent(&GetTransform());
-
-			// スケーリング
-			ng::Vector3 scale = transform.GetScale();
-			scale.x = scale.y = 0.5f;
-			transform.SetScale(scale);
+		if(!m_sprite.Create(1, 1)) {
+			return false;
 		}
+
+		// 親トランスフォーム設定
+		CTransform& transform = m_sprite.GetTransform();
+		transform.SetParent(&GetTransform());
+
+		// スケーリング
+		ng::Vector3 scale = transform.GetScale();
+		scale.x = scale.y = 0.5f;
+		transform.SetScale(scale);
 
 		// ステート
-		{
-			m_stateMachine.SetState(State::DEFAULT, &CGameActorPlayerBulletTest::_state_default);
-		}
+		m_stateMachine.SetState(State::DEFAULT, &CGameActorPlayerBulletTest::_state_default);
 
 		return true;
 	}

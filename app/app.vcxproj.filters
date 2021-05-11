@@ -274,9 +274,6 @@
     <ClCompile Include="graphic\state\appPipelineStateManager.cpp">
       <Filter>ソース ファイル\graphic\state</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\material\appMaterialLibrary.cpp">
-      <Filter>ソース ファイル\graphic\material</Filter>
-    </ClCompile>
     <ClCompile Include="resource\appResourceExtTable.cpp">
       <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
@@ -321,6 +318,12 @@
     </ClCompile>
     <ClCompile Include="scene\test\appSceneInputTest.cpp">
       <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\material\appMaterialData.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\material\appMaterialDataPreset.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -519,9 +522,6 @@
     <ClInclude Include="graphic\state\appPipelineStateManager.h">
       <Filter>ソース ファイル\graphic\state</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\material\appMaterialLibrary.h">
-      <Filter>ソース ファイル\graphic\material</Filter>
-    </ClInclude>
     <ClInclude Include="graphic\shader\effect\appShaderEffectSprite.h">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
     </ClInclude>
@@ -560,6 +560,12 @@
     </ClInclude>
     <ClInclude Include="scene\test\appSceneInputTest.h">
       <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\material\appMaterialData.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\material\appMaterialDataPreset.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

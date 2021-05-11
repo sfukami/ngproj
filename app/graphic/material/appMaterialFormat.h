@@ -13,11 +13,11 @@
 namespace app
 {
 	/*!
-	* @brief					テクスチャデータ
+	* @brief					テクスチャフォーマット
 	*/
-	struct TextureData
+	struct TextureFormat
 	{
-		TextureData();
+		TextureFormat();
 		void SetFilePath(const char* _filePath);
 
 		char filePath[256];	//!< ファイルパス
@@ -25,11 +25,11 @@ namespace app
 	};
 
 	/*!
-	* @brief					シェーダーデータ
+	* @brief					シェーダーフォーマット
 	*/
-	struct ShaderData
+	struct ShaderFormat
 	{
-		ShaderData();
+		ShaderFormat();
 		void SetFilePath(const char* _filePath);
 		void SetEntryPoint(const char* _entryPoint);
 		void SetTarget(const char* _target);
@@ -41,11 +41,11 @@ namespace app
 	};
 
 	/*!
-	* @brief					マテリアルデータ
+	* @brief					マテリアルフォーマット
 	*/
-	struct MaterialData
+	struct MaterialFormat
 	{
-		MaterialData();
+		MaterialFormat();
 		void SetMaterialName(const char* _name);
 		void SetRootSignatureName(const char* _name);
 		void SetPipelineStateName(const char* _name);
@@ -53,18 +53,18 @@ namespace app
 
 		char name[32];		//!< マテリアル名
 
-		// テクスチャデータ
-		TextureData diffuseMap;	//!< ディフューズマップ
-
-		// シェーダーデータ
-		ShaderData vertexShader;	//!< 頂点シェーダー
-		ShaderData pixelShader;		//!< ピクセルシェーダー
-
 		char rootSignatureName[32];	//!< ルートシグネチャ名
 		char pipelineStateName[32];	//!< パイプラインステート名
 		char shaderEffectName[32];	//!< シェーダーエフェクト名
 		
 		ng::eVertexLayout vertexLayout;	//!< 頂点レイアウト
+		
+		// テクスチャデータ
+		TextureFormat diffuseMap;	//!< ディフューズマップ
+
+		// シェーダーデータ
+		ShaderFormat vertexShader;	//!< 頂点シェーダー
+		ShaderFormat pixelShader;	//!< ピクセルシェーダー
 	};
 
 }	// namespace app

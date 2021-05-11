@@ -10,7 +10,7 @@
 #include "ngLibGraphic/graphic/dx12/pipeline/ngDX12PipelineStateDesc.h"
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
 #include "appMaterial.h"
-#include "appMaterialFormat.h"
+#include "appMaterialData.h"
 #include "../shader/effect/appShaderEffect.h"
 #include "app/resource/appResourceModule.h"
 #include "../appGraphicModule.h"
@@ -25,45 +25,30 @@ namespace app
 		Destroy();
 	}
 	
-	bool CMaterial::Build(const void* pBinary, ng::size_type size, const void* pBuildParam)
+	bool CMaterial::Create(const CMaterialData& data)
 	{
-	#if 1
-		//test
-		// マテリアル構築
-		{
-			MaterialData matData;
+		bool result = true;
 
-			matData.SetMaterialName("test");
+		const MaterialFormat& matFormat = data.GetFormat();
 
-			matData.diffuseMap.SetFilePath("../resource/texture/test.bmp");
-			{
-				ShaderData& vs = matData.vertexShader;
-				//vs.SetFilePath("../resource/shader/texture_vs.hlsl");
-				vs.SetFilePath("../resource/shader/sprite_vs.hlsl");
-				vs.SetEntryPoint("VSMain");
-				vs.SetTarget("vs_5_0");
-			}
-			{
-				ShaderData& ps = matData.pixelShader;
-				//ps.SetFilePath("../resource/shader/texture_ps.hlsl");
-				ps.SetFilePath("../resource/shader/sprite_ps.hlsl");
-				ps.SetEntryPoint("PSMain");
-				ps.SetTarget("ps_5_0");
-			}
+		// ディフューズマップ読み込み
+		result &= _loadResource(matFormat.diffuseMap.filePath, nullptr, m_diffuseMap);
 
-			matData.SetRootSignatureName("sprite");
-			matData.SetPipelineStateName("sprite");
-			matData.SetShaderEffectName("sprite");
+		// 頂点シェーダー読み込み
+		result &= _loadShaderResource(matFormat.vertexShader, m_vertexShader);
+		// ピクセルシェーダー読み込み
+		result &= _loadShaderResource(matFormat.pixelShader, m_pixelShader);
 
-			matData.vertexLayout = ng::eVertexLayout::SPRITE;
+		// DX12ルートシグネチャ取得
+		result &= _findRootSignature(matFormat.rootSignatureName);
+		// DX12パイプラインステート生成
+		result &= _createPipelineState(matFormat.pipelineStateName, matFormat.vertexLayout);
 
-			return _build(matData);
-		}
-	#else
-		const MaterialData* pMatData = ng::PointerCast<const MaterialData*>(pBinary);
+		// シェーダーエフェクト生成
+		NG_STRCPY(m_shaderEffectName, matFormat.shaderEffectName);
+		result &= _createShaderEffect(m_shaderEffectName);
 
-		return _build(*pMatData);
-	#endif
+		return result;
 	}
 
 	void CMaterial::Destroy()
@@ -125,29 +110,6 @@ namespace app
 		return m_pipelineState;
 	}
 
-	bool CMaterial::_build(const MaterialData& data)
-	{
-		bool result = true;
-
-		// ディフューズマップ読み込み
-		result &= _loadResource(data.diffuseMap.filePath, nullptr, m_diffuseMap);
-
-		// 頂点シェーダー読み込み
-		result &= _loadShaderResource(data.vertexShader, m_vertexShader);
-		// ピクセルシェーダー読み込み
-		result &= _loadShaderResource(data.pixelShader, m_pixelShader);
-
-		// DX12ルートシグネチャ取得
-		result &= _findRootSignature(data.rootSignatureName);
-		// DX12パイプラインステート生成
-		result &= _createPipelineState(data.pipelineStateName, data.vertexLayout);
-
-		// シェーダーエフェクト名をコピー
-		NG_STRCPY(m_shaderEffectName, data.shaderEffectName);
-
-		return result;
-	}
-
 	bool CMaterial::_loadResource(const char* filePath, const void* pBuildParam, ng::IResourceHandle& handle)
 	{
 		if(!CResourceModule::LoadResource(
@@ -163,10 +125,10 @@ namespace app
 		return true;
 	}
 
-	bool CMaterial::_loadShaderResource(const ShaderData& shaderData, ng::IResourceHandle& handle)
+	bool CMaterial::_loadShaderResource(const ShaderFormat& shaderFormat, ng::IResourceHandle& handle)
 	{
-		CShader::BuildParam buildParam(shaderData.entryPoint, shaderData.target);
-		return _loadResource(shaderData.filePath, &buildParam, handle);
+		CShader::BuildParam buildParam(shaderFormat.entryPoint, shaderFormat.target);
+		return _loadResource(shaderFormat.filePath, &buildParam, handle);
 	}
 
 	bool CMaterial::_findRootSignature(const char* name)

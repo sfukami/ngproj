@@ -25,11 +25,11 @@ namespace app
 		bool result = true;
 
 		// シェーダーエフェクトテーブル宣言
-		_SHADER_EFFECT_TABLE();
+		_DECLARE_SHADER_EFFECT_TABLE();
 
-		for(int i = 0; i < NG_ARRAY_SIZE(s_shaderEffectTable); i++)
+		for(int i = 0; i < NG_ARRAY_SIZE(_SHADER_EFFECT_TABLE); i++)
 		{
-			const ShaderEffectInfo& info = s_shaderEffectTable[i];
+			const ShaderEffectInfo& info = _SHADER_EFFECT_TABLE[i];
 
 			if(!m_funcMap.Add(info.name, info.func)) {
 				NG_ERRLOG("ShaderEffectFactory", "シェーダーエフェクト生成関数の追加に失敗しました. name:%s", info.name);

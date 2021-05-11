@@ -11,7 +11,7 @@
 #include "app/memory/appMemoryUtil.h"
 #include "../graphic/texture/appTexture.h"
 #include "../graphic/shader/appShader.h"
-#include "../graphic/material/appMaterial.h"
+#include "../graphic/material/appMaterialData.h"
 
 #pragma comment(lib, "shlwapi.lib")
 
