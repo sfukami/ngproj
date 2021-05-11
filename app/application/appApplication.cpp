@@ -106,7 +106,7 @@ namespace app
 		CGraphicModule::SetGraphic(&m_graphic);
 
 		// シーン管理初期化
-		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM), APP_MEMALLOC_APPLICATION)) {
+		if(!m_sceneMngr.Initialize(static_cast<unsigned int>(eSceneId::NUM), APP_GET_MEMALLOC(APPLICATION))) {
 			NG_ERRLOG("Application", "シーン管理の初期化に失敗しました.");
 			return false;
 		}
@@ -124,7 +124,7 @@ namespace app
 
 		// ルートシーン登録
 		{
-			auto scenePtr = NG_MAKE_SHARED_PTR_CTOR(IScene, APP_MEMALLOC_APPLICATION, CSceneRoot());
+			auto scenePtr = NG_MAKE_SHARED_PTR_CTOR(IScene, APP_GET_MEMALLOC(APPLICATION), CSceneRoot());
 			m_sceneMngr.RegisterScene(static_cast<unsigned int>(eSceneId::GAME), scenePtr);
 		}
 

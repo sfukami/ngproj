@@ -20,6 +20,11 @@ namespace app
 namespace GraphicUtil
 {
 	/*!
+	* @brief					グラフィック用のメモリアロケータ取得
+	*/
+	ng::IMemoryAllocator& GetGraphicMemAlloc();
+
+	/*!
 	* @brief					DX12コマンドリスト取得
 	* @param id					グラフィックコマンドリストID
 	*/

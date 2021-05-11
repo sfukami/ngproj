@@ -184,9 +184,6 @@
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineTexture.cpp">
       <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClCompile>
-    <ClCompile Include="scene\test\appSceneTestImGui.cpp">
-      <Filter>ソース ファイル\scene\test</Filter>
-    </ClCompile>
     <ClCompile Include="graphic\pipeline\appGraphicPipelineDefault.cpp">
       <Filter>ソース ファイル\graphic\pipeline</Filter>
     </ClCompile>
@@ -204,9 +201,6 @@
     </ClCompile>
     <ClCompile Include="game\appGame.cpp">
       <Filter>ソース ファイル\game</Filter>
-    </ClCompile>
-    <ClCompile Include="scene\test\appSceneTestGame.cpp">
-      <Filter>ソース ファイル\scene\test</Filter>
     </ClCompile>
     <ClCompile Include="game\job\appGameJobManager.cpp">
       <Filter>ソース ファイル\game\job</Filter>
@@ -316,6 +310,18 @@
     <ClCompile Include="transform\appTransformObject.cpp">
       <Filter>ソース ファイル\transform</Filter>
     </ClCompile>
+    <ClCompile Include="scene\test\appSceneGameTest.cpp">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneGraphicPipelineTest.cpp">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneImGuiTest.cpp">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClCompile>
+    <ClCompile Include="scene\test\appSceneInputTest.cpp">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h">
@@ -396,9 +402,6 @@
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineTexture.h">
       <Filter>ソース ファイル\graphic\pipeline\test</Filter>
     </ClInclude>
-    <ClInclude Include="scene\test\appSceneTestImGui.h">
-      <Filter>ソース ファイル\scene\test</Filter>
-    </ClInclude>
     <ClInclude Include="graphic\pipeline\appGraphicPipelineDefault.h">
       <Filter>ソース ファイル\graphic\pipeline</Filter>
     </ClInclude>
@@ -419,9 +422,6 @@
     </ClInclude>
     <ClInclude Include="game\appGame.h">
       <Filter>ソース ファイル\game</Filter>
-    </ClInclude>
-    <ClInclude Include="scene\test\appSceneTestGame.h">
-      <Filter>ソース ファイル\scene\test</Filter>
     </ClInclude>
     <ClInclude Include="game\job\appGameJobManager.h">
       <Filter>ソース ファイル\game\job</Filter>
@@ -548,6 +548,18 @@
     </ClInclude>
     <ClInclude Include="transform\appTransformObject.h">
       <Filter>ソース ファイル\transform</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneGameTest.h">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneGraphicPipelineTest.h">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneImGuiTest.h">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
+    </ClInclude>
+    <ClInclude Include="scene\test\appSceneInputTest.h">
+      <Filter>ソース ファイル\game\actor\enemy\test</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

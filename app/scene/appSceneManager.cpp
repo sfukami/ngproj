@@ -125,7 +125,7 @@ namespace app
 
 		// シーン切り替えジョブ追加
 		m_jobMngr.EnqueueJob(eJobSlot::CHANGE_SCENE, 
-			NG_NEW(APP_MEMALLOC_WORK) CJobChangeScene(this, index, scenePtr)
+			NG_NEW(APP_GET_MEMALLOC(WORK)) CJobChangeScene(this, index, scenePtr)
 			);
 	}
 

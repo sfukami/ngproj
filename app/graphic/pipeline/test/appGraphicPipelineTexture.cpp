@@ -358,7 +358,7 @@ namespace app
 	{
 		static float yaw=0, pitch=0, roll=0;
 
-		ng::Point move = CInputModule::GetMoveDelta();
+		ng::Point move = CInputModule::GetMouseMoveDelta();
 		yaw -= (float)move.x * 0.01f;
 		pitch += (float)move.y * 0.01f;
 

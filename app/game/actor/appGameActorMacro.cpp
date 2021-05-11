@@ -15,7 +15,7 @@ namespace GameActorMacro
 {
 	ng::IMemoryAllocator& _GetGameActorMemAlloc()
 	{
-		return APP_MEMALLOC_GAME_ACTOR;
+		return APP_GET_MEMALLOC(APPLICATION);
 	}
 
 	CGameActor* _AddGameActor(CGameActor* pActor)

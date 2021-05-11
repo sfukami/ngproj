@@ -36,31 +36,49 @@ namespace app
 		return false;
 	}
 
-	ng::Point CInputModule::GetCursorClientPos()
+	ng::Point CInputModule::GetMouseCursorClientPos()
 	{
 		if(_isValid()) {
-			return s_pInput->GetCursorClientPos();
+			return s_pInput->GetMouseCursorClientPos();
 		}
 
 		return ng::Point::ZERO;
 	}
 
-	ng::Point CInputModule::GetMoveDelta()
+	ng::Point CInputModule::GetMouseMoveDelta()
 	{
 		if(_isValid()) {
-			return s_pInput->GetMoveDelta();
+			return s_pInput->GetMouseMoveDelta();
 		}
 
 		return ng::Point::ZERO;
 	}
 
-	ng::s32 CInputModule::GetWheelDelta()
+	ng::s32 CInputModule::GetMouseWheelDelta()
 	{
 		if(_isValid()) {
-			return s_pInput->GetWheelDelta();
+			return s_pInput->GetMouseWheelDelta();
 		}
 
 		return 0;
+	}
+
+	bool CInputModule::IsValidKeyboard()
+	{
+		if(_isValid()) {
+			return s_pInput->IsValidKeyboard();
+		}
+
+		return false;
+	}
+
+	bool CInputModule::IsValidMouse()
+	{
+		if(_isValid()) {
+			return s_pInput->IsValidMouse();
+		}
+
+		return false;
 	}
 
 	void CInputModule::SetInput(CInput* pInput)

@@ -9,8 +9,10 @@
 #include "appSceneRoot.h"
 #include "../appSceneModule.h"
 #include "../test/appSceneTest.h"
-#include "../test/appSceneTestImGui.h"
-#include "../test/appSceneTestGame.h"
+#include "../test/appSceneInputTest.h"
+#include "../test/appSceneGraphicPipelineTest.h"
+#include "../test/appSceneImGuiTest.h"
+#include "../test/appSceneGameTest.h"
 #include "../../memory/appMemoryModule.h"
 
 namespace app
@@ -29,10 +31,12 @@ namespace app
 
 	void CSceneRoot::Update(float deltaTime)
 	{
-		auto scenePtr = NG_MAKE_SHARED_PTR_CTOR(IScene, APP_MEMALLOC_APPLICATION,
+		auto scenePtr = NG_MAKE_SHARED_PTR_CTOR(IScene, APP_GET_MEMALLOC(APPLICATION),
 			//CSceneTest()
-			//CSceneTestImGui()
-			CSceneTestGame()
+			//CSceneInputTest()
+			CSceneGraphicPipelineTest()
+			//CSceneImGuiTest()
+			//CSceneGameTest()
 			);
 		//CSceneModule::ChangeScene(eSceneId::GAME, scenePtr);
 		CSceneModule::RequestChangeScene(eSceneId::GAME, scenePtr);

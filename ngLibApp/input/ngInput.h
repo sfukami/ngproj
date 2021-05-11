@@ -54,19 +54,29 @@ namespace ng
 		* @brief					クライアント座標におけるマウスカーソルの座標を取得
 		* @return					マウスカーソルの座標
 		*/
-		virtual Point GetCursorClientPos() const = 0;
+		virtual Point GetMouseCursorClientPos() const = 0;
 
 		/*!
 		* @brief					マウスカーソルの相対的な移動量を取得
 		* @return					マウスカーソルの移動量（ピクセル）
 		*/
-		virtual Point GetMoveDelta() const = 0;
+		virtual Point GetMouseMoveDelta() const = 0;
 
 		/*!
 		* @brief					マウスホイールの相対的な変化量を取得
 		* @return					マウスホイールの変化量
 		*/
-		virtual s32 GetWheelDelta() const = 0;
+		virtual s32 GetMouseWheelDelta() const = 0;
+
+		/*!
+		* @brief					キーボードが有効か
+		*/
+		virtual bool IsValidKeyboard() const = 0;
+
+		/*!
+		* @brief					マウスが有効か
+		*/
+		virtual bool IsValidMouse() const = 0;
 	};
 
 }	// namespace ng

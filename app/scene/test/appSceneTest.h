@@ -12,11 +12,6 @@
 
 namespace app
 {
-	class CGraphicPipeline;
-}
-
-namespace app
-{
 	/*!
 	* @brief					シーン テスト
 	*/
@@ -49,7 +44,6 @@ namespace app
 		void Finalize();
 
 	private:
-		CGraphicPipeline* m_pPipeline;	//!< グラフィックパイプライン
 	};
 
 }	// namespace app

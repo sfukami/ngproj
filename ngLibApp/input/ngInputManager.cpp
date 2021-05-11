@@ -59,25 +59,39 @@ namespace ng
 		return m_pInput->CheckMouseInput(code, state);
 	}
 
-	Point CInputManager::GetCursorClientPos() const
+	Point CInputManager::GetMouseCursorClientPos() const
 	{
 		if(!IsAssigned()) return Point::ZERO;
 
-		return m_pInput->GetCursorClientPos();
+		return m_pInput->GetMouseCursorClientPos();
 	}
 
-	Point CInputManager::GetMoveDelta() const
+	Point CInputManager::GetMouseMoveDelta() const
 	{
 		if(!IsAssigned()) return Point::ZERO;
 
-		return m_pInput->GetMoveDelta();
+		return m_pInput->GetMouseMoveDelta();
 	}
 
-	s32 CInputManager::GetWheelDelta() const
+	s32 CInputManager::GetMouseWheelDelta() const
 	{
 		if(!IsAssigned()) return 0;
 
-		return m_pInput->GetWheelDelta();
+		return m_pInput->GetMouseWheelDelta();
+	}
+
+	bool CInputManager::IsValidKeyboard() const
+	{
+		if(!IsAssigned()) return false;
+
+		return m_pInput->IsValidKeyboard();
+	}
+
+	bool CInputManager::IsValidMouse() const
+	{
+		if(!IsAssigned()) return false;
+
+		return m_pInput->IsValidMouse();
 	}
 
 	bool CInputManager::IsAssigned() const

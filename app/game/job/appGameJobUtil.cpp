@@ -15,7 +15,7 @@ namespace GameJobUtil
 {
 	ng::IMemoryAllocator& _GetGameJobMemAlloc()
 	{
-		return APP_MEMALLOC_GAME_JOB;
+		return APP_GET_MEMALLOC(WORK);
 	}
 
 	bool _AddGameJob(eGameJobType jobType, CGameJob* pJob)
