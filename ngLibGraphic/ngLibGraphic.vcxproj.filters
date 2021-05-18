@@ -283,6 +283,9 @@
     <ClInclude Include="graphic\dx12\shader\ngDX12ShaderLoader.h">
       <Filter>ソース ファイル\graphic\dx12\shader</Filter>
     </ClInclude>
+    <ClInclude Include="render\ngRenderCommandBuffer.h">
+      <Filter>ソース ファイル\render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -413,6 +416,9 @@
     </ClCompile>
     <ClCompile Include="graphic\dx12\shader\ngDX12ShaderLoader.cpp">
       <Filter>ソース ファイル\graphic\dx12\shader</Filter>
+    </ClCompile>
+    <ClCompile Include="render\ngRenderCommandBuffer.cpp">
+      <Filter>ソース ファイル\render</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

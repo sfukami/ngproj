@@ -8,13 +8,12 @@
 #ifndef __NG_GRAPHIC_RENDER_SYSTEM_H__
 #define __NG_GRAPHIC_RENDER_SYSTEM_H__
 
-#include "ngLibCore/allocator/ngStackAllocator.h"
-#include "ngLibCore/container/list/ngIntrusiveList.h"
-#include "ngRenderCommand.h"
+#include "ngRenderCommandBuffer.h"
 
 namespace ng
 {
 	class IRenderable;
+	struct RenderCommand;
 	struct RenderParam;
 }
 
@@ -43,9 +42,9 @@ namespace ng
 		
 		/*!
 		* @brief					描画コマンド追加
-		* @param renderable			描画可能オブジェクト
+		* @param command			追加する描画コマンド
 		*/
-		void AddCommand(IRenderable& renderable);
+		void AddCommand(const RenderCommand& command);
 
 		/*!
 		* @brief					描画コマンド実行
@@ -59,17 +58,40 @@ namespace ng
 		void ClearCommand();
 
 	private:
-		/*! 描画コマンドを追加 */
-		void _addRenderCommand(CRenderCommand& command);
+		//! バッファインデックス
+		enum class BufferIndex : u32
+		{
+			PRIMARY,	//!< 第1バッファ
+			SECONDARY,	//!< 第2バッファ
+			NUM
+		};
 
-		/*! 描画コマンドリストをソート */
-		void _sortCommandList();
+		//! コマンドバッファ
+		class CCommandBuffer
+		{
+		public:
+			CCommandBuffer();
+			~CCommandBuffer();
+
+			/*! 現在の描画コマンドバッファを指定 */
+			void SetCurrBuffer(BufferIndex index);
+			/*! 描画コマンドバッファを入れ替え */
+			void SwapBuffer();
+
+			/*! 描画コマンドバッファ取得 */
+			CRenderCommandBuffer& GetCurrBuffer();
+			const CRenderCommandBuffer& GetCurrBuffer() const;
+			CRenderCommandBuffer& GetBuffer(BufferIndex index);
+			const CRenderCommandBuffer& GetBuffer(BufferIndex index) const;
+
+		private:
+			CRenderCommandBuffer m_cmdBufs[ static_cast<int>(BufferIndex::NUM) ];	//!< 描画コマンドバッファ
+			BufferIndex m_currIndex;	//!< 現在のバッファインデックス
+		};
 
 	private:
-		CStackAllocator m_cmdAlloc;	//!< 描画コマンドのアロケータ
-		CIntrusiveList<CRenderCommand> m_cmdList;	//!< 描画コマンドリスト
-
-		bool m_isSorted;	//!< ソート済みか
+		CCommandBuffer m_cmdBuf;	//!< コマンドバッファ
+		bool m_isSorted;	//!< 描画コマンドがソート済みか
 	};
 
 }	// namespace ng

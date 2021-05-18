@@ -177,6 +177,7 @@
   <ItemGroup>
     <ClCompile Include="setup\testSetup.cpp" />
     <ClCompile Include="testcode\action\testAction.cpp" />
+    <ClCompile Include="testcode\algorithm\testSort.cpp" />
     <ClCompile Include="testcode\container\array\testFixedArray.cpp" />
     <ClCompile Include="testcode\container\list\testFixedList.cpp" />
     <ClCompile Include="testcode\container\list\testIntrusiveList.cpp" />

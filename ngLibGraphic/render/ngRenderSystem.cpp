@@ -25,11 +25,14 @@ namespace ng
 	{
 		NG_ERRCODE ret = NG_ERRCODE_DEFAULT;
 
-		// 描画コマンド用のメモリアロケータを初期化
-		size_type allocSize = sizeof(CRenderCommand) * commandMax;
-		if(NG_FAILED(ret = m_cmdAlloc.Initialize("render_command", NG_SYSALLOC_GRAPHIC, allocSize))) {
-			NG_ERRLOG_C("RenderSystem", ret, "描画コマンド用のメモリアロケータの初期化に失敗しました.");
-			return ret;
+		// 描画コマンドバッファ初期化
+		for(int i = 0; i < static_cast<int>(BufferIndex::NUM); i++)
+		{
+			CRenderCommandBuffer& cmdBuf = m_cmdBuf.GetBuffer(static_cast<BufferIndex>(i));
+			if(NG_FAILED(ret = cmdBuf.Initialize(NG_SYSALLOC_GRAPHIC, commandMax))) {
+				NG_ERRLOG_C("RenderSystem", ret, "描画コマンドバッファの初期化に失敗しました. index:%d", i);
+				return ret;
+			}
 		}
 
 		return ret;
@@ -37,49 +40,74 @@ namespace ng
 
 	void CRenderSystem::Finalize()
 	{
-		m_cmdList.Clear();
-		m_cmdAlloc.Finalize();
+		for(int i = 0; i < static_cast<int>(BufferIndex::NUM); i++)
+		{
+			m_cmdBuf.GetBuffer(static_cast<BufferIndex>(i)).Finalize();
+		}
 	}
 
-	void CRenderSystem::AddCommand(IRenderable& renderable)
+	void CRenderSystem::AddCommand(const RenderCommand& command)
 	{
-		CRenderCommand* pCommand = NG_NEW(m_cmdAlloc) CRenderCommand(&renderable);
-
-		_addRenderCommand(*pCommand);
+		m_isSorted = false;
+		m_cmdBuf.GetCurrBuffer().AddCommand(command);
 	}
 
 	void CRenderSystem::ExecuteCommand(const RenderParam* pParam)
 	{
-		// ソート済みでない場合はソート
+		CRenderCommandBuffer& cmdBuf = m_cmdBuf.GetCurrBuffer();
 		if(!m_isSorted) {
-			_sortCommandList();
+			cmdBuf.SortCommand();
+			m_isSorted = true;
 		}
 
-		// 全描画コマンド実行
-		for(auto pNode = m_cmdList.Begin(); pNode != m_cmdList.End(); pNode = pNode->GetNext())
-		{
-			pNode->GetElem().Execute(pParam);
-		}
+		cmdBuf.ExecuteCommand(pParam);
 	}
 
 	void CRenderSystem::ClearCommand()
 	{
-		m_cmdList.Clear();
-		m_cmdAlloc.Clear();
+		m_cmdBuf.GetCurrBuffer().ClearCommand();
 	}
 
-	void CRenderSystem::_addRenderCommand(CRenderCommand& command)
+	CRenderSystem::CCommandBuffer::CCommandBuffer()
+		: m_currIndex(BufferIndex::PRIMARY)
 	{
-		m_cmdList.PushBack(command);
-
-		m_isSorted = false;
 	}
 
-	void CRenderSystem::_sortCommandList()
+	CRenderSystem::CCommandBuffer::~CCommandBuffer()
 	{
-		m_isSorted = true;
+	}
 
-		// TODO: 
+	void CRenderSystem::CCommandBuffer::SetCurrBuffer(BufferIndex index)
+	{
+		m_currIndex = index;
+	}
+
+	void CRenderSystem::CCommandBuffer::SwapBuffer()
+	{
+		if(m_currIndex == BufferIndex::PRIMARY)
+			m_currIndex = BufferIndex::SECONDARY;
+		else
+			m_currIndex = BufferIndex::PRIMARY;
+	}
+
+	CRenderCommandBuffer& CRenderSystem::CCommandBuffer::GetCurrBuffer()
+	{
+		return GetBuffer(m_currIndex);
+	}
+
+	const CRenderCommandBuffer& CRenderSystem::CCommandBuffer::GetCurrBuffer() const
+	{
+		return GetBuffer(m_currIndex);
+	}
+
+	CRenderCommandBuffer& CRenderSystem::CCommandBuffer::GetBuffer(BufferIndex index)
+	{
+		return m_cmdBufs[static_cast<int>(index)];
+	}
+
+	const CRenderCommandBuffer& CRenderSystem::CCommandBuffer::GetBuffer(BufferIndex index) const
+	{
+		return m_cmdBufs[static_cast<int>(index)];
 	}
 
 }	// namespace ng

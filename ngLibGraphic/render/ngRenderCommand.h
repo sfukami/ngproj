@@ -8,8 +8,6 @@
 #ifndef __NG_GRAPHIC_RENDER_COMMAND_H__
 #define __NG_GRAPHIC_RENDER_COMMAND_H__
 
-#include "ngLibCore/container/list/intrusive/ngIntrusiveListNode.h"
-
 namespace ng
 {
 	class IRenderable;
@@ -21,26 +19,25 @@ namespace ng
 	/*!
 	* @brief					描画コマンド
 	*/
-	class NG_DECL CRenderCommand : public CIntrusiveListNode<CRenderCommand>
+	struct NG_DECL RenderCommand
 	{
-	public:
+		RenderCommand();
+
 		/*!
 		* @brief					コンストラクタ
-		* @param pRenderable		描画可能オブジェクト
+		* @param _order				描画順
+		* @param _pRenderable		描画可能オブジェクト
 		*/
-		CRenderCommand(IRenderable* pRenderable);
-
-		/*! デストラクタ */
-		~CRenderCommand();
+		RenderCommand(u32 _order, IRenderable* _pRenderable);
 
 		/*!
-		* @brief					実行
+		* @brief					描画コマンド実行
 		* @param pParam				描画パラメータ
 		*/
 		void Execute(const RenderParam* pParam);
 
-	private:
-		IRenderable* m_pRenderable;	//!< 描画可能オブジェクト
+		u32 order;	//!< 描画順
+		IRenderable* pRenderable;	//!< 描画可能オブジェクト
 	};
 
 }	// namespace ng

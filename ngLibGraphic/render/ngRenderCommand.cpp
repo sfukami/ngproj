@@ -10,20 +10,19 @@
 
 namespace ng
 {
-	CRenderCommand::CRenderCommand(IRenderable* pRenderable)
-		: m_pRenderable(pRenderable)
+	RenderCommand::RenderCommand()
+		: order(0), pRenderable(nullptr)
 	{
 	}
 
-	CRenderCommand::~CRenderCommand()
+	RenderCommand::RenderCommand(u32 _order, IRenderable* _pRenderable)
+		: order(_order), pRenderable(_pRenderable)
 	{
 	}
 
-	void CRenderCommand::Execute(const RenderParam* pParam)
+	void RenderCommand::Execute(const RenderParam* pParam)
 	{
-		if(m_pRenderable != nullptr) {
-			m_pRenderable->Render(pParam);
-		}
+		pRenderable->Render(pParam);
 	}
 
 }	// namespace ng

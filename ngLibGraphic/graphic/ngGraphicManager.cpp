@@ -60,7 +60,8 @@ namespace ng
 		NG_ASSERT(_isInit());
 		if(!IsAssigned()) return;
 
-		m_renderSys.AddCommand(renderable);
+		// TODO: 仮
+		m_renderSys.AddCommand(RenderCommand(0, &renderable));
 	}
 
 	void CGraphicManager::Render(const RenderParam* pParam)

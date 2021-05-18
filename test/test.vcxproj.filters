@@ -68,6 +68,9 @@
     <Filter Include="ソース ファイル\testcode\container\map">
       <UniqueIdentifier>{4f161176-e444-4de8-95b7-4589a9b35fc2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\algorithm">
+      <UniqueIdentifier>{e40bd67f-e51f-46f8-b5a2-437a1471e1f6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -143,6 +146,9 @@
     </ClCompile>
     <ClCompile Include="testcode\memory\pointer\testWeakPtr.cpp">
       <Filter>ソース ファイル\testcode\memory\pointer</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\algorithm\testSort.cpp">
+      <Filter>ソース ファイル\testcode\algorithm</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
