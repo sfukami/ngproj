@@ -6,8 +6,10 @@
 */
 
 #include "ngLibCore/common/ngCommon.h"
-#include "ngLibGraphic/graphic/dx12/common/ngDX12Common.h"
+#include "common/ngDX12Common.h"
+#include "ngDX12Util.h"
 #include "ngDX12Graphic.h"
+#include "command/queue/ngDX12CommandQueue.h"
 
 namespace ng
 {
@@ -142,6 +144,29 @@ namespace ng
 		m_rtMngr.Finalize();
 		m_swapChain.Destroy();
 		m_device.Destroy();
+	}
+
+	void CDX12Graphic::BeginRender()
+	{
+		// 全コマンドアロケータリセット
+		ng::DX12Util::ResetAllCommandAllocator();
+	}
+
+	void CDX12Graphic::ExecuteRender()
+	{
+		// 全コマンドリスト実行
+		ng::DX12Util::ExecuteAllCommandList(ng::eDX12CommandQueueType::GRAPHIC);
+	}
+
+	void CDX12Graphic::EndRender()
+	{
+		// バックバッファを表示
+		m_swapChain.Present(1);
+		
+		// 描画完了待ち
+		CDX12CommandQueue* pCmdQueue = m_cmdQueueMngr.GetCommandQueue(ng::eDX12CommandQueueType::GRAPHIC);
+		NG_ASSERT(pCmdQueue != nullptr);
+		pCmdQueue->WaitForFence();
 	}
 
 	CDX12Device& CDX12Graphic::GetDevice()

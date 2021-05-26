@@ -83,7 +83,7 @@ namespace app
 			param.projMat = m_proj.GetProjMatrix();
 			param.CalcViewProjMatrix();
 
-			ng::CGraphicManager::GetInstance().Render(&param);
+			ng::CGraphicManager::GetInstance().DispatchRenderCommand(&param);
 		}
 
 		ng::DX12Util::SetRenderTargetToPresent(pCmdList, pRTBackBuffer);

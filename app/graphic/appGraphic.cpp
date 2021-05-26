@@ -11,6 +11,7 @@
 #include "command/appGraphicCommandListId.h"
 #include "pipeline/appGraphicPipeline.h"
 #include "app/memory/appMemoryUtil.h"
+#include "app/tool/gui/appToolGUIModule.h"
 
 namespace app
 {
@@ -113,11 +114,20 @@ namespace app
 		if(!_isInit()) return;
 		if(!_isValidPipeline()) return;
 
-		// パイプライン実行
+		// 描画開始処理
+		ng::CGraphicManager::GetInstance().BeginRender();
+
+		// グラフィックパイプライン実行
 		m_pPipeline->Execute();
 
-		// 描画の後処理
-		ng::CGraphicManager::GetInstance().CleanupRender();
+		// ツールGUI描画
+		CToolGUIModule::RenderToolGUI();
+
+		// 描画処理
+		ng::CGraphicManager::GetInstance().ExecuteRender();
+
+		// 描画終了処理
+		ng::CGraphicManager::GetInstance().EndRender();
 	}
 
 	void CGraphic::SetPipeline(CGraphicPipeline* pPipeline)

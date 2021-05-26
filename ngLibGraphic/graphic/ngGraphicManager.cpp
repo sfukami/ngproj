@@ -64,7 +64,7 @@ namespace ng
 		m_renderSys.AddCommand(RenderCommand(0, &renderable));
 	}
 
-	void CGraphicManager::Render(const RenderParam* pParam)
+	void CGraphicManager::DispatchRenderCommand(const RenderParam* pParam)
 	{
 		NG_ASSERT(_isInit());
 		if(!IsAssigned()) return;
@@ -72,10 +72,28 @@ namespace ng
 		m_renderSys.ExecuteCommand(pParam);
 	}
 
-	void CGraphicManager::CleanupRender()
+	void CGraphicManager::BeginRender()
 	{
 		NG_ASSERT(_isInit());
 		if(!IsAssigned()) return;
+
+		m_pGraphic->BeginRender();
+	}
+
+	void CGraphicManager::ExecuteRender()
+	{
+		NG_ASSERT(_isInit());
+		if(!IsAssigned()) return;
+
+		m_pGraphic->ExecuteRender();
+	}
+
+	void CGraphicManager::EndRender()
+	{
+		NG_ASSERT(_isInit());
+		if(!IsAssigned()) return;
+
+		m_pGraphic->EndRender();
 
 		m_renderSys.ClearCommand();
 	}
