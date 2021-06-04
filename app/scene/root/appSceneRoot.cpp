@@ -49,4 +49,9 @@ namespace app
 	{
 	}
 
+	const char* CSceneRoot::GetName() const
+	{
+		return "SceneRoot";
+	}
+
 }	// namespace app

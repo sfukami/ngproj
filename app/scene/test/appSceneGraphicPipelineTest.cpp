@@ -56,4 +56,9 @@ namespace app
 		}
 	}
 
+	const char* CSceneGraphicPipelineTest::GetName() const
+	{
+		return "SceneGraphicPipelineTest";
+	}
+
 }	// namespace app

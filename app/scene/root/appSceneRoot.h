@@ -43,6 +43,11 @@ namespace app
 		*/
 		void Finalize();
 
+		/*!
+		* @brief					名称取得
+		*/
+		const char* GetName() const;
+		
 	private:
 	};
 

@@ -40,6 +40,11 @@ namespace app
 		* @brief					描画
 		*/
 		virtual void Render() = 0;
+
+		/*!
+		* @brief					名称取得
+		*/
+		virtual const char* GetName() const = 0 { return nullptr; }
 	};
 
 }	// namespace app

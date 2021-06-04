@@ -15,6 +15,7 @@
 #include "ngLibApp/ngLibApp.h"
 #include "ngLibGraphic/ngLibGraphic.h"
 
+#include "appDefine.h"
 #include "appConfig.h"
 
 #endif	// __APP_PRE_INCLUDE_H__

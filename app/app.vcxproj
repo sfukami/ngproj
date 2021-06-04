@@ -154,6 +154,8 @@
     <ClInclude Include="memory\appMemoryAllocatorId.h" />
     <ClInclude Include="memory\appMemoryModule.h" />
     <ClInclude Include="memory\appMemoryUtil.h" />
+    <ClInclude Include="preincl\appConfig.h" />
+    <ClInclude Include="preincl\appDefine.h" />
     <ClInclude Include="preincl\appPreInclude.h" />
     <ClInclude Include="resource\appResourceModule.h" />
     <ClInclude Include="resource\appResourceSystem.h" />

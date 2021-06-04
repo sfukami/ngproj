@@ -594,6 +594,12 @@
     <ClInclude Include="debug\menu\item\appDebugMenuItemScene.h">
       <Filter>ソース ファイル\debug\menu\item</Filter>
     </ClInclude>
+    <ClInclude Include="preincl\appConfig.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="preincl\appDefine.h">
+      <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
