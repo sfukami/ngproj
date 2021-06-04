@@ -11,6 +11,7 @@ namespace test
 {
 	void Func1() { ng::Printf("call %s. \n", NG_FUNCTION); }
 	void Func2(char c) { ng::Printf("call %s. \n", NG_FUNCTION); }
+	template <typename T> void Func3() { ng::Printf("call %s. \n", NG_FUNCTION); }
 
 	/*!
 	* @brief					アクション テスト
@@ -32,12 +33,15 @@ namespace test
 		{
 			ng::CAction<void> a1(Func1);
 			ng::CAction<void, char> a2(Func2);
+			ng::CAction<void> a3(Func3<int>);
 
 			a1();
 			a2('A');
+			a3();
 
 			a1(std::make_tuple());
 			a2(std::make_tuple('B'));
+			a3(std::make_tuple());
 		}
 
 		TEST_METHOD(TestClassAction)
