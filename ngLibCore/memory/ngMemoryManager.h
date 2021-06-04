@@ -51,6 +51,7 @@ namespace ng
 		* @param index				メモリアロケータのインデックス
 		* @param name				メモリアロケータの名称
 		* @param size				使用するメモリ領域サイズ（バイト）
+		* @param isPrintLogEnable	ログ出力が有効か
 		* @return					成否
 		*/
 		template <class T>
@@ -58,6 +59,9 @@ namespace ng
 			u32 index
 			, const char* name
 			, size_type size
+		#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+			, bool isPrintLogEnable = false
+		#endif
 			);
 
 		/*!
@@ -100,6 +104,9 @@ namespace ng
 		u32 index
 		, const char* name
 		, size_type size
+	#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+		, bool isPrintLogEnable
+	#endif
 		)
 	{
 		NG_ASSERT(IsInit());
@@ -115,6 +122,10 @@ namespace ng
 			NG_ERRLOG_C("MemoryManager", err, "メモリアロケータの初期化に失敗しました.");
 			return false;
 		}
+
+	#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+		allocPtr->SetPrintLogEnable(isPrintLogEnable);
+	#endif
 
 		_registerAllocator(index, allocPtr);
 

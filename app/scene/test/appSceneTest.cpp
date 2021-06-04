@@ -34,4 +34,9 @@ namespace app
 	{
 	}
 
+	const char* CSceneTest::GetName() const
+	{
+		return "SceneTest";
+	}
+
 }	// namespace app

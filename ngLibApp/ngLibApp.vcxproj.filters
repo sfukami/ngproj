@@ -41,6 +41,12 @@
     <Filter Include="ソース ファイル\resource">
       <UniqueIdentifier>{b0a92e1b-096c-437b-b70e-5f9d7242df60}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\debug">
+      <UniqueIdentifier>{e962c899-b372-43cc-a26b-6745cfc372d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\ui\imgui\helper">
+      <UniqueIdentifier>{fb72ab06-0a44-42c0-8de8-3a840b30712c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="precmpl\ngPreCompiled.cpp">
@@ -84,6 +90,15 @@
     </ClCompile>
     <ClCompile Include="resource\ngResourceManager.cpp">
       <Filter>ソース ファイル\resource</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\helper\ngImGuiScope.cpp">
+      <Filter>ソース ファイル\ui\imgui\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\helper\ngImGuiWrapper.cpp">
+      <Filter>ソース ファイル\ui\imgui\helper</Filter>
+    </ClCompile>
+    <ClCompile Include="ui\imgui\helper\ngImGuiComboItem.cpp">
+      <Filter>ソース ファイル\ui\imgui\helper</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -170,6 +185,15 @@
     </ClInclude>
     <ClInclude Include="resource\ngResourceHandleIf.h">
       <Filter>ソース ファイル\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\helper\ngImGuiScope.h">
+      <Filter>ソース ファイル\ui\imgui\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\helper\ngImGuiWrapper.h">
+      <Filter>ソース ファイル\ui\imgui\helper</Filter>
+    </ClInclude>
+    <ClInclude Include="ui\imgui\helper\ngImGuiComboItem.h">
+      <Filter>ソース ファイル\ui\imgui\helper</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

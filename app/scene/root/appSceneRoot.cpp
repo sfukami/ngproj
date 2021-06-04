@@ -38,7 +38,6 @@ namespace app
 			//CSceneImGuiTest()
 			CSceneGameTest()
 			);
-		//CSceneModule::ChangeScene(eSceneId::GAME, scenePtr);
 		CSceneModule::RequestChangeScene(eSceneId::GAME, scenePtr);
 	}
 
@@ -48,6 +47,11 @@ namespace app
 
 	void CSceneRoot::Finalize()
 	{
+	}
+
+	const char* CSceneRoot::GetName() const
+	{
+		return "SceneRoot";
 	}
 
 }	// namespace app

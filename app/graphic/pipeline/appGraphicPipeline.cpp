@@ -7,7 +7,6 @@
 
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphicPipeline.h"
-#include "app/tool/gui/appToolGUIModule.h"
 
 namespace app
 {
@@ -39,7 +38,6 @@ namespace app
 
 		_preprocessPipeline();
 		_execute();
-		CToolGUIModule::RenderToolGUI();
 		_postprocessPipeline();
 	}
 
@@ -63,22 +61,10 @@ namespace app
 
 	void CGraphicPipeline::_preprocessPipeline()
 	{
-		// 全コマンドアロケータリセット
-		ng::DX12Util::ResetAllCommandAllocator();
 	}
 
 	void CGraphicPipeline::_postprocessPipeline()
 	{
-		// 全コマンドリスト実行
-		ng::DX12Util::ExecuteAllCommandList(ng::eDX12CommandQueueType::GRAPHIC);
-
-		// バックバッファを表示
-		ng::CDX12SwapChain* pSwapChain = ng::DX12Util::GetSwapChain();
-		pSwapChain->Present(1);
-
-		// 描画完了待ち
-		ng::CDX12CommandQueue* pCmdQueue = ng::DX12Util::GetCommandQueue(ng::eDX12CommandQueueType::GRAPHIC);
-		pCmdQueue->WaitForFence();
 	}
 
 }	// namespace app

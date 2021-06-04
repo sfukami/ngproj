@@ -28,8 +28,10 @@ void* operator new(
 
 #if defined(NG_CONFIG_MEMORY_DBGINFO)
 #if defined(NG_CONFIG_MEMORY_PRINT_LOG)
-	NG_DPRINTF("[new]   - <%s> 0x%p, size:%u\n", alloc.GetName(), p, size);
-	NG_DPRINTF("          %s\n", src);
+	if(alloc.GetPrintLogEnable()) {
+		NG_DPRINTF("[new]   - <%s> 0x%p, size:%u\n", alloc.GetName(), p, size);
+		NG_DPRINTF("          %s\n", src);
+	}
 #endif	// NG_CONFIG_MEMORY_PRINT_LOG
 	NG_ASSERT(p, "operator new failed. size:%u, called from:\n\t%s", size, src);
 #else
@@ -56,8 +58,10 @@ void* operator new[](
 		);
 #if defined(NG_CONFIG_MEMORY_DBGINFO)
 #if defined(NG_CONFIG_MEMORY_PRINT_LOG)
-	NG_DPRINTF("[new[]] - <%s> 0x%p, size:%u\n", alloc.GetName(), p, size);
-	NG_DPRINTF("          %s\n", src);
+	if(alloc.GetPrintLogEnable()) {
+		NG_DPRINTF("[new[]] - <%s> 0x%p, size:%u\n", alloc.GetName(), p, size);
+		NG_DPRINTF("          %s\n", src);
+	}
 #endif	// NG_CONFIG_MEMORY_PRINT_LOG
 	NG_ASSERT(p, "operator new[] failed. size:%u, called from:\n\t%s", size, src);
 #else
@@ -99,8 +103,10 @@ void operator delete(
 {
 #if defined(NG_CONFIG_MEMORY_DBGINFO)
 #if defined(NG_CONFIG_MEMORY_PRINT_LOG)
-	NG_DPRINTF("[del]   - <%s> 0x%p\n", alloc.GetName(), p);
-	NG_DPRINTF("          %s\n", src);
+	if(alloc.GetPrintLogEnable()) {
+		NG_DPRINTF("[del]   - <%s> 0x%p\n", alloc.GetName(), p);
+		NG_DPRINTF("          %s\n", src);
+	}
 #endif
 #endif
 
@@ -119,8 +125,10 @@ void operator delete[](
 {
 #if defined(NG_CONFIG_MEMORY_DBGINFO)
 #if defined(NG_CONFIG_MEMORY_PRINT_LOG)
-	NG_DPRINTF("[del[]] - <%s> 0x%p\n", alloc.GetName(), p);
-	NG_DPRINTF("          %s\n", src);
+	if(alloc.GetPrintLogEnable()) {
+		NG_DPRINTF("[del[]] - <%s> 0x%p\n", alloc.GetName(), p);
+		NG_DPRINTF("          %s\n", src);
+	}
 #endif
 #endif
 

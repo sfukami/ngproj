@@ -61,7 +61,7 @@ namespace app
 	}
 	void CJobManager::Finalize()
 	{
-		for(ng::size_type i = 0; i < m_jobQueueArr.Size(); i++)
+		for(ng::u32 i = 0; i < m_jobQueueArr.Size(); i++)
 		{
 			_getJobQueue(i).Finalize();
 		}

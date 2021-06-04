@@ -62,4 +62,9 @@ namespace app
 	{
 	}
 
+	const char* CSceneInputTest::GetName() const
+	{
+		return "SceneInputTest";
+	}
+
 }	// namespace app

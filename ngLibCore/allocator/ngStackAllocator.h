@@ -110,6 +110,14 @@ namespace ng
 		*/
 		const char* GetName() const;
 
+	#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+		/*!
+		* @brief					ログ出力有効設定
+		*/
+		void SetPrintLogEnable(bool enable);
+		bool GetPrintLogEnable() const;
+	#endif
+
 	private:
 		/*! 初期化 */
 		NG_ERRCODE _initialize(const char* name, void* pMemory, size_type size);
@@ -124,6 +132,10 @@ namespace ng
 		char* m_pPos;	//!< マーカーの位置
 		char m_name[ NAME_LENGTH+1 ];	//!< 名称
 		IMemoryAllocator*	m_pAlloc;	//!< 利用するメモリアロケータ
+
+	#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+		bool m_isPrintLogEnable;	//!< ログ出力が有効か
+	#endif
 	};
 
 }	// namespace ng

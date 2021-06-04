@@ -55,16 +55,26 @@ namespace ng
 		void AddRenderable(IRenderable& renderable);
 
 		/*!
-		* @brief					描画
+		* @brief					登録済みの全描画可能オブジェクトの描画コマンドを送出
 		* @param pParam				描画パラメータ
 		*/
-		void Render(const RenderParam* pParam);
+		void DispatchRenderCommand(const RenderParam* pParam);
 
 		/*!
-		* @brief					描画の後処理
+		* @brief					描画開始処理
 		*/
-		void CleanupRender();
+		void BeginRender();
 
+		/*!
+		* @brief					描画処理
+		*/
+		void ExecuteRender();
+
+		/*!
+		* @brief					描画終了処理
+		*/
+		void EndRender();
+	
 		/*!
 		* @brief					グラフィック割り当て解除
 		*/

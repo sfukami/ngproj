@@ -16,6 +16,9 @@
 #include "../graphic/appGraphic.h"
 #include "../scene/appSceneManager.h"
 #include "../tool/gui/appToolGUI.h"
+#ifdef APP_ENABLE_DEBUG_MENU
+#include "../debug/menu/appDebugMenu.h"
+#endif
 
 namespace app
 {
@@ -61,6 +64,9 @@ namespace app
 		CGraphic m_graphic;		//!< グラフィック
 		CSceneManager m_sceneMngr;	//!< シーン管理
 		CToolGUI m_toolGUI;		//!< ツールGUI
+	#ifdef APP_ENABLE_DEBUG_MENU
+		CDebugMenu m_debugMenu;	//!< デバッグメニュー
+	#endif
 	};
 
 }	// namespace app

@@ -30,6 +30,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="resource\ngResourceManager.cpp" />
+    <ClCompile Include="ui\imgui\helper\ngImGuiComboItem.cpp" />
+    <ClCompile Include="ui\imgui\helper\ngImGuiScope.cpp" />
+    <ClCompile Include="ui\imgui\helper\ngImGuiWrapper.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui_demo.cpp" />
     <ClCompile Include="ui\imgui\imgui_src\imgui_draw.cpp" />
@@ -57,6 +60,9 @@
     <ClInclude Include="resource\ngResourceHandleIf.h" />
     <ClInclude Include="resource\ngResourceManager.h" />
     <ClInclude Include="state\ngStateMachine.h" />
+    <ClInclude Include="ui\imgui\helper\ngImGuiComboItem.h" />
+    <ClInclude Include="ui\imgui\helper\ngImGuiScope.h" />
+    <ClInclude Include="ui\imgui\helper\ngImGuiWrapper.h" />
     <ClInclude Include="ui\imgui\imgui_src\imconfig.h" />
     <ClInclude Include="ui\imgui\imgui_src\imgui.h" />
     <ClInclude Include="ui\imgui\imgui_src\imgui_impl_dx12.h" />

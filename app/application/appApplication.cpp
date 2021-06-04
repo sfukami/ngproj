@@ -128,6 +128,11 @@ namespace app
 			m_sceneMngr.RegisterScene(static_cast<unsigned int>(eSceneId::GAME), scenePtr);
 		}
 
+	#ifdef APP_ENABLE_DEBUG_MENU
+		// デバッグメニューセットアップ
+		m_debugMenu.Setup();
+	#endif
+
 		return true;
 	}
 
@@ -156,6 +161,10 @@ namespace app
 
 	void CApplication::Finalize()
 	{
+	#ifdef APP_ENABLE_DEBUG_MENU
+		m_debugMenu.Shutdown();
+	#endif
+
 		m_sceneMngr.Finalize();
 
 		m_toolGUI.Finalize();
@@ -180,6 +189,10 @@ namespace app
 
 		m_input.Update();
 		m_sceneMngr.Update(deltaTime);
+
+	#ifdef APP_ENABLE_DEBUG_MENU
+		m_debugMenu.Update();
+	#endif
 	}
 
 	void CApplication::_render()
@@ -188,6 +201,10 @@ namespace app
 		
 		m_sceneMngr.Render();
 		
+	#ifdef APP_ENABLE_DEBUG_MENU
+		m_debugMenu.Render();
+	#endif
+
 		m_graphic.Render();
 		m_toolGUI.EndRender();
 

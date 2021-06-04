@@ -1,6 +1,6 @@
-/*!
+ï»¿/*!
 * @file		appPreInclude.h
-* @brief	ƒvƒŠƒCƒ“ƒNƒ‹[ƒhƒwƒbƒ_
+* @brief	ãƒ—ãƒªã‚¤ãƒ³ã‚¯ãƒ«ãƒ¼ãƒ‰ãƒ˜ãƒƒãƒ€
 * @date		2016-08-22
 * @author	s.fukami
 */
@@ -14,5 +14,8 @@
 #include "ngLibCore/ngLibCore.h"
 #include "ngLibApp/ngLibApp.h"
 #include "ngLibGraphic/ngLibGraphic.h"
+
+#include "appDefine.h"
+#include "appConfig.h"
 
 #endif	// __APP_PRE_INCLUDE_H__

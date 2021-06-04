@@ -55,6 +55,21 @@ namespace ng
 		void Destroy();
 
 		/*!
+		* @brief					描画開始処理
+		*/
+		void BeginRender();
+
+		/*!
+		* @brief					描画処理
+		*/
+		void ExecuteRender();
+
+		/*!
+		* @brief					描画終了処理
+		*/
+		void EndRender();
+
+		/*!
 		* @brief					DX12デバイス取得
 		*/
 		CDX12Device& GetDevice();

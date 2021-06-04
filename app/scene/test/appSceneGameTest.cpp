@@ -82,4 +82,9 @@ namespace app
 		}
 	}
 
+	const char* CSceneGameTest::GetName() const
+	{
+		return "SceneGameTest";
+	}
+
 }	// namespace app

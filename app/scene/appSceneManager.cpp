@@ -113,7 +113,7 @@ namespace app
 			{
 				m_pSceneMngr->RegisterScene(m_index, m_scenePtr);
 				// ※スタックアロケータを使用する前提
-				// デストラクタが呼ばれないため、明示的に解放する
+				// ジョブのデストラクタが呼ばれないため、明示的に解放する
 				m_scenePtr.reset();
 			}
 
@@ -142,6 +142,15 @@ namespace app
 		if(!scenePtr) return false;
 
 		NG_ASSERT(index < m_sceneArr.Size());
+
+	#if defined(APP_DEBUG)
+		{
+			ng::CSharedPtr<IScene>& currPtr = m_sceneArr[index];
+			if(currPtr) {
+				NG_DPRINTF("[CSceneManager::RegisterScene] SceneId:%d, [%s] ---> [%s]\n", index, currPtr->GetName(), scenePtr->GetName());
+			}
+		}
+	#endif
 
 		DeleteScene(index);
 

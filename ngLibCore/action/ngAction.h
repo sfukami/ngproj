@@ -56,9 +56,27 @@ namespace ng
 		* @brief					実行
 		* @param args				引数
 		*/
-		Ret operator()(std::tuple<Args...>&& args)
+		Ret operator()(Args... args) const
+		{
+			return (*const_cast<CAction<Ret, Args...>*>(this))(args...);
+		}
+
+		/*!
+		* @brief					実行
+		* @param args				引数
+		*/
+		Ret operator()(ArgsType&& args)
 		{
 			return CallFunc(*this, args);
+		}
+
+		/*!
+		* @brief					実行
+		* @param args				引数
+		*/
+		Ret operator()(ArgsType&& args) const
+		{
+			return (*const_cast<CAction<Ret, Args...>*>(this))(args);
 		}
 
 	private:
@@ -112,9 +130,27 @@ namespace ng
 		* @brief					実行
 		* @param args				引数
 		*/
-		Ret operator()(std::tuple<Args...>&& args)
+		Ret operator()(Args... args) const
+		{
+			return (*const_cast<CClassAction<T, Ret, Args...>*>(this))(args...);
+		}
+
+		/*!
+		* @brief					実行
+		* @param args				引数
+		*/
+		Ret operator()(ArgsType&& args)
 		{
 			return CallFunc(*this, args);
+		}
+
+		/*!
+		* @brief					実行
+		* @param args				引数
+		*/
+		Ret operator()(ArgsType&& args) const
+		{
+			return (*const_cast<CClassAction<T, Ret, Args...>*>(this))(args);
 		}
 
 	private:

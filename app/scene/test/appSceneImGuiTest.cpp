@@ -52,6 +52,11 @@ namespace app
 		}
 	}
 
+	const char* CSceneImGuiTest::GetName() const
+	{
+		return "SceneImGuiTest";
+	}
+
 	void CSceneImGuiTest::_renderGUIWindow()
 	{
 		// ImGui で遊ぶ

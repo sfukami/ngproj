@@ -93,6 +93,14 @@ namespace ng
 		* @brief					名称取得
 		*/
 		virtual const char* GetName() const = 0;
+
+	#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+		/*!
+		* @brief					ログ出力有効設定
+		*/
+		virtual void SetPrintLogEnable(bool enable) { }
+		virtual bool GetPrintLogEnable() const { return false; }
+	#endif
 	};
 
 }	// namespace ng
