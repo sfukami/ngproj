@@ -16,6 +16,9 @@ namespace ng
 		, m_pPos(nullptr)
 		, m_pAlloc(nullptr)
 		, m_name("")
+	#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+		, m_isPrintLogEnable(false)
+	#endif
 	{
 	}
 
@@ -74,13 +77,6 @@ namespace ng
 
 		char* pNext = PointerOffset<char*>(m_pPos, size);
 		if(pNext >= m_pEnd) {
-			/*
-			NG_DPRINTF("メモリ領域の割り当てに失敗。"
-				#if defined(NG_CONFIG_MEMORY_DBGINFO)
-				"DEGINFO[src:%s]", src
-				#endif
-				);
-			*/
 			return nullptr;
 		}
 
@@ -135,6 +131,17 @@ namespace ng
 	{
 		return m_name;
 	}
+
+#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+	void CStackAllocator::SetPrintLogEnable(bool enable)
+	{
+		m_isPrintLogEnable = enable;
+	}
+	bool CStackAllocator::GetPrintLogEnable() const
+	{
+		return m_isPrintLogEnable;
+	}
+#endif
 
 	NG_ERRCODE CStackAllocator::_initialize(const char* name, void* pMemory, size_type size)
 	{

@@ -15,6 +15,9 @@ namespace ng
 	CDefaultAllocator::CDefaultAllocator()
 		: m_isInit(false)
 		, m_name("")
+	#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+		, m_isPrintLogEnable(false)
+	#endif
 	{
 	}
 	CDefaultAllocator::~CDefaultAllocator()
@@ -94,5 +97,16 @@ namespace ng
 	{
 		return m_name;
 	}
+
+#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+	void CDefaultAllocator::SetPrintLogEnable(bool enable)
+	{
+		m_isPrintLogEnable = enable;
+	}
+	bool CDefaultAllocator::GetPrintLogEnable() const
+	{
+		return m_isPrintLogEnable;
+	}
+#endif
 
 }	// namespace ng
