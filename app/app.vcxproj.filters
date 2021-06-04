@@ -122,6 +122,15 @@
     <Filter Include="ソース ファイル\game\actor\enemy\test">
       <UniqueIdentifier>{486cf98a-6e8d-4e43-8745-ae20f8c39d53}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\debug">
+      <UniqueIdentifier>{72491f6f-7348-4d68-b0ae-6623a0d30fe8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\debug\menu">
+      <UniqueIdentifier>{8656a7b2-060c-41c6-a1bf-b00e794648cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\debug\menu\item">
+      <UniqueIdentifier>{0a0cd089-e1f7-42a8-979a-2fa1c3390f52}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -324,6 +333,15 @@
     </ClCompile>
     <ClCompile Include="scene\test\appSceneInputTest.cpp">
       <Filter>ソース ファイル\scene\test</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\menu\appDebugMenu.cpp">
+      <Filter>ソース ファイル\debug\menu</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\menu\item\appDebugMenuItem.cpp">
+      <Filter>ソース ファイル\debug\menu\item</Filter>
+    </ClCompile>
+    <ClCompile Include="debug\menu\item\appDebugMenuItemScene.cpp">
+      <Filter>ソース ファイル\debug\menu\item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -566,6 +584,15 @@
     </ClInclude>
     <ClInclude Include="scene\test\appSceneInputTest.h">
       <Filter>ソース ファイル\scene\test</Filter>
+    </ClInclude>
+    <ClInclude Include="debug\menu\appDebugMenu.h">
+      <Filter>ソース ファイル\debug\menu</Filter>
+    </ClInclude>
+    <ClInclude Include="debug\menu\item\appDebugMenuItem.h">
+      <Filter>ソース ファイル\debug\menu\item</Filter>
+    </ClInclude>
+    <ClInclude Include="debug\menu\item\appDebugMenuItemScene.h">
+      <Filter>ソース ファイル\debug\menu\item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

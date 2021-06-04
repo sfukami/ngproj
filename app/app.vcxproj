@@ -20,6 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="application\appApplication.cpp" />
+    <ClCompile Include="debug\menu\appDebugMenu.cpp" />
+    <ClCompile Include="debug\menu\item\appDebugMenuItem.cpp" />
+    <ClCompile Include="debug\menu\item\appDebugMenuItemScene.cpp" />
     <ClCompile Include="game\actor\appGameActor.cpp" />
     <ClCompile Include="game\actor\appGameActorMacro.cpp" />
     <ClCompile Include="game\actor\bullet\appGameActorBullet.cpp" />
@@ -91,6 +94,9 @@
     <ClInclude Include="application\appApplication.h" />
     <ClInclude Include="application\appApplicationConst.h" />
     <ClInclude Include="common\appCommon.h" />
+    <ClInclude Include="debug\menu\appDebugMenu.h" />
+    <ClInclude Include="debug\menu\item\appDebugMenuItem.h" />
+    <ClInclude Include="debug\menu\item\appDebugMenuItemScene.h" />
     <ClInclude Include="game\actor\appGameActor.h" />
     <ClInclude Include="game\actor\appGameActorMacro.h" />
     <ClInclude Include="game\actor\appGameActorStateMachine.h" />

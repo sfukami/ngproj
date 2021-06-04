@@ -38,7 +38,6 @@ namespace app
 			//CSceneImGuiTest()
 			CSceneGameTest()
 			);
-		//CSceneModule::ChangeScene(eSceneId::GAME, scenePtr);
 		CSceneModule::RequestChangeScene(eSceneId::GAME, scenePtr);
 	}
 
