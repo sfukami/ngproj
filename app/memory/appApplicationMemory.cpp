@@ -51,20 +51,27 @@ namespace app
 
 		// 各メモリアロケータ生成
 		{
+			// ログ出力有効設定マクロ
+		#if defined(NG_CONFIG_MEMORY_PRINT_LOG)
+			#define _PRINT_LOG_ENABLE(_flag)	,_flag
+		#else
+			#define _PRINT_LOG_ENABLE(_flag)
+		#endif
+
 			// メモリアロケータ生成マクロ
-			#define _CREATE_MEMALLOC(_type, _id, _name) \
+			#define _CREATE_MEMALLOC(_type, _id, _name, _isPrintLogEnable) \
 				m_memMngr.CreateAndRegisterAllocator<_type>( \
-					static_cast<ng::u32>(_id), _name, GetApplicationMemorySize(_id) \
+					static_cast<ng::u32>(_id), _name, GetApplicationMemorySize(_id) _PRINT_LOG_ENABLE(_isPrintLogEnable)\
 					);
 
 			// アプリケーション
-			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eMemoryAllocatorId::APPLICATION,	"app_application");
+			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eMemoryAllocatorId::APPLICATION,	"app_application",	false);
 			// ワーク
-			_CREATE_MEMALLOC(ng::CStackAllocator,	eMemoryAllocatorId::WORK,			"app_work");
+			_CREATE_MEMALLOC(ng::CStackAllocator,	eMemoryAllocatorId::WORK,			"app_work",	false);
 			// リソース
-			_CREATE_MEMALLOC(ng::CDefaultAllocator, eMemoryAllocatorId::RESOURCE,	"app_resource");
+			_CREATE_MEMALLOC(ng::CDefaultAllocator, eMemoryAllocatorId::RESOURCE,	"app_resource",	false);
 			// テンポラリ
-			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eMemoryAllocatorId::TEMP,		"app_temp");
+			_CREATE_MEMALLOC(ng::CDefaultAllocator,	eMemoryAllocatorId::TEMP,		"app_temp",	false);
 
 			#undef _CREATE_MEMALLOC
 		}
