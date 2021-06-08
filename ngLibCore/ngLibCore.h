@@ -1,6 +1,6 @@
-/*!
+ï»¿/*!
 * @file		ngLibCore.h
-* @brief	NGLib Coreƒwƒbƒ_
+* @brief	NGLib Coreãƒ˜ãƒƒãƒ€
 * @date		2020-06-18
 * @author	s.fukami
 */
