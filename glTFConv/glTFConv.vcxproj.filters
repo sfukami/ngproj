@@ -11,6 +11,9 @@
     <Filter Include="ソース ファイル\preincl">
       <UniqueIdentifier>{4d0fcf93-443c-404c-aa92-8a3e6bd82448}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\model">
+      <UniqueIdentifier>{01b5e2de-8067-434b-b6b8-260b64e18b03}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -22,6 +25,15 @@
     <ClCompile Include="converter\GLTFStreamReader.cpp">
       <Filter>ソース ファイル\converter</Filter>
     </ClCompile>
+    <ClCompile Include="model\ModelFormat.cpp">
+      <Filter>ソース ファイル\model</Filter>
+    </ClCompile>
+    <ClCompile Include="converter\ModelBinaryWriter.cpp">
+      <Filter>ソース ファイル\converter</Filter>
+    </ClCompile>
+    <ClCompile Include="model\BinaryFormat.cpp">
+      <Filter>ソース ファイル\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\preInclude.h">
@@ -32,6 +44,15 @@
     </ClInclude>
     <ClInclude Include="converter\GLTFStreamReader.h">
       <Filter>ソース ファイル\converter</Filter>
+    </ClInclude>
+    <ClInclude Include="model\ModelFormat.h">
+      <Filter>ソース ファイル\model</Filter>
+    </ClInclude>
+    <ClInclude Include="converter\ModelBinaryWriter.h">
+      <Filter>ソース ファイル\converter</Filter>
+    </ClInclude>
+    <ClInclude Include="model\BinaryFormat.h">
+      <Filter>ソース ファイル\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

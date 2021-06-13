@@ -5,9 +5,10 @@
 * @author	s.fukami
 */
 
-//#include "ngLibCore/io/file/ngFile.h"
 #include "GLTFModelConverter.h"
 #include "GLTFStreamReader.h"
+#include "ModelBinaryWriter.h"
+#include "../model/ModelFormat.h"
 
 namespace glTFConv
 {
@@ -18,23 +19,21 @@ namespace glTFConv
 	{
 	}
 
-	bool CGLTFModelConverter::Convert(const char* pFilePath)
+	bool CGLTFModelConverter::Convert(const char* pSrcFilePath, const char* pDstFilePath)
 	{
 		CGLTFStreamReader streamReader;
+		CModelBinaryWriter binaryWriter;
+		ModelFormat modelFormat;
 
-		if(!streamReader.Read(pFilePath)) {
+		// 中間モデル形式を生成
+		if(!streamReader.Read(pSrcFilePath, &modelFormat)) {
 			return false;
 		}
-		
-		/*
-		ng::CFile inputFile;
 
-		NG_ERRCODE err = inputFile.Open(pFilePath, "r");
-		if(NG_FAILED(err)) {
-			NG_ERRLOG_C("GLTFModelConverter", err, "変換元ファイルの読み込みに失敗しました.");
+		// 中間モデル形式をバイナリ出力
+		if(!binaryWriter.Write(pDstFilePath, modelFormat)) {
 			return false;
 		}
-		*/
 
 		return true;
 	}

@@ -7,6 +7,8 @@
 
 // ■参考URL:https://github.com/microsoft/glTF-SDK/blob/master/GLTFSDK.Samples/Deserialize/Source/main.cpp
 
+#include <algorithm>
+#include <vector>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -17,6 +19,7 @@
 #include <GLTFSDK/Deserialize.h>
 
 #include "GLTFStreamReader.h"
+#include "../model/ModelFormat.h"
 
 namespace glTFConv
 {
@@ -47,7 +50,7 @@ namespace glTFConv
 	{
 	}
 
-	bool CGLTFStreamReader::Read(const char* pFilePath)
+	bool CGLTFStreamReader::Read(const char* pFilePath, ModelFormat* pOutput) const
 	{
 		std::filesystem::path path(pFilePath);
 		
@@ -116,12 +119,82 @@ namespace glTFConv
 		_printDocumentInfo(document);
 		_printResourceInfo(document, *resourceReader);
 
+		_toModelFormat(document, *resourceReader, pOutput);
+
+		_printModelFormat(pOutput);
+
 		return true;
+	}
+
+	void CGLTFStreamReader::_toModelFormat(
+		const Microsoft::glTF::Document& document, const Microsoft::glTF::GLTFResourceReader& resourceReader, ModelFormat* pOutput
+		) const
+	{
+		NG_ASSERT_NOT_NULL(pOutput);
+
+		for(const auto& mesh : document.meshes.Elements())
+		{
+			ModelFormat::Mesh& dstMesh = pOutput->meshes.emplace_back();
+			dstMesh.name = mesh.name;
+
+			if(!mesh.primitives.empty()) {
+				// 頂点
+				{
+					const auto& primitive = mesh.primitives.front();
+
+					auto& posId = primitive.GetAttributeAccessorId(Microsoft::glTF::ACCESSOR_POSITION);
+					auto& posAcc = document.accessors.Get(posId);
+
+					auto& normId = primitive.GetAttributeAccessorId(Microsoft::glTF::ACCESSOR_NORMAL);
+					auto& normAcc = document.accessors.Get(normId);
+
+					auto& uvId = primitive.GetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TEXCOORD_0);
+					auto& uvAcc = document.accessors.Get(uvId);
+
+					auto posVec = resourceReader.ReadBinaryData<float>(document, posAcc);
+					auto normVec = resourceReader.ReadBinaryData<float>(document, normAcc);
+					auto uvVec = resourceReader.ReadBinaryData<float>(document, uvAcc);
+
+					for(ng::u32 i = 0; i < posAcc.count; i++)
+					{
+						float* pPos = &posVec[i*3];
+						float* pNorm = &normVec[i*3];
+						float* pUV = &uvVec[i*2];
+						dstMesh.vertices.emplace_back(
+							ng::Vector3(*pPos, *(pPos+1), *(pPos+2)),
+							ng::Vector3(*pNorm, *(pNorm+1), *(pNorm+2)),
+							ng::Vector2(*pUV, *(pUV+1))
+							);
+					}
+				}
+				// インデックス
+				for(const auto& primitive : mesh.primitives)
+				{
+					ng::u32 materialIndex = static_cast<ng::u32>(document.materials.GetIndex(primitive.materialId));
+					auto found = std::find_if(dstMesh.primitives.begin(), dstMesh.primitives.end(), [materialIndex](const auto& p){ return p.materialIndex == materialIndex; });
+
+					ModelFormat::Primitive* pDstPrimitive = nullptr;
+					if(found == dstMesh.primitives.end()) {
+						pDstPrimitive = &dstMesh.primitives.emplace_back();
+					}
+					else {
+						pDstPrimitive = &*found;
+					}
+
+					auto& idxId = primitive.indicesAccessorId;
+					auto& idxAcc = document.accessors.Get(idxId);
+
+					auto indices = resourceReader.ReadBinaryData<uint32_t>(document, idxAcc);
+					pDstPrimitive->indices.insert(pDstPrimitive->indices.end(), indices.begin(), indices.end());
+					pDstPrimitive->materialIndex = materialIndex;
+				}
+			}
+		}
 	}
 
 	void CGLTFStreamReader::_printDocumentInfo(
 		const Microsoft::glTF::Document& document
-		)
+		) const
 	{
 		ng::Printf("=== Document Info ===\n");
 		// Asset Info
@@ -182,7 +255,7 @@ namespace glTFConv
 
 	void CGLTFStreamReader::_printResourceInfo(
 		const Microsoft::glTF::Document& document, const Microsoft::glTF::GLTFResourceReader& resourceReader
-		)
+		) const
 	{
 		ng::Printf("=== Resource Info ===\n");
 		ng::Printf("[Mesh]\n");
@@ -190,14 +263,18 @@ namespace glTFConv
 		{
 			ng::Printf("  -Mesh Id:%s, Name:%s\n", mesh.id.c_str(), mesh.name.c_str());
 
-			for(const auto& meshPrimitive : mesh.primitives)
+			for(const auto& primitive : mesh.primitives)
 			{
-				std::string accessorId;
-				if(meshPrimitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_POSITION, accessorId)) {
-					const Microsoft::glTF::Accessor& accessor = document.accessors.Get(accessorId);
-					const auto data = resourceReader.ReadBinaryData<float>(document, accessor);
-					const auto dataByteLength = data.size() * sizeof(float);
-					ng::Printf("    Positions:%u (%ubytes)\n", data.size(), dataByteLength);
+				std::string posAccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_POSITION, posAccId)) {
+					const Microsoft::glTF::Accessor& posAcc = document.accessors.Get(posAccId);
+					const auto posData = resourceReader.ReadBinaryData<float>(document, posAcc);
+					const ng::size_type posDataBytes = posData.size() * sizeof(float);
+
+					const Microsoft::glTF::Accessor& idxAcc = document.accessors.Get(primitive.indicesAccessorId);
+					const auto idxData = resourceReader.ReadBinaryData<uint32_t>(document, idxAcc);
+
+					ng::Printf("    Positions:%u (%ubytes), Indices:%u, MaterialId:%s\n", posData.size(), posDataBytes, idxData.size(), primitive.materialId.c_str());
 				}
 			}
 		}
@@ -227,6 +304,27 @@ namespace glTFConv
 			if(!filename.empty()) {
 				ng::Printf("    filename:%s\n", filename.c_str());
 			}
+		}
+	}
+
+	void CGLTFStreamReader::_printModelFormat(const ModelFormat* pModelFormat) const
+	{
+		NG_ASSERT_NOT_NULL(pModelFormat);
+
+		ng::Printf("[Model Format]\n");
+		int meshIndex = 0;
+		for(const auto& mesh : pModelFormat->meshes)
+		{
+			ng::Printf("  -Mesh %d:%s\n", meshIndex, mesh.name.c_str());
+			ng::Printf("    VertexCount:%u\n", mesh.vertices.size());
+			ng::Printf("    Primitives:\n");
+			int primitiveIndex = 0;
+			for(const auto& primitive : mesh.primitives)
+			{
+				ng::Printf("      %d: IndexCount:%u, MaterialIndex:%u\n", primitiveIndex, primitive.indices.size(), primitiveIndex);
+				primitiveIndex++;
+			}
+			meshIndex++;
 		}
 	}
 

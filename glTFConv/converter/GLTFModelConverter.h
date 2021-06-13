@@ -21,10 +21,11 @@ namespace glTFConv
 
 		/*!
 		* @brief					モデル変換
-		* @param pFilePath			変換元ファイルの絶対パス
+		* @param pSrcFilePath		変換元ファイルの絶対パス
+		* @param pDstFilePath		出力先ファイルの絶対パス
 		* @return					成否
 		*/
-		bool Convert(const char* pFilePath);
+		bool Convert(const char* pSrcFilePath, const char* pDstFilePath);
 
 	private:
 	};

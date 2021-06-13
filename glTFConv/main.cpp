@@ -16,9 +16,11 @@ int main()
 	glTFConv::CGLTFModelConverter conv;
 
 	// test
-	const char filePath[256] = "C:/local/project/ngproj/glTFConv/resources/alicia-solid.vrm";
+	const char srcFilePath[256] = "C:/local/project/ngproj/glTFConv/resources/alicia-solid.vrm";
+	const char dstFilePath[256] = "C:/local/project/ngproj/glTFConv/resources/test.mdl";
 
-	if(!conv.Convert(filePath)) {
+	if(!conv.Convert(srcFilePath, dstFilePath)) {
+		return 1;
 	}
 
 	return 0;

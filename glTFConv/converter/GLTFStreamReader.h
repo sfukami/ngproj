@@ -16,6 +16,11 @@ namespace Microsoft::glTF
 
 namespace glTFConv
 {
+	struct ModelFormat;
+}
+
+namespace glTFConv
+{
 	/*!
 	* @brief					glTFファイル読み込みストリーム
 	*/
@@ -28,19 +33,26 @@ namespace glTFConv
 		/*!
 		* @brief					glTFファイル読み込み
 		* @param pFilePath			glTFファイルの絶対パス
+		* @param pOutput			出力先の中間モデル形式
 		* @return					成否
 		*/
-		bool Read(const char* pFilePath);
+		bool Read(const char* pFilePath, ModelFormat* pOutput) const;
 
 	private:
+		/*! 中間モデル形式へ変換 */
+		void _toModelFormat(
+			const Microsoft::glTF::Document& document, const Microsoft::glTF::GLTFResourceReader& resourceReader, ModelFormat* pOutput
+			) const;
 		/*! Documentの情報を表示 */
 		void _printDocumentInfo(
 			const Microsoft::glTF::Document& document
-			);
+			) const;
 		/*! リソースの情報を表示 */
 		void _printResourceInfo(
 			const Microsoft::glTF::Document& document, const Microsoft::glTF::GLTFResourceReader& resourceReader
-			);
+			) const;
+		/*! 中間モデル形式の情報を表示 */
+		void _printModelFormat(const ModelFormat* pModelFormat) const;
 	};
 
 }	// namespace glTFConv

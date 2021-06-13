@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -171,11 +171,17 @@
   <ItemGroup>
     <ClCompile Include="converter\GLTFModelConverter.cpp" />
     <ClCompile Include="converter\GLTFStreamReader.cpp" />
+    <ClCompile Include="converter\ModelBinaryWriter.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="model\BinaryFormat.cpp" />
+    <ClCompile Include="model\ModelFormat.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="converter\GLTFModelConverter.h" />
     <ClInclude Include="converter\GLTFStreamReader.h" />
+    <ClInclude Include="converter\ModelBinaryWriter.h" />
+    <ClInclude Include="model\BinaryFormat.h" />
+    <ClInclude Include="model\ModelFormat.h" />
     <ClInclude Include="preincl\preInclude.h" />
   </ItemGroup>
   <ItemGroup>
