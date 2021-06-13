@@ -10,6 +10,8 @@
 
 #include "ngLibCore/geometry/ngGeometry.h"
 
+#define GLTFCONV_BINARY_FORMAT_MODEL_SIGNATURE	("mdl")
+
 namespace glTFConv
 {
 	//! モデルバイナリ形式
@@ -25,6 +27,7 @@ namespace glTFConv
 			ModelHeader();
 			MeshHeader* GetMeshHeader();
 			const MeshHeader* GetMeshHeader() const;
+			bool CheckSignature() const;
 
 			char signature[4];	//!< シグネチャ
 			std::uint32_t meshCount;	//!< メッシュ数
@@ -76,6 +79,67 @@ namespace glTFConv
 
 		ModelHeader modelHeader;	//!< モデルヘッダ
 	};
+
+	inline BinaryFormat::MeshHeader* BinaryFormat::ModelHeader::GetMeshHeader()
+	{
+		return ng::PointerOffset<MeshHeader*>(this, sizeof(*this));
+	}
+	inline const BinaryFormat::MeshHeader* BinaryFormat::ModelHeader::GetMeshHeader() const
+	{
+		return const_cast<BinaryFormat::ModelHeader*>(this)->GetMeshHeader();
+	}
+
+	inline bool BinaryFormat::ModelHeader::CheckSignature() const
+	{
+		return NG_STRCMP_OP(signature, ==, GLTFCONV_BINARY_FORMAT_MODEL_SIGNATURE);
+	}
+
+	inline BinaryFormat::VertexHeader* BinaryFormat::MeshHeader::GetVertexHeader()
+	{
+		return ng::PointerOffset<VertexHeader*>(this, sizeof(*this));
+	}
+	inline const BinaryFormat::VertexHeader* BinaryFormat::MeshHeader::GetVertexHeader() const
+	{
+		return const_cast<BinaryFormat::MeshHeader*>(this)->GetVertexHeader();
+	}
+
+	inline BinaryFormat::IndexHeader* BinaryFormat::MeshHeader::GetIndexHeader()
+	{
+		const VertexHeader* pVertexHeader = GetVertexHeader();
+
+		return ng::PointerOffset<IndexHeader*>(pVertexHeader->GetVertexData(), pVertexHeader->size);
+	}
+	inline const BinaryFormat::IndexHeader* BinaryFormat::MeshHeader::GetIndexHeader() const
+	{
+		return const_cast<BinaryFormat::MeshHeader*>(this)->GetIndexHeader();
+	}
+
+	inline BinaryFormat::Vertex* BinaryFormat::VertexHeader::GetVertexData()
+	{
+		return ng::PointerOffset<Vertex*>(this, sizeof(*this));
+	}
+	inline const BinaryFormat::Vertex* BinaryFormat::VertexHeader::GetVertexData() const
+	{
+		return const_cast<BinaryFormat::VertexHeader*>(this)->GetVertexData();
+	}
+
+	inline ng::u32* BinaryFormat::IndexHeader::GetIndexData()
+	{
+		return ng::PointerOffset<ng::u32*>(this, sizeof(*this));
+	}
+	inline const ng::u32* BinaryFormat::IndexHeader::GetIndexData() const
+	{
+		return const_cast<BinaryFormat::IndexHeader*>(this)->GetIndexData();
+	}
+
+	inline BinaryFormat::IndexHeader* BinaryFormat::IndexHeader::GetNextIndexHeader()
+	{
+		return ng::PointerOffset<IndexHeader*>(GetIndexData(), size);
+	}
+	inline const BinaryFormat::IndexHeader* BinaryFormat::IndexHeader::GetNextIndexHeader() const
+	{
+		return const_cast<BinaryFormat::IndexHeader*>(this)->GetNextIndexHeader();
+	}
 
 }	// namespace glTFConv
 
