@@ -12,7 +12,7 @@ namespace app
 	const unsigned int s_appMemSizeTbl[ ng::UnderlyingCast(eMemoryAllocatorId::NUM) ] =
 	{
 		NG_MB(1),	// APPLICATION
-		NG_MB(1),	// WORK
+		NG_MB(5),	// WORK
 		NG_MB(10),	// RESOURCE
 		NG_MB(10),	// TEMP
 	};

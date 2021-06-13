@@ -18,7 +18,7 @@
 //! ログ出力有効
 #define _ENABLE_LOG
 //! 作業用メモリアロケータ
-#define APP_MEMALLOC_TEMP	(APP_GET_MEMALLOC(WORK))
+#define APP_MEMALLOC_TEMP	(APP_GET_MEMALLOC(TEMP))
 
 // リソース 拡張子テーブル
 #include "appResourceExtTable.cpp"

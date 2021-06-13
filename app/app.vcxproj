@@ -45,6 +45,8 @@
     <ClCompile Include="graphic\material\appMaterialData.cpp" />
     <ClCompile Include="graphic\material\appMaterialDataPreset.cpp" />
     <ClCompile Include="graphic\material\appMaterialFormat.cpp" />
+    <ClCompile Include="graphic\model\appMesh.cpp" />
+    <ClCompile Include="graphic\model\appModel.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipelineDefault.cpp" />
     <ClCompile Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.cpp" />
@@ -127,6 +129,8 @@
     <ClInclude Include="graphic\material\appMaterialData.h" />
     <ClInclude Include="graphic\material\appMaterialDataPreset.h" />
     <ClInclude Include="graphic\material\appMaterialFormat.h" />
+    <ClInclude Include="graphic\model\appMesh.h" />
+    <ClInclude Include="graphic\model\appModel.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipelineDefault.h" />
     <ClInclude Include="graphic\pipeline\test\appGraphicPipelineClearBuffer.h" />

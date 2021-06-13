@@ -131,6 +131,9 @@
     <Filter Include="ソース ファイル\debug\menu\item">
       <UniqueIdentifier>{0a0cd089-e1f7-42a8-979a-2fa1c3390f52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\model">
+      <UniqueIdentifier>{642e63bb-5e19-4676-87f2-475a7f493267}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -342,6 +345,12 @@
     </ClCompile>
     <ClCompile Include="debug\menu\item\appDebugMenuItemScene.cpp">
       <Filter>ソース ファイル\debug\menu\item</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\model\appModel.cpp">
+      <Filter>ソース ファイル\graphic\model</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\model\appMesh.cpp">
+      <Filter>ソース ファイル\graphic\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -599,6 +608,12 @@
     </ClInclude>
     <ClInclude Include="preincl\appDefine.h">
       <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\model\appModel.h">
+      <Filter>ソース ファイル\graphic\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\model\appMesh.h">
+      <Filter>ソース ファイル\graphic\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

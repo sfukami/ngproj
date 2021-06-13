@@ -12,6 +12,7 @@
 // test
 #include "../../graphic/pipeline/test/appGraphicPipelineClearBuffer.h"
 #include "../../graphic/pipeline/test/appGraphicPipelinePolygon.h"
+#include "../../graphic/pipeline/test/appGraphicPipelineModel.h"
 
 namespace app
 {
@@ -26,7 +27,8 @@ namespace app
 	{
 		m_pPipeline = NG_NEW(APP_GET_MEMALLOC(APPLICATION))
 			//CGraphicPipelineClearBuffer()
-			CGraphicPipelinePolygon()
+			//CGraphicPipelinePolygon()
+			CGraphicPipelineModel()
 			;
 
 		// グラフィックパイプライン初期化
