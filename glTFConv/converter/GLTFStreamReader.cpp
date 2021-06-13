@@ -7,8 +7,6 @@
 
 // ■参考URL:https://github.com/microsoft/glTF-SDK/blob/master/GLTFSDK.Samples/Deserialize/Source/main.cpp
 
-#include <algorithm>
-#include <vector>
 #include <filesystem>
 #include <fstream>
 #include <sstream>
@@ -54,8 +52,8 @@ namespace glTFConv
 	{
 		std::filesystem::path path(pFilePath);
 		
-		ng::DPrintf(L"Directory:%ls\n", path.parent_path().c_str());
-		ng::DPrintf(L"Filename:%ls\n", path.filename().c_str());
+		//ng::DPrintf(L"Directory:%ls\n", path.parent_path().c_str());
+		//ng::DPrintf(L"Filename:%ls\n", path.filename().c_str());
 		//ng::DPrintf(L"Stem:%ls\n", path.stem().c_str());
 		//ng::DPrintf(L"Extension:%ls\n", path.extension().c_str());
 		//ng::DPrintf(L"Native format:%ls\n", path.native().c_str());
