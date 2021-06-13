@@ -37,16 +37,15 @@ namespace ng
 */
 /*!
 * @brief					ロケール設定
-* @param					設定するカテゴリ
-* @param					設定する地域
+* @param category			設定するカテゴリ
+* @param locale				設定する地域。 空文字でデフォルトのロケール設定
 * @return					ロケールとカテゴリを示す文字列
 */
 NG_DECL char* SetLocale(int category, const char* locale);
 
 /*!
 * @brief					デフォルトのロケール設定（処理系依存）
-* @param					設定するカテゴリ
-* @param					設定する地域
+* @param category			設定するカテゴリ
 * @return					ロケールとカテゴリを示す文字列
 */
 NG_DECL char* SetLocaleDefault(int category);

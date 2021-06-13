@@ -23,6 +23,13 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "test", "test\test.vcxproj",
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ngLibGraphic", "ngLibGraphic\ngLibGraphic.vcxproj", "{8AE8F422-0A30-42D4-A201-E50F02160381}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "glTFConv", "glTFConv\glTFConv.vcxproj", "{AD392CE9-846B-4DAD-885C-4343369526A9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DAFAEE01-9390-4846-9435-B7B443EEDAC3} = {DAFAEE01-9390-4846-9435-B7B443EEDAC3}
+		{8AE8F422-0A30-42D4-A201-E50F02160381} = {8AE8F422-0A30-42D4-A201-E50F02160381}
+		{E4CD2E27-4C05-447D-ABD5-4077E6EDC9F9} = {E4CD2E27-4C05-447D-ABD5-4077E6EDC9F9}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -71,6 +78,14 @@ Global
 		{8AE8F422-0A30-42D4-A201-E50F02160381}.Release|x64.Build.0 = Release|x64
 		{8AE8F422-0A30-42D4-A201-E50F02160381}.Release|x86.ActiveCfg = Release|Win32
 		{8AE8F422-0A30-42D4-A201-E50F02160381}.Release|x86.Build.0 = Release|Win32
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Debug|x64.ActiveCfg = Debug|x64
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Debug|x64.Build.0 = Debug|x64
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Debug|x86.ActiveCfg = Debug|Win32
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Debug|x86.Build.0 = Debug|Win32
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Release|x64.ActiveCfg = Release|x64
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Release|x64.Build.0 = Release|x64
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Release|x86.ActiveCfg = Release|Win32
+		{AD392CE9-846B-4DAD-885C-4343369526A9}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

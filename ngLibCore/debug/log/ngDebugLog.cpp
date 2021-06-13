@@ -37,7 +37,7 @@ namespace ng
 		if(_getLocalTime(&newTime) == 0) {
 			char buf[32];
 			::asctime_s(buf, sizeof(buf), &newTime);
-			m_file.Write("[%.19s] %s\n", buf, pStr);
+			m_file.WriteString("[%.19s] %s\n", buf, pStr);
 			/*
 			m_file.Write(
 				"[%d02d月 %02d日 - %02d:%02d:%02d] %s", 
@@ -45,7 +45,7 @@ namespace ng
 				);
 			*/
 		} else {
-			m_file.Write(pStr);
+			m_file.WriteString(pStr);
 		}
 	}
 	void CDebugLog::Write(const wchar_t* pStr)
@@ -54,9 +54,9 @@ namespace ng
 		if(_getLocalTime(&newTime) == 0) {
 			wchar_t buf[32];
 			::_wasctime_s(buf, sizeof(buf), &newTime);
-			m_file.Write(L"[%.19s] %s\n", buf, pStr);
+			m_file.WriteString(L"[%.19s] %s\n", buf, pStr);
 		} else {
-			m_file.Write(pStr);
+			m_file.WriteString(pStr);
 		}
 	}
 
