@@ -113,7 +113,7 @@ namespace ng
 		return (dataNum == 1);
 	}
 
-	void CFile::Write(const char* format, ...)
+	void CFile::WriteString(const char* format, ...)
 	{
 		if(!IsOpen()) {
 			return;
@@ -127,7 +127,7 @@ namespace ng
 
 		::fflush(m_fp);
 	}
-	void CFile::Write(const wchar_t* format, ...)
+	void CFile::WriteString(const wchar_t* format, ...)
 	{
 		if(!IsOpen()) {
 			return;
@@ -140,6 +140,15 @@ namespace ng
 		va_end(args);
 
 		::fflush(m_fp);
+	}
+
+	size_type CFile::Write(const void* p, size_type size)
+	{
+		if(!IsOpen()) {
+			return 0;
+		}
+
+		return ::fwrite(p, size, 1, m_fp);
 	}
 
 	NG_ERRCODE CFile::Seek(long offset, int origin)

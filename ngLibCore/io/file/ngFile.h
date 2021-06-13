@@ -62,12 +62,20 @@ namespace ng
 		bool ReadAll(void* pDst);
 
 		/*!
-		* @brief					ファイルへ書き込み
+		* @brief					文字列をファイルへ書き込み
 		* @param format				文字列の書式
 		* @param ...				書き込む文字列（可変長）
 		*/
-		void Write(const char* format, ...);
-		void Write(const wchar_t* format, ...);
+		void WriteString(const char* format, ...);
+		void WriteString(const wchar_t* format, ...);
+
+		/*!
+		* @brief					ファイルへ書き込み
+		* @param p					書き込むデータへのポインタ
+		* @param size				書き込むデータのサイズ
+		* @return					書き込んだデータの個数
+		*/
+		size_type Write(const void* p, size_type size);
 
 		/*!
 		* @brief					ファイルポインタを移動する
