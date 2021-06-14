@@ -35,6 +35,10 @@ namespace glTFConv
 		size_t _writeMeshInfo(BinaryFormat::MeshHeader* pMeshHeader, const ModelFormat::Mesh& mesh) const;
 		/*! プリミティブの情報を書き込む */
 		size_t _writePrimitiveInfo(BinaryFormat::IndexHeader* pIndexHeader, const ModelFormat::Primitive& primitive) const;
+		/*! マテリアルの情報を書き込む */
+		size_t _writeMaterialInfo(BinaryFormat::MaterialHeader* pMaterialHeader, const ModelFormat::Material& material) const;
+		/*! テクスチャの情報を書き込む */
+		size_t _writeTextureInfo(BinaryFormat::TextureHeader* pTextureHeader, const ModelFormat::Texture& texture) const;
 	};
 
 }	// namespace glTFConv
