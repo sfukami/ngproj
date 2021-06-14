@@ -45,7 +45,21 @@ namespace glTFConv
 			std::vector<Primitive> primitives;	//!< プリミティブ
 		};
 
+		//! テクスチャ
+		struct Texture
+		{
+			std::string name;	//!< 名称
+			std::vector<char> data;	//!< 画像データ
+		};
+
+		//! マテリアル
+		struct Material
+		{
+			Texture diffuseMap;	//!< ディフューズマップ
+		};
+
 		std::vector<Mesh> meshes;	//!< メッシュ
+		std::vector<Material> materials;	//!< マテリアル
 	};
 
 }	// namespace glTFConv

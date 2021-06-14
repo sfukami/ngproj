@@ -20,9 +20,10 @@ namespace glTFConv
 
 	bool CModelBinaryWriter::Write(const char* pFilePath, const ModelFormat& modelFormat) const
 	{
+		// 出力するバイナリの総サイズを算出
 		size_t binarySize = 0;
 		{
-			size_t meshCount = 0, vertexCount = 0, primitiveCount = 0, indexCount = 0;
+			size_t meshCount = 0, vertexCount = 0, primitiveCount = 0, indexCount = 0, materialCount = 0, textureTotalSize = 0;
 			meshCount = modelFormat.meshes.size();
 			for(const auto& mesh : modelFormat.meshes)
 			{
@@ -33,6 +34,11 @@ namespace glTFConv
 					indexCount += primitive.indices.size();
 				}
 			}
+			materialCount = modelFormat.materials.size();
+			for(const auto& material : modelFormat.materials)
+			{
+				textureTotalSize += material.diffuseMap.data.size();
+			}
 
 			binarySize += sizeof(BinaryFormat::ModelHeader);
 			binarySize += meshCount * sizeof(BinaryFormat::MeshHeader);
@@ -40,13 +46,9 @@ namespace glTFConv
 			binarySize += vertexCount * sizeof(BinaryFormat::Vertex);
 			binarySize += primitiveCount * sizeof(BinaryFormat::IndexHeader);
 			binarySize += indexCount * sizeof(ng::u32);
-		}
-
-		ng::CFile outputFile;
-		NG_ERRCODE err = outputFile.Open(pFilePath, "wb");
-		if(NG_FAILED(err)) {
-			NG_ERRLOG_C("CModelBinaryWriter", err, "出力先ファイルのオープンに失敗しました.");
-			return false;
+			binarySize += materialCount * sizeof(BinaryFormat::MaterialHeader);
+			binarySize += materialCount * sizeof(BinaryFormat::TextureHeader);
+			binarySize += textureTotalSize;
 		}
 
 		char* pBinary = new char[binarySize];
@@ -54,6 +56,7 @@ namespace glTFConv
 		BinaryFormat* pBinaryFormat = new(pBinary) BinaryFormat;
 		pBinaryFormat->modelHeader.meshCount = static_cast<std::uint32_t>(modelFormat.meshes.size());
 
+		// メッシュ情報書き込み
 		BinaryFormat::MeshHeader* pMeshHeader = pBinaryFormat->modelHeader.GetMeshHeader();
 		for(const auto& mesh : modelFormat.meshes)
 		{
@@ -61,14 +64,33 @@ namespace glTFConv
 			pMeshHeader = ng::PointerOffset<BinaryFormat::MeshHeader*>(pMeshHeader, writeSize);
 		}
 
-		ng::size_type writeNum = outputFile.Write(pBinary, binarySize);
-		delete[] pBinary;
-		if(writeNum < 1) {
-			NG_ERRLOG("CModelBinaryWriter", "出力先ファイルの書き込みに失敗しました.");
-			return false;
+		// マテリアル情報書き込み
+		BinaryFormat::MaterialHeader* pMaterialHeader = ng::PointerCast<BinaryFormat::MaterialHeader*>(pMeshHeader);
+		for(const auto& material : modelFormat.materials)
+		{
+			size_t writeSize = _writeMaterialInfo(pMaterialHeader, material);
+			pMaterialHeader = ng::PointerOffset<BinaryFormat::MaterialHeader*>(pMaterialHeader, writeSize);
 		}
 
-		return true;
+		// ファイル出力
+		bool result = false;
+		ng::CFile outputFile;
+		NG_ERRCODE err = outputFile.Open(pFilePath, "wb");
+		if(NG_SUCCEEDED(err)) {
+			ng::size_type writeNum = outputFile.Write(pBinary, binarySize);
+			if(writeNum > 0) {
+				result = true;
+			}
+			else {
+				NG_ERRLOG("CModelBinaryWriter", "出力先ファイルの書き込みに失敗しました.");
+			}
+		} else {
+			NG_ERRLOG_C("CModelBinaryWriter", err, "出力先ファイルのオープンに失敗しました.");
+		}
+
+		delete[] pBinary;
+
+		return result;
 	}
 
 	size_t CModelBinaryWriter::_writeMeshInfo(BinaryFormat::MeshHeader* pMeshHeader, const ModelFormat::Mesh& mesh) const
@@ -106,6 +128,29 @@ namespace glTFConv
 		NG_MEMCPY(pIndexData, &primitive.indices[0], pIndexHeader->size);
 
 		return sizeof(BinaryFormat::IndexHeader) + pIndexHeader->size;
+	}
+
+	size_t CModelBinaryWriter::_writeMaterialInfo(BinaryFormat::MaterialHeader* pMaterialHeader, const ModelFormat::Material& material) const
+	{
+		size_t totalSize = sizeof(BinaryFormat::MaterialHeader);
+
+		pMaterialHeader->textureCount = 1U;
+
+		BinaryFormat::TextureHeader* pTextureHeader = pMaterialHeader->GetTextureHeader();
+		totalSize += _writeTextureInfo(pTextureHeader, material.diffuseMap);
+
+		return totalSize;
+	}
+
+	size_t CModelBinaryWriter::_writeTextureInfo(BinaryFormat::TextureHeader* pTextureHeader, const ModelFormat::Texture& texture) const
+	{
+		NG_STRCPY(pTextureHeader->name, texture.name.c_str());
+		pTextureHeader->size = static_cast<std::uint32_t>(texture.data.size());
+
+		char* pTextureData = pTextureHeader->GetTextureData();
+		NG_MEMCPY(pTextureData, &texture.data[0], pTextureHeader->size);
+
+		return sizeof(BinaryFormat::TextureHeader) + pTextureHeader->size;
 	}
 
 }	// namespace glTFConv
