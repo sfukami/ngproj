@@ -130,6 +130,7 @@ namespace glTFConv
 	{
 		NG_ASSERT_NOT_NULL(pOutput);
 
+		// メッシュ
 		for(const auto& mesh : document.meshes.Elements())
 		{
 			ModelFormat::Mesh& dstMesh = pOutput->meshes.emplace_back();
@@ -187,6 +188,25 @@ namespace glTFConv
 					pDstPrimitive->materialIndex = materialIndex;
 				}
 			}
+		}
+
+		// マテリアル
+		for(const auto& material : document.materials.Elements())
+		{
+			std::string textureId = material.metallicRoughness.baseColorTexture.textureId;
+			if(textureId.empty()) {
+				textureId = material.normalTexture.textureId;
+			}
+			if(textureId.empty()) continue;
+
+			auto& texture = document.textures.Get(textureId);
+			auto& image = document.images.Get(texture.imageId);
+			auto& imageBufferView = document.bufferViews.Get(image.bufferViewId);
+
+			ModelFormat::Material& dstMaterial = pOutput->materials.emplace_back();
+			ModelFormat::Texture& dstTexture = dstMaterial.diffuseMap;
+			dstTexture.name = image.name;
+			dstTexture.data = resourceReader.ReadBinaryData<char>(document, imageBufferView);
 		}
 	}
 
@@ -272,7 +292,7 @@ namespace glTFConv
 					const Microsoft::glTF::Accessor& idxAcc = document.accessors.Get(primitive.indicesAccessorId);
 					const auto idxData = resourceReader.ReadBinaryData<uint32_t>(document, idxAcc);
 
-					ng::Printf("    Positions:%u (%ubytes), Indices:%u, MaterialId:%s\n", posData.size(), posDataBytes, idxData.size(), primitive.materialId.c_str());
+					ng::Printf("    Positions:%u (%uBytes), Indices:%u, MaterialId:%s\n", posData.size(), posDataBytes, idxData.size(), primitive.materialId.c_str());
 				}
 			}
 		}
@@ -298,7 +318,7 @@ namespace glTFConv
 			}
 
 			auto data = resourceReader.ReadBinaryData(document, image);
-			ng::Printf("  -Image Id:%s, Name:%s (%ubytes)\n", image.id.c_str(), image.name.c_str(), data.size());
+			ng::Printf("  -Image Id:%s, Name:%s (%uBytes)\n", image.id.c_str(), image.name.c_str(), data.size());
 			if(!filename.empty()) {
 				ng::Printf("    filename:%s\n", filename.c_str());
 			}
@@ -310,6 +330,8 @@ namespace glTFConv
 		NG_ASSERT_NOT_NULL(pModelFormat);
 
 		ng::Printf("[Model Format]\n");
+		// メッシュ
+		ng::Printf("Mesh Count:%u\n", pModelFormat->meshes.size());
 		int meshIndex = 0;
 		for(const auto& mesh : pModelFormat->meshes)
 		{
@@ -319,10 +341,19 @@ namespace glTFConv
 			int primitiveIndex = 0;
 			for(const auto& primitive : mesh.primitives)
 			{
-				ng::Printf("      %d: IndexCount:%u, MaterialIndex:%u\n", primitiveIndex, primitive.indices.size(), primitiveIndex);
+				ng::Printf("      %d: IndexCount:%u, MaterialIndex:%u\n", primitiveIndex, primitive.indices.size(), primitive.materialIndex);
 				primitiveIndex++;
 			}
 			meshIndex++;
+		}
+		// マテリアル
+		ng::Printf("Material Count:%u\n", pModelFormat->materials.size());
+		int materialIndex = 0;
+		for(const auto& material : pModelFormat->materials)
+		{
+			ng::Printf("  -Material %d:\n", materialIndex);
+			ng::Printf("    DiffuseMap:%s (%uBytes)\n", material.diffuseMap.name.c_str(), material.diffuseMap.data.size());
+			materialIndex++;
 		}
 	}
 

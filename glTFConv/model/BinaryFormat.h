@@ -20,6 +20,7 @@ namespace glTFConv
 		struct MeshHeader;
 		struct VertexHeader;
 		struct IndexHeader;
+		struct MaterialHeader;
 
 		//! モデルヘッダ
 		struct ModelHeader
@@ -27,10 +28,12 @@ namespace glTFConv
 			ModelHeader();
 			MeshHeader* GetMeshHeader();
 			const MeshHeader* GetMeshHeader() const;
+
 			bool CheckSignature() const;
 
 			char signature[4];	//!< シグネチャ
 			std::uint32_t meshCount;	//!< メッシュ数
+			std::uint32_t materialCount;	//!< マテリアル数
 		};
 
 		//! メッシュヘッダ
@@ -64,7 +67,7 @@ namespace glTFConv
 			std::uint32_t size;		//!< 総サイズ（バイト）
 		};
 
-		//!< インデックスヘッダ
+		//! インデックスヘッダ
 		struct IndexHeader
 		{
 			ng::u32* GetIndexData();
@@ -77,6 +80,27 @@ namespace glTFConv
 			std::uint32_t materialIndex;	//!< マテリアルのインデックス
 		};
 
+		//! テクスチャ
+		struct TextureHeader
+		{
+			char* GetTextureData();
+			const char* GetTextureData() const;
+			TextureHeader* GetNextTextureHeader();
+			const TextureHeader* GetNextTextureHeader() const;
+
+			char name[256];		//!< 名称
+			std::uint32_t size;		//!< 総サイズ（バイト）
+		};
+
+		//! マテリアルヘッダ
+		struct MaterialHeader
+		{
+			TextureHeader* GetTextureHeader();
+			const TextureHeader* GetTextureHeader() const;
+
+			std::uint32_t textureCount;	//!< テクスチャ数
+		};
+
 		ModelHeader modelHeader;	//!< モデルヘッダ
 	};
 
@@ -86,7 +110,7 @@ namespace glTFConv
 	}
 	inline const BinaryFormat::MeshHeader* BinaryFormat::ModelHeader::GetMeshHeader() const
 	{
-		return const_cast<BinaryFormat::ModelHeader*>(this)->GetMeshHeader();
+		return const_cast<ModelHeader*>(this)->GetMeshHeader();
 	}
 
 	inline bool BinaryFormat::ModelHeader::CheckSignature() const
@@ -100,7 +124,7 @@ namespace glTFConv
 	}
 	inline const BinaryFormat::VertexHeader* BinaryFormat::MeshHeader::GetVertexHeader() const
 	{
-		return const_cast<BinaryFormat::MeshHeader*>(this)->GetVertexHeader();
+		return const_cast<MeshHeader*>(this)->GetVertexHeader();
 	}
 
 	inline BinaryFormat::IndexHeader* BinaryFormat::MeshHeader::GetIndexHeader()
@@ -111,7 +135,7 @@ namespace glTFConv
 	}
 	inline const BinaryFormat::IndexHeader* BinaryFormat::MeshHeader::GetIndexHeader() const
 	{
-		return const_cast<BinaryFormat::MeshHeader*>(this)->GetIndexHeader();
+		return const_cast<MeshHeader*>(this)->GetIndexHeader();
 	}
 
 	inline BinaryFormat::Vertex* BinaryFormat::VertexHeader::GetVertexData()
@@ -120,7 +144,7 @@ namespace glTFConv
 	}
 	inline const BinaryFormat::Vertex* BinaryFormat::VertexHeader::GetVertexData() const
 	{
-		return const_cast<BinaryFormat::VertexHeader*>(this)->GetVertexData();
+		return const_cast<VertexHeader*>(this)->GetVertexData();
 	}
 
 	inline ng::u32* BinaryFormat::IndexHeader::GetIndexData()
@@ -129,7 +153,7 @@ namespace glTFConv
 	}
 	inline const ng::u32* BinaryFormat::IndexHeader::GetIndexData() const
 	{
-		return const_cast<BinaryFormat::IndexHeader*>(this)->GetIndexData();
+		return const_cast<IndexHeader*>(this)->GetIndexData();
 	}
 
 	inline BinaryFormat::IndexHeader* BinaryFormat::IndexHeader::GetNextIndexHeader()
@@ -138,7 +162,34 @@ namespace glTFConv
 	}
 	inline const BinaryFormat::IndexHeader* BinaryFormat::IndexHeader::GetNextIndexHeader() const
 	{
-		return const_cast<BinaryFormat::IndexHeader*>(this)->GetNextIndexHeader();
+		return const_cast<IndexHeader*>(this)->GetNextIndexHeader();
+	}
+
+	inline char* BinaryFormat::TextureHeader::GetTextureData()
+	{
+		return ng::PointerOffset<char*>(this, sizeof(*this));
+	}
+	inline const char* BinaryFormat::TextureHeader::GetTextureData() const
+	{
+		return const_cast<TextureHeader*>(this)->GetTextureData();
+	}
+
+	inline BinaryFormat::TextureHeader* BinaryFormat::TextureHeader::GetNextTextureHeader()
+	{
+		return ng::PointerOffset<TextureHeader*>(GetTextureData(), size);
+	}
+	inline const BinaryFormat::TextureHeader* BinaryFormat::TextureHeader::GetNextTextureHeader() const
+	{
+		return const_cast<TextureHeader*>(this)->GetNextTextureHeader();
+	}
+
+	inline BinaryFormat::TextureHeader* BinaryFormat::MaterialHeader::GetTextureHeader()
+	{
+		return ng::PointerOffset<TextureHeader*>(this, sizeof(*this));
+	}
+	inline const BinaryFormat::TextureHeader* BinaryFormat::MaterialHeader::GetTextureHeader() const
+	{
+		return const_cast<MaterialHeader*>(this)->GetTextureHeader();
 	}
 
 }	// namespace glTFConv
