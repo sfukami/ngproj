@@ -9,7 +9,6 @@
 #include "appResourceSystem.h"
 #include "../graphic/texture/appTexture.h"
 #include "../graphic/shader/appShader.h"
-#include "../graphic/material/appMaterialData.h"
 #include "app/memory/appMemoryUtil.h"
 
 //! ログ出力有効
