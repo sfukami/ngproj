@@ -9,13 +9,12 @@
 #define __APP_SPRITE_H__
 
 #include "../appRenderable.h"
-#include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
 #include "app/transform/appTransformObject.h"
+#include "ngLibGraphic/graphic/dx12/polygon/shape/ngDX12ShapeSquare.h"
 #include "app/graphic/material/appMaterial.h"
 
 namespace app
 {
-	class CMaterialData;
 	struct RenderParam;
 }
 
@@ -34,13 +33,11 @@ namespace app
 		* @brief					生成
 		* @param width				幅
 		* @param height				高さ
-		* @param pMaterialData		マテリアルデータ。nullptr の場合は、デフォルトのマテリアルデータを使用する
 		* @return					成否
 		*/
 		bool Create(
 			unsigned int width
 			, unsigned int height
-			, const CMaterialData* pMaterialData = nullptr
 			);
 
 		/*!

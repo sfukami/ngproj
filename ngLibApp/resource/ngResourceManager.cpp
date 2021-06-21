@@ -61,7 +61,7 @@ namespace ng
 		return true;
 	}
 
-	bool CResourceManager::Get(const char* pKey, IResourceHandle& handle)
+	bool CResourceManager::Get(const char* pKey, IResourceHandle& handle) const
 	{
 		if(!TryGet(pKey, handle)) {
 			NG_WARNLOG("ResourceManager", "リソースの取得に失敗しました. key:%s", pKey);
@@ -71,7 +71,7 @@ namespace ng
 		return true;
 	}
 
-	bool CResourceManager::TryGet(const char* pKey, IResourceHandle& handle)
+	bool CResourceManager::TryGet(const char* pKey, IResourceHandle& handle) const
 	{
 		NG_ASSERT(_isInit());
 

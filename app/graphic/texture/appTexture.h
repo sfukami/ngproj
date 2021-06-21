@@ -37,6 +37,11 @@ namespace app
 		void Destroy();
 
 		/*!
+		* @brief					リソースタイプ取得
+		*/
+		int GetResourceType() const;
+		
+		/*!
 		* @brief					DX12テクスチャ取得
 		*/
 		ng::CDX12Texture& GetTexture();

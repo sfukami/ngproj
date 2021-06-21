@@ -27,6 +27,11 @@ namespace ng
 		* @return					成否
 		*/
 		virtual bool Build(const void* pBinary, ng::size_type size, const void* pBuildParam) = 0;
+
+		/*!
+		* @brief					リソースタイプ取得
+		*/
+		virtual int GetResourceType() const = 0;
 	};
 
 }	// namespace ng

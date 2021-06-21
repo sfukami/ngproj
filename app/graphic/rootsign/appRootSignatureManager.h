@@ -53,6 +53,11 @@ namespace app
 		bool Get(const char* name, ng::CWeakPtr<ng::CDX12RootSignature>& dstPtr) const;
 
 	private:
+		/*! DX12ルートシグネチャ生成 */
+		template <class T>
+		bool _createRootSignature(ng::IMemoryAllocator& alloc, ng::CDX12Device& device);
+
+	private:
 		//! DX12ルートシグネチャ ハッシュマップ
 		using MapType = ng::CFixedHashMap<const char*, ng::CSharedPtr<ng::CDX12RootSignature>, APP_GRAPHIC_ROOT_SIGNATURE_MAX>;
 

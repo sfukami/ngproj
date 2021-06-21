@@ -12,13 +12,16 @@
 namespace app
 {
 	CMesh::CMesh()
+		: m_materialIndex(0)
 	{
 	}
 	CMesh::~CMesh()
 	{
 	}
 
-	bool CMesh::Create(const void* pVertices, ng::u32 verticesSize, const ng::u32* pIndices, ng::u32 indicesSize)
+	bool CMesh::Create(
+		const void* pVertices, ng::u32 verticesSize, const ng::u32* pIndices, ng::u32 indicesSize, ng::u32 materialIndex
+		)
 	{
 		ng::CDX12Device* pDX12Device = GraphicUtil::GetDX12Device();
 
@@ -37,6 +40,8 @@ namespace app
 			return false;
 		}
 
+		m_materialIndex = materialIndex;
+		
 		return true;
 	}
 
@@ -50,6 +55,11 @@ namespace app
 		) const
 	{
 		m_polygon.Render(commandList);
+	}
+
+	ng::u32 CMesh::GetMaterialIndex() const
+	{
+		return m_materialIndex;
 	}
 
 }	// namespace app

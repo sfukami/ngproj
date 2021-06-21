@@ -8,7 +8,6 @@
 #ifndef __APP_MESH_H__
 #define __APP_MESH_H__
 
-#include "ngLibCore/container/list/intrusive/ngIntrusiveListNode.h"
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12Polygon.h"
 
 namespace ng
@@ -21,7 +20,7 @@ namespace app
 	/*!
 	* @brief					メッシュ
 	*/
-	class CMesh : public ng::CIntrusiveListNode<CMesh>
+	class CMesh
 	{
 	public:
 		CMesh();
@@ -33,9 +32,12 @@ namespace app
 		* @param verticesSize		頂点データサイズ
 		* @param pIndices			インデックスデータ
 		* @param indicesSize		インデックスデータサイズ
+		* @param materialIndex		マテリアルのインデックス
 		* @return					成否
 		*/
-		bool Create(const void* pVertices, ng::u32 verticesSize, const ng::u32* pIndices, ng::u32 indicesSize);
+		bool Create(
+			const void* pVertices, ng::u32 verticesSize, const ng::u32* pIndices, ng::u32 indicesSize, ng::u32 materialIndex
+			);
 
 		/*!
 		* @brief					破棄
@@ -50,8 +52,12 @@ namespace app
 			ng::CDX12CommandList& commandList
 			) const;
 
+		/*! マテリアルのインデックスを取得 */
+		ng::u32 GetMaterialIndex() const;
+		
 	private:
 		ng::CDX12Polygon m_polygon;	//!< DX12ポリゴン
+		ng::u32 m_materialIndex;	//!< マテリアルのインデックス
 	};
 
 }	// namespace app

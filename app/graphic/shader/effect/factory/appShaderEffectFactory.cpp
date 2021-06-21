@@ -7,6 +7,9 @@
 
 #include "appShaderEffectFactory.h"
 
+// シェーダーエフェクト
+#include "../appShaderEffectSprite.h"
+
 // シェーダーエフェクト テーブル
 #include "appShaderEffectTable.cpp"
 
@@ -25,11 +28,14 @@ namespace app
 		bool result = true;
 
 		// シェーダーエフェクトテーブル宣言
-		_DECLARE_SHADER_EFFECT_TABLE();
+		const ShaderEffectInfo shdEffTbl[] = {
+			_SHADER_EFFECT_INFO("sprite", CShaderEffectSprite),
+			_SHADER_EFFECT_INFO("model", CShaderEffectSprite),
+		};
 
-		for(int i = 0; i < NG_ARRAY_SIZE(_SHADER_EFFECT_TABLE); i++)
+		for(int i = 0; i < NG_ARRAY_SIZE(shdEffTbl); i++)
 		{
-			const ShaderEffectInfo& info = _SHADER_EFFECT_TABLE[i];
+			const ShaderEffectInfo& info = shdEffTbl[i];
 
 			if(!m_funcMap.Add(info.name, info.func)) {
 				NG_ERRLOG("ShaderEffectFactory", "シェーダーエフェクト生成関数の追加に失敗しました. name:%s", info.name);

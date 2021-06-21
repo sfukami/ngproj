@@ -19,9 +19,14 @@ namespace app
 	{
 		TextureFormat();
 		void SetFilePath(const char* _filePath);
+		void SetName(const char* _name);
 
-		char filePath[256];	//!< ファイルパス
-		void* pBinary;		//!< バイナリへの参照
+		union {
+			char filePath[256];		//!< ファイルパス
+			char name[256];		//!< 名称
+		};
+		const void* pBinary;	//!< バイナリへの参照
+		ng::u32 size;	//!< バイナリのサイズ（バイト）
 	};
 
 	/*!
@@ -37,7 +42,8 @@ namespace app
 		char filePath[256];		//!< ファイルパス
 		char entryPoint[32];	//!< エントリポイント
 		char target[8];		//!< ビルドターゲット
-		void* pBinary;		//!< バイナリへの参照
+		const void* pBinary;	//!< バイナリへの参照
+		ng::u32 size;	//!< バイナリのサイズ（バイト）
 	};
 
 	/*!

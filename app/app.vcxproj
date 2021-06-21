@@ -42,8 +42,7 @@
     <ClCompile Include="graphic\appGraphicModule.cpp" />
     <ClCompile Include="graphic\appGraphicUtil.cpp" />
     <ClCompile Include="graphic\material\appMaterial.cpp" />
-    <ClCompile Include="graphic\material\appMaterialData.cpp" />
-    <ClCompile Include="graphic\material\appMaterialDataPreset.cpp" />
+    <ClCompile Include="graphic\material\appMaterialBuilder.cpp" />
     <ClCompile Include="graphic\material\appMaterialFormat.cpp" />
     <ClCompile Include="graphic\model\appMesh.cpp" />
     <ClCompile Include="graphic\model\appModel.cpp" />
@@ -57,12 +56,12 @@
     <ClCompile Include="graphic\render\appRenderable.cpp" />
     <ClCompile Include="graphic\render\appRenderParam.cpp" />
     <ClCompile Include="graphic\render\sprite\appSprite.cpp" />
-    <ClCompile Include="graphic\rootsign\appRootSignatureInfo.cpp" />
     <ClCompile Include="graphic\rootsign\appRootSignatureManager.cpp" />
-    <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescSprite.cpp" />
+    <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescDef.cpp" />
     <ClCompile Include="graphic\shader\appShader.cpp" />
     <ClCompile Include="graphic\shader\effect\appShaderEffect.cpp" />
     <ClCompile Include="graphic\shader\effect\appShaderEffectSprite.cpp" />
+    <ClCompile Include="graphic\shader\effect\appShaderParam.cpp" />
     <ClCompile Include="graphic\shader\effect\factory\appShaderEffectFactory.cpp" />
     <ClCompile Include="graphic\shader\effect\factory\appShaderEffectTable.cpp" />
     <ClCompile Include="graphic\state\appPipelineStateManager.cpp" />
@@ -74,7 +73,6 @@
     <ClCompile Include="memory\appApplicationMemory.cpp" />
     <ClCompile Include="memory\appApplicationMemorySize.cpp" />
     <ClCompile Include="memory\appMemoryModule.cpp" />
-    <ClCompile Include="resource\appResourceExtTable.cpp" />
     <ClCompile Include="resource\appResourceModule.cpp" />
     <ClCompile Include="resource\appResourceSystem.cpp" />
     <ClCompile Include="resource\memory\appResourceMemory.cpp" />
@@ -126,8 +124,7 @@
     <ClInclude Include="graphic\appGraphicUtil.h" />
     <ClInclude Include="graphic\command\appGraphicCommandListId.h" />
     <ClInclude Include="graphic\material\appMaterial.h" />
-    <ClInclude Include="graphic\material\appMaterialData.h" />
-    <ClInclude Include="graphic\material\appMaterialDataPreset.h" />
+    <ClInclude Include="graphic\material\appMaterialBuilder.h" />
     <ClInclude Include="graphic\material\appMaterialFormat.h" />
     <ClInclude Include="graphic\model\appMesh.h" />
     <ClInclude Include="graphic\model\appModel.h" />
@@ -141,12 +138,12 @@
     <ClInclude Include="graphic\render\appRenderable.h" />
     <ClInclude Include="graphic\render\appRenderParam.h" />
     <ClInclude Include="graphic\render\sprite\appSprite.h" />
-    <ClInclude Include="graphic\rootsign\appRootSignatureInfo.h" />
     <ClInclude Include="graphic\rootsign\appRootSignatureManager.h" />
-    <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescSprite.h" />
+    <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescDef.h" />
     <ClInclude Include="graphic\shader\appShader.h" />
     <ClInclude Include="graphic\shader\effect\appShaderEffect.h" />
     <ClInclude Include="graphic\shader\effect\appShaderEffectSprite.h" />
+    <ClInclude Include="graphic\shader\effect\appShaderParam.h" />
     <ClInclude Include="graphic\shader\effect\factory\appShaderEffectFactory.h" />
     <ClInclude Include="graphic\state\appPipelineStateManager.h" />
     <ClInclude Include="graphic\texture\appTexture.h" />
@@ -163,6 +160,7 @@
     <ClInclude Include="preincl\appPreInclude.h" />
     <ClInclude Include="resource\appResourceModule.h" />
     <ClInclude Include="resource\appResourceSystem.h" />
+    <ClInclude Include="resource\appResourceType.h" />
     <ClInclude Include="resource\memory\appResourceMemory.h" />
     <ClInclude Include="resource\memory\appResourceMemorySize.h" />
     <ClInclude Include="resource\memory\appResourceMemoryType.h" />

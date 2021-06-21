@@ -47,6 +47,11 @@ namespace app
 		*/
 		void Destroy();
 
+		/*!
+		* @brief					リソースタイプ取得
+		*/
+		int GetResourceType() const;
+		
 		/*! DX12シェーダー取得 */
 		ng::CDX12Shader& GetDX12Shader();
 		const ng::CDX12Shader& GetDX12Shader() const;

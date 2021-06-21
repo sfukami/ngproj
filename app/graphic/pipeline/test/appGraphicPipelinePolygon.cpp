@@ -20,10 +20,10 @@ using namespace DirectX;
 
 namespace app
 {
-	//! シェーダーパラメータ
-	struct ShaderParam
+	//! コンスタントバッファ
+	struct CBuffer
 	{
-		ShaderParam()
+		CBuffer()
 			: color(1,1,1,1)
 		{ ng::MatrixOp::Identity(matWVP); }
 		ng::Matrix4 matWVP;
@@ -106,7 +106,7 @@ namespace app
 		{
 			NG_ERRCODE err = m_constBuf.Create(
 				*pDX12Device,
-				nullptr, sizeof(ShaderParam)
+				nullptr, sizeof(CBuffer)
 				);
 			if(NG_FAILED(err)) {
 				NG_ERRLOG_C("GraphicPipelinePolygon", err, "DX12コンスタントバッファの生成に失敗しました.");
@@ -290,10 +290,10 @@ namespace app
 			ng::MatrixOp::Multiply(matWVP, matWorld, matWVP);
 			ng::MatrixOp::Transpose(matWVP, matWVP);
 
-			ShaderParam shdPrm;
-			shdPrm.matWVP = matWVP;
-			shdPrm.color = ng::Color(0,1,0);
-			m_constBuf.CopyData(&shdPrm, sizeof(ShaderParam));
+			CBuffer cb;
+			cb.matWVP = matWVP;
+			cb.color = ng::Color(0,1,0);
+			m_constBuf.CopyData(&cb, sizeof(CBuffer));
 
 			// ディスクリプタヒープ設定
 			pCmdList->SetDescriptorHeap(m_descHeap);

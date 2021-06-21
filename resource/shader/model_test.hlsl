@@ -11,8 +11,17 @@
 cbuffer ShaderParameter : register(b0)
 {
 	float4x4 wvp;
-	float4 color;
 };
+
+// --------------------------------
+// Texure
+// --------------------------------
+Texture2D<float4>	tex0	: register(t0);
+
+// --------------------------------
+// Sampler
+// --------------------------------
+SamplerState		samp0	: register(s0);
 
 // --------------------------------
 // VS Input/Output
@@ -26,6 +35,7 @@ struct VSInput
 struct VSOutput
 {
 	float4 pos			: SV_POSITION;
+	float4 uv			: TEXCOORD;
 };
 
 // --------------------------------
@@ -33,11 +43,12 @@ struct VSOutput
 // --------------------------------
 VSOutput VSMain(VSInput In)
 {
-	VSOutput result = (VSOutput)0;
+	VSOutput Out = (VSOutput)0;
 
-	result.pos = mul(In.pos, wvp);
+	Out.pos = mul(In.pos, wvp);
+	Out.uv = In.uv;
 
-	return result;
+	return Out;
 }
 
 // --------------------------------
@@ -45,5 +56,5 @@ VSOutput VSMain(VSInput In)
 // --------------------------------
 float4 PSMain(VSOutput In) : SV_TARGET
 {
-	return color;
+	return tex0.Sample(samp0, In.uv);
 }

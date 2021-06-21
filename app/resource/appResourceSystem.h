@@ -26,6 +26,46 @@ namespace app
 	class CResourceSystem
 	{
 	public:
+		static const ng::u32 ResKeyLength;	//!< リソースのキーの長さ
+
+	public:
+		/*! ロードパラメータ */
+		struct LoadParam
+		{
+			struct File;
+			struct Binary;
+			LoadParam(const File& _file, const char* _resName, eResourceMemoryType _resMemType, const void* _pBuildParam = nullptr);
+			LoadParam(const Binary& _binary, const char* _resName, eResourceMemoryType _resMemType, const void* _pBuildParam = nullptr);
+
+			//! ファイル
+			struct File
+			{
+				File();
+				File(const File& _file);
+				File(const char* _filePath);
+				bool IsValid() const;
+
+				const char* filePath;	//!< リソースファイルのパス
+			} file;
+			//! バイナリ
+			struct Binary
+			{
+				Binary();
+				Binary(const Binary& _binary);
+				Binary(const void* _pData, ng::u32 _dataSize, const char* _owner);
+				bool IsValid() const;
+
+				const void* pData;		//!< リソースデータ
+				ng::u32 dataSize;		//!< リソースデータのサイズ
+				const char* owner;		//!< リソースの所有者（ファイルパスなど一意のもの）
+			} binary;
+
+			const char* resName;	//!< リソース名（ファイルパスが一意の場合は不要）
+			eResourceMemoryType resMemType;	//!< リソースメモリタイプ
+			const void* pBuildParam;	//!< ビルドパラメータ
+		};
+
+	public:
 		CResourceSystem();
 		~CResourceSystem();
 
@@ -44,38 +84,24 @@ namespace app
 
 		/*!
 		* @brief					リソース読み込み
-		* @param fileName			ファイル名
-		* @param resMemType			リソースメモリタイプ
-		* @param pBuildParam		ビルドパラメータ
+		* @param param				ロードパラメータ
 		* @param handle				格納先のリソースハンドル
 		* @return					成否
 		*/
-		bool LoadResource(
-			const char* fileName, eResourceMemoryType resMemType, const void* pBuildParam, ng::IResourceHandle& handle
-			);
+		template <class T>
+		bool LoadResource(const LoadParam& param, ng::IResourceHandle& handle);
 
 	private:
-		/*! ファイル拡張子判定 */
-		bool _checkExtTable(const char* ext, const char* pExtTable[], unsigned int tableSize) const;
-
+		/*! リソース取得 */
+		bool _findResource(const LoadParam& param, ng::IResourceHandle& handle) const;
 		/*! リソース読み込み */
-		template <class T>
-		bool _loadResource(
-			const char* fileName, ng::IMemoryAllocator& alloc, const void* pBuildParam, ng::IResourceHandle& handle
-			);
-
+		bool _loadResource(const LoadParam& param, ng::CSharedPtr<ng::IResource>& resPtr, ng::IResourceHandle& handle);
 		/*! ファイル読み込み */
-		bool _loadFile(const char* fileName, void** ppFileData, ng::size_type* pFileSize);
-
-		/*! リソース構築 */
-		bool _buildResource(
-			ng::CSharedPtr<ng::IResource>& resPtr, const void* pFileData, ng::size_type fileSize, const void* pBuildParam
-			);
-
-		/*! リソース追加 */
-		bool _addResource(
-			const char* fileName, ng::CSharedPtr<ng::IResource>& resPtr, ng::IResourceHandle& handle
-			);
+		bool _loadFile(const char* fileName, void** ppData, ng::size_type* pDataSize) const;
+		/*! リソース登録 */
+		bool _addResource(const LoadParam& param, ng::CSharedPtr<ng::IResource>& resPtr, ng::IResourceHandle& handle);
+		/*! リソースキー生成 */
+		bool _createResKey(const LoadParam& param, char* pDst) const;
 
 	private:
 		CResourceMemory m_resMem;	//!< リソースメモリ
@@ -83,28 +109,18 @@ namespace app
 	};
 
 	template <class T>
-	bool CResourceSystem::_loadResource(
-		const char* fileName, ng::IMemoryAllocator& alloc, const void* pBuildParam, ng::IResourceHandle& handle
-		)
+	bool CResourceSystem::LoadResource(const LoadParam& param, ng::IResourceHandle& handle)
 	{
-		void* pFileData = nullptr;
-		ng::size_type fileSize = 0;
-
-		// ファイル読み込み
-		if(!_loadFile(fileName, &pFileData, &fileSize)) {
-			return false;
+		// 既にリソースが存在する場合は、それを返却
+		if(_findResource(param, handle)) {
+			return true;
 		}
 
-		// リソース生成 & 構築
-		auto resPtr = ng::StaticCast<ng::IResource>(NG_MAKE_SHARED_PTR(T, alloc));
-		bool result = _buildResource(resPtr, pFileData, fileSize, pBuildParam);
+		auto allocPtr = m_resMem.GetAllocator(param.resMemType);
+		auto resPtr = ng::StaticCast<ng::IResource>(NG_MAKE_SHARED_PTR(T, *allocPtr));
 
-		if(result) {
-			// リソース追加
-			result = _addResource(fileName, resPtr, handle);
-		}
-
-		return result;
+		// リソース読み込み
+		return _loadResource(param, resPtr, handle);
 	}
 
 }	// namespace app

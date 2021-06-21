@@ -7,7 +7,6 @@
 
 #include "ngLibGraphic/graphic/dx12/command/list/ngDX12CommandList.h"
 #include "appShaderEffectSprite.h"
-#include "app/graphic/material/appMaterial.h"
 
 namespace app
 {
@@ -19,10 +18,7 @@ namespace app
 		Destroy();
 	}
 
-	bool CShaderEffectSprite::Create(
-		ng::CDX12Device& device,
-		CMaterial& material
-		)
+	bool CShaderEffectSprite::Create(ng::CDX12Device& device)
 	{
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
@@ -30,7 +26,7 @@ namespace app
 		if(NG_FAILED(err = m_descHeap.Create(
 			device,
 			D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV,
-			2,
+			1,
 			D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
 			))) {
 			NG_ERRLOG_C("ShaderEffectSprite", err, "DX12ディスクリプタヒープの生成に失敗しました.");
@@ -51,17 +47,6 @@ namespace app
 			device, m_descHeap, 0
 			);
 
-		// ディフューズマップのリソースビューを生成
-		{
-			ng::CWeakPtr<CTexture> diffuseMap = material.GetDiffuseMap();
-			if(diffuseMap) {
-				diffuseMap->GetTexture().CreateResourceView(
-					device,
-					m_descHeap, 1
-					);
-			}
-		}
-
 		return true;
 	}
 
@@ -73,7 +58,7 @@ namespace app
 
 	void CShaderEffectSprite::SetShaderParam(const ShaderParam& param)
 	{
-		m_shPrm = param;
+		NG_MEMCPY(&m_shPrm, &param, sizeof(param));
 	}
 
 	void CShaderEffectSprite::UpdateConstantBuffer()
@@ -83,12 +68,12 @@ namespace app
 
 	void CShaderEffectSprite::BindResource(ng::CDX12CommandList& commandList)
 	{
-		// ディスクリプタヒープ設定
-		commandList.SetDescriptorHeap(m_descHeap);
-		// コンスタントバッファのディスクリプタテーブルを設定
-		commandList.SetGraphicsRootDescriptorTable(0, m_descHeap.GetGPUDescriptorHandle(0));
-		// テクスチャのディスクリプタテーブルを設定
-		commandList.SetGraphicsRootDescriptorTable(1, m_descHeap.GetGPUDescriptorHandle(1));
+		if(m_descHeap.IsValid()) {
+			// ディスクリプタヒープ設定
+			commandList.SetDescriptorHeap(m_descHeap);
+			// コンスタントバッファのディスクリプタテーブルを設定
+			commandList.SetGraphicsRootDescriptorTable(0, m_descHeap.GetGPUDescriptorHandle(0));
+		}
 	}
 
 }	// namespace app

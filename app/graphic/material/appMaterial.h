@@ -10,6 +10,7 @@
 
 #include "ngLibCore/memory/pointer/ngSharedPtr.h"
 #include "ngLibCore/memory/pointer/ngWeakPtr.h"
+#include "ngLibGraphic/graphic/dx12/descriptor/ngDX12DescriptorHeap.h"
 #include "ngLibApp/resource/ngResourceHandle.h"
 #include "../texture/appTexture.h"
 #include "../shader/appShader.h"
@@ -17,6 +18,7 @@
 namespace ng
 {
 	class IResourceHandle;
+	class CDX12Device;
 	class CDX12CommandList;
 	class CDX12RootSignature;
 	class CDX12PipelineState;
@@ -25,7 +27,6 @@ namespace ng
 namespace app
 {
 	struct ShaderFormat;
-	class CMaterialData;
 	class CShaderEffect;
 }
 
@@ -36,16 +37,18 @@ namespace app
 	*/
 	class CMaterial
 	{
+		friend class CMaterialBuilder;
+
 	public:
 		CMaterial();
 		~CMaterial();
 
 		/*!
-		* @brief					マテリアル生成
-		* @param data				マテリアルデータ
+		* @brief					生成
+		* @param device				DX12デバイス
 		* @return					成否
 		*/
-		bool Create(const CMaterialData& data);
+		bool Create(ng::CDX12Device& device);
 
 		/*!
 		* @brief					破棄
@@ -53,28 +56,25 @@ namespace app
 		void Destroy();
 
 		/*!
-		* @brief					マテリアル複製
-		* @param dst				コピー先のマテリアル
-		*/
-		void CopyMaterial(CMaterial& dst) const;
-
-		/*!
 		* @brief					DX12ルートシグネチャをコマンドリストへ設定
 		* @param commandList		DX12コマンドリスト
 		*/
-		void SetRootSignature(ng::CDX12CommandList& commandList);
-		
+		void BindRootSignature(ng::CDX12CommandList& commandList);
+
 		/*!
 		* @brief					DX12パイプラインステートをコマンドリストへ設定
 		* @param commandList		DX12コマンドリスト
 		*/
-		void SetPipelineState(ng::CDX12CommandList& commandList);
+		void BindPipelineState(ng::CDX12CommandList& commandList);
 
+		/*!
+		* @brief					リソースをバインド
+		* @param commandList		DX12コマンドリスト
+		*/
+		void BindResource(ng::CDX12CommandList& commandList);
+		
 		/*! ディフューズマップ取得 */
 		ng::CWeakPtr<CTexture> GetDiffuseMap() const;
-
-		/*! シェーダーエフェクト取得 */
-		ng::CWeakPtr<CShaderEffect> GetShaderEffect() const;
 
 		/*! DX12ルートシグネチャ取得 */
 		ng::CWeakPtr<ng::CDX12RootSignature> GetRootSignature() const;
@@ -82,17 +82,16 @@ namespace app
 		/*! DX12パイプラインステート */
 		ng::CWeakPtr<ng::CDX12PipelineState> GetPipelineState() const;
 
+		/*! シェーダーエフェクト取得 */
+		ng::CWeakPtr<CShaderEffect> GetShaderEffect() const;
+
 	private:
-		/*! リソース読み込み */
-		bool _loadResource(const char* filePath, const void* pBuildParam, ng::IResourceHandle& handle);
-		/*! シェーダーリソース読み込み */
-		bool _loadShaderResource(const ShaderFormat& shaderFormat, ng::IResourceHandle& handle);
-		/*! DX12ルートシグネチャ取得 */
-		bool _findRootSignature(const char* name);
-		/*! DX12パイプラインステート生成 */
-		bool _createPipelineState(const char* name, ng::eVertexLayout vertexLayout);
-		/*! シェーダーエフェクト生成 */
-		bool _createShaderEffect(const char* name);
+		void SetDiffuseMap(const ng::CResourceHandle<CTexture>& handle);
+		void SetVertexShader(const ng::CResourceHandle<CShader>& handle);
+		void SetPixelShader(const ng::CResourceHandle<CShader>& handle);
+		void SetRootSignature(const ng::CWeakPtr<ng::CDX12RootSignature>& ptr);
+		void SetPipelineState(const ng::CWeakPtr<ng::CDX12PipelineState>& ptr);
+		void SetShaderEffect(const ng::CSharedPtr<CShaderEffect>& ptr);
 
 	private:
 		ng::CResourceHandle<CTexture> m_diffuseMap;		//!< ディフューズマップ
@@ -100,9 +99,9 @@ namespace app
 		ng::CResourceHandle<CShader> m_pixelShader;		//!< ピクセルシェーダー
 		ng::CWeakPtr<ng::CDX12RootSignature> m_rootSignature;	//!< DX12ルートシグネチャ
 		ng::CWeakPtr<ng::CDX12PipelineState> m_pipelineState;	//!< DX12パイプラインステート
-
 		ng::CSharedPtr<CShaderEffect> m_shaderEffect;	//!< シェーダーエフェクト
-		char m_shaderEffectName[32];	//!< シェーダーエフェクト名
+
+		ng::CDX12DescriptorHeap m_descHeap;	//!< DX12ディスクリプタヒープ
 	};
 
 }	// namespace app
