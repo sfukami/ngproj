@@ -1,52 +1,42 @@
 ﻿/*!
 * @file		appRenderable.cpp
-* @brief	描画可能オブジェクト
+* @brief	描画可能オブジェクト インターフェース
 * @date		2020-07-19
 * @author	s.fukami
 */
 
 #include "ngLibGraphic/graphic/ngGraphicManager.h"
 #include "appRenderable.h"
+#include "appRenderParam.h"
 
 namespace app
 {
-	CRenderable::CRenderable()
+	IRenderable::IRenderable()
 	{
 	}
-	CRenderable::~CRenderable()
+	IRenderable::~IRenderable()
 	{
 	}
 
-	void CRenderable::RegisterRender()
+	void IRenderable::RegisterRender()
 	{
-		if(!IsEnable()) return;
+		if(!IsVisible()) return;
 		
 		ng::CGraphicManager::GetInstance().AddRenderable(*this);
 	}
 
-	void CRenderable::Render(const ng::RenderParam* pParam)
+	void IRenderable::Render(const ng::RenderParam* pParam)
 	{
-		if(!IsEnable()) return;
+		NG_ASSERT_NOT_NULL(pParam);
 
-		const RenderParam* pParamApp = ng::PointerCast<const RenderParam*>(pParam);
+		if(!IsVisible()) return;
 
-		// TODO: パラメータからステート更新の判定？
-		_setRenderState(pParamApp);
+		RenderParam* pAppParam = const_cast<RenderParam*>(ng::PointerCast<const RenderParam*>(pParam));
 
-		_render(pParamApp);
-	}
+		GetWorldMatrix(pAppParam->worldMat);
+		pAppParam->CalcWorldViewProjMatrix();
 
-	bool CRenderable::IsEnable() const
-	{
-		return false;
-	}
-
-	void CRenderable::_render(const RenderParam* pParam)
-	{
-	}
-
-	void CRenderable::_setRenderState(const RenderParam* pParam) const
-	{
+		_render(*pAppParam);
 	}
 
 }	// namespace app

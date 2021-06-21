@@ -1,6 +1,6 @@
 ﻿/*!
 * @file		appRenderable.h
-* @brief	描画可能オブジェクト
+* @brief	描画可能オブジェクト インターフェース
 * @date		2020-07-19
 * @author	s.fukami
 */
@@ -13,6 +13,7 @@
 namespace ng
 {
 	struct RenderParam;
+	struct Matrix4x4;
 }
 namespace app
 {
@@ -22,13 +23,13 @@ namespace app
 namespace app
 {
 	/*!
-	* @brief					描画可能オブジェクト
+	* @brief					描画可能オブジェクト インターフェース
 	*/
-	class CRenderable : ng::IRenderable
+	class IRenderable : ng::IRenderable
 	{
 	public:
-		CRenderable();
-		~CRenderable();
+		IRenderable();
+		virtual ~IRenderable();
 
 		/*!
 		* @brief					描画登録
@@ -38,21 +39,23 @@ namespace app
 		/*!
 		* @brief					描画
 		* @param pParam				描画パラメータ
-		* @note						描画コマンドの発行を行う
 		*/
 		void Render(const ng::RenderParam* pParam);
 
 		/*!
+		* @brief					ワールド変換行列取得
+		*/
+		virtual void GetWorldMatrix(ng::Matrix4x4& dst) = 0;
+
+		/*!
 		* @brief					描画可能か
 		*/
-		virtual bool IsEnable() const;
+		virtual void SetVisible(bool visible) = 0;
+		virtual bool IsVisible() const = 0;
 
 	private:
 		/*! 描画 */
-		virtual void _render(const RenderParam* pParam);
-
-		/*! 描画ステート設定 */
-		virtual void _setRenderState(const RenderParam* pParam) const;
+		virtual void _render(const RenderParam& param) = 0;
 	};
 
 }	// namespace app

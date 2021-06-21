@@ -10,7 +10,7 @@
 
 #include "../appGameActorEnemy.h"
 #include "../../appGameActorStateMachine.h"
-#include "app/graphic/render/sprite/appSprite.h"
+#include "app/game/object/sprite/appSpriteObject.h"
 
 namespace app
 {
@@ -53,7 +53,7 @@ namespace app
 		};
 
 	private:
-		CSprite m_sprite;	//!< スプライト
+		CSpriteObject m_sprite;	//!< スプライト
 
 		CGameActorStateMachine<CGameActorEnemyTest, State, State::NUM> m_stateMachine;	//!< ステートマシン
 	};
