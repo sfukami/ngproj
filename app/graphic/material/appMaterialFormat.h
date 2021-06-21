@@ -20,6 +20,8 @@ namespace app
 		TextureFormat();
 		void SetFilePath(const char* _filePath);
 		void SetName(const char* _name);
+		bool IsValidFilePath() const;
+		bool IsValidBinary() const;
 
 		union {
 			char filePath[256];		//!< ファイルパス
@@ -38,6 +40,8 @@ namespace app
 		void SetFilePath(const char* _filePath);
 		void SetEntryPoint(const char* _entryPoint);
 		void SetTarget(const char* _target);
+		bool IsValidFilePath() const;
+		bool IsValidBinary() const;
 
 		char filePath[256];		//!< ファイルパス
 		char entryPoint[32];	//!< エントリポイント

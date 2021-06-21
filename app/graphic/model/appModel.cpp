@@ -87,7 +87,7 @@ namespace app
 			// マテリアル生成
 			createCount = 0;
 			MaterialFormat format;
-			_getMaterialFormatTemplate(&format);
+			_getMaterialFormat(&format);
 			const Format::MaterialHeader* pMaterialHeader = ng::PointerCast<const Format::MaterialHeader*>(pMeshHeader);
 			for(ng::u32 i = 0; i < modelHeader.materialCount; i++)
 			{
@@ -217,7 +217,7 @@ namespace app
 		mesh.Render(commandList);
 	}
 
-	void CModel::_getMaterialFormatTemplate(MaterialFormat* pDst)
+	void CModel::_getMaterialFormat(MaterialFormat* pDst)
 	{
 		pDst->SetMaterialName("model");
 		pDst->SetRootSignatureName("model");

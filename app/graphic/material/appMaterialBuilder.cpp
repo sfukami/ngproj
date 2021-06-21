@@ -79,15 +79,18 @@ namespace app
 	{
 		bool result = false;
 
-		if(format.pBinary) {
+		if(format.IsValidBinary()) {
 			result = CResourceModule::LoadResourceFromMemory<CTexture>(
 				format.pBinary, format.size, matName, format.name, _getResourceMemoryType(), nullptr, handle
 				);
 		}
-		else {
+		else if(format.IsValidFilePath()) {
 			result = CResourceModule::LoadResourceFromFile<CTexture>(
 				format.filePath, _getResourceMemoryType(), handle
 				);
+		}
+		else {
+			return false;
 		}
 
 		if(!result) {
@@ -102,15 +105,18 @@ namespace app
 		bool result = true;
 		CShader::BuildParam buildParam(format.entryPoint, format.target);
 
-		if(format.pBinary) {
+		if(format.IsValidBinary()) {
 			result = CResourceModule::LoadResourceFromMemory<CShader>(
 				format.pBinary, format.size, matName, format.entryPoint, _getResourceMemoryType(), &buildParam, handle
 				);
 		}
-		else {
+		else if(format.IsValidFilePath()) {
 			result = CResourceModule::LoadResourceFromFile<CShader>(
 				format.filePath, format.entryPoint, _getResourceMemoryType(), &buildParam, handle
 				);
+		}
+		else {
+			return false;
 		}
 
 		if(!result) {

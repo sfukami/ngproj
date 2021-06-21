@@ -22,13 +22,21 @@ namespace app
 	{
 		NG_STRCPY(name, _name);
 	}
+	bool TextureFormat::IsValidFilePath() const
+	{
+		return NG_STRLEN(filePath) > 0;
+	}
+	bool TextureFormat::IsValidBinary() const
+	{
+		return (pBinary != nullptr) && (size > 0);
+	}
 
 	ShaderFormat::ShaderFormat()
 		: pBinary(nullptr), size(0)
 	{
-		ng::ClearString(filePath);
-		ng::ClearString(entryPoint);
-		ng::ClearString(target);
+		NG_CLRSTR(filePath);
+		NG_CLRSTR(entryPoint);
+		NG_CLRSTR(target);
 	}
 	void ShaderFormat::SetFilePath(const char* _filePath)
 	{
@@ -42,13 +50,21 @@ namespace app
 	{
 		NG_STRCPY(target, _target);
 	}
+	bool ShaderFormat::IsValidFilePath() const
+	{
+		return NG_STRLEN(filePath) > 0;
+	}
+	bool ShaderFormat::IsValidBinary() const
+	{
+		return (pBinary != nullptr) && (size > 0);
+	}
 
 	MaterialFormat::MaterialFormat()
 	{
-		ng::ClearString(name);
-		ng::ClearString(rootSignatureName);
-		ng::ClearString(pipelineStateName);
-		ng::ClearString(shaderEffectName);
+		NG_CLRSTR(name);
+		NG_CLRSTR(rootSignatureName);
+		NG_CLRSTR(pipelineStateName);
+		NG_CLRSTR(shaderEffectName);
 
 		vertexLayout = ng::eVertexLayout::STATIC;
 	}

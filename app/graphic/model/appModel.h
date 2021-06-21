@@ -75,8 +75,9 @@ namespace app
 		void _deleteMaterial(CMaterial*& pMaterial);
 		/*! メッシュ描画 */
 		void _renderMesh(ng::CDX12CommandList& commandList, const CMesh& mesh, const ShaderParam* pShaderParam);
-		/*! マテリアルフォーマットのテンプレートを取得 */
-		void _getMaterialFormatTemplate(MaterialFormat* pDst);
+		
+		/*! マテリアルフォーマットを取得 */
+		void _getMaterialFormat(MaterialFormat* pDst);
 
 	private:
 		using MeshArray = ng::CFixedArray<CMesh*>;	//!< メッシュの配列
