@@ -55,6 +55,7 @@ namespace glTFConv
 
 		BinaryFormat* pBinaryFormat = new(pBinary) BinaryFormat;
 		pBinaryFormat->modelHeader.meshCount = static_cast<std::uint32_t>(modelFormat.meshes.size());
+		pBinaryFormat->modelHeader.materialCount = static_cast<std::uint32_t>(modelFormat.materials.size());
 
 		// メッシュ情報書き込み
 		BinaryFormat::MeshHeader* pMeshHeader = pBinaryFormat->modelHeader.GetMeshHeader();

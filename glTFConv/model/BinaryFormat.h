@@ -28,7 +28,6 @@ namespace glTFConv
 			ModelHeader();
 			MeshHeader* GetMeshHeader();
 			const MeshHeader* GetMeshHeader() const;
-
 			bool CheckSignature() const;
 
 			char signature[4];	//!< シグネチャ
@@ -43,6 +42,8 @@ namespace glTFConv
 			const VertexHeader* GetVertexHeader() const;
 			IndexHeader* GetIndexHeader();
 			const IndexHeader* GetIndexHeader() const;
+			MeshHeader* GetNextMeshHeader();
+			const MeshHeader* GetNextMeshHeader() const;
 
 			char name[256];	//!< 名称
 			std::uint32_t indicesCount;	//!< インデックスバッファ数
@@ -111,6 +112,22 @@ namespace glTFConv
 	inline const BinaryFormat::MeshHeader* BinaryFormat::ModelHeader::GetMeshHeader() const
 	{
 		return const_cast<ModelHeader*>(this)->GetMeshHeader();
+	}
+
+	inline BinaryFormat::MeshHeader* BinaryFormat::MeshHeader::GetNextMeshHeader()
+	{
+		BinaryFormat::IndexHeader* pIndexHeader = GetIndexHeader();
+
+		for(ng::u32 i = 0; i < indicesCount; i++)
+		{
+			pIndexHeader = pIndexHeader->GetNextIndexHeader();
+		}
+
+		return ng::PointerCast<MeshHeader*>(pIndexHeader);
+	}
+	inline const BinaryFormat::MeshHeader* BinaryFormat::MeshHeader::GetNextMeshHeader() const
+	{
+		return const_cast<MeshHeader*>(this)->GetNextMeshHeader();
 	}
 
 	inline bool BinaryFormat::ModelHeader::CheckSignature() const
