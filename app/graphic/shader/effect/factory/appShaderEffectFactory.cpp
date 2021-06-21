@@ -9,6 +9,7 @@
 
 // シェーダーエフェクト
 #include "../appShaderEffectSprite.h"
+#include "../appShaderEffectModel.h"
 
 // シェーダーエフェクト テーブル
 #include "appShaderEffectTable.cpp"
@@ -30,7 +31,7 @@ namespace app
 		// シェーダーエフェクトテーブル宣言
 		const ShaderEffectInfo shdEffTbl[] = {
 			_SHADER_EFFECT_INFO("sprite", CShaderEffectSprite),
-			_SHADER_EFFECT_INFO("model", CShaderEffectSprite),
+			_SHADER_EFFECT_INFO("model", CShaderEffectModel),
 		};
 
 		for(int i = 0; i < NG_ARRAY_SIZE(shdEffTbl); i++)
