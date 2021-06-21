@@ -22,7 +22,10 @@ namespace app
 	bool CGameActorEnemyTest::Create()
 	{
 		// スプライト生成
-		if(!m_sprite.Create(1, 1)) {
+		if(!m_sprite.Create(
+			1, 1
+			, "../resource/texture/test.bmp"
+			)) {
 			return false;
 		}
 

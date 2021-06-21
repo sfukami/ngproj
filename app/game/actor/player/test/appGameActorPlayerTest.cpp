@@ -25,10 +25,12 @@ namespace app
 	bool CGameActorPlayerTest::Create()
 	{
 		// スプライト生成
-		if(!m_sprite.Create(1, 1)) {
+		if(!m_sprite.Create(
+			1, 1
+			, "../resource/texture/test.bmp"
+			)) {
 			return false;
 		}
-		
 
 		// 親トランスフォーム設定
 		CTransform& transform = m_sprite.GetTransform();

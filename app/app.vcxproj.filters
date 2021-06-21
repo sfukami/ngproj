@@ -134,6 +134,12 @@
     <Filter Include="ソース ファイル\graphic\model">
       <UniqueIdentifier>{642e63bb-5e19-4676-87f2-475a7f493267}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\game\object">
+      <UniqueIdentifier>{282b6798-53b6-409e-8df1-960dc2b752fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\game\object\sprite">
+      <UniqueIdentifier>{36c85222-87f7-4c26-95a0-d30c7c14094c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -231,9 +237,6 @@
     </ClCompile>
     <ClCompile Include="graphic\render\appRenderable.cpp">
       <Filter>ソース ファイル\graphic\render</Filter>
-    </ClCompile>
-    <ClCompile Include="graphic\render\sprite\appSprite.cpp">
-      <Filter>ソース ファイル\graphic\render\sprite</Filter>
     </ClCompile>
     <ClCompile Include="graphic\appGraphicUtil.cpp">
       <Filter>ソース ファイル\graphic</Filter>
@@ -344,6 +347,18 @@
       <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
     </ClCompile>
     <ClCompile Include="graphic\shader\effect\appShaderParam.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="game\object\sprite\appSpriteObject.cpp">
+      <Filter>ソース ファイル\game\object\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\sprite\appSpriteRender.cpp">
+      <Filter>ソース ファイル\graphic\render\sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\appRender.cpp">
+      <Filter>ソース ファイル\graphic\render</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\effect\appShaderEffectModel.cpp">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
     </ClCompile>
   </ItemGroup>
@@ -477,9 +492,6 @@
     <ClInclude Include="graphic\render\appRenderable.h">
       <Filter>ソース ファイル\graphic\render</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\render\sprite\appSprite.h">
-      <Filter>ソース ファイル\graphic\render\sprite</Filter>
-    </ClInclude>
     <ClInclude Include="graphic\appGraphicUtil.h">
       <Filter>ソース ファイル\graphic</Filter>
     </ClInclude>
@@ -608,6 +620,18 @@
     </ClInclude>
     <ClInclude Include="resource\appResourceType.h">
       <Filter>ソース ファイル\resource</Filter>
+    </ClInclude>
+    <ClInclude Include="game\object\sprite\appSpriteObject.h">
+      <Filter>ソース ファイル\game\object\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\sprite\appSpriteRender.h">
+      <Filter>ソース ファイル\graphic\render\sprite</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\appRender.h">
+      <Filter>ソース ファイル\graphic\render</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\effect\appShaderEffectModel.h">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
