@@ -7,6 +7,7 @@
 
 #include "ngLibGraphic/graphic/dx12/shader/ngDX12ShaderLoader.h"
 #include "appShader.h"
+#include "app/resource/appResourceType.h"
 
 namespace app
 {
@@ -56,6 +57,11 @@ namespace app
 	void CShader::Destroy()
 	{
 		m_shader.Destroy();
+	}
+
+	int CShader::GetResourceType() const
+	{
+		return ng::UnderlyingCast(eResourceType::SHADER);
 	}
 
 	ng::CDX12Shader& CShader::GetDX12Shader()

@@ -8,6 +8,7 @@
 #include "ngLibGraphic/graphic/dx12/ngDX12Util.h"
 #include "ngLibGraphic/graphic/dx12/texture/ngDX12TextureLoader.h"
 #include "appTexture.h"
+#include "app/resource/appResourceType.h"
 
 namespace app
 {
@@ -43,6 +44,11 @@ namespace app
 	void CTexture::Destroy()
 	{
 		m_texture.Destroy();
+	}
+
+	int CTexture::GetResourceType() const
+	{
+		return ng::UnderlyingCast(eResourceType::TEXTURE);
 	}
 
 	ng::CDX12Texture& CTexture::GetTexture()

@@ -25,6 +25,11 @@ namespace GraphicUtil
 	ng::IMemoryAllocator& GetGraphicMemAlloc();
 
 	/*!
+	* @brief					DX12デバイス取得
+	*/
+	ng::CDX12Device* GetDX12Device();
+
+	/*!
 	* @brief					DX12コマンドリスト取得
 	* @param id					グラフィックコマンドリストID
 	*/

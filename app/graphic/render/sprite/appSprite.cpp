@@ -5,12 +5,10 @@
 * @author	s.fukami
 */
 
-#include "ngLibCore/common/ngCommon.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
-#include "app/graphic/material/appMaterialData.h"
-#include "app/graphic/material/appMaterialDataPreset.h"
-#include "app/graphic/shader/effect/appShaderEffect.h"
 #include "appSprite.h"
+#include "app/graphic/shader/effect/appShaderEffect.h"
+#include "app/graphic/shader/effect/appShaderParam.h"
 #include "../appRenderParam.h"
 #include "../../appGraphicUtil.h"
 
@@ -26,7 +24,6 @@ namespace app
 	bool CSprite::Create(
 		unsigned int width
 		, unsigned int height
-		, const CMaterialData* pMaterialData
 		)
 	{
 		ng::CDX12Device* pDX12Device = ng::DX12Util::GetDevice();
@@ -39,17 +36,6 @@ namespace app
 				NG_ERRLOG_C("Sprite", err, "DX12ポリゴン矩形の生成に失敗しました.");
 				return false;
 			}
-		}
-
-		// マテリアルデータの指定が無い場合は、デフォルトのマテリアルデータを使用する
-		if(pMaterialData == nullptr) {
-			pMaterialData = &GetMaterialDataPresetSprite();
-		}
-
-		// マテリアル生成
-		if(!m_material.Create(*pMaterialData)) {
-			NG_ERRLOG("Sprite", "マテリアルの生成に失敗しました.");
-			return false;
 		}
 
 		return true;
@@ -74,14 +60,14 @@ namespace app
 		NG_ASSERT_NOT_NULL(pCmdList);
 
 		// ルートシグネチャ設定
-		m_material.SetRootSignature(*pCmdList);
+		m_material.BindRootSignature(*pCmdList);
 		// パイプラインステート設定
-		m_material.SetPipelineState(*pCmdList);
+		m_material.BindPipelineState(*pCmdList);
 
 		// シェーダーエフェクト設定
 		auto shaderEffect = m_material.GetShaderEffect();
 		if(shaderEffect) {
-			CShaderEffect::ShaderParam param;
+			ShaderParam param;
 
 			ng::Matrix4 worldMat;
 			GetTransform().GetWorldMatrix(worldMat);

@@ -10,7 +10,7 @@
 namespace app
 {
 	TextureFormat::TextureFormat()
-		: pBinary(nullptr)
+		: pBinary(nullptr), size(0)
 	{
 		ng::ClearString(filePath);
 	}
@@ -18,11 +18,17 @@ namespace app
 	{
 		NG_STRCPY(filePath, _filePath);
 	}
+	void TextureFormat::SetName(const char* _name)
+	{
+		NG_STRCPY(name, _name);
+	}
 
 	ShaderFormat::ShaderFormat()
-		: pBinary(nullptr)
+		: pBinary(nullptr), size(0)
 	{
 		ng::ClearString(filePath);
+		ng::ClearString(entryPoint);
+		ng::ClearString(target);
 	}
 	void ShaderFormat::SetFilePath(const char* _filePath)
 	{

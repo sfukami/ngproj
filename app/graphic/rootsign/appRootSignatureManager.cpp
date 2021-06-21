@@ -8,7 +8,7 @@
 #include "ngLibCore/memory/pointer/ngWeakPtr.h"
 #include "ngLibGraphic/graphic/dx12/rootsign/ngDX12RootSignature.h"
 #include "appRootSignatureManager.h"
-#include "appRootSignatureInfo.h"
+#include "desc/appRootSignatureDescDef.h"
 
 namespace app
 {
@@ -22,26 +22,25 @@ namespace app
 
 	bool CRootSignatureManager::Initialize(ng::IMemoryAllocator& alloc, ng::CDX12Device& device)
 	{
-		// ルートシグネチャ情報からDX12ルートシグネチャを生成し追加
-		const unsigned int rootSignInfoNum = GetRootSignatureInfoNum();
+		//! DX12ルートシグネチャ生成関数設定マクロ
+		#define _MAKE_CREATE_ROOT_SIGNATURE_FUNC(_desc) \
+			&CRootSignatureManager::_createRootSignature<_desc>
 
-		for(unsigned int i = 0; i < rootSignInfoNum; i++)
+		//! DX12ルートシグネチャ生成関数テーブル
+		using FuncType = bool(CRootSignatureManager::*)(ng::IMemoryAllocator&, ng::CDX12Device&);
+		const FuncType funcTbl[] = {
+			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescSprite),
+			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescModel),
+		};
+
+		// 各DX12ルートシグネチャ生成
+		bool result = true;
+		for(int i = 0; i < NG_ARRAY_SIZE(funcTbl); i++)
 		{
-			const RootSignatureInfo* pRootSignInfo = GetRootSignatureInfo(i);
-			NG_ASSERT_NOT_NULL(pRootSignInfo);
-			
-			auto rootSignPtr = NG_MAKE_SHARED_PTR(ng::CDX12RootSignature, alloc);
-
-			NG_ERRCODE err = NG_ERRCODE_DEFAULT;
-			if(NG_SUCCEEDED(err = rootSignPtr->Create(device, *pRootSignInfo->pDesc))) {
-				m_rootSignMap.Add(pRootSignInfo->name, rootSignPtr);
-			}
-			else {
-				NG_ERRLOG_C("RootSignatureManager", err, "DX12ルートシグネチャの生成に失敗しました. name:%s", pRootSignInfo->name);
-			}
+			result &= (this->*funcTbl[i])(alloc, device);
 		}
 
-		return true;
+		return result;
 	}
 
 	void CRootSignatureManager::Finalize()
@@ -60,6 +59,24 @@ namespace app
 		dstPtr = pNode->GetValue();
 
 		return true;
+	}
+
+	template <class T>
+	bool CRootSignatureManager::_createRootSignature(ng::IMemoryAllocator& alloc, ng::CDX12Device& device)
+	{
+		auto rootSignPtr = NG_MAKE_SHARED_PTR(ng::CDX12RootSignature, alloc);
+
+		T desc;
+		NG_ERRCODE err = rootSignPtr->Create(device, desc);
+		if(NG_SUCCEEDED(err)) {
+			if(!m_rootSignMap.Add(desc.GetName(), rootSignPtr)) {
+				NG_ERRLOG("RootSignatureManager", "DX12ルートシグネチャの登録に失敗しました. name:%s", desc.GetName());
+			}
+		} else {
+			NG_ERRLOG_C("RootSignatureManager", err, "DX12ルートシグネチャの生成に失敗しました. name:%s", desc.GetName());
+		}
+
+		return NG_SUCCEEDED(err);
 	}
 
 }	// namespace app

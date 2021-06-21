@@ -11,6 +11,9 @@
 #include "../appGraphicPipeline.h"
 #include "ngLibGraphic/graphic/dx12/viewport/ngDX12Viewport.h"
 #include "ngLibGraphic/graphic/dx12/scissor/ngDX12Scissor.h"
+#include "ngLibGraphic/camera/ngCamera.h"
+#include "ngLibGraphic/projection/ngProjection.h"
+#include "app/graphic/model/appModel.h"
 
 namespace app
 {
@@ -43,6 +46,9 @@ namespace app
 	private:
 		ng::CDX12Viewport m_viewport;	//!< DX12ビューポート
 		ng::CDX12Scissor m_scissor;		//!< DX12シザー矩形
+		ng::CCamera m_camera;		//!< カメラ
+		ng::CProjection m_proj;		//!< プロジェクション
+		CModel m_model;			//!< モデル
 	};
 
 }	// namespace app

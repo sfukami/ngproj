@@ -18,6 +18,11 @@ namespace GraphicUtil
 		return APP_GET_MEMALLOC(APPLICATION);
 	}
 
+	ng::CDX12Device* GetDX12Device()
+	{
+		return ng::DX12Util::GetDevice();
+	}
+
 	ng::CDX12CommandList* GetDX12CommandList(eGraphicCommandListId id)
 	{
 		return ng::DX12Util::GetCommandList(static_cast<ng::u32>(id));

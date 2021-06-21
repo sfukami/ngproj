@@ -1,5 +1,5 @@
 /*!
-* @file		texture_vs.hlsl
+* @file		sprite_vs.hlsl
 * @brief	簡易シェーダー スプライト 頂点シェーダー
 * @date		2019-09-30
 * @author	s.fukami

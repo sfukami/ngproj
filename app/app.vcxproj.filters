@@ -131,6 +131,9 @@
     <Filter Include="ソース ファイル\debug\menu\item">
       <UniqueIdentifier>{0a0cd089-e1f7-42a8-979a-2fa1c3390f52}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\graphic\model">
+      <UniqueIdentifier>{642e63bb-5e19-4676-87f2-475a7f493267}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -265,12 +268,6 @@
     <ClCompile Include="graphic\shader\appShader.cpp">
       <Filter>ソース ファイル\graphic\shader</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescSprite.cpp">
-      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
-    </ClCompile>
-    <ClCompile Include="graphic\rootsign\appRootSignatureInfo.cpp">
-      <Filter>ソース ファイル\graphic\rootsign</Filter>
-    </ClCompile>
     <ClCompile Include="graphic\rootsign\appRootSignatureManager.cpp">
       <Filter>ソース ファイル\graphic\rootsign</Filter>
     </ClCompile>
@@ -282,9 +279,6 @@
     </ClCompile>
     <ClCompile Include="graphic\state\appPipelineStateManager.cpp">
       <Filter>ソース ファイル\graphic\state</Filter>
-    </ClCompile>
-    <ClCompile Include="resource\appResourceExtTable.cpp">
-      <Filter>ソース ファイル\resource</Filter>
     </ClCompile>
     <ClCompile Include="graphic\shader\effect\factory\appShaderEffectTable.cpp">
       <Filter>ソース ファイル\graphic\shader\effect\factory</Filter>
@@ -316,12 +310,6 @@
     <ClCompile Include="transform\appTransformObject.cpp">
       <Filter>ソース ファイル\transform</Filter>
     </ClCompile>
-    <ClCompile Include="graphic\material\appMaterialData.cpp">
-      <Filter>ソース ファイル\graphic\material</Filter>
-    </ClCompile>
-    <ClCompile Include="graphic\material\appMaterialDataPreset.cpp">
-      <Filter>ソース ファイル\graphic\material</Filter>
-    </ClCompile>
     <ClCompile Include="scene\test\appSceneGameTest.cpp">
       <Filter>ソース ファイル\scene\test</Filter>
     </ClCompile>
@@ -342,6 +330,21 @@
     </ClCompile>
     <ClCompile Include="debug\menu\item\appDebugMenuItemScene.cpp">
       <Filter>ソース ファイル\debug\menu\item</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\model\appModel.cpp">
+      <Filter>ソース ファイル\graphic\model</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\model\appMesh.cpp">
+      <Filter>ソース ファイル\graphic\model</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\material\appMaterialBuilder.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescDef.cpp">
+      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\shader\effect\appShaderParam.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -519,12 +522,6 @@
     <ClInclude Include="graphic\shader\appShader.h">
       <Filter>ソース ファイル\graphic\shader</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescSprite.h">
-      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
-    </ClInclude>
-    <ClInclude Include="graphic\rootsign\appRootSignatureInfo.h">
-      <Filter>ソース ファイル\graphic\rootsign</Filter>
-    </ClInclude>
     <ClInclude Include="graphic\rootsign\appRootSignatureManager.h">
       <Filter>ソース ファイル\graphic\rootsign</Filter>
     </ClInclude>
@@ -567,12 +564,6 @@
     <ClInclude Include="transform\appTransformObject.h">
       <Filter>ソース ファイル\transform</Filter>
     </ClInclude>
-    <ClInclude Include="graphic\material\appMaterialData.h">
-      <Filter>ソース ファイル\graphic\material</Filter>
-    </ClInclude>
-    <ClInclude Include="graphic\material\appMaterialDataPreset.h">
-      <Filter>ソース ファイル\graphic\material</Filter>
-    </ClInclude>
     <ClInclude Include="scene\test\appSceneGameTest.h">
       <Filter>ソース ファイル\scene\test</Filter>
     </ClInclude>
@@ -599,6 +590,24 @@
     </ClInclude>
     <ClInclude Include="preincl\appDefine.h">
       <Filter>ソース ファイル\preincl</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\model\appModel.h">
+      <Filter>ソース ファイル\graphic\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\model\appMesh.h">
+      <Filter>ソース ファイル\graphic\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\material\appMaterialBuilder.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescDef.h">
+      <Filter>ソース ファイル\graphic\rootsign\desc</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\effect\appShaderParam.h">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="resource\appResourceType.h">
+      <Filter>ソース ファイル\resource</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -70,7 +70,7 @@ namespace ng
 		* @return					成否
 		* @note						取得に失敗した場合は警告を出力
 		*/
-		bool Get(const char* pKey, IResourceHandle& handle);
+		bool Get(const char* pKey, IResourceHandle& handle) const;
 
 		/*!
 		* @brief					リソース取得
@@ -79,7 +79,7 @@ namespace ng
 		* @return					成否
 		* @note						取得に失敗した場合でも警告を出力しない
 		*/
-		bool TryGet(const char* pKey, IResourceHandle& handle);
+		bool TryGet(const char* pKey, IResourceHandle& handle) const;
 
 	private:
 		/*! 初期化済みか */

@@ -1,5 +1,5 @@
 /*!
-* @file		texture_ps.hlsl
+* @file		sprite_ps.hlsl
 * @brief	簡易シェーダー スプライト ピクセルシェーダー
 * @date		2019-09-30
 * @author	s.fukami
