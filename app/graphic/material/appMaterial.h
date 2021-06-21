@@ -73,9 +73,6 @@ namespace app
 		*/
 		void BindResource(ng::CDX12CommandList& commandList);
 		
-		/*! ディフューズマップ取得 */
-		ng::CWeakPtr<CTexture> GetDiffuseMap() const;
-
 		/*! DX12ルートシグネチャ取得 */
 		ng::CWeakPtr<ng::CDX12RootSignature> GetRootSignature() const;
 
