@@ -37,6 +37,7 @@
     <ClCompile Include="game\job\appGameJob.cpp" />
     <ClCompile Include="game\job\appGameJobManager.cpp" />
     <ClCompile Include="game\job\appGameJobUtil.cpp" />
+    <ClCompile Include="game\object\model\appModelObject.cpp" />
     <ClCompile Include="game\object\sprite\appSpriteObject.cpp" />
     <ClCompile Include="game\world\appGameWorld.cpp" />
     <ClCompile Include="graphic\appGraphic.cpp" />
@@ -57,6 +58,7 @@
     <ClCompile Include="graphic\render\appRender.cpp" />
     <ClCompile Include="graphic\render\appRenderable.cpp" />
     <ClCompile Include="graphic\render\appRenderParam.cpp" />
+    <ClCompile Include="graphic\render\model\appModelRender.cpp" />
     <ClCompile Include="graphic\render\sprite\appSpriteRender.cpp" />
     <ClCompile Include="graphic\rootsign\appRootSignatureManager.cpp" />
     <ClCompile Include="graphic\rootsign\desc\appRootSignatureDescDef.cpp" />
@@ -119,6 +121,7 @@
     <ClInclude Include="game\job\appGameJobType.h" />
     <ClInclude Include="game\job\appGameJobManager.h" />
     <ClInclude Include="game\job\appGameJobUtil.h" />
+    <ClInclude Include="game\object\model\appModelObject.h" />
     <ClInclude Include="game\object\sprite\appSpriteObject.h" />
     <ClInclude Include="game\world\appGameWorld.h" />
     <ClInclude Include="graphic\appGraphic.h" />
@@ -142,6 +145,7 @@
     <ClInclude Include="graphic\render\appRender.h" />
     <ClInclude Include="graphic\render\appRenderable.h" />
     <ClInclude Include="graphic\render\appRenderParam.h" />
+    <ClInclude Include="graphic\render\model\appModelRender.h" />
     <ClInclude Include="graphic\render\sprite\appSpriteRender.h" />
     <ClInclude Include="graphic\rootsign\appRootSignatureManager.h" />
     <ClInclude Include="graphic\rootsign\desc\appRootSignatureDescDef.h" />

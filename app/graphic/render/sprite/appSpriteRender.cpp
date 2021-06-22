@@ -27,6 +27,7 @@ namespace app
 		ng::u32 width
 		, ng::u32 height
 		, const char* imageFilePath
+		, eResourceMemoryType resMemType
 		)
 	{
 		ng::CDX12Device* pDX12Device = GraphicUtil::GetDX12Device();
@@ -47,6 +48,7 @@ namespace app
 			_getMaterialFormat(&format);
 
 			format.diffuseMap.SetFilePath(imageFilePath);
+			format.diffuseMap.resMemType = resMemType;
 
 			CMaterialBuilder builder;
 			if(!builder.Build(format, &m_material)) {

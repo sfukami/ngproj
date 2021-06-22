@@ -10,7 +10,7 @@
 namespace app
 {
 	TextureFormat::TextureFormat()
-		: pBinary(nullptr), size(0)
+		: pBinary(nullptr), size(0), resMemType(eResourceMemoryType::FIXED)
 	{
 		ng::ClearString(filePath);
 	}
@@ -32,7 +32,7 @@ namespace app
 	}
 
 	ShaderFormat::ShaderFormat()
-		: pBinary(nullptr), size(0)
+		: pBinary(nullptr), size(0), resMemType(eResourceMemoryType::FIXED)
 	{
 		NG_CLRSTR(filePath);
 		NG_CLRSTR(entryPoint);

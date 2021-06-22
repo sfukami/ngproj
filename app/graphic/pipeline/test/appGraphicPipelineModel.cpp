@@ -6,12 +6,11 @@
 */
 
 #include "ngLibCore/math/ngMath.h"
-#include "ngLibCore/io/file/ngFile.h"
 #include "ngLibCore/geometry/matrix/ngMatrix4x4.h"
 #include "ngLibCore/geometry/matrix/ngMatrixOp.h"
 #include "ngLibGraphic/graphic/dx12/ngDX12.h"
 #include "appGraphicPipelineModel.h"
-#include "app/graphic/shader/effect/appShaderParam.h"
+#include "app/graphic/render/appRenderParam.h"
 #include "app/memory/appMemoryUtil.h"
 #include "app/graphic/appGraphicUtil.h"
 
@@ -33,33 +32,9 @@ namespace app
 		NG_ASSERT(pDX12Device != nullptr);
 
 		// モデル生成
-		{
-			ng::CFile file;
-			NG_ERRCODE err = file.Open("../resource/model/alicia-solid.mdl", "rb");
-			if(NG_FAILED(err)) {
-				NG_ERRLOG_C("GraphicPipelineModel", err, "モデルファイルのオープンに失敗しました.");
-				return false;
-			}
-
-			ng::size_type fileSize = file.GetFileSize();
-			void* pModelData = NG_NEW_BYTE(APP_GET_MEMALLOC(TEMP), fileSize);
-			ng::size_type fileNum = file.Read(pModelData, fileSize);
-
-			bool succeed = false;
-			if(fileNum > 0) {
-				if(m_model.Build(pModelData, fileSize, nullptr)) {
-					succeed = true;
-				} else {
-					NG_ERRLOG("GraphicPipelineModel", "モデルの生成に失敗しました.");
-				}
-			} else {
-				NG_ERRLOG("GraphicPipelineModel", "モデルファイルの読み込みに失敗しました.");
-			}
-
-			NG_DELETE_BYTE(APP_GET_MEMALLOC(TEMP), pModelData);
-			if(!succeed) {
-				return false;
-			}
+		if(!m_model.Create("../resource/model/alicia-solid.mdl", eResourceMemoryType::SCENE)) {
+			NG_ERRLOG("GraphicPipelineModel", "モデルの生成に失敗しました.");
+			return false;
 		}
 
 		// カメラ
@@ -113,20 +88,14 @@ namespace app
 
 		// モデル描画
 		{
-			// シェーダーパラメータ設定
-			ng::Matrix4 matWorld, matView, matProj, matWVP;
-			ng::MatrixOp::Identity(matWorld);
-			matView = m_camera.GetViewMatrix();
-			matProj = m_proj.GetProjMatrix();
+			RenderParam param;
+			param.cmdListId = eGraphicCommandListId::MAIN;
+			param.viewMat = m_camera.GetViewMatrix();
+			param.projMat = m_proj.GetProjMatrix();
+			param.CalcViewProjMatrix();
+			param.CalcWorldViewProjMatrix();
 
-			ng::MatrixOp::Multiply(matWVP, matView, matProj);
-			ng::MatrixOp::Multiply(matWVP, matWorld, matWVP);
-			ng::MatrixOp::Transpose(matWVP, matWVP);
-
-			ShaderParam shaderParam;
-			shaderParam.wvpMat = matWVP;
-
-			m_model.Render(*pCmdList, &shaderParam);
+			m_model.Render(param);
 		}
 
 		ng::DX12Util::SetRenderTargetToPresent(pCmdList, pRTBackBuffer);

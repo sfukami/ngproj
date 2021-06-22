@@ -140,6 +140,12 @@
     <Filter Include="ソース ファイル\game\object\sprite">
       <UniqueIdentifier>{36c85222-87f7-4c26-95a0-d30c7c14094c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\game\object\model">
+      <UniqueIdentifier>{de02f9b9-b936-4b53-8fc4-15a66b6087d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ソース ファイル\graphic\render\model">
+      <UniqueIdentifier>{bd7ffa3f-471e-476a-99d9-8b3246e63acb}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -360,6 +366,12 @@
     </ClCompile>
     <ClCompile Include="graphic\shader\effect\appShaderEffectModel.cpp">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="game\object\model\appModelObject.cpp">
+      <Filter>ソース ファイル\game\object\model</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\render\model\appModelRender.cpp">
+      <Filter>ソース ファイル\graphic\render\model</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -632,6 +644,12 @@
     </ClInclude>
     <ClInclude Include="graphic\shader\effect\appShaderEffectModel.h">
       <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="game\object\model\appModelObject.h">
+      <Filter>ソース ファイル\game\object\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\render\model\appModelRender.h">
+      <Filter>ソース ファイル\graphic\render\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
