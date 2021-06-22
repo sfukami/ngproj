@@ -70,7 +70,7 @@ namespace app
 				ShaderParam shdPrm;
 				ng::MatrixOp::Transpose(shdPrm.wvpMat, param.wvpMat);
 
-				shdEffPtr->SetShaderParam(shdPrm);
+				shdEffPtr->SetParameter(shdPrm);
 				shdEffPtr->UpdateConstantBuffer();
 				shdEffPtr->BindResource(*pCmdList);
 			}

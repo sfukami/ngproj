@@ -37,9 +37,9 @@ namespace app
 		virtual bool Create(ng::CDX12Device& device);
 
 		/*!
-		* @brief					シェーダーパラメータ設定
+		* @brief					パラメータ設定
 		*/
-		virtual void SetShaderParam(const ShaderParam& param);
+		virtual void SetParameter(const ShaderParam& param);
 
 		/*!
 		* @brief					コンスタントバッファ更新

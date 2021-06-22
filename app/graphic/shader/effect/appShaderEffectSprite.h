@@ -45,9 +45,9 @@ namespace app
 		void Destroy();
 
 		/*!
-		* @brief					シェーダーパラメータ設定
+		* @brief					パラメータ設定
 		*/
-		void SetShaderParam(const ShaderParam& param);
+		void SetParameter(const ShaderParam& param);
 
 		/*!
 		* @brief					コンスタントバッファ更新
@@ -63,7 +63,7 @@ namespace app
 	private:
 		ng::CDX12DescriptorHeap m_descHeap;	//!< DX12ディスクリプタヒープ
 		ng::CDX12ConstantBuffer m_cb;	//!< DX12コンスタントバッファ
-		ShaderParam m_shPrm;	//!< シェーダーパラメータ
+		ShaderParam m_param;	//!< パラメータ
 	};
 
 }	// namespace app

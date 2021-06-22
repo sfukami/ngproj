@@ -85,7 +85,7 @@ namespace app
 			ShaderParam shdPrm;
 			ng::MatrixOp::Transpose(shdPrm.wvpMat, param.wvpMat);
 
-			shaderEffect->SetShaderParam(shdPrm);
+			shaderEffect->SetParameter(shdPrm);
 			shaderEffect->UpdateConstantBuffer();
 			shaderEffect->BindResource(*pCmdList);
 		}

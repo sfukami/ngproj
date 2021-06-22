@@ -56,14 +56,14 @@ namespace app
 		m_descHeap.Destroy();
 	}
 
-	void CShaderEffectModel::SetShaderParam(const ShaderParam& param)
+	void CShaderEffectModel::SetParameter(const ShaderParam& param)
 	{
-		NG_MEMCPY(&m_shPrm, &param, sizeof(param));
+		NG_MEMCPY(&m_param, &param, sizeof(param));
 	}
 
 	void CShaderEffectModel::UpdateConstantBuffer()
 	{
-		m_cb.CopyData(&m_shPrm, sizeof(ShaderParam));
+		m_cb.CopyData(&m_param, sizeof(ShaderParam));
 	}
 
 	void CShaderEffectModel::BindResource(ng::CDX12CommandList& commandList)
