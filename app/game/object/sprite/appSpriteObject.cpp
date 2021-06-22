@@ -22,9 +22,10 @@ namespace app
 		ng::u32 width
 		, ng::u32 height
 		, const char* imageFilePath
+		, eResourceMemoryType resMemType
 		)
 	{
-		return m_sprite.Create(width, height, imageFilePath);
+		return m_sprite.Create(width, height, imageFilePath, resMemType);
 	}
 
 	void CSpriteObject::Destroy()

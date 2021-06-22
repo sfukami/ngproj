@@ -54,7 +54,6 @@ namespace app
 		bool _loadTextureResource(const char* matName, const TextureFormat& format, ng::IResourceHandle& handle) const;
 		/*! シェーダーリソース読み込み */
 		bool _loadShaderResource(const char* matName, const ShaderFormat& format, ng::IResourceHandle& handle) const;
-
 		/*! DX12ルートシグネチャ取得 */
 		bool _findRootSignature(const char* name, ng::CWeakPtr<ng::CDX12RootSignature>& dstPtr) const;
 		/*! DX12パイプラインステート生成 */
@@ -63,9 +62,6 @@ namespace app
 			) const;
 		/*! シェーダーエフェクト生成 */
 		bool _createShaderEffect(const char* name, ng::CSharedPtr<CShaderEffect>& dstPtr) const;
-
-		/*! リソースメモリタイプ取得 */
-		eResourceMemoryType _getResourceMemoryType() const;
 	};
 
 }	// namespace app

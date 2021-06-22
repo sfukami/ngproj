@@ -9,6 +9,7 @@
 #define __APP_MATERIAL_FORMAT_H__
 
 #include "ngLibGraphic/graphic/dx12/polygon/ngDX12VertexLayout.h"
+#include "app/resource/memory/appResourceMemoryType.h"
 
 namespace app
 {
@@ -20,13 +21,16 @@ namespace app
 		TextureFormat();
 		void SetFilePath(const char* _filePath);
 		void SetName(const char* _name);
+		bool IsValidFilePath() const;
+		bool IsValidBinary() const;
 
 		union {
 			char filePath[256];		//!< ファイルパス
-			char name[256];		//!< 名称
+			char name[256]	;		//!< 名称
 		};
 		const void* pBinary;	//!< バイナリへの参照
-		ng::u32 size;	//!< バイナリのサイズ（バイト）
+		ng::u32 size;			//!< バイナリのサイズ（バイト）
+		eResourceMemoryType resMemType;	//!< リソースメモリタイプ
 	};
 
 	/*!
@@ -38,12 +42,15 @@ namespace app
 		void SetFilePath(const char* _filePath);
 		void SetEntryPoint(const char* _entryPoint);
 		void SetTarget(const char* _target);
+		bool IsValidFilePath() const;
+		bool IsValidBinary() const;
 
 		char filePath[256];		//!< ファイルパス
 		char entryPoint[32];	//!< エントリポイント
-		char target[8];		//!< ビルドターゲット
+		char target[8];			//!< ビルドターゲット
 		const void* pBinary;	//!< バイナリへの参照
-		ng::u32 size;	//!< バイナリのサイズ（バイト）
+		ng::u32 size;			//!< バイナリのサイズ（バイト）
+		eResourceMemoryType resMemType;	//!< リソースメモリタイプ
 	};
 
 	/*!

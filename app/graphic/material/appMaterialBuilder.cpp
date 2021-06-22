@@ -79,15 +79,18 @@ namespace app
 	{
 		bool result = false;
 
-		if(format.pBinary) {
+		if(format.IsValidBinary()) {
 			result = CResourceModule::LoadResourceFromMemory<CTexture>(
-				format.pBinary, format.size, matName, format.name, _getResourceMemoryType(), nullptr, handle
+				format.pBinary, format.size, matName, format.name, format.resMemType, nullptr, handle
+				);
+		}
+		else if(format.IsValidFilePath()) {
+			result = CResourceModule::LoadResourceFromFile<CTexture>(
+				format.filePath, format.resMemType, handle
 				);
 		}
 		else {
-			result = CResourceModule::LoadResourceFromFile<CTexture>(
-				format.filePath, _getResourceMemoryType(), handle
-				);
+			return false;
 		}
 
 		if(!result) {
@@ -102,15 +105,18 @@ namespace app
 		bool result = true;
 		CShader::BuildParam buildParam(format.entryPoint, format.target);
 
-		if(format.pBinary) {
+		if(format.IsValidBinary()) {
 			result = CResourceModule::LoadResourceFromMemory<CShader>(
-				format.pBinary, format.size, matName, format.entryPoint, _getResourceMemoryType(), &buildParam, handle
+				format.pBinary, format.size, matName, format.entryPoint, format.resMemType, &buildParam, handle
+				);
+		}
+		else if(format.IsValidFilePath()) {
+			result = CResourceModule::LoadResourceFromFile<CShader>(
+				format.filePath, format.entryPoint, format.resMemType, &buildParam, handle
 				);
 		}
 		else {
-			result = CResourceModule::LoadResourceFromFile<CShader>(
-				format.filePath, format.entryPoint, _getResourceMemoryType(), &buildParam, handle
-				);
+			return false;
 		}
 
 		if(!result) {
@@ -170,11 +176,6 @@ namespace app
 		}
 
 		return true;
-	}
-
-	eResourceMemoryType CMaterialBuilder::_getResourceMemoryType() const
-	{
-		return eResourceMemoryType::FIXED;
 	}
 
 }	// namespace app

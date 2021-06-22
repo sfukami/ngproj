@@ -82,15 +82,6 @@ namespace app
 		}
 	}
 
-	ng::CWeakPtr<CTexture> CMaterial::GetDiffuseMap() const
-	{
-		if(!m_diffuseMap.IsValid()) {
-			return ng::CWeakPtr<CTexture>();
-		}
-
-		return m_diffuseMap.GetResource();
-	}
-
 	ng::CWeakPtr<ng::CDX12RootSignature> CMaterial::GetRootSignature() const
 	{
 		return m_rootSignature;

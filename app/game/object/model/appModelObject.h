@@ -1,16 +1,16 @@
 ﻿/*!
-* @file		appSpriteObject.h
-* @brief	スプライトオブジェクト
+* @file		appModelObject.h
+* @brief	モデルオブジェクト
 * @date		2021-06-21
 * @author	s.fukami
 */
 
-#ifndef __APP_SPRITE_OBJECT_H__
-#define __APP_SPRITE_OBJECT_H__
+#ifndef __APP_MODEL_OBJECT_H__
+#define __APP_MODEL_OBJECT_H__
 
 #include "app/graphic/render/appRenderable.h"
 #include "app/transform/appTransformObject.h"
-#include "app/graphic/render/sprite/appSpriteRender.h"
+#include "app/graphic/render/model/appModelRender.h"
 #include "app/resource/memory/appResourceMemoryType.h"
 
 namespace ng
@@ -25,28 +25,21 @@ namespace app
 namespace app
 {
 	/*!
-	* @brief					スプライトオブジェクト
+	* @brief					モデルオブジェクト
 	*/
-	class CSpriteObject : public IRenderable, public CTransformObject
+	class CModelObject : public IRenderable, public CTransformObject
 	{
 	public:
-		CSpriteObject();
-		~CSpriteObject();
+		CModelObject();
+		~CModelObject();
 
 		/*!
 		* @brief					生成
-		* @param width				幅
-		* @param height				高さ
-		* @param imageFilePath		画像ファイルのパス
+		* @param modelFilePath		モデルファイルのパス
 		* @param resMemType			リソースメモリタイプ
 		* @return					成否
 		*/
-		bool Create(
-			ng::u32 width
-			, ng::u32 height
-			, const char* imageFilePath
-			, eResourceMemoryType resMemType
-			);
+		bool Create(const char* modelFilePath, eResourceMemoryType resMemType);
 
 		/*!
 		* @brief					破棄
@@ -69,10 +62,10 @@ namespace app
 		void _render(const RenderParam& param);
 
 	private:
-		CSpriteRender m_sprite;	//!< スプライト描画
+		CModelRender m_model;	//!< モデル描画
 		bool m_isVisible;	//!< 描画可能か
 	};
 
 }	// namespace app
 
-#endif	// __APP_SPRITE_OBJECT_H__
+#endif	// __APP_MODEL_OBJECT_H__

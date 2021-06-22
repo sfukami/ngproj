@@ -24,6 +24,7 @@ namespace app
 		if(!m_sprite.Create(
 			1, 1
 			, "../resource/texture/test.bmp"
+			, eResourceMemoryType::SCENE
 			)) {
 			return false;
 		}

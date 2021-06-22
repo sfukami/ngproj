@@ -12,6 +12,8 @@
 
 namespace ng
 {
+	class IMemoryAllocator;
+	class CDX12Device;
 	class CDX12CommandList;
 }
 

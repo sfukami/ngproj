@@ -11,10 +11,6 @@
 #include "ngLibCore/container//array/ngFixedArray.h"
 #include "ngLibApp/resource/ngResource.h"
 
-namespace ng
-{
-	class CDX12CommandList;
-}
 namespace app
 {
 	class CMesh;
@@ -30,6 +26,10 @@ namespace app
 	*/
 	class CModel : public ng::IResource
 	{
+	public:
+		using MeshArray = ng::CFixedArray<CMesh*>;	//!< メッシュの配列
+		using MaterialArray = ng::CFixedArray<CMaterial*>;	//!< マテリアルの配列
+
 	public:
 		CModel();
 		~CModel();
@@ -49,13 +49,16 @@ namespace app
 		void Destroy();
 
 		/*!
-		* @brief					描画
-		* @param commandList		DX12コマンドリスト
+		* @brief					メッシュの配列を取得
 		*/
-		void Render(
-			ng::CDX12CommandList& commandList
-			, const ShaderParam* pShaderParam
-			);
+		MeshArray& GetMeshArray();
+		const MeshArray& GetMeshArray() const;
+
+		/*!
+		* @brief					マテリアルの配列を取得
+		*/
+		MaterialArray& GetMaterialArray();
+		const MaterialArray& GetMaterialArray() const;
 
 		/*!
 		* @brief					リソースタイプ取得
@@ -73,14 +76,9 @@ namespace app
 		CMaterial* _createMaterial(const MaterialFormat& format);
 		/*! マテリアル破棄 */
 		void _deleteMaterial(CMaterial*& pMaterial);
-		/*! メッシュ描画 */
-		void _renderMesh(ng::CDX12CommandList& commandList, const CMesh& mesh, const ShaderParam* pShaderParam);
-		/*! マテリアルフォーマットのテンプレートを取得 */
-		void _getMaterialFormatTemplate(MaterialFormat* pDst);
-
-	private:
-		using MeshArray = ng::CFixedArray<CMesh*>;	//!< メッシュの配列
-		using MaterialArray = ng::CFixedArray<CMaterial*>;	//!< マテリアルの配列
+		
+		/*! マテリアルフォーマットを取得 */
+		void _getMaterialFormat(MaterialFormat* pDst);
 
 	private:
 		MeshArray m_meshArr;	//!< メッシュの配列

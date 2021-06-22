@@ -87,7 +87,7 @@ namespace app
 			// マテリアル生成
 			createCount = 0;
 			MaterialFormat format;
-			_getMaterialFormatTemplate(&format);
+			_getMaterialFormat(&format);
 			const Format::MaterialHeader* pMaterialHeader = ng::PointerCast<const Format::MaterialHeader*>(pMeshHeader);
 			for(ng::u32 i = 0; i < modelHeader.materialCount; i++)
 			{
@@ -130,19 +130,22 @@ namespace app
 		m_matArr.Finalize();
 	}
 
-	void CModel::Render(
-		ng::CDX12CommandList& commandList
-		, const ShaderParam* pShaderParam
-		)
+	CModel::MeshArray& CModel::GetMeshArray()
 	{
-		// 全てのメッシュを描画
-		for(ng::u32 i = 0; i < m_meshArr.Size(); i++)
-		{
-			CMesh* pMesh = m_meshArr[i];
-			if(pMesh != nullptr) {
-				_renderMesh(commandList, *pMesh, pShaderParam);
-			}
-		}
+		return m_meshArr;
+	}
+	const CModel::MeshArray& CModel::GetMeshArray() const
+	{
+		return m_meshArr;
+	}
+
+	CModel::MaterialArray& CModel::GetMaterialArray()
+	{
+		return m_matArr;
+	}
+	const CModel::MaterialArray& CModel::GetMaterialArray() const
+	{
+		return m_matArr;
 	}
 
 	int CModel::GetResourceType() const
@@ -194,30 +197,7 @@ namespace app
 		}
 	}
 
-	void CModel::_renderMesh(ng::CDX12CommandList& commandList, const CMesh& mesh, const ShaderParam* pShaderParam)
-	{
-		CMaterial* pMaterial = m_matArr[ mesh.GetMaterialIndex() ];
-
-		if(pMaterial) {
-			pMaterial->BindPipelineState(commandList);
-			pMaterial->BindRootSignature(commandList);
-
-			auto shdEffPtr = pMaterial->GetShaderEffect();
-			if(shdEffPtr) {
-				if(pShaderParam) {
-					shdEffPtr->SetShaderParam(*pShaderParam);
-				}
-				shdEffPtr->UpdateConstantBuffer();
-				shdEffPtr->BindResource(commandList);
-			}
-			
-			pMaterial->BindResource(commandList);
-		}
-
-		mesh.Render(commandList);
-	}
-
-	void CModel::_getMaterialFormatTemplate(MaterialFormat* pDst)
+	void CModel::_getMaterialFormat(MaterialFormat* pDst)
 	{
 		pDst->SetMaterialName("model");
 		pDst->SetRootSignatureName("model");
