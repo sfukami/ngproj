@@ -38,6 +38,18 @@ namespace app
 			);
 	}
 
+	CRootSignatureDescSpriteT0::CRootSignatureDescSpriteT0()
+		: CRootSignatureDescBase("sprite_t0")
+		, m_cbRange(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, 1, 0)
+	{
+		m_rootParams[0].InitAsDescriptorTable(1, &m_cbRange, D3D12_SHADER_VISIBILITY_ALL);
+
+		Init(NG_ARRAY_SIZE(m_rootParams), m_rootParams,
+			0, nullptr,
+			D3D12_ROOT_SIGNATURE_FLAG_ALLOW_INPUT_ASSEMBLER_INPUT_LAYOUT
+			);
+	}
+
 	CRootSignatureDescModel::CRootSignatureDescModel()
 		: CRootSignatureDescBase("model")
 		, m_cbRange(D3D12_DESCRIPTOR_RANGE_TYPE_CBV, 1, 0)

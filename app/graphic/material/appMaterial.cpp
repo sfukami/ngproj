@@ -28,19 +28,19 @@ namespace app
 	{
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
-		// DX12ディスクリプタヒープ生成
-		if(NG_FAILED(err = m_descHeap.Create(
-			device,
-			D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV,
-			1,
-			D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
-			))) {
-			NG_ERRLOG_C("Material", err, "DX12ディスクリプタヒープの生成に失敗しました.");
-			return false;
-		}
-
-		// 各テクスチャのリソースビュー生成
 		if(m_diffuseMap.IsValid()) {
+			// DX12ディスクリプタヒープ生成
+			if(NG_FAILED(err = m_descHeap.Create(
+				device,
+				D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV,
+				1,
+				D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
+				))) {
+				NG_ERRLOG_C("Material", err, "DX12ディスクリプタヒープの生成に失敗しました.");
+				return false;
+			}
+
+			// 各テクスチャのリソースビュー生成
 			m_diffuseMap.GetResource()->GetTexture().CreateResourceView(
 				device,
 				m_descHeap, 0
@@ -94,7 +94,7 @@ namespace app
 
 	ng::CWeakPtr<CShaderEffect> CMaterial::GetShaderEffect() const
 	{
-		return m_shaderEffect;
+		return ng::CWeakPtr<CShaderEffect>(m_shaderEffect);
 	}
 
 	void CMaterial::SetDiffuseMap(const ng::CResourceHandle<CTexture>& handle)

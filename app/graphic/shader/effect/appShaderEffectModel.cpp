@@ -76,4 +76,9 @@ namespace app
 		}
 	}
 
+	const char* CShaderEffectModel::GetName()
+	{
+		return "model";
+	}
+
 }	// namespace app

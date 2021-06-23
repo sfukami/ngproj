@@ -45,6 +45,16 @@ namespace app
 		CD3DX12_STATIC_SAMPLER_DESC m_samplerDesc;	//!< DX12サンプラー記述子
 	};
 
+	class CRootSignatureDescSpriteT0 : public CRootSignatureDescBase
+	{
+	public:
+		CRootSignatureDescSpriteT0();
+
+	private:
+		CD3DX12_DESCRIPTOR_RANGE m_cbRange;		//!< DX12ディスクリプタレンジ コンスタントバッファ
+		CD3DX12_ROOT_PARAMETER m_rootParams[1];	//!< DX12ルートパラメータ
+	};
+
 	/*!
 	* @brief					ルートシグネチャ記述子 モデル用
 	*/

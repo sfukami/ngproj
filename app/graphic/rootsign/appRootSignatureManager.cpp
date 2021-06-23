@@ -30,6 +30,7 @@ namespace app
 		using FuncType = bool(CRootSignatureManager::*)(ng::IMemoryAllocator&, ng::CDX12Device&);
 		const FuncType funcTbl[] = {
 			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescSprite),
+			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescSpriteT0),
 			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescModel),
 		};
 

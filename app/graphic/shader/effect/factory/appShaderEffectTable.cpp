@@ -1,5 +1,5 @@
 ﻿/*!
-* @file		appMaterial.cpp
+* @file		appShaderEffectTable.cpp
 * @brief	シェーダーエフェクト テーブル
 * @date		2020-08-14
 * @author	s.fukami
@@ -18,8 +18,8 @@ namespace app
 namespace app
 {
 	//! シェーダーエフェクト情報設定
-	#define _SHADER_EFFECT_INFO(_name, _type) \
-		{ _name, &CShaderEffectFactory::_createShaderEffect<_type> }
+	#define _SHADER_EFFECT_INFO(_type) \
+		{ _type::GetName(), &CShaderEffectFactory::_createShaderEffect<_type> }
 
 	//! シェーダーエフェクト情報
 	struct ShaderEffectInfo

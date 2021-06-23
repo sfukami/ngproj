@@ -10,7 +10,6 @@
 
 #include "ngLibGraphic/graphic/dx12/descriptor/ngDX12DescriptorHeap.h"
 #include "ngLibGraphic/graphic/dx12/shader/ngDX12ConstantBuffer.h"
-#include "ngLibApp/resource/ngResourceHandle.h"
 #include "appShaderEffect.h"
 #include "appShaderParam.h"
 
@@ -59,6 +58,11 @@ namespace app
 		* @param commandList		DX12コマンドリスト
 		*/
 		void BindResource(ng::CDX12CommandList& commandList);
+
+		/*!
+		* @brief					名称取得
+		*/
+		static const char* GetName();
 
 	private:
 		ng::CDX12DescriptorHeap m_descHeap;	//!< DX12ディスクリプタヒープ

@@ -1,13 +1,14 @@
 ﻿/*!
-* @file		appShaderEffectSprite.h
-* @brief	シェーダーエフェクト スプライト描画
+* @file		appShaderEffectSpriteColor.h
+* @brief	シェーダーエフェクト スプライト描画 色指定
 * @date		2020-07-28
 * @author	s.fukami
 */
 
-#ifndef __APP_SHADER_EFFECT_SPRITE_H__
-#define __APP_SHADER_EFFECT_SPRITE_H__
+#ifndef __APP_SHADER_EFFECT_SPRITE_COLOR_H__
+#define __APP_SHADER_EFFECT_SPRITE_COLOR_H__
 
+#include "ngLibCore//color/ngColor.h"
 #include "ngLibGraphic/graphic/dx12/descriptor/ngDX12DescriptorHeap.h"
 #include "ngLibGraphic/graphic/dx12/shader/ngDX12ConstantBuffer.h"
 #include "appShaderEffect.h"
@@ -22,13 +23,23 @@ namespace ng
 namespace app
 {
 	/*!
-	* @brief					シェーダーエフェクト スプライト描画
+	* @brief					シェーダーエフェクト スプライト描画 色指定
 	*/
-	class CShaderEffectSprite : public CShaderEffect
+	class CShaderEffectSpriteColor : public CShaderEffect
 	{
 	public:
-		CShaderEffectSprite();
-		~CShaderEffectSprite();
+		//! パラメータ
+		struct Param
+		{
+			Param();
+
+			ShaderParam basicParam;	//!< 基本パラメータ
+			ng::Color color;	//!< 色
+		};
+
+	public:
+		CShaderEffectSpriteColor();
+		~CShaderEffectSpriteColor();
 
 		/*!
 		* @brief					生成
@@ -46,6 +57,11 @@ namespace app
 		* @brief					パラメータ設定
 		*/
 		void SetParameter(const ShaderParam& param);
+
+		/*!
+		* @brief					パラメータ設定 色
+		*/
+		void SetColor(const ng::Color& color);
 
 		/*!
 		* @brief					コンスタントバッファ更新
@@ -66,9 +82,9 @@ namespace app
 	private:
 		ng::CDX12DescriptorHeap m_descHeap;	//!< DX12ディスクリプタヒープ
 		ng::CDX12ConstantBuffer m_cb;	//!< DX12コンスタントバッファ
-		ShaderParam m_param;	//!< パラメータ
+		Param m_param;	//!< パラメータ
 	};
 
 }	// namespace app
 
-#endif	// __APP_SHADER_EFFECT_SPRITE_H__
+#endif	// __APP_SHADER_EFFECT_SPRITE_COLOR_H__
