@@ -8,6 +8,7 @@
 #include "appSpriteRender.h"
 #include "app/graphic/material/appMaterialFormat.h"
 #include "app/graphic/material/appMaterialBuilder.h"
+#include "app/graphic/material/appMaterialUtil.h"
 #include "app/graphic/shader/effect/appShaderEffect.h"
 #include "app/graphic/shader/effect/appShaderParam.h"
 #include "../appRenderParam.h"
@@ -30,16 +31,9 @@ namespace app
 		, eResourceMemoryType resMemType
 		)
 	{
-		ng::CDX12Device* pDX12Device = GraphicUtil::GetDX12Device();
-		NG_ASSERT_NOT_NULL(pDX12Device);
-
-		// DX12ポリゴン 矩形生成
-		{
-			NG_ERRCODE err = m_square.Create(*pDX12Device, (float)width, (float)height, true);
-			if(NG_FAILED(err)) {
-				NG_ERRLOG_C("Sprite", err, "DX12ポリゴン矩形の生成に失敗しました.");
-				return false;
-			}
+		// 矩形ポリゴン生成
+		if(!_createSquare(width, height)) {
+			return false;
 		}
 
 		// マテリアル生成
@@ -60,6 +54,29 @@ namespace app
 		return true;
 	}
 
+	bool CSpriteRender::Create(
+		ng::u32 width
+		, ng::u32 height
+		, const MaterialFormat& format
+		)
+	{
+		// 矩形ポリゴン生成
+		if(!_createSquare(width, height)) {
+			return false;
+		}
+
+		// マテリアル生成
+		{
+			CMaterialBuilder builder;
+			if(!builder.Build(format, &m_material)) {
+				NG_ERRLOG("SpriteRender", "マテリアルの生成に失敗しました.");
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	void CSpriteRender::Destroy()
 	{
 		m_square.Destroy();
@@ -69,6 +86,32 @@ namespace app
 	bool CSpriteRender::IsEnable() const
 	{
 		return m_square.IsValid();
+	}
+
+	CMaterial& CSpriteRender::GetMaterial()
+	{
+		return m_material;
+	}
+	const CMaterial& CSpriteRender::GetMaterial() const
+	{
+		return m_material;
+	}
+
+	bool CSpriteRender::_createSquare(ng::u32 width, ng::u32 height)
+	{
+		ng::CDX12Device* pDX12Device = GraphicUtil::GetDX12Device();
+		NG_ASSERT_NOT_NULL(pDX12Device);
+
+		// DX12ポリゴン 矩形生成
+		{
+			NG_ERRCODE err = m_square.Create(*pDX12Device, (float)width, (float)height, true);
+			if(NG_FAILED(err)) {
+				NG_ERRLOG_C("SpriteRender", err, "DX12矩形ポリゴンの生成に失敗しました.");
+				return false;
+			}
+		}
+
+		return true;
 	}
 
 	void CSpriteRender::_render(const RenderParam& param)
@@ -98,19 +141,7 @@ namespace app
 
 	void CSpriteRender::_getMaterialFormat(MaterialFormat* pDst)
 	{
-		pDst->SetMaterialName("sprite");
-		pDst->SetRootSignatureName("sprite");
-		pDst->SetPipelineStateName("sprite");
-		pDst->SetShaderEffectName("sprite");
-		pDst->vertexLayout = ng::eVertexLayout::SPRITE;
-		// vs
-		pDst->vertexShader.SetFilePath("../resource/shader/sprite_vs.hlsl");
-		pDst->vertexShader.SetEntryPoint("VSMain");
-		pDst->vertexShader.SetTarget("vs_5_0");
-		// ps
-		pDst->pixelShader.SetFilePath("../resource/shader/sprite_ps.hlsl");
-		pDst->pixelShader.SetEntryPoint("PSMain");
-		pDst->pixelShader.SetTarget("ps_5_0");
+		MaterialUtil::GetMaterialFormatSprite(pDst);
 	}
 
 }	// namespace app

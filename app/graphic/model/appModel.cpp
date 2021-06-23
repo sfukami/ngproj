@@ -10,6 +10,7 @@
 #include "../material/appMaterial.h"
 #include "../material/appMaterialFormat.h"
 #include "../material/appMaterialBuilder.h"
+#include "../material/appMaterialUtil.h"
 #include "../shader/effect/appShaderEffect.h"
 #include "app/resource/appResourceType.h"
 #include "app/memory/appMemoryUtil.h"
@@ -199,19 +200,7 @@ namespace app
 
 	void CModel::_getMaterialFormat(MaterialFormat* pDst)
 	{
-		pDst->SetMaterialName("model");
-		pDst->SetRootSignatureName("model");
-		pDst->SetPipelineStateName("model");
-		pDst->SetShaderEffectName("model");
-		pDst->vertexLayout = ng::eVertexLayout::SKELETAL;
-		// vs
-		pDst->vertexShader.SetFilePath("../resource/shader/model_test.hlsl");
-		pDst->vertexShader.SetEntryPoint("VSMain");
-		pDst->vertexShader.SetTarget("vs_5_0");
-		// ps
-		pDst->pixelShader.SetFilePath("../resource/shader/model_test.hlsl");
-		pDst->pixelShader.SetEntryPoint("PSMain");
-		pDst->pixelShader.SetTarget("ps_5_0");
+		MaterialUtil::GetMaterialFormatModel(pDst);
 	}
 
 }	// namespace app

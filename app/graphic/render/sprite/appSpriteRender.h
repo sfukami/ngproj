@@ -46,6 +46,19 @@ namespace app
 			);
 
 		/*!
+		* @brief					生成
+		* @param width				幅
+		* @param height				高さ
+		* @param format				マテリアルフォーマット
+		* @return					成否
+		*/
+		bool Create(
+			ng::u32 width
+			, ng::u32 height
+			, const MaterialFormat& format
+			);
+
+		/*!
 		* @brief					破棄
 		*/
 		void Destroy();
@@ -55,7 +68,16 @@ namespace app
 		*/
 		bool IsEnable() const;
 
+		/*!
+		* @brief					マテリアル取得
+		*/
+		CMaterial& GetMaterial();
+		const CMaterial& GetMaterial() const;
+
 	private:
+		/*! 矩形ポリゴン生成 */
+		bool _createSquare(ng::u32 width, ng::u32 height);
+
 		/*! 描画 */
 		void _render(const RenderParam& param);
 

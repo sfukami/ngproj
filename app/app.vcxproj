@@ -46,6 +46,7 @@
     <ClCompile Include="graphic\material\appMaterial.cpp" />
     <ClCompile Include="graphic\material\appMaterialBuilder.cpp" />
     <ClCompile Include="graphic\material\appMaterialFormat.cpp" />
+    <ClCompile Include="graphic\material\appMaterialUtil.cpp" />
     <ClCompile Include="graphic\model\appMesh.cpp" />
     <ClCompile Include="graphic\model\appModel.cpp" />
     <ClCompile Include="graphic\pipeline\appGraphicPipeline.cpp" />
@@ -133,6 +134,7 @@
     <ClInclude Include="graphic\material\appMaterial.h" />
     <ClInclude Include="graphic\material\appMaterialBuilder.h" />
     <ClInclude Include="graphic\material\appMaterialFormat.h" />
+    <ClInclude Include="graphic\material\appMaterialUtil.h" />
     <ClInclude Include="graphic\model\appMesh.h" />
     <ClInclude Include="graphic\model\appModel.h" />
     <ClInclude Include="graphic\pipeline\appGraphicPipeline.h" />
