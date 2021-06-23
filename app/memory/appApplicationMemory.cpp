@@ -90,7 +90,7 @@ namespace app
 		ng::CWeakPtr<ng::IMemoryAllocator> allocPtr = GetAllocator(eMemoryAllocatorId::WORK);
 
 		if(allocPtr != nullptr) {
-			std::dynamic_pointer_cast<ng::CStackAllocator>(allocPtr)->Clear();
+			ng::DynamicCast<ng::CStackAllocator>(allocPtr)->Clear();
 		}
 	}
 

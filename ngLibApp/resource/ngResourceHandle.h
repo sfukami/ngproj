@@ -83,7 +83,7 @@ namespace ng
 	template <class T>
 	void CResourceHandle<T>::SetResource(CSharedPtr<IResource>& resPtr)
 	{
-		m_resPtr = DynamicCast<T>(resPtr);
+		m_resPtr = CWeakPtr<T>(DynamicCast<T>(resPtr));
 	}
 
 }	// namespace ng

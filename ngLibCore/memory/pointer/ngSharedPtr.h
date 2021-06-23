@@ -58,7 +58,7 @@ namespace ng
 		* @param p					対象のポインタ
 		* @param alloc				用いるメモリアロケータ
 		*/
-		explicit CSharedPtr(T* p, IMemoryAllocator& alloc) noexcept
+		CSharedPtr(T* p, IMemoryAllocator& alloc) noexcept
 			: BaseType(p, CPtrDeleter<T>(alloc))
 		{ }
 

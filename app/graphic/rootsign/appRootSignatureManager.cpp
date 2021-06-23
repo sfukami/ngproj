@@ -57,7 +57,7 @@ namespace app
 			return false;
 		}
 
-		dstPtr = pNode->GetValue();
+		dstPtr = ng::CWeakPtr<ng::CDX12RootSignature>(pNode->GetValue());
 
 		return true;
 	}
