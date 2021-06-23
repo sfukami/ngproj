@@ -13,7 +13,7 @@
 /*!
 * @brief					文字列クリア
 */
-#define NG_CLRSTR(_str)		(ng::ClearString(_str))
+#define NG_STRCLR(_str)		(ng::ClearString(_str))
 
 /*!
 * @brief					文字列長さ取得

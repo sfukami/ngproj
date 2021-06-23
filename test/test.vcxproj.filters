@@ -74,6 +74,9 @@
     <Filter Include="ソース ファイル\testcode\scope">
       <UniqueIdentifier>{1b008353-54bc-469a-8995-d8117abeefac}</UniqueIdentifier>
     </Filter>
+    <Filter Include="ソース ファイル\testcode\experiment">
+      <UniqueIdentifier>{250e6609-ff08-4a0b-9d1f-8ac5c244f668}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="preincl\testPreInclude.h">
@@ -155,6 +158,9 @@
     </ClCompile>
     <ClCompile Include="testcode\scope\testScope.cpp">
       <Filter>ソース ファイル\testcode\scope</Filter>
+    </ClCompile>
+    <ClCompile Include="testcode\experiment\testConst.cpp">
+      <Filter>ソース ファイル\testcode\experiment</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

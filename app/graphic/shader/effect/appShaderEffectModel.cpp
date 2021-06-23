@@ -56,14 +56,14 @@ namespace app
 		m_descHeap.Destroy();
 	}
 
-	void CShaderEffectModel::SetShaderParam(const ShaderParam& param)
+	void CShaderEffectModel::SetParameter(const ShaderParam& param)
 	{
-		NG_MEMCPY(&m_shPrm, &param, sizeof(param));
+		NG_MEMCPY(&m_param, &param, sizeof(param));
 	}
 
 	void CShaderEffectModel::UpdateConstantBuffer()
 	{
-		m_cb.CopyData(&m_shPrm, sizeof(ShaderParam));
+		m_cb.CopyData(&m_param, sizeof(ShaderParam));
 	}
 
 	void CShaderEffectModel::BindResource(ng::CDX12CommandList& commandList)
@@ -74,6 +74,11 @@ namespace app
 			// コンスタントバッファのディスクリプタテーブルを設定
 			commandList.SetGraphicsRootDescriptorTable(0, m_descHeap.GetGPUDescriptorHandle(0));
 		}
+	}
+
+	const char* CShaderEffectModel::GetName()
+	{
+		return "model";
 	}
 
 }	// namespace app

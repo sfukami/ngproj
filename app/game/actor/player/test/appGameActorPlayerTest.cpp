@@ -8,7 +8,6 @@
 #include "appGameActorPlayerTest.h"
 #include "app/resource/appResourceModule.h"
 #include "app/input/appInputModule.h"
-// test
 #include "app/game/actor/bullet/test/appGameActorPlayerBulletTest.h"
 #include "app/game/actor/appGameActorMacro.h"
 
@@ -32,7 +31,7 @@ namespace app
 			)) {
 			return false;
 		}
-
+		
 		// 親トランスフォーム設定
 		CTransform& transform = m_sprite.GetTransform();
 		transform.SetParent(&GetTransform());

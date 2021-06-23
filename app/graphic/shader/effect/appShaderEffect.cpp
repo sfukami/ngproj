@@ -21,7 +21,7 @@ namespace app
 		return true;
 	}
 
-	void CShaderEffect::SetShaderParam(const ShaderParam& param)
+	void CShaderEffect::SetParameter(const ShaderParam& param)
 	{
 	}
 

@@ -53,7 +53,7 @@ namespace ng
 	void CDefaultAllocator::Finalize()
 	{
 		m_isInit = false;
-		NG_CLRSTR(m_name);
+		NG_STRCLR(m_name);
 	}
 
 	void* CDefaultAllocator::Allocate(

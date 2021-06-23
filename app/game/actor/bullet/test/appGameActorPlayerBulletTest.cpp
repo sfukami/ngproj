@@ -7,6 +7,8 @@
 
 #include "appGameActorPlayerBulletTest.h"
 #include "app/resource/appResourceModule.h"
+#include "app/graphic/material/appMaterialFormat.h"
+#include "app/graphic/material/appMaterialUtil.h"
 
 namespace app
 {
@@ -21,12 +23,21 @@ namespace app
 	bool CGameActorPlayerBulletTest::Create()
 	{
 		// スプライト生成
-		if(!m_sprite.Create(
-			1, 1
-			, "../resource/texture/test.bmp"
-			, eResourceMemoryType::SCENE
-			)) {
-			return false;
+		{
+			MaterialFormat format;
+			MaterialUtil::GetMaterialFormatSprite(&format);
+			format.SetShaderEffectName("sprite_color");
+			format.SetRootSignatureName("sprite_t0");
+			format.SetPipelineStateName("sprite_color");
+			format.vertexShader.SetFilePath("../resource/shader/sprite_color.hlsl");
+			format.pixelShader.SetFilePath("../resource/shader/sprite_color.hlsl");
+			
+			if(!m_sprite.Create(
+				1, 1
+				, format
+				)) {
+				return false;
+			}
 		}
 
 		// 親トランスフォーム設定

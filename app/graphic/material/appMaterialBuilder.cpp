@@ -7,9 +7,9 @@
 
 #include "ngLibGraphic/graphic/dx12/ngDX12Util.h"
 #include "ngLibGraphic/graphic/dx12/pipeline/ngDX12PipelineStateDesc.h"
-#include "appMaterialBuilder.h"
 #include "appMaterial.h"
 #include "appMaterialFormat.h"
+#include "appMaterialBuilder.h"
 #include "app/graphic//shader/effect/appShaderEffect.h"
 #include "app/graphic/appGraphicModule.h"
 
@@ -90,7 +90,8 @@ namespace app
 				);
 		}
 		else {
-			return false;
+			// テクスチャ無しと見なす
+			return true;
 		}
 
 		if(!result) {

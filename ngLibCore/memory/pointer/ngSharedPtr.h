@@ -55,10 +55,18 @@ namespace ng
 
 		/*!
 		* @brief					コンストラクタ
+		* @note						キャストのため、CSharedPtr<T>ではなくstd::shared_ptr<T>を渡す
+		*/
+		explicit CSharedPtr(const std::shared_ptr<T>& sp) noexcept
+			: BaseType(sp)
+		{ }
+
+		/*!
+		* @brief					コンストラクタ
 		* @param p					対象のポインタ
 		* @param alloc				用いるメモリアロケータ
 		*/
-		explicit CSharedPtr(T* p, IMemoryAllocator& alloc) noexcept
+		CSharedPtr(T* p, IMemoryAllocator& alloc) noexcept
 			: BaseType(p, CPtrDeleter<T>(alloc))
 		{ }
 
@@ -77,17 +85,15 @@ namespace ng
 	template <class Other, class Self>
 	CSharedPtr<Other> StaticCast(const CSharedPtr<Self>& self)
 	{
-		return CSharedPtr<Other>(self, self.get());
+		return CSharedPtr<Other>(std::static_pointer_cast<Other>(self));
 	}
 
 	/*! 動的キャスト */
 	template <class Other, class Self>
 	CSharedPtr<Other> DynamicCast(const CSharedPtr<Self>& self)
 	{
-		const auto p = dynamic_cast<typename CSharedPtr<Other>::ElemType*>(self.get());
-
-		if(p) {
-			return CSharedPtr<Other>(self, p);
+		if(std::shared_ptr<Other> otherPtr = std::dynamic_pointer_cast<Other>(self)) {
+			return CSharedPtr<Other>(otherPtr);
 		}
 
 		return CSharedPtr<Other>();

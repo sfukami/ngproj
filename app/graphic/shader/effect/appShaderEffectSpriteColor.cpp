@@ -1,24 +1,30 @@
 ﻿/*!
-* @file		appShaderEffectSprite.cpp
+* @file		appShaderEffectSpriteColor.cpp
 * @brief	シェーダーエフェクト スプライト描画
 * @date		2020-07-28
 * @author	s.fukami
 */
 
+#include "ngLibCore/color/ngColorCode.h"
 #include "ngLibGraphic/graphic/dx12/command/list/ngDX12CommandList.h"
-#include "appShaderEffectSprite.h"
+#include "appShaderEffectSpriteColor.h"
 
 namespace app
 {
-	CShaderEffectSprite::CShaderEffectSprite()
+	CShaderEffectSpriteColor::Param::Param()
+		: color(ng::eColorCode::WHITE)
 	{
 	}
-	CShaderEffectSprite::~CShaderEffectSprite()
+
+	CShaderEffectSpriteColor::CShaderEffectSpriteColor()
+	{
+	}
+	CShaderEffectSpriteColor::~CShaderEffectSpriteColor()
 	{
 		Destroy();
 	}
 
-	bool CShaderEffectSprite::Create(ng::CDX12Device& device)
+	bool CShaderEffectSpriteColor::Create(ng::CDX12Device& device)
 	{
 		NG_ERRCODE err = NG_ERRCODE_DEFAULT;
 
@@ -29,16 +35,16 @@ namespace app
 			1,
 			D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE
 			))) {
-			NG_ERRLOG_C("ShaderEffectSprite", err, "DX12ディスクリプタヒープの生成に失敗しました.");
+			NG_ERRLOG_C("ShaderEffectSpriteColor", err, "DX12ディスクリプタヒープの生成に失敗しました.");
 			return false;
 		}
 
 		// DX12コンスタントバッファ生成
 		if(NG_FAILED(err = m_cb.Create(
 			device,
-			nullptr, sizeof(ShaderParam)
+			nullptr, sizeof(Param)
 			))) {
-			NG_ERRLOG_C("ShaderEffectSprite", err, "DX12コンスタントバッファの生成に失敗しました.");
+			NG_ERRLOG_C("ShaderEffectSpriteColor", err, "DX12コンスタントバッファの生成に失敗しました.");
 			return false;
 		}
 
@@ -50,23 +56,28 @@ namespace app
 		return true;
 	}
 
-	void CShaderEffectSprite::Destroy()
+	void CShaderEffectSpriteColor::Destroy()
 	{
 		m_cb.Destroy();
 		m_descHeap.Destroy();
 	}
 
-	void CShaderEffectSprite::SetParameter(const ShaderParam& param)
+	void CShaderEffectSpriteColor::SetParameter(const ShaderParam& param)
 	{
-		NG_MEMCPY(&m_param, &param, sizeof(param));
+		m_param.basicParam = param;
 	}
 
-	void CShaderEffectSprite::UpdateConstantBuffer()
+	void CShaderEffectSpriteColor::SetColor(const ng::Color& color)
 	{
-		m_cb.CopyData(&m_param, sizeof(ShaderParam));
+		m_param.color = color;
 	}
 
-	void CShaderEffectSprite::BindResource(ng::CDX12CommandList& commandList)
+	void CShaderEffectSpriteColor::UpdateConstantBuffer()
+	{
+		m_cb.CopyData(&m_param, sizeof(Param));
+	}
+
+	void CShaderEffectSpriteColor::BindResource(ng::CDX12CommandList& commandList)
 	{
 		if(m_descHeap.IsValid()) {
 			// ディスクリプタヒープ設定
@@ -76,9 +87,9 @@ namespace app
 		}
 	}
 
-	const char* CShaderEffectSprite::GetName()
+	const char* CShaderEffectSpriteColor::GetName()
 	{
-		return "sprite";
+		return "sprite_color";
 	}
 
 }	// namespace app

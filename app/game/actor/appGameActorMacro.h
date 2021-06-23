@@ -36,10 +36,16 @@ namespace GameActorMacro
 
 	template <class T>
 	T* _CreateActor(T* pActor)
-	{
+	{ 
+		if(!pActor->Create()) {
+			NG_ERRLOG("GameActorMacro", "ゲームアクターの生成に失敗しました. typeid:%s", typeid(T).name());
+			APP_DELETE_GAME_ACTOR(pActor);
+			return nullptr;
+		}
+
 		_AddGameActor(pActor);
 
-		return (pActor->Create() ? pActor : nullptr);
+		return pActor;
 	}
 
 }	// namespace GameActorMacro

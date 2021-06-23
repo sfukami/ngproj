@@ -20,6 +20,7 @@ namespace ng
 namespace app
 {
 	struct RenderParam;
+	struct MaterialFormat;
 }
 
 namespace app
@@ -49,6 +50,19 @@ namespace app
 			);
 
 		/*!
+		* @brief					生成
+		* @param width				幅
+		* @param height				高さ
+		* @param format				マテリアルフォーマット
+		* @return					成否
+		*/
+		bool Create(
+			ng::u32 width
+			, ng::u32 height
+			, const MaterialFormat& format
+			);
+
+		/*!
 		* @brief					破棄
 		*/
 		void Destroy();
@@ -63,6 +77,12 @@ namespace app
 		*/
 		void SetVisible(bool visible);
 		bool IsVisible() const;
+
+		/*!
+		* @brief					スプライト描画取得
+		*/
+		CSpriteRender& GetRender();
+		const CSpriteRender& GetRender() const;
 
 	private:
 		/*! 描画 */

@@ -10,7 +10,6 @@
 
 #include "ngLibGraphic/graphic/dx12/descriptor/ngDX12DescriptorHeap.h"
 #include "ngLibGraphic/graphic/dx12/shader/ngDX12ConstantBuffer.h"
-#include "ngLibApp/resource/ngResourceHandle.h"
 #include "appShaderEffect.h"
 #include "appShaderParam.h"
 
@@ -45,9 +44,9 @@ namespace app
 		void Destroy();
 
 		/*!
-		* @brief					シェーダーパラメータ設定
+		* @brief					パラメータ設定
 		*/
-		void SetShaderParam(const ShaderParam& param);
+		void SetParameter(const ShaderParam& param);
 
 		/*!
 		* @brief					コンスタントバッファ更新
@@ -60,10 +59,15 @@ namespace app
 		*/
 		void BindResource(ng::CDX12CommandList& commandList);
 
+		/*!
+		* @brief					名称取得
+		*/
+		static const char* GetName();
+
 	private:
 		ng::CDX12DescriptorHeap m_descHeap;	//!< DX12ディスクリプタヒープ
 		ng::CDX12ConstantBuffer m_cb;	//!< DX12コンスタントバッファ
-		ShaderParam m_shPrm;	//!< シェーダーパラメータ
+		ShaderParam m_param;	//!< パラメータ
 	};
 
 }	// namespace app

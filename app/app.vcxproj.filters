@@ -373,6 +373,12 @@
     <ClCompile Include="graphic\render\model\appModelRender.cpp">
       <Filter>ソース ファイル\graphic\render\model</Filter>
     </ClCompile>
+    <ClCompile Include="graphic\shader\effect\appShaderEffectSpriteColor.cpp">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClCompile>
+    <ClCompile Include="graphic\material\appMaterialUtil.cpp">
+      <Filter>ソース ファイル\graphic\material</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="common\appCommon.h">
@@ -650,6 +656,12 @@
     </ClInclude>
     <ClInclude Include="graphic\render\model\appModelRender.h">
       <Filter>ソース ファイル\graphic\render\model</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\shader\effect\appShaderEffectSpriteColor.h">
+      <Filter>ソース ファイル\graphic\shader\effect</Filter>
+    </ClInclude>
+    <ClInclude Include="graphic\material\appMaterialUtil.h">
+      <Filter>ソース ファイル\graphic\material</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -28,6 +28,15 @@ namespace app
 		return m_sprite.Create(width, height, imageFilePath, resMemType);
 	}
 
+	bool CSpriteObject::Create(
+		ng::u32 width
+		, ng::u32 height
+		, const MaterialFormat& format
+		)
+	{
+		return m_sprite.Create(width, height, format);
+	}
+
 	void CSpriteObject::Destroy()
 	{
 		m_sprite.Destroy();
@@ -46,6 +55,15 @@ namespace app
 	bool CSpriteObject::IsVisible() const
 	{
 		return m_isVisible && m_sprite.IsEnable();
+	}
+
+	CSpriteRender& CSpriteObject::GetRender()
+	{
+		return m_sprite;
+	}
+	const CSpriteRender& CSpriteObject::GetRender() const
+	{
+		return m_sprite;
 	}
 
 	void CSpriteObject::_render(const RenderParam& param)

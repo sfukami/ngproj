@@ -8,6 +8,10 @@
 #include "appGameActorEnemyTest.h"
 #include "app/resource/appResourceModule.h"
 #include "app/input/appInputModule.h"
+#include "app/graphic/material/appMaterialFormat.h"
+#include "app/graphic/material/appMaterialUtil.h"
+
+#include "app/graphic/shader/effect/appShaderEffectSpriteColor.h"
 
 namespace app
 {
@@ -22,12 +26,26 @@ namespace app
 	bool CGameActorEnemyTest::Create()
 	{
 		// スプライト生成
-		if(!m_sprite.Create(
-			1, 1
-			, "../resource/texture/test.bmp"
-			, eResourceMemoryType::SCENE
-			)) {
-			return false;
+		{
+			MaterialFormat format;
+			MaterialUtil::GetMaterialFormatSprite(&format);
+			format.SetShaderEffectName("sprite_color");
+			format.SetRootSignatureName("sprite_t0");
+			format.SetPipelineStateName("sprite_color");
+			format.vertexShader.SetFilePath("../resource/shader/sprite_color.hlsl");
+			format.pixelShader.SetFilePath("../resource/shader/sprite_color.hlsl");
+			
+			if(!m_sprite.Create(
+				1, 1
+				, format
+				)) {
+				return false;
+			}
+
+			// シェーダーエフェクトのパラメータ変更
+			CMaterial& material = m_sprite.GetRender().GetMaterial();
+			auto shdEffPtr = ng::DynamicCast<CShaderEffectSpriteColor>(material.GetShaderEffect());
+			shdEffPtr->SetColor(ng::Color(1, 0, 0));
 		}
 
 		// 親トランスフォーム設定

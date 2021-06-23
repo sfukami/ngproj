@@ -9,7 +9,6 @@
 #include "appSceneGameTest.h"
 #include "app/graphic/appGraphicModule.h"
 #include "app/graphic/pipeline/appGraphicPipelineDefault.h"
-
 #include "app/game/actor/appGameActorMacro.h"
 #include "app/game/actor/player/test/appGameActorPlayerTest.h"
 #include "app/game/actor/enemy/test/appGameActorEnemyTest.h"

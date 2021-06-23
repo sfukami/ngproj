@@ -34,9 +34,9 @@ namespace app
 	ShaderFormat::ShaderFormat()
 		: pBinary(nullptr), size(0), resMemType(eResourceMemoryType::FIXED)
 	{
-		NG_CLRSTR(filePath);
-		NG_CLRSTR(entryPoint);
-		NG_CLRSTR(target);
+		NG_STRCLR(filePath);
+		NG_STRCLR(entryPoint);
+		NG_STRCLR(target);
 	}
 	void ShaderFormat::SetFilePath(const char* _filePath)
 	{
@@ -61,10 +61,10 @@ namespace app
 
 	MaterialFormat::MaterialFormat()
 	{
-		NG_CLRSTR(name);
-		NG_CLRSTR(rootSignatureName);
-		NG_CLRSTR(pipelineStateName);
-		NG_CLRSTR(shaderEffectName);
+		NG_STRCLR(name);
+		NG_STRCLR(rootSignatureName);
+		NG_STRCLR(pipelineStateName);
+		NG_STRCLR(shaderEffectName);
 
 		vertexLayout = ng::eVertexLayout::STATIC;
 	}
