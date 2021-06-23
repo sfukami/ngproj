@@ -31,6 +31,7 @@ namespace app
 		const FuncType funcTbl[] = {
 			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescSprite),
 			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescSpriteT0),
+			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescSpriteT1),
 			_MAKE_CREATE_ROOT_SIGNATURE_FUNC(CRootSignatureDescModel),
 		};
 
