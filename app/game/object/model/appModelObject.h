@@ -57,6 +57,12 @@ namespace app
 		void SetVisible(bool visible);
 		bool IsVisible() const;
 
+		/*!
+		* @brief					モデル描画取得
+		*/
+		CModelRender& GetRender();
+		const CModelRender& GetRender() const;
+
 	private:
 		/*! 描画 */
 		void _render(const RenderParam& param);

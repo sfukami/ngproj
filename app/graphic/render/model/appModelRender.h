@@ -49,6 +49,18 @@ namespace app
 		*/
 		bool IsEnable() const;
 
+		/*!
+		* @brief					メッシュの配列を取得
+		*/
+		CModel::MeshArray& GetMeshArray();
+		const CModel::MeshArray& GetMeshArray() const;
+
+		/*!
+		* @brief					マテリアルの配列を取得
+		*/
+		CModel::MaterialArray& GetMaterialArray();
+		const CModel::MaterialArray& GetMaterialArray() const;
+
 	private:
 		/*! 描画 */
 		void _render(const RenderParam& param);

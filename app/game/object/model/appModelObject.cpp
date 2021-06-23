@@ -43,6 +43,15 @@ namespace app
 		return m_isVisible && m_model.IsEnable();
 	}
 
+	CModelRender& CModelObject::GetRender()
+	{
+		return m_model;
+	}
+	const CModelRender& CModelObject::GetRender() const
+	{
+		return m_model;
+	}
+
 	void CModelObject::_render(const RenderParam& param)
 	{
 		m_model.Render(param);

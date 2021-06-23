@@ -40,6 +40,24 @@ namespace app
 		return m_handle.IsValid();
 	}
 
+	CModel::MeshArray& CModelRender::GetMeshArray()
+	{
+		return m_handle.GetResource()->GetMeshArray();
+	}
+	const CModel::MeshArray& CModelRender::GetMeshArray() const
+	{
+		return m_handle.GetResource()->GetMeshArray();
+	}
+
+	CModel::MaterialArray& CModelRender::GetMaterialArray()
+	{
+		return m_handle.GetResource()->GetMaterialArray();
+	}
+	const CModel::MaterialArray& CModelRender::GetMaterialArray() const
+	{
+		return m_handle.GetResource()->GetMaterialArray();
+	}
+
 	void CModelRender::_render(const RenderParam& param)
 	{
 		ng::CWeakPtr<CModel> modelPtr = m_handle.GetResource();
