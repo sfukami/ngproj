@@ -55,7 +55,7 @@ namespace ng
 
 		void* pMemory = GetMemory();
 
-		NG_CLRSTR(m_name);
+		NG_STRCLR(m_name);
 		m_pBeg = m_pEnd = m_pPos = nullptr;
 		m_memPool.Unpool();
 
