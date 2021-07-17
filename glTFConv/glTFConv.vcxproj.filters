@@ -54,6 +54,9 @@
     <ClInclude Include="model\BinaryFormat.h">
       <Filter>ソース ファイル\model</Filter>
     </ClInclude>
+    <ClInclude Include="model\VertexLayoutFlag.h">
+      <Filter>ソース ファイル\model</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

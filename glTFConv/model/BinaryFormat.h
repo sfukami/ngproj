@@ -55,6 +55,8 @@ namespace glTFConv
 			ng::Vector3 position;	//!< 座標
 			ng::Vector3 normal;		//!< 法線
 			ng::Vector2 uv;			//!< UV
+			ng::u16 jointIndices[4];	//!< ジョイントのインデックス
+			ng::f32 weights[4];		//!< ウェイト
 		};
 
 		//! 頂点ヘッダ

@@ -18,6 +18,7 @@
 
 #include "GLTFStreamReader.h"
 #include "../model/ModelFormat.h"
+#include "../model/VertexLayoutFlag.h"
 
 namespace glTFConv
 {
@@ -140,30 +141,66 @@ namespace glTFConv
 				// 頂点
 				{
 					const auto& primitive = mesh.primitives.front();
+					std::string posAccId, normAccId, tanAccId, uv0AccId, uv1AccId, jointAccId, weightAccId;
+					eVertexLayoutFlag layoutFlag = eVertexLayoutFlag();
 
-					auto& posId = primitive.GetAttributeAccessorId(Microsoft::glTF::ACCESSOR_POSITION);
-					auto& posAcc = document.accessors.Get(posId);
+					if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_POSITION, posAccId)) {
+						layoutFlag |= eVertexLayoutFlag::POSITION;
+					}
+					if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_NORMAL, normAccId)) {
+						layoutFlag |= eVertexLayoutFlag::NORMAL;
+					}
+					if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TANGENT, tanAccId)) {
+						layoutFlag |= eVertexLayoutFlag::TANGENT;
+					}
+					if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TEXCOORD_0, uv0AccId)) {
+						layoutFlag |= eVertexLayoutFlag::UV0;
+					}
+					if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TEXCOORD_1, uv1AccId)) {
+						layoutFlag |= eVertexLayoutFlag::UV1;
+					}
+					if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_JOINTS_0, jointAccId)) {
+						layoutFlag |= eVertexLayoutFlag::JOINT;
+					}
+					if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_WEIGHTS_0, weightAccId)) {
+						layoutFlag |= eVertexLayoutFlag::WEIGHT;
+					}
 
-					auto& normId = primitive.GetAttributeAccessorId(Microsoft::glTF::ACCESSOR_NORMAL);
-					auto& normAcc = document.accessors.Get(normId);
+					if(layoutFlag == (
+						  eVertexLayoutFlag::POSITION
+						| eVertexLayoutFlag::NORMAL
+						| eVertexLayoutFlag::UV0
+						| eVertexLayoutFlag::JOINT
+						| eVertexLayoutFlag::WEIGHT
+						)) {
+						auto& posAcc = document.accessors.Get(posAccId);
+						auto& normAcc = document.accessors.Get(normAccId);
+						auto& uvAcc = document.accessors.Get(uv0AccId);
+						auto& jointAcc = document.accessors.Get(jointAccId);
+						auto& weightAcc = document.accessors.Get(weightAccId);
 
-					auto& uvId = primitive.GetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TEXCOORD_0);
-					auto& uvAcc = document.accessors.Get(uvId);
+						auto posVec = resourceReader.ReadBinaryData<float>(document, posAcc);
+						auto normVec = resourceReader.ReadBinaryData<float>(document, normAcc);
+						auto uvVec = resourceReader.ReadBinaryData<float>(document, uvAcc);
+						auto jointVec = resourceReader.ReadBinaryData<uint16_t>(document, jointAcc);
+						auto weightVec = resourceReader.ReadBinaryData<float>(document, weightAcc);
 
-					auto posVec = resourceReader.ReadBinaryData<float>(document, posAcc);
-					auto normVec = resourceReader.ReadBinaryData<float>(document, normAcc);
-					auto uvVec = resourceReader.ReadBinaryData<float>(document, uvAcc);
-
-					for(ng::u32 i = 0; i < posAcc.count; i++)
-					{
-						float* pPos = &posVec[i*3];
-						float* pNorm = &normVec[i*3];
-						float* pUV = &uvVec[i*2];
-						dstMesh.vertices.emplace_back(
-							ng::Vector3(*pPos, *(pPos+1), *(pPos+2)),
-							ng::Vector3(*pNorm, *(pNorm+1), *(pNorm+2)),
-							ng::Vector2(*pUV, *(pUV+1))
-							);
+						float *pPos, *pNorm, *pUV, *pWeight;
+						uint16_t* pJoint;
+						for(ng::u32 i = 0; i < posAcc.count; i++)
+						{
+							pPos = &posVec[i*3];
+							pNorm = &normVec[i*3];
+							pUV = &uvVec[i*2];
+							pJoint = &jointVec[i*4];
+							pWeight = &weightVec[i*4];
+							dstMesh.vertices.emplace_back(
+								ng::Vector3(*pPos, *(pPos+1), *(pPos+2)),
+								ng::Vector3(*pNorm, *(pNorm+1), *(pNorm+2)),
+								ng::Vector2(*pUV, *(pUV+1)),
+								pJoint, pWeight
+								);
+						}
 					}
 				}
 				// インデックス

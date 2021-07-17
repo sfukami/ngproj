@@ -182,6 +182,7 @@
     <ClInclude Include="converter\ModelBinaryWriter.h" />
     <ClInclude Include="model\BinaryFormat.h" />
     <ClInclude Include="model\ModelFormat.h" />
+    <ClInclude Include="model\VertexLayoutFlag.h" />
     <ClInclude Include="preincl\preInclude.h" />
   </ItemGroup>
   <ItemGroup>

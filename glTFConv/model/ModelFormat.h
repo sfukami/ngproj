@@ -21,11 +21,13 @@ namespace glTFConv
 		struct Vertex
 		{
 			Vertex();
-			Vertex(const ng::Vector3& _position, const ng::Vector3& _normal, const ng::Vector2& _uv);
+			Vertex(const ng::Vector3& _position, const ng::Vector3& _normal, const ng::Vector2& _uv, ng::u16* _pJointIndices, ng::f32* _pWeights);
 
 			ng::Vector3 position;	//!< 座標
 			ng::Vector3 normal;		//!< 法線
 			ng::Vector2 uv;			//!< UV
+			ng::u16 jointIndices[4];	//!< ジョイントのインデックス
+			ng::f32 weights[4];		//!< ウェイト
 		};
 
 		//! プリミティブ
