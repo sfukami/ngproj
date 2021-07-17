@@ -8,6 +8,8 @@
 #ifndef __NG_GRAPHIC_DX12_UTIL_H__
 #define __NG_GRAPHIC_DX12_UTIL_H__
 
+enum DXGI_FORMAT;
+
 namespace ng
 {
 	class CDX12Graphic;
@@ -96,6 +98,11 @@ namespace ng
 		* @brief					レンダーターゲットのバッファをクリア
 		*/
 		NG_DECL void ClearRenderTarget(CDX12CommandList* pCmdList, CDX12RenderTarget* pRT, const float rgba[4], CDX12DepthStencil* pDS = nullptr);
+
+		/*!
+		* @brief					DXGI_FORMAT の1ピクセルのビット数を取得
+		*/
+		NG_DECL size_type DXGIFormatToBitsPerPixel(DXGI_FORMAT format);
 
 	}	// namespace DX12Util
 }	// namespace ng
