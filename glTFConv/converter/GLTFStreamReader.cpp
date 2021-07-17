@@ -214,7 +214,9 @@ namespace glTFConv
 		const Microsoft::glTF::Document& document
 		) const
 	{
+		ng::Printf("=====================\n");
 		ng::Printf("=== Document Info ===\n");
+		ng::Printf("=====================\n");
 		// Asset Info
 		ng::Printf("[Asset]\n");
 		ng::Printf("  Version:%s\n", document.asset.version.c_str());
@@ -227,6 +229,14 @@ namespace glTFConv
 		ng::Printf("  Scene Count:%u\n", document.scenes.Size());
 		if(document.scenes.Size() > 0U) {
 			ng::Printf("  Default Scene Index:%s\n", document.GetDefaultScene().id.c_str());
+			if(document.scenes.Size() > 1U) {
+				ng::Printf("  Scenes:\n");
+				for(int i = 0; i < document.scenes.Size(); i++)
+				{
+					const auto& scene = document.scenes[i];
+					ng::Printf("    %d: id:%s, name:%s\n", i, scene.id.c_str(), scene.name.c_str());
+				}
+			}
 		}
 		else {
 			ng::Printf("\n");
@@ -235,29 +245,133 @@ namespace glTFConv
 		// Entity Info
 		ng::Printf("[Entity]\n");
 		ng::Printf("  Node Count:%u\n", document.nodes.Size());
+		if(document.nodes.Size() > 0U) {
+			ng::Printf("  Nodes:\n");
+			for(int i = 0; i < document.nodes.Size(); i++)
+			{
+				const auto& node = document.nodes[i];
+				ng::Printf("    %d: id:%s, name:%s, isEmpty:%d", i, node.id.c_str(), node.name.c_str(), node.IsEmpty());
+				if(!node.cameraId.empty()) ng::Printf(", cameraId:%s", node.cameraId.c_str());
+				if(!node.skinId.empty()) ng::Printf(", skinId:%s", node.skinId.c_str());
+				if(!node.meshId.empty()) ng::Printf(", meshId:%s", node.meshId.c_str());
+				ng::Printf("\n");
+			}
+		}
 		ng::Printf("  Camera Count:%u\n", document.cameras.Size());
+		if(document.cameras.Size() > 0U) {
+			ng::Printf("  Cameras:\n");
+			for(int i = 0; i < document.cameras.Size(); i++)
+			{
+				const auto& camera = document.cameras[i];
+				ng::Printf("    %d: id:%s, name:%s\n", i, camera.id.c_str(), camera.name.c_str());
+			}
+		}
 		ng::Printf("  Material Count:%u\n", document.materials.Size());
+		if(document.materials.Size() > 0U) {
+			ng::Printf("  Materials:\n");
+			for(int i = 0; i < document.materials.Size(); i++)
+			{
+				const auto& material = document.materials[i];
+				ng::Printf("    %d: id:%s, name:%s\n", i, material.id.c_str(), material.name.c_str());
+			}
+		}
 
 		// Mesh Info
 		ng::Printf("[Mesh]\n");
 		ng::Printf("  Mesh Count:%u\n", document.meshes.Size());
+		if(document.meshes.Size() > 0U) {
+			ng::Printf("  Meshes:\n");
+			for(int i = 0; i < document.meshes.Size(); i++)
+			{
+				const auto& mesh = document.meshes[i];
+				ng::Printf("    %d: id:%s, name:%s, primitives:%u, weights:%u\n", i, mesh.id.c_str(), mesh.name.c_str(), mesh.primitives.size(), mesh.weights.size());
+			}
+		}
 		ng::Printf("  Skin Count:%u\n", document.skins.Size());
+		if(document.skins.Size() > 0U) {
+			ng::Printf("  Skins:\n");
+			for(int i = 0; i < document.skins.Size(); i++)
+			{
+				const auto& skin = document.skins[i];
+				ng::Printf("    %d: id:%s, name:%s, jointIds:%u\n", i, skin.id.c_str(), skin.name.c_str(), skin.jointIds.size());
+			}
+		}
 
 		// Texture Info
 		ng::Printf("[Texture]\n");
 		ng::Printf("  Image Count:%u\n", document.images.Size());
+		if(document.images.Size() > 0U) {
+			ng::Printf("  Images:\n");
+			for(int i = 0; i < document.images.Size(); i++)
+			{
+				const auto& image = document.images[i];
+				ng::Printf("    %d: id:%s, name:%s, mineType:%s, uri:%s\n", i, image.id.c_str(), image.name.c_str(), image.mimeType.c_str(), image.uri.c_str());
+			}
+		}
 		ng::Printf("  Texture Count:%u\n", document.textures.Size());
+		if(document.textures.Size() > 0U) {
+			ng::Printf("  Textures:\n");
+			for(int i = 0; i < document.textures.Size(); i++)
+			{
+				const auto& texture = document.textures[i];
+				ng::Printf("    %d: id:%s, name:%s, imageId:%s, samplerId:%s\n", i, texture.id.c_str(), texture.name.c_str(), texture.imageId.c_str(), texture.samplerId.c_str());
+			}
+		}
 		ng::Printf("  Sampler Count:%u\n", document.samplers.Size());
+		if(document.samplers.Size() > 0U) {
+			ng::Printf("  Samplers:\n");
+			for(int i = 0; i < document.samplers.Size(); i++)
+			{
+				const auto& sampler = document.samplers[i];
+				ng::Printf("    %d: id:%s, name:%s\n", i, sampler.id.c_str(), sampler.name.c_str());
+			}
+		}
 
 		// Buffer Info
 		ng::Printf("[Buffer]\n");
 		ng::Printf("  Buffer Count:%u\n", document.buffers.Size());
+		if(document.buffers.Size() > 0U) {
+			ng::Printf("  Buffers:\n");
+			for(int i = 0; i < document.buffers.Size(); i++)
+			{
+				const auto& buffer = document.buffers[i];
+				ng::Printf("    %d: id:%s, name:%s, uri:%s, byteLength:%u\n", i, buffer.id.c_str(), buffer.name.c_str(), buffer.uri.c_str(), buffer.byteLength);
+			}
+		}
 		ng::Printf("  BufferView Count:%u\n", document.bufferViews.Size());
+	#if 0
+		if(document.bufferViews.Size() > 0U) {
+			ng::Printf("  BufferViews:\n");
+			for(int i = 0; i < document.bufferViews.Size(); i++)
+			{
+				const auto& bufferView = document.bufferViews[i];
+				ng::Printf("    %d: id:%s, name:%s, bufferId:%s, byteLength:%u\n", i, bufferView.id.c_str(), bufferView.name.c_str(), bufferView.bufferId.c_str(), bufferView.byteLength);
+			}
+		}
+	#endif
 		ng::Printf("  Accessor Count:%u\n", document.accessors.Size());
+	#if 0
+		if(document.accessors.Size() > 0U) {
+			ng::Printf("  Accessors:\n");
+			for(int i = 0; i < document.accessors.Size(); i++)
+			{
+				const auto& accessor = document.accessors[i];
+				ng::Printf("    %d: id:%s, name:%s, bufferViewId:%s, count:%u\n", i, accessor.id.c_str(), accessor.name.c_str(), accessor.bufferViewId.c_str(), accessor.count);
+			}
+		}
+	#endif
 
 		// Animation Info
 		ng::Printf("[Animation]\n");
 		ng::Printf("  Animation Count:%u\n", document.animations.Size());
+		if(document.animations.Size() > 0U) {
+			ng::Printf("  Animations:\n");
+			for(int i = 0; i < document.animations.Size(); i++)
+			{
+				const auto& animation = document.animations[i];
+				ng::Printf("    %d: id:%s, name:%s, channels:%u, samplers:%u\n", i, animation.id.c_str(), animation.name.c_str(), animation.channels.Size(), animation.samplers.Size());
+			}
+		}
 
 		// Extension
 		ng::Printf("[Extension]\n");
@@ -275,25 +389,73 @@ namespace glTFConv
 		const Microsoft::glTF::Document& document, const Microsoft::glTF::GLTFResourceReader& resourceReader
 		) const
 	{
+		ng::Printf("=====================\n");
 		ng::Printf("=== Resource Info ===\n");
+		ng::Printf("=====================\n");
 		ng::Printf("[Mesh]\n");
 		for(const auto& mesh : document.meshes.Elements())
 		{
 			ng::Printf("  -Mesh Id:%s, Name:%s\n", mesh.id.c_str(), mesh.name.c_str());
-
-			for(const auto& primitive : mesh.primitives)
 			{
+				const auto& primitive = mesh.primitives.front();
 				std::string posAccId;
 				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_POSITION, posAccId)) {
-					const Microsoft::glTF::Accessor& posAcc = document.accessors.Get(posAccId);
-					const auto posData = resourceReader.ReadBinaryData<float>(document, posAcc);
-					const ng::size_type posDataBytes = posData.size() * sizeof(float);
-
-					const Microsoft::glTF::Accessor& idxAcc = document.accessors.Get(primitive.indicesAccessorId);
-					const auto idxData = resourceReader.ReadBinaryData<uint32_t>(document, idxAcc);
-
-					ng::Printf("    Positions:%u (%uBytes), Indices:%u, MaterialId:%s\n", posData.size(), posDataBytes, idxData.size(), primitive.materialId.c_str());
+					const auto& acc = document.accessors.Get(posAccId);
+					const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+					ng::Printf("    Positions:%u(%u)", data.size(), data.size()/3);
 				}
+				std::string normAccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_POSITION, normAccId)) {
+					const auto& acc = document.accessors.Get(normAccId);
+					const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+					ng::Printf(", Normals:%u", data.size());
+				}
+				std::string tanAccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TANGENT, tanAccId)) {
+					const auto& acc = document.accessors.Get(tanAccId);
+					const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+					ng::Printf(", Tangents:%u", data.size());
+				}
+				std::string uv0AccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TEXCOORD_0, uv0AccId)) {
+					const auto& acc = document.accessors.Get(uv0AccId);
+					const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+					ng::Printf(", UV0s:%u", data.size());
+				}
+				std::string uv1AccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_TEXCOORD_1, uv1AccId)) {
+					const auto& acc = document.accessors.Get(uv1AccId);
+					const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+					ng::Printf(", UV1s:%u", data.size());
+				}
+				std::string colAccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_COLOR_0, colAccId)) {
+					const auto& acc = document.accessors.Get(colAccId);
+					const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+					ng::Printf(", Colors:%u", data.size());
+				}
+				std::string jointAccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_JOINTS_0, jointAccId)) {
+					const auto& acc = document.accessors.Get(jointAccId);
+					const auto data = resourceReader.ReadBinaryData<uint16_t>(document, acc);
+					ng::Printf(", Joints:%u", data.size());
+				}
+				std::string weightAccId;
+				if(primitive.TryGetAttributeAccessorId(Microsoft::glTF::ACCESSOR_WEIGHTS_0, weightAccId)) {
+					const auto& acc = document.accessors.Get(weightAccId);
+					const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+					ng::Printf(", Weights:%u", data.size());
+				}
+				ng::Printf("\n");
+			}
+			for(const auto& primitive : mesh.primitives)
+			{
+				if(!primitive.indicesAccessorId.empty()) {
+					const auto& acc = document.accessors.Get(primitive.indicesAccessorId);
+					const auto data = resourceReader.ReadBinaryData<uint32_t>(document, acc);
+					ng::Printf("    Indices:%u, ", data.size());
+				}
+				ng::Printf("MaterialId:%s\n", primitive.materialId.c_str());
 			}
 		}
 
@@ -318,10 +480,20 @@ namespace glTFConv
 			}
 
 			auto data = resourceReader.ReadBinaryData(document, image);
-			ng::Printf("  -Image Id:%s, Name:%s (%uBytes)\n", image.id.c_str(), image.name.c_str(), data.size());
+			ng::Printf("  -Image Id:%s, Name:%s (%uBytes)\n", image.id.c_str(), image.name.c_str(), data.size()*sizeof(uint8_t));
 			if(!filename.empty()) {
 				ng::Printf("    filename:%s\n", filename.c_str());
 			}
+		}
+
+		ng::Printf("[Skin]\n");
+		for(const auto& skin : document.skins.Elements())
+		{
+			ng::Printf("  -Skin Id:%s, Name:%s, SkeletonId:%s, JointIds:%u\n",
+				skin.id.c_str(), skin.name.c_str(), skin.skeletonId.c_str(), skin.jointIds.size());
+			const auto& acc = document.accessors.Get(skin.inverseBindMatricesAccessorId);
+			const auto data = resourceReader.ReadBinaryData<float>(document, acc);
+			ng::Printf("    InverseBindMatrices:%u\n", data.size());
 		}
 	}
 
